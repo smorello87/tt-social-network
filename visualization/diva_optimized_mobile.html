@@ -1,0 +1,3010 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Mobile Viewport Meta Tag -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Mapping Italian-American Literary Network</title>
+  <!-- Libraries -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Graphology core -->
+  <script src="https://unpkg.com/graphology@0.24.1/dist/graphology.umd.min.js"></script>
+  <!-- ngraph.graph -->
+  <script src="https://cdn.jsdelivr.net/npm/ngraph.graph@19.1.0/dist/ngraph.graph.min.js"></script>
+  <!-- ngraph.path -->
+  <script src="https://unpkg.com/ngraph.path@1.3.1/dist/ngraph.path.min.js"></script>
+  <!-- canvg -->
+  <script src="https://unpkg.com/canvg@3.0.7/lib/umd.js"></script>
+  <style>
+    /* Global resets, fonts, & base */
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
+      overflow: hidden;
+      color: #3a3835;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      width: 100%;
+      position: relative;
+    }
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    /* ------------------------ Navigation Bar ------------------------ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #fff;
+      z-index: 1500;
+      border-bottom: 2px solid #8b7355;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+    }
+    #navbar .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      height: 60px;
+    }
+    #navbar .brand {
+      font-size: 21px;
+      font-weight: 600;
+      font-family: 'Crimson Text', Georgia, serif;
+      letter-spacing: 0.5px;
+      color: #f5f1e8;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    /* Toggle button (hidden on desktop) */
+    #nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    #navbar .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    #navbar .nav-links li {
+      margin-left: 10px;
+    }
+    #navbar .nav-links li a {
+      text-decoration: none;
+      color: #f5f1e8;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    #navbar .nav-links li a:hover,
+    #navbar .nav-links li a:focus {
+      background-color: rgba(139, 115, 85, 0.25);
+      border: 1px solid rgba(139, 115, 85, 0.5);
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #navbar .nav-links li a.active {
+      background-color: #8b7355;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* --------------------------- Sidebar (Left Menu) --------------------------- */
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 60px;
+      height: calc(100vh - 60px);
+      width: 280px;
+      background: linear-gradient(to bottom, #fefdfb, #faf8f3);
+      color: #3a3835;
+      border-right: 1px solid #d4c5b9;
+      padding: 20px 16px;
+      box-sizing: border-box;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      font-size: 13px;
+      box-shadow: 3px 0 12px rgba(0,0,0,0.08);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #d4c5b9 transparent;
+    }
+    #sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    #sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #sidebar::-webkit-scrollbar-thumb {
+      background-color: #d4c5b9;
+      border-radius: 3px;
+    }
+    #sidebar::-webkit-scrollbar-thumb:hover {
+      background-color: #8b7355;
+    }
+    #sidebar.hidden {
+      transform: translateX(-100%);
+    }
+    .toolbar-section {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(212, 197, 185, 0.3);
+    }
+    .toolbar-section:last-child {
+      border-bottom: none;
+    }
+    #sidebar h3,
+    #sidebar h4 {
+      margin: 0 0 12px 0;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      font-family: 'Crimson Text', Georgia, serif;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.3px;
+    }
+    #sidebar p {
+      font-size: 13px;
+      color: #5a5653;
+      line-height: 1.7;
+      margin: 12px 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+
+    /* Info icon */
+    .info-icon {
+      display: inline-block;
+      margin-left: 6px;
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      cursor: help;
+      position: relative;
+      pointer-events: auto;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    .info-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .info-icon::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, rgba(44, 62, 80, 0.95), rgba(34, 49, 64, 0.95));
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: pre-line;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1200;
+      bottom: 100%;
+      margin-bottom: 8px;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      border: 1px solid rgba(139, 115, 85, 0.2);
+      font-weight: 400;
+    }
+    .info-icon:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* Sidebar inputs */
+    #sidebar input[type="text"] {
+      padding: 10px 12px;
+      margin: 8px 0;
+      border: 1px solid #d4c5b9;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 13px;
+      outline: none;
+      background: #fff;
+      color: #3a3835;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    #sidebar input[type="text"]:focus {
+      border-color: #8b7355;
+      box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.15), 0 2px 4px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+    #sidebar input[type="range"] {
+      width: 100%;
+      margin: 4px 0;
+    }
+
+    /* Sidebar buttons */
+    #sidebar button {
+      padding: 7px 12px;
+      margin: 5px 0;
+      border: 1px solid #8b7355;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #fff, #faf8f3);
+      color: #3a3835;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      letter-spacing: 0.4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    #sidebar button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 115, 85, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    #sidebar button:hover,
+    #sidebar button:focus {
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      color: #fff;
+      outline: none;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      border-color: #7a6448;
+    }
+    #sidebar button:hover::before {
+      left: 100%;
+    }
+    #sidebar button:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* --------------------- Toggle Sidebar Button (Right) --------------------- */
+    #toggle-sidebar {
+      position: fixed;
+      top: 70px;
+      right: 10px;
+      z-index: 2000;
+      background: linear-gradient(to bottom, #2c3e50, #243240);
+      color: #f5f1e8;
+      border: 1px solid #8b7355;
+      padding: 10px 14px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #toggle-sidebar:hover,
+    #toggle-sidebar:focus {
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      outline: none;
+      transform: translateY(-2px) rotate(90deg);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    /* --------------------- Autocomplete Items --------------------- */
+    .autocomplete {
+      position: relative !important;
+      display: block;
+    }
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4c5b9;
+      border-top: none;
+      z-index: 9999 !important;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      color: #3a3835;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      border-radius: 0 0 6px 6px;
+      display: block !important;
+      backdrop-filter: blur(10px);
+    }
+    .autocomplete-items div {
+      padding: 6px 10px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #3a3835;
+      border-bottom: 1px solid #f0ebe3;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.2s ease;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .autocomplete-items div:last-child {
+      border-bottom: none;
+    }
+    .autocomplete-items div:hover, .autocomplete-active {
+      background: linear-gradient(to right, #f5f1e8, #f0ebe3) !important;
+      color: #2c3e50;
+      padding-left: 14px;
+    }
+    .autocomplete-items div strong {
+      color: #8b7355;
+      font-weight: 600;
+    }
+
+    /* ------------------------- Enhanced Mobile CSS ------------------------- */
+    /* Mobile overlay for sidebar */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Hamburger menu button */
+    .hamburger-menu {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 10px;
+      z-index: 2001;
+      background: linear-gradient(to bottom, #2c3e50, #243240);
+      color: #f5f1e8;
+      border: 1px solid #8b7355;
+      padding: 12px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      min-width: 48px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hamburger-menu:hover,
+    .hamburger-menu:focus {
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      outline: none;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .hamburger-menu.active {
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+    }
+
+    /* Close button for mobile sidebar */
+    .sidebar-close {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: #3a3835;
+      font-size: 32px;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 1001;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    /* ------------------------- Tablet & Mobile Media Queries ------------------------- */
+    @media (max-width: 768px) {
+      /* Show mobile-specific elements */
+      .hamburger-menu {
+        display: flex;
+      }
+      .sidebar-close {
+        display: block;
+      }
+
+      /* Hide desktop toggle button on mobile */
+      #toggle-sidebar {
+        display: none;
+      }
+
+      /* Adjust navbar for mobile */
+      #navbar .nav-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        padding: 10px 15px;
+      }
+      #navbar .brand {
+        font-size: 18px;
+        letter-spacing: 0.3px;
+      }
+      #nav-toggle {
+        display: block;
+      }
+      #navbar .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 250px;
+        height: calc(100vh - 60px);
+        background: linear-gradient(to bottom, #2c3e50, #243240);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        z-index: 1600;
+        display: flex;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+        padding-top: 20px;
+        overflow-y: auto;
+      }
+      #navbar .nav-links.show {
+        right: 0;
+      }
+      #navbar .nav-links li {
+        margin: 10px 0;
+        text-align: left;
+      }
+      #navbar .nav-links li a {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+        padding: 16px 20px;
+        box-sizing: border-box;
+        background-color: transparent;
+        color: #f5f1e8;
+        font-size: 16px;
+        border-radius: 4px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+      }
+      #navbar .nav-links li a:hover,
+      #navbar .nav-links li a:focus {
+        background-color: rgba(139, 115, 85, 0.25);
+      }
+
+      /* Sidebar as full-screen overlay on mobile */
+      #sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        background: linear-gradient(to bottom, #fefdfb, #faf8f3);
+        z-index: 2000;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 3px 0 15px rgba(0,0,0,0.2);
+        padding: 60px 20px 20px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #sidebar.show {
+        left: 0;
+      }
+      #sidebar.hidden {
+        left: -100%;
+      }
+
+      /* Touch-friendly inputs and buttons */
+      #sidebar input[type="text"] {
+        padding: 14px 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 48px;
+        border: 2px solid #d4c5b9;
+      }
+      #sidebar button {
+        padding: 14px 20px;
+        font-size: 14px;
+        min-height: 48px;
+        margin: 8px 0;
+      }
+
+      /* Larger touch targets for sliders */
+      #degree-range {
+        height: 8px;
+      }
+      #degree-range::-webkit-slider-thumb {
+        width: 32px;
+        height: 32px;
+      }
+      #degree-range::-moz-range-thumb {
+        width: 32px;
+        height: 32px;
+      }
+
+      /* Adjust SVG canvas for mobile */
+      #canvas {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 105px);
+        touch-action: pan-x pan-y pinch-zoom;
+      }
+
+      /* Adjust info icon for touch */
+      .info-icon {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+        margin-left: 8px;
+      }
+      .info-icon::after {
+        font-size: 14px;
+        padding: 12px 16px;
+        max-width: 280px;
+      }
+
+      /* Larger autocomplete items for touch */
+      .autocomplete-items {
+        max-height: 250px;
+      }
+      .autocomplete-items div {
+        padding: 12px 16px;
+        font-size: 14px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Adjust footer for mobile */
+      footer {
+        font-size: 12px;
+      }
+      footer p {
+        padding: 0 10px;
+      }
+    }
+
+    /* Additional mobile optimizations for smaller screens */
+    @media (max-width: 480px) {
+      #navbar .brand {
+        font-size: 16px;
+      }
+      #sidebar {
+        width: 90%;
+      }
+      .modal-content {
+        width: 95%;
+        margin: 10px auto;
+        max-height: 95vh;
+      }
+    }
+
+    /* ------------------------- SVG & D3 Elements ------------------------- */
+    .tooltip {
+      position: absolute;
+      padding: 10px 14px;
+      background: linear-gradient(to bottom, rgba(44, 62, 80, 0.95), rgba(34, 49, 64, 0.95));
+      color: #f5f1e8;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1200;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    .label {
+      font-size: 12px;
+      pointer-events: none;
+      font-family: 'Crimson Text', Georgia, serif;
+      fill: #3a3835;
+      font-weight: 500;
+      text-shadow:
+        -1px -1px 3px rgba(255,255,255,0.9),
+        1px -1px 3px rgba(255,255,255,0.9),
+        -1px 1px 3px rgba(255,255,255,0.9),
+        1px 1px 3px rgba(255,255,255,0.9),
+        0 0 5px rgba(255,255,255,0.7);
+      user-select: none;
+    }
+    .link {
+      stroke: #c4b5a0;
+      stroke-opacity: 0.35;
+      stroke-width: 1.5;
+      transition: stroke-opacity 0.3s ease;
+    }
+    .highlight-path {
+      stroke: #bf9f5f !important;
+      stroke-width: 3px !important;
+      stroke-opacity: 0.9 !important;
+      filter: drop-shadow(0 0 3px rgba(191, 159, 95, 0.4));
+    }
+    .highlight-node {
+      stroke: #d4af37 !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+      }
+      50% {
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+      }
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+    }
+    #degree-range {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      background: linear-gradient(to right, #d4c5b9, #e5d9ce);
+      border-radius: 3px;
+      outline: none;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+    #degree-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      border: 2px solid #fff;
+    }
+    #degree-range::-webkit-slider-thumb:hover {
+      background: linear-gradient(to bottom, #9d8567, #8b7355);
+      transform: scale(1.25);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
+    #degree-range::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      border: 2px solid #fff;
+    }
+    #degree-range::-moz-range-thumb:hover {
+      background: linear-gradient(to bottom, #9d8567, #8b7355);
+      transform: scale(1.25);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
+    #degree-label {
+      min-width: 40px;
+      font-weight: 700;
+      color: #2c3e50;
+      font-size: 14px;
+      background: linear-gradient(to bottom, #f5f1e8, #ebe6dd);
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-align: center;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    /* -------------------- FOOTER -------------------- */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 45px;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #f5f1e8;
+      text-align: center;
+      border-top: 1px solid #8b7355;
+      z-index: 1500;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    footer p {
+      margin: 0;
+      line-height: 45px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+    }
+    footer a {
+      color: #f5f1e8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #d4c5b9;
+    }
+    /* Loading indicator styles */
+    #loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+    }
+    #loading-overlay.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loading-content {
+      text-align: center;
+      font-family: 'Crimson Text', Georgia, serif;
+    }
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #d4c5b9;
+      border-top: 4px solid #8b7355;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loading-text {
+      font-size: 24px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .loading-status {
+      font-size: 16px;
+      color: #5a5653;
+      font-style: italic;
+      font-family: 'Inter', sans-serif;
+      opacity: 0.8;
+      min-height: 20px;
+    }
+    .loading-progress {
+      width: 200px;
+      height: 3px;
+      background: #d4c5b9;
+      border-radius: 2px;
+      margin: 15px auto 0;
+      overflow: hidden;
+    }
+    .loading-progress-bar {
+      height: 100%;
+      background: #8b7355;
+      width: 0;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* -------------------- Modal Styles -------------------- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.3s ease;
+      backdrop-filter: blur(0px);
+    }
+    .modal.show {
+      display: block;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    .modal.show .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.3s ease;
+    }
+    .modal-content {
+      background: linear-gradient(to bottom, #fefdfb, #faf8f3);
+      margin: 50px auto;
+      padding: 0;
+      border: 1px solid #d4c5b9;
+      width: 90%;
+      max-width: 700px;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      position: relative;
+      animation: slideUp 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header {
+      padding: 20px 30px;
+      border-bottom: 1px solid #d4c5b9;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-title {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #f5f1e8;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    .modal-body {
+      padding: 30px;
+      overflow-y: auto;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #3a3835;
+    }
+    .modal-body::-webkit-scrollbar {
+      width: 8px;
+    }
+    .modal-body::-webkit-scrollbar-track {
+      background: #f5f1e8;
+      border-radius: 4px;
+    }
+    .modal-body::-webkit-scrollbar-thumb {
+      background-color: #d4c5b9;
+      border-radius: 4px;
+    }
+    .modal-body::-webkit-scrollbar-thumb:hover {
+      background-color: #8b7355;
+    }
+    .modal-body p {
+      margin: 0 0 20px 0;
+      text-align: justify;
+    }
+    .modal-body p:last-child {
+      margin-bottom: 0;
+    }
+    .modal-footer {
+      padding: 15px 30px;
+      border-top: 1px solid #d4c5b9;
+      background: #faf8f3;
+      border-radius: 0 0 8px 8px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .close {
+      color: #f5f1e8;
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      background: none;
+      border: none;
+      opacity: 0.8;
+    }
+    .close:hover,
+    .close:focus {
+      color: #fff;
+      opacity: 1;
+      transform: rotate(90deg);
+      outline: none;
+    }
+    .modal-close-btn {
+      padding: 10px 20px;
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .modal-close-btn:hover {
+      background: linear-gradient(to bottom, #7a6448, #6d5a44);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .modal-close-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .modal.closing {
+      animation: fadeOut 0.3s ease forwards;
+    }
+    .modal.closing .modal-content {
+      animation: slideDown 0.3s ease forwards;
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+    }
+
+    /* About button special styling */
+    #about-btn {
+      background: linear-gradient(to bottom, #8b7355, #7a6448);
+      color: #fff;
+      border: 1px solid #6d5a44;
+    }
+    #about-btn:hover {
+      background: linear-gradient(to bottom, #9d8567, #8b7355);
+      border-color: #7a6448;
+    }
+
+    /* Full-screen modal on mobile */
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        max-height: 100vh;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .modal-header {
+        padding: 15px 20px;
+        border-radius: 0;
+        flex-shrink: 0;
+      }
+      .modal-body {
+        padding: 20px;
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .modal-footer {
+        border-radius: 0;
+        flex-shrink: 0;
+      }
+      .modal-title {
+        font-size: 20px;
+      }
+      .modal-close-btn {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+      }
+    }
+
+    /* Compact mode for screens with limited height */
+    @media (max-height: 800px) {
+      #sidebar {
+        padding: 10px 12px;
+      }
+      .toolbar-section {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+      #sidebar h3,
+      #sidebar h4 {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      #sidebar input[type="text"] {
+        padding: 6px 8px;
+        margin: 4px 0;
+        font-size: 12px;
+      }
+      #sidebar button {
+        padding: 6px 10px;
+        margin: 4px 0;
+        font-size: 11px;
+      }
+      .info-icon {
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+        font-size: 8px;
+        margin-left: 5px;
+      }
+      .slider-container {
+        padding: 3px 0;
+        gap: 8px;
+      }
+      #degree-range::-webkit-slider-thumb,
+      #degree-range::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+      }
+      #degree-label {
+        font-size: 11px;
+        padding: 2px 5px;
+        min-width: 30px;
+      }
+      .autocomplete-items div {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+    }
+
+    /* Even more compact for very small screens */
+    @media (max-height: 650px) {
+      #sidebar {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+      .toolbar-section {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+      }
+      .toolbar-section:first-child {
+        margin-top: 0;
+      }
+      #sidebar h3,
+      #sidebar h4 {
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+      #sidebar input[type="text"] {
+        padding: 5px 7px;
+        margin: 3px 0;
+        font-size: 11px;
+      }
+      #sidebar button {
+        padding: 5px 8px;
+        margin: 3px 0;
+        font-size: 11px;
+      }
+      #path-info {
+        margin-top: 4px !important;
+        padding: 4px !important;
+        font-size: 10px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Italian-American Literary Network</div>
+      <div class="loading-status">Initializing visualization...</div>
+      <div class="loading-progress">
+        <div class="loading-progress-bar" id="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation Bar -->
+  <nav id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-container">
+      <span class="brand">Italian-American Literary Network</span>
+      <!-- Toggle button for mobile nav (next to brand) -->
+      <button id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="#" class="active" tabindex="0">Network</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile Hamburger Menu Button -->
+  <button class="hamburger-menu" id="mobile-menu-btn" onclick="toggleMobileSidebar()" aria-label="Toggle sidebar menu">☰</button>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileSidebar()"></div>
+
+  <!-- Toggle Sidebar Button (Right) - Desktop Only -->
+  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+
+  <!-- Sidebar with info icons and autocomplete containers -->
+  <div id="sidebar">
+    <!-- Close button for mobile -->
+    <button class="sidebar-close" onclick="closeMobileSidebar()" aria-label="Close sidebar">&times;</button>
+
+    <!-- Network Tools Section -->
+    <div class="toolbar-section">
+      <div class="autocomplete" style="position: relative;">
+        <input type="text" id="search" placeholder="Search for individuals or institutions...">
+      </div>
+    </div>
+
+    <!-- Path Finder Section -->
+    <div class="toolbar-section">
+      <h4>
+        Connection Explorer
+        <span class="info-icon" data-tooltip="Discover the shortest path linking two figures or institutions in the network.">?</span>
+      </h4>
+      <div class="autocomplete" style="position: relative;">
+        <input type="text" id="start-node" placeholder="Select starting point...">
+      </div>
+      <div class="autocomplete" style="position: relative;">
+        <input type="text" id="end-node" placeholder="Select destination...">
+      </div>
+      <button onclick="NetworkViz.findPath()">Trace Connection</button>
+      <button onclick="NetworkViz.clearPath()">Clear Selection</button>
+      <div id="path-info" style="display: none; margin-top: 10px; padding: 8px; background: #f5f1e8; border-radius: 2px; font-size: 12px; color: #2c3e50; border: 1px solid #d4c5b9;"></div>
+    </div>
+
+    <!-- Analysis Tools Section -->
+    <div class="toolbar-section">
+      <h4>
+        Network Density Filter
+        <span class="info-icon" data-tooltip="Display only figures and institutions with the specified minimum number of connections.">?</span>
+      </h4>
+      <div class="slider-container">
+        <input type="range" id="degree-range" min="0" max="5" value="0" list="degree-stops">
+        <datalist id="degree-stops">
+          <option value="0">1</option>
+          <option value="1">5</option>
+          <option value="2">10</option>
+          <option value="3">30</option>
+          <option value="4">40</option>
+          <option value="5">50</option>
+        </datalist>
+        <span id="degree-label">1+</span>
+      </div>
+    </div>
+
+    <!-- Export Section -->
+    <div class="toolbar-section">
+      <button onclick="NetworkViz.exportPNG()">Download Image</button>
+      <button onclick="NetworkViz.fullReset()">Reset Visualization</button>
+    </div>
+
+    <!-- About Section -->
+    <div class="toolbar-section">
+      <button id="about-btn" onclick="openAboutModal()">About This Project</button>
+    </div>
+
+  </div>
+
+  <!-- SVG Canvas -->
+  <svg id="canvas"></svg>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-overlay" onclick="closeAboutModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Italian-American Literary Network</h2>
+        <button class="close" onclick="closeAboutModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>
+          This interactive visualization maps the transnational network of Italian American literary culture, revealing connections between writers, translators, scholars, and cultural institutions. Each node represents either an individual contributor to Italian-American letters or an institution, while the edges trace relationships of collaboration, translation, correspondence, and intellectual exchange that have shaped this literary ecosystem.
+          
+          The underlying dataset includes multiple archival and digital sources: the <a href="https://transatlantictransfers.polimi.it/atlas">Transatlantic Transfers Atlas</a>, the most comprehensive repository documenting Italian-American cultural exchanges in the postwar era; digitized tables of contents from 103 issues of the literary magazine <em>Divagando</em>; biographical data from Wikipedia entries; and bibliographic metadata from the Italian Sistema Bibliotecario Nazionale (SBN). These sources were complemented through additional archival research to expand coverage.
+        </p>
+        <p>
+          The network relies on a bipartite structure distinguishing between individual actors and institutional entities. The "Actors" category includes writers, translators, scholars, editors, and other cultural mediators who shaped Italian-American literary exchange. The "Institutions" category includes publishing houses, magazines, universities, cultural foundations, and government agencies that provided the infrastructure for transnational literary circulation. 
+        </p>
+        <p>
+          The network comprises over 1,500 nodes connected by nearly 3,000 edges. This scale of data enables the identification of structural patterns, influential brokers, and community formations that traditional literary historical methods might overlook. 
+
+          To learn more, please refer to <a href="https://doi.org/10.1353/mln.2025.a963658">the article I published in <em>Modern Language Notes</em></a> (2025), which relied on an earlier version of the visualization. 
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-close-btn" onclick="closeAboutModal()">Return to Visualization</button>
+      </div>
+    </div>
+  </div>
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        <a href="https://stefanomorello.com" target="_blank">© 2025 Stefano Morello</a> |
+        <a href="https://github.com/smorello87/tt-social-network" target="_blank">
+          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="height:20px; vertical-align:middle;">
+        </a>
+      </p>
+    </footer>
+  <script>
+    // Optimized Network Visualization Module
+    const NetworkViz = (function() {
+      // Private variables with improved data structures
+      let svg, width, height, simulation;
+      let nodeGroups, linkElements, labelElements;
+      let container, zoom;
+
+      // Optimized data structures for faster lookups
+      let nodesById = new Map();
+      let nodesByIdLower = new Map();
+      let adjacencyList = new Map();
+      let nodeDegrees = new Map();
+      let nodeIndexMap = new Map();
+
+      // State management
+      let currentPath = [];
+      let labelsVisible = true;
+      let isSimulationActive = false;
+
+      // Performance optimization flags
+      let renderRequestId = null;
+      let isDragging = false;
+
+      // Color scale and tooltip
+      const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+      const tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+      // Cache for expensive computations
+      const pathCache = new Map();
+      const searchCache = new Map();
+      const communityCache = new Map();
+
+      // Debounce function for performance
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Throttle function for performance
+      function throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+          if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+          }
+        };
+      }
+
+      // Auto-fit network to viewport
+      function autoFitNetwork() {
+        if (!nodeGroups || nodeGroups.empty()) return;
+
+        // Calculate bounding box of all nodes
+        let minX = Infinity, maxX = -Infinity;
+        let minY = Infinity, maxY = -Infinity;
+
+        nodeGroups.each(function(d) {
+          minX = Math.min(minX, d.x);
+          maxX = Math.max(maxX, d.x);
+          minY = Math.min(minY, d.y);
+          maxY = Math.max(maxY, d.y);
+        });
+
+        // Add padding
+        const padding = 50;
+        minX -= padding;
+        maxX += padding;
+        minY -= padding;
+        maxY += padding;
+
+        // Calculate dimensions
+        const networkWidth = maxX - minX;
+        const networkHeight = maxY - minY;
+
+        // Calculate scale to fit network in viewport
+        const scaleX = width / networkWidth;
+        const scaleY = height / networkHeight;
+        let scale = Math.min(scaleX, scaleY);
+
+        // Apply minimum and maximum scale constraints
+        scale = Math.max(0.1, Math.min(scale, 1.5)); // Allow smaller scale for overview
+
+        // Calculate center of network
+        const centerX = (minX + maxX) / 2;
+        const centerY = (minY + maxY) / 2;
+
+        // Apply transform with smooth transition
+        const transform = d3.zoomIdentity
+          .translate(width / 2, height / 2)
+          .scale(scale)
+          .translate(-centerX, -centerY);
+
+        svg.transition()
+          .duration(1000)
+          .call(zoom.transform, transform);
+      }
+
+      // Adjust forces dynamically based on zoom level (DISABLED to prevent wobbling)
+      // This function is kept for reference but not actively used
+      function adjustForcesForZoom(zoomLevel) {
+        if (!simulation || !simulation.baseForces) return;
+
+        // IMPORTANT: This function is disabled by default to prevent wobbling
+        // Only enable if you need dynamic force adjustment and accept some instability
+        return;
+
+        // Original implementation kept for reference:
+        /*
+        // Use much gentler scaling to reduce wobbling
+        let linkDistanceFactor = 1;
+        let chargeStrengthFactor = 1;
+        let collisionFactor = 1;
+
+        // Only make very minor adjustments
+        if (zoomLevel < 0.5) {
+          linkDistanceFactor = 0.95;
+          chargeStrengthFactor = 0.95;
+          collisionFactor = 0.95;
+        } else if (zoomLevel > 3) {
+          linkDistanceFactor = 1.05;
+          chargeStrengthFactor = 1.05;
+          collisionFactor = 1.05;
+        }
+
+        // Apply adjustments
+        const linkForce = simulation.force("link");
+        if (linkForce) {
+          linkForce.distance(() => simulation.baseForces.linkDistance * linkDistanceFactor);
+        }
+
+        const chargeForce = simulation.force("charge");
+        if (chargeForce) {
+          chargeForce.strength(() => simulation.baseForces.chargeStrength * chargeStrengthFactor);
+        }
+
+        const collisionForce = simulation.force("collision");
+        if (collisionForce) {
+          collisionForce.radius(() => simulation.baseForces.collisionRadius * collisionFactor);
+        }
+
+        // Use very small alpha to minimize wobbling
+        if (!isSimulationActive && !isDragging) {
+          const alpha = 0.05; // Much smaller alpha
+          simulation.alpha(alpha).restart();
+          isSimulationActive = true;
+
+          setTimeout(() => {
+            if (!isDragging) {
+              simulation.stop();
+              isSimulationActive = false;
+            }
+          }, 300); // Shorter duration
+        }
+        */
+      }
+
+      // Initialize the visualization
+      function init() {
+        try {
+          console.log('NetworkViz.init() called');
+          // Show loading indicator
+          showLoadingIndicator();
+          console.log('Loading indicator shown');
+          setupCanvas();
+          console.log('Canvas setup complete');
+          loadData();
+          console.log('loadData() initiated');
+        } catch (initError) {
+          console.error('Error in init():', initError);
+          updateLoadingStatus('Initialization error: ' + initError.message, 0);
+        }
+      }
+
+      // Loading indicator management
+      function showLoadingIndicator() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+          overlay.style.display = 'flex';
+          overlay.classList.remove('fade-out');
+        }
+      }
+
+      function updateLoadingStatus(status, progress) {
+        const statusEl = document.querySelector('.loading-status');
+        const progressBar = document.getElementById('progress-bar');
+
+        if (statusEl) {
+          statusEl.textContent = status;
+        }
+        if (progressBar && progress !== undefined) {
+          progressBar.style.width = progress + '%';
+        }
+      }
+
+      function hideLoadingIndicator() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+          overlay.classList.add('fade-out');
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 500);
+        }
+      }
+
+      // Setup SVG canvas with optimized zoom
+      function setupCanvas() {
+        svg = d3.select("#canvas");
+        if (!svg || svg.empty()) {
+          console.error('Canvas element not found!');
+          throw new Error('Canvas element #canvas not found in DOM');
+        }
+
+        width = window.innerWidth || 800;
+        height = window.innerHeight || 600;
+
+        // Ensure minimum dimensions
+        width = Math.max(width, 400);
+        height = Math.max(height, 400);
+
+        console.log('Canvas dimensions:', width, 'x', height);
+        svg.attr("width", width).attr("height", height);
+
+        // Optimized zoom with better constraints and no force wobbling
+        zoom = d3.zoom()
+          .scaleExtent([0.05, 10]) // Allow much more zoom out (0.05 = 20x) for bird's eye view
+          .on("zoom", throttle((e) => {
+            container.attr("transform", e.transform);
+
+            // Disable force adjustment to prevent wobbling
+            // Only enable if absolutely necessary with very gentle values
+            // adjustForcesForZoom(e.transform.k);
+          }, 16)); // ~60fps
+
+        svg.call(zoom);
+        container = svg.append("g");
+      }
+
+      // Load and process data with optimizations
+      async function loadData() {
+        try {
+          updateLoadingStatus('Loading literary network data...', 20);
+          console.log('Starting to load graph.json...');
+          console.log('Current location:', window.location.href);
+
+          // Try to load the data file with better error handling
+          let data;
+          try {
+            data = await d3.json("graph.json");
+          } catch (jsonError) {
+            console.error('Failed to load graph.json from relative path, trying absolute path...');
+            // Try with absolute path as fallback
+            const basePath = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+            const fullPath = basePath + '/graph.json';
+            console.log('Trying full path:', fullPath);
+            data = await d3.json(fullPath);
+          }
+          console.log('Data loaded successfully:', data);
+          console.log('Number of nodes:', data.nodes ? data.nodes.length : 0);
+          console.log('Number of links:', data.links ? data.links.length : 0);
+
+          updateLoadingStatus('Analyzing relationships...', 40);
+          processData(data);
+          console.log('Data processed, nodesById size:', nodesById.size);
+
+          updateLoadingStatus('Calculating network layout...', 60);
+          initializeSimulation(data);
+          console.log('Simulation initialized');
+
+          updateLoadingStatus('Rendering visualization...', 80);
+          renderNetwork(data);
+          console.log('Network rendered');
+
+          updateLoadingStatus('Optimizing display...', 90);
+          setupEventHandlers();
+          console.log('Event handlers setup');
+
+          // Delay autocomplete initialization to ensure data is ready
+          setTimeout(() => {
+            console.log('Data loaded, initializing autocomplete...');
+            try {
+              initializeAutocomplete();
+              console.log('Autocomplete initialized successfully');
+            } catch (autoError) {
+              console.error('Error initializing autocomplete:', autoError);
+            }
+          }, 500);
+
+          // Wait for initial simulation to settle before hiding loading
+          setTimeout(() => {
+            updateLoadingStatus('Ready to explore...', 100);
+            setTimeout(() => {
+              hideLoadingIndicator();
+              console.log('Loading indicator hidden, visualization ready');
+            }, 500);
+          }, 4000); // Adjust based on your simulation settling time
+
+        } catch (error) {
+          console.error("Error loading data:", error);
+          console.error("Error details:", error.stack);
+          updateLoadingStatus('Unable to load network data: ' + error.message, 0);
+          setTimeout(() => hideLoadingIndicator(), 2000);
+        }
+      }
+
+      // Process data for optimized lookups
+      function processData(data) {
+        // Build optimized data structures
+        data.nodes.forEach((node, index) => {
+          nodesById.set(node.id, node);
+          nodesByIdLower.set(node.id.toLowerCase(), node);
+          nodeIndexMap.set(node.id, index);
+          adjacencyList.set(node.id, new Set());
+          nodeDegrees.set(node.id, 0);
+        });
+
+        // Build adjacency list and calculate degrees
+        data.links.forEach(link => {
+          const sourceId = typeof link.source === 'string' ? link.source : link.source.id;
+          const targetId = typeof link.target === 'string' ? link.target : link.target.id;
+
+          if (adjacencyList.has(sourceId) && adjacencyList.has(targetId)) {
+            adjacencyList.get(sourceId).add(targetId);
+            adjacencyList.get(targetId).add(sourceId);
+            nodeDegrees.set(sourceId, nodeDegrees.get(sourceId) + 1);
+            nodeDegrees.set(targetId, nodeDegrees.get(targetId) + 1);
+          }
+        });
+      }
+
+      // Initialize force simulation with optimizations
+      function initializeSimulation(data) {
+        // Pre-position nodes to reduce initial chaos
+        const nodeCount = data.nodes.length;
+        const angleStep = (2 * Math.PI) / nodeCount;
+        const radius = Math.min(width, height) * 0.35;
+
+        // Initialize nodes in a circular layout to start with structure
+        data.nodes.forEach((node, i) => {
+          if (!node.x && !node.y) {  // Only set if not already positioned
+            const angle = i * angleStep;
+            node.x = width / 2 + radius * Math.cos(angle);
+            node.y = height / 2 + radius * Math.sin(angle);
+            // Add small random offset to prevent perfect symmetry
+            node.x += (Math.random() - 0.5) * 20;
+            node.y += (Math.random() - 0.5) * 20;
+          }
+          // Initialize velocities to zero for calm start
+          node.vx = 0;
+          node.vy = 0;
+        });
+
+        // Store base force parameters - OPTIMIZED for stability
+        const baseForces = {
+          linkDistance: 300,        // Good spacing
+          linkStrength: 0.15,       // Reduced for less spring tension
+          chargeStrength: -2500,    // Moderate repulsion to reduce jitter
+          collisionRadius: 35       // Good collision radius
+        };
+
+        // Use optimized force values for better spacing and stability
+        simulation = d3.forceSimulation(data.nodes)
+          .force("link", d3.forceLink(data.links)
+            .id(d => d.id)
+            .distance(d => {
+              // Variable distance based on node degrees for better layout
+              const sourceDegree = nodeDegrees.get(d.source.id || d.source) || 1;
+              const targetDegree = nodeDegrees.get(d.target.id || d.target) || 1;
+              const avgDegree = (sourceDegree + targetDegree) / 2;
+              // High-degree nodes get more space
+              return baseForces.linkDistance * (1 + Math.log(avgDegree) * 0.1);
+            })
+            .strength(baseForces.linkStrength))
+          .force("charge", d3.forceManyBody()
+            .strength(d => {
+              // Moderate repulsion for stability
+              const degree = nodeDegrees.get(d.id) || 1;
+              return baseForces.chargeStrength * (1 + Math.log(degree) * 0.15);
+            })
+            .distanceMax(600) // Reduced for less long-range interaction
+            .theta(0.9)) // Less accurate but more stable
+          .force("center", d3.forceCenter(width / 2, height / 2)
+            .strength(0.02)) // Even weaker centering force to reduce wobbling
+          .force("collision", d3.forceCollide()
+            .radius(d => {
+              // Dynamic collision radius based on node degree
+              const degree = nodeDegrees.get(d.id) || 1;
+              return baseForces.collisionRadius + Math.min(degree * 0.5, 20);
+            })
+            .strength(0.7)
+            .iterations(2)) // More collision iterations for stability
+          .velocityDecay(0.7)     // High damping for stability
+          .alphaDecay(0.025)      // Slightly faster decay to reduce initial movement time
+          .alphaMin(0.001)        // Stop simulation sooner
+          .alpha(0.3);            // Start with lower alpha for gentler initial movement
+
+        // Store base forces for dynamic adjustment
+        simulation.baseForces = baseForces;
+
+        // Stop simulation after stabilization for performance
+        simulation.on("tick", onTick);
+
+        // Track if this is the initial layout
+        let isInitialLayout = true;
+
+        // Gradually reduce forces during initial layout for smoother settling
+        let forceReductionInterval = setInterval(() => {
+          if (!isDragging && simulation.alpha() > 0.01) {
+            // Gradually reduce force strengths
+            const currentAlpha = simulation.alpha();
+            const reductionFactor = 0.95;
+
+            const chargeForce = simulation.force("charge");
+            if (chargeForce) {
+              chargeForce.strength(d => {
+                const degree = nodeDegrees.get(d.id) || 1;
+                return baseForces.chargeStrength * (1 + Math.log(degree) * 0.15) * currentAlpha * 2;
+              });
+            }
+          }
+        }, 500);
+
+        // Auto-stop simulation after initial layout and then auto-fit
+        setTimeout(() => {
+          clearInterval(forceReductionInterval);
+          if (!isDragging) {
+            simulation.stop();
+            isSimulationActive = false;
+
+            // Auto-fit network after initial layout completes
+            if (isInitialLayout) {
+              isInitialLayout = false;
+              // Auto-fit happens after loading indicator is hidden
+              setTimeout(() => autoFitNetwork(), 200);
+            }
+          }
+        }, 4500); // Slightly before loading indicator disappears
+      }
+
+      // Optimized tick function with requestAnimationFrame
+      function onTick() {
+        if (!renderRequestId) {
+          renderRequestId = requestAnimationFrame(() => {
+            updatePositions();
+            renderRequestId = null;
+          });
+        }
+      }
+
+      // Update positions efficiently
+      function updatePositions() {
+        if (nodeGroups) {
+          nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
+        }
+        if (linkElements) {
+          linkElements
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+        }
+      }
+
+      // Render network with optimized DOM manipulation
+      function renderNetwork(data) {
+        // Render links
+        linkElements = container.append("g")
+          .attr("class", "links")
+          .selectAll("line")
+          .data(data.links)
+          .join("line")
+          .classed("link", true);
+
+        // Render nodes with optimized drag behavior
+        nodeGroups = container.append("g")
+          .attr("class", "nodes")
+          .selectAll("g.node")
+          .data(data.nodes)
+          .join("g")
+          .classed("node", true)
+          .call(createOptimizedDrag());
+
+        // Add circles to nodes with better sizing
+        nodeGroups.append("circle")
+          .attr("r", d => {
+            // Better node sizing based on degree
+            const degree = nodeDegrees.get(d.id) || 1;
+            return 10 + Math.min(Math.sqrt(degree) * 3, 20); // Use sqrt for better scaling
+          })
+          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
+          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+          .style("stroke-width", 2); // Thicker stroke for better visibility
+
+        // Add labels to nodes with better positioning
+        labelElements = nodeGroups.append("text")
+          .text(d => d.id)
+          .attr("dx", d => {
+            // Position labels further from larger nodes
+            const degree = nodeDegrees.get(d.id) || 1;
+            const radius = 10 + Math.min(Math.sqrt(degree) * 3, 20);
+            return radius + 5; // Position just outside the node
+          })
+          .attr("dy", 5)
+          .attr("class", "label")
+          .style("opacity", labelsVisible ? 1 : 0)
+          .style("font-size", "12px") // Slightly larger for better readability
+          .style("font-weight", d => {
+            // Bold labels for high-degree nodes
+            const degree = nodeDegrees.get(d.id) || 1;
+            return degree > 10 ? "600" : "400";
+          });
+
+        // Setup node interactions
+        nodeGroups
+          .on("mouseenter", handleNodeMouseEnter)
+          .on("mouseleave", handleNodeMouseLeave)
+          .on("click", handleNodeClick);
+      }
+
+      // Optimized drag behavior - FIXED to work properly
+      function createOptimizedDrag() {
+        return d3.drag()
+          .on("start", (e, d) => {
+            isDragging = true;
+            // Fix the position immediately
+            d.fx = d.x;
+            d.fy = d.y;
+
+            // Only restart simulation with very gentle heating if needed
+            if (!e.active) {
+              // Check if simulation is completely stopped
+              if (simulation.alpha() <= simulation.alphaMin()) {
+                // Very gentle restart - just enough to update connected nodes
+                simulation.alphaTarget(0.01).restart();
+                isSimulationActive = true;
+              }
+            }
+          })
+          .on("drag", (e, d) => {
+            // Update fixed position
+            d.fx = e.x;
+            d.fy = e.y;
+
+            // Force position update for immediate visual feedback
+            d.x = e.x;
+            d.y = e.y;
+
+            // Manually update visual positions immediately
+            // This ensures the dragged node follows the mouse
+            if (nodeGroups) {
+              // Update the dragged node's position
+              nodeGroups.filter(n => n === d)
+                .attr("transform", `translate(${d.x}, ${d.y})`);
+
+              // Update connected links
+              if (linkElements) {
+                linkElements
+                  .filter(l => l.source === d)
+                  .attr("x1", d.x)
+                  .attr("y1", d.y);
+
+                linkElements
+                  .filter(l => l.target === d)
+                  .attr("x2", d.x)
+                  .attr("y2", d.y);
+              }
+            }
+          })
+          .on("end", (e, d) => {
+            isDragging = false;
+
+            // Stop the simulation gently
+            if (!e.active) {
+              simulation.alphaTarget(0);
+
+              // Quick stop to prevent lingering movement
+              setTimeout(() => {
+                if (!isDragging) {
+                  simulation.stop();
+                  isSimulationActive = false;
+                }
+              }, 200); // Very quick stop
+            }
+
+            // Release the fixed position to allow natural positioning
+            d.fx = null;
+            d.fy = null;
+          });
+      }
+
+      // Handle node mouse enter with debounced tooltip
+      const handleNodeMouseEnter = throttle((e, d) => {
+        const degree = nodeDegrees.get(d.id);
+        tooltip.html(`${d.id}<br>Network connections: ${degree}`)
+          .style("left", (e.pageX + 10) + "px")
+          .style("top", (e.pageY - 10) + "px")
+          .style("display", "block");
+      }, 100);
+
+      // Handle node mouse leave
+      function handleNodeMouseLeave() {
+        tooltip.style("display", "none");
+      }
+
+      // Handle node click for quick selection
+      function handleNodeClick(e, d) {
+        e.stopPropagation();
+        highlightNode(d);
+      }
+
+      // Highlight a specific node and its connections
+      function highlightNode(node) {
+        const connectedNodes = new Set([node.id]);
+        adjacencyList.get(node.id).forEach(id => connectedNodes.add(id));
+
+        // Update node opacity
+        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0.1);
+
+        // Update link opacity
+        linkElements.style("opacity", l => {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          return (connectedNodes.has(sourceId) || connectedNodes.has(targetId)) ? 1 : 0.1;
+        });
+      }
+
+      // Setup event handlers with optimization
+      function setupEventHandlers() {
+        // Store reference to search handler for re-attachment
+        window.searchHandler = debounce(handleSearch, 300);
+
+        // Degree filter with throttling and snap-to-value behavior
+        const degreeRange = document.getElementById("degree-range");
+
+        // Add snap-to-value behavior
+        degreeRange.addEventListener("input", throttle(handleDegreeFilter, 50));
+
+        // Initialize the filter on load
+        handleDegreeFilter({ target: degreeRange });
+
+        // Window resize with debouncing
+        window.addEventListener("resize", debounce(handleResize, 250));
+      }
+
+      // Optimized search handler with caching
+      function handleSearch(e) {
+        const term = e.target.value.trim().toLowerCase();
+
+        if (!term) {
+          resetView();
+          return;
+        }
+
+        // Check cache first
+        if (searchCache.has(term)) {
+          const cached = searchCache.get(term);
+          applySearchResults(cached.matched, cached.connected);
+          return;
+        }
+
+        // Perform search with optimized regex
+        const regex = new RegExp(term, 'i');
+        const matched = [];
+        const connected = new Set();
+
+        nodesById.forEach((node, id) => {
+          if (regex.test(id)) {
+            matched.push(node);
+            adjacencyList.get(id).forEach(connId => {
+              connected.add(nodesById.get(connId));
+            });
+          }
+        });
+
+        // Cache results
+        searchCache.set(term, { matched, connected });
+
+        // Limit cache size
+        if (searchCache.size > 50) {
+          const firstKey = searchCache.keys().next().value;
+          searchCache.delete(firstKey);
+        }
+
+        applySearchResults(matched, connected);
+      }
+
+      // Apply search results efficiently
+      function applySearchResults(matched, connected) {
+        if (matched.length > 0) {
+          const matchedSet = new Set(matched);
+          const important = new Set([...matched, ...connected]);
+
+          // Highlight nodes: matched and connected nodes get full opacity
+          nodeGroups.style("opacity", d => important.has(d) ? 1 : 0.1);
+
+          // Highlight links: only links that connect matched nodes to their neighbors
+          linkElements.style("opacity", l => {
+            const source = typeof l.source === 'object' ? l.source : nodesById.get(l.source);
+            const target = typeof l.target === 'object' ? l.target : nodesById.get(l.target);
+
+            // A link should be highlighted if it connects a matched node to another important node
+            // This ensures we only show edges directly connected to the searched nodes
+            const sourceMatched = matchedSet.has(source);
+            const targetMatched = matchedSet.has(target);
+            const sourceImportant = important.has(source);
+            const targetImportant = important.has(target);
+
+            // Highlight if either endpoint is matched AND the other is important
+            if ((sourceMatched && targetImportant) || (targetMatched && sourceImportant)) {
+              return 1;
+            }
+
+            return 0.1;
+          });
+
+          centerNodes(matched);
+        }
+      }
+
+      // Optimized degree filter with specific stops
+      function handleDegreeFilter(e) {
+        // Map slider values to actual thresholds
+        const sliderValue = parseInt(e.target.value);
+        const thresholds = [1, 5, 10, 30, 40, 50];
+        const threshold = thresholds[sliderValue];
+
+        // Update label to show current threshold
+        document.getElementById("degree-label").textContent = threshold + "+";
+
+        // Filter nodes based on threshold
+        nodeGroups.style("opacity", d => {
+          const degree = nodeDegrees.get(d.id);
+          // Show nodes with connections >= threshold (including nodes with > 50 when threshold is 50)
+          return degree >= threshold ? 1 : 0.1;
+        });
+
+        // Filter links based on connected nodes
+        linkElements.style("opacity", l => {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const sourceDegree = nodeDegrees.get(sourceId);
+          const targetDegree = nodeDegrees.get(targetId);
+          // Show link if either node meets the threshold
+          return (sourceDegree >= threshold || targetDegree >= threshold) ? 0.6 : 0.1;
+        });
+      }
+
+      // Handle window resize
+      function handleResize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        svg.attr("width", width).attr("height", height);
+
+        if (simulation) {
+          // Update center force with new dimensions
+          simulation.force("center", d3.forceCenter(width / 2, height / 2).strength(0.05));
+          // Very gentle restart to avoid wobbling
+          simulation.alpha(0.1).restart(); // Reduced from 0.3
+          setTimeout(() => {
+            if (!isDragging) {
+              simulation.stop();
+            }
+          }, 500); // Reduced from 1000ms
+        }
+      }
+
+      // Reset view to default
+      function resetView() {
+        nodeGroups.style("opacity", 1);
+        linkElements.style("opacity", 0.3);
+        // Use auto-fit instead of identity transform
+        autoFitNetwork();
+        searchCache.clear();
+      }
+
+      // Center view on nodes with smooth transition
+      function centerNodes(nodesToCenter) {
+        if (!nodesToCenter || nodesToCenter.length === 0) return;
+
+        const xExtent = d3.extent(nodesToCenter, d => d.x);
+        const yExtent = d3.extent(nodesToCenter, d => d.y);
+        const centerX = (xExtent[0] + xExtent[1]) / 2;
+        const centerY = (yExtent[0] + yExtent[1]) / 2;
+
+        let scale = 1;
+        if (xExtent[1] - xExtent[0] > 0 && yExtent[1] - yExtent[0] > 0) {
+          scale = Math.min(8, 0.9 / Math.max(
+            (xExtent[1] - xExtent[0]) / width,
+            (yExtent[1] - yExtent[0]) / height
+          ));
+        }
+
+        if (nodesToCenter.length === 1) {
+          scale = Math.min(scale, 2);
+        }
+
+        svg.transition()
+          .duration(750)
+          .call(zoom.transform, d3.zoomIdentity
+            .translate(-centerX * scale + width / 2, -centerY * scale + height / 2)
+            .scale(scale));
+      }
+
+      // Find ALL connections between two nodes (not just shortest path)
+      function findPath() {
+        const startInput = document.getElementById("start-node").value.trim();
+        const endInput = document.getElementById("end-node").value.trim();
+
+        if (!startInput || !endInput) {
+          alert("Please select both a starting point and destination to explore connections.");
+          return;
+        }
+
+        // Check cache first
+        const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
+        if (pathCache.has(cacheKey)) {
+          const cachedResult = pathCache.get(cacheKey);
+          if (cachedResult.nodes.size > 0) {
+            highlightAllConnections(cachedResult);
+          } else {
+            alert("No connection pathway found between these figures or institutions.");
+          }
+          return;
+        }
+
+        // Find ALL paths and connections
+        const result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
+
+        // Cache the result
+        pathCache.set(cacheKey, result);
+
+        // Limit cache size
+        if (pathCache.size > 100) {
+          const firstKey = pathCache.keys().next().value;
+          pathCache.delete(firstKey);
+        }
+
+        if (result.nodes.size > 0) {
+          highlightAllConnections(result);
+        } else {
+          alert("No connections found between these nodes.");
+        }
+      }
+
+      // Find RELEVANT connections between two nodes
+      function findAllConnections(startId, endId) {
+        const startNode = nodesByIdLower.get(startId);
+        const endNode = nodesByIdLower.get(endId);
+
+        if (!startNode || !endNode) {
+          return { nodes: new Set(), edges: new Set() };
+        }
+
+        // If nodes are the same, return just that node
+        if (startNode.id === endNode.id) {
+          return {
+            nodes: new Set([startNode.id]),
+            edges: new Set()
+          };
+        }
+
+        const connectedNodes = new Set();
+        const connectedEdges = new Set();
+
+        // Configuration for path finding
+        // These values control what paths are considered "relevant"
+        const maxPathLength = 4; // Maximum path length to consider (prevents exponential explosion)
+        const pathLengthTolerance = 1; // Show paths up to (shortest path + tolerance)
+        // For example: if shortest path is 2, and tolerance is 1, we show paths of length 2 and 3
+        // Set to 0 to show ONLY shortest paths
+        // Set to 2 to show shortest, +1, and +2 longer paths
+
+        // Find shortest path length first using BFS
+        function findShortestPathLength(start, end) {
+          const queue = [[start, 0]]; // [node, distance]
+          const visited = new Set();
+
+          while (queue.length > 0) {
+            const [currentNode, distance] = queue.shift();
+
+            if (currentNode === end) {
+              return distance;
+            }
+
+            if (visited.has(currentNode)) continue;
+            visited.add(currentNode);
+
+            const neighbors = adjacencyList.get(currentNode);
+            if (neighbors) {
+              neighbors.forEach(neighbor => {
+                if (!visited.has(neighbor)) {
+                  queue.push([neighbor, distance + 1]);
+                }
+              });
+            }
+          }
+
+          return -1; // No path found
+        }
+
+        // Find all paths up to a certain length
+        function findRelevantPaths(start, end, maxLength, shortestLength) {
+          const relevantPaths = [];
+          const queue = [[start]]; // Queue of paths
+          const maxAllowedLength = Math.min(maxLength, shortestLength + pathLengthTolerance);
+
+          while (queue.length > 0) {
+            const currentPath = queue.shift();
+            const currentNode = currentPath[currentPath.length - 1];
+
+            // Skip if path is too long
+            if (currentPath.length > maxAllowedLength) continue;
+
+            // If we reached the end, save this path if it's relevant
+            if (currentNode === end) {
+              // Only include paths that are at most tolerance longer than shortest
+              if (currentPath.length <= shortestLength + pathLengthTolerance) {
+                relevantPaths.push([...currentPath]);
+              }
+              continue;
+            }
+
+            // Explore neighbors
+            const neighbors = adjacencyList.get(currentNode);
+            if (neighbors) {
+              neighbors.forEach(neighbor => {
+                // Avoid revisiting nodes in the current path (no cycles)
+                if (!currentPath.includes(neighbor)) {
+                  queue.push([...currentPath, neighbor]);
+                }
+              });
+            }
+          }
+
+          return relevantPaths;
+        }
+
+        // Step 1: Find shortest path length
+        const shortestLength = findShortestPathLength(startNode.id, endNode.id);
+
+        if (shortestLength === -1) {
+          // No path exists
+          return { nodes: new Set(), edges: new Set() };
+        }
+
+        // Step 2: Find all relevant paths (shortest and near-shortest)
+        const relevantPaths = findRelevantPaths(
+          startNode.id,
+          endNode.id,
+          maxPathLength,
+          shortestLength
+        );
+
+        // Step 3: Collect nodes and edges ONLY from the relevant paths
+        relevantPaths.forEach(path => {
+          // Add all nodes in this path
+          path.forEach(nodeId => {
+            connectedNodes.add(nodeId);
+          });
+
+          // Add all edges in this path
+          for (let i = 0; i < path.length - 1; i++) {
+            const edge = [path[i], path[i + 1]].sort().join('--');
+            connectedEdges.add(edge);
+          }
+        });
+
+        // Step 4: Find common neighbors (triangles) - these are always relevant
+        const startNeighbors = adjacencyList.get(startNode.id) || new Set();
+        const endNeighbors = adjacencyList.get(endNode.id) || new Set();
+
+        // Find intersection - common neighbors that form triangles
+        startNeighbors.forEach(neighbor => {
+          if (endNeighbors.has(neighbor)) {
+            // This neighbor connects to both start and end - add the triangle
+            connectedNodes.add(neighbor);
+            connectedNodes.add(startNode.id);
+            connectedNodes.add(endNode.id);
+
+            // Add only the edges of the triangle
+            const edge1 = [startNode.id, neighbor].sort().join('--');
+            const edge2 = [endNode.id, neighbor].sort().join('--');
+
+            connectedEdges.add(edge1);
+            connectedEdges.add(edge2);
+          }
+        });
+
+        // Step 5: If there's a direct connection, always include it
+        if (shortestLength === 1) {
+          connectedNodes.add(startNode.id);
+          connectedNodes.add(endNode.id);
+          const directEdge = [startNode.id, endNode.id].sort().join('--');
+          connectedEdges.add(directEdge);
+        }
+
+        // Step 6: IMPORTANT - Only add edges between nodes already in our set
+        // But DON'T add all possible edges - only those that are part of paths or triangles
+        // This prevents showing irrelevant connections from intermediate nodes
+
+        return {
+          nodes: connectedNodes,
+          edges: connectedEdges,
+          startNode: startNode.id,
+          endNode: endNode.id,
+          shortestPathLength: shortestLength,
+          pathCount: relevantPaths.length
+        };
+      }
+
+      // Highlight RELEVANT connections between the nodes
+      function highlightAllConnections(result) {
+        clearPath();
+
+        const { nodes: connectedNodes, edges: connectedEdges, startNode, endNode, shortestPathLength, pathCount } = result;
+
+        // Show information about the paths found
+        const pathInfoEl = document.getElementById('path-info');
+        if (shortestPathLength !== undefined && pathCount !== undefined && pathInfoEl) {
+          let infoText = '';
+          if (shortestPathLength === 1) {
+            infoText = `Direct relationship identified`;
+          } else if (shortestPathLength > 0) {
+            infoText = `Connection distance: ${shortestPathLength} degree${shortestPathLength > 1 ? 's' : ''} of separation`;
+            if (pathCount > 1) {
+              infoText += ` • ${pathCount} connection pathway${pathCount > 1 ? 's' : ''} identified`;
+            }
+          }
+
+          // Count shared connections (mutual contacts)
+          const commonNeighborCount = Array.from(connectedNodes).filter(nodeId => {
+            if (nodeId === startNode || nodeId === endNode) return false;
+            const neighbors = adjacencyList.get(nodeId);
+            return neighbors && neighbors.has(startNode) && neighbors.has(endNode);
+          }).length;
+
+          if (commonNeighborCount > 0) {
+            infoText += ` • ${commonNeighborCount} shared contact${commonNeighborCount > 1 ? 's' : ''}`;
+          }
+
+          pathInfoEl.textContent = infoText;
+          pathInfoEl.style.display = 'block';
+        }
+
+        // Hide all nodes and links that are NOT in the connection network
+        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
+          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+
+        // Hide links not in the connection network
+        linkElements.style("opacity", function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const edge = [sourceId, targetId].sort().join('--');
+          return connectedEdges.has(edge) ? 1 : 0;
+        })
+        .style("display", function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const edge = [sourceId, targetId].sort().join('--');
+          return connectedEdges.has(edge) ? "block" : "none";
+        });
+
+        // Highlight the connection edges
+        linkElements.each(function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const edge = [sourceId, targetId].sort().join('--');
+
+          if (connectedEdges.has(edge)) {
+            d3.select(this)
+              .classed("highlight-path", true)
+              .style("stroke-width", "3px")
+              .style("stroke", "#bf9f5f")
+              .style("stroke-opacity", 0.8);
+          }
+        });
+
+        // Highlight all connected nodes
+        nodeGroups.select("circle").each(function(d) {
+          if (connectedNodes.has(d.id)) {
+            const isEndpoint = (d.id === startNode || d.id === endNode);
+            d3.select(this)
+              .classed("highlight-node", true)
+              .style("stroke", isEndpoint ? "#d4af37" : "#bf9f5f")
+              .style("stroke-width", isEndpoint ? "4px" : "3px")
+              .style("fill", function(d) {
+                if (d.id === startNode) return "#4CAF50"; // Green for start
+                if (d.id === endNode) return "#f44336"; // Red for end
+                return d.type === 'institution' ? "#8b7355" : "#6b8e9f"; // Default colors
+              });
+          }
+        });
+
+        // Show labels for connected nodes
+        labelElements.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
+          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+
+        // Center on the connected subgraph
+        const connectedNodeObjects = Array.from(connectedNodes).map(id => nodesById.get(id));
+        centerNodes(connectedNodeObjects);
+      }
+
+      // Clear highlighted path and restore all elements
+      function clearPath() {
+        // Hide path info
+        const pathInfoEl = document.getElementById('path-info');
+        if (pathInfoEl) {
+          pathInfoEl.style.display = 'none';
+        }
+
+        // Restore all nodes to visible
+        nodeGroups
+          .style("opacity", 1)
+          .style("display", "block");
+
+        // Restore node styles
+        nodeGroups.select("circle")
+          .classed("highlight-node", false)
+          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+          .style("stroke-width", 2)
+          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f");
+
+        // Restore all links to visible with default style
+        linkElements
+          .classed("highlight-path", false)
+          .style("opacity", 0.3)
+          .style("display", "block")
+          .style("stroke", "#c4b5a0")
+          .style("stroke-width", "1.5px")
+          .style("stroke-opacity", 0.3);
+
+        // Restore label visibility based on toggle state
+        labelElements
+          .style("opacity", labelsVisible ? 1 : 0)
+          .style("display", labelsVisible ? "block" : "none");
+      }
+
+      // Optimized community detection using Louvain algorithm
+      function detectCommunities() {
+        // Check cache first
+        if (communityCache.size > 0) {
+          return communityCache.get("communities");
+        }
+
+        // Simple label propagation for community detection
+        const labels = new Map();
+        nodesById.forEach((node, id) => labels.set(id, id));
+
+        let changed = true;
+        let iterations = 0;
+        const maxIterations = 10;
+
+        while (changed && iterations < maxIterations) {
+          changed = false;
+          const nodeOrder = Array.from(nodesById.keys());
+          d3.shuffle(nodeOrder);
+
+          nodeOrder.forEach(nodeId => {
+            const neighbors = adjacencyList.get(nodeId);
+            if (!neighbors || neighbors.size === 0) return;
+
+            const neighborLabels = new Map();
+            neighbors.forEach(neighborId => {
+              const label = labels.get(neighborId);
+              neighborLabels.set(label, (neighborLabels.get(label) || 0) + 1);
+            });
+
+            let maxCount = 0;
+            let bestLabel = labels.get(nodeId);
+
+            neighborLabels.forEach((count, label) => {
+              if (count > maxCount) {
+                maxCount = count;
+                bestLabel = label;
+              }
+            });
+
+            if (bestLabel !== labels.get(nodeId)) {
+              labels.set(nodeId, bestLabel);
+              changed = true;
+            }
+          });
+
+          iterations++;
+        }
+
+        // Cache results
+        communityCache.set("communities", labels);
+
+        return labels;
+      }
+
+      // Export network as PNG with optimizations
+      async function exportPNG() {
+        try {
+          // Clone SVG
+          const clonedSvg = svg.node().cloneNode(true);
+          const svgNS = "http://www.w3.org/2000/svg";
+
+          // Add styles
+          const styleEl = document.createElementNS(svgNS, "style");
+          styleEl.innerHTML = `
+            .link { stroke: #c4b5a0; stroke-opacity: 0.3; stroke-width: 1.5; }
+            .highlight-path { stroke: #bf9f5f; stroke-width: 3px; stroke-opacity: 0.8; }
+            .highlight-node { stroke: #d4af37; stroke-width: 3px; }
+            .label { font-size: 11px; font-family: 'Crimson Text', Georgia, serif; fill: #3a3835; }
+          `;
+          clonedSvg.insertBefore(styleEl, clonedSvg.firstChild);
+
+          // Add white background
+          const bbox = container.node().getBBox();
+          const rect = document.createElementNS(svgNS, "rect");
+          rect.setAttribute("x", bbox.x - 50);
+          rect.setAttribute("y", bbox.y - 50);
+          rect.setAttribute("width", bbox.width + 100);
+          rect.setAttribute("height", bbox.height + 100);
+          rect.setAttribute("fill", "#ffffff");
+          clonedSvg.insertBefore(rect, clonedSvg.firstChild);
+
+          // Convert to canvas
+          const svgString = new XMLSerializer().serializeToString(clonedSvg);
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+
+          await canvg.Canvg.fromString(ctx, svgString).render();
+
+          // Download
+          const a = document.createElement('a');
+          a.download = 'network_visualization.png';
+          a.href = canvas.toDataURL();
+          a.click();
+        } catch (error) {
+          console.error("Error exporting PNG:", error);
+          alert("Unable to generate image. Please try again or use a different browser.");
+        }
+      }
+
+      // Full reset of the visualization
+      function fullReset() {
+        clearPath();
+        resetView();
+
+        // Reset node styles
+        nodeGroups.select("circle")
+          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
+          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+          .style("stroke-width", 1)
+          .classed("highlight-node", false);
+
+        // Reset link styles
+        linkElements
+          .classed("highlight-path", false)
+          .style("opacity", 0.3);
+
+        // Clear inputs
+        document.getElementById("search").value = "";
+        document.getElementById("start-node").value = "";
+        document.getElementById("end-node").value = "";
+        document.getElementById("degree-range").value = "0";
+        document.getElementById("degree-label").textContent = "1+";
+
+        // Clear caches
+        searchCache.clear();
+        pathCache.clear();
+      }
+
+      // Initialize autocomplete with optimizations
+      function initializeAutocomplete() {
+        console.log('Initializing autocomplete with', nodesById.size, 'nodes');
+
+        if (nodesById.size === 0) {
+          console.error('No nodes available for autocomplete');
+          return;
+        }
+
+        const names = Array.from(nodesById.keys()).sort();
+        console.log('Sample node names:', names.slice(0, 5));
+
+        // Remove any existing autocomplete setup
+        const inputs = ['search', 'start-node', 'end-node'];
+        inputs.forEach(id => {
+          const input = document.getElementById(id);
+          if (input) {
+            // Remove existing autocomplete containers
+            const existingList = document.getElementById(id + 'autocomplete-list');
+            if (existingList) {
+              existingList.remove();
+            }
+            // Remove old event listeners by cloning
+            const newInput = input.cloneNode(true);
+            input.parentNode.replaceChild(newInput, input);
+          }
+        });
+
+        // Use optimized autocomplete with fresh elements
+        setTimeout(() => {
+          const searchInput = document.getElementById("search");
+          const startInput = document.getElementById("start-node");
+          const endInput = document.getElementById("end-node");
+
+          if (searchInput) {
+            console.log('Setting up autocomplete for search input');
+            createOptimizedAutocomplete(searchInput, names);
+            // Re-attach search handler after autocomplete setup
+            searchInput.addEventListener("input", window.searchHandler);
+          }
+          if (startInput) {
+            console.log('Setting up autocomplete for start-node input');
+            createOptimizedAutocomplete(startInput, names);
+          }
+          if (endInput) {
+            console.log('Setting up autocomplete for end-node input');
+            createOptimizedAutocomplete(endInput, names);
+          }
+        }, 100);
+      }
+
+      // Optimized autocomplete implementation
+      function createOptimizedAutocomplete(input, items) {
+        if (!input || !items || items.length === 0) {
+          console.error('Invalid input or items for autocomplete');
+          return;
+        }
+
+        console.log('Creating autocomplete for', input.id, 'with', items.length, 'items');
+
+        let currentFocus = -1;
+        let autocompleteList = null;
+
+        // Build search index for faster lookups
+        const searchIndex = items.map(item => ({
+          original: item,
+          lower: item.toLowerCase()
+        }));
+
+        // Create the autocomplete handler function
+        const handleAutocomplete = function(e) {
+          console.log('Autocomplete triggered for', input.id, 'with value:', this.value);
+          const val = this.value.trim().toLowerCase();
+          closeAllLists();
+
+          if (!val || val.length < 1) {
+            console.log('Value too short or empty');
+            return;
+          }
+
+          currentFocus = -1;
+
+          // Create autocomplete container
+          autocompleteList = document.createElement("DIV");
+          autocompleteList.setAttribute("id", this.id + "autocomplete-list");
+          autocompleteList.setAttribute("class", "autocomplete-items");
+
+          // Ensure parent has position relative
+          if (!this.parentNode.style.position || this.parentNode.style.position === 'static') {
+            this.parentNode.style.position = 'relative';
+          }
+
+          this.parentNode.appendChild(autocompleteList);
+          console.log('Created autocomplete list for', this.id);
+
+          // Find matches efficiently - prioritize prefix matches
+          let matchCount = 0;
+          const maxMatches = 15; // Increased for better coverage
+          const matches = [];
+
+          // First pass: collect prefix matches
+          for (let i = 0; i < searchIndex.length && matchCount < maxMatches; i++) {
+            if (searchIndex[i].lower.startsWith(val)) {
+              matches.push({ item: searchIndex[i], priority: 1 });
+              matchCount++;
+            }
+          }
+
+          // Second pass: collect contains matches if we have room
+          if (matchCount < maxMatches) {
+            for (let i = 0; i < searchIndex.length && matchCount < maxMatches; i++) {
+              if (!searchIndex[i].lower.startsWith(val) && searchIndex[i].lower.includes(val)) {
+                matches.push({ item: searchIndex[i], priority: 2 });
+                matchCount++;
+              }
+            }
+          }
+
+          // Sort by priority (prefix matches first)
+          matches.sort((a, b) => a.priority - b.priority);
+
+          // Create autocomplete items
+          matches.forEach(match => {
+            const searchItem = match.item;
+            if (searchItem.lower.includes(val)) {
+              const item = searchItem.original;
+              const matchIndex = searchItem.lower.indexOf(val);
+
+              const itemDiv = document.createElement("DIV");
+
+              // Create the display text with highlighting
+              const beforeMatch = item.substr(0, matchIndex);
+              const matchText = item.substr(matchIndex, val.length);
+              const afterMatch = item.substr(matchIndex + val.length);
+
+              // Use textContent to avoid HTML injection issues
+              const strongEl = document.createElement('strong');
+              strongEl.textContent = matchText;
+
+              itemDiv.textContent = beforeMatch;
+              itemDiv.appendChild(strongEl);
+              itemDiv.appendChild(document.createTextNode(afterMatch));
+
+              // Store the value as a data attribute instead of hidden input
+              itemDiv.dataset.value = item;
+
+              itemDiv.addEventListener("click", function(e) {
+                input.value = this.dataset.value;
+                closeAllLists();
+                // Trigger input event to update any dependent functionality
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+              });
+
+              autocompleteList.appendChild(itemDiv);
+            }
+          });
+
+          console.log('Added', matches.length, 'matches to autocomplete');
+        };
+
+        // Attach event listeners without debouncing initially to test
+        input.addEventListener("input", handleAutocomplete);
+
+        // Also trigger on focus with existing value
+        input.addEventListener("focus", function(e) {
+          if (this.value.length >= 1) {
+            handleAutocomplete.call(this, e);
+          }
+        });
+
+        // Handle keyboard navigation
+        input.addEventListener("keydown", function(e) {
+          let items = document.getElementById(this.id + "autocomplete-list");
+          if (items) items = items.getElementsByTagName("div");
+
+          if (e.keyCode === 40) { // Down
+            currentFocus++;
+            addActive(items);
+          } else if (e.keyCode === 38) { // Up
+            currentFocus--;
+            addActive(items);
+          } else if (e.keyCode === 13) { // Enter
+            e.preventDefault();
+            if (currentFocus > -1 && items) {
+              items[currentFocus].click();
+            }
+          } else if (e.keyCode === 27) { // Escape
+            closeAllLists();
+          }
+        });
+
+        function addActive(items) {
+          if (!items) return;
+          removeActive(items);
+          if (currentFocus >= items.length) currentFocus = 0;
+          if (currentFocus < 0) currentFocus = items.length - 1;
+          items[currentFocus].classList.add("autocomplete-active");
+        }
+
+        function removeActive(items) {
+          for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove("autocomplete-active");
+          }
+        }
+
+        function closeAllLists(elmnt) {
+          const items = document.getElementsByClassName("autocomplete-items");
+          for (let i = 0; i < items.length; i++) {
+            if (elmnt != items[i] && elmnt != input) {
+              items[i].parentNode.removeChild(items[i]);
+            }
+          }
+        }
+
+        // Close lists when clicking outside
+        document.addEventListener("click", function(e) {
+          closeAllLists(e.target);
+        });
+
+        // Also close on blur after a small delay
+        input.addEventListener("blur", function(e) {
+          setTimeout(() => closeAllLists(), 200);
+        });
+
+        console.log('Autocomplete setup complete for', input.id);
+      }
+
+      // Toggle label visibility
+      function toggleLabels() {
+        labelsVisible = !labelsVisible;
+        if (labelElements) {
+          labelElements.style("opacity", labelsVisible ? 1 : 0);
+        }
+      }
+
+      // Public API
+      return {
+        init,
+        toggleLabels,
+        findPath,
+        clearPath,
+        exportPNG,
+        fullReset,
+        detectCommunities,
+        autoFit: autoFitNetwork
+      };
+    })();
+
+    // Toggle sidebar function (global for onclick)
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    }
+
+    // Mobile sidebar functions
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("mobile-overlay");
+      const hamburger = document.getElementById("mobile-menu-btn");
+
+      if (sidebar.classList.contains("show")) {
+        closeMobileSidebar();
+      } else {
+        sidebar.classList.add("show");
+        sidebar.classList.remove("hidden");
+        overlay.classList.add("show");
+        hamburger.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent body scroll when sidebar is open
+      }
+    }
+
+    function closeMobileSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("mobile-overlay");
+      const hamburger = document.getElementById("mobile-menu-btn");
+
+      sidebar.classList.remove("show");
+      overlay.classList.remove("show");
+      hamburger.classList.remove("active");
+      document.body.style.overflow = ""; // Restore body scroll
+    }
+
+    // Modal functions (global for onclick)
+    function openAboutModal() {
+      const modal = document.getElementById('aboutModal');
+      modal.classList.remove('closing');
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAboutModal() {
+      const modal = document.getElementById('aboutModal');
+      modal.classList.add('closing');
+      setTimeout(() => {
+        modal.classList.remove('show', 'closing');
+        document.body.style.overflow = 'hidden'; // Keep hidden since main view has overflow:hidden
+      }, 300);
+    }
+
+    // Initialize everything when DOM is ready
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log('DOM Content Loaded');
+
+      // Mobile-specific initialization
+      if (window.innerWidth <= 768) {
+        // Add touch event support for better mobile interaction
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        // Swipe gesture support for sidebar
+        document.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+          touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+          touchEndX = e.changedTouches[0].screenX;
+          touchEndY = e.changedTouches[0].screenY;
+          handleSwipeGesture();
+        }, { passive: true });
+
+        function handleSwipeGesture() {
+          const swipeThreshold = 50;
+          const verticalThreshold = 100;
+          const sidebar = document.getElementById('sidebar');
+
+          // Check if swipe is more horizontal than vertical
+          if (Math.abs(touchEndX - touchStartX) > Math.abs(touchEndY - touchStartY)) {
+            // Swipe right to open sidebar (from left edge)
+            if (touchStartX < 50 && touchEndX - touchStartX > swipeThreshold) {
+              if (!sidebar.classList.contains('show')) {
+                toggleMobileSidebar();
+              }
+            }
+            // Swipe left to close sidebar
+            else if (touchStartX - touchEndX > swipeThreshold) {
+              if (sidebar.classList.contains('show')) {
+                closeMobileSidebar();
+              }
+            }
+          }
+        }
+
+        // Close sidebar when pressing escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('show')) {
+              closeMobileSidebar();
+            }
+          }
+        });
+
+        // Prevent zoom on double tap for buttons
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(e) {
+          const now = Date.now();
+          if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+          }
+          lastTouchEnd = now;
+        }, false);
+
+        // Improve touch responsiveness for interactive elements
+        const touchElements = document.querySelectorAll('button, a, input, .autocomplete-items div');
+        touchElements.forEach(element => {
+          element.addEventListener('touchstart', function() {
+            this.style.opacity = '0.7';
+          }, { passive: true });
+
+          element.addEventListener('touchend', function() {
+            this.style.opacity = '';
+          }, { passive: true });
+        });
+      }
+
+      // Initialize the network visualization
+      try {
+        if (typeof NetworkViz !== 'undefined' && !window.vizInitialized) {
+          console.log('NetworkViz is defined, initializing...');
+          window.vizInitialized = true;
+          NetworkViz.init();
+        } else if (window.vizInitialized) {
+          console.log('NetworkViz already initialized');
+        } else {
+          console.error('NetworkViz is not defined!');
+        }
+      } catch (e) {
+        console.error('Error initializing NetworkViz:', e);
+      }
+
+      // Mobile navigation toggle
+      const navToggle = document.getElementById("nav-toggle");
+      if (navToggle) {
+        navToggle.addEventListener("click", function() {
+          const navLinks = document.querySelector(".nav-links");
+          if (navLinks) {
+            navLinks.classList.toggle("show");
+          }
+        });
+      } else {
+        console.log('nav-toggle element not found - this is normal on desktop');
+      }
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const modal = document.getElementById('aboutModal');
+          if (modal && modal.classList.contains('show')) {
+            closeAboutModal();
+          }
+        }
+      });
+    });
+
+    // Also log when the script loads
+    console.log('Visualization script loaded, NetworkViz defined:', typeof NetworkViz !== 'undefined');
+
+    // Failsafe: If DOM content loaded event already fired, initialize immediately
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      console.log('Document already loaded, initializing immediately...');
+      setTimeout(() => {
+        if (typeof NetworkViz !== 'undefined' && !window.vizInitialized) {
+          window.vizInitialized = true;
+          NetworkViz.init();
+        }
+      }, 100);
+    }
+  </script>
+</body>
+</html>

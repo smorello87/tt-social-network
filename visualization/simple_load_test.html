@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Load Test</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <h1>Simple Load Test</h1>
+  <div id="status">Starting...</div>
+  <script>
+    // Simple test to isolate the loading issue
+    const status = document.getElementById('status');
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      status.innerHTML += '<br>DOM loaded';
+
+      // Check D3
+      if (typeof d3 !== 'undefined') {
+        status.innerHTML += '<br>D3 loaded: v' + d3.version;
+      } else {
+        status.innerHTML += '<br>ERROR: D3 not loaded!';
+        return;
+      }
+
+      // Try to load JSON
+      try {
+        status.innerHTML += '<br>Loading graph.json...';
+        const data = await d3.json('graph.json');
+        status.innerHTML += '<br>SUCCESS! Data loaded:';
+        status.innerHTML += '<br>- Nodes: ' + (data.nodes ? data.nodes.length : 0);
+        status.innerHTML += '<br>- Links: ' + (data.links ? data.links.length : 0);
+      } catch (e) {
+        status.innerHTML += '<br>ERROR loading graph.json: ' + e.message;
+        status.innerHTML += '<br><br>Make sure to:';
+        status.innerHTML += '<br>1. Run a web server (python3 -m http.server 8080)';
+        status.innerHTML += '<br>2. Access via http://localhost:8080/simple_load_test.html';
+        status.innerHTML += '<br>3. Have graph.json in the same directory';
+      }
+    });
+  </script>
+</body>
+</html>

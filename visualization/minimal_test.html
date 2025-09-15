@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minimal Test</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+    #status { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+    .success { color: green; }
+    .error { color: red; }
+    svg { border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Minimal Visualization Test</h1>
+  <div id="status">Initializing...</div>
+  <svg id="test-canvas"></svg>
+
+  <script>
+    const status = document.getElementById('status');
+
+    function log(msg, isError = false) {
+      console.log(msg);
+      const div = document.createElement('div');
+      div.className = isError ? 'error' : 'success';
+      div.textContent = msg;
+      status.appendChild(div);
+    }
+
+    async function testVisualization() {
+      try {
+        log('Starting test...');
+
+        // Test 1: D3 loaded?
+        if (typeof d3 === 'undefined') {
+          log('ERROR: D3 is not loaded', true);
+          return;
+        }
+        log('✓ D3.js loaded (version ' + d3.version + ')');
+
+        // Test 2: Can we select the SVG?
+        const svg = d3.select('#test-canvas');
+        if (svg.empty()) {
+          log('ERROR: Cannot select SVG', true);
+          return;
+        }
+        svg.attr('width', 600).attr('height', 400);
+        log('✓ SVG selected and sized');
+
+        // Test 3: Can we load the JSON?
+        log('Loading graph.json...');
+        let data;
+        try {
+          data = await d3.json('graph.json');
+        } catch (e) {
+          log('ERROR loading graph.json: ' + e.message, true);
+          log('Make sure you are running from a web server (not file://)', true);
+          return;
+        }
+
+        if (!data) {
+          log('ERROR: Data is null or undefined', true);
+          return;
+        }
+        log('✓ graph.json loaded');
+
+        // Test 4: Check data structure
+        if (!data.nodes || !data.links) {
+          log('ERROR: Data missing nodes or links', true);
+          return;
+        }
+        log('✓ Data has ' + data.nodes.length + ' nodes and ' + data.links.length + ' links');
+
+        // Test 5: Create a simple visualization
+        log('Creating simple visualization...');
+
+        const width = 600;
+        const height = 400;
+
+        // Create simulation
+        const simulation = d3.forceSimulation(data.nodes.slice(0, 50)) // Use only first 50 nodes for test
+          .force("link", d3.forceLink(data.links.filter(l => {
+            const sourceIndex = typeof l.source === 'string' ?
+              data.nodes.findIndex(n => n.id === l.source) : l.source;
+            const targetIndex = typeof l.target === 'string' ?
+              data.nodes.findIndex(n => n.id === l.target) : l.target;
+            return sourceIndex < 50 && targetIndex < 50;
+          })).id(d => d.id))
+          .force("charge", d3.forceManyBody().strength(-100))
+          .force("center", d3.forceCenter(width / 2, height / 2));
+
+        // Add container
+        const g = svg.append('g');
+
+        // Add links
+        const link = g.append('g')
+          .selectAll('line')
+          .data(simulation.force('link').links())
+          .join('line')
+          .style('stroke', '#999')
+          .style('stroke-opacity', 0.6);
+
+        // Add nodes
+        const node = g.append('g')
+          .selectAll('circle')
+          .data(simulation.nodes())
+          .join('circle')
+          .attr('r', 5)
+          .style('fill', '#69b3a2');
+
+        // Update positions on tick
+        simulation.on('tick', () => {
+          link
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+
+          node
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y);
+        });
+
+        log('✓ Visualization created successfully!');
+        log('If you see nodes and links above, the basic setup is working.');
+
+      } catch (error) {
+        log('ERROR: ' + error.message, true);
+        console.error(error);
+      }
+    }
+
+    // Run test when page loads
+    window.addEventListener('DOMContentLoaded', testVisualization);
+  </script>
+</body>
+</html>

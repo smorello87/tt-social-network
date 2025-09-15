@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comprehensive Visualization Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .test-section {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      background: #f5f5f5;
+    }
+    .pass { color: green; font-weight: bold; }
+    .fail { color: red; font-weight: bold; }
+    .info { color: blue; }
+    pre {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Comprehensive Visualization Diagnostic</h1>
+
+  <div class="test-section">
+    <h2>Test Results</h2>
+    <div id="results"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Actions</h2>
+    <button onclick="testMainVisualization()">Test Main Visualization</button>
+    <button onclick="openVisualization()">Open Visualization in New Tab</button>
+    <button onclick="checkConsole()">Show Console Instructions</button>
+  </div>
+
+  <div class="test-section">
+    <h2>Console Output</h2>
+    <pre id="console-output">Console messages will appear here...</pre>
+  </div>
+
+  <script>
+    const results = document.getElementById('results');
+    const consoleOutput = document.getElementById('console-output');
+    let consoleMessages = [];
+
+    // Override console methods to capture output
+    const originalLog = console.log;
+    const originalError = console.error;
+
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      addConsoleMessage('LOG', args.join(' '));
+    };
+
+    console.error = function(...args) {
+      originalError.apply(console, args);
+      addConsoleMessage('ERROR', args.join(' '));
+    };
+
+    function addConsoleMessage(type, message) {
+      const timestamp = new Date().toLocaleTimeString();
+      consoleMessages.push(`[${timestamp}] ${type}: ${message}`);
+      if (consoleMessages.length > 50) {
+        consoleMessages.shift();
+      }
+      consoleOutput.textContent = consoleMessages.join('\n');
+    }
+
+    function addResult(test, passed, details = '') {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <span class="${passed ? 'pass' : 'fail'}">
+          ${passed ? '✓' : '✗'} ${test}
+        </span>
+        ${details ? `<span class="info"> - ${details}</span>` : ''}
+      `;
+      results.appendChild(div);
+    }
+
+    async function runTests() {
+      results.innerHTML = '<p>Running tests...</p>';
+
+      // Test 1: Check if running from server
+      const protocol = window.location.protocol;
+      addResult(
+        'Running from web server',
+        protocol === 'http:' || protocol === 'https:',
+        `Protocol: ${protocol}`
+      );
+
+      // Test 2: Check D3.js
+      const d3Loaded = typeof d3 !== 'undefined';
+      addResult(
+        'D3.js library loaded',
+        d3Loaded,
+        d3Loaded ? `Version: ${d3.version}` : 'D3 not found'
+      );
+
+      // Test 3: Check other libraries
+      addResult(
+        'Graphology library',
+        typeof graphology !== 'undefined',
+        typeof graphology !== 'undefined' ? 'Loaded' : 'Not loaded'
+      );
+
+      addResult(
+        'ngraph.graph library',
+        typeof createGraph !== 'undefined',
+        typeof createGraph !== 'undefined' ? 'Loaded' : 'Not loaded'
+      );
+
+      addResult(
+        'ngraph.path library',
+        typeof window.pathFinder !== 'undefined' || typeof ngraphPath !== 'undefined',
+        'Check status'
+      );
+
+      // Test 4: Try to load graph.json
+      if (d3Loaded) {
+        try {
+          const data = await d3.json('graph.json');
+          addResult(
+            'graph.json file',
+            true,
+            `Loaded: ${data.nodes?.length || 0} nodes, ${data.links?.length || 0} links`
+          );
+
+          // Check data structure
+          const hasValidNodes = data.nodes && Array.isArray(data.nodes) && data.nodes.length > 0;
+          const hasValidLinks = data.links && Array.isArray(data.links) && data.links.length > 0;
+
+          addResult(
+            'Data structure validation',
+            hasValidNodes && hasValidLinks,
+            hasValidNodes && hasValidLinks ? 'Valid' : 'Invalid structure'
+          );
+
+          if (hasValidNodes) {
+            const sampleNode = data.nodes[0];
+            addResult(
+              'Sample node structure',
+              true,
+              `Keys: ${Object.keys(sampleNode).join(', ')}`
+            );
+          }
+
+        } catch (error) {
+          addResult(
+            'graph.json file',
+            false,
+            error.message
+          );
+        }
+      }
+
+      // Test 5: Check DOM elements
+      const checkElements = [
+        { id: 'canvas', name: 'SVG Canvas' },
+        { id: 'loading-overlay', name: 'Loading Overlay' },
+        { id: 'navbar', name: 'Navigation Bar' },
+        { id: 'sidebar', name: 'Sidebar' },
+        { id: 'search', name: 'Search Input' },
+        { id: 'start-node', name: 'Start Node Input' },
+        { id: 'end-node', name: 'End Node Input' }
+      ];
+
+      // We'll check these in the actual page context
+      addResult(
+        'DOM elements',
+        true,
+        'Check in actual visualization page'
+      );
+
+      // Test 6: Check for JavaScript errors
+      window.addEventListener('error', function(e) {
+        addResult(
+          'JavaScript Error Detected',
+          false,
+          `${e.message} at ${e.filename}:${e.lineno}:${e.colno}`
+        );
+      });
+
+      addResult(
+        'Test completed',
+        true,
+        new Date().toLocaleString()
+      );
+    }
+
+    function testMainVisualization() {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'diva_optimized.html';
+      iframe.style.width = '100%';
+      iframe.style.height = '400px';
+      iframe.style.border = '1px solid #ccc';
+      iframe.style.marginTop = '20px';
+
+      const container = document.querySelector('.test-section');
+      container.appendChild(iframe);
+
+      iframe.onload = function() {
+        try {
+          const iframeWindow = iframe.contentWindow;
+
+          // Check if NetworkViz exists
+          if (iframeWindow.NetworkViz) {
+            addResult('NetworkViz module', true, 'Found in iframe');
+          } else {
+            addResult('NetworkViz module', false, 'Not found in iframe');
+          }
+
+          // Check for loading overlay
+          const loadingOverlay = iframeWindow.document.getElementById('loading-overlay');
+          if (loadingOverlay) {
+            const isVisible = loadingOverlay.style.display !== 'none';
+            addResult(
+              'Loading overlay status',
+              true,
+              isVisible ? 'Visible (still loading)' : 'Hidden (loaded)'
+            );
+          }
+
+        } catch (e) {
+          addResult('Iframe access', false, e.message);
+        }
+      };
+    }
+
+    function openVisualization() {
+      window.open('diva_optimized.html', '_blank');
+    }
+
+    function checkConsole() {
+      alert(`To see detailed debug information:
+
+1. Open the visualization (click "Open Visualization in New Tab")
+2. Right-click anywhere on the page
+3. Select "Inspect" or "Inspect Element"
+4. Click on the "Console" tab
+5. Look for any red error messages
+6. Copy any error messages you see
+
+The console will show:
+- Loading progress messages
+- Any JavaScript errors
+- Debug information we added`);
+    }
+
+    // Run tests on load
+    window.addEventListener('DOMContentLoaded', runTests);
+  </script>
+</body>
+</html>

@@ -52,6 +52,7 @@ Umberto Eco,person
 Random House,institution
 Andrea Ragusa,person
 Harper's Bazaar,institution
+If This Is A Man,
 The Literary Review,institution
 Giuseppe Ungaretti,person
 United States Information Agency,institution
@@ -125,6 +126,7 @@ Folder 3,institution
 Grove Press,institution
 Jonathan Cape,person
 MoMA,institution
+La Dolce Vita,
 James Laughlin,person
 Federico Garcia Lorca,person
 Jorge Luis Borges,person
@@ -152,11 +154,13 @@ Leonardo Da Vinci,person
 Smith College,institution
 Middlebury College,institution
 Brown University,institution
+A Little Anthology of Italian Poetry,
 The New Yorker,institution
 Partisan Review,institution
 Gruppo '63,institution
 Moscardino,institution
 Commerce,institution
+New Italian Writers,
 Harper & Brothers,institution
 Doubleday & Company,institution
 Harcourt,institution
@@ -317,6 +321,8 @@ Luigi Pirandello,person
 Gaetano Salvemini,person
 Leo Stein,person
 Bernard Berenson,person
+La nuova terra Storia della letteratura americana,
+Italian Literature since 1900 in English Translation,
 Villa I Tatti,institution
 Salzburg Seminar in American Studies,institution
 Giovanni Ansaldo,person
@@ -600,6 +606,7 @@ Four and Twenty Minds Essays,institution
 Cid Corman,person
 Belen Sevareid,person
 Origin,institution
+"From Pure Silence to Impure Dialogue: A Survey of Post-War Italian Poetry, 1945-1965",
 Grossman Publishers,institution
 Las Americas Publishing Co,institution
 Italica Press,institution
@@ -618,6 +625,7 @@ Leonard Michaels,person
 Patricia M Gathercole,person
 Edgar Allan Poe,person
 Studies in Short Fictions,institution
+Great Italian Short Stories of the Twentieth Century,
 The Dial Press,institution
 Dover Publications,institution
 Marino Moretti,person
@@ -852,6 +860,7 @@ Ivar Ivask,person
 Andrew Wylie,person
 Briarcliff Quarterly,institution
 Anthology of Italian Poetry,institution
+"The Promised Land, and other poems: an anthology of four contemporary Italian poets",
 Imitations,institution
 Premio Penna d'oro,institution
 Poetry Center in New York,institution
@@ -1386,197 +1395,3 @@ G Poggi,person
 Mario Musella,person
 Mino Caudana,person
 Matilde Serao,person
-Academy Awards,institution
-Alberto Denti,person
-All American Press,institution
-Amalgamated Clothing Workers of America,institution
-Amedeo d'Aosta,person
-Annabella,institution
-Antonio Margheriti,person
-Antonio Salandra,person
-Arturo Giovannitti,person
-Arturo Graf,person
-Bernard Wall,person
-Borla,institution
-Bruno Maffi,person
-Carlo Bilotti,person
-Carlo Bo,person
-Carlo Ponti,person
-Carlo Tresca,person
-Carosello,institution
-Cinecitta,institution
-Claudia Cardinale,person
-Commercial Radio Service,institution
-Compagnia Italiana Cinematografica Lux,institution
-Dino De Laurentis,person
-Domenico Modugno,person
-Dorothy Parker,person
-Edward Corsi,person
-Elio Petri,person
-Elsie Garaventa,person
-Enrico Caprili,person
-Ester Danesi Traversari,person
-Eva Amendola,person
-Fauno Film,institution
-Franco Cristaldi,person
-Frank Capra,person
-Generoso Pope,person
-Gente,institution
-Gioia,institution
-Giovanni Schiavo,person
-Grazia,institution
-Guido Gozzano,person
-Il Commercio,institution
-Il Fuoco,institution
-Il Milione,institution
-Il Nuovo Mondo/La Stampa Libera,institution
-Il Progresso,institution
-Incom,institution
-International Ladies Garment Workers Union,institution
-Italian Sons of America,institution
-Italian-American Labor Council,institution
-John Fante,person
-John Stainbeck,person
-Joseph Catalanotti,person
-Joseph L'Episcopo,person
-Julius La Rosa,person
-L'Italia che scrive,institution
-L'Unita,institution
-La Donna,institution
-La Follia di New York,institution
-La Giustizia,institution
-La Lettura,institution
-La Settimana,institution
-Laura Vagliasindi,person
-Leonard Covello,person
-Liliana Bonini,person
-Lydia Magliano,person
-Marcello Mastroianni,person
-Mario Monicelli,person
-Metro-Goldwyn-Mayer,institution
-Michael Moore,person
-Michelangelo Antonioni,person
-Mike Bongiorno,person
-Nicola Fiorelli,person
-Novella,institution
-Nuovi Argomenti,institution
-Perry Como,person
-Pettinella Advertising Company,institution
-Pietro Di Donato,person
-Pietro Germi,person
-Renato Guttuso,person
-Salvatore Castagna,person
-Salvatore Ninfo,person
-Sanremo Festival,institution
-Sophia Loren,person
-St John's University,institution
-Suso Cecchi D'Amico,person
-The Italian Tribune,institution
-The Julius La Rosa Show,institution
-Vamba,person
-WNHC,institution
-William Saroyan,person
-Leonardo Annual Magazine,institution
-Libero Andreotti,person
-Luigi Barzini,person
-Paolo Boselli,person
-Roberto Bracco,person
-Nicol˜ Brunori,person
-Don Gelasio Caetani,person
-Antonio Calitri,person
-Ercole Cantelmo,person
-Fernando Ciavatta,person
-Auro D'Alba,person
-Gabriele d'Annunzio,person
-Guido da Verona,person
-Agostino de Biasi,person
-Pasquale de Biasi,person
-Giacomo N. de Martino,person
-Paolo de Vecchi,person
-Salvatore di Giacomo,person
-Favonio di Giura,person
-Aldo di Leo,person
-Giuseppe Errico,person
-Michele Falanga,person
-A. Frabasilis,person
-Francesco Galante,person
-Giulio Gatti-Casazza,person
-Arturo Giovannitti,person
-Ernesto Grasso,person
-Franco Lalli,person
-Aldo Lazzarini,person
-Antonio Locatelli,person
-Achille Marcolongo,person
-Domenico Marino,person
-Armando Mazza,person
-Paolo Michetti,person
-A. Mungo,person
-G. Mungo,person
-Giovanni Papini,person
-Luigi Pirandello,person
-Edmondo Pizzella,person
-Giuseppe Prezzolini,person
-Luigi Rava,person
-Corrado Ricci,person
-Semplicio Righi,person
-Luigi Roversi,person
-Onorio Ruotolo,person
-Francesco Sisca,person
-Nino Sparacino,person
-Italo Stanco,person
-Domenico Trentacoste,person
-Ernesto Valentini,person
-Gianni Viafora,person
-Vincenzo Volpe,person
-Corrado Alvaro,person
-Ugo Betti,person
-Massimo Bontempelli,person
-Libero Bovio,person
-Anton Giulio Bragaglia,person
-Roberto Bracco,person
-Achille Campanile,person
-Lucio D'Ambra,person
-Ernesto Daquanno,person
-Grazia Deledda,person
-Matilde Serao,person
-Annie Vivanti,person
-Dino Falconi,person
-Angelo Frattini,person
-Guido Milanesi,person
-Alfredo Panzini,person
-Luigi Pirandello,person
-Ferdinando Russo,person
-Giuseppe Villaroel,person
-Giuseppina Ferioli,person
-Henri Duvernois,person
-Alfredo Capus,person
-Paul Laffitte,person
-Leonida Andrejeff,person
-Sandro Sandri,person
-Ernesto Daquanno,person
-Massimo Bontempelli,person
-Lorenzo Gigli,person
-Luigi Pirandello,person
-Carlo Salsa,person
-Ugo Betti,person
-Leo Longanesi,person
-Cesare Zavattini,person
-Leonardo Sinisgalli,person
-Leonida Repaci,person
-Vittorio Gorresio,person
-Luigi Chiarelli,person
-Giuseppe Marotta,person
-Gian Gaspare Napolitano,person
-Arturo Tofanelli,person
-Ercole Patti,person
-Vitaliano Brancati,person
-Alessandro Bonsanti,person
-Vincenzo Talarico,person
-Achille Campanile,person
-Marcello Girosi,person
-Panorama,institution
-Fortuna Publishing,institution
-Conrad Nagel Theater,institution
-Le maschere,institution
-Giuliano Gerbi,person
-Carlo Vinti,person

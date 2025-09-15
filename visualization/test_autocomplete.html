@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autocomplete Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+      background: #f5f5f5;
+    }
+
+    .test-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .autocomplete {
+      position: relative;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #4CAF50;
+    }
+
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4d4d4;
+      border-top: none;
+      z-index: 99;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background-color 0.2s;
+    }
+
+    .autocomplete-items div:hover,
+    .autocomplete-active {
+      background-color: #e9e9e9 !important;
+    }
+
+    .autocomplete-items div strong {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    .status {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 4px;
+      border-left: 4px solid #4CAF50;
+    }
+
+    .status h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .status p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .status .highlight {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>Autocomplete Test Page</h1>
+
+    <div class="autocomplete">
+      <input type="text" id="test-input" placeholder="Start typing to see suggestions...">
+    </div>
+
+    <div class="status">
+      <h3>Test Status</h3>
+      <p>Autocomplete initialized: <span id="init-status" class="highlight">No</span></p>
+      <p>Total items loaded: <span id="item-count" class="highlight">0</span></p>
+      <p>Current input value: <span id="current-value" class="highlight">None</span></p>
+      <p>Suggestions shown: <span id="suggestions-count" class="highlight">0</span></p>
+    </div>
+
+    <div style="margin-top: 30px; padding: 15px; background: #fff3cd; border-radius: 4px; border-left: 4px solid #ffc107;">
+      <h4 style="margin-top: 0; color: #856404;">Testing Instructions:</h4>
+      <ol style="color: #856404; line-height: 1.8;">
+        <li>Type any letter to see autocomplete suggestions</li>
+        <li>Use arrow keys (↑↓) to navigate through suggestions</li>
+        <li>Press Enter or click to select a suggestion</li>
+        <li>Press Escape to close the dropdown</li>
+        <li>Check console for debug messages</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    // Test data - sample node names
+    const testItems = [
+      "Mario Puzo", "Elena Ferrante", "Umberto Eco", "Italo Calvino",
+      "Roberto Saviano", "Natalia Ginzburg", "Primo Levi", "Antonio Tabucchi",
+      "Dacia Maraini", "Elsa Morante", "Giuseppe Tomasi di Lampedusa",
+      "Leonardo Sciascia", "Cesare Pavese", "Luigi Pirandello", "Alberto Moravia",
+      "Oriana Fallaci", "Pier Paolo Pasolini", "Gianni Rodari", "Andrea Camilleri",
+      "Alessandro Baricco", "Paolo Giordano", "Niccolò Ammaniti", "Maurizio de Giovanni",
+      "Donato Carrisi", "Michela Murgia", "Margaret Mazzantini", "Silvia Avallone",
+      "American Italian Cultural Center", "Italian American Museum", "Casa Italiana",
+      "John D. Calandra Italian American Institute", "Italian Cultural Institute",
+      "Order Sons of Italy", "National Italian American Foundation", "Dante Alighieri Society"
+    ];
+
+    // Status update functions
+    function updateStatus(field, value) {
+      const element = document.getElementById(field);
+      if (element) {
+        element.textContent = value;
+      }
+    }
+
+    // Autocomplete implementation
+    function setupAutocomplete(input, items) {
+      console.log('Setting up autocomplete with', items.length, 'items');
+      updateStatus('init-status', 'Yes');
+      updateStatus('item-count', items.length);
+
+      let currentFocus = -1;
+      let autocompleteList = null;
+
+      const searchIndex = items.map(item => ({
+        original: item,
+        lower: item.toLowerCase()
+      }));
+
+      function handleInput(e) {
+        const val = this.value.trim().toLowerCase();
+        console.log('Input event triggered, value:', val);
+        updateStatus('current-value', this.value || 'None');
+
+        closeAllLists();
+
+        if (!val || val.length < 1) {
+          updateStatus('suggestions-count', '0');
+          return;
+        }
+
+        currentFocus = -1;
+
+        // Create dropdown
+        autocompleteList = document.createElement("DIV");
+        autocompleteList.setAttribute("id", this.id + "autocomplete-list");
+        autocompleteList.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(autocompleteList);
+
+        let matchCount = 0;
+        const maxMatches = 10;
+
+        // Find matches
+        for (let i = 0; i < searchIndex.length && matchCount < maxMatches; i++) {
+          if (searchIndex[i].lower.includes(val)) {
+            const item = searchIndex[i].original;
+            const matchIndex = searchIndex[i].lower.indexOf(val);
+
+            const itemDiv = document.createElement("DIV");
+
+            const beforeMatch = item.substr(0, matchIndex);
+            const matchText = item.substr(matchIndex, val.length);
+            const afterMatch = item.substr(matchIndex + val.length);
+
+            itemDiv.innerHTML = beforeMatch + "<strong>" + matchText + "</strong>" + afterMatch;
+            itemDiv.dataset.value = item;
+
+            itemDiv.addEventListener("click", function(e) {
+              input.value = this.dataset.value;
+              updateStatus('current-value', this.dataset.value);
+              closeAllLists();
+              console.log('Selected:', this.dataset.value);
+            });
+
+            autocompleteList.appendChild(itemDiv);
+            matchCount++;
+          }
+        }
+
+        updateStatus('suggestions-count', matchCount);
+        console.log('Showing', matchCount, 'suggestions');
+      }
+
+      // Event listeners
+      input.addEventListener("input", handleInput);
+
+      input.addEventListener("focus", function(e) {
+        if (this.value.length >= 1) {
+          handleInput.call(this, e);
+        }
+      });
+
+      input.addEventListener("keydown", function(e) {
+        let items = document.getElementById(this.id + "autocomplete-list");
+        if (items) items = items.getElementsByTagName("div");
+
+        if (e.keyCode === 40) { // Down
+          currentFocus++;
+          addActive(items);
+        } else if (e.keyCode === 38) { // Up
+          currentFocus--;
+          addActive(items);
+        } else if (e.keyCode === 13) { // Enter
+          e.preventDefault();
+          if (currentFocus > -1 && items) {
+            items[currentFocus].click();
+          }
+        } else if (e.keyCode === 27) { // Escape
+          closeAllLists();
+        }
+      });
+
+      function addActive(items) {
+        if (!items) return;
+        removeActive(items);
+        if (currentFocus >= items.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = items.length - 1;
+        items[currentFocus].classList.add("autocomplete-active");
+      }
+
+      function removeActive(items) {
+        for (let i = 0; i < items.length; i++) {
+          items[i].classList.remove("autocomplete-active");
+        }
+      }
+
+      function closeAllLists(elmnt) {
+        const items = document.getElementsByClassName("autocomplete-items");
+        for (let i = 0; i < items.length; i++) {
+          if (elmnt != items[i] && elmnt != input) {
+            items[i].parentNode.removeChild(items[i]);
+          }
+        }
+        if (!elmnt) {
+          updateStatus('suggestions-count', '0');
+        }
+      }
+
+      document.addEventListener("click", function(e) {
+        closeAllLists(e.target);
+      });
+
+      console.log('Autocomplete setup complete');
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener("DOMContentLoaded", function() {
+      const input = document.getElementById("test-input");
+      setupAutocomplete(input, testItems);
+      console.log('Test page ready - try typing "mario", "italian", or any letter');
+    });
+  </script>
+</body>
+</html>

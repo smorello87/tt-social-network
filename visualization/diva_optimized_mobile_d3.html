@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>DivagaNDO - Mobile Optimized Network Visualization</title>
+
+  <!-- Preconnect to CDN domains -->
+  <link rel="preconnect" href="https://d3js.org">
+
+  <!-- Libraries -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Graphology core -->
+  <script src="https://cdn.jsdelivr.net/npm/graphology@0.25.1/dist/graphology.umd.min.js"></script>
+  <!-- GEXF parser for Graphology -->
+  <script src="https://cdn.jsdelivr.net/npm/graphology-gexf@0.10.2/dist/graphology-gexf.umd.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      touch-action: none; /* Prevent default touch behaviors */
+    }
+
+    /* Mobile-optimized canvas */
+    #canvas {
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      touch-action: pan-x pan-y pinch-zoom;
+    }
+
+    /* Hybrid canvas layer for low-end devices */
+    #canvas-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Mobile-optimized nodes and links */
+    .node {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .node circle {
+      fill: #6b8e9f;
+      stroke: #546f7d;
+      stroke-width: 2px;
+      transition: r 0.2s ease;
+    }
+
+    .node.institution circle {
+      fill: #8b7355;
+      stroke: #6d5a44;
+    }
+
+    .node.highlight-node circle {
+      fill: #ff6b6b;
+      stroke: #c92a2a;
+      stroke-width: 3px;
+    }
+
+    .link {
+      stroke: #999;
+      stroke-opacity: 0.6;
+      stroke-width: 1.5px;
+    }
+
+    .link.highlight-path {
+      stroke: #ff6b6b;
+      stroke-opacity: 1;
+      stroke-width: 3px;
+    }
+
+    /* Mobile-optimized labels */
+    .label {
+      font-size: 14px;
+      font-weight: 500;
+      pointer-events: none;
+      user-select: none;
+      fill: #333;
+      text-anchor: start;
+      dominant-baseline: middle;
+    }
+
+    @media (max-width: 768px) {
+      .label {
+        font-size: 16px; /* Larger on mobile */
+        font-weight: 600;
+        stroke: white;
+        stroke-width: 3px;
+        paint-order: stroke;
+      }
+    }
+
+    /* Mobile-friendly tooltip */
+    .tooltip {
+      position: fixed;
+      text-align: left;
+      padding: 12px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      pointer-events: none;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      max-width: 90vw;
+      word-wrap: break-word;
+    }
+
+    @media (max-width: 768px) {
+      .tooltip {
+        font-size: 16px;
+        padding: 16px;
+        border-radius: 12px;
+      }
+    }
+
+    /* Mobile controls */
+    .mobile-controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .control-btn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: white;
+      color: #333;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .control-btn:active {
+      transform: scale(0.95);
+      background: #f0f0f0;
+    }
+
+    .control-btn.active {
+      background: #667eea;
+      color: white;
+    }
+
+    /* Loading indicator */
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: white;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    /* Search bar - mobile optimized */
+    .search-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 100;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 769px) {
+      .search-container {
+        left: auto;
+        right: 20px;
+        margin: 0;
+      }
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px; /* Prevents zoom on iOS */
+      border: none;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background: white;
+    }
+
+    /* Hide desktop controls on mobile */
+    @media (max-width: 768px) {
+      .desktop-controls {
+        display: none;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-controls {
+        display: none;
+      }
+    }
+
+    /* Performance indicator */
+    .performance-indicator {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: none;
+      z-index: 1001;
+    }
+
+    .debug-mode .performance-indicator {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading indicator -->
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading network...</div>
+  </div>
+
+  <!-- Search container -->
+  <div class="search-container">
+    <input type="text"
+           class="search-input"
+           id="searchInput"
+           placeholder="Search nodes..."
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false">
+  </div>
+
+  <!-- Mobile controls -->
+  <div class="mobile-controls">
+    <button class="control-btn" id="zoomInBtn" aria-label="Zoom in">+</button>
+    <button class="control-btn" id="zoomOutBtn" aria-label="Zoom out">−</button>
+    <button class="control-btn" id="fitBtn" aria-label="Fit to screen">⊡</button>
+    <button class="control-btn" id="labelsBtn" aria-label="Toggle labels">T</button>
+    <button class="control-btn" id="resetBtn" aria-label="Reset view">↻</button>
+  </div>
+
+  <!-- Performance indicator (debug) -->
+  <div class="performance-indicator" id="perfIndicator">
+    <span id="fps">0</span> FPS |
+    <span id="nodeCount">0</span> nodes |
+    <span id="renderMode">SVG</span>
+  </div>
+
+  <!-- SVG Canvas -->
+  <svg id="canvas"></svg>
+
+  <script>
+    // Mobile-Optimized Network Visualization Module
+    const NetworkViz = (function() {
+      // Device detection and capabilities
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      const isLowEndDevice = devicePixelRatio < 2 || navigator.hardwareConcurrency <= 2;
+
+      // Mobile-specific configuration
+      const mobileConfig = {
+        maxVisibleNodes: 75,  // Limit visible nodes on mobile
+        simplifiedRendering: true,
+        reducedAnimations: true,
+        touchDelay: 300,  // Delay for distinguishing tap vs drag
+        pinchSensitivity: 0.02,
+        performanceMode: isLowEndDevice ? 'low' : 'normal',
+        labelShowThreshold: 0.5,  // Zoom level to show labels
+        autoHideTooltip: 3000,  // Auto-hide tooltip after 3 seconds
+        longPressDelay: 500  // Long press detection delay
+      };
+
+      // Private variables
+      let svg, width, height, simulation;
+      let nodeGroups, linkElements, labelElements;
+      let container, zoom;
+      let canvas, ctx;  // For optional canvas rendering
+      let renderMode = isMobile && isLowEndDevice ? 'hybrid' : 'svg';
+
+      // Data structures
+      let nodesById = new Map();
+      let adjacencyList = new Map();
+      let nodeDegrees = new Map();
+      let graphData = null;
+
+      // State management
+      let labelsVisible = !isMobile;  // Labels off by default on mobile
+      let isDragging = false;
+      let isSimulationActive = false;
+      let renderRequestId = null;
+
+      // Touch-specific variables
+      let touchStartTime = 0;
+      let touchStartPos = null;
+      let lastTouchDistance = 0;
+      let selectedNode = null;
+      let longPressTimer = null;
+      let isTouchDragging = false;
+      let touchZoomActive = false;
+      let currentTransform = d3.zoomIdentity;
+
+      // Performance tracking
+      let frameCount = 0;
+      let lastFpsUpdate = 0;
+      let currentFps = 0;
+
+      // Color scale and tooltip
+      const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+      const tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+      // Utility functions
+      const throttle = (func, delay) => {
+        let lastCall = 0;
+        return function(...args) {
+          const now = Date.now();
+          if (now - lastCall >= delay) {
+            lastCall = now;
+            return func.apply(this, args);
+          }
+        };
+      };
+
+      const debounce = (func, delay) => {
+        let timeoutId;
+        return function(...args) {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => func.apply(this, args), delay);
+        };
+      };
+
+      // Setup SVG canvas with mobile optimizations
+      function setupCanvas() {
+        svg = d3.select("#canvas");
+        if (!svg || svg.empty()) {
+          console.error('Canvas element not found!');
+          return;
+        }
+
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        // Safeguard for very small screens
+        if (width < 100 || height < 100) {
+          width = Math.max(width, 320);
+          height = Math.max(height, 480);
+        }
+
+        console.log('Device info:', {
+          isMobile,
+          isTouch,
+          isLowEndDevice,
+          renderMode,
+          width,
+          height,
+          devicePixelRatio
+        });
+
+        svg.attr("width", width).attr("height", height);
+
+        // Mobile-optimized zoom
+        const zoomExtent = isMobile ? [0.1, 5] : [0.05, 10];
+        zoom = d3.zoom()
+          .scaleExtent(zoomExtent)
+          .on("zoom", handleZoom);
+
+        // Apply zoom with touch support
+        if (isTouch) {
+          setupTouchHandlers();
+        }
+
+        svg.call(zoom);
+        container = svg.append("g");
+
+        // Setup canvas layer for hybrid rendering on low-end mobile
+        if (renderMode === 'hybrid') {
+          setupCanvasLayer();
+        }
+      }
+
+      // Setup canvas for hybrid rendering
+      function setupCanvasLayer() {
+        canvas = document.createElement('canvas');
+        canvas.id = 'canvas-layer';
+        canvas.width = width * devicePixelRatio;
+        canvas.height = height * devicePixelRatio;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx = canvas.getContext('2d');
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+        document.body.insertBefore(canvas, document.querySelector('#canvas'));
+
+        console.log('Canvas layer initialized for hybrid rendering');
+      }
+
+      // Touch event handlers
+      function setupTouchHandlers() {
+        let touches = [];
+        let initialDistance = 0;
+        let initialScale = 1;
+
+        svg.on("touchstart", function(e) {
+          e.preventDefault();
+          touches = e.touches;
+
+          if (touches.length === 1) {
+            // Single touch
+            touchStartTime = Date.now();
+            touchStartPos = { x: touches[0].clientX, y: touches[0].clientY };
+
+            // Long press detection
+            longPressTimer = setTimeout(() => {
+              const point = d3.pointer(touches[0], container.node());
+              const node = findNodeAtPoint(point);
+              if (node) {
+                handleLongPress(node);
+              }
+            }, mobileConfig.longPressDelay);
+
+          } else if (touches.length === 2) {
+            // Pinch zoom
+            clearTimeout(longPressTimer);
+            touchZoomActive = true;
+            initialDistance = getTouchDistance(touches);
+            initialScale = currentTransform.k;
+          }
+        }, { passive: false });
+
+        svg.on("touchmove", function(e) {
+          e.preventDefault();
+          touches = e.touches;
+
+          if (touches.length === 1 && touchStartPos && !touchZoomActive) {
+            // Pan
+            const dx = touches[0].clientX - touchStartPos.x;
+            const dy = touches[0].clientY - touchStartPos.y;
+
+            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+              clearTimeout(longPressTimer);
+              isTouchDragging = true;
+
+              // Apply pan
+              const newTransform = currentTransform.translate(dx, dy);
+              svg.call(zoom.transform, newTransform);
+              touchStartPos = { x: touches[0].clientX, y: touches[0].clientY };
+            }
+
+          } else if (touches.length === 2 && touchZoomActive) {
+            // Pinch zoom
+            const currentDistance = getTouchDistance(touches);
+            const scale = currentDistance / initialDistance;
+            const newScale = Math.max(zoom.scaleExtent()[0],
+                            Math.min(zoom.scaleExtent()[1], initialScale * scale));
+
+            const center = getTouchCenter(touches);
+            const transform = d3.zoomIdentity
+              .translate(center.x, center.y)
+              .scale(newScale / currentTransform.k)
+              .translate(-center.x, -center.y);
+
+            svg.call(zoom.transform, currentTransform.scale(newScale / currentTransform.k));
+          }
+        }, { passive: false });
+
+        svg.on("touchend", function(e) {
+          e.preventDefault();
+          clearTimeout(longPressTimer);
+
+          const touchDuration = Date.now() - touchStartTime;
+
+          if (!isTouchDragging && !touchZoomActive && touchDuration < mobileConfig.touchDelay) {
+            // Tap
+            const touch = e.changedTouches[0];
+            const point = d3.pointer(touch, container.node());
+            const node = findNodeAtPoint(point);
+
+            if (node) {
+              handleNodeTap(node);
+            }
+          }
+
+          // Reset touch state
+          touchStartPos = null;
+          isTouchDragging = false;
+          touchZoomActive = false;
+          initialDistance = 0;
+        }, { passive: false });
+      }
+
+      // Zoom handler
+      const handleZoom = throttle((e) => {
+        currentTransform = e.transform;
+        container.attr("transform", currentTransform);
+
+        // Adaptive label visibility on mobile
+        if (isMobile) {
+          const showLabels = currentTransform.k > mobileConfig.labelShowThreshold;
+          if (showLabels !== labelsVisible) {
+            labelsVisible = showLabels;
+            updateLabelVisibility();
+          }
+        }
+
+        // Update performance based on zoom level
+        if (isMobile && simulation) {
+          if (currentTransform.k < 0.3) {
+            // Zoomed out - reduce simulation accuracy
+            simulation.force("charge").theta(0.95);
+          } else {
+            simulation.force("charge").theta(0.9);
+          }
+        }
+      }, isMobile ? 32 : 16);  // Lower fps on mobile
+
+      // Touch utility functions
+      function getTouchDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      function getTouchCenter(touches) {
+        return {
+          x: (touches[0].clientX + touches[1].clientX) / 2,
+          y: (touches[0].clientY + touches[1].clientY) / 2
+        };
+      }
+
+      function findNodeAtPoint(point) {
+        let foundNode = null;
+        const threshold = isMobile ? 40 : 20;  // Larger touch target
+
+        nodeGroups?.each(function(d) {
+          const dx = d.x - point[0];
+          const dy = d.y - point[1];
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < threshold) {
+            foundNode = d;
+          }
+        });
+
+        return foundNode;
+      }
+
+      // Node interaction handlers
+      function handleNodeTap(node) {
+        if (selectedNode === node) {
+          // Deselect
+          resetHighlight();
+          selectedNode = null;
+        } else {
+          highlightNode(node);
+          selectedNode = node;
+          showMobileTooltip(node);
+        }
+      }
+
+      function handleLongPress(node) {
+        // Haptic feedback
+        if ('vibrate' in navigator) {
+          navigator.vibrate(50);
+        }
+
+        showDetailedNodeInfo(node);
+      }
+
+      function showMobileTooltip(node) {
+        const degree = nodeDegrees.get(node.id) || 0;
+        const tooltipContent = `<strong>${node.id}</strong><br>Connections: ${degree}`;
+
+        tooltip.html(tooltipContent)
+          .style("left", "50%")
+          .style("transform", "translateX(-50%)")
+          .style("top", "80px")
+          .style("display", "block");
+
+        // Auto-hide
+        setTimeout(() => {
+          if (selectedNode === node) {
+            tooltip.style("display", "none");
+          }
+        }, mobileConfig.autoHideTooltip);
+      }
+
+      function showDetailedNodeInfo(node) {
+        const degree = nodeDegrees.get(node.id) || 0;
+        const connections = Array.from(adjacencyList.get(node.id) || []).slice(0, 5);
+
+        let html = `<strong>${node.id}</strong><br>`;
+        html += `Type: ${node.type || 'Unknown'}<br>`;
+        html += `Connections: ${degree}<br>`;
+        if (connections.length > 0) {
+          html += `Connected to: ${connections.join(', ')}`;
+          if (degree > 5) html += '...';
+        }
+
+        tooltip.html(html)
+          .style("left", "10px")
+          .style("right", "10px")
+          .style("top", "80px")
+          .style("transform", "none")
+          .style("display", "block");
+
+        setTimeout(() => {
+          tooltip.style("display", "none");
+        }, 5000);
+      }
+
+      // Initialize force simulation
+      function initializeSimulation(data) {
+        // Pre-position nodes
+        const nodeCount = data.nodes.length;
+        const angleStep = (2 * Math.PI) / nodeCount;
+        const radius = Math.min(width, height) * 0.35;
+
+        data.nodes.forEach((node, i) => {
+          if (!node.x && !node.y) {
+            const angle = i * angleStep;
+            node.x = width / 2 + radius * Math.cos(angle);
+            node.y = height / 2 + radius * Math.sin(angle);
+            node.x += (Math.random() - 0.5) * 20;
+            node.y += (Math.random() - 0.5) * 20;
+          }
+          node.vx = 0;
+          node.vy = 0;
+        });
+
+        // Adaptive force parameters
+        const baseForces = isMobile ? {
+          linkDistance: 150,
+          linkStrength: 0.08,
+          chargeStrength: -1000,
+          collisionRadius: 20
+        } : {
+          linkDistance: 300,
+          linkStrength: 0.15,
+          chargeStrength: -2500,
+          collisionRadius: 35
+        };
+
+        if (isLowEndDevice) {
+          baseForces.chargeStrength *= 0.6;
+          baseForces.linkStrength *= 0.7;
+        }
+
+        // Simulation configuration
+        const config = isMobile ? {
+          distanceMax: 300,
+          theta: 0.95,
+          centerStrength: 0.04,
+          collisionIterations: 1,
+          velocityDecay: 0.8,
+          alphaDecay: 0.04,
+          alphaMin: 0.01,
+          initialAlpha: 0.15
+        } : {
+          distanceMax: 600,
+          theta: 0.9,
+          centerStrength: 0.02,
+          collisionIterations: 2,
+          velocityDecay: 0.7,
+          alphaDecay: 0.025,
+          alphaMin: 0.001,
+          initialAlpha: 0.3
+        };
+
+        // Create simulation
+        simulation = d3.forceSimulation(data.nodes)
+          .force("link", d3.forceLink(data.links)
+            .id(d => d.id)
+            .distance(baseForces.linkDistance)
+            .strength(baseForces.linkStrength))
+          .force("charge", d3.forceManyBody()
+            .strength(baseForces.chargeStrength)
+            .distanceMax(config.distanceMax)
+            .theta(config.theta))
+          .force("center", d3.forceCenter(width / 2, height / 2)
+            .strength(config.centerStrength))
+          .force("collision", d3.forceCollide()
+            .radius(baseForces.collisionRadius)
+            .strength(0.7)
+            .iterations(config.collisionIterations))
+          .velocityDecay(config.velocityDecay)
+          .alphaDecay(config.alphaDecay)
+          .alphaMin(config.alphaMin)
+          .alpha(config.initialAlpha);
+
+        simulation.on("tick", onTick);
+
+        // Auto-stop for performance
+        const stopDelay = isMobile ? 2500 : 4000;
+        setTimeout(() => {
+          if (!isDragging) {
+            simulation.stop();
+            isSimulationActive = false;
+            autoFitNetwork();
+          }
+        }, stopDelay);
+      }
+
+      // Render tick function
+      function onTick() {
+        if (!renderRequestId) {
+          if (isMobile && isLowEndDevice) {
+            // Throttle on low-end mobile
+            renderRequestId = setTimeout(() => {
+              updatePositions();
+              renderRequestId = null;
+            }, 33);  // ~30fps
+          } else {
+            renderRequestId = requestAnimationFrame(() => {
+              updatePositions();
+              updatePerformance();
+              renderRequestId = null;
+            });
+          }
+        }
+      }
+
+      // Update node and link positions
+      function updatePositions() {
+        if (nodeGroups) {
+          nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
+        }
+        if (linkElements) {
+          linkElements
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+        }
+      }
+
+      // Performance monitoring
+      function updatePerformance() {
+        frameCount++;
+        const now = Date.now();
+
+        if (now - lastFpsUpdate > 1000) {
+          currentFps = frameCount;
+          frameCount = 0;
+          lastFpsUpdate = now;
+
+          // Update performance indicator if in debug mode
+          if (document.body.classList.contains('debug-mode')) {
+            document.getElementById('fps').textContent = currentFps;
+            document.getElementById('nodeCount').textContent = graphData?.nodes.length || 0;
+            document.getElementById('renderMode').textContent = renderMode.toUpperCase();
+          }
+        }
+      }
+
+      // Render network with mobile optimizations
+      function renderNetwork(data) {
+        // Progressive rendering on mobile
+        let nodesToRender = data.nodes;
+        let linksToRender = data.links;
+
+        if (isMobile && data.nodes.length > mobileConfig.maxVisibleNodes) {
+          // Sort by degree and take top nodes
+          const sortedNodes = [...data.nodes].sort((a, b) =>
+            (nodeDegrees.get(b.id) || 0) - (nodeDegrees.get(a.id) || 0)
+          );
+          nodesToRender = sortedNodes.slice(0, mobileConfig.maxVisibleNodes);
+          const nodeSet = new Set(nodesToRender.map(n => n.id));
+
+          // Filter links
+          linksToRender = data.links.filter(l => {
+            const sourceId = l.source.id || l.source;
+            const targetId = l.target.id || l.target;
+            return nodeSet.has(sourceId) && nodeSet.has(targetId);
+          });
+
+          console.log(`Rendering ${nodesToRender.length} of ${data.nodes.length} nodes on mobile`);
+        }
+
+        // Render links
+        linkElements = container.append("g")
+          .attr("class", "links")
+          .selectAll("line")
+          .data(linksToRender)
+          .join("line")
+          .classed("link", true);
+
+        // Render nodes
+        nodeGroups = container.append("g")
+          .attr("class", "nodes")
+          .selectAll("g.node")
+          .data(nodesToRender)
+          .join("g")
+          .classed("node", true)
+          .call(createDragBehavior());
+
+        // Add circles
+        nodeGroups.append("circle")
+          .attr("r", d => {
+            const degree = nodeDegrees.get(d.id) || 1;
+            return isMobile ?
+              8 + Math.min(Math.sqrt(degree) * 2, 15) :
+              10 + Math.min(Math.sqrt(degree) * 3, 20);
+          })
+          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
+          .classed("institution", d => d.type === 'institution');
+
+        // Add labels
+        labelElements = nodeGroups.append("text")
+          .text(d => d.id)
+          .attr("dx", d => {
+            const degree = nodeDegrees.get(d.id) || 1;
+            const radius = isMobile ?
+              8 + Math.min(Math.sqrt(degree) * 2, 15) :
+              10 + Math.min(Math.sqrt(degree) * 3, 20);
+            return radius + 5;
+          })
+          .attr("dy", 5)
+          .attr("class", "label")
+          .style("display", labelsVisible ? "block" : "none");
+
+        // Setup interactions
+        if (isTouch) {
+          nodeGroups
+            .on("touchstart", handleNodeTouchStart)
+            .on("touchend", handleNodeTouchEnd);
+        } else {
+          nodeGroups
+            .on("mouseenter", handleNodeMouseEnter)
+            .on("mouseleave", handleNodeMouseLeave)
+            .on("click", handleNodeClick);
+        }
+      }
+
+      // Drag behavior
+      function createDragBehavior() {
+        return d3.drag()
+          .on("start", (e, d) => {
+            if (isTouch) return;  // Handle touch separately
+
+            isDragging = true;
+            d.fx = d.x;
+            d.fy = d.y;
+
+            if (simulation.alpha() <= simulation.alphaMin()) {
+              simulation.alphaTarget(0.01).restart();
+              isSimulationActive = true;
+            }
+          })
+          .on("drag", (e, d) => {
+            if (isTouch) return;
+
+            d.fx = e.x;
+            d.fy = e.y;
+            d.x = e.x;
+            d.y = e.y;
+
+            // Immediate visual update
+            if (nodeGroups) {
+              nodeGroups.filter(n => n === d)
+                .attr("transform", `translate(${d.x}, ${d.y})`);
+
+              if (linkElements) {
+                linkElements
+                  .filter(l => l.source === d || l.target === d)
+                  .each(function(l) {
+                    if (l.source === d) {
+                      d3.select(this).attr("x1", d.x).attr("y1", d.y);
+                    } else {
+                      d3.select(this).attr("x2", d.x).attr("y2", d.y);
+                    }
+                  });
+              }
+            }
+          })
+          .on("end", (e, d) => {
+            if (isTouch) return;
+
+            isDragging = false;
+            simulation.alphaTarget(0);
+
+            setTimeout(() => {
+              if (!isDragging) {
+                simulation.stop();
+                isSimulationActive = false;
+              }
+            }, 200);
+
+            d.fx = null;
+            d.fy = null;
+          });
+      }
+
+      // Node touch handlers
+      function handleNodeTouchStart(e, d) {
+        e.stopPropagation();
+        touchStartTime = Date.now();
+
+        longPressTimer = setTimeout(() => {
+          handleLongPress(d);
+        }, mobileConfig.longPressDelay);
+      }
+
+      function handleNodeTouchEnd(e, d) {
+        e.stopPropagation();
+        clearTimeout(longPressTimer);
+
+        const touchDuration = Date.now() - touchStartTime;
+        if (touchDuration < mobileConfig.touchDelay) {
+          handleNodeTap(d);
+        }
+      }
+
+      // Mouse handlers for desktop
+      const handleNodeMouseEnter = throttle((e, d) => {
+        if (isMobile) return;
+
+        const degree = nodeDegrees.get(d.id) || 0;
+        tooltip.html(`${d.id}<br>Connections: ${degree}`)
+          .style("left", (e.pageX + 10) + "px")
+          .style("top", (e.pageY - 10) + "px")
+          .style("display", "block");
+      }, 100);
+
+      function handleNodeMouseLeave() {
+        if (isMobile) return;
+        tooltip.style("display", "none");
+      }
+
+      function handleNodeClick(e, d) {
+        if (isMobile) return;
+        e.stopPropagation();
+        highlightNode(d);
+      }
+
+      // Highlight node and connections
+      function highlightNode(node) {
+        const connectedNodes = new Set([node.id]);
+        const connections = adjacencyList.get(node.id) || [];
+        connections.forEach(id => connectedNodes.add(id));
+
+        // Update opacity
+        nodeGroups?.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0.2);
+        linkElements?.style("opacity", l => {
+          const sourceId = l.source.id || l.source;
+          const targetId = l.target.id || l.target;
+          return (sourceId === node.id || targetId === node.id) ? 1 : 0.1;
+        });
+
+        // Show labels for connected nodes on mobile
+        if (isMobile && labelElements) {
+          labelElements.style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+        }
+      }
+
+      // Reset highlight
+      function resetHighlight() {
+        nodeGroups?.style("opacity", 1);
+        linkElements?.style("opacity", 1);
+
+        if (isMobile && labelElements) {
+          labelElements.style("display", labelsVisible ? "block" : "none");
+        }
+
+        selectedNode = null;
+      }
+
+      // Auto-fit network to screen
+      function autoFitNetwork() {
+        if (!graphData || !graphData.nodes.length) return;
+
+        const nodes = graphData.nodes;
+        const padding = isMobile ? 30 : 50;
+
+        const xExtent = d3.extent(nodes, d => d.x);
+        const yExtent = d3.extent(nodes, d => d.y);
+
+        const xRange = xExtent[1] - xExtent[0];
+        const yRange = yExtent[1] - yExtent[0];
+
+        const xScale = (width - padding * 2) / xRange;
+        const yScale = (height - padding * 2) / yRange;
+        const scale = Math.min(xScale, yScale, zoom.scaleExtent()[1]);
+
+        const centerX = (xExtent[0] + xExtent[1]) / 2;
+        const centerY = (yExtent[0] + yExtent[1]) / 2;
+
+        const transform = d3.zoomIdentity
+          .translate(width / 2, height / 2)
+          .scale(scale)
+          .translate(-centerX, -centerY);
+
+        svg.transition()
+          .duration(isMobile ? 500 : 750)
+          .call(zoom.transform, transform);
+      }
+
+      // Update label visibility
+      function updateLabelVisibility() {
+        if (labelElements) {
+          labelElements.style("display", labelsVisible ? "block" : "none");
+        }
+      }
+
+      // Load graph data
+      async function loadGraph() {
+        try {
+          const response = await fetch('graph.json');
+          const data = await response.json();
+
+          graphData = data;
+
+          // Build data structures
+          data.nodes.forEach(node => {
+            nodesById.set(node.id, node);
+            adjacencyList.set(node.id, []);
+            nodeDegrees.set(node.id, 0);
+          });
+
+          data.links.forEach(link => {
+            const sourceId = link.source.id || link.source;
+            const targetId = link.target.id || link.target;
+
+            adjacencyList.get(sourceId)?.push(targetId);
+            adjacencyList.get(targetId)?.push(sourceId);
+
+            nodeDegrees.set(sourceId, (nodeDegrees.get(sourceId) || 0) + 1);
+            nodeDegrees.set(targetId, (nodeDegrees.get(targetId) || 0) + 1);
+          });
+
+          // Render and simulate
+          renderNetwork(data);
+          initializeSimulation(data);
+
+          // Hide loading indicator
+          setTimeout(() => {
+            document.getElementById('loading').style.display = 'none';
+          }, 1000);
+
+        } catch (error) {
+          console.error('Error loading graph:', error);
+          document.querySelector('.loading-text').textContent = 'Error loading network';
+        }
+      }
+
+      // Handle window resize and orientation change
+      const handleResize = debounce(() => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        svg?.attr("width", width).attr("height", height);
+
+        if (canvas) {
+          canvas.width = width * devicePixelRatio;
+          canvas.height = height * devicePixelRatio;
+          canvas.style.width = width + 'px';
+          canvas.style.height = height + 'px';
+          ctx.scale(devicePixelRatio, devicePixelRatio);
+        }
+
+        if (simulation) {
+          simulation.force("center", d3.forceCenter(width / 2, height / 2).strength(0.05));
+
+          if (isMobile) {
+            simulation.alpha(0.05).restart();
+            setTimeout(() => {
+              if (!isDragging) simulation.stop();
+            }, 500);
+          } else {
+            simulation.alpha(0.1).restart();
+            setTimeout(() => {
+              if (!isDragging) simulation.stop();
+            }, 1000);
+          }
+        }
+      }, 250);
+
+      window.addEventListener('resize', handleResize);
+      window.addEventListener('orientationchange', () => {
+        setTimeout(handleResize, 100);
+      });
+
+      // Setup control buttons
+      function setupControls() {
+        // Zoom controls
+        document.getElementById('zoomInBtn')?.addEventListener('click', () => {
+          svg.transition().duration(300).call(zoom.scaleBy, 1.3);
+        });
+
+        document.getElementById('zoomOutBtn')?.addEventListener('click', () => {
+          svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+        });
+
+        // Fit button
+        document.getElementById('fitBtn')?.addEventListener('click', autoFitNetwork);
+
+        // Labels toggle
+        document.getElementById('labelsBtn')?.addEventListener('click', () => {
+          labelsVisible = !labelsVisible;
+          updateLabelVisibility();
+          document.getElementById('labelsBtn').classList.toggle('active', labelsVisible);
+        });
+
+        // Reset button
+        document.getElementById('resetBtn')?.addEventListener('click', () => {
+          resetHighlight();
+          autoFitNetwork();
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const handleSearch = debounce((e) => {
+          const query = e.target.value.toLowerCase().trim();
+
+          if (!query) {
+            resetHighlight();
+            return;
+          }
+
+          const matchingNode = Array.from(nodesById.values()).find(node =>
+            node.id.toLowerCase().includes(query)
+          );
+
+          if (matchingNode) {
+            highlightNode(matchingNode);
+
+            // Center on node
+            const scale = currentTransform.k;
+            const transform = d3.zoomIdentity
+              .translate(width / 2, height / 2)
+              .scale(scale)
+              .translate(-matchingNode.x, -matchingNode.y);
+
+            svg.transition()
+              .duration(500)
+              .call(zoom.transform, transform);
+          }
+        }, 300);
+
+        searchInput?.addEventListener('input', handleSearch);
+      }
+
+      // Initialize
+      function init() {
+        setupCanvas();
+        setupControls();
+        loadGraph();
+
+        // Add debug mode toggle
+        if (window.location.hash === '#debug') {
+          document.body.classList.add('debug-mode');
+        }
+      }
+
+      // Public API
+      return {
+        init,
+        autoFit: autoFitNetwork,
+        resetView: resetHighlight,
+        toggleLabels: () => {
+          labelsVisible = !labelsVisible;
+          updateLabelVisibility();
+        }
+      };
+    })();
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', NetworkViz.init);
+
+    // Prevent default touch behaviors
+    document.addEventListener('gesturestart', e => e.preventDefault());
+    document.addEventListener('gesturechange', e => e.preventDefault());
+    document.addEventListener('gestureend', e => e.preventDefault());
+
+    // Double tap zoom prevention
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', e => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+</body>
+</html>

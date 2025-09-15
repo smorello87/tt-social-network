@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debug Test</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    console.log('Script starting...');
+
+    // Test if D3 loads
+    window.addEventListener('load', async function() {
+      console.log('Window loaded');
+      console.log('D3 version:', d3 ? d3.version : 'D3 not loaded');
+
+      // Try to load the JSON file
+      try {
+        console.log('Attempting to load graph.json...');
+        const data = await d3.json("graph.json");
+        console.log('Successfully loaded graph.json');
+        console.log('Nodes:', data.nodes ? data.nodes.length : 'No nodes');
+        console.log('Links:', data.links ? data.links.length : 'No links');
+
+        // Show first few nodes
+        if (data.nodes && data.nodes.length > 0) {
+          console.log('First 3 nodes:', data.nodes.slice(0, 3));
+        }
+      } catch (error) {
+        console.error('Error loading graph.json:', error);
+        console.error('Make sure to run this from a web server, not file://');
+      }
+
+      // Test basic D3 functionality
+      try {
+        const svg = d3.select('body').append('svg')
+          .attr('width', 200)
+          .attr('height', 200);
+
+        svg.append('circle')
+          .attr('cx', 100)
+          .attr('cy', 100)
+          .attr('r', 50)
+          .style('fill', 'blue');
+
+        console.log('D3 SVG test successful - blue circle should be visible');
+      } catch (error) {
+        console.error('D3 SVG test failed:', error);
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Debug Test Page</h1>
+  <p>Check the browser console (F12) for debug information.</p>
+  <p>If you see a blue circle below, D3 is working:</p>
+</body>
+</html>

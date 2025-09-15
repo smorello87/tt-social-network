@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transnational Italian-American Literary Network</title>
+  <!-- Libraries -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Graphology core -->
+  <script src="https://unpkg.com/graphology@0.24.1/dist/graphology.umd.min.js"></script>
+  <!-- ngraph.graph -->
+  <script src="https://cdn.jsdelivr.net/npm/ngraph.graph@19.1.0/dist/ngraph.graph.min.js"></script>
+  <!-- ngraph.path -->
+  <script src="https://unpkg.com/ngraph.path@1.3.1/dist/ngraph.path.min.js"></script>
+  <!-- canvg -->
+  <script src="https://unpkg.com/canvg@3.0.7/lib/umd.js"></script>
+  <style>
+    /* Global resets, fonts, & base */
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
+      overflow: hidden;
+      color: #3a3835;
+    }
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+    
+    /* ------------------------ Navigation Bar ------------------------ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #fff;
+      z-index: 1500;
+      border-bottom: 2px solid #8b7355;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    #navbar .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      height: 60px;
+    }
+    #navbar .brand {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: 'Crimson Text', Georgia, serif;
+      letter-spacing: 0.5px;
+      color: #f5f1e8;
+    }
+    /* Toggle button (hidden on desktop) */
+    #nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    #navbar .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    #navbar .nav-links li {
+      margin-left: 10px;
+    }
+    #navbar .nav-links li a {
+      text-decoration: none;
+      color: #f5f1e8;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 6px 12px;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+    }
+    #navbar .nav-links li a:hover,
+    #navbar .nav-links li a:focus {
+      background-color: rgba(139, 115, 85, 0.2);
+      border: 1px solid #8b7355;
+      outline: none;
+    }
+    #navbar .nav-links li a.active {
+      background-color: #8b7355;
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    /* --------------------------- Sidebar (Left Menu) --------------------------- */
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 60px;
+      height: calc(100vh - 60px);
+      width: 280px;
+      background: #fefdfb;
+      color: #3a3835;
+      border-right: 1px solid #d4c5b9;
+      padding: 20px 16px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      font-size: 13px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+    }
+    #sidebar.hidden {
+      transform: translateX(-100%);
+    }
+    .toolbar-section {
+      margin-bottom: 20px;
+    }
+    #sidebar h3,
+    #sidebar h4 {
+      margin: 0 0 8px 0;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      font-family: 'Crimson Text', Georgia, serif;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    #sidebar p {
+      font-size: 13px;
+      color: #5a5653;
+      line-height: 1.6;
+      margin: 8px 0;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    /* Info icon */
+    .info-icon {
+      display: inline-block;
+      margin-left: 5px;
+      background: #8b7355;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      cursor: help;
+      position: relative;
+      pointer-events: auto;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+    .info-icon::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: pre-line;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1200;
+      bottom: 100%;
+      margin-bottom: 5px;
+      max-width: 250px;
+      text-align: center;
+    }
+    .info-icon:hover::after {
+      opacity: 1;
+    }
+    
+    /* Sidebar inputs */
+    #sidebar input[type="text"] {
+      padding: 8px 10px;
+      margin: 6px 0;
+      border: 1px solid #d4c5b9;
+      border-radius: 2px;
+      width: 100%;
+      font-size: 13px;
+      outline: none;
+      background: #fff;
+      color: #3a3835;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+    #sidebar input[type="text"]:focus {
+      border-color: #8b7355;
+      box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.1);
+    }
+    #sidebar input[type="range"] {
+      width: 100%;
+      margin: 4px 0;
+    }
+    
+    /* Sidebar buttons */
+    #sidebar button {
+      padding: 8px 12px;
+      margin: 6px 0;
+      border: 1px solid #8b7355;
+      border-radius: 2px;
+      background: #fff;
+      color: #3a3835;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      letter-spacing: 0.3px;
+    }
+    #sidebar button:hover,
+    #sidebar button:focus {
+      background: #8b7355;
+      color: #fff;
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* --------------------- Toggle Sidebar Button (Right) --------------------- */
+    #toggle-sidebar {
+      position: fixed;
+      top: 70px;
+      right: 10px;
+      z-index: 2000;
+      background: #2c3e50;
+      color: #f5f1e8;
+      border: 1px solid #8b7355;
+      padding: 10px 14px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+    #toggle-sidebar:hover,
+    #toggle-sidebar:focus {
+      background: #8b7355;
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    
+    /* --------------------- Autocomplete Items --------------------- */
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4c5b9;
+      border-top: none;
+      z-index: 99;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      color: #3a3835;
+      max-height: 150px;
+      overflow-y: auto;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 0 0 2px 2px;
+    }
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #3a3835;
+      border-bottom: 1px solid #f0ebe3;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.2s ease;
+    }
+    .autocomplete-items div:hover, .autocomplete-active {
+      background-color: #f5f1e8;
+      color: #2c3e50;
+    }
+    
+    /* ------------------------- Mobile CSS ------------------------- */
+    @media (max-width: 600px) {
+      #navbar .nav-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        padding: 10px;
+      }
+      #nav-toggle {
+        display: block;
+      }
+      #navbar .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #2c3e50;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1600;
+        display: none;
+      }
+      #navbar .nav-links.show {
+        display: flex;
+      }
+      #navbar .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+      }
+      #navbar .nav-links li a {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        background-color: #2c3e50;
+        color: #f5f1e8;
+      }
+      #navbar .nav-links li a:hover,
+      #navbar .nav-links li a:focus {
+        background-color: #8b7355;
+      }
+      /* Sidebar adjustments on mobile */
+      #sidebar {
+        width: 100%;
+        height: calc(100vh - 60px);
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #8b7355;
+        padding: 8px;
+        top: 60px;
+      }
+      #toggle-sidebar {
+        position: absolute;
+        top: 70px;
+        right: 10px;
+      }
+    }
+    
+    /* ------------------------- SVG & D3 Elements ------------------------- */
+    .tooltip {
+      position: absolute;
+      padding: 8px 12px;
+      background: rgba(44, 62, 80, 0.95);
+      color: #f5f1e8;
+      border-radius: 2px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+    }
+    .label {
+      font-size: 11px;
+      pointer-events: none;
+      font-family: 'Crimson Text', Georgia, serif;
+      fill: #3a3835;
+      font-weight: 400;
+    }
+    .link {
+      stroke: #c4b5a0;
+      stroke-opacity: 0.3;
+      stroke-width: 1.5;
+    }
+    .highlight-path {
+      stroke: #bf9f5f !important;
+      stroke-width: 3px !important;
+      stroke-opacity: 0.8 !important;
+    }
+    .highlight-node {
+      stroke: #d4af37 !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* -------------------- FOOTER -------------------- */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 45px;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #f5f1e8;
+      text-align: center;
+      border-top: 1px solid #8b7355;
+      z-index: 1500;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    footer p {
+      margin: 0;
+      line-height: 45px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+    }
+    footer a {
+      color: #f5f1e8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #d4c5b9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-container">
+      <span class="brand">Transnational Italian-American Literary Network</span>
+      <!-- Toggle button for mobile nav (next to brand) -->
+      <button id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="people.html" class="active" tabindex="0">People</a></li>
+        <li><a href="places.html" tabindex="0">Places</a></li>
+        <li><a href="words.html" tabindex="0">Words</a></li>
+        <li><a href="shows.html" tabindex="0">Shows</a></li>
+        <li><a href="gilman.html" tabindex="0">Gilman</a></li>
+        <li><a href="https://eastbaypunkda.com" tabindex="0">Zines</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Toggle Sidebar Button (Right) -->
+  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+  
+  <!-- Sidebar with info icons and autocomplete containers -->
+  <div id="sidebar">
+     <!-- About the Visualization -->
+     <div class="toolbar-section">
+      <p>
+        Each node represents either an author, translator, or literary institution within the transnational Italian-American literary network. Connections indicate collaborations, translations, correspondences, or institutional affiliations. This visualization maps the cultural and intellectual exchanges that have shaped contemporary Italian-American literature across borders.
+      </p>
+    </div>
+    <!-- Network Tools Section -->
+    <div class="toolbar-section">
+      <div class="autocomplete" style="position: relative;">
+        <input type="text" id="search" placeholder="Search authors/institutions...">
+      </div>
+      <button onclick="toggleLabels()">Toggle Names
+        <span class="info-icon" data-tooltip="Hide or show author and institution names.">?</span>
+      </button>
+    </div>
+    
+    <!-- Path Finder Section -->
+    <div class="toolbar-section">
+      <h4>
+        Literary Connections
+        <span class="info-icon" data-tooltip="Trace the intellectual pathways between authors, translators, and institutions in the network.">?</span>
+      </h4>
+      <div class="autocomplete" style="position: relative;">
+        <input type="text" id="start-node" placeholder="Start node">
+      </div>
+      <div class="autocomplete" style="position: relative;">
+        <input type="text" id="end-node" placeholder="End node">
+      </div>
+      <button onclick="simpleFindPathHandler()">Find Path</button>
+      <button onclick="clearPath()">Clear Path</button>
+    </div>
+    
+    <!-- Analysis Tools Section -->
+    <div class="toolbar-section">
+      <h4>
+        Filter by Connections
+        <span class="info-icon" data-tooltip="Use the slider to filter nodes by their connection count.">?</span>
+      </h4>
+      <div class="slider-container">
+        <input type="range" id="degree-range" min="0" max="10" value="0">
+        <span id="degree-label">0</span>
+      </div>
+    </div>
+    
+    <!-- Export Section -->
+    <div class="toolbar-section">
+      <button onclick="exportPNG()">Export as PNG</button>
+      <button onclick="fullReset()">Reset All</button>
+    </div>
+  
+  </div>
+  
+  <!-- SVG Canvas -->
+  <svg id="canvas"></svg>
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        <a href="https://stefanomorello.com" target="_blank">© 2025 Stefano Morello</a> |
+        <a href="https://github.com/smorello87/ebpdav" target="_blank">
+          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="height:20px; vertical-align:middle;">
+        </a>
+      </p>
+    </footer>
+  <script>
+    // Global variables and data arrays
+    let svg, width, height, simulation;
+    let nodeGroups, currentPath = [];
+    let allNodes = [], allLinks = [];
+    let labelsVisible = true;
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    const tooltip = d3.select("body").append("div").attr("class", "tooltip");
+    
+    // Setup SVG canvas and zoom behavior
+    svg = d3.select("#canvas");
+    width = window.innerWidth;
+    height = window.innerHeight;
+    svg.attr("width", width).attr("height", height);
+    const zoom = d3.zoom().scaleExtent([0.1, 8]).on("zoom", e => container.attr("transform", e.transform));
+    svg.call(zoom);
+    const container = svg.append("g");
+    
+    // Load JSON data and initialize simulation
+    d3.json("graph.json").then(data => {
+      allNodes = data.nodes;
+      allLinks = data.links.map(l => ({ source: l.source, target: l.target }));
+      
+      simulation = d3.forceSimulation(allNodes)
+                     .force("link", d3.forceLink(allLinks).id(d => d.id).distance(100))
+                     .force("charge", d3.forceManyBody().strength(-800))
+                     .force("center", d3.forceCenter(width / 2, height / 2));
+      
+      const links = container.append("g")
+                             .selectAll("line")
+                             .data(allLinks)
+                             .join("line")
+                             .classed("link", true);
+      
+      nodeGroups = container.append("g")
+                            .selectAll("g.node")
+                            .data(allNodes)
+                            .join("g")
+                            .classed("node", true)
+                            .call(d3.drag()
+                              .on("start", (e,d)=> { if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+                              .on("drag", (e,d)=> { d.fx=e.x; d.fy=e.y; })
+                              .on("end", (e,d)=> { if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null; }))
+                            .on("mouseover", (e,d)=> {
+                                const degree = allLinks.reduce((acc,l)=>(l.source===d || l.target===d) ? acc+1 : acc, 0);
+                                tooltip.html(`${d.id}<br>Connections: ${degree}`)
+                                       .style("left", (e.pageX+10)+"px")
+                                       .style("top", (e.pageY-10)+"px")
+                                       .style("display", "block");
+                            })
+                            .on("mouseout", ()=> { tooltip.style("display", "none"); });
+      
+      nodeGroups.append("circle")
+                .attr("r", 8)
+                .style("fill", d => d.type==='institution' ? "#8b7355" : "#6b8e9f")
+                .style("stroke", d => d.type==='institution' ? "#6d5a44" : "#546f7d")
+                .style("stroke-width", 1);
+      
+      nodeGroups.append("text")
+                .text(d => d.id)
+                .attr("dx", 10)
+                .attr("dy", 5)
+                .attr("class", "label");
+      
+      simulation.on("tick", () => {
+        nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
+        links.attr("x1", d => d.source.x)
+             .attr("y1", d => d.source.y)
+             .attr("x2", d => d.target.x)
+             .attr("y2", d => d.target.y);
+      });
+      
+      // Search handler: highlight and center on matched nodes.
+      d3.select("#search").on("input", function() {
+         const term = this.value.trim().toLowerCase();
+         if (!term) { resetView(); return; }
+         const regex = new RegExp(`\\b${term}\\b`, 'i');
+         const matched = allNodes.filter(d => regex.test(d.id));
+         if (matched.length > 0) {
+           const connected = new Set();
+           matched.forEach(n => {
+             allLinks.forEach(l => {
+               if(l.source === n) connected.add(l.target);
+               if(l.target === n) connected.add(l.source);
+             });
+           });
+           const important = [...new Set([...matched, ...connected])];
+           nodeGroups.style("opacity", d => important.includes(d) ? 1 : 0.1);
+           links.style("opacity", l => (important.includes(l.source) || important.includes(l.target)) ? 1 : 0.1);
+           centerNodes(matched);
+         }
+      });
+      
+      // Initialize autocomplete for search inputs using node names.
+      const names = allNodes.map(n => n.id);
+      autocomplete(document.getElementById("search"), names);
+      autocomplete(document.getElementById("start-node"), names);
+      autocomplete(document.getElementById("end-node"), names);
+    });
+    
+    // Reset view to default.
+    function resetView(){
+      nodeGroups.style("opacity", 1);
+      d3.selectAll("line").style("opacity", 0.3);
+      svg.transition().duration(1000).call(zoom.transform, d3.zoomIdentity);
+    }
+    
+    // Center view on provided nodes.
+    function centerNodes(nodesToCenter) {
+      const xExtent = d3.extent(nodesToCenter, d => d.x);
+      const yExtent = d3.extent(nodesToCenter, d => d.y);
+      const centerX = (xExtent[0] + xExtent[1]) / 2;
+      const centerY = (yExtent[0] + yExtent[1]) / 2;
+      let scale = 1;
+      if (xExtent[1] - xExtent[0] > 0 && yExtent[1] - yExtent[0] > 0) {
+        scale = Math.min(8, 0.9 / Math.max((xExtent[1]-xExtent[0]) / width, (yExtent[1]-yExtent[0]) / height));
+      }
+      if (nodesToCenter.length === 1) {
+        scale = Math.min(scale, 2);
+      }
+      svg.transition()
+         .duration(1000)
+         .call(zoom.transform, d3.zoomIdentity
+            .translate(-centerX * scale + width / 2, -centerY * scale + height / 2)
+            .scale(scale));
+    }
+    
+    function toggleLabels() {
+      labelsVisible = !labelsVisible;
+      nodeGroups.select("text").style("opacity", labelsVisible ? 1 : 0);
+    }
+    
+    // --- Simple Label Propagation for Community Detection ---
+    function simpleLabelPropagation() {
+      let labels = {};
+      allNodes.forEach(node => { labels[node.id] = node.id; });
+      let adj = new Map();
+      allNodes.forEach(node => { adj.set(node.id, []); });
+      allLinks.forEach(link => {
+         let src = (typeof link.source === "object") ? link.source.id : link.source;
+         let tgt = (typeof link.target === "object") ? link.target.id : link.target;
+         if(adj.has(src) && adj.has(tgt)) {
+             adj.get(src).push(tgt);
+             adj.get(tgt).push(src);
+         }
+      });
+      let changed = true;
+      let iterations = 0;
+      const maxIterations = 10;
+      while(changed && iterations < maxIterations) {
+         changed = false;
+         let nodesOrder = allNodes.map(n => n.id);
+         nodesOrder = d3.shuffle(nodesOrder);
+         nodesOrder.forEach(nodeId => {
+            let neighborLabels = {};
+            const neighbors = adj.get(nodeId);
+            neighbors.forEach(neighbor => {
+               let lab = labels[neighbor];
+               neighborLabels[lab] = (neighborLabels[lab] || 0) + 1;
+            });
+            let maxCount = 0, bestLabel = labels[nodeId];
+            for (let lab in neighborLabels) {
+               if(neighborLabels[lab] > maxCount) {
+                  maxCount = neighborLabels[lab];
+                  bestLabel = lab;
+               }
+            }
+            if(bestLabel !== labels[nodeId]) {
+               labels[nodeId] = bestLabel;
+               changed = true;
+            }
+         });
+         iterations++;
+      }
+      return labels;
+    }
+    
+    // --- Simple, Case-Insensitive BFS Path Finder ---
+    function simpleFindPath(startInput, endInput) {
+      const start = startInput.toLowerCase();
+      const end = endInput.toLowerCase();
+      const nodeMap = new Map();
+      allNodes.forEach(n => nodeMap.set(n.id.toLowerCase(), n.id));
+      const adj = new Map();
+      allNodes.forEach(n => adj.set(n.id.toLowerCase(), []));
+      allLinks.forEach(link => {
+        const src = (typeof link.source === "object") ? (link.source.id || "").toLowerCase() : String(link.source).toLowerCase();
+        const tgt = (typeof link.target === "object") ? (link.target.id || "").toLowerCase() : String(link.target).toLowerCase();
+        if (adj.has(src) && adj.has(tgt)) {
+          adj.get(src).push(tgt);
+          adj.get(tgt).push(src);
+        }
+      });
+      const queue = [start];
+      const visited = new Set([start]);
+      const predecessor = {};
+      while (queue.length) {
+        const current = queue.shift();
+        if (current === end) break;
+        const neighbors = adj.get(current) || [];
+        for (const neighbor of neighbors) {
+          if (!visited.has(neighbor)) {
+            visited.add(neighbor);
+            predecessor[neighbor] = current;
+            queue.push(neighbor);
+          }
+        }
+      }
+      const path = [];
+      let current = end;
+      while (current && current !== start) {
+        path.push(nodeMap.get(current) || current);
+        current = predecessor[current];
+      }
+      if (current === start) {
+        path.push(nodeMap.get(start) || start);
+        return path.reverse();
+      }
+      return [];
+    }
+    
+    function simpleFindPathHandler() {
+      clearPath();
+      const start = document.getElementById("start-node").value.trim();
+      const end = document.getElementById("end-node").value.trim();
+      if (!start || !end) {
+        alert("Please enter both start and end node IDs.");
+        return;
+      }
+      const startL = start.toLowerCase();
+      const endL = end.toLowerCase();
+      const adj = new Map();
+      allNodes.forEach(n => {
+        adj.set(n.id.toLowerCase(), []);
+      });
+      allLinks.forEach(link => {
+        const src = (typeof link.source === "object") ? link.source.id.toLowerCase() : String(link.source).toLowerCase();
+        const tgt = (typeof link.target === "object") ? link.target.id.toLowerCase() : String(link.target).toLowerCase();
+        if (adj.has(src) && adj.has(tgt)) {
+          adj.get(src).push(tgt);
+          adj.get(tgt).push(src);
+        }
+      });
+    
+      function bfs(source) {
+        const dist = {};
+        for (let key of adj.keys()) {
+          dist[key] = Infinity;
+        }
+        dist[source] = 0;
+        const queue = [source];
+        while (queue.length > 0) {
+          const u = queue.shift();
+          const neighbors = adj.get(u);
+          for (let v of neighbors) {
+            if (dist[v] === Infinity) {
+              dist[v] = dist[u] + 1;
+              queue.push(v);
+            }
+          }
+        }
+        return dist;
+      }
+    
+      const distFromStart = bfs(startL);
+      const distFromEnd = bfs(endL);
+      const d = distFromStart[endL];
+      if (d === Infinity) {
+        alert("No path found between these nodes.");
+        return;
+      }
+    
+      d3.selectAll("line").each(function(l) {
+        const s = (typeof l.source === "object") ? l.source.id.toLowerCase() : l.source.toLowerCase();
+        const t = (typeof l.target === "object") ? l.target.id.toLowerCase() : l.target.toLowerCase();
+        if ((distFromStart[s] + 1 + distFromEnd[t] === d) ||
+            (distFromStart[t] + 1 + distFromEnd[s] === d)) {
+          d3.select(this).classed("highlight-path", true);
+        }
+      });
+    
+      const pathNodes = new Set();
+      for (let node of adj.keys()) {
+        if (distFromStart[node] + distFromEnd[node] === d) {
+          pathNodes.add(node);
+        }
+      }
+      nodeGroups.select("circle").classed("highlight-node", d =>
+        pathNodes.has(d.id.toLowerCase())
+      );
+    }
+    
+    // Clear highlighted path.
+    function clearPath() {
+      nodeGroups.select("circle").classed("highlight-node", false);
+      d3.selectAll("line").classed("highlight-path", false);
+    }
+    
+    function filterByDegree() {
+      const threshold = parseInt(document.getElementById("degree-range").value);
+      document.getElementById("degree-label").textContent = threshold;
+      nodeGroups.style("opacity", d => {
+        const deg = allLinks.filter(l => {
+          const s = (typeof l.source === "object") ? l.source.id : l.source;
+          const t = (typeof l.target === "object") ? l.target.id : l.target;
+          return s === d.id || t === d.id;
+        }).length;
+        return deg >= threshold ? 1 : 0.1;
+      });
+    }
+    document.getElementById("degree-range").addEventListener("input", filterByDegree);
+    
+    async function exportPNG() {
+      const clonedSvg = svg.node().cloneNode(true);
+      const svgNS = "http://www.w3.org/2000/svg";
+      const styleEl = document.createElementNS(svgNS, "style");
+      styleEl.innerHTML = `
+        .link { stroke: #c4b5a0; stroke-opacity: 0.3; stroke-width: 1.5; }
+        .highlight-path { stroke: #bf9f5f; stroke-width: 3px; stroke-opacity: 0.8; }
+        .highlight-node { stroke: #d4af37; stroke-width: 3px; }
+      `;
+      clonedSvg.insertBefore(styleEl, clonedSvg.firstChild);
+      const bbox = svg.node().getBBox();
+      const rect = document.createElementNS(svgNS, "rect");
+      rect.setAttribute("x", bbox.x);
+      rect.setAttribute("y", bbox.y);
+      rect.setAttribute("width", bbox.width);
+      rect.setAttribute("height", bbox.height);
+      rect.setAttribute("fill", "#ffffff");
+      clonedSvg.insertBefore(rect, clonedSvg.firstChild);
+      const svgString = new XMLSerializer().serializeToString(clonedSvg);
+      const canvasEl = document.createElement('canvas');
+      canvasEl.width = width;
+      canvasEl.height = height;
+      const ctx = canvasEl.getContext('2d');
+      await canvg.Canvg.fromString(ctx, svgString).render();
+      const a = document.createElement('a');
+      a.download = 'network.png';
+      a.href = canvasEl.toDataURL();
+      a.click();
+    }
+    
+    function fullReset() {
+      clearPath();
+      resetView();
+      nodeGroups.select("circle")
+                .style("stroke", null)
+                .style("stroke-width", null)
+                .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
+                .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+                .style("stroke-width", 1);
+    }
+    
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    }
+    
+    window.addEventListener("resize", () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      svg.attr("width", width).attr("height", height);
+    });
+    
+    // --- Simple Autocomplete Function ---
+    function autocomplete(inp, arr) {
+      let currentFocus;
+      inp.addEventListener("input", function(e) {
+        let a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i].toLowerCase().includes(val.toLowerCase())) {
+            b = document.createElement("DIV");
+            let matchIndex = arr[i].toLowerCase().indexOf(val.toLowerCase());
+            b.innerHTML = arr[i].substr(0, matchIndex) + "<strong>" + arr[i].substr(matchIndex, val.length) + "</strong>" + arr[i].substr(matchIndex + val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function(e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      inp.addEventListener("keydown", function(e) {
+        let x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          currentFocus++;
+          addActive(x);
+        } else if (e.keyCode == 38) {
+          currentFocus--;
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          e.preventDefault();
+          if (currentFocus > -1) {
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+        if (!x) return false;
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+        for (let i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+      }
+      function closeAllLists(elmnt) {
+        const x = document.getElementsByClassName("autocomplete-items");
+        for (let i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
+        }
+      }
+      document.addEventListener("click", function (e) {
+          closeAllLists(e.target);
+      });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(() => {
+        const names = allNodes.map(n => n.id);
+        autocomplete(document.getElementById("search"), names);
+        autocomplete(document.getElementById("start-node"), names);
+        autocomplete(document.getElementById("end-node"), names);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

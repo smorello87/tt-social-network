@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testing Console</title>
+  <script>
+    // Test if the file loads properly
+    console.log("Test page loaded");
+
+    // Load the main visualization page in an iframe and check for errors
+    window.addEventListener('load', function() {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'diva_optimized.html';
+      iframe.style.width = '100%';
+      iframe.style.height = '600px';
+      iframe.style.border = '1px solid #ccc';
+      document.getElementById('iframe-container').appendChild(iframe);
+
+      // Try to access the iframe's console (might be blocked by same-origin policy)
+      iframe.onload = function() {
+        console.log("Iframe loaded");
+        try {
+          // Check if NetworkViz is defined
+          if (iframe.contentWindow.NetworkViz) {
+            console.log("NetworkViz is defined in iframe");
+          } else {
+            console.error("NetworkViz is NOT defined in iframe");
+          }
+        } catch(e) {
+          console.log("Cannot access iframe content:", e.message);
+        }
+      };
+    });
+  </script>
+</head>
+<body>
+  <h1>Testing Visualization Loading</h1>
+  <p>Check the browser console for errors (F12 or right-click -> Inspect -> Console)</p>
+  <div id="iframe-container"></div>
+
+  <h2>Direct Test</h2>
+  <p>If the iframe doesn't work, <a href="diva_optimized.html" target="_blank">open the visualization directly</a> and check the console.</p>
+</body>
+</html>

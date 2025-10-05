@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-Path Demonstration</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .graph-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        svg {
+            border: 1px solid #ddd;
+            background: #fafafa;
+        }
+        .node {
+            stroke: #333;
+            stroke-width: 2px;
+        }
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+            stroke-width: 2px;
+        }
+        .highlight-link {
+            stroke: #ff6b6b;
+            stroke-width: 4px;
+            stroke-opacity: 1;
+        }
+        .highlight-node {
+            stroke: #ff6b6b;
+            stroke-width: 3px;
+        }
+        .selected-node {
+            fill: #4CAF50 !important;
+        }
+        .info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1976D2;
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 10px;
+            border-left: 4px solid #2196F3;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multi-Path Connection Finder Demonstration</h1>
+    <p>This demonstrates the fixed algorithm that finds ALL paths between nodes, not just one.</p>
+
+    <div class="container">
+        <div class="graph-container">
+            <h2>Test Case: Diamond Graph</h2>
+            <p>Select nodes A and D to see ALL paths (A→B→D AND A→C→D)</p>
+            <svg id="diamond-graph" width="400" height="300"></svg>
+            <div>
+                <button onclick="testDiamond(['A', 'D'])">Test A to D (Should show 2 paths)</button>
+                <button onclick="testDiamond(['A', 'B', 'D'])">Test A, B, D (Should show both paths)</button>
+                <button onclick="clearDiamond()">Clear</button>
+            </div>
+            <div id="diamond-info" class="info"></div>
+        </div>
+
+        <div class="graph-container">
+            <h2>Test Case: Complex Network</h2>
+            <p>A more complex network with multiple alternative paths</p>
+            <svg id="complex-graph" width="400" height="300"></svg>
+            <div>
+                <button onclick="testComplex(['Start', 'End'])">Test Start to End</button>
+                <button onclick="testComplex(['Start', 'Hub', 'End'])">Test Start, Hub, End</button>
+                <button onclick="clearComplex()">Clear</button>
+            </div>
+            <div id="complex-info" class="info"></div>
+        </div>
+    </div>
+
+    <div class="graph-container" style="margin-top: 20px; width: 100%; max-width: 800px;">
+        <h2>Algorithm Explanation</h2>
+        <div class="code-block">
+<strong>OLD (BROKEN) Algorithm:</strong>
+For each pair in MST:
+  path = bfsPath(source, target)  // Returns ONLY ONE path
+  add path to result
+
+<strong>NEW (FIXED) Algorithm:</strong>
+For each pair in MST:
+  paths = findAllPathsBFS(source, target, maxLength)  // Returns ALL paths
+  for each path in paths:
+    add path to result
+        </div>
+        <p>The key fix: Using <code>findAllPathsBFS</code> instead of <code>bfsPath</code> ensures we capture ALL paths between nodes, not just the first one found.</p>
+    </div>
+
+    <script>
+        // Diamond graph setup
+        const diamondNodes = [
+            {id: 'A', x: 200, y: 50},
+            {id: 'B', x: 100, y: 150},
+            {id: 'C', x: 300, y: 150},
+            {id: 'D', x: 200, y: 250}
+        ];
+
+        const diamondLinks = [
+            {source: 'A', target: 'B'},
+            {source: 'A', target: 'C'},
+            {source: 'B', target: 'D'},
+            {source: 'C', target: 'D'}
+        ];
+
+        // Complex graph setup
+        const complexNodes = [
+            {id: 'Start', x: 50, y: 150},
+            {id: 'Path1', x: 150, y: 80},
+            {id: 'Path2', x: 150, y: 220},
+            {id: 'Hub', x: 200, y: 150},
+            {id: 'Alt1', x: 250, y: 100},
+            {id: 'Alt2', x: 250, y: 200},
+            {id: 'End', x: 350, y: 150}
+        ];
+
+        const complexLinks = [
+            {source: 'Start', target: 'Path1'},
+            {source: 'Start', target: 'Path2'},
+            {source: 'Start', target: 'Hub'},
+            {source: 'Path1', target: 'Hub'},
+            {source: 'Path2', target: 'Hub'},
+            {source: 'Hub', target: 'Alt1'},
+            {source: 'Hub', target: 'Alt2'},
+            {source: 'Hub', target: 'End'},
+            {source: 'Alt1', target: 'End'},
+            {source: 'Alt2', target: 'End'}
+        ];
+
+        // Create visualizations
+        function createGraph(svgId, nodes, links) {
+            const svg = d3.select(svgId);
+            const width = +svg.attr('width');
+            const height = +svg.attr('height');
+
+            // Add links
+            const linkElements = svg.append('g')
+                .selectAll('line')
+                .data(links)
+                .enter()
+                .append('line')
+                .attr('class', 'link')
+                .attr('x1', d => nodes.find(n => n.id === d.source).x)
+                .attr('y1', d => nodes.find(n => n.id === d.source).y)
+                .attr('x2', d => nodes.find(n => n.id === d.target).x)
+                .attr('y2', d => nodes.find(n => n.id === d.target).y);
+
+            // Add nodes
+            const nodeElements = svg.append('g')
+                .selectAll('circle')
+                .data(nodes)
+                .enter()
+                .append('circle')
+                .attr('class', 'node')
+                .attr('r', 20)
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('fill', '#69b3a2');
+
+            // Add labels
+            const labels = svg.append('g')
+                .selectAll('text')
+                .data(nodes)
+                .enter()
+                .append('text')
+                .attr('x', d => d.x)
+                .attr('y', d => d.y + 5)
+                .attr('text-anchor', 'middle')
+                .attr('fill', 'white')
+                .style('font-weight', 'bold')
+                .text(d => d.id);
+
+            return {linkElements, nodeElements, labels};
+        }
+
+        // Simple path finding algorithm (mimics the fixed MultiNodeConnectionFinder)
+        function findAllPaths(nodes, links, start, end, maxLength = 4) {
+            // Build adjacency list
+            const adj = new Map();
+            nodes.forEach(n => adj.set(n.id, []));
+            links.forEach(l => {
+                adj.get(l.source).push(l.target);
+                adj.get(l.target).push(l.source);
+            });
+
+            // BFS to find all paths
+            const allPaths = [];
+            const queue = [[start]];
+
+            while (queue.length > 0) {
+                const path = queue.shift();
+                const current = path[path.length - 1];
+
+                if (path.length > maxLength) continue;
+
+                if (current === end) {
+                    allPaths.push(path);
+                    continue;
+                }
+
+                const neighbors = adj.get(current);
+                neighbors.forEach(neighbor => {
+                    if (!path.includes(neighbor)) {
+                        queue.push([...path, neighbor]);
+                    }
+                });
+            }
+
+            return allPaths;
+        }
+
+        // Initialize graphs
+        const diamondGraph = createGraph('#diamond-graph', diamondNodes, diamondLinks);
+        const complexGraph = createGraph('#complex-graph', complexNodes, complexLinks);
+
+        function testDiamond(selectedNodes) {
+            clearDiamond();
+
+            if (selectedNodes.length === 2) {
+                const paths = findAllPaths(diamondNodes, diamondLinks, selectedNodes[0], selectedNodes[1]);
+
+                // Highlight all paths
+                const pathNodes = new Set();
+                const pathEdges = new Set();
+
+                paths.forEach(path => {
+                    path.forEach(node => pathNodes.add(node));
+                    for (let i = 0; i < path.length - 1; i++) {
+                        pathEdges.add([path[i], path[i + 1]].sort().join('-'));
+                    }
+                });
+
+                // Update visualization
+                diamondGraph.nodeElements
+                    .classed('highlight-node', d => pathNodes.has(d.id))
+                    .classed('selected-node', d => selectedNodes.includes(d.id));
+
+                diamondGraph.linkElements
+                    .classed('highlight-link', d => {
+                        const edge = [d.source, d.target].sort().join('-');
+                        return pathEdges.has(edge);
+                    });
+
+                // Show info
+                document.getElementById('diamond-info').innerHTML =
+                    `<strong>Found ${paths.length} path(s):</strong><br>` +
+                    paths.map(p => p.join(' → ')).join('<br>') +
+                    `<br><br>Total nodes: ${pathNodes.size}, Total edges: ${pathEdges.size}`;
+            } else if (selectedNodes.length === 3) {
+                // For 3+ nodes, find all pairwise paths (simplified Steiner tree)
+                const allNodes = new Set();
+                const allEdges = new Set();
+
+                for (let i = 0; i < selectedNodes.length; i++) {
+                    for (let j = i + 1; j < selectedNodes.length; j++) {
+                        const paths = findAllPaths(diamondNodes, diamondLinks, selectedNodes[i], selectedNodes[j]);
+                        paths.forEach(path => {
+                            path.forEach(node => allNodes.add(node));
+                            for (let k = 0; k < path.length - 1; k++) {
+                                allEdges.add([path[k], path[k + 1]].sort().join('-'));
+                            }
+                        });
+                    }
+                }
+
+                diamondGraph.nodeElements
+                    .classed('highlight-node', d => allNodes.has(d.id))
+                    .classed('selected-node', d => selectedNodes.includes(d.id));
+
+                diamondGraph.linkElements
+                    .classed('highlight-link', d => {
+                        const edge = [d.source, d.target].sort().join('-');
+                        return allEdges.has(edge);
+                    });
+
+                document.getElementById('diamond-info').innerHTML =
+                    `<strong>Connecting ${selectedNodes.join(', ')}</strong><br>` +
+                    `Found ${allNodes.size} nodes and ${allEdges.size} edges in the connection network`;
+            }
+        }
+
+        function clearDiamond() {
+            diamondGraph.nodeElements.classed('highlight-node selected-node', false);
+            diamondGraph.linkElements.classed('highlight-link', false);
+            document.getElementById('diamond-info').innerHTML = '';
+        }
+
+        function testComplex(selectedNodes) {
+            clearComplex();
+
+            if (selectedNodes.length >= 2) {
+                const allNodes = new Set();
+                const allEdges = new Set();
+                let totalPaths = 0;
+
+                // Find paths between all pairs
+                for (let i = 0; i < selectedNodes.length; i++) {
+                    for (let j = i + 1; j < selectedNodes.length; j++) {
+                        const paths = findAllPaths(complexNodes, complexLinks, selectedNodes[i], selectedNodes[j], 5);
+                        totalPaths += paths.length;
+                        paths.forEach(path => {
+                            path.forEach(node => allNodes.add(node));
+                            for (let k = 0; k < path.length - 1; k++) {
+                                allEdges.add([path[k], path[k + 1]].sort().join('-'));
+                            }
+                        });
+                    }
+                }
+
+                complexGraph.nodeElements
+                    .classed('highlight-node', d => allNodes.has(d.id))
+                    .classed('selected-node', d => selectedNodes.includes(d.id));
+
+                complexGraph.linkElements
+                    .classed('highlight-link', d => {
+                        const edge = [d.source, d.target].sort().join('-');
+                        return allEdges.has(edge);
+                    });
+
+                document.getElementById('complex-info').innerHTML =
+                    `<strong>Connecting ${selectedNodes.join(', ')}</strong><br>` +
+                    `Found ${totalPaths} total path(s)<br>` +
+                    `Network: ${allNodes.size} nodes, ${allEdges.size} edges`;
+            }
+        }
+
+        function clearComplex() {
+            complexGraph.nodeElements.classed('highlight-node selected-node', false);
+            complexGraph.linkElements.classed('highlight-link', false);
+            document.getElementById('complex-info').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

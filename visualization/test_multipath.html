@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Path Connection Finder Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-case {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        .result {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            border-left-color: #27ae60;
+            background: #d5f4e6;
+        }
+        .error {
+            border-left-color: #e74c3c;
+            background: #fadbd8;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input {
+            padding: 8px;
+            margin: 0 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            width: 200px;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multi-Path Connection Finder Test Suite</h1>
+
+    <div class="test-section">
+        <h2>Interactive Visualization</h2>
+        <iframe id="viz-frame" src="diva_optimized.html"></iframe>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Test</h2>
+        <div class="input-group">
+            <input type="text" id="node1" placeholder="Node 1">
+            <input type="text" id="node2" placeholder="Node 2">
+            <input type="text" id="node3" placeholder="Node 3 (optional)">
+            <button onclick="testMultiNode()">Test Connection</button>
+        </div>
+        <div id="manual-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Automated Tests</h2>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        let vizWindow;
+
+        window.onload = function() {
+            vizWindow = document.getElementById('viz-frame').contentWindow;
+
+            // Wait for viz to load
+            setTimeout(() => {
+                console.log('Visualization should be loaded');
+            }, 5000);
+        };
+
+        function testMultiNode() {
+            const node1 = document.getElementById('node1').value.trim();
+            const node2 = document.getElementById('node2').value.trim();
+            const node3 = document.getElementById('node3').value.trim();
+
+            if (!node1 || !node2) {
+                alert('Please enter at least 2 nodes');
+                return;
+            }
+
+            const nodes = [node1, node2];
+            if (node3) nodes.push(node3);
+
+            // Send message to viz iframe
+            try {
+                // Try to call the test function directly
+                const result = vizWindow.testMultiNodeConnection(nodes);
+                displayResult('manual-result', result);
+            } catch (e) {
+                document.getElementById('manual-result').innerHTML =
+                    '<div class="error">Error: ' + e.message + '\n\nMake sure the visualization is loaded and you\'ve entered valid node names.</div>';
+            }
+        }
+
+        function displayResult(elementId, result) {
+            const el = document.getElementById(elementId);
+            if (!result) {
+                el.innerHTML = '<div class="error">No result returned</div>';
+                return;
+            }
+
+            let html = '<div class="success">';
+            html += `Nodes found: ${result.nodes ? result.nodes.size : 0}\n`;
+            html += `Edges found: ${result.edges ? result.edges.size : 0}\n`;
+
+            if (result.nodes && result.nodes.size > 0) {
+                html += '\nConnected nodes:\n';
+                const nodeList = Array.from(result.nodes).slice(0, 10);
+                nodeList.forEach(node => {
+                    html += `  - ${node}\n`;
+                });
+                if (result.nodes.size > 10) {
+                    html += `  ... and ${result.nodes.size - 10} more\n`;
+                }
+            }
+
+            html += '</div>';
+            el.innerHTML = html;
+        }
+
+        function runAllTests() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = '<h3>Running tests...</h3>';
+
+            // Define test cases
+            const testCases = [
+                {
+                    name: 'Test 1: Two nodes with multiple paths',
+                    nodes: ['Stefano Morello', 'Gian Paolo Serino'],
+                    description: 'Should find multiple paths between two well-connected nodes'
+                },
+                {
+                    name: 'Test 2: Three nodes forming a triangle',
+                    nodes: ['Achille Campanile', 'Fernanda Pivano', 'Bompiani'],
+                    description: 'Should find all edges of the triangle'
+                },
+                {
+                    name: 'Test 3: Direct connection',
+                    nodes: ['Fernanda Pivano', 'Einaudi'],
+                    description: 'Should find direct connection and alternative paths'
+                }
+            ];
+
+            let html = '';
+            testCases.forEach((test, index) => {
+                html += `<div class="test-case">`;
+                html += `<h4>${test.name}</h4>`;
+                html += `<p>${test.description}</p>`;
+                html += `<p>Nodes: ${test.nodes.join(', ')}</p>`;
+
+                try {
+                    const result = vizWindow.testMultiNodeConnection(test.nodes);
+                    if (result && result.nodes && result.nodes.size > 0) {
+                        html += `<div class="result success">`;
+                        html += `✓ PASSED\n`;
+                        html += `Found ${result.nodes.size} nodes and ${result.edges.size} edges\n`;
+
+                        // Show some sample connections
+                        const sampleNodes = Array.from(result.nodes).slice(0, 5);
+                        if (sampleNodes.length > 0) {
+                            html += `Sample nodes: ${sampleNodes.join(', ')}`;
+                            if (result.nodes.size > 5) {
+                                html += ` ... (${result.nodes.size - 5} more)`;
+                            }
+                        }
+                        html += `</div>`;
+                    } else {
+                        html += `<div class="result error">✗ FAILED - No connections found</div>`;
+                    }
+                } catch (e) {
+                    html += `<div class="result error">✗ ERROR: ${e.message}</div>`;
+                }
+
+                html += `</div>`;
+            });
+
+            resultsDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

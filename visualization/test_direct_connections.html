@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Node Direct Connections Test</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .node-inputs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .node-input {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .node-input:focus {
+      outline: none;
+      border-color: #6b8e9f;
+      box-shadow: 0 0 0 2px rgba(107, 142, 159, 0.1);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: #6b8e9f;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5a7a88;
+    }
+
+    .btn-secondary {
+      background: #8b7355;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #736046;
+    }
+
+    .btn-clear {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .btn-clear:hover {
+      background: #c0392b;
+    }
+
+    .info-panel {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #6b8e9f;
+    }
+
+    .info-panel h3 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 16px;
+    }
+
+    .info-content {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .result-section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .result-section h3 {
+      margin-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .direct-connections {
+      border-top: 4px solid #6b8e9f;
+    }
+
+    .full-connections {
+      border-top: 4px solid #8b7355;
+    }
+
+    #svg-container {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    svg {
+      width: 100%;
+      height: 600px;
+    }
+
+    .node {
+      cursor: pointer;
+    }
+
+    .node.selected {
+      stroke: #2ecc71 !important;
+      stroke-width: 3px !important;
+    }
+
+    .node.isolated {
+      stroke: #e74c3c !important;
+      stroke-width: 2px !important;
+      stroke-dasharray: 5,5;
+    }
+
+    .node.dimmed {
+      opacity: 0.1;
+    }
+
+    .link {
+      stroke: #999;
+      stroke-opacity: 0.3;
+      stroke-width: 1px;
+    }
+
+    .link.highlighted {
+      stroke: #2ecc71;
+      stroke-opacity: 1;
+      stroke-width: 2px;
+    }
+
+    .link.dimmed {
+      stroke-opacity: 0.05;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .stat-box {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-top: 5px;
+    }
+
+    .matrix-display {
+      margin-top: 15px;
+      overflow-x: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      font-size: 12px;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px;
+      text-align: center;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+    }
+
+    td.connected {
+      background: #d4edda;
+      color: #155724;
+      font-weight: bold;
+    }
+
+    td.not-connected {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .isolated-list {
+      margin-top: 10px;
+      padding: 10px;
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      border-radius: 4px;
+    }
+
+    .isolated-list h4 {
+      margin: 0 0 10px 0;
+      color: #856404;
+    }
+
+    .isolated-item {
+      display: inline-block;
+      background: white;
+      padding: 4px 8px;
+      margin: 2px;
+      border-radius: 3px;
+      font-size: 13px;
+      border: 1px solid #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Multi-Node Connection Finder - Direct Connections Only</h1>
+    <div class="description">
+      This tool shows <strong>only direct connections</strong> between selected nodes.
+      Unlike the full path-finding version, this displays only the selected nodes and edges that directly connect them,
+      without any intermediate nodes or paths.
+    </div>
+
+    <div class="controls">
+      <h3>Select Nodes (up to 10)</h3>
+      <div class="node-inputs">
+        <input type="text" class="node-input" id="node1" placeholder="Node 1">
+        <input type="text" class="node-input" id="node2" placeholder="Node 2">
+        <input type="text" class="node-input" id="node3" placeholder="Node 3">
+        <input type="text" class="node-input" id="node4" placeholder="Node 4">
+        <input type="text" class="node-input" id="node5" placeholder="Node 5">
+        <input type="text" class="node-input" id="node6" placeholder="Node 6">
+        <input type="text" class="node-input" id="node7" placeholder="Node 7">
+        <input type="text" class="node-input" id="node8" placeholder="Node 8">
+        <input type="text" class="node-input" id="node9" placeholder="Node 9">
+        <input type="text" class="node-input" id="node10" placeholder="Node 10">
+      </div>
+      <div class="buttons">
+        <button class="btn-primary" onclick="findDirectConnections()">Find Direct Connections</button>
+        <button class="btn-secondary" onclick="findFullPaths()">Find Full Paths (Original)</button>
+        <button class="btn-clear" onclick="clearAll()">Clear All</button>
+      </div>
+    </div>
+
+    <div class="comparison">
+      <div class="result-section direct-connections">
+        <h3>Direct Connections Only</h3>
+        <div id="direct-result" class="info-content">
+          <p>Select nodes and click "Find Direct Connections" to see results.</p>
+        </div>
+      </div>
+      <div class="result-section full-connections">
+        <h3>Full Path Connections (Original Algorithm)</h3>
+        <div id="full-result" class="info-content">
+          <p>Click "Find Full Paths" to compare with the original algorithm that shows intermediate paths.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="svg-container"></div>
+  </div>
+
+  <script src="multi_node_direct_connections.js"></script>
+  <script>
+    // Global variables
+    let graphData = null;
+    let directFinder = null;
+    let fullFinder = null;
+    let svg, simulation, nodeElements, linkElements;
+
+    // Load the graph data
+    d3.json('graph.json').then(data => {
+      graphData = data;
+
+      // Initialize both finders
+      directFinder = new MultiNodeConnectionFinder(data.nodes, data.links);
+
+      // For comparison, we'll also create a simplified full path finder
+      // (You would use your original MultiNodeConnectionFinder here)
+      fullFinder = directFinder; // Using same for demo
+
+      // Initialize visualization
+      initVisualization();
+    }).catch(error => {
+      console.error('Error loading graph data:', error);
+      document.getElementById('direct-result').innerHTML =
+        '<p style="color: red;">Error loading graph.json. Please ensure the file exists and run a local server.</p>';
+    });
+
+    function initVisualization() {
+      const container = d3.select('#svg-container');
+      const width = container.node().offsetWidth;
+      const height = 600;
+
+      svg = container.append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+      const g = svg.append('g');
+
+      // Add zoom
+      const zoom = d3.zoom()
+        .scaleExtent([0.1, 4])
+        .on('zoom', (event) => {
+          g.attr('transform', event.transform);
+        });
+
+      svg.call(zoom);
+
+      // Create force simulation
+      simulation = d3.forceSimulation(graphData.nodes)
+        .force('link', d3.forceLink(graphData.links)
+          .id(d => d.id)
+          .distance(100))
+        .force('charge', d3.forceManyBody().strength(-500))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collision', d3.forceCollide().radius(30));
+
+      // Create links
+      linkElements = g.append('g')
+        .selectAll('line')
+        .data(graphData.links)
+        .enter()
+        .append('line')
+        .attr('class', 'link');
+
+      // Create nodes
+      nodeElements = g.append('g')
+        .selectAll('circle')
+        .data(graphData.nodes)
+        .enter()
+        .append('circle')
+        .attr('class', 'node')
+        .attr('r', 8)
+        .attr('fill', d => d.type === 'institution' ? '#8b7355' : '#6b8e9f')
+        .call(d3.drag()
+          .on('start', dragstarted)
+          .on('drag', dragged)
+          .on('end', dragended));
+
+      // Add labels
+      const labels = g.append('g')
+        .selectAll('text')
+        .data(graphData.nodes)
+        .enter()
+        .append('text')
+        .text(d => d.id)
+        .style('font-size', '10px')
+        .style('display', 'none'); // Hidden by default
+
+      // Update positions on tick
+      simulation.on('tick', () => {
+        linkElements
+          .attr('x1', d => d.source.x)
+          .attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x)
+          .attr('y2', d => d.target.y);
+
+        nodeElements
+          .attr('cx', d => d.x)
+          .attr('cy', d => d.y);
+
+        labels
+          .attr('x', d => d.x + 10)
+          .attr('y', d => d.y + 3);
+      });
+    }
+
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
+    function getSelectedNodes() {
+      const nodes = [];
+      for (let i = 1; i <= 10; i++) {
+        const value = document.getElementById(`node${i}`).value.trim();
+        if (value) nodes.push(value);
+      }
+      return nodes;
+    }
+
+    function findDirectConnections() {
+      const selectedNodes = getSelectedNodes();
+      if (selectedNodes.length === 0) {
+        alert('Please enter at least one node');
+        return;
+      }
+
+      const result = directFinder.findMultiNodeConnections(selectedNodes);
+      displayDirectResults(result);
+      updateVisualization(result);
+    }
+
+    function findFullPaths() {
+      // This would use your original algorithm
+      // For demo, we'll just show a message
+      const selectedNodes = getSelectedNodes();
+      if (selectedNodes.length === 0) {
+        alert('Please enter at least one node');
+        return;
+      }
+
+      document.getElementById('full-result').innerHTML = `
+        <div class="info-panel">
+          <p><strong>Original Algorithm:</strong></p>
+          <p>Would show the minimal connecting subgraph (Steiner tree) including:</p>
+          <ul>
+            <li>All ${selectedNodes.length} selected nodes</li>
+            <li>Intermediate nodes on shortest paths between them</li>
+            <li>All edges in the connecting paths</li>
+          </ul>
+          <p style="color: #8b7355;">
+            This creates a fully connected network showing how all selected nodes
+            are related through the graph, even if indirectly.
+          </p>
+        </div>
+      `;
+    }
+
+    function displayDirectResults(result) {
+      const container = document.getElementById('direct-result');
+
+      if (result.error) {
+        container.innerHTML = `<p style="color: red;">${result.error}</p>`;
+        return;
+      }
+
+      const info = result.info;
+      let html = `
+        <div class="info-panel">
+          <p><strong>${info.message}</strong></p>
+        </div>
+      `;
+
+      // Statistics grid
+      html += `
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">Selected Nodes</div>
+            <div class="stat-value">${info.selectedCount}</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Direct Edges</div>
+            <div class="stat-value">${info.directConnectionCount}</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Density</div>
+            <div class="stat-value">${(info.connectionDensity * 100).toFixed(0)}%</div>
+          </div>
+        </div>
+      `;
+
+      // Show isolated nodes if any
+      if (info.isolatedCount > 0) {
+        html += `
+          <div class="isolated-list">
+            <h4>Isolated Nodes (${info.isolatedCount})</h4>
+            ${info.isolatedNodes.map(node =>
+              `<span class="isolated-item">${node}</span>`
+            ).join('')}
+          </div>
+        `;
+      }
+
+      // Connection matrix for small sets
+      if (result.selectedNodes.length <= 5) {
+        html += buildConnectionMatrix(result.selectedNodes, info.connectionMatrix);
+      }
+
+      container.innerHTML = html;
+    }
+
+    function buildConnectionMatrix(nodes, matrix) {
+      if (!matrix || nodes.length === 0) return '';
+
+      let html = '<div class="matrix-display"><h4>Connection Matrix</h4><table>';
+
+      // Header row
+      html += '<tr><th></th>';
+      nodes.forEach(node => {
+        html += `<th>${node.substring(0, 15)}...</th>`;
+      });
+      html += '</tr>';
+
+      // Data rows
+      nodes.forEach(node1 => {
+        html += `<tr><th>${node1.substring(0, 15)}...</th>`;
+        nodes.forEach(node2 => {
+          if (node1 === node2) {
+            html += '<td>-</td>';
+          } else if (matrix[node1] && matrix[node1][node2]) {
+            html += '<td class="connected">✓</td>';
+          } else {
+            html += '<td class="not-connected">✗</td>';
+          }
+        });
+        html += '</tr>';
+      });
+
+      html += '</table></div>';
+      return html;
+    }
+
+    function updateVisualization(result) {
+      if (!nodeElements || !linkElements) return;
+
+      const selectedSet = new Set(result.selectedNodes.map(n => n.toLowerCase()));
+      const isolatedSet = new Set(result.info.isolatedNodes.map(n => n.toLowerCase()));
+
+      // Update nodes
+      nodeElements
+        .classed('selected', d => selectedSet.has(d.id.toLowerCase()))
+        .classed('isolated', d => isolatedSet.has(d.id.toLowerCase()))
+        .classed('dimmed', d => !selectedSet.has(d.id.toLowerCase()));
+
+      // Create edge set for highlighting
+      const edgeSet = new Set();
+      result.links.forEach(([source, target]) => {
+        edgeSet.add(`${source.toLowerCase()}-${target.toLowerCase()}`);
+        edgeSet.add(`${target.toLowerCase()}-${source.toLowerCase()}`);
+      });
+
+      // Update links
+      linkElements
+        .classed('highlighted', d => {
+          const sourceId = (typeof d.source === 'object') ? d.source.id.toLowerCase() : d.source.toLowerCase();
+          const targetId = (typeof d.target === 'object') ? d.target.id.toLowerCase() : d.target.toLowerCase();
+          return edgeSet.has(`${sourceId}-${targetId}`);
+        })
+        .classed('dimmed', d => {
+          const sourceId = (typeof d.source === 'object') ? d.source.id.toLowerCase() : d.source.toLowerCase();
+          const targetId = (typeof d.target === 'object') ? d.target.id.toLowerCase() : d.target.toLowerCase();
+          return !edgeSet.has(`${sourceId}-${targetId}`);
+        });
+    }
+
+    function clearAll() {
+      // Clear inputs
+      for (let i = 1; i <= 10; i++) {
+        document.getElementById(`node${i}`).value = '';
+      }
+
+      // Clear results
+      document.getElementById('direct-result').innerHTML =
+        '<p>Select nodes and click "Find Direct Connections" to see results.</p>';
+      document.getElementById('full-result').innerHTML =
+        '<p>Click "Find Full Paths" to compare with the original algorithm.</p>';
+
+      // Reset visualization
+      if (nodeElements) {
+        nodeElements
+          .classed('selected', false)
+          .classed('isolated', false)
+          .classed('dimmed', false);
+      }
+
+      if (linkElements) {
+        linkElements
+          .classed('highlighted', false)
+          .classed('dimmed', false);
+      }
+    }
+
+    // Add some example nodes for testing
+    function loadExampleNodes() {
+      // You can modify these based on your actual data
+      const examples = [
+        'Elena Ferrante', 'Italo Calvino', 'Umberto Eco',
+        'Primo Levi', 'Natalia Ginzburg', 'Antonio Tabucchi',
+        'Pier Paolo Pasolini', 'Alberto Moravia', 'Elsa Morante', 'Dacia Maraini'
+      ];
+
+      examples.forEach((name, index) => {
+        if (index < 10) {
+          const input = document.getElementById(`node${index + 1}`);
+          if (input) input.value = name;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

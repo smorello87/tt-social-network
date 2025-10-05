@@ -1,0 +1,167 @@
+<!-- Sidebar HTML Structure -->
+<div id="sidebar">
+    <!-- Header Section -->
+    <div class="sidebar-header">
+        <h2>Connection Finder</h2>
+        <p class="tool-description">
+            Enter up to 10 nodes to discover all connections among them.
+            Leave boxes empty to use fewer nodes.
+        </p>
+    </div>
+
+    <!-- Node Input Section -->
+    <div class="node-inputs-container">
+        <div class="node-inputs-scroll">
+            <!-- Node 1 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">1</span>
+                    <input type="text"
+                           id="node-1"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-1"></div>
+                </label>
+            </div>
+
+            <!-- Node 2 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">2</span>
+                    <input type="text"
+                           id="node-2"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-2"></div>
+                </label>
+            </div>
+
+            <!-- Node 3 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">3</span>
+                    <input type="text"
+                           id="node-3"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-3"></div>
+                </label>
+            </div>
+
+            <!-- Node 4 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">4</span>
+                    <input type="text"
+                           id="node-4"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-4"></div>
+                </label>
+            </div>
+
+            <!-- Node 5 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">5</span>
+                    <input type="text"
+                           id="node-5"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-5"></div>
+                </label>
+            </div>
+
+            <!-- Node 6 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">6</span>
+                    <input type="text"
+                           id="node-6"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-6"></div>
+                </label>
+            </div>
+
+            <!-- Node 7 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">7</span>
+                    <input type="text"
+                           id="node-7"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-7"></div>
+                </label>
+            </div>
+
+            <!-- Node 8 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">8</span>
+                    <input type="text"
+                           id="node-8"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-8"></div>
+                </label>
+            </div>
+
+            <!-- Node 9 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">9</span>
+                    <input type="text"
+                           id="node-9"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-9"></div>
+                </label>
+            </div>
+
+            <!-- Node 10 -->
+            <div class="node-input-group">
+                <label class="node-label">
+                    <span class="node-number">10</span>
+                    <input type="text"
+                           id="node-10"
+                           class="node-input"
+                           placeholder="Type to search..."
+                           autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocomplete-10"></div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Optional: Visual indicator showing how many nodes are selected -->
+        <div class="node-counter">
+            <span id="selected-count">0</span> of 10 nodes selected
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="sidebar-actions">
+        <button id="find-connections-btn" class="primary-btn">
+            Find Connections
+        </button>
+        <button id="clear-all-btn" class="secondary-btn">
+            Clear All
+        </button>
+    </div>
+
+    <!-- Results Summary (initially hidden) -->
+    <div id="results-summary" class="results-summary" style="display: none;">
+        <h3>Results</h3>
+        <div id="results-content"></div>
+    </div>
+</div>

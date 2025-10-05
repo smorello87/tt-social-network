@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multi-Node Network Explorer - Transnational Italian-American Literary Network</title>
+  <!-- Libraries -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/canvg@3.0.7/lib/umd.js"></script>
+  <style>
+    /* Global resets, fonts, & base */
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
+      overflow: hidden;
+      color: #3a3835;
+    }
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    /* ------------------------ Navigation Bar ------------------------ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #fff;
+      z-index: 1500;
+      border-bottom: 2px solid #8b7355;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    #navbar .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      height: 60px;
+    }
+    #navbar .brand {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: 'Crimson Text', Georgia, serif;
+      letter-spacing: 0.5px;
+      color: #f5f1e8;
+    }
+
+    /* --------------------------- Sidebar (Left Menu) --------------------------- */
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 60px;
+      height: calc(100vh - 60px);
+      width: 300px;
+      background: #fefdfb;
+      color: #3a3835;
+      border-right: 1px solid #d4c5b9;
+      padding: 20px 16px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      font-size: 13px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+      overflow-y: auto;
+    }
+    #sidebar.hidden {
+      transform: translateX(-100%);
+    }
+    .toolbar-section {
+      margin-bottom: 20px;
+    }
+    #sidebar h3,
+    #sidebar h4 {
+      margin: 0 0 12px 0;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      font-family: 'Crimson Text', Georgia, serif;
+      font-weight: 600;
+      font-size: 17px;
+    }
+    #sidebar p {
+      font-size: 13px;
+      color: #5a5653;
+      line-height: 1.6;
+      margin: 8px 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Info icon */
+    .info-icon {
+      display: inline-block;
+      margin-left: 5px;
+      background: #8b7355;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      cursor: help;
+      position: relative;
+      pointer-events: auto;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+    .info-icon::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: pre-line;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1200;
+      bottom: 100%;
+      margin-bottom: 5px;
+      max-width: 250px;
+      text-align: center;
+    }
+    .info-icon:hover::after {
+      opacity: 1;
+    }
+
+    /* Multi-Node Input Styles */
+    .node-input-wrapper {
+      position: relative;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInSlide 0.3s ease forwards;
+      opacity: 0;
+    }
+
+    /* Cascade animation delays + descending z-index for proper dropdown layering */
+    .node-input-wrapper:nth-child(1) { animation-delay: 0.05s; z-index: 20; }
+    .node-input-wrapper:nth-child(2) { animation-delay: 0.1s; z-index: 19; }
+    .node-input-wrapper:nth-child(3) { animation-delay: 0.15s; z-index: 18; }
+    .node-input-wrapper:nth-child(4) { animation-delay: 0.2s; z-index: 17; }
+    .node-input-wrapper:nth-child(5) { animation-delay: 0.25s; z-index: 16; }
+    .node-input-wrapper:nth-child(6) { animation-delay: 0.3s; z-index: 15; }
+    .node-input-wrapper:nth-child(7) { animation-delay: 0.35s; z-index: 14; }
+    .node-input-wrapper:nth-child(8) { animation-delay: 0.4s; z-index: 13; }
+    .node-input-wrapper:nth-child(9) { animation-delay: 0.45s; z-index: 12; }
+    .node-input-wrapper:nth-child(10) { animation-delay: 0.5s; z-index: 11; }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .node-number {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b7355, #6d5a44);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .node-input-wrapper.has-value .node-number {
+      background: linear-gradient(135deg, #6b8e9f, #546f7d);
+      transform: scale(1.1);
+    }
+
+    .autocomplete {
+      position: relative;
+      flex-grow: 1;
+    }
+
+    #sidebar input[type="text"] {
+      padding: 8px 10px;
+      border: 1px solid #d4c5b9;
+      border-radius: 2px;
+      width: 100%;
+      font-size: 13px;
+      outline: none;
+      background: #fff;
+      color: #3a3835;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+    }
+    #sidebar input[type="text"]:focus {
+      border-color: #8b7355;
+      box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.1);
+    }
+    #sidebar input[type="text"].has-value {
+      background: #f5f1e8;
+      border-color: #8b7355;
+    }
+
+    /* Sidebar buttons */
+    #sidebar button {
+      padding: 10px 12px;
+      margin: 8px 0;
+      border: 1px solid #8b7355;
+      border-radius: 2px;
+      background: #fff;
+      color: #3a3835;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      letter-spacing: 0.3px;
+    }
+    #sidebar button:hover,
+    #sidebar button:focus {
+      background: #8b7355;
+      color: #fff;
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #sidebar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .node-counter {
+      font-size: 12px;
+      color: #5a5653;
+      margin: 8px 0;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Connection info display */
+    #connection-info {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      background: #f5f1e8;
+      border-left: 3px solid #8b7355;
+      border-radius: 2px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #3a3835;
+    }
+    #connection-info.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --------------------- Toggle Sidebar Button (Right) --------------------- */
+    #toggle-sidebar {
+      position: fixed;
+      top: 70px;
+      right: 10px;
+      z-index: 2000;
+      background: #2c3e50;
+      color: #f5f1e8;
+      border: 1px solid #8b7355;
+      padding: 10px 14px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+    #toggle-sidebar:hover,
+    #toggle-sidebar:focus {
+      background: #8b7355;
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    /* --------------------- Autocomplete Items --------------------- */
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4c5b9;
+      border-top: none;
+      z-index: 999;  /* Increased from 99 to ensure dropdowns appear above everything */
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      color: #3a3835;
+      max-height: 150px;
+      overflow-y: auto;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 0 0 2px 2px;
+    }
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #3a3835;
+      border-bottom: 1px solid #f0ebe3;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.2s ease;
+    }
+    .autocomplete-items div:hover, .autocomplete-active {
+      background-color: #f5f1e8;
+      color: #2c3e50;
+    }
+
+    /* ------------------------- SVG & D3 Elements ------------------------- */
+    .tooltip {
+      position: absolute;
+      padding: 8px 12px;
+      background: rgba(44, 62, 80, 0.95);
+      color: #f5f1e8;
+      border-radius: 2px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+    }
+    .label {
+      font-size: 11px;
+      pointer-events: none;
+      font-family: 'Crimson Text', Georgia, serif;
+      fill: #3a3835;
+      font-weight: 400;
+    }
+    .link {
+      stroke: #c4b5a0;
+      stroke-opacity: 0.3;
+      stroke-width: 1.5;
+    }
+    .highlight-path {
+      stroke: #bf9f5f !important;
+      stroke-width: 3px !important;
+      stroke-opacity: 0.8 !important;
+    }
+    .highlight-node {
+      stroke: #d4af37 !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
+    }
+    .selected-node {
+      stroke: #d4af37 !important;
+      stroke-width: 4px !important;
+      filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
+    }
+    .intermediate-node {
+      stroke: #8b7355 !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 0 4px rgba(139, 115, 85, 0.4));
+    }
+    .isolated-node {
+      stroke: #d9534f !important;
+      stroke-width: 3px !important;
+      stroke-dasharray: 5, 3;
+      filter: drop-shadow(0 0 4px rgba(217, 83, 79, 0.4));
+    }
+
+    /* -------------------- FOOTER -------------------- */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 45px;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #f5f1e8;
+      text-align: center;
+      border-top: 1px solid #8b7355;
+      z-index: 1500;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    footer p {
+      margin: 0;
+      line-height: 45px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+    }
+    footer a {
+      color: #f5f1e8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #d4c5b9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-container">
+      <span class="brand">Multi-Node Network Explorer</span>
+    </div>
+  </nav>
+
+  <!-- Toggle Sidebar Button (Right) -->
+  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+
+  <!-- Sidebar with multi-node inputs -->
+  <div id="sidebar">
+    <!-- About the Tool -->
+    <div class="toolbar-section">
+      <h4>
+        Multi-Node Connection Finder
+        <span class="info-icon" data-tooltip="Select 1-10 nodes to find the connections between them. Empty boxes will be ignored.">?</span>
+      </h4>
+      <p>
+        Select up to 10 nodes to discover ALL connections between them, including intermediate nodes and paths. If A connects to B via C, you'll see A, C, and B highlighted along with the connecting edges.
+      </p>
+    </div>
+
+    <!-- Multi-Node Input Section -->
+    <div class="toolbar-section">
+      <div class="node-counter">
+        <span id="selected-count">0</span> of 10 nodes selected
+      </div>
+
+      <div id="multi-node-inputs">
+        <div class="node-input-wrapper">
+          <span class="node-number">1</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-1" placeholder="First node">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">2</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-2" placeholder="Second node (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">3</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-3" placeholder="Third node (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">4</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-4" placeholder="Node 4 (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">5</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-5" placeholder="Node 5 (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">6</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-6" placeholder="Node 6 (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">7</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-7" placeholder="Node 7 (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">8</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-8" placeholder="Node 8 (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">9</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-9" placeholder="Node 9 (optional)">
+          </div>
+        </div>
+
+        <div class="node-input-wrapper">
+          <span class="node-number">10</span>
+          <div class="autocomplete">
+            <input type="text" id="node-input-10" placeholder="Node 10 (optional)">
+          </div>
+        </div>
+      </div>
+
+      <button id="find-btn" onclick="handleMultiNodeSearch()">Find Connections</button>
+      <button onclick="clearMultiNodeHighlights()">Clear All</button>
+
+      <!-- Info display -->
+      <div id="connection-info"></div>
+    </div>
+
+    <!-- Export Section -->
+    <div class="toolbar-section">
+      <button onclick="exportPNG()">Export as PNG</button>
+    </div>
+  </div>
+
+  <!-- SVG Canvas -->
+  <svg id="canvas"></svg>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="https://stefanomorello.com" target="_blank">© 2025 Stefano Morello</a>
+    </p>
+  </footer>
+
+  <script>
+    // Global variables and data arrays
+    let svg, width, height, simulation;
+    let nodeGroups, currentPath = [];
+    let allNodes = [], allLinks = [];
+    let labelsVisible = true;
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    const tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+    // Setup SVG canvas and zoom behavior
+    svg = d3.select("#canvas");
+    width = window.innerWidth;
+    height = window.innerHeight;
+    svg.attr("width", width).attr("height", height);
+    const zoom = d3.zoom().scaleExtent([0.1, 8]).on("zoom", e => container.attr("transform", e.transform));
+    svg.call(zoom);
+    const container = svg.append("g");
+
+    // ========== Multi-Node Connection Finder Class (Full Steiner Tree) ==========
+    class MultiNodeConnectionFinder {
+      constructor(nodes, links) {
+        this.nodes = nodes;
+        this.links = links;
+        this.adjacencyList = this.buildAdjacencyList();
+        this.nodeMap = new Map();
+        this.nodes.forEach(node => {
+          this.nodeMap.set(node.id.toLowerCase(), node);
+        });
+      }
+
+      buildAdjacencyList() {
+        const adj = new Map();
+        this.nodes.forEach(node => {
+          adj.set(node.id.toLowerCase(), new Set());
+        });
+        this.links.forEach(link => {
+          const source = (typeof link.source === 'object')
+            ? link.source.id.toLowerCase()
+            : String(link.source).toLowerCase();
+          const target = (typeof link.target === 'object')
+            ? link.target.id.toLowerCase()
+            : String(link.target).toLowerCase();
+          if (adj.has(source) && adj.has(target)) {
+            adj.get(source).add(target);
+            adj.get(target).add(source);
+          }
+        });
+        return adj;
+      }
+
+      findMultiNodeConnections(selectedNodeIds) {
+        const validNodeIds = selectedNodeIds
+          .filter(id => id && id.trim())
+          .map(id => id.trim().toLowerCase());
+
+        if (validNodeIds.length === 0) {
+          return { nodes: [], links: [], error: 'No valid nodes selected' };
+        }
+        if (validNodeIds.length > 10) {
+          return { nodes: [], links: [], error: 'Maximum 10 nodes allowed' };
+        }
+
+        const missingNodes = validNodeIds.filter(id => !this.nodeMap.has(id));
+        if (missingNodes.length > 0) {
+          return { nodes: [], links: [], error: `Nodes not found: ${missingNodes.join(', ')}` };
+        }
+
+        if (validNodeIds.length === 1) {
+          return this.findSingleNodeNeighborhood(validNodeIds[0]);
+        } else if (validNodeIds.length === 2) {
+          return this.findTwoNodePaths(validNodeIds[0], validNodeIds[1]);
+        } else {
+          return this.findSteinerTree(validNodeIds);
+        }
+      }
+
+      findSingleNodeNeighborhood(nodeId) {
+        const neighbors = Array.from(this.adjacencyList.get(nodeId));
+        const allNodes = [nodeId, ...neighbors];
+        const links = neighbors.map(n => [nodeId, n]);
+
+        return {
+          nodes: allNodes,
+          links: links,
+          info: {
+            type: 'single_node',
+            selectedCount: 1,
+            totalNodes: allNodes.length,
+            totalEdges: links.length,
+            message: `Showing ${allNodes.length} nodes (1 selected + ${neighbors.length} neighbors)`
+          },
+          selectedNodes: [nodeId]
+        };
+      }
+
+      findTwoNodePaths(startId, endId) {
+        const dist = this.bfsShortestPath(startId, endId);
+        if (dist === Infinity) {
+          return {
+            nodes: [startId, endId],
+            links: [],
+            info: { type: 'no_connection', message: 'No path exists between these nodes' },
+            selectedNodes: [startId, endId]
+          };
+        }
+
+        const allPaths = this.findAllPathsBFS(startId, endId, dist + 1);
+        const pathNodes = new Set();
+        const pathLinks = [];
+
+        allPaths.forEach(path => {
+          path.forEach(node => pathNodes.add(node));
+          for (let i = 0; i < path.length - 1; i++) {
+            const key = [path[i], path[i + 1]].sort().join('--');
+            if (!pathLinks.some(l => [l[0], l[1]].sort().join('--') === key)) {
+              pathLinks.push([path[i], path[i + 1]]);
+            }
+          }
+        });
+
+        return {
+          nodes: Array.from(pathNodes),
+          links: pathLinks,
+          info: {
+            type: 'two_nodes',
+            selectedCount: 2,
+            totalNodes: pathNodes.size,
+            totalEdges: pathLinks.length,
+            pathCount: allPaths.length,
+            distance: dist,
+            message: `Found ${allPaths.length} path(s) of length ${dist} connecting 2 nodes through ${pathNodes.size} total nodes`
+          },
+          selectedNodes: [startId, endId]
+        };
+      }
+
+      findSteinerTree(terminalNodeIds) {
+        const distances = this.computePairwiseDistances(terminalNodeIds);
+
+        for (let i = 0; i < terminalNodeIds.length; i++) {
+          for (let j = i + 1; j < terminalNodeIds.length; j++) {
+            if (distances[i][j] === Infinity) {
+              return {
+                nodes: terminalNodeIds,
+                links: [],
+                info: { type: 'disconnected', message: `No path between ${terminalNodeIds[i]} and ${terminalNodeIds[j]}` },
+                selectedNodes: terminalNodeIds
+              };
+            }
+          }
+        }
+
+        const mst = this.primMST(terminalNodeIds, distances);
+        const steinerNodes = new Set(terminalNodeIds);
+        const steinerLinks = [];
+        const addedEdges = new Set();
+        let totalPaths = 0;
+
+        // Helper to add edge without duplicates
+        const addEdge = (source, target) => {
+          const key = [source, target].sort().join('--');
+          if (!addedEdges.has(key)) {
+            addedEdges.add(key);
+            steinerLinks.push([source, target]);
+          }
+        };
+
+        // STEP 1: Find ALL paths for each MST edge (not just one!)
+        mst.forEach(edge => {
+          const dist = this.bfsShortestPath(edge.from, edge.to);
+          // Find all paths up to dist+2 (first and second degree)
+          const allPaths = this.findAllPathsBFS(edge.from, edge.to, dist + 2);
+
+          console.log(`MST edge ${edge.from} -> ${edge.to}: found ${allPaths.length} paths`);
+          totalPaths += allPaths.length;
+
+          allPaths.forEach(path => {
+            path.forEach(node => steinerNodes.add(node));
+            for (let i = 0; i < path.length - 1; i++) {
+              addEdge(path[i], path[i + 1]);
+            }
+          });
+        });
+
+        // STEP 2: Add ALL direct edges between terminal nodes
+        const terminalSet = new Set(terminalNodeIds);
+        this.links.forEach(link => {
+          const source = (typeof link.source === 'object')
+            ? link.source.id.toLowerCase()
+            : String(link.source).toLowerCase();
+          const target = (typeof link.target === 'object')
+            ? link.target.id.toLowerCase()
+            : String(link.target).toLowerCase();
+
+          if (terminalSet.has(source) && terminalSet.has(target)) {
+            addEdge(source, target);
+            console.log(`Direct edge between terminals: ${source} -> ${target}`);
+          }
+        });
+
+        // STEP 3: Find common neighbors (triangular connections)
+        for (let i = 0; i < terminalNodeIds.length; i++) {
+          for (let j = i + 1; j < terminalNodeIds.length; j++) {
+            const node1 = terminalNodeIds[i];
+            const node2 = terminalNodeIds[j];
+
+            const neighbors1 = this.adjacencyList.get(node1);
+            const neighbors2 = this.adjacencyList.get(node2);
+
+            // Find shared neighbors
+            const commonNeighbors = [...neighbors1].filter(n => neighbors2.has(n));
+
+            commonNeighbors.forEach(common => {
+              steinerNodes.add(common);
+              addEdge(node1, common);
+              addEdge(common, node2);
+              console.log(`Common neighbor: ${node1} -> ${common} -> ${node2}`);
+            });
+          }
+        }
+
+        return {
+          nodes: Array.from(steinerNodes),
+          links: steinerLinks,
+          info: {
+            type: 'steiner_tree',
+            selectedCount: terminalNodeIds.length,
+            totalNodes: steinerNodes.size,
+            totalEdges: steinerLinks.length,
+            totalPaths: totalPaths,
+            message: `Connected ${terminalNodeIds.length} nodes through ${steinerNodes.size} total nodes with ${steinerLinks.length} edges (${totalPaths} paths found)`
+          },
+          selectedNodes: terminalNodeIds
+        };
+      }
+
+      bfsShortestPath(start, end) {
+        const queue = [[start, 0]];
+        const visited = new Set([start]);
+        while (queue.length > 0) {
+          const [current, dist] = queue.shift();
+          if (current === end) return dist;
+          for (const neighbor of this.adjacencyList.get(current)) {
+            if (!visited.has(neighbor)) {
+              visited.add(neighbor);
+              queue.push([neighbor, dist + 1]);
+            }
+          }
+        }
+        return Infinity;
+      }
+
+      bfsPath(start, end) {
+        const queue = [[start, [start]]];
+        const visited = new Set([start]);
+        while (queue.length > 0) {
+          const [current, path] = queue.shift();
+          if (current === end) return path;
+          for (const neighbor of this.adjacencyList.get(current)) {
+            if (!visited.has(neighbor)) {
+              visited.add(neighbor);
+              queue.push([neighbor, [...path, neighbor]]);
+            }
+          }
+        }
+        return [];
+      }
+
+      findAllPathsBFS(start, end, maxLength) {
+        const allPaths = [];
+        const queue = [[start, [start], 0]];
+        while (queue.length > 0) {
+          const [current, path, dist] = queue.shift();
+          if (current === end) {
+            allPaths.push(path);
+            continue;
+          }
+          if (dist >= maxLength) continue;
+          for (const neighbor of this.adjacencyList.get(current)) {
+            if (!path.includes(neighbor)) {
+              queue.push([neighbor, [...path, neighbor], dist + 1]);
+            }
+          }
+        }
+        return allPaths;
+      }
+
+      computePairwiseDistances(nodeIds) {
+        const n = nodeIds.length;
+        const distances = Array(n).fill(null).map(() => Array(n).fill(Infinity));
+        for (let i = 0; i < n; i++) {
+          distances[i][i] = 0;
+          for (let j = i + 1; j < n; j++) {
+            const dist = this.bfsShortestPath(nodeIds[i], nodeIds[j]);
+            distances[i][j] = distances[j][i] = dist;
+          }
+        }
+        return distances;
+      }
+
+      primMST(nodes, distances) {
+        const n = nodes.length;
+        const mst = [];
+        const inMST = new Set([0]);
+        while (inMST.size < n) {
+          let minDist = Infinity, minFrom = -1, minTo = -1;
+          for (const from of inMST) {
+            for (let to = 0; to < n; to++) {
+              if (!inMST.has(to) && distances[from][to] < minDist) {
+                minDist = distances[from][to];
+                minFrom = from;
+                minTo = to;
+              }
+            }
+          }
+          if (minTo !== -1) {
+            inMST.add(minTo);
+            mst.push({ from: nodes[minFrom], to: nodes[minTo], distance: minDist });
+          } else break;
+        }
+        return mst;
+      }
+    }
+
+    // ========== D3 Visualization Integration ==========
+    function handleMultiNodeSearch() {
+      console.log('=== Multi-Node Search Started ===');
+
+      const selectedNodes = [];
+      for (let i = 1; i <= 10; i++) {
+        const input = document.getElementById(`node-input-${i}`);
+        if (input && input.value.trim()) {
+          selectedNodes.push(input.value.trim());
+        }
+      }
+
+      console.log('Selected nodes:', selectedNodes);
+
+      if (selectedNodes.length === 0) {
+        alert('Please enter at least one node');
+        return;
+      }
+
+      if (!window.multiNodeFinder) {
+        window.multiNodeFinder = new MultiNodeConnectionFinder(allNodes, allLinks);
+        console.log('MultiNodeFinder initialized');
+      }
+
+      const result = window.multiNodeFinder.findMultiNodeConnections(selectedNodes);
+
+      if (result.error) {
+        alert(result.error);
+        return;
+      }
+
+      console.log('Connection result:', result);
+
+      const highlightNodeSet = new Set(result.nodes.map(n => n.toLowerCase()));
+      const selectedSet = new Set(result.selectedNodes.map(n => n.toLowerCase()));
+      const isolatedSet = new Set((result.info.isolatedNodes || []).map(n => n.toLowerCase()));
+
+      // Build edge set with SORTED keys for consistent bidirectional matching
+      const edgeSet = new Set();
+      console.log('Building edge set from', result.links.length, 'links');
+
+      result.links.forEach((link, index) => {
+        const source = link[0].toLowerCase();
+        const target = link[1].toLowerCase();
+        const key = [source, target].sort().join('--');
+        edgeSet.add(key);
+        console.log(`  Link ${index}: [${source}, ${target}] -> key: ${key}`);
+      });
+
+      console.log('Edge set contains', edgeSet.size, 'unique edges:', Array.from(edgeSet));
+
+      nodeGroups.style("opacity", d =>
+        highlightNodeSet.has(d.id.toLowerCase()) ? 1 : 0.1
+      );
+
+      nodeGroups.select("circle")
+        .classed("highlight-node", false)
+        .classed("selected-node", false)
+        .classed("intermediate-node", false)
+        .classed("isolated-node", false)
+        .classed("isolated-node", d => isolatedSet.has(d.id.toLowerCase()))
+        .classed("selected-node", d =>
+          selectedSet.has(d.id.toLowerCase()) && !isolatedSet.has(d.id.toLowerCase())
+        );
+
+      // FIXED: Edge highlighting with sorted keys
+      console.log('=== Starting Edge Highlighting ===');
+      let highlightedCount = 0;
+      let totalEdgesChecked = 0;
+
+      d3.selectAll("line").each(function(l, i) {
+        totalEdgesChecked++;
+
+        let sourceId, targetId;
+        if (typeof l.source === 'object') {
+          sourceId = l.source.id;
+        } else {
+          sourceId = String(l.source);
+        }
+        if (typeof l.target === 'object') {
+          targetId = l.target.id;
+        } else {
+          targetId = String(l.target);
+        }
+
+        const source = sourceId.toLowerCase();
+        const target = targetId.toLowerCase();
+        const edgeKey = [source, target].sort().join('--');
+        const isHighlighted = edgeSet.has(edgeKey);
+
+        if (i < 5 || isHighlighted) {
+          console.log(`  Edge ${i}: ${source} -> ${target}, Key: ${edgeKey}, Highlighted: ${isHighlighted}`);
+        }
+
+        if (isHighlighted) {
+          highlightedCount++;
+          d3.select(this)
+            .classed("highlight-path", true)
+            .style("opacity", 1)
+            .style("stroke-width", "3px");
+        } else {
+          d3.select(this)
+            .classed("highlight-path", false)
+            .style("opacity", 0.1);
+        }
+      });
+
+      console.log(`Highlighted ${highlightedCount} of ${totalEdgesChecked} total edges`);
+      console.log('=== Edge Highlighting Complete ===');
+
+      displayConnectionInfo(result.info, selectedNodes);
+
+      const nodesToCenter = allNodes.filter(n =>
+        highlightNodeSet.has(n.id.toLowerCase())
+      );
+      if (nodesToCenter.length > 0) {
+        centerNodes(nodesToCenter);
+      }
+    }
+
+    function displayConnectionInfo(info, selectedNodes) {
+      let message = info.message || 'Connection analysis complete';
+
+      const infoDiv = document.getElementById('connection-info');
+      if (infoDiv) {
+        infoDiv.textContent = message;
+        infoDiv.classList.add('show');
+      }
+    }
+
+    function clearMultiNodeHighlights() {
+      console.log('=== Clearing All Highlights ===');
+
+      nodeGroups.style("opacity", 1);
+      nodeGroups.select("circle")
+        .classed("highlight-node", false)
+        .classed("selected-node", false)
+        .classed("intermediate-node", false)
+        .classed("isolated-node", false)
+        .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+        .style("stroke-width", 1);
+
+      d3.selectAll("line")
+        .classed("highlight-path", false)
+        .style("opacity", 0.3)
+        .style("stroke-width", "1.5px");
+
+      const infoDiv = document.getElementById('connection-info');
+      if (infoDiv) {
+        infoDiv.classList.remove('show');
+      }
+
+      for (let i = 1; i <= 10; i++) {
+        const input = document.getElementById(`node-input-${i}`);
+        if (input) {
+          input.value = '';
+          input.classList.remove('has-value');
+          input.closest('.node-input-wrapper').classList.remove('has-value');
+        }
+      }
+
+      updateNodeCounter();
+      console.log('Highlights cleared');
+    }
+
+    // Load JSON data and initialize simulation
+    d3.json("graph.json").then(data => {
+      allNodes = data.nodes;
+      allLinks = data.links.map(l => ({ source: l.source, target: l.target }));
+
+      simulation = d3.forceSimulation(allNodes)
+                     .force("link", d3.forceLink(allLinks).id(d => d.id).distance(100))
+                     .force("charge", d3.forceManyBody().strength(-800))
+                     .force("center", d3.forceCenter(width / 2, height / 2));
+
+      const links = container.append("g")
+                             .selectAll("line")
+                             .data(allLinks)
+                             .join("line")
+                             .classed("link", true);
+
+      nodeGroups = container.append("g")
+                            .selectAll("g.node")
+                            .data(allNodes)
+                            .join("g")
+                            .classed("node", true)
+                            .call(d3.drag()
+                              .on("start", (e,d)=> { if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+                              .on("drag", (e,d)=> { d.fx=e.x; d.fy=e.y; })
+                              .on("end", (e,d)=> { if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null; }))
+                            .on("mouseover", (e,d)=> {
+                                const degree = allLinks.reduce((acc,l)=>(l.source===d || l.target===d) ? acc+1 : acc, 0);
+                                tooltip.html(`${d.id}<br>Connections: ${degree}`)
+                                       .style("left", (e.pageX+10)+"px")
+                                       .style("top", (e.pageY-10)+"px")
+                                       .style("display", "block");
+                            })
+                            .on("mouseout", ()=> { tooltip.style("display", "none"); });
+
+      nodeGroups.append("circle")
+                .attr("r", 8)
+                .style("fill", d => d.type==='institution' ? "#8b7355" : "#6b8e9f")
+                .style("stroke", d => d.type==='institution' ? "#6d5a44" : "#546f7d")
+                .style("stroke-width", 1);
+
+      nodeGroups.append("text")
+                .text(d => d.id)
+                .attr("dx", 10)
+                .attr("dy", 5)
+                .attr("class", "label");
+
+      simulation.on("tick", () => {
+        nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
+        links.attr("x1", d => d.source.x)
+             .attr("y1", d => d.source.y)
+             .attr("x2", d => d.target.x)
+             .attr("y2", d => d.target.y);
+      });
+
+      // Initialize autocomplete for node inputs
+      const names = allNodes.map(n => n.id);
+      for (let i = 1; i <= 10; i++) {
+        const input = document.getElementById(`node-input-${i}`);
+        if (input) {
+          autocomplete(input, names);
+          input.addEventListener('input', function() {
+            this.classList.toggle('has-value', this.value.trim() !== '');
+            this.closest('.node-input-wrapper').classList.toggle('has-value', this.value.trim() !== '');
+            updateNodeCounter();
+          });
+        }
+      }
+    });
+
+    function updateNodeCounter() {
+      let count = 0;
+      for (let i = 1; i <= 10; i++) {
+        const input = document.getElementById(`node-input-${i}`);
+        if (input && input.value.trim()) count++;
+      }
+      document.getElementById('selected-count').textContent = count;
+    }
+
+    function centerNodes(nodesToCenter) {
+      const xExtent = d3.extent(nodesToCenter, d => d.x);
+      const yExtent = d3.extent(nodesToCenter, d => d.y);
+      const centerX = (xExtent[0] + xExtent[1]) / 2;
+      const centerY = (yExtent[0] + yExtent[1]) / 2;
+      let scale = 1;
+      if (xExtent[1] - xExtent[0] > 0 && yExtent[1] - yExtent[0] > 0) {
+        scale = Math.min(8, 0.9 / Math.max((xExtent[1]-xExtent[0]) / width, (yExtent[1]-yExtent[0]) / height));
+      }
+      if (nodesToCenter.length === 1) {
+        scale = Math.min(scale, 2);
+      }
+      svg.transition()
+         .duration(1000)
+         .call(zoom.transform, d3.zoomIdentity
+            .translate(-centerX * scale + width / 2, -centerY * scale + height / 2)
+            .scale(scale));
+    }
+
+    async function exportPNG() {
+      const clonedSvg = svg.node().cloneNode(true);
+      const svgNS = "http://www.w3.org/2000/svg";
+      const styleEl = document.createElementNS(svgNS, "style");
+      styleEl.innerHTML = `
+        .link { stroke: #c4b5a0; stroke-opacity: 0.3; stroke-width: 1.5; }
+        .highlight-path { stroke: #bf9f5f; stroke-width: 3px; stroke-opacity: 0.8; }
+        .selected-node { stroke: #d4af37; stroke-width: 4px; }
+        .intermediate-node { stroke: #8b7355; stroke-width: 3px; }
+      `;
+      clonedSvg.insertBefore(styleEl, clonedSvg.firstChild);
+      const bbox = svg.node().getBBox();
+      const rect = document.createElementNS(svgNS, "rect");
+      rect.setAttribute("x", bbox.x);
+      rect.setAttribute("y", bbox.y);
+      rect.setAttribute("width", bbox.width);
+      rect.setAttribute("height", bbox.height);
+      rect.setAttribute("fill", "#ffffff");
+      clonedSvg.insertBefore(rect, clonedSvg.firstChild);
+      const svgString = new XMLSerializer().serializeToString(clonedSvg);
+      const canvasEl = document.createElement('canvas');
+      canvasEl.width = width;
+      canvasEl.height = height;
+      const ctx = canvasEl.getContext('2d');
+      await canvg.Canvg.fromString(ctx, svgString).render();
+      const a = document.createElement('a');
+      a.download = 'multi-node-network.png';
+      a.href = canvasEl.toDataURL();
+      a.click();
+    }
+
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    }
+
+    window.addEventListener("resize", () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      svg.attr("width", width).attr("height", height);
+    });
+
+    // Simple Autocomplete Function
+    function autocomplete(inp, arr) {
+      let currentFocus;
+      inp.addEventListener("input", function(e) {
+        let a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i].toLowerCase().includes(val.toLowerCase())) {
+            b = document.createElement("DIV");
+            let matchIndex = arr[i].toLowerCase().indexOf(val.toLowerCase());
+            b.innerHTML = arr[i].substr(0, matchIndex) + "<strong>" + arr[i].substr(matchIndex, val.length) + "</strong>" + arr[i].substr(matchIndex + val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function(e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+              inp.dispatchEvent(new Event('input'));
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      inp.addEventListener("keydown", function(e) {
+        let x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          currentFocus++;
+          addActive(x);
+        } else if (e.keyCode == 38) {
+          currentFocus--;
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          e.preventDefault();
+          if (currentFocus > -1) {
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+        if (!x) return false;
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+        for (let i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+      }
+      function closeAllLists(elmnt) {
+        const x = document.getElementsByClassName("autocomplete-items");
+        for (let i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
+        }
+      }
+      document.addEventListener("click", function (e) {
+          closeAllLists(e.target);
+      });
+    }
+  </script>
+</body>
+</html>

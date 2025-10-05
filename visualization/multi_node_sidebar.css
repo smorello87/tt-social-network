@@ -1,0 +1,370 @@
+/* Multi-Node Sidebar Styles */
+/* Maintains literary aesthetic with warm ivory tones */
+
+/* Base Sidebar Container */
+#sidebar {
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, #fefdfb 0%, #faf8f3 100%);
+    border-right: 1px solid #d4c5b9;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header Section */
+.sidebar-header {
+    padding: 20px 20px 15px;
+    border-bottom: 1px solid #e8dfd6;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-header h2 {
+    font-family: 'Crimson Text', 'Georgia', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #3d342b;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.tool-description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #6b5d4f;
+    margin: 0;
+}
+
+/* Node Inputs Container */
+.node-inputs-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Scrollable Input Area */
+.node-inputs-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+    margin-right: -5px;
+
+    /* Custom Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #d4c5b9 transparent;
+}
+
+.node-inputs-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.node-inputs-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.node-inputs-scroll::-webkit-scrollbar-thumb {
+    background-color: #d4c5b9;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.node-inputs-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #b8a89a;
+}
+
+/* Individual Node Input Groups */
+.node-input-group {
+    margin-bottom: 12px;
+    position: relative;
+    animation: fadeInUp 0.3s ease forwards;
+    opacity: 0;
+}
+
+/* Stagger the animation for a cascade effect */
+.node-input-group:nth-child(1) { animation-delay: 0.05s; }
+.node-input-group:nth-child(2) { animation-delay: 0.1s; }
+.node-input-group:nth-child(3) { animation-delay: 0.15s; }
+.node-input-group:nth-child(4) { animation-delay: 0.2s; }
+.node-input-group:nth-child(5) { animation-delay: 0.25s; }
+.node-input-group:nth-child(6) { animation-delay: 0.3s; }
+.node-input-group:nth-child(7) { animation-delay: 0.35s; }
+.node-input-group:nth-child(8) { animation-delay: 0.4s; }
+.node-input-group:nth-child(9) { animation-delay: 0.45s; }
+.node-input-group:nth-child(10) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* Node Label Container */
+.node-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Node Number Badge */
+.node-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #8b7355 0%, #9d8369 100%);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(139, 115, 85, 0.15);
+    transition: all 0.2s ease;
+}
+
+/* Highlight number when input is focused */
+.node-input:focus ~ .node-number,
+.node-input:not(:placeholder-shown) ~ .node-number {
+    background: linear-gradient(135deg, #6b8e9f 0%, #7d9fb0 100%);
+    transform: scale(1.1);
+}
+
+/* Node Input Field */
+.node-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d4c5b9;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    color: #3d342b;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.node-input:hover {
+    border-color: #b8a89a;
+}
+
+.node-input:focus {
+    border-color: #8b7355;
+    box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+}
+
+.node-input:not(:placeholder-shown) {
+    background: #f9f7f4;
+    font-weight: 500;
+}
+
+.node-input::placeholder {
+    color: #a69b8c;
+    font-size: 13px;
+}
+
+/* Autocomplete Dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 34px; /* Align with input field (24px badge + 10px margin) */
+    right: 0;
+    background: white;
+    border: 1px solid #d4c5b9;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-dropdown.active {
+    display: block;
+}
+
+.autocomplete-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #3d342b;
+    transition: background-color 0.15s ease;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+    background: #f5f1e8;
+}
+
+.autocomplete-item .highlight {
+    font-weight: 600;
+    color: #8b7355;
+}
+
+/* Node Counter */
+.node-counter {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e8dfd6;
+    text-align: center;
+    font-size: 12px;
+    color: #6b5d4f;
+    font-weight: 500;
+}
+
+#selected-count {
+    font-weight: 700;
+    color: #8b7355;
+    font-size: 14px;
+}
+
+/* Action Buttons Container */
+.sidebar-actions {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid #e8dfd6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Button Styles */
+.primary-btn,
+.secondary-btn {
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #8b7355 0%, #9d8369 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(139, 115, 85, 0.2);
+}
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(139, 115, 85, 0.3);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.secondary-btn {
+    background: white;
+    color: #8b7355;
+    border: 1px solid #d4c5b9;
+}
+
+.secondary-btn:hover {
+    background: #f9f7f4;
+    border-color: #8b7355;
+}
+
+/* Results Summary */
+.results-summary {
+    padding: 15px 20px;
+    background: rgba(107, 142, 159, 0.05);
+    border-top: 1px solid #d4c5b9;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.results-summary h3 {
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    color: #3d342b;
+    margin: 0 0 10px 0;
+}
+
+#results-content {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #6b5d4f;
+}
+
+/* Responsive Adjustments */
+@media (max-height: 700px) {
+    .node-inputs-scroll {
+        max-height: 350px;
+    }
+
+    .node-input-group {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-header {
+        padding: 15px 20px 12px;
+    }
+
+    .node-inputs-container {
+        padding: 15px 20px;
+    }
+}
+
+/* Loading State */
+.node-input.loading {
+    background-image: linear-gradient(90deg, #f9f7f4 25%, #ffffff 50%, #f9f7f4 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* Disabled State */
+.primary-btn:disabled,
+.secondary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Visual feedback for filled inputs */
+.node-input-group.has-value .node-number {
+    background: linear-gradient(135deg, #6b8e9f 0%, #7d9fb0 100%);
+}
+
+.node-input-group.has-value .node-input {
+    background: linear-gradient(to right, #fdfcfa 0%, white 100%);
+}
+
+/* Optional: Compact Mode for many nodes */
+.compact-mode .node-input-group {
+    margin-bottom: 8px;
+}
+
+.compact-mode .node-input {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.compact-mode .node-number {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+}

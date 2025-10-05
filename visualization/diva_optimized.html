@@ -1920,50 +1920,292 @@
         }
       }
 
-      // Find RELEVANT connections between two nodes
-      function findAllConnections(startId, endId) {
-        const startNode = nodesByIdLower.get(startId);
-        const endNode = nodesByIdLower.get(endId);
+      /**
+       * ============================================================================
+       * MultiNodeConnectionFinder Class
+       * ============================================================================
+       *
+       * PURPOSE:
+       * Finds ALL connections between multiple selected nodes (1-10), including
+       * intermediate nodes and all connecting paths. This solves the Steiner tree
+       * problem to find the minimal connecting subgraph.
+       *
+       * ALGORITHM BEHAVIOR:
+       *
+       * 1 NODE:
+       *   - Returns the node + all immediate neighbors
+       *   - Shows the node's local neighborhood
+       *
+       * 2 NODES:
+       *   - Finds all shortest paths between the nodes
+       *   - Includes alternative paths (shortest + 1 hop)
+       *   - Includes common neighbors (triangles)
+       *   - Shows ALL intermediate nodes on these paths
+       *
+       * 3+ NODES:
+       *   - Builds Steiner tree using MST-based approximation
+       *   - Steps:
+       *     a) Compute shortest paths between all pairs of selected nodes
+       *     b) Build Minimum Spanning Tree on terminal nodes
+       *     c) Expand MST edges to actual graph paths
+       *     d) Include all intermediate nodes on these paths
+       *   - Result: Minimal subgraph connecting all selected nodes
+       *
+       * EXAMPLE SCENARIOS:
+       *
+       * Example 1: User selects [A, B, C]
+       *   - A connects to B via intermediate X
+       *   - B connects to C via intermediates Y, Z
+       *   - Result: Shows {A, X, B, Y, Z, C} + all edges between them
+       *
+       * Example 2: User selects [A, B, C, D]
+       *   - Finds shortest paths A-B, A-C, A-D, B-C, B-D, C-D
+       *   - Builds MST to minimize total path length
+       *   - Expands to show all intermediate nodes
+       *   - Result: Complete connecting subgraph
+       *
+       * KEY FEATURES:
+       *   - Case-insensitive node matching
+       *   - Handles D3.js mutated link objects (source/target as objects)
+       *   - Returns sorted edge keys for consistent highlighting
+       *   - Efficient BFS-based path finding
+       *   - Prim's algorithm for MST construction
+       *
+       * EDGE KEY FORMAT:
+       *   - All edges stored as: "[sourceId]--[targetId]" (alphabetically sorted)
+       *   - Example: "Alice--Bob" (not "Bob--Alice")
+       *   - This ensures consistent matching with D3's link objects
+       *
+       * ============================================================================
+       */
+      class MultiNodeConnectionFinder {
+        constructor(allNodes, allLinks, adjacencyList) {
+          this.allNodes = allNodes;
+          this.allLinks = allLinks;
+          this.adjacencyList = adjacencyList;
 
-        if (!startNode || !endNode) {
-          return { nodes: new Set(), edges: new Set() };
+          // Build node lookup for case-insensitive matching
+          this.nodesByIdLower = new Map();
+          allNodes.forEach(node => {
+            this.nodesByIdLower.set(node.id.toLowerCase(), node);
+          });
         }
 
-        // If nodes are the same, return just that node
-        if (startNode.id === endNode.id) {
-          return {
-            nodes: new Set([startNode.id]),
-            edges: new Set()
-          };
+        /**
+         * Main entry point: Find connections between multiple nodes
+         * @param {Array<string>} selectedNodeIds - Array of node IDs to connect (1-10 nodes)
+         * @returns {Object} { nodes: Set<string>, edges: Set<string> }
+         */
+        findMultiNodeConnections(selectedNodeIds) {
+          // Normalize to lowercase and validate
+          const normalizedIds = selectedNodeIds.map(id => id.toLowerCase());
+          const validNodes = normalizedIds.filter(id => this.nodesByIdLower.has(id));
+
+          if (validNodes.length === 0) {
+            return { nodes: new Set(), edges: new Set() };
+          }
+
+          // Handle different cases based on number of nodes
+          if (validNodes.length === 1) {
+            return this.findSingleNodeNeighborhood(validNodes[0]);
+          } else if (validNodes.length === 2) {
+            return this.findTwoNodePaths(validNodes[0], validNodes[1]);
+          } else {
+            return this.findSteinerTree(validNodes);
+          }
         }
 
-        const connectedNodes = new Set();
-        const connectedEdges = new Set();
+        /**
+         * Case 1: Single node - show node + immediate neighbors
+         */
+        findSingleNodeNeighborhood(nodeId) {
+          const node = this.nodesByIdLower.get(nodeId);
+          const connectedNodes = new Set([node.id]);
+          const connectedEdges = new Set();
 
-        // Configuration for path finding
-        // These values control what paths are considered "relevant"
-        const maxPathLength = 4; // Maximum path length to consider (prevents exponential explosion)
-        const pathLengthTolerance = 1; // Show paths up to (shortest path + tolerance)
-        // For example: if shortest path is 2, and tolerance is 1, we show paths of length 2 and 3
-        // Set to 0 to show ONLY shortest paths
-        // Set to 2 to show shortest, +1, and +2 longer paths
+          const neighbors = this.adjacencyList.get(node.id) || new Set();
+          neighbors.forEach(neighbor => {
+            connectedNodes.add(neighbor);
+            const edgeKey = [node.id, neighbor].sort().join('--');
+            connectedEdges.add(edgeKey);
+          });
 
-        // Find shortest path length first using BFS
-        function findShortestPathLength(start, end) {
-          const queue = [[start, 0]]; // [node, distance]
+          return { nodes: connectedNodes, edges: connectedEdges };
+        }
+
+        /**
+         * Case 2: Two nodes - find all shortest paths
+         */
+        findTwoNodePaths(startId, endId) {
+          const startNode = this.nodesByIdLower.get(startId);
+          const endNode = this.nodesByIdLower.get(endId);
+
+          if (startNode.id === endNode.id) {
+            return this.findSingleNodeNeighborhood(startId);
+          }
+
+          const connectedNodes = new Set();
+          const connectedEdges = new Set();
+
+          // Find shortest path length
+          const shortestLength = this.bfsShortestPath(startNode.id, endNode.id);
+
+          if (shortestLength === -1) {
+            return { nodes: new Set(), edges: new Set() };
+          }
+
+          // Find all paths at shortest length (and +1 for alternative routes)
+          const maxPathLength = 4;
+          const pathLengthTolerance = 1;
+          const paths = this.findAllPathsBFS(
+            startNode.id,
+            endNode.id,
+            Math.min(maxPathLength, shortestLength + pathLengthTolerance)
+          );
+
+          // Collect nodes and edges from paths
+          paths.forEach(path => {
+            path.forEach(nodeId => connectedNodes.add(nodeId));
+            for (let i = 0; i < path.length - 1; i++) {
+              const edgeKey = [path[i], path[i + 1]].sort().join('--');
+              connectedEdges.add(edgeKey);
+            }
+          });
+
+          // Add triangles (common neighbors)
+          this.addCommonNeighbors(startNode.id, endNode.id, connectedNodes, connectedEdges);
+
+          return { nodes: connectedNodes, edges: connectedEdges };
+        }
+
+        /**
+         * Case 3: Multiple nodes (3+) - find Steiner tree approximation with ALL paths
+         * This finds ALL paths (not just one) connecting the selected nodes
+         */
+        findSteinerTree(terminalNodeIds) {
+          const connectedNodes = new Set();
+          const connectedEdges = new Set();
+
+          // Get actual node IDs (not lowercased)
+          const terminals = terminalNodeIds.map(id => this.nodesByIdLower.get(id).id);
+
+          // Configuration for path finding
+          const maxPathLength = 4; // Maximum path length to consider
+          const pathLengthTolerance = 1; // Include paths up to shortest + tolerance
+
+          // Step 1: Find ALL paths between all pairs of terminal nodes
+          const allPairPaths = new Map(); // key: "source--target", value: array of paths
+          const shortestDistances = new Map(); // key: "source--target", value: shortest distance
+
+          for (let i = 0; i < terminals.length; i++) {
+            for (let j = i + 1; j < terminals.length; j++) {
+              const source = terminals[i];
+              const target = terminals[j];
+              const key = [source, target].sort().join('--');
+
+              // Find shortest distance first
+              const shortestDist = this.bfsShortestPath(source, target);
+
+              if (shortestDist !== -1) {
+                shortestDistances.set(key, shortestDist);
+
+                // Find ALL paths up to shortest + tolerance (but cap at maxPathLength)
+                const maxLength = Math.min(maxPathLength, shortestDist + pathLengthTolerance);
+                const paths = this.findAllPathsBFS(source, target, maxLength);
+
+                if (paths.length > 0) {
+                  allPairPaths.set(key, paths);
+                }
+              }
+            }
+          }
+
+          // Step 2: Build MST using shortest distances
+          const mstEdges = this.primMST(terminals, shortestDistances);
+
+          // Step 3: For each MST edge, add ALL paths (not just one)
+          mstEdges.forEach(([source, target]) => {
+            const key = [source, target].sort().join('--');
+            const paths = allPairPaths.get(key);
+
+            if (paths) {
+              // Add nodes and edges from ALL paths for this MST edge
+              paths.forEach(path => {
+                // Add all nodes in the path
+                path.forEach(nodeId => connectedNodes.add(nodeId));
+
+                // Add all edges in the path
+                for (let i = 0; i < path.length - 1; i++) {
+                  const edgeKey = [path[i], path[i + 1]].sort().join('--');
+                  connectedEdges.add(edgeKey);
+                }
+              });
+            }
+          });
+
+          // Step 4: Also include ALL direct paths between terminal pairs (not just MST edges)
+          // This ensures we show triangular connections and all alternative paths
+          for (let i = 0; i < terminals.length; i++) {
+            for (let j = i + 1; j < terminals.length; j++) {
+              const source = terminals[i];
+              const target = terminals[j];
+              const key = [source, target].sort().join('--');
+
+              // Add direct edge if it exists (even if not in MST)
+              const neighbors = this.adjacencyList.get(source);
+              if (neighbors && neighbors.has(target)) {
+                connectedNodes.add(source);
+                connectedNodes.add(target);
+                const edgeKey = [source, target].sort().join('--');
+                connectedEdges.add(edgeKey);
+              }
+
+              // Also check for short paths between these nodes (triangles)
+              const shortestDist = shortestDistances.get(key);
+              if (shortestDist && shortestDist <= 2) {
+                // For very short distances, include ALL paths
+                const paths = allPairPaths.get(key);
+                if (paths) {
+                  paths.forEach(path => {
+                    path.forEach(nodeId => connectedNodes.add(nodeId));
+                    for (let i = 0; i < path.length - 1; i++) {
+                      const edgeKey = [path[i], path[i + 1]].sort().join('--');
+                      connectedEdges.add(edgeKey);
+                    }
+                  });
+                }
+              }
+            }
+          }
+
+          // Step 5: Add common neighbors (triangular connections) for all terminal pairs
+          for (let i = 0; i < terminals.length; i++) {
+            for (let j = i + 1; j < terminals.length; j++) {
+              const source = terminals[i];
+              const target = terminals[j];
+              this.addCommonNeighbors(source, target, connectedNodes, connectedEdges);
+            }
+          }
+
+          return { nodes: connectedNodes, edges: connectedEdges };
+        }
+
+        /**
+         * BFS to find shortest path length
+         */
+        bfsShortestPath(start, end) {
+          const queue = [[start, 0]];
           const visited = new Set();
 
           while (queue.length > 0) {
-            const [currentNode, distance] = queue.shift();
+            const [node, distance] = queue.shift();
 
-            if (currentNode === end) {
-              return distance;
-            }
+            if (node === end) return distance;
+            if (visited.has(node)) continue;
 
-            if (visited.has(currentNode)) continue;
-            visited.add(currentNode);
+            visited.add(node);
+            const neighbors = this.adjacencyList.get(node);
 
-            const neighbors = adjacencyList.get(currentNode);
             if (neighbors) {
               neighbors.forEach(neighbor => {
                 if (!visited.has(neighbor)) {
@@ -1973,116 +2215,331 @@
             }
           }
 
-          return -1; // No path found
+          return -1;
         }
 
-        // Find all paths up to a certain length
-        function findRelevantPaths(start, end, maxLength, shortestLength) {
-          const relevantPaths = [];
-          const queue = [[start]]; // Queue of paths
-          const maxAllowedLength = Math.min(maxLength, shortestLength + pathLengthTolerance);
+        /**
+         * BFS to find actual path and distance
+         */
+        bfsPath(start, end) {
+          const queue = [[start, [start]]];
+          const visited = new Set();
 
           while (queue.length > 0) {
-            const currentPath = queue.shift();
-            const currentNode = currentPath[currentPath.length - 1];
+            const [node, path] = queue.shift();
 
-            // Skip if path is too long
-            if (currentPath.length > maxAllowedLength) continue;
-
-            // If we reached the end, save this path if it's relevant
-            if (currentNode === end) {
-              // Only include paths that are at most tolerance longer than shortest
-              if (currentPath.length <= shortestLength + pathLengthTolerance) {
-                relevantPaths.push([...currentPath]);
-              }
-              continue;
+            if (node === end) {
+              return { distance: path.length - 1, path: path };
             }
 
-            // Explore neighbors
-            const neighbors = adjacencyList.get(currentNode);
+            if (visited.has(node)) continue;
+            visited.add(node);
+
+            const neighbors = this.adjacencyList.get(node);
             if (neighbors) {
               neighbors.forEach(neighbor => {
-                // Avoid revisiting nodes in the current path (no cycles)
-                if (!currentPath.includes(neighbor)) {
-                  queue.push([...currentPath, neighbor]);
+                if (!visited.has(neighbor)) {
+                  queue.push([neighbor, [...path, neighbor]]);
                 }
               });
             }
           }
 
-          return relevantPaths;
+          return { distance: -1, path: [] };
         }
 
-        // Step 1: Find shortest path length
-        const shortestLength = findShortestPathLength(startNode.id, endNode.id);
+        /**
+         * Find all paths up to maxLength
+         */
+        findAllPathsBFS(start, end, maxLength) {
+          const allPaths = [];
+          const queue = [[start]];
 
-        if (shortestLength === -1) {
-          // No path exists
-          return { nodes: new Set(), edges: new Set() };
+          while (queue.length > 0) {
+            const path = queue.shift();
+            const currentNode = path[path.length - 1];
+
+            if (path.length > maxLength + 1) continue;
+
+            if (currentNode === end) {
+              allPaths.push([...path]);
+              continue;
+            }
+
+            const neighbors = this.adjacencyList.get(currentNode);
+            if (neighbors) {
+              neighbors.forEach(neighbor => {
+                if (!path.includes(neighbor)) {
+                  queue.push([...path, neighbor]);
+                }
+              });
+            }
+          }
+
+          return allPaths;
         }
 
-        // Step 2: Find all relevant paths (shortest and near-shortest)
-        const relevantPaths = findRelevantPaths(
-          startNode.id,
-          endNode.id,
-          maxPathLength,
-          shortestLength
+        /**
+         * Add common neighbors (triangles) between two nodes
+         */
+        addCommonNeighbors(startId, endId, connectedNodes, connectedEdges) {
+          const startNeighbors = this.adjacencyList.get(startId) || new Set();
+          const endNeighbors = this.adjacencyList.get(endId) || new Set();
+
+          startNeighbors.forEach(neighbor => {
+            if (endNeighbors.has(neighbor)) {
+              connectedNodes.add(neighbor);
+              connectedNodes.add(startId);
+              connectedNodes.add(endId);
+
+              connectedEdges.add([startId, neighbor].sort().join('--'));
+              connectedEdges.add([endId, neighbor].sort().join('--'));
+            }
+          });
+        }
+
+        /**
+         * Prim's algorithm for Minimum Spanning Tree
+         */
+        primMST(nodes, distances) {
+          if (nodes.length === 0) return [];
+
+          const mstEdges = [];
+          const inMST = new Set([nodes[0]]);
+
+          while (inMST.size < nodes.length) {
+            let minEdge = null;
+            let minDistance = Infinity;
+
+            // Find minimum edge connecting MST to non-MST nodes
+            inMST.forEach(u => {
+              nodes.forEach(v => {
+                if (!inMST.has(v)) {
+                  const key = [u, v].sort().join('--');
+                  const dist = distances.get(key);
+
+                  if (dist !== undefined && dist < minDistance) {
+                    minDistance = dist;
+                    minEdge = [u, v];
+                  }
+                }
+              });
+            });
+
+            if (minEdge) {
+              mstEdges.push(minEdge);
+              inMST.add(minEdge[1]);
+            } else {
+              break; // Disconnected graph
+            }
+          }
+
+          return mstEdges;
+        }
+      }
+
+      /**
+       * USAGE EXAMPLE FOR MultiNodeConnectionFinder
+       *
+       * To use this class in your code:
+       *
+       * 1. Initialize the finder after data is loaded:
+       *    let multiNodeFinder = new MultiNodeConnectionFinder(data.nodes, data.links, adjacencyList);
+       *
+       * 2. Find connections between multiple nodes:
+       *    const selectedNodes = ["Node A", "Node B", "Node C"];
+       *    const result = multiNodeFinder.findMultiNodeConnections(selectedNodes);
+       *
+       * 3. The result contains:
+       *    - result.nodes: Set of all node IDs (selected + intermediate)
+       *    - result.edges: Set of all edge keys in format "nodeA--nodeB" (sorted)
+       *
+       * 4. Highlight the results using a custom highlighting function or the existing one:
+       *    highlightMultiNodeConnections(result, selectedNodes);
+       *
+       * Example test function (call from browser console after data loads):
+       */
+      function testMultiNodeConnection(nodeIds) {
+        // Validate that data is loaded
+        if (!nodesById || nodesById.size === 0) {
+          console.error('Data not loaded yet. Wait for visualization to load.');
+          return null;
+        }
+
+        // Get link data from the D3 selection
+        const links = linkElements ? linkElements.data() : [];
+
+        // Create finder instance
+        const finder = new MultiNodeConnectionFinder(
+          Array.from(nodesById.values()),
+          links,
+          adjacencyList
         );
 
-        // Step 3: Collect nodes and edges ONLY from the relevant paths
-        relevantPaths.forEach(path => {
-          // Add all nodes in this path
-          path.forEach(nodeId => {
-            connectedNodes.add(nodeId);
-          });
+        // Find connections
+        const result = finder.findMultiNodeConnections(nodeIds);
 
-          // Add all edges in this path
-          for (let i = 0; i < path.length - 1; i++) {
-            const edge = [path[i], path[i + 1]].sort().join('--');
-            connectedEdges.add(edge);
-          }
-        });
+        // Log results
+        console.log(`=== Multi-Node Connection Results ===`);
+        console.log(`Input nodes: ${nodeIds.join(', ')}`);
+        console.log(`Found ${result.nodes.size} connected nodes and ${result.edges.size} edges`);
+        console.log('Connected nodes:', Array.from(result.nodes));
+        console.log('Connected edges:', Array.from(result.edges));
 
-        // Step 4: Find common neighbors (triangles) - these are always relevant
-        const startNeighbors = adjacencyList.get(startNode.id) || new Set();
-        const endNeighbors = adjacencyList.get(endNode.id) || new Set();
-
-        // Find intersection - common neighbors that form triangles
-        startNeighbors.forEach(neighbor => {
-          if (endNeighbors.has(neighbor)) {
-            // This neighbor connects to both start and end - add the triangle
-            connectedNodes.add(neighbor);
-            connectedNodes.add(startNode.id);
-            connectedNodes.add(endNode.id);
-
-            // Add only the edges of the triangle
-            const edge1 = [startNode.id, neighbor].sort().join('--');
-            const edge2 = [endNode.id, neighbor].sort().join('--');
-
-            connectedEdges.add(edge1);
-            connectedEdges.add(edge2);
-          }
-        });
-
-        // Step 5: If there's a direct connection, always include it
-        if (shortestLength === 1) {
-          connectedNodes.add(startNode.id);
-          connectedNodes.add(endNode.id);
-          const directEdge = [startNode.id, endNode.id].sort().join('--');
-          connectedEdges.add(directEdge);
+        // Highlight the results
+        if (result.nodes.size > 0) {
+          highlightMultiNodeConnections(result, nodeIds);
+        } else {
+          console.log('No connections found between the selected nodes');
         }
 
-        // Step 6: IMPORTANT - Only add edges between nodes already in our set
-        // But DON'T add all possible edges - only those that are part of paths or triangles
-        // This prevents showing irrelevant connections from intermediate nodes
+        return result;
+      }
+
+      /**
+       * Highlight multi-node connections in the visualization
+       */
+      function highlightMultiNodeConnections(result, selectedNodeIds) {
+        const { nodes: connectedNodes, edges: connectedEdges } = result;
+
+        // Hide all nodes and links that are NOT in the connection network
+        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
+          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+
+        // Hide links not in the connection network
+        linkElements.style("opacity", function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const edge = [sourceId, targetId].sort().join('--');
+          return connectedEdges.has(edge) ? 1 : 0;
+        })
+        .style("display", function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const edge = [sourceId, targetId].sort().join('--');
+          return connectedEdges.has(edge) ? "block" : "none";
+        });
+
+        // Highlight the connection edges
+        linkElements.each(function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const edge = [sourceId, targetId].sort().join('--');
+
+          if (connectedEdges.has(edge)) {
+            d3.select(this)
+              .classed("highlight-path", true)
+              .style("stroke-width", "3px")
+              .style("stroke", "#bf9f5f")
+              .style("stroke-opacity", 0.8);
+          }
+        });
+
+        // Create a set of selected node IDs (case-insensitive)
+        const selectedSet = new Set(selectedNodeIds.map(id => id.toLowerCase()));
+
+        // Highlight nodes with different colors for selected vs intermediate
+        nodeGroups.select("circle").each(function(d) {
+          if (connectedNodes.has(d.id)) {
+            const isSelected = selectedSet.has(d.id.toLowerCase());
+
+            d3.select(this)
+              .classed("highlight-node", true)
+              .style("stroke", isSelected ? "#d4af37" : "#bf9f5f")
+              .style("stroke-width", isSelected ? "4px" : "2px")
+              .style("fill", function(d) {
+                // Golden border for selected nodes, keep default fill
+                if (isSelected) {
+                  return d.type === 'institution' ? "#a0894f" : "#7ba5b8"; // Slightly brighter
+                }
+                return d.type === 'institution' ? "#8b7355" : "#6b8e9f"; // Default colors
+              });
+          }
+        });
+
+        // Show labels for connected nodes
+        labelElements.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
+          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+
+        // Center on the connected subgraph
+        const connectedNodeObjects = Array.from(connectedNodes).map(id => nodesById.get(id));
+        centerNodes(connectedNodeObjects);
+      }
+
+      // Find RELEVANT connections between two nodes (backwards compatibility)
+      function findAllConnections(startId, endId) {
+        // Use the improved MultiNodeConnectionFinder
+        const finder = new MultiNodeConnectionFinder(
+          Array.from(nodesById.values()),
+          linkElements ? linkElements.data() : [],
+          adjacencyList
+        );
+
+        // Find connections using the multi-node finder (handles 2-node case properly)
+        const result = finder.findTwoNodePaths(startId.toLowerCase(), endId.toLowerCase());
+
+        // Get the actual node objects for more info
+        const startNode = nodesByIdLower.get(startId.toLowerCase());
+        const endNode = nodesByIdLower.get(endId.toLowerCase());
+
+        if (!startNode || !endNode) {
+          return {
+            nodes: new Set(),
+            edges: new Set(),
+            startNode: null,
+            endNode: null,
+            shortestPathLength: -1,
+            pathCount: 0,
+            pathsByLength: new Map()
+          };
+        }
+
+        // Count paths by length for better reporting
+        const pathsByLength = new Map();
+        const maxPathLength = 4;
+        const tolerance = 1;
+
+        // Find shortest path first
+        const shortestLength = finder.bfsShortestPath(startNode.id, endNode.id);
+
+        if (shortestLength === -1) {
+          return {
+            nodes: result.nodes || new Set(),
+            edges: result.edges || new Set(),
+            startNode: startNode.id,
+            endNode: endNode.id,
+            shortestPathLength: -1,
+            pathCount: 0,
+            pathsByLength: new Map()
+          };
+        }
+
+        // Count ALL paths at each length up to shortest + tolerance
+        let totalPaths = 0;
+        for (let length = shortestLength; length <= Math.min(maxPathLength, shortestLength + tolerance); length++) {
+          const pathsAtLength = finder.findAllPathsBFS(startNode.id, endNode.id, length)
+            .filter(path => path.length - 1 === length); // path.length - 1 = number of edges
+
+          if (pathsAtLength.length > 0) {
+            pathsByLength.set(length, pathsAtLength.length);
+            totalPaths += pathsAtLength.length;
+          }
+        }
+
+        // Count triangular connections (common neighbors)
+        const startNeighbors = adjacencyList.get(startNode.id) || new Set();
+        const endNeighbors = adjacencyList.get(endNode.id) || new Set();
+        const commonNeighbors = Array.from(startNeighbors).filter(n => endNeighbors.has(n));
 
         return {
-          nodes: connectedNodes,
-          edges: connectedEdges,
+          nodes: result.nodes || new Set(),
+          edges: result.edges || new Set(),
           startNode: startNode.id,
           endNode: endNode.id,
           shortestPathLength: shortestLength,
-          pathCount: relevantPaths.length
+          pathCount: totalPaths,
+          pathsByLength: pathsByLength,
+          commonNeighbors: commonNeighbors.length
         };
       }
 
@@ -2090,33 +2547,60 @@
       function highlightAllConnections(result) {
         clearPath();
 
-        const { nodes: connectedNodes, edges: connectedEdges, startNode, endNode, shortestPathLength, pathCount } = result;
+        const {
+          nodes: connectedNodes,
+          edges: connectedEdges,
+          startNode,
+          endNode,
+          shortestPathLength,
+          pathCount,
+          pathsByLength,
+          commonNeighbors
+        } = result;
 
         // Show information about the paths found
         const pathInfoEl = document.getElementById('path-info');
         if (shortestPathLength !== undefined && pathCount !== undefined && pathInfoEl) {
           let infoText = '';
-          if (shortestPathLength === 1) {
-            infoText = `Direct relationship identified`;
+
+          if (shortestPathLength === -1) {
+            infoText = 'No connection found between these nodes';
+          } else if (shortestPathLength === 1) {
+            infoText = 'Direct relationship identified';
+            if (pathCount > 1 && pathsByLength) {
+              // Show if there are additional paths
+              const additionalPaths = pathCount - (pathsByLength.get(1) || 1);
+              if (additionalPaths > 0) {
+                infoText += ` • ${additionalPaths} alternative pathway${additionalPaths > 1 ? 's' : ''} via intermediaries`;
+              }
+            }
           } else if (shortestPathLength > 0) {
             infoText = `Connection distance: ${shortestPathLength} degree${shortestPathLength > 1 ? 's' : ''} of separation`;
-            if (pathCount > 1) {
+
+            // Provide detailed path breakdown if available
+            if (pathsByLength && pathsByLength.size > 0) {
+              const pathDetails = [];
+              pathsByLength.forEach((count, length) => {
+                if (count > 0) {
+                  pathDetails.push(`${count} path${count > 1 ? 's' : ''} at ${length} degree${length > 1 ? 's' : ''}`);
+                }
+              });
+
+              if (pathDetails.length > 0) {
+                infoText += ` • Found: ${pathDetails.join(', ')}`;
+              }
+            } else if (pathCount > 1) {
               infoText += ` • ${pathCount} connection pathway${pathCount > 1 ? 's' : ''} identified`;
             }
           }
 
-          // Count shared connections (mutual contacts)
-          const commonNeighborCount = Array.from(connectedNodes).filter(nodeId => {
-            if (nodeId === startNode || nodeId === endNode) return false;
-            const neighbors = adjacencyList.get(nodeId);
-            return neighbors && neighbors.has(startNode) && neighbors.has(endNode);
-          }).length;
-
-          if (commonNeighborCount > 0) {
-            infoText += ` • ${commonNeighborCount} shared contact${commonNeighborCount > 1 ? 's' : ''}`;
+          // Add info about common neighbors/shared contacts
+          const commonCount = commonNeighbors || 0;
+          if (commonCount > 0) {
+            infoText += ` • ${commonCount} shared contact${commonCount > 1 ? 's' : ''}`;
           }
 
-          pathInfoEl.textContent = infoText;
+          pathInfoEl.innerHTML = infoText;
           pathInfoEl.style.display = 'block';
         }
 

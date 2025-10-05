@@ -88,7 +88,6 @@ This analysis helps identify outlier actors/institutions and potential data qual
 ```
 tt-social-network/
 ├── README.md                           # This file
-├── CLAUDE.md                           # Documentation for AI assistants
 ├── data/                               # Data processing
 │   ├── csv-to-json.py                 # Convert CSV to JSON for D3.js
 │   ├── check_single_connections.py    # Analyze peripheral nodes
@@ -240,12 +239,36 @@ The project uses a two-stage data pipeline:
 
 ## Citation
 
-If you use this visualization in academic work, please cite:
-[Citation information to be added]
+If you use this visualization or code in academic work, please cite:
+
+```
+Morello, Stefano. (2025). Italian-American Literary Network Visualization.
+GitHub repository: https://github.com/smorello87/tt-social-network
+```
+
+**Data Sources:**
+- Transatlantic Transfers Atlas (Italian-American cultural exchanges database)
+- *Divagando* magazine tables of contents (103 issues, 1945-1957)
+- Wikipedia entries for individuals and institutions
+- Italian Sistema Bibliotecario Nazionale (SBN) metadata
 
 ## License
 
-[License information to be added]
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+### You are free to:
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material for scholarly and non-commercial purposes
+
+### Under the following terms:
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
+- **NonCommercial** — You may not use the material for commercial purposes
+
+This license allows scholars and researchers to repurpose the code and visualization techniques for other academic projects while preventing commercial exploitation.
+
+For the full license text, see: https://creativecommons.org/licenses/by-nc/4.0/
+
+**Data Attribution**: The network data is derived from historical sources including the Transatlantic Transfers Atlas, *Divagando* magazine archives, and other scholarly resources. Please cite appropriately when using this data.
 
 ## Contact
 

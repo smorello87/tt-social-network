@@ -24,7 +24,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
 def open_browser():
-    webbrowser.open(f'http://localhost:{PORT}/diva_optimized.html')
+    webbrowser.open(f'http://localhost:{PORT}/index.html')
 
 if __name__ == "__main__":
     os.chdir(DIRECTORY)
@@ -33,7 +33,7 @@ if __name__ == "__main__":
         print(f"Server starting at http://localhost:{PORT}")
         print(f"Serving files from: {DIRECTORY}")
         print("\nOpen your browser to:")
-        print(f"  http://localhost:{PORT}/diva_optimized.html")
+        print(f"  http://localhost:{PORT}/index.html")
         print("\nPress Ctrl+C to stop the server")
 
         # Open browser after 1 second

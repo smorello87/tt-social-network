@@ -18,7 +18,7 @@ This starts a local server and opens the visualization at `http://localhost:8080
 
 ## Features
 
-### Main Visualization (`visualization/diva_optimized.html`)
+### Main Visualization (`visualization/index.html`)
 - **Interactive Force-Directed Graph**: D3.js v7 with hybrid SVG + Canvas rendering
 - **Search with Autocomplete**: Find individuals or institutions (triggers after 1 character)
 - **Connection Explorer**: Discover all paths between any two nodes (BFS with configurable depth)
@@ -75,7 +75,7 @@ tt-social-network/
 │   │   └── templates/                 # Jinja2 templates
 │   └── cytoscape/                     # Archived legacy workflow
 ├── visualization/
-│   ├── diva_optimized.html            # Main visualization (production)
+│   ├── index.html            # Main visualization (production)
 │   ├── magazines_network.html         # Subset: Divagando & Il Carroccio contributors
 │   ├── multi_node_sidebar.html        # Multi-node connection finder
 │   ├── multi_node_sidebar.js          # Multi-node algorithms

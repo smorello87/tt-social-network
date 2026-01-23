@@ -478,7 +478,7 @@ if __name__ == '__main__':
     print("Network Data Editor")
     print("="*60)
     print("\nEditor:        http://localhost:5001")
-    print("Visualization: http://localhost:5001/visualization/diva_optimized.html")
+    print("Visualization: http://localhost:5001/visualization/index.html")
     print("API:           http://localhost:5001/api/graph.json")
     print("\n" + "="*60 + "\n")
     app.run(debug=False, port=5001, threaded=True)

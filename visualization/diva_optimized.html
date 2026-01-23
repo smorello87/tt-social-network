@@ -1,941 +1,1110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mapping Italian-American Literary Network</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italian-American Literary Network</title>
+
   <!-- Libraries -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Graphology core -->
   <script src="https://unpkg.com/graphology@0.24.1/dist/graphology.umd.min.js"></script>
-  <!-- ngraph.graph -->
   <script src="https://cdn.jsdelivr.net/npm/ngraph.graph@19.1.0/dist/ngraph.graph.min.js"></script>
-  <!-- ngraph.path -->
   <script src="https://unpkg.com/ngraph.path@1.3.1/dist/ngraph.path.min.js"></script>
-  <!-- canvg -->
   <script src="https://unpkg.com/canvg@3.0.7/lib/umd.js"></script>
-  <style>
-    /* Global resets, fonts, & base */
-    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    body {
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       ARCHIVAL LITERARY AESTHETIC
+       Inspired by manuscript archives, scholarly libraries, and
+       the transatlantic correspondence of mid-century literati
+    ═══════════════════════════════════════════════════════════════ */
+
+    :root {
+      /* Manuscript palette */
+      --parchment: #f7f4ed;
+      --parchment-dark: #ebe6da;
+      --ink-dark: #1a1a1a;
+      --ink-medium: #3d3d3d;
+      --ink-light: #6b6b6b;
+      --sepia: #8b7355;
+      --sepia-light: #a08a6e;
+      --sepia-dark: #6d5a44;
+      --accent-blue: #4a6670;
+      --accent-blue-light: #6b8e9f;
+      --rust: #8b5a3c;
+      --gold: #c4a35a;
+      --shadow: rgba(26, 26, 26, 0.08);
+      --shadow-deep: rgba(26, 26, 26, 0.15);
+
+      /* Typography */
+      --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Spacing */
+      --sidebar-width: 300px;
+      --header-height: 56px;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
-      overflow: hidden;
-      color: #3a3835;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    button, input, select, textarea {
-      font-family: inherit;
+      box-sizing: border-box;
     }
 
-    /* ------------------------ Navigation Bar ------------------------ */
-    #navbar {
+    body {
+      font-family: var(--font-body);
+      background: var(--parchment);
+      color: var(--ink-medium);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════════════════ */
+
+    #header {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      background: linear-gradient(to right, #2c3e50, #34495e);
-      color: #fff;
-      z-index: 1500;
-      border-bottom: 2px solid #8b7355;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-      backdrop-filter: blur(10px);
-    }
-    #navbar .nav-container {
+      right: 0;
+      height: var(--header-height);
+      background: linear-gradient(180deg, var(--ink-dark) 0%, #2a2a2a 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 15px;
-      height: 60px;
-    }
-    #navbar .brand {
-      font-size: 21px;
-      font-weight: 600;
-      font-family: 'Crimson Text', Georgia, serif;
-      letter-spacing: 0.5px;
-      color: #f5f1e8;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    /* Toggle button (hidden on desktop) */
-    #nav-toggle {
-      display: none;
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    #navbar .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-    #navbar .nav-links li {
-      margin-left: 10px;
-    }
-    #navbar .nav-links li a {
-      text-decoration: none;
-      color: #f5f1e8;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 8px 16px;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    #navbar .nav-links li a:hover,
-    #navbar .nav-links li a:focus {
-      background-color: rgba(139, 115, 85, 0.25);
-      border: 1px solid rgba(139, 115, 85, 0.5);
-      outline: none;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    #navbar .nav-links li a.active {
-      background-color: #8b7355;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0 24px;
+      z-index: 1000;
+      border-bottom: 1px solid var(--sepia-dark);
     }
 
-    /* --------------------------- Sidebar (Left Menu) --------------------------- */
+    .header-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--parchment);
+      letter-spacing: 0.02em;
+    }
+
+    .header-title span {
+      font-style: italic;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .header-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: transparent;
+      border: 1px solid rgba(247, 244, 237, 0.2);
+      border-radius: 4px;
+      color: var(--parchment);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .header-btn:hover {
+      background: rgba(247, 244, 237, 0.1);
+      border-color: rgba(247, 244, 237, 0.3);
+    }
+
+    .header-btn svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.8;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SIDEBAR
+    ═══════════════════════════════════════════════════════════════ */
+
     #sidebar {
       position: fixed;
       left: 0;
-      top: 60px;
-      height: calc(100vh - 60px);
-      width: 280px;
-      background: linear-gradient(to bottom, #fefdfb, #faf8f3);
-      color: #3a3835;
-      border-right: 1px solid #d4c5b9;
-      padding: 20px 16px;
-      box-sizing: border-box;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1000;
-      font-size: 13px;
-      box-shadow: 3px 0 12px rgba(0,0,0,0.08);
+      top: var(--header-height);
+      width: var(--sidebar-width);
+      height: calc(100vh - var(--header-height));
+      background: var(--parchment);
+      border-right: 1px solid var(--parchment-dark);
       overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #d4c5b9 transparent;
+      z-index: 900;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 2px 0 12px var(--shadow);
     }
-    #sidebar::-webkit-scrollbar {
-      width: 6px;
-    }
-    #sidebar::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    #sidebar::-webkit-scrollbar-thumb {
-      background-color: #d4c5b9;
-      border-radius: 3px;
-    }
-    #sidebar::-webkit-scrollbar-thumb:hover {
-      background-color: #8b7355;
-    }
+
     #sidebar.hidden {
       transform: translateX(-100%);
     }
-    .toolbar-section {
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(212, 197, 185, 0.3);
+
+    #sidebar::-webkit-scrollbar {
+      width: 4px;
     }
-    .toolbar-section:last-child {
+
+    #sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #sidebar::-webkit-scrollbar-thumb {
+      background: var(--sepia-light);
+      border-radius: 2px;
+    }
+
+    .sidebar-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--parchment-dark);
+    }
+
+    .sidebar-section:last-child {
       border-bottom: none;
     }
-    #sidebar h3,
-    #sidebar h4 {
-      margin: 0 0 12px 0;
-      color: #2c3e50;
+
+    .section-label {
       display: flex;
       align-items: center;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-weight: 700;
-      font-size: 17px;
-      letter-spacing: 0.3px;
-    }
-    #sidebar p {
-      font-size: 13px;
-      color: #5a5653;
-      line-height: 1.7;
-      margin: 12px 0;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-bottom: 12px;
     }
 
-    /* Info icon */
-    .info-icon {
-      display: inline-block;
-      margin-left: 6px;
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      color: #fff;
-      border-radius: 50%;
-      font-size: 11px;
+    .section-label svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.7;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .help-tip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 16px;
       height: 16px;
-      text-align: center;
-      line-height: 16px;
+      background: var(--sepia);
+      color: var(--parchment);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 600;
       cursor: help;
       position: relative;
-      pointer-events: auto;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
     }
-    .info-icon:hover {
-      transform: scale(1.1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    .info-icon::after {
-      content: attr(data-tooltip);
+
+    .help-tip::after {
+      content: attr(data-tip);
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(to bottom, rgba(44, 62, 80, 0.95), rgba(34, 49, 64, 0.95));
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: pre-line;
+      left: calc(100% + 8px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--ink-dark);
+      color: var(--parchment);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 400;
+      white-space: nowrap;
+      max-width: 200px;
+      white-space: normal;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      z-index: 1200;
-      bottom: 100%;
-      margin-bottom: 8px;
-      max-width: 250px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      border: 1px solid rgba(139, 115, 85, 0.2);
-      font-weight: 400;
+      transition: opacity 0.2s ease;
+      z-index: 100;
+      box-shadow: 0 4px 12px var(--shadow-deep);
     }
-    .info-icon:hover::after {
+
+    .help-tip:hover::after {
       opacity: 1;
-      transform: translateX(-50%) translateY(-2px);
     }
 
-    /* Sidebar inputs */
-    #sidebar input[type="text"] {
+    /* Input styles */
+    .input-field {
+      width: 100%;
       padding: 10px 12px;
-      margin: 8px 0;
-      border: 1px solid #d4c5b9;
-      border-radius: 4px;
-      width: 100%;
-      font-size: 13px;
-      outline: none;
       background: #fff;
-      color: #3a3835;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    #sidebar input[type="text"]:focus {
-      border-color: #8b7355;
-      box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.15), 0 2px 4px rgba(0,0,0,0.08);
-      transform: translateY(-1px);
-    }
-    #sidebar input[type="range"] {
-      width: 100%;
-      margin: 4px 0;
+      border: 1px solid var(--parchment-dark);
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--ink-dark);
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
     }
 
-    /* Sidebar buttons */
-    #sidebar button {
-      padding: 7px 12px;
-      margin: 5px 0;
-      border: 1px solid #8b7355;
+    .input-field:focus {
+      outline: none;
+      border-color: var(--sepia);
+      box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+    }
+
+    .input-field::placeholder {
+      color: var(--ink-light);
+    }
+
+    /* Button styles */
+    .btn {
+      width: 100%;
+      padding: 10px 16px;
+      background: var(--parchment);
+      border: 1px solid var(--sepia);
       border-radius: 4px;
-      background: linear-gradient(to bottom, #fff, #faf8f3);
-      color: #3a3835;
-      font-size: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
       font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--sepia-dark);
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-      letter-spacing: 0.4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-      position: relative;
-      overflow: hidden;
-    }
-    #sidebar button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(139, 115, 85, 0.1), transparent);
-      transition: left 0.5s ease;
-    }
-    #sidebar button:hover,
-    #sidebar button:focus {
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      color: #fff;
-      outline: none;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      border-color: #7a6448;
-    }
-    #sidebar button:hover::before {
-      left: 100%;
-    }
-    #sidebar button:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      margin-bottom: 6px;
     }
 
-    /* --------------------- Toggle Sidebar Button (Right) --------------------- */
-    #toggle-sidebar {
-      position: fixed;
-      top: 70px;
-      right: 10px;
-      z-index: 2000;
-      background: linear-gradient(to bottom, #2c3e50, #243240);
-      color: #f5f1e8;
-      border: 1px solid #8b7355;
-      padding: 10px 14px;
-      font-size: 16px;
+    .btn:hover {
+      background: var(--sepia);
+      color: var(--parchment);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-row .btn {
+      flex: 1;
+    }
+
+    /* Slider */
+    .slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slider-wrap input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      height: 4px;
+      background: var(--parchment-dark);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .slider-wrap input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--sepia);
+      border-radius: 50%;
       cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .slider-wrap input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .slider-value {
+      min-width: 32px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--sepia-dark);
+      text-align: right;
+    }
+
+    /* Path info display */
+    #path-info {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      background: rgba(139, 115, 85, 0.08);
+      border-left: 3px solid var(--sepia);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.8rem;
+      color: var(--ink-medium);
+      line-height: 1.5;
+    }
+
+    /* Legend */
+    .legend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--ink-medium);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-line {
+      width: 20px;
+      height: 3px;
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    .legend-dot.person { background: var(--accent-blue-light); }
+    .legend-dot.institution { background: var(--sepia); }
+    .legend-line.affiliation { background: #c4b5a0; }
+    .legend-line.personal { background: #b07070; }
+
+    /* Community toggle */
+    .btn.active {
+      background: var(--sepia);
+      color: var(--parchment);
+    }
+
+    #community-info {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--ink-light);
+    }
+
+    /* 2-hop button in details panel */
+    .details-expand-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 7px 12px;
+      background: var(--parchment);
+      border: 1px solid var(--sepia);
       border-radius: 4px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #toggle-sidebar:hover,
-    #toggle-sidebar:focus {
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      outline: none;
-      transform: translateY(-2px) rotate(90deg);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--sepia-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    /* --------------------- Autocomplete Items --------------------- */
-    .autocomplete {
-      position: relative !important;
-      display: block;
+    .details-expand-btn:hover {
+      background: var(--sepia);
+      color: var(--parchment);
     }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Toggle button (in header) */
+    #toggle-sidebar {
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      border: 1px solid rgba(247, 244, 237, 0.2);
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    #toggle-sidebar:hover {
+      background: rgba(247, 244, 237, 0.1);
+      border-color: rgba(247, 244, 237, 0.3);
+    }
+
+    #toggle-sidebar svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--parchment);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       AUTOCOMPLETE
+    ═══════════════════════════════════════════════════════════════ */
+
+    .autocomplete {
+      position: relative;
+    }
+
     .autocomplete-items {
       position: absolute;
-      border: 1px solid #d4c5b9;
-      border-top: none;
-      z-index: 9999 !important;
       top: 100%;
       left: 0;
       right: 0;
       background: #fff;
-      color: #3a3835;
+      border: 1px solid var(--parchment-dark);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
       max-height: 200px;
       overflow-y: auto;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-      border-radius: 0 0 6px 6px;
-      display: block !important;
-      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 4px 12px var(--shadow);
     }
+
     .autocomplete-items div {
-      padding: 6px 10px;
+      padding: 8px 12px;
+      font-size: 0.875rem;
       cursor: pointer;
-      background-color: #fff;
-      color: #3a3835;
-      border-bottom: 1px solid #f0ebe3;
-      font-size: 12px;
-      font-family: 'Inter', sans-serif;
-      transition: background-color 0.2s ease;
-      word-wrap: break-word;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      border-bottom: 1px solid var(--parchment-dark);
+      transition: background 0.15s ease;
     }
+
     .autocomplete-items div:last-child {
       border-bottom: none;
     }
-    .autocomplete-items div:hover, .autocomplete-active {
-      background: linear-gradient(to right, #f5f1e8, #f0ebe3) !important;
-      color: #2c3e50;
-      padding-left: 14px;
+
+    .autocomplete-items div:hover,
+    .autocomplete-active {
+      background: var(--parchment-dark);
     }
+
     .autocomplete-items div strong {
-      color: #8b7355;
-      font-weight: 600;
+      color: var(--sepia);
     }
 
-    /* ------------------------- Mobile CSS ------------------------- */
-    @media (max-width: 600px) {
-      #navbar .nav-container {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        height: 60px;
-        padding: 10px;
-      }
-      #nav-toggle {
-        display: block;
-      }
-      #navbar .nav-links {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 60px);
-        background: #2c3e50;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1600;
-        display: none;
-      }
-      #navbar .nav-links.show {
-        display: flex;
-      }
-      #navbar .nav-links li {
-        margin: 15px 0;
-        text-align: center;
-      }
-      #navbar .nav-links li a {
-        width: 100%;
-        padding: 15px;
-        box-sizing: border-box;
-        background-color: #2c3e50;
-        color: #f5f1e8;
-      }
-      #navbar .nav-links li a:hover,
-      #navbar .nav-links li a:focus {
-        background-color: #8b7355;
-      }
-      /* Sidebar adjustments on mobile */
-      #sidebar {
-        width: 100%;
-        height: calc(100vh - 60px);
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid #8b7355;
-        padding: 8px;
-        top: 60px;
-      }
-      #toggle-sidebar {
-        position: absolute;
-        top: 70px;
-        right: 10px;
-      }
+    /* ═══════════════════════════════════════════════════════════════
+       CANVAS & VISUALIZATION
+    ═══════════════════════════════════════════════════════════════ */
+
+    #canvas {
+      position: fixed;
+      top: var(--header-height);
+      left: var(--sidebar-width);
+      width: calc(100vw - var(--sidebar-width));
+      height: calc(100vh - var(--header-height));
+      background: transparent;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
     }
 
-    /* ------------------------- SVG & D3 Elements ------------------------- */
+    #sidebar.hidden ~ #canvas {
+      left: 0;
+      width: 100vw;
+    }
+
+    #link-canvas {
+      position: fixed;
+      top: var(--header-height);
+      left: var(--sidebar-width);
+      width: calc(100vw - var(--sidebar-width));
+      height: calc(100vh - var(--header-height));
+      pointer-events: none;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse at center, var(--parchment) 0%, var(--parchment-dark) 100%);
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #sidebar.hidden ~ #link-canvas {
+      left: 0;
+      width: 100vw;
+    }
+
     .tooltip {
       position: absolute;
       padding: 10px 14px;
-      background: linear-gradient(to bottom, rgba(44, 62, 80, 0.95), rgba(34, 49, 64, 0.95));
-      color: #f5f1e8;
-      border-radius: 6px;
-      font-size: 12px;
-      font-family: 'Inter', sans-serif;
-      pointer-events: none;
-      white-space: nowrap;
-      z-index: 1200;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      border: 1px solid rgba(139, 115, 85, 0.3);
-      backdrop-filter: blur(5px);
-    }
-    .label {
-      font-size: 12px;
-      pointer-events: none;
-      font-family: 'Crimson Text', Georgia, serif;
-      fill: #3a3835;
-      font-weight: 500;
-      text-shadow:
-        -1px -1px 3px rgba(255,255,255,0.9),
-        1px -1px 3px rgba(255,255,255,0.9),
-        -1px 1px 3px rgba(255,255,255,0.9),
-        1px 1px 3px rgba(255,255,255,0.9),
-        0 0 5px rgba(255,255,255,0.7);
-      user-select: none;
-    }
-    .link {
-      stroke: #c4b5a0;
-      stroke-opacity: 0.35;
-      stroke-width: 1.5;
-      transition: stroke-opacity 0.3s ease;
-    }
-    .highlight-path {
-      stroke: #bf9f5f !important;
-      stroke-width: 3px !important;
-      stroke-opacity: 0.9 !important;
-      filter: drop-shadow(0 0 3px rgba(191, 159, 95, 0.4));
-    }
-    .highlight-node {
-      stroke: #d4af37 !important;
-      stroke-width: 3px !important;
-      filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% {
-        filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
-      }
-      50% {
-        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
-      }
-    }
-    .slider-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 0;
-    }
-    #degree-range {
-      -webkit-appearance: none;
-      appearance: none;
-      height: 6px;
-      background: linear-gradient(to right, #d4c5b9, #e5d9ce);
-      border-radius: 3px;
-      outline: none;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-      flex: 1;
-    }
-    #degree-range::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      border: 2px solid #fff;
-    }
-    #degree-range::-webkit-slider-thumb:hover {
-      background: linear-gradient(to bottom, #9d8567, #8b7355);
-      transform: scale(1.25);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-    }
-    #degree-range::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      border: 2px solid #fff;
-    }
-    #degree-range::-moz-range-thumb:hover {
-      background: linear-gradient(to bottom, #9d8567, #8b7355);
-      transform: scale(1.25);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-    }
-    #degree-label {
-      min-width: 40px;
-      font-weight: 700;
-      color: #2c3e50;
-      font-size: 14px;
-      background: linear-gradient(to bottom, #f5f1e8, #ebe6dd);
-      padding: 4px 8px;
+      background: var(--ink-dark);
+      color: var(--parchment);
       border-radius: 4px;
-      text-align: center;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      pointer-events: none;
+      z-index: 1100;
+      box-shadow: 0 4px 12px var(--shadow-deep);
+      max-width: 280px;
     }
 
-    /* -------------------- FOOTER -------------------- */
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 45px;
-      background: linear-gradient(to right, #2c3e50, #34495e);
-      color: #f5f1e8;
-      text-align: center;
-      border-top: 1px solid #8b7355;
-      z-index: 1500;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    .label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      fill: var(--ink-medium);
+      pointer-events: none;
+      text-shadow:
+        -1px -1px 0 var(--parchment),
+        1px -1px 0 var(--parchment),
+        -1px 1px 0 var(--parchment),
+        1px 1px 0 var(--parchment),
+        0 0 8px var(--parchment);
     }
-    footer p {
-      margin: 0;
-      line-height: 45px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
+
+    .highlight-node {
+      stroke: var(--gold) !important;
+      stroke-width: 3px !important;
     }
-    footer a {
-      color: #f5f1e8;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    footer a:hover {
-      color: #d4c5b9;
-    }
-    /* Loading indicator styles */
+
+    /* ═══════════════════════════════════════════════════════════════
+       LOADING OVERLAY
+    ═══════════════════════════════════════════════════════════════ */
+
     #loading-overlay {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
-      z-index: 9999;
+      right: 0;
+      bottom: 0;
+      background: var(--parchment);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 2000;
       transition: opacity 0.5s ease;
     }
+
     #loading-overlay.fade-out {
       opacity: 0;
       pointer-events: none;
     }
+
     .loading-content {
       text-align: center;
-      font-family: 'Crimson Text', Georgia, serif;
-    }
-    .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 4px solid #d4c5b9;
-      border-top: 4px solid #8b7355;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .loading-text {
-      font-size: 24px;
-      color: #2c3e50;
-      margin-bottom: 10px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    .loading-status {
-      font-size: 16px;
-      color: #5a5653;
-      font-style: italic;
-      font-family: 'Inter', sans-serif;
-      opacity: 0.8;
-      min-height: 20px;
-    }
-    .loading-progress {
-      width: 200px;
-      height: 3px;
-      background: #d4c5b9;
-      border-radius: 2px;
-      margin: 15px auto 0;
-      overflow: hidden;
-    }
-    .loading-progress-bar {
-      height: 100%;
-      background: #8b7355;
-      width: 0;
-      transition: width 0.3s ease;
-      border-radius: 2px;
     }
 
-    /* -------------------- Modal Styles -------------------- */
+    .loading-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--ink-dark);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .loading-bar {
+      width: 200px;
+      height: 3px;
+      background: var(--parchment-dark);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    #progress-bar {
+      height: 100%;
+      background: var(--sepia);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .loading-status {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       MODAL
+    ═══════════════════════════════════════════════════════════════ */
+
     .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       display: none;
-      position: fixed;
-      z-index: 10000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0);
-      transition: background-color 0.3s ease;
-      backdrop-filter: blur(0px);
-    }
-    .modal.show {
-      display: block;
-      animation: fadeIn 0.3s ease forwards;
-    }
-    .modal.show .modal-overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-      }
-      to {
-        opacity: 0;
-      }
-    }
-    @keyframes slideUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0);
-      transition: background-color 0.3s ease;
-    }
-    .modal-content {
-      background: linear-gradient(to bottom, #fefdfb, #faf8f3);
-      margin: 50px auto;
-      padding: 0;
-      border: 1px solid #d4c5b9;
-      width: 90%;
-      max-width: 700px;
-      max-height: 85vh;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      position: relative;
-      animation: slideUp 0.4s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .modal-header {
-      padding: 20px 30px;
-      border-bottom: 1px solid #d4c5b9;
-      background: linear-gradient(to right, #2c3e50, #34495e);
-      border-radius: 8px 8px 0 0;
-      display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+      z-index: 2000;
     }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(26, 26, 26, 0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      background: var(--parchment);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(26, 26, 26, 0.3);
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal.closing .modal-content {
+      animation: modalOut 0.3s ease forwards;
+    }
+
+    @keyframes modalOut {
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+
+    .modal-header {
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid var(--parchment-dark);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
     .modal-title {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: #f5f1e8;
-      margin: 0;
-      letter-spacing: 0.5px;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink-dark);
     }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--parchment-dark);
+    }
+
+    .modal-close svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--ink-medium);
+      stroke-width: 2;
+    }
+
     .modal-body {
-      padding: 30px;
+      padding: 24px;
       overflow-y: auto;
-      flex: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.8;
-      color: #3a3835;
+      max-height: 50vh;
     }
-    .modal-body::-webkit-scrollbar {
-      width: 8px;
-    }
-    .modal-body::-webkit-scrollbar-track {
-      background: #f5f1e8;
-      border-radius: 4px;
-    }
-    .modal-body::-webkit-scrollbar-thumb {
-      background-color: #d4c5b9;
-      border-radius: 4px;
-    }
-    .modal-body::-webkit-scrollbar-thumb:hover {
-      background-color: #8b7355;
-    }
+
     .modal-body p {
-      margin: 0 0 20px 0;
-      text-align: justify;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--ink-medium);
     }
+
     .modal-body p:last-child {
       margin-bottom: 0;
     }
+
+    .modal-body a {
+      color: var(--sepia);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .modal-body a:hover {
+      color: var(--sepia-dark);
+    }
+
     .modal-footer {
-      padding: 15px 30px;
-      border-top: 1px solid #d4c5b9;
-      background: #faf8f3;
-      border-radius: 0 0 8px 8px;
+      padding: 16px 24px 24px;
       display: flex;
       justify-content: flex-end;
     }
-    .close {
-      color: #f5f1e8;
-      font-size: 28px;
-      font-weight: 300;
-      line-height: 20px;
+
+    .modal-footer .btn {
+      width: auto;
+      padding: 10px 24px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════════ */
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      z-index: 100;
+    }
+
+    footer a {
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--sepia);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       EXPLORER CHIPS
+    ═══════════════════════════════════════════════════════════════ */
+
+    .explorer-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+      min-height: 0;
+    }
+
+    .explorer-chips:empty {
+      display: none;
+    }
+
+    .explorer-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      background: var(--parchment-dark);
+      border: 1px solid rgba(139, 115, 85, 0.25);
+      border-radius: 3px;
+      font-size: 0.72rem;
+      color: var(--ink-medium);
+      max-width: 100%;
+      animation: chipIn 0.2s ease-out;
+    }
+
+    @keyframes chipIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .explorer-chip-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 180px;
+    }
+
+    .explorer-chip-remove {
+      width: 14px;
+      height: 14px;
+      border: none;
+      background: transparent;
       cursor: pointer;
-      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
       padding: 0;
-      background: none;
-      border: none;
-      opacity: 0.8;
+      opacity: 0.5;
+      transition: opacity 0.15s;
+      flex-shrink: 0;
     }
-    .close:hover,
-    .close:focus {
-      color: #fff;
+
+    .explorer-chip-remove:hover {
       opacity: 1;
-      transform: rotate(90deg);
-      outline: none;
+      background: rgba(139, 90, 60, 0.15);
     }
-    .modal-close-btn {
-      padding: 10px 20px;
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+
+    .explorer-chip-remove svg {
+      width: 10px;
+      height: 10px;
+      stroke: var(--ink-medium);
+      stroke-width: 2.5;
+    }
+
+    .explorer-result-count {
+      font-size: 0.78rem;
+      color: var(--sepia);
+      font-style: italic;
+      margin-top: 6px;
+      padding: 0 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       NODE DETAILS PANEL
+    ═══════════════════════════════════════════════════════════════ */
+
+    #node-details {
+      position: fixed;
+      right: 0;
+      top: var(--header-height);
+      width: 320px;
+      height: calc(100vh - var(--header-height));
+      background: var(--parchment);
+      border-left: 1px solid var(--parchment-dark);
+      box-shadow: -4px 0 24px var(--shadow-deep);
+      z-index: 950;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #node-details.open {
+      transform: translateX(0);
+    }
+
+    .details-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--parchment-dark);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .details-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: 1px solid var(--parchment-dark);
+      border-radius: 50%;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .modal-close-btn:hover {
-      background: linear-gradient(to bottom, #7a6448, #6d5a44);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-    .modal-close-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-    .modal.closing {
-      animation: fadeOut 0.3s ease forwards;
-    }
-    .modal.closing .modal-content {
-      animation: slideDown 0.3s ease forwards;
-    }
-    @keyframes slideDown {
-      from {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(30px);
-        opacity: 0;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
     }
 
-    /* About button special styling */
-    #about-btn {
-      background: linear-gradient(to bottom, #8b7355, #7a6448);
-      color: #fff;
-      border: 1px solid #6d5a44;
-    }
-    #about-btn:hover {
-      background: linear-gradient(to bottom, #9d8567, #8b7355);
-      border-color: #7a6448;
+    .details-close:hover {
+      background: var(--parchment-dark);
+      border-color: var(--sepia-light);
     }
 
-    /* Responsive modal */
-    @media (max-width: 600px) {
-      .modal-content {
-        width: 95%;
-        margin: 20px auto;
-        max-height: 90vh;
-      }
-      .modal-header {
-        padding: 15px 20px;
-      }
-      .modal-body {
-        padding: 20px;
-      }
-      .modal-title {
-        font-size: 20px;
-      }
+    .details-close svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--ink-medium);
+      stroke-width: 2;
     }
 
-    /* Compact mode for screens with limited height */
-    @media (max-height: 800px) {
+    .details-node-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink-dark);
+      line-height: 1.3;
+      padding-right: 36px;
+      margin-bottom: 8px;
+    }
+
+    .details-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .details-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .details-type-badge.person {
+      background: rgba(107, 142, 159, 0.12);
+      color: var(--accent-blue);
+    }
+
+    .details-type-badge.institution {
+      background: rgba(139, 115, 85, 0.12);
+      color: var(--sepia-dark);
+    }
+
+    .details-type-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .details-type-badge.person::before {
+      background: var(--accent-blue-light);
+    }
+
+    .details-type-badge.institution::before {
+      background: var(--sepia);
+    }
+
+    .details-degree {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+
+    .details-connections {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0;
+    }
+
+    .details-connections::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .details-connections::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .details-connections::-webkit-scrollbar-thumb {
+      background: var(--sepia-light);
+      border-radius: 2px;
+    }
+
+    .details-section-heading {
+      position: sticky;
+      top: 0;
+      padding: 12px 20px 8px;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      background: linear-gradient(180deg, var(--parchment) 70%, transparent);
+      z-index: 1;
+    }
+
+    .details-connection-item {
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      border-bottom: 1px solid rgba(235, 230, 218, 0.5);
+    }
+
+    .details-connection-item:hover {
+      background: var(--parchment-dark);
+    }
+
+    .details-connection-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .details-connection-dot.person {
+      background: var(--accent-blue-light);
+    }
+
+    .details-connection-dot.institution {
+      background: var(--sepia);
+    }
+
+    .details-connection-name {
+      font-size: 0.85rem;
+      color: var(--ink-medium);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .details-connection-item:hover .details-connection-name {
+      color: var(--ink-dark);
+    }
+
+    .details-empty {
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════════ */
+
+    @media (max-width: 768px) {
+      :root {
+        --sidebar-width: 100%;
+      }
+
       #sidebar {
-        padding: 10px 12px;
+        transform: translateX(-100%);
       }
-      .toolbar-section {
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-      }
-      #sidebar h3,
-      #sidebar h4 {
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-      #sidebar input[type="text"] {
-        padding: 6px 8px;
-        margin: 4px 0;
-        font-size: 12px;
-      }
-      #sidebar button {
-        padding: 6px 10px;
-        margin: 4px 0;
-        font-size: 11px;
-      }
-      .info-icon {
-        width: 12px;
-        height: 12px;
-        line-height: 12px;
-        font-size: 8px;
-        margin-left: 5px;
-      }
-      .slider-container {
-        padding: 3px 0;
-        gap: 8px;
-      }
-      #degree-range::-webkit-slider-thumb,
-      #degree-range::-moz-range-thumb {
-        width: 16px;
-        height: 16px;
-      }
-      #degree-label {
-        font-size: 11px;
-        padding: 2px 5px;
-        min-width: 30px;
-      }
-      .autocomplete-items div {
-        padding: 5px 8px;
-        font-size: 11px;
-      }
-    }
 
-    /* Even more compact for very small screens */
-    @media (max-height: 650px) {
-      #sidebar {
-        padding: 8px 10px;
-        font-size: 12px;
+      #sidebar.show {
+        transform: translateX(0);
       }
-      .toolbar-section {
-        margin-bottom: 8px;
-        padding-bottom: 8px;
+
+      #canvas {
+        left: 0;
+        width: 100vw;
       }
-      .toolbar-section:first-child {
-        margin-top: 0;
+
+      #node-details {
+        width: 100%;
       }
-      #sidebar h3,
-      #sidebar h4 {
-        font-size: 13px;
-        margin-bottom: 5px;
-      }
-      #sidebar input[type="text"] {
-        padding: 5px 7px;
-        margin: 3px 0;
-        font-size: 11px;
-      }
-      #sidebar button {
-        padding: 5px 8px;
-        margin: 3px 0;
-        font-size: 11px;
-      }
-      #path-info {
-        margin-top: 4px !important;
-        padding: 4px !important;
-        font-size: 10px !important;
+
+      .header-title span {
+        display: none;
       }
     }
   </style>
@@ -944,176 +1113,267 @@
   <!-- Loading Overlay -->
   <div id="loading-overlay">
     <div class="loading-content">
-      <div class="loading-spinner"></div>
-      <div class="loading-text">Italian-American Literary Network</div>
-      <div class="loading-status">Initializing visualization...</div>
-      <div class="loading-progress">
-        <div class="loading-progress-bar" id="progress-bar"></div>
+      <div class="loading-title">Mapping Literary Networks...</div>
+      <div class="loading-bar">
+        <div id="progress-bar"></div>
       </div>
+      <div class="loading-status">Initializing...</div>
     </div>
   </div>
-  <!-- Navigation Bar -->
-  <nav id="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="nav-container">
-      <span class="brand">Italian-American Literary Network</span>
-      <!-- Toggle button for mobile nav (next to brand) -->
-      <button id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="#" class="active" tabindex="0">Network</a></li>
-      </ul>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="header-left">
+      <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <h1 class="header-title">Italian-American Literary Network <span>1920-1980</span></h1>
     </div>
-  </nav>
+    <div class="header-actions">
+      <button class="header-btn" onclick="openAboutModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 16v-4M12 8h.01"/>
+        </svg>
+        About
+      </button>
+    </div>
+  </header>
 
-  <!-- Toggle Sidebar Button (Right) -->
-  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
-
-  <!-- Sidebar with info icons and autocomplete containers -->
-  <div id="sidebar">
-
-    <!-- Network Tools Section -->
-    <div class="toolbar-section">
-      <div class="autocomplete" style="position: relative;">
-        <input type="text" id="search" placeholder="Search for individuals or institutions...">
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <!-- Search -->
+    <div class="sidebar-section">
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        Search
+      </div>
+      <div class="autocomplete">
+        <input type="text" id="search" class="input-field" placeholder="Find individuals or institutions...">
       </div>
     </div>
 
-    <!-- Path Finder Section -->
-    <div class="toolbar-section">
-      <h4>
+    <!-- Connection Explorer -->
+    <div class="sidebar-section">
+      <div class="section-title">
         Connection Explorer
-        <span class="info-icon" data-tooltip="Discover the shortest path linking two figures or institutions in the network.">?</span>
-      </h4>
-      <div class="autocomplete" style="position: relative;">
-        <input type="text" id="start-node" placeholder="Select starting point...">
+        <span class="help-tip" data-tip="2 nodes: trace paths. 3+ nodes: find shared connections.">?</span>
       </div>
-      <div class="autocomplete" style="position: relative;">
-        <input type="text" id="end-node" placeholder="Select destination...">
+      <div id="explorer-chips" class="explorer-chips"></div>
+      <div class="autocomplete">
+        <input type="text" id="explorer-input" class="input-field" placeholder="Add a node...">
       </div>
-      <button onclick="NetworkViz.findPath()">Trace Connection</button>
-      <button onclick="NetworkViz.clearPath()">Clear Selection</button>
-      <div id="path-info" style="display: none; margin-top: 10px; padding: 8px; background: #f5f1e8; border-radius: 2px; font-size: 12px; color: #2c3e50; border: 1px solid #d4c5b9;"></div>
+      <div class="btn-row">
+        <button class="btn" onclick="NetworkViz.exploreConnections()">Find</button>
+        <button class="btn" onclick="NetworkViz.clearPath()">Clear</button>
+      </div>
+      <div id="path-info"></div>
     </div>
 
-    <!-- Analysis Tools Section -->
-    <div class="toolbar-section">
-      <h4>
-        Network Density Filter
-        <span class="info-icon" data-tooltip="Display only figures and institutions with the specified minimum number of connections.">?</span>
-      </h4>
-      <div class="slider-container">
-        <input type="range" id="degree-range" min="0" max="5" value="0" list="degree-stops">
-        <datalist id="degree-stops">
-          <option value="0">1</option>
-          <option value="1">5</option>
-          <option value="2">10</option>
-          <option value="3">30</option>
-          <option value="4">40</option>
-          <option value="5">50</option>
-        </datalist>
-        <span id="degree-label">1+</span>
+    <!-- Density Filter -->
+    <div class="sidebar-section">
+      <div class="section-title">
+        Network Density
+        <span class="help-tip" data-tip="Show only nodes with the specified minimum number of connections">?</span>
+      </div>
+      <div class="slider-wrap">
+        <input type="range" id="degree-range" min="0" max="5" value="0">
+        <span id="degree-label" class="slider-value">1+</span>
       </div>
     </div>
 
-    <!-- Export Section -->
-    <div class="toolbar-section">
-      <button onclick="NetworkViz.exportPNG()">Download Image</button>
-      <button onclick="NetworkViz.fullReset()">Reset Visualization</button>
+    <!-- Communities -->
+    <div class="sidebar-section">
+      <div class="section-title">
+        Communities
+        <span class="help-tip" data-tip="Detect clusters using label propagation and color nodes by community">?</span>
+      </div>
+      <button class="btn" id="community-toggle" onclick="NetworkViz.toggleCommunities()">Color by Community</button>
+      <div id="community-info" style="display:none"></div>
     </div>
 
-    <!-- About Section -->
-    <div class="toolbar-section">
-      <button id="about-btn" onclick="openAboutModal()">About This Project</button>
+    <!-- Actions -->
+    <div class="sidebar-section">
+      <button class="btn" onclick="NetworkViz.exportPNG()">Download Image</button>
+      <button class="btn" id="export-subgraph-btn" style="display:none" onclick="NetworkViz.exportSubgraph()">Export Visible Subgraph</button>
+      <button class="btn" onclick="NetworkViz.fullReset()">Reset View</button>
     </div>
 
-  </div>
+    <!-- Legend -->
+    <div class="sidebar-section">
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+        Legend
+      </div>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-dot person"></span>
+          Person
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot institution"></span>
+          Institution
+        </div>
+        <div class="legend-item">
+          <span class="legend-line affiliation"></span>
+          Affiliation
+        </div>
+        <div class="legend-item">
+          <span class="legend-line personal"></span>
+          Personal
+        </div>
+      </div>
+    </div>
+  </aside>
 
-  <!-- SVG Canvas -->
+  <!-- Link Canvas (behind SVG for performance) -->
+  <canvas id="link-canvas"></canvas>
+  <!-- SVG Canvas (nodes and labels only) -->
   <svg id="canvas"></svg>
+
+  <!-- Node Details Panel -->
+  <aside id="node-details">
+    <div class="details-header">
+      <button class="details-close" onclick="closeNodeDetails()" aria-label="Close details">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="details-node-name" id="details-name"></div>
+      <div class="details-meta">
+        <span class="details-type-badge" id="details-type"></span>
+        <span class="details-degree" id="details-degree"></span>
+      </div>
+      <button class="details-expand-btn" id="two-hop-btn" onclick="NetworkViz.expandTwoHop()">Show 2-hop neighborhood</button>
+    </div>
+    <div class="details-connections" id="details-list"></div>
+  </aside>
 
   <!-- About Modal -->
   <div id="aboutModal" class="modal">
     <div class="modal-overlay" onclick="closeAboutModal()"></div>
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Italian-American Literary Network</h2>
-        <button class="close" onclick="closeAboutModal()">&times;</button>
+        <h2 class="modal-title">About This Project</h2>
+        <button class="modal-close" onclick="closeAboutModal()">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
       <div class="modal-body">
         <p>
-          This interactive visualization maps the transnational network of Italian American literary culture, revealing connections between writers, translators, scholars, and cultural institutions. Each node represents either an individual contributor to Italian-American letters or an institution, while the edges trace relationships of collaboration, translation, correspondence, and intellectual exchange that have shaped this literary ecosystem.
-          
-          The underlying dataset includes multiple archival and digital sources: the <a href="https://transatlantictransfers.polimi.it/atlas">Transatlantic Transfers Atlas</a>, the most comprehensive repository documenting Italian-American cultural exchanges in the postwar era; digitized tables of contents from 103 issues of the literary magazine <em>Divagando</em>; biographical data from Wikipedia entries; and bibliographic metadata from the Italian Sistema Bibliotecario Nazionale (SBN). These sources were complemented through additional archival research to expand coverage.
+          This visualization maps the transnational network of Italian-American literary culture, revealing connections between writers, translators, scholars, and cultural institutions. Each node represents either an individual contributor to Italian-American letters or an institution, while edges trace relationships of collaboration, translation, correspondence, and intellectual exchange.
         </p>
         <p>
-          The network relies on a bipartite structure distinguishing between individual actors and institutional entities. The "Actors" category includes writers, translators, scholars, editors, and other cultural mediators who shaped Italian-American literary exchange. The "Institutions" category includes publishing houses, magazines, universities, cultural foundations, and government agencies that provided the infrastructure for transnational literary circulation. 
+          The dataset draws from multiple sources: the <a href="https://transatlantictransfers.polimi.it/atlas">Transatlantic Transfers Atlas</a>, digitized tables of contents from 103 issues of <em>Divagando</em>, Wikipedia biographical data, and metadata from the Italian Sistema Bibliotecario Nazionale (SBN).
         </p>
         <p>
-          The network comprises over 1,500 nodes connected by nearly 3,000 edges. This scale of data enables the identification of structural patterns, influential brokers, and community formations that traditional literary historical methods might overlook. 
-
-          To learn more, please refer to <a href="https://doi.org/10.1353/mln.2025.a963658">the article I published in <em>Modern Language Notes</em></a> (2025), which relied on an earlier version of the visualization. 
+          The network distinguishes between individual actors and institutional entities. Connections are classified as either "affiliations" (institutional relationships) or "personal" (direct interpersonal connections), visualized in different colors.
+        </p>
+        <p>
+          The network comprises over 1,500 nodes connected by nearly 3,000 edges. To learn more, see the <a href="https://doi.org/10.1353/mln.2025.a963658">article published in <em>Modern Language Notes</em></a> (2025).
         </p>
       </div>
       <div class="modal-footer">
-        <button class="modal-close-btn" onclick="closeAboutModal()">Return to Visualization</button>
+        <button class="btn" onclick="closeAboutModal()">Close</button>
       </div>
     </div>
   </div>
-    <!-- FOOTER -->
-    <footer>
-      <p>
-        <a href="https://stefanomorello.com" target="_blank">© 2025 Stefano Morello</a> |
-        <a href="https://github.com/smorello87/tt-social-network" target="_blank">
-          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="height:20px; vertical-align:middle;">
-        </a>
-      </p>
-    </footer>
+
+  <!-- Footer -->
+  <footer>
+    <a href="https://stefanomorello.com" target="_blank">&copy; 2025 Stefano Morello</a>
+  </footer>
+
   <script>
-    // Optimized Network Visualization Module
+    // ═══════════════════════════════════════════════════════════════
+    // NETWORK VISUALIZATION MODULE
+    // ═══════════════════════════════════════════════════════════════
+
     const NetworkViz = (function() {
-      // Private variables with improved data structures
+      // Private state
       let svg, width, height, simulation;
-      let nodeGroups, linkElements, labelElements;
+      let nodeGroups, labelElements;
       let container, zoom;
 
-      // Optimized data structures for faster lookups
+      // Canvas link layer
+      let linkCanvas, linkCtx;
+      let linksData = [];
+      let highlightedEdges = new Set();
+      let hiddenEdges = new Set();
+      let currentZoomTransform = d3.zoomIdentity;
+
+      // Zoom-dependent label visibility
+      let currentLabelTier = 'all'; // 'none' | 'hubs' | 'all'
+      let pathOrSearchActive = false;
+
+      // Data structures
       let nodesById = new Map();
       let nodesByIdLower = new Map();
       let adjacencyList = new Map();
       let nodeDegrees = new Map();
       let nodeIndexMap = new Map();
 
-      // State management
+      // Explorer state
+      let explorerNodes = [];
+
+      // State
       let currentPath = [];
       let labelsVisible = true;
       let isSimulationActive = false;
-
-      // Performance optimization flags
       let renderRequestId = null;
       let isDragging = false;
 
-      // Color scale and tooltip
+      // Colors
       const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-      const tooltip = d3.select("body").append("div").attr("class", "tooltip");
+      const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("display", "none");
 
-      // Cache for expensive computations
+      // Caches
       const pathCache = new Map();
       const searchCache = new Map();
       const communityCache = new Map();
 
-      // Debounce function for performance
+      // Community detection state
+      let communityColorActive = false;
+      const communityPalette = [
+        '#7a9e7e', // sage
+        '#b0704e', // terracotta
+        '#5e7f8c', // slate blue
+        '#b8963e', // ochre
+        '#9e7a8a', // dusty rose
+        '#6b8a5e', // olive
+        '#8a6b5e', // umber
+        '#5e6b8a', // steel
+        '#8a8a5e', // khaki
+        '#7a5e8a', // plum
+        '#5e8a7a', // teal
+        '#8a5e5e'  // brick
+      ];
+
+      // 2-hop state
+      let twoHopActive = false;
+      let twoHopSourceId = null;
+
+      // Utilities
       function debounce(func, wait) {
         let timeout;
-        return function executedFunction(...args) {
-          const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-          };
+        return function(...args) {
           clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
+          timeout = setTimeout(() => func(...args), wait);
         };
       }
 
-      // Throttle function for performance
       function throttle(func, limit) {
         let inThrottle;
         return function(...args) {
@@ -1125,11 +1385,9 @@
         };
       }
 
-      // Auto-fit network to viewport
       function autoFitNetwork() {
         if (!nodeGroups || nodeGroups.empty()) return;
 
-        // Calculate bounding box of all nodes
         let minX = Infinity, maxX = -Infinity;
         let minY = Infinity, maxY = -Infinity;
 
@@ -1140,30 +1398,21 @@
           maxY = Math.max(maxY, d.y);
         });
 
-        // Add padding
         const padding = 50;
         minX -= padding;
         maxX += padding;
         minY -= padding;
         maxY += padding;
 
-        // Calculate dimensions
         const networkWidth = maxX - minX;
         const networkHeight = maxY - minY;
-
-        // Calculate scale to fit network in viewport
         const scaleX = width / networkWidth;
         const scaleY = height / networkHeight;
-        let scale = Math.min(scaleX, scaleY);
+        let scale = Math.max(0.1, Math.min(Math.min(scaleX, scaleY), 1.5));
 
-        // Apply minimum and maximum scale constraints
-        scale = Math.max(0.1, Math.min(scale, 1.5)); // Allow smaller scale for overview
-
-        // Calculate center of network
         const centerX = (minX + maxX) / 2;
         const centerY = (minY + maxY) / 2;
 
-        // Apply transform with smooth transition
         const transform = d3.zoomIdentity
           .translate(width / 2, height / 2)
           .scale(scale)
@@ -1174,83 +1423,17 @@
           .call(zoom.transform, transform);
       }
 
-      // Adjust forces dynamically based on zoom level (DISABLED to prevent wobbling)
-      // This function is kept for reference but not actively used
-      function adjustForcesForZoom(zoomLevel) {
-        if (!simulation || !simulation.baseForces) return;
-
-        // IMPORTANT: This function is disabled by default to prevent wobbling
-        // Only enable if you need dynamic force adjustment and accept some instability
-        return;
-
-        // Original implementation kept for reference:
-        /*
-        // Use much gentler scaling to reduce wobbling
-        let linkDistanceFactor = 1;
-        let chargeStrengthFactor = 1;
-        let collisionFactor = 1;
-
-        // Only make very minor adjustments
-        if (zoomLevel < 0.5) {
-          linkDistanceFactor = 0.95;
-          chargeStrengthFactor = 0.95;
-          collisionFactor = 0.95;
-        } else if (zoomLevel > 3) {
-          linkDistanceFactor = 1.05;
-          chargeStrengthFactor = 1.05;
-          collisionFactor = 1.05;
-        }
-
-        // Apply adjustments
-        const linkForce = simulation.force("link");
-        if (linkForce) {
-          linkForce.distance(() => simulation.baseForces.linkDistance * linkDistanceFactor);
-        }
-
-        const chargeForce = simulation.force("charge");
-        if (chargeForce) {
-          chargeForce.strength(() => simulation.baseForces.chargeStrength * chargeStrengthFactor);
-        }
-
-        const collisionForce = simulation.force("collision");
-        if (collisionForce) {
-          collisionForce.radius(() => simulation.baseForces.collisionRadius * collisionFactor);
-        }
-
-        // Use very small alpha to minimize wobbling
-        if (!isSimulationActive && !isDragging) {
-          const alpha = 0.05; // Much smaller alpha
-          simulation.alpha(alpha).restart();
-          isSimulationActive = true;
-
-          setTimeout(() => {
-            if (!isDragging) {
-              simulation.stop();
-              isSimulationActive = false;
-            }
-          }, 300); // Shorter duration
-        }
-        */
-      }
-
-      // Initialize the visualization
       function init() {
         try {
-          console.log('NetworkViz.init() called');
-          // Show loading indicator
           showLoadingIndicator();
-          console.log('Loading indicator shown');
           setupCanvas();
-          console.log('Canvas setup complete');
           loadData();
-          console.log('loadData() initiated');
-        } catch (initError) {
-          console.error('Error in init():', initError);
-          updateLoadingStatus('Initialization error: ' + initError.message, 0);
+        } catch (err) {
+          console.error('Init error:', err);
+          updateLoadingStatus('Error: ' + err.message, 0);
         }
       }
 
-      // Loading indicator management
       function showLoadingIndicator() {
         const overlay = document.getElementById('loading-overlay');
         if (overlay) {
@@ -1262,128 +1445,214 @@
       function updateLoadingStatus(status, progress) {
         const statusEl = document.querySelector('.loading-status');
         const progressBar = document.getElementById('progress-bar');
-
-        if (statusEl) {
-          statusEl.textContent = status;
-        }
-        if (progressBar && progress !== undefined) {
-          progressBar.style.width = progress + '%';
-        }
+        if (statusEl) statusEl.textContent = status;
+        if (progressBar && progress !== undefined) progressBar.style.width = progress + '%';
       }
 
       function hideLoadingIndicator() {
         const overlay = document.getElementById('loading-overlay');
         if (overlay) {
           overlay.classList.add('fade-out');
-          setTimeout(() => {
-            overlay.style.display = 'none';
-          }, 500);
+          setTimeout(() => overlay.style.display = 'none', 500);
         }
       }
 
-      // Setup SVG canvas with optimized zoom
       function setupCanvas() {
         svg = d3.select("#canvas");
-        if (!svg || svg.empty()) {
-          console.error('Canvas element not found!');
-          throw new Error('Canvas element #canvas not found in DOM');
-        }
+        const rect = svg.node().getBoundingClientRect();
+        width = rect.width || window.innerWidth;
+        height = rect.height || window.innerHeight - 56;
 
-        width = window.innerWidth || 800;
-        height = window.innerHeight || 600;
-
-        // Ensure minimum dimensions
-        width = Math.max(width, 400);
-        height = Math.max(height, 400);
-
-        console.log('Canvas dimensions:', width, 'x', height);
         svg.attr("width", width).attr("height", height);
 
-        // Optimized zoom with better constraints and no force wobbling
-        zoom = d3.zoom()
-          .scaleExtent([0.05, 10]) // Allow much more zoom out (0.05 = 20x) for bird's eye view
-          .on("zoom", throttle((e) => {
-            container.attr("transform", e.transform);
+        // Initialize link canvas
+        linkCanvas = document.getElementById('link-canvas');
+        linkCanvas.width = width * (window.devicePixelRatio || 1);
+        linkCanvas.height = height * (window.devicePixelRatio || 1);
+        linkCanvas.style.width = width + 'px';
+        linkCanvas.style.height = height + 'px';
+        linkCtx = linkCanvas.getContext('2d');
+        linkCtx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
 
-            // Disable force adjustment to prevent wobbling
-            // Only enable if absolutely necessary with very gentle values
-            // adjustForcesForZoom(e.transform.k);
-          }, 16)); // ~60fps
+        zoom = d3.zoom()
+          .scaleExtent([0.05, 10])
+          .on("zoom", throttle((e) => {
+            currentZoomTransform = e.transform;
+            container.attr("transform", e.transform);
+            drawCanvasLinks();
+            updateLabelVisibility(e.transform.k);
+          }, 16));
 
         svg.call(zoom);
         container = svg.append("g");
       }
 
-      // Load and process data with optimizations
-      async function loadData() {
-        try {
-          updateLoadingStatus('Loading literary network data...', 20);
-          console.log('Starting to load graph.json...');
-          console.log('Current location:', window.location.href);
+      function updateLabelVisibility(scale) {
+        if (pathOrSearchActive) return; // Don't change labels during highlights
 
-          // Try to load the data file with better error handling
-          let data;
-          try {
-            data = await d3.json("graph.json");
-          } catch (jsonError) {
-            console.error('Failed to load graph.json from relative path, trying absolute path...');
-            // Try with absolute path as fallback
-            const basePath = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
-            const fullPath = basePath + '/graph.json';
-            console.log('Trying full path:', fullPath);
-            data = await d3.json(fullPath);
-          }
-          console.log('Data loaded successfully:', data);
-          console.log('Number of nodes:', data.nodes ? data.nodes.length : 0);
-          console.log('Number of links:', data.links ? data.links.length : 0);
+        let newTier;
+        if (scale < 0.3) newTier = 'none';
+        else if (scale < 0.8) newTier = 'hubs';
+        else newTier = 'all';
 
-          updateLoadingStatus('Analyzing relationships...', 40);
-          processData(data);
-          console.log('Data processed, nodesById size:', nodesById.size);
+        if (newTier === currentLabelTier) return;
+        currentLabelTier = newTier;
 
-          updateLoadingStatus('Calculating network layout...', 60);
-          initializeSimulation(data);
-          console.log('Simulation initialized');
+        if (!labelElements) return;
 
-          updateLoadingStatus('Rendering visualization...', 80);
-          renderNetwork(data);
-          console.log('Network rendered');
-
-          updateLoadingStatus('Optimizing display...', 90);
-          setupEventHandlers();
-          console.log('Event handlers setup');
-
-          // Delay autocomplete initialization to ensure data is ready
-          setTimeout(() => {
-            console.log('Data loaded, initializing autocomplete...');
-            try {
-              initializeAutocomplete();
-              console.log('Autocomplete initialized successfully');
-            } catch (autoError) {
-              console.error('Error initializing autocomplete:', autoError);
-            }
-          }, 500);
-
-          // Wait for initial simulation to settle before hiding loading
-          setTimeout(() => {
-            updateLoadingStatus('Ready to explore...', 100);
-            setTimeout(() => {
-              hideLoadingIndicator();
-              console.log('Loading indicator hidden, visualization ready');
-            }, 500);
-          }, 4000); // Adjust based on your simulation settling time
-
-        } catch (error) {
-          console.error("Error loading data:", error);
-          console.error("Error details:", error.stack);
-          updateLoadingStatus('Unable to load network data: ' + error.message, 0);
-          setTimeout(() => hideLoadingIndicator(), 2000);
+        if (newTier === 'none') {
+          labelElements.style("display", "none");
+        } else if (newTier === 'hubs') {
+          labelElements.style("display", d => (nodeDegrees.get(d.id) || 0) >= 10 ? null : "none");
+        } else {
+          labelElements.style("display", null);
         }
       }
 
-      // Process data for optimized lookups
+      function drawCanvasLinks() {
+        if (!linkCtx || linksData.length === 0) return;
+
+        const dpr = window.devicePixelRatio || 1;
+        linkCtx.save();
+        linkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        linkCtx.clearRect(0, 0, width, height);
+
+        const t = currentZoomTransform;
+        // Scale line width with zoom to match SVG stroke scaling behavior
+        const scaledWidth = Math.max(0.5, 1.5 * t.k);
+
+        // Draw normal links
+        linkCtx.globalAlpha = 0.4;
+        linkCtx.strokeStyle = '#c4b5a0';
+        linkCtx.lineWidth = scaledWidth;
+        linkCtx.beginPath();
+
+        const personalLinks = [];
+        const highlightLinks = [];
+        const drawnEdges = new Set();
+
+        for (let i = 0; i < linksData.length; i++) {
+          const l = linksData[i];
+          const edgeKey = l._edgeKey;
+
+          // Skip duplicate edges (same pair drawn twice due to A→B and B→A)
+          if (drawnEdges.has(edgeKey)) continue;
+          drawnEdges.add(edgeKey);
+
+          if (hiddenEdges.has(edgeKey)) continue;
+
+          if (highlightedEdges.has(edgeKey)) {
+            highlightLinks.push(l);
+            continue;
+          }
+
+          if (l.type === 'personal') {
+            personalLinks.push(l);
+            continue;
+          }
+
+          const sx = t.applyX(l.source.x);
+          const sy = t.applyY(l.source.y);
+          const tx = t.applyX(l.target.x);
+          const ty = t.applyY(l.target.y);
+          linkCtx.moveTo(sx, sy);
+          linkCtx.lineTo(tx, ty);
+        }
+        linkCtx.stroke();
+
+        // Draw personal links (same opacity, subtler color difference)
+        if (personalLinks.length > 0) {
+          linkCtx.globalAlpha = 0.4;
+          linkCtx.strokeStyle = '#b09a8a';
+          linkCtx.lineWidth = scaledWidth;
+          linkCtx.beginPath();
+          for (let i = 0; i < personalLinks.length; i++) {
+            const l = personalLinks[i];
+            const sx = t.applyX(l.source.x);
+            const sy = t.applyY(l.source.y);
+            const tx = t.applyX(l.target.x);
+            const ty = t.applyY(l.target.y);
+            linkCtx.moveTo(sx, sy);
+            linkCtx.lineTo(tx, ty);
+          }
+          linkCtx.stroke();
+        }
+
+        // Draw highlighted links on top
+        if (highlightLinks.length > 0) {
+          linkCtx.globalAlpha = 0.9;
+          linkCtx.strokeStyle = '#c4a35a';
+          linkCtx.lineWidth = Math.max(1.5, 3 * t.k);
+          linkCtx.beginPath();
+          for (let i = 0; i < highlightLinks.length; i++) {
+            const l = highlightLinks[i];
+            const sx = t.applyX(l.source.x);
+            const sy = t.applyY(l.source.y);
+            const tx = t.applyX(l.target.x);
+            const ty = t.applyY(l.target.y);
+            linkCtx.moveTo(sx, sy);
+            linkCtx.lineTo(tx, ty);
+          }
+          linkCtx.stroke();
+        }
+
+        linkCtx.restore();
+      }
+
+      async function loadData() {
+        try {
+          updateLoadingStatus('Loading network data...', 20);
+
+          let data;
+          // Try API first (when served from Flask editor), then fall back to static file
+          const apiUrl = window.location.port === '5001'
+            ? '/api/graph.json'
+            : null;
+
+          try {
+            if (apiUrl) {
+              data = await d3.json(apiUrl);
+            } else {
+              data = await d3.json("graph.json");
+            }
+          } catch (err) {
+            // Fallback: try relative path
+            const basePath = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+            data = await d3.json(basePath + '/graph.json');
+          }
+
+          updateLoadingStatus('Processing relationships...', 40);
+          processData(data);
+
+          updateLoadingStatus('Computing layout...', 55);
+          initializeSimulation(data);
+
+          updateLoadingStatus('Rendering network...', 75);
+          renderNetwork(data);
+
+          updateLoadingStatus('Detecting communities...', 85);
+          runCommunityDetection();
+
+          updateLoadingStatus('Finalizing...', 90);
+          setupEventHandlers();
+
+          setTimeout(() => {
+            initializeAutocomplete();
+          }, 500);
+
+          setTimeout(() => {
+            updateLoadingStatus('Ready', 100);
+            setTimeout(hideLoadingIndicator, 500);
+          }, 2500);
+
+        } catch (error) {
+          console.error("Load error:", error);
+          updateLoadingStatus('Failed to load: ' + error.message, 0);
+          setTimeout(hideLoadingIndicator, 2000);
+        }
+      }
+
       function processData(data) {
-        // Build optimized data structures
         data.nodes.forEach((node, index) => {
           nodesById.set(node.id, node);
           nodesByIdLower.set(node.id.toLowerCase(), node);
@@ -1392,7 +1661,6 @@
           nodeDegrees.set(node.id, 0);
         });
 
-        // Build adjacency list and calculate degrees
         data.links.forEach(link => {
           const sourceId = typeof link.source === 'string' ? link.source : link.source.id;
           const targetId = typeof link.target === 'string' ? link.target : link.target.id;
@@ -1406,116 +1674,70 @@
         });
       }
 
-      // Initialize force simulation with optimizations
       function initializeSimulation(data) {
-        // Pre-position nodes to reduce initial chaos
         const nodeCount = data.nodes.length;
         const angleStep = (2 * Math.PI) / nodeCount;
         const radius = Math.min(width, height) * 0.35;
 
-        // Initialize nodes in a circular layout to start with structure
         data.nodes.forEach((node, i) => {
-          if (!node.x && !node.y) {  // Only set if not already positioned
+          if (!node.x && !node.y) {
             const angle = i * angleStep;
-            node.x = width / 2 + radius * Math.cos(angle);
-            node.y = height / 2 + radius * Math.sin(angle);
-            // Add small random offset to prevent perfect symmetry
-            node.x += (Math.random() - 0.5) * 20;
-            node.y += (Math.random() - 0.5) * 20;
+            node.x = width / 2 + radius * Math.cos(angle) + (Math.random() - 0.5) * 20;
+            node.y = height / 2 + radius * Math.sin(angle) + (Math.random() - 0.5) * 20;
           }
-          // Initialize velocities to zero for calm start
           node.vx = 0;
           node.vy = 0;
         });
 
-        // Store base force parameters - OPTIMIZED for stability
         const baseForces = {
-          linkDistance: 300,        // Good spacing
-          linkStrength: 0.15,       // Reduced for less spring tension
-          chargeStrength: -2500,    // Moderate repulsion to reduce jitter
-          collisionRadius: 35       // Good collision radius
+          linkDistance: 300,
+          linkStrength: 0.15,
+          chargeStrength: -2500,
+          collisionRadius: 35
         };
 
-        // Use optimized force values for better spacing and stability
         simulation = d3.forceSimulation(data.nodes)
           .force("link", d3.forceLink(data.links)
             .id(d => d.id)
             .distance(d => {
-              // Variable distance based on node degrees for better layout
               const sourceDegree = nodeDegrees.get(d.source.id || d.source) || 1;
               const targetDegree = nodeDegrees.get(d.target.id || d.target) || 1;
               const avgDegree = (sourceDegree + targetDegree) / 2;
-              // High-degree nodes get more space
               return baseForces.linkDistance * (1 + Math.log(avgDegree) * 0.1);
             })
             .strength(baseForces.linkStrength))
           .force("charge", d3.forceManyBody()
             .strength(d => {
-              // Moderate repulsion for stability
               const degree = nodeDegrees.get(d.id) || 1;
               return baseForces.chargeStrength * (1 + Math.log(degree) * 0.15);
             })
-            .distanceMax(600) // Reduced for less long-range interaction
-            .theta(0.9)) // Less accurate but more stable
-          .force("center", d3.forceCenter(width / 2, height / 2)
-            .strength(0.02)) // Even weaker centering force to reduce wobbling
+            .distanceMax(500)
+            .theta(1.2))
+          .force("center", d3.forceCenter(width / 2, height / 2).strength(0.02))
           .force("collision", d3.forceCollide()
             .radius(d => {
-              // Dynamic collision radius based on node degree
               const degree = nodeDegrees.get(d.id) || 1;
               return baseForces.collisionRadius + Math.min(degree * 0.5, 20);
             })
             .strength(0.7)
-            .iterations(2)) // More collision iterations for stability
-          .velocityDecay(0.7)     // High damping for stability
-          .alphaDecay(0.025)      // Slightly faster decay to reduce initial movement time
-          .alphaMin(0.001)        // Stop simulation sooner
-          .alpha(0.3);            // Start with lower alpha for gentler initial movement
+            .iterations(1))
+          .velocityDecay(0.7)
+          .alphaDecay(0.04)
+          .alphaMin(0.001)
+          .alpha(0.5);
 
-        // Store base forces for dynamic adjustment
         simulation.baseForces = baseForces;
-
-        // Stop simulation after stabilization for performance
         simulation.on("tick", onTick);
 
-        // Track if this is the initial layout
-        let isInitialLayout = true;
-
-        // Gradually reduce forces during initial layout for smoother settling
-        let forceReductionInterval = setInterval(() => {
-          if (!isDragging && simulation.alpha() > 0.01) {
-            // Gradually reduce force strengths
-            const currentAlpha = simulation.alpha();
-            const reductionFactor = 0.95;
-
-            const chargeForce = simulation.force("charge");
-            if (chargeForce) {
-              chargeForce.strength(d => {
-                const degree = nodeDegrees.get(d.id) || 1;
-                return baseForces.chargeStrength * (1 + Math.log(degree) * 0.15) * currentAlpha * 2;
-              });
-            }
-          }
-        }, 500);
-
-        // Auto-stop simulation after initial layout and then auto-fit
         setTimeout(() => {
-          clearInterval(forceReductionInterval);
           if (!isDragging) {
             simulation.stop();
             isSimulationActive = false;
-
-            // Auto-fit network after initial layout completes
-            if (isInitialLayout) {
-              isInitialLayout = false;
-              // Auto-fit happens after loading indicator is hidden
-              setTimeout(() => autoFitNetwork(), 200);
-            }
+            setTimeout(autoFitNetwork, 200);
           }
-        }, 4500); // Slightly before loading indicator disappears
+        }, 3000);
       }
 
-      // Optimized tick function with requestAnimationFrame
       function onTick() {
         if (!renderRequestId) {
           renderRequestId = requestAnimationFrame(() => {
@@ -1525,31 +1747,21 @@
         }
       }
 
-      // Update positions efficiently
       function updatePositions() {
-        if (nodeGroups) {
-          nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
-        }
-        if (linkElements) {
-          linkElements
-            .attr("x1", d => d.source.x)
-            .attr("y1", d => d.source.y)
-            .attr("x2", d => d.target.x)
-            .attr("y2", d => d.target.y);
-        }
+        if (nodeGroups) nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
+        drawCanvasLinks();
       }
 
-      // Render network with optimized DOM manipulation
       function renderNetwork(data) {
-        // Render links
-        linkElements = container.append("g")
-          .attr("class", "links")
-          .selectAll("line")
-          .data(data.links)
-          .join("line")
-          .classed("link", true);
+        // Store links data for canvas rendering (no SVG lines)
+        linksData = data.links;
+        // Pre-compute edge keys for fast Set lookups
+        linksData.forEach(l => {
+          const sourceId = typeof l.source === 'string' ? l.source : l.source.id;
+          const targetId = typeof l.target === 'string' ? l.target : l.target.id;
+          l._edgeKey = [sourceId, targetId].sort().join('--');
+        });
 
-        // Render nodes with optimized drag behavior
         nodeGroups = container.append("g")
           .attr("class", "nodes")
           .selectAll("g.node")
@@ -1558,185 +1770,222 @@
           .classed("node", true)
           .call(createOptimizedDrag());
 
-        // Add circles to nodes with better sizing
         nodeGroups.append("circle")
           .attr("r", d => {
-            // Better node sizing based on degree
             const degree = nodeDegrees.get(d.id) || 1;
-            return 10 + Math.min(Math.sqrt(degree) * 3, 20); // Use sqrt for better scaling
+            return 10 + Math.min(Math.sqrt(degree) * 3, 20);
           })
           .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
           .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
-          .style("stroke-width", 2); // Thicker stroke for better visibility
+          .style("stroke-width", 2);
 
-        // Add labels to nodes with better positioning
         labelElements = nodeGroups.append("text")
           .text(d => d.id)
           .attr("dx", d => {
-            // Position labels further from larger nodes
             const degree = nodeDegrees.get(d.id) || 1;
-            const radius = 10 + Math.min(Math.sqrt(degree) * 3, 20);
-            return radius + 5; // Position just outside the node
+            return 10 + Math.min(Math.sqrt(degree) * 3, 20) + 5;
           })
           .attr("dy", 5)
           .attr("class", "label")
           .style("opacity", labelsVisible ? 1 : 0)
-          .style("font-size", "12px") // Slightly larger for better readability
-          .style("font-weight", d => {
-            // Bold labels for high-degree nodes
-            const degree = nodeDegrees.get(d.id) || 1;
-            return degree > 10 ? "600" : "400";
-          });
+          .style("font-size", "12px")
+          .style("font-weight", d => (nodeDegrees.get(d.id) || 1) > 10 ? "600" : "400");
 
-        // Setup node interactions
         nodeGroups
           .on("mouseenter", handleNodeMouseEnter)
           .on("mouseleave", handleNodeMouseLeave)
           .on("click", handleNodeClick);
+
+        // Initial canvas draw
+        drawCanvasLinks();
       }
 
-      // Optimized drag behavior - FIXED to work properly
       function createOptimizedDrag() {
         return d3.drag()
           .on("start", (e, d) => {
             isDragging = true;
-            // Fix the position immediately
             d.fx = d.x;
             d.fy = d.y;
-
-            // Only restart simulation with very gentle heating if needed
-            if (!e.active) {
-              // Check if simulation is completely stopped
-              if (simulation.alpha() <= simulation.alphaMin()) {
-                // Very gentle restart - just enough to update connected nodes
-                simulation.alphaTarget(0.01).restart();
-                isSimulationActive = true;
-              }
+            if (!e.active && simulation.alpha() <= simulation.alphaMin()) {
+              simulation.alphaTarget(0.01).restart();
+              isSimulationActive = true;
             }
           })
           .on("drag", (e, d) => {
-            // Update fixed position
             d.fx = e.x;
             d.fy = e.y;
-
-            // Force position update for immediate visual feedback
             d.x = e.x;
             d.y = e.y;
 
-            // Manually update visual positions immediately
-            // This ensures the dragged node follows the mouse
             if (nodeGroups) {
-              // Update the dragged node's position
-              nodeGroups.filter(n => n === d)
-                .attr("transform", `translate(${d.x}, ${d.y})`);
-
-              // Update connected links
-              if (linkElements) {
-                linkElements
-                  .filter(l => l.source === d)
-                  .attr("x1", d.x)
-                  .attr("y1", d.y);
-
-                linkElements
-                  .filter(l => l.target === d)
-                  .attr("x2", d.x)
-                  .attr("y2", d.y);
-              }
+              nodeGroups.filter(n => n === d).attr("transform", `translate(${d.x}, ${d.y})`);
+              drawCanvasLinks();
             }
           })
           .on("end", (e, d) => {
             isDragging = false;
-
-            // Stop the simulation gently
             if (!e.active) {
               simulation.alphaTarget(0);
-
-              // Quick stop to prevent lingering movement
               setTimeout(() => {
                 if (!isDragging) {
                   simulation.stop();
                   isSimulationActive = false;
                 }
-              }, 200); // Very quick stop
+              }, 200);
             }
-
-            // Release the fixed position to allow natural positioning
             d.fx = null;
             d.fy = null;
           });
       }
 
-      // Handle node mouse enter with debounced tooltip
       const handleNodeMouseEnter = throttle((e, d) => {
         const degree = nodeDegrees.get(d.id);
-        tooltip.html(`${d.id}<br>Network connections: ${degree}`)
+        tooltip.html(`<strong>${d.id}</strong><br>Connections: ${degree}`)
           .style("left", (e.pageX + 10) + "px")
           .style("top", (e.pageY - 10) + "px")
           .style("display", "block");
       }, 100);
 
-      // Handle node mouse leave
       function handleNodeMouseLeave() {
         tooltip.style("display", "none");
       }
 
-      // Handle node click for quick selection
       function handleNodeClick(e, d) {
         e.stopPropagation();
         highlightNode(d);
+        showNodeDetails(d);
       }
 
-      // Highlight a specific node and its connections
       function highlightNode(node) {
+        // Reset 2-hop if switching nodes
+        if (twoHopSourceId && twoHopSourceId !== node.id) {
+          twoHopActive = false;
+          twoHopSourceId = null;
+          const btn = document.getElementById('two-hop-btn');
+          if (btn) btn.textContent = 'Show 2-hop neighborhood';
+        }
+
         const connectedNodes = new Set([node.id]);
         adjacencyList.get(node.id).forEach(id => connectedNodes.add(id));
 
-        // Update node opacity
         nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0.1);
 
-        // Update link opacity
-        linkElements.style("opacity", l => {
+        // Force-show labels for connected nodes
+        pathOrSearchActive = true;
+        labelElements.style("display", d => connectedNodes.has(d.id) ? null : "none");
+
+        // Update canvas: show only edges where BOTH endpoints are in the connected set
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        linksData.forEach(l => {
           const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
           const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          return (connectedNodes.has(sourceId) || connectedNodes.has(targetId)) ? 1 : 0.1;
+          if (!connectedNodes.has(sourceId) || !connectedNodes.has(targetId)) {
+            hiddenEdges.add(l._edgeKey);
+          }
         });
+        drawCanvasLinks();
+        updateExportButtonVisibility();
       }
 
-      // Setup event handlers with optimization
+      function showNodeDetails(node) {
+        const panel = document.getElementById('node-details');
+        const nameEl = document.getElementById('details-name');
+        const typeEl = document.getElementById('details-type');
+        const degreeEl = document.getElementById('details-degree');
+        const listEl = document.getElementById('details-list');
+
+        const degree = nodeDegrees.get(node.id) || 0;
+        const neighbors = adjacencyList.get(node.id) || new Set();
+
+        nameEl.textContent = node.id;
+
+        const nodeType = node.type || 'unknown';
+        typeEl.className = 'details-type-badge ' + (nodeType === 'institution' ? 'institution' : 'person');
+        typeEl.textContent = nodeType === 'institution' ? 'Institution' : 'Person';
+
+        degreeEl.textContent = degree + ' connection' + (degree !== 1 ? 's' : '');
+
+        // Build connections list grouped by type
+        const connections = [];
+        neighbors.forEach(id => {
+          const n = nodesById.get(id);
+          if (n) connections.push({ id: n.id, type: n.type || 'unknown' });
+        });
+        connections.sort((a, b) => a.id.localeCompare(b.id));
+
+        const institutions = connections.filter(c => c.type === 'institution');
+        const persons = connections.filter(c => c.type !== 'institution');
+
+        let html = '';
+        if (persons.length > 0) {
+          html += '<div class="details-section-heading">Persons (' + persons.length + ')</div>';
+          persons.forEach(c => {
+            html += '<div class="details-connection-item" data-node="' + c.id.replace(/"/g, '&quot;') + '">'
+              + '<span class="details-connection-dot person"></span>'
+              + '<span class="details-connection-name">' + c.id + '</span></div>';
+          });
+        }
+        if (institutions.length > 0) {
+          html += '<div class="details-section-heading">Institutions (' + institutions.length + ')</div>';
+          institutions.forEach(c => {
+            html += '<div class="details-connection-item" data-node="' + c.id.replace(/"/g, '&quot;') + '">'
+              + '<span class="details-connection-dot institution"></span>'
+              + '<span class="details-connection-name">' + c.id + '</span></div>';
+          });
+        }
+        if (connections.length === 0) {
+          html = '<div class="details-empty">No connections found</div>';
+        }
+
+        listEl.innerHTML = html;
+
+        // Click handler for connection items to navigate
+        listEl.querySelectorAll('.details-connection-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const targetId = item.dataset.node;
+            const targetNode = nodesById.get(targetId);
+            if (targetNode) {
+              highlightNode(targetNode);
+              showNodeDetails(targetNode);
+            }
+          });
+        });
+
+        // Update 2-hop button state
+        const twoHopBtn = document.getElementById('two-hop-btn');
+        if (twoHopBtn) {
+          twoHopBtn.textContent = (twoHopActive && twoHopSourceId === node.id)
+            ? 'Show direct only'
+            : 'Show 2-hop neighborhood';
+        }
+
+        panel.classList.add('open');
+      }
+
       function setupEventHandlers() {
-        // Store reference to search handler for re-attachment
         window.searchHandler = debounce(handleSearch, 300);
 
-        // Degree filter with throttling and snap-to-value behavior
         const degreeRange = document.getElementById("degree-range");
-
-        // Add snap-to-value behavior
         degreeRange.addEventListener("input", throttle(handleDegreeFilter, 50));
-
-        // Initialize the filter on load
         handleDegreeFilter({ target: degreeRange });
 
-        // Window resize with debouncing
         window.addEventListener("resize", debounce(handleResize, 250));
       }
 
-      // Optimized search handler with caching
       function handleSearch(e) {
         const term = e.target.value.trim().toLowerCase();
-
         if (!term) {
           resetView();
           return;
         }
 
-        // Check cache first
         if (searchCache.has(term)) {
           const cached = searchCache.get(term);
           applySearchResults(cached.matched, cached.connected);
           return;
         }
 
-        // Perform search with optimized regex
         const regex = new RegExp(term, 'i');
         const matched = [];
         const connected = new Set();
@@ -1744,114 +1993,115 @@
         nodesById.forEach((node, id) => {
           if (regex.test(id)) {
             matched.push(node);
-            adjacencyList.get(id).forEach(connId => {
-              connected.add(nodesById.get(connId));
-            });
+            adjacencyList.get(id).forEach(connId => connected.add(nodesById.get(connId)));
           }
         });
 
-        // Cache results
         searchCache.set(term, { matched, connected });
-
-        // Limit cache size
         if (searchCache.size > 50) {
-          const firstKey = searchCache.keys().next().value;
-          searchCache.delete(firstKey);
+          searchCache.delete(searchCache.keys().next().value);
         }
 
         applySearchResults(matched, connected);
       }
 
-      // Apply search results efficiently
       function applySearchResults(matched, connected) {
         if (matched.length > 0) {
           const matchedSet = new Set(matched);
           const important = new Set([...matched, ...connected]);
+          const importantIds = new Set();
+          important.forEach(n => importantIds.add(n.id));
+          const matchedIds = new Set();
+          matchedSet.forEach(n => matchedIds.add(n.id));
 
-          // Highlight nodes: matched and connected nodes get full opacity
           nodeGroups.style("opacity", d => important.has(d) ? 1 : 0.1);
 
-          // Highlight links: only links that connect matched nodes to their neighbors
-          linkElements.style("opacity", l => {
-            const source = typeof l.source === 'object' ? l.source : nodesById.get(l.source);
-            const target = typeof l.target === 'object' ? l.target : nodesById.get(l.target);
+          // Force-show labels for matched nodes
+          pathOrSearchActive = true;
+          labelElements.style("display", d => importantIds.has(d.id) ? null : "none");
 
-            // A link should be highlighted if it connects a matched node to another important node
-            // This ensures we only show edges directly connected to the searched nodes
-            const sourceMatched = matchedSet.has(source);
-            const targetMatched = matchedSet.has(target);
-            const sourceImportant = important.has(source);
-            const targetImportant = important.has(target);
-
-            // Highlight if either endpoint is matched AND the other is important
-            if ((sourceMatched && targetImportant) || (targetMatched && sourceImportant)) {
-              return 1;
+          // Update canvas links
+          hiddenEdges.clear();
+          highlightedEdges.clear();
+          linksData.forEach(l => {
+            const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+            const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+            const sourceMatched = matchedIds.has(sourceId);
+            const targetMatched = matchedIds.has(targetId);
+            const sourceImportant = importantIds.has(sourceId);
+            const targetImportant = importantIds.has(targetId);
+            if (!((sourceMatched && targetImportant) || (targetMatched && sourceImportant))) {
+              hiddenEdges.add(l._edgeKey);
             }
-
-            return 0.1;
           });
+          drawCanvasLinks();
+          updateExportButtonVisibility();
 
           centerNodes(matched);
         }
       }
 
-      // Optimized degree filter with specific stops
       function handleDegreeFilter(e) {
-        // Map slider values to actual thresholds
         const sliderValue = parseInt(e.target.value);
         const thresholds = [1, 5, 10, 30, 40, 50];
         const threshold = thresholds[sliderValue];
 
-        // Update label to show current threshold
         document.getElementById("degree-label").textContent = threshold + "+";
 
-        // Filter nodes based on threshold
-        nodeGroups.style("opacity", d => {
-          const degree = nodeDegrees.get(d.id);
-          // Show nodes with connections >= threshold (including nodes with > 50 when threshold is 50)
-          return degree >= threshold ? 1 : 0.1;
-        });
+        nodeGroups.style("opacity", d => (nodeDegrees.get(d.id) >= threshold) ? 1 : 0.1);
 
-        // Filter links based on connected nodes
-        linkElements.style("opacity", l => {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const sourceDegree = nodeDegrees.get(sourceId);
-          const targetDegree = nodeDegrees.get(targetId);
-          // Show link if either node meets the threshold
-          return (sourceDegree >= threshold || targetDegree >= threshold) ? 0.6 : 0.1;
-        });
+        // Update canvas link visibility based on degree
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        if (threshold > 1) {
+          linksData.forEach(l => {
+            const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+            const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+            if (nodeDegrees.get(sourceId) < threshold && nodeDegrees.get(targetId) < threshold) {
+              hiddenEdges.add(l._edgeKey);
+            }
+          });
+        }
+        drawCanvasLinks();
+        updateExportButtonVisibility();
       }
 
-      // Handle window resize
       function handleResize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
+        const rect = svg.node().getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
         svg.attr("width", width).attr("height", height);
 
+        // Resize link canvas
+        const dpr = window.devicePixelRatio || 1;
+        linkCanvas.width = width * dpr;
+        linkCanvas.height = height * dpr;
+        linkCanvas.style.width = width + 'px';
+        linkCanvas.style.height = height + 'px';
+        linkCtx = linkCanvas.getContext('2d');
+        linkCtx.scale(dpr, dpr);
+        drawCanvasLinks();
+
         if (simulation) {
-          // Update center force with new dimensions
           simulation.force("center", d3.forceCenter(width / 2, height / 2).strength(0.05));
-          // Very gentle restart to avoid wobbling
-          simulation.alpha(0.1).restart(); // Reduced from 0.3
-          setTimeout(() => {
-            if (!isDragging) {
-              simulation.stop();
-            }
-          }, 500); // Reduced from 1000ms
+          simulation.alpha(0.1).restart();
+          setTimeout(() => { if (!isDragging) simulation.stop(); }, 500);
         }
       }
 
-      // Reset view to default
       function resetView() {
         nodeGroups.style("opacity", 1);
-        linkElements.style("opacity", 0.3);
-        // Use auto-fit instead of identity transform
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        pathOrSearchActive = false;
+        drawCanvasLinks();
+        updateExportButtonVisibility();
+        currentLabelTier = null;
+        updateLabelVisibility(currentZoomTransform.k);
         autoFitNetwork();
         searchCache.clear();
       }
 
-      // Center view on nodes with smooth transition
       function centerNodes(nodesToCenter) {
         if (!nodesToCenter || nodesToCenter.length === 0) return;
 
@@ -1867,10 +2117,7 @@
             (yExtent[1] - yExtent[0]) / height
           ));
         }
-
-        if (nodesToCenter.length === 1) {
-          scale = Math.min(scale, 2);
-        }
+        if (nodesToCenter.length === 1) scale = Math.min(scale, 2);
 
         svg.transition()
           .duration(750)
@@ -1879,145 +2126,194 @@
             .scale(scale));
       }
 
-      // Find ALL connections between two nodes (not just shortest path)
+      // Path finding
       function findPath() {
-        const startInput = document.getElementById("start-node").value.trim();
-        const endInput = document.getElementById("end-node").value.trim();
+        // Legacy support: called with 2 explorer nodes
+        if (explorerNodes.length === 2) {
+          exploreConnections();
+        }
+      }
 
-        if (!startInput || !endInput) {
-          alert("Please select both a starting point and destination to explore connections.");
+      function exploreConnections() {
+        if (explorerNodes.length < 2) {
+          alert("Please add at least 2 nodes to explore.");
           return;
         }
 
-        // Check cache first
-        const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
-        if (pathCache.has(cacheKey)) {
-          const cachedResult = pathCache.get(cacheKey);
-          if (cachedResult.nodes.size > 0) {
-            highlightAllConnections(cachedResult);
+        if (explorerNodes.length === 2) {
+          // Two nodes: use existing path finding
+          const startInput = explorerNodes[0];
+          const endInput = explorerNodes[1];
+
+          const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
+          if (pathCache.has(cacheKey)) {
+            const cached = pathCache.get(cacheKey);
+            if (cached.nodes.size > 0) {
+              highlightAllConnections(cached);
+            } else {
+              alert("No connection found between these nodes.");
+            }
+            return;
+          }
+
+          const result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
+          pathCache.set(cacheKey, result);
+          if (pathCache.size > 100) pathCache.delete(pathCache.keys().next().value);
+
+          if (result.nodes.size > 0) {
+            highlightAllConnections(result);
           } else {
-            alert("No connection pathway found between these figures or institutions.");
+            alert("No connections found between these nodes.");
+          }
+        } else {
+          // 3+ nodes: find shared connections (intersection of neighbor sets)
+          findSharedConnections(explorerNodes);
+        }
+      }
+
+      function findSharedConnections(selectedNames) {
+        // Get adjacency sets for each selected node
+        const sets = [];
+        const selectedIds = new Set();
+
+        for (const name of selectedNames) {
+          const node = nodesById.get(name) || nodesByIdLower.get(name.toLowerCase());
+          if (!node) {
+            alert(`Node "${name}" not found in the network.`);
+            return;
+          }
+          selectedIds.add(node.id);
+          const neighbors = adjacencyList.get(node.id);
+          if (neighbors) {
+            sets.push(new Set(neighbors));
+          } else {
+            sets.push(new Set());
+          }
+        }
+
+        // Compute intersection of all neighbor sets
+        if (sets.length === 0) return;
+        let shared = new Set(sets[0]);
+        for (let i = 1; i < sets.length; i++) {
+          const next = sets[i];
+          shared = new Set([...shared].filter(id => next.has(id)));
+        }
+
+        // Remove selected nodes from the shared set (they aren't "shared connections")
+        selectedIds.forEach(id => shared.delete(id));
+
+        if (shared.size === 0) {
+          const pathInfoEl = document.getElementById('path-info');
+          if (pathInfoEl) {
+            pathInfoEl.style.display = 'block';
+            pathInfoEl.innerHTML = '<span class="explorer-result-count">No shared connections found between all selected nodes.</span>';
           }
           return;
         }
 
-        // Find ALL paths and connections
-        const result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
+        // Build the set of all nodes and edges to show
+        const connectedNodes = new Set([...selectedIds, ...shared]);
+        const connectedEdges = new Set();
 
-        // Cache the result
-        pathCache.set(cacheKey, result);
+        // Add edges from each selected node to each shared node
+        linksData.forEach(l => {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          const sourceIsSelected = selectedIds.has(sourceId);
+          const targetIsSelected = selectedIds.has(targetId);
+          const sourceIsShared = shared.has(sourceId);
+          const targetIsShared = shared.has(targetId);
 
-        // Limit cache size
-        if (pathCache.size > 100) {
-          const firstKey = pathCache.keys().next().value;
-          pathCache.delete(firstKey);
+          if ((sourceIsSelected && targetIsShared) || (targetIsSelected && sourceIsShared)) {
+            connectedEdges.add(l._edgeKey);
+          }
+        });
+
+        // Show result info
+        const pathInfoEl = document.getElementById('path-info');
+        if (pathInfoEl) {
+          pathInfoEl.style.display = 'block';
+          pathInfoEl.innerHTML = '<span class="explorer-result-count">' + shared.size + ' shared connection' + (shared.size !== 1 ? 's' : '') + ' found</span>'
+            + '<button class="btn" style="margin-top:8px" onclick="NetworkViz.exportSubgraph()">Export Subgraph</button>';
         }
 
-        if (result.nodes.size > 0) {
-          highlightAllConnections(result);
-        } else {
-          alert("No connections found between these nodes.");
-        }
+        // Highlight: dim unrelated nodes, show only relevant edges
+        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
+          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+
+        // Style selected nodes distinctly
+        nodeGroups.select("circle")
+          .style("stroke", function(d) {
+            if (selectedIds.has(d.id)) return "#c4a35a";
+            return d.type === 'institution' ? "#6d5a44" : "#546f7d";
+          })
+          .style("stroke-width", d => selectedIds.has(d.id) ? 4 : 2);
+
+        // Force-show labels
+        pathOrSearchActive = true;
+        labelElements.style("display", d => connectedNodes.has(d.id) ? null : "none");
+
+        // Canvas edges
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        linksData.forEach(l => {
+          if (connectedEdges.has(l._edgeKey)) {
+            highlightedEdges.add(l._edgeKey);
+          } else {
+            hiddenEdges.add(l._edgeKey);
+          }
+        });
+        drawCanvasLinks();
+        updateExportButtonVisibility();
+
+        // Center the view on shared nodes
+        const allVisible = Array.from(connectedNodes).map(id => nodesById.get(id)).filter(Boolean);
+        centerNodes(allVisible);
       }
 
-      /**
-       * ============================================================================
-       * MultiNodeConnectionFinder Class
-       * ============================================================================
-       *
-       * PURPOSE:
-       * Finds ALL connections between multiple selected nodes (1-10), including
-       * intermediate nodes and all connecting paths. This solves the Steiner tree
-       * problem to find the minimal connecting subgraph.
-       *
-       * ALGORITHM BEHAVIOR:
-       *
-       * 1 NODE:
-       *   - Returns the node + all immediate neighbors
-       *   - Shows the node's local neighborhood
-       *
-       * 2 NODES:
-       *   - Finds all shortest paths between the nodes
-       *   - Includes alternative paths (shortest + 1 hop)
-       *   - Includes common neighbors (triangles)
-       *   - Shows ALL intermediate nodes on these paths
-       *
-       * 3+ NODES:
-       *   - Builds Steiner tree using MST-based approximation
-       *   - Steps:
-       *     a) Compute shortest paths between all pairs of selected nodes
-       *     b) Build Minimum Spanning Tree on terminal nodes
-       *     c) Expand MST edges to actual graph paths
-       *     d) Include all intermediate nodes on these paths
-       *   - Result: Minimal subgraph connecting all selected nodes
-       *
-       * EXAMPLE SCENARIOS:
-       *
-       * Example 1: User selects [A, B, C]
-       *   - A connects to B via intermediate X
-       *   - B connects to C via intermediates Y, Z
-       *   - Result: Shows {A, X, B, Y, Z, C} + all edges between them
-       *
-       * Example 2: User selects [A, B, C, D]
-       *   - Finds shortest paths A-B, A-C, A-D, B-C, B-D, C-D
-       *   - Builds MST to minimize total path length
-       *   - Expands to show all intermediate nodes
-       *   - Result: Complete connecting subgraph
-       *
-       * KEY FEATURES:
-       *   - Case-insensitive node matching
-       *   - Handles D3.js mutated link objects (source/target as objects)
-       *   - Returns sorted edge keys for consistent highlighting
-       *   - Efficient BFS-based path finding
-       *   - Prim's algorithm for MST construction
-       *
-       * EDGE KEY FORMAT:
-       *   - All edges stored as: "[sourceId]--[targetId]" (alphabetically sorted)
-       *   - Example: "Alice--Bob" (not "Bob--Alice")
-       *   - This ensures consistent matching with D3's link objects
-       *
-       * ============================================================================
-       */
+      function addExplorerNode(name) {
+        if (!name || explorerNodes.includes(name)) return;
+        explorerNodes.push(name);
+        renderExplorerChips();
+      }
+
+      function removeExplorerNode(name) {
+        explorerNodes = explorerNodes.filter(n => n !== name);
+        renderExplorerChips();
+      }
+
+      function renderExplorerChips() {
+        const container = document.getElementById('explorer-chips');
+        if (!container) return;
+        container.innerHTML = explorerNodes.map(name =>
+          '<span class="explorer-chip">' +
+            '<span class="explorer-chip-name">' + name + '</span>' +
+            '<button class="explorer-chip-remove" onclick="NetworkViz._removeExplorerNode(\'' + name.replace(/'/g, "\\'") + '\')">' +
+              '<svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+            '</button>' +
+          '</span>'
+        ).join('');
+      }
+
       class MultiNodeConnectionFinder {
         constructor(allNodes, allLinks, adjacencyList) {
           this.allNodes = allNodes;
           this.allLinks = allLinks;
           this.adjacencyList = adjacencyList;
-
-          // Build node lookup for case-insensitive matching
           this.nodesByIdLower = new Map();
-          allNodes.forEach(node => {
-            this.nodesByIdLower.set(node.id.toLowerCase(), node);
-          });
+          allNodes.forEach(node => this.nodesByIdLower.set(node.id.toLowerCase(), node));
         }
 
-        /**
-         * Main entry point: Find connections between multiple nodes
-         * @param {Array<string>} selectedNodeIds - Array of node IDs to connect (1-10 nodes)
-         * @returns {Object} { nodes: Set<string>, edges: Set<string> }
-         */
         findMultiNodeConnections(selectedNodeIds) {
-          // Normalize to lowercase and validate
           const normalizedIds = selectedNodeIds.map(id => id.toLowerCase());
           const validNodes = normalizedIds.filter(id => this.nodesByIdLower.has(id));
 
-          if (validNodes.length === 0) {
-            return { nodes: new Set(), edges: new Set() };
-          }
-
-          // Handle different cases based on number of nodes
-          if (validNodes.length === 1) {
-            return this.findSingleNodeNeighborhood(validNodes[0]);
-          } else if (validNodes.length === 2) {
-            return this.findTwoNodePaths(validNodes[0], validNodes[1]);
-          } else {
-            return this.findSteinerTree(validNodes);
-          }
+          if (validNodes.length === 0) return { nodes: new Set(), edges: new Set() };
+          if (validNodes.length === 1) return this.findSingleNodeNeighborhood(validNodes[0]);
+          if (validNodes.length === 2) return this.findTwoNodePaths(validNodes[0], validNodes[1]);
+          return this.findSteinerTree(validNodes);
         }
 
-        /**
-         * Case 1: Single node - show node + immediate neighbors
-         */
         findSingleNodeNeighborhood(nodeId) {
           const node = this.nodesByIdLower.get(nodeId);
           const connectedNodes = new Set([node.id]);
@@ -2026,163 +2322,89 @@
           const neighbors = this.adjacencyList.get(node.id) || new Set();
           neighbors.forEach(neighbor => {
             connectedNodes.add(neighbor);
-            const edgeKey = [node.id, neighbor].sort().join('--');
-            connectedEdges.add(edgeKey);
+            connectedEdges.add([node.id, neighbor].sort().join('--'));
           });
 
           return { nodes: connectedNodes, edges: connectedEdges };
         }
 
-        /**
-         * Case 2: Two nodes - find all shortest paths
-         */
         findTwoNodePaths(startId, endId) {
           const startNode = this.nodesByIdLower.get(startId);
           const endNode = this.nodesByIdLower.get(endId);
 
-          if (startNode.id === endNode.id) {
-            return this.findSingleNodeNeighborhood(startId);
-          }
+          if (startNode.id === endNode.id) return this.findSingleNodeNeighborhood(startId);
 
           const connectedNodes = new Set();
           const connectedEdges = new Set();
-
-          // Find shortest path length
           const shortestLength = this.bfsShortestPath(startNode.id, endNode.id);
 
-          if (shortestLength === -1) {
-            return { nodes: new Set(), edges: new Set() };
-          }
+          if (shortestLength === -1) return { nodes: new Set(), edges: new Set() };
 
-          // Find all paths at shortest length (and +1 for alternative routes)
           const maxPathLength = 4;
           const pathLengthTolerance = 1;
-          const paths = this.findAllPathsBFS(
-            startNode.id,
-            endNode.id,
-            Math.min(maxPathLength, shortestLength + pathLengthTolerance)
-          );
+          const paths = this.findAllPathsBFS(startNode.id, endNode.id, Math.min(maxPathLength, shortestLength + pathLengthTolerance));
 
-          // Collect nodes and edges from paths
           paths.forEach(path => {
             path.forEach(nodeId => connectedNodes.add(nodeId));
             for (let i = 0; i < path.length - 1; i++) {
-              const edgeKey = [path[i], path[i + 1]].sort().join('--');
-              connectedEdges.add(edgeKey);
+              connectedEdges.add([path[i], path[i + 1]].sort().join('--'));
             }
           });
 
-          // Add triangles (common neighbors)
           this.addCommonNeighbors(startNode.id, endNode.id, connectedNodes, connectedEdges);
-
           return { nodes: connectedNodes, edges: connectedEdges };
         }
 
-        /**
-         * Case 3: Multiple nodes (3+) - find Steiner tree approximation with ALL paths
-         * This finds ALL paths (not just one) connecting the selected nodes
-         */
         findSteinerTree(terminalNodeIds) {
           const connectedNodes = new Set();
           const connectedEdges = new Set();
-
-          // Get actual node IDs (not lowercased)
           const terminals = terminalNodeIds.map(id => this.nodesByIdLower.get(id).id);
-
-          // Configuration for path finding
-          const maxPathLength = 4; // Maximum path length to consider
-          const pathLengthTolerance = 1; // Include paths up to shortest + tolerance
-
-          // Step 1: Find ALL paths between all pairs of terminal nodes
-          const allPairPaths = new Map(); // key: "source--target", value: array of paths
-          const shortestDistances = new Map(); // key: "source--target", value: shortest distance
+          const maxPathLength = 4;
+          const pathLengthTolerance = 1;
+          const allPairPaths = new Map();
+          const shortestDistances = new Map();
 
           for (let i = 0; i < terminals.length; i++) {
             for (let j = i + 1; j < terminals.length; j++) {
               const source = terminals[i];
               const target = terminals[j];
               const key = [source, target].sort().join('--');
-
-              // Find shortest distance first
               const shortestDist = this.bfsShortestPath(source, target);
 
               if (shortestDist !== -1) {
                 shortestDistances.set(key, shortestDist);
-
-                // Find ALL paths up to shortest + tolerance (but cap at maxPathLength)
                 const maxLength = Math.min(maxPathLength, shortestDist + pathLengthTolerance);
                 const paths = this.findAllPathsBFS(source, target, maxLength);
-
-                if (paths.length > 0) {
-                  allPairPaths.set(key, paths);
-                }
+                if (paths.length > 0) allPairPaths.set(key, paths);
               }
             }
           }
 
-          // Step 2: Build MST using shortest distances
           const mstEdges = this.primMST(terminals, shortestDistances);
 
-          // Step 3: For each MST edge, add ALL paths (not just one)
           mstEdges.forEach(([source, target]) => {
             const key = [source, target].sort().join('--');
             const paths = allPairPaths.get(key);
-
             if (paths) {
-              // Add nodes and edges from ALL paths for this MST edge
               paths.forEach(path => {
-                // Add all nodes in the path
                 path.forEach(nodeId => connectedNodes.add(nodeId));
-
-                // Add all edges in the path
                 for (let i = 0; i < path.length - 1; i++) {
-                  const edgeKey = [path[i], path[i + 1]].sort().join('--');
-                  connectedEdges.add(edgeKey);
+                  connectedEdges.add([path[i], path[i + 1]].sort().join('--'));
                 }
               });
             }
           });
 
-          // Step 4: Also include ALL direct paths between terminal pairs (not just MST edges)
-          // This ensures we show triangular connections and all alternative paths
           for (let i = 0; i < terminals.length; i++) {
             for (let j = i + 1; j < terminals.length; j++) {
               const source = terminals[i];
               const target = terminals[j];
-              const key = [source, target].sort().join('--');
-
-              // Add direct edge if it exists (even if not in MST)
               const neighbors = this.adjacencyList.get(source);
               if (neighbors && neighbors.has(target)) {
                 connectedNodes.add(source);
                 connectedNodes.add(target);
-                const edgeKey = [source, target].sort().join('--');
-                connectedEdges.add(edgeKey);
+                connectedEdges.add([source, target].sort().join('--'));
               }
-
-              // Also check for short paths between these nodes (triangles)
-              const shortestDist = shortestDistances.get(key);
-              if (shortestDist && shortestDist <= 2) {
-                // For very short distances, include ALL paths
-                const paths = allPairPaths.get(key);
-                if (paths) {
-                  paths.forEach(path => {
-                    path.forEach(nodeId => connectedNodes.add(nodeId));
-                    for (let i = 0; i < path.length - 1; i++) {
-                      const edgeKey = [path[i], path[i + 1]].sort().join('--');
-                      connectedEdges.add(edgeKey);
-                    }
-                  });
-                }
-              }
-            }
-          }
-
-          // Step 5: Add common neighbors (triangular connections) for all terminal pairs
-          for (let i = 0; i < terminals.length; i++) {
-            for (let j = i + 1; j < terminals.length; j++) {
-              const source = terminals[i];
-              const target = terminals[j];
               this.addCommonNeighbors(source, target, connectedNodes, connectedEdges);
             }
           }
@@ -2190,67 +2412,26 @@
           return { nodes: connectedNodes, edges: connectedEdges };
         }
 
-        /**
-         * BFS to find shortest path length
-         */
         bfsShortestPath(start, end) {
           const queue = [[start, 0]];
           const visited = new Set();
 
           while (queue.length > 0) {
             const [node, distance] = queue.shift();
-
             if (node === end) return distance;
             if (visited.has(node)) continue;
-
             visited.add(node);
-            const neighbors = this.adjacencyList.get(node);
 
+            const neighbors = this.adjacencyList.get(node);
             if (neighbors) {
               neighbors.forEach(neighbor => {
-                if (!visited.has(neighbor)) {
-                  queue.push([neighbor, distance + 1]);
-                }
+                if (!visited.has(neighbor)) queue.push([neighbor, distance + 1]);
               });
             }
           }
-
           return -1;
         }
 
-        /**
-         * BFS to find actual path and distance
-         */
-        bfsPath(start, end) {
-          const queue = [[start, [start]]];
-          const visited = new Set();
-
-          while (queue.length > 0) {
-            const [node, path] = queue.shift();
-
-            if (node === end) {
-              return { distance: path.length - 1, path: path };
-            }
-
-            if (visited.has(node)) continue;
-            visited.add(node);
-
-            const neighbors = this.adjacencyList.get(node);
-            if (neighbors) {
-              neighbors.forEach(neighbor => {
-                if (!visited.has(neighbor)) {
-                  queue.push([neighbor, [...path, neighbor]]);
-                }
-              });
-            }
-          }
-
-          return { distance: -1, path: [] };
-        }
-
-        /**
-         * Find all paths up to maxLength
-         */
         findAllPathsBFS(start, end, maxLength) {
           const allPaths = [];
           const queue = [[start]];
@@ -2260,7 +2441,6 @@
             const currentNode = path[path.length - 1];
 
             if (path.length > maxLength + 1) continue;
-
             if (currentNode === end) {
               allPaths.push([...path]);
               continue;
@@ -2269,19 +2449,13 @@
             const neighbors = this.adjacencyList.get(currentNode);
             if (neighbors) {
               neighbors.forEach(neighbor => {
-                if (!path.includes(neighbor)) {
-                  queue.push([...path, neighbor]);
-                }
+                if (!path.includes(neighbor)) queue.push([...path, neighbor]);
               });
             }
           }
-
           return allPaths;
         }
 
-        /**
-         * Add common neighbors (triangles) between two nodes
-         */
         addCommonNeighbors(startId, endId, connectedNodes, connectedEdges) {
           const startNeighbors = this.adjacencyList.get(startId) || new Set();
           const endNeighbors = this.adjacencyList.get(endId) || new Set();
@@ -2291,19 +2465,14 @@
               connectedNodes.add(neighbor);
               connectedNodes.add(startId);
               connectedNodes.add(endId);
-
               connectedEdges.add([startId, neighbor].sort().join('--'));
               connectedEdges.add([endId, neighbor].sort().join('--'));
             }
           });
         }
 
-        /**
-         * Prim's algorithm for Minimum Spanning Tree
-         */
         primMST(nodes, distances) {
           if (nodes.length === 0) return [];
-
           const mstEdges = [];
           const inMST = new Set([nodes[0]]);
 
@@ -2311,13 +2480,11 @@
             let minEdge = null;
             let minDistance = Infinity;
 
-            // Find minimum edge connecting MST to non-MST nodes
             inMST.forEach(u => {
               nodes.forEach(v => {
                 if (!inMST.has(v)) {
                   const key = [u, v].sort().join('--');
                   const dist = distances.get(key);
-
                   if (dist !== undefined && dist < minDistance) {
                     minDistance = dist;
                     minEdge = [u, v];
@@ -2329,204 +2496,44 @@
             if (minEdge) {
               mstEdges.push(minEdge);
               inMST.add(minEdge[1]);
-            } else {
-              break; // Disconnected graph
-            }
+            } else break;
           }
-
           return mstEdges;
         }
       }
 
-      /**
-       * USAGE EXAMPLE FOR MultiNodeConnectionFinder
-       *
-       * To use this class in your code:
-       *
-       * 1. Initialize the finder after data is loaded:
-       *    let multiNodeFinder = new MultiNodeConnectionFinder(data.nodes, data.links, adjacencyList);
-       *
-       * 2. Find connections between multiple nodes:
-       *    const selectedNodes = ["Node A", "Node B", "Node C"];
-       *    const result = multiNodeFinder.findMultiNodeConnections(selectedNodes);
-       *
-       * 3. The result contains:
-       *    - result.nodes: Set of all node IDs (selected + intermediate)
-       *    - result.edges: Set of all edge keys in format "nodeA--nodeB" (sorted)
-       *
-       * 4. Highlight the results using a custom highlighting function or the existing one:
-       *    highlightMultiNodeConnections(result, selectedNodes);
-       *
-       * Example test function (call from browser console after data loads):
-       */
-      function testMultiNodeConnection(nodeIds) {
-        // Validate that data is loaded
-        if (!nodesById || nodesById.size === 0) {
-          console.error('Data not loaded yet. Wait for visualization to load.');
-          return null;
-        }
-
-        // Get link data from the D3 selection
-        const links = linkElements ? linkElements.data() : [];
-
-        // Create finder instance
-        const finder = new MultiNodeConnectionFinder(
-          Array.from(nodesById.values()),
-          links,
-          adjacencyList
-        );
-
-        // Find connections
-        const result = finder.findMultiNodeConnections(nodeIds);
-
-        // Log results
-        console.log(`=== Multi-Node Connection Results ===`);
-        console.log(`Input nodes: ${nodeIds.join(', ')}`);
-        console.log(`Found ${result.nodes.size} connected nodes and ${result.edges.size} edges`);
-        console.log('Connected nodes:', Array.from(result.nodes));
-        console.log('Connected edges:', Array.from(result.edges));
-
-        // Highlight the results
-        if (result.nodes.size > 0) {
-          highlightMultiNodeConnections(result, nodeIds);
-        } else {
-          console.log('No connections found between the selected nodes');
-        }
-
-        return result;
-      }
-
-      /**
-       * Highlight multi-node connections in the visualization
-       */
-      function highlightMultiNodeConnections(result, selectedNodeIds) {
-        const { nodes: connectedNodes, edges: connectedEdges } = result;
-
-        // Hide all nodes and links that are NOT in the connection network
-        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
-          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
-
-        // Hide links not in the connection network
-        linkElements.style("opacity", function(l) {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const edge = [sourceId, targetId].sort().join('--');
-          return connectedEdges.has(edge) ? 1 : 0;
-        })
-        .style("display", function(l) {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const edge = [sourceId, targetId].sort().join('--');
-          return connectedEdges.has(edge) ? "block" : "none";
-        });
-
-        // Highlight the connection edges
-        linkElements.each(function(l) {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const edge = [sourceId, targetId].sort().join('--');
-
-          if (connectedEdges.has(edge)) {
-            d3.select(this)
-              .classed("highlight-path", true)
-              .style("stroke-width", "3px")
-              .style("stroke", "#bf9f5f")
-              .style("stroke-opacity", 0.8);
-          }
-        });
-
-        // Create a set of selected node IDs (case-insensitive)
-        const selectedSet = new Set(selectedNodeIds.map(id => id.toLowerCase()));
-
-        // Highlight nodes with different colors for selected vs intermediate
-        nodeGroups.select("circle").each(function(d) {
-          if (connectedNodes.has(d.id)) {
-            const isSelected = selectedSet.has(d.id.toLowerCase());
-
-            d3.select(this)
-              .classed("highlight-node", true)
-              .style("stroke", isSelected ? "#d4af37" : "#bf9f5f")
-              .style("stroke-width", isSelected ? "4px" : "2px")
-              .style("fill", function(d) {
-                // Golden border for selected nodes, keep default fill
-                if (isSelected) {
-                  return d.type === 'institution' ? "#a0894f" : "#7ba5b8"; // Slightly brighter
-                }
-                return d.type === 'institution' ? "#8b7355" : "#6b8e9f"; // Default colors
-              });
-          }
-        });
-
-        // Show labels for connected nodes
-        labelElements.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
-          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
-
-        // Center on the connected subgraph
-        const connectedNodeObjects = Array.from(connectedNodes).map(id => nodesById.get(id));
-        centerNodes(connectedNodeObjects);
-      }
-
-      // Find RELEVANT connections between two nodes (backwards compatibility)
       function findAllConnections(startId, endId) {
-        // Use the improved MultiNodeConnectionFinder
         const finder = new MultiNodeConnectionFinder(
           Array.from(nodesById.values()),
-          linkElements ? linkElements.data() : [],
+          linksData,
           adjacencyList
         );
 
-        // Find connections using the multi-node finder (handles 2-node case properly)
         const result = finder.findTwoNodePaths(startId.toLowerCase(), endId.toLowerCase());
-
-        // Get the actual node objects for more info
         const startNode = nodesByIdLower.get(startId.toLowerCase());
         const endNode = nodesByIdLower.get(endId.toLowerCase());
 
         if (!startNode || !endNode) {
-          return {
-            nodes: new Set(),
-            edges: new Set(),
-            startNode: null,
-            endNode: null,
-            shortestPathLength: -1,
-            pathCount: 0,
-            pathsByLength: new Map()
-          };
+          return { nodes: new Set(), edges: new Set(), startNode: null, endNode: null, shortestPathLength: -1, pathCount: 0, pathsByLength: new Map() };
         }
 
-        // Count paths by length for better reporting
-        const pathsByLength = new Map();
-        const maxPathLength = 4;
-        const tolerance = 1;
-
-        // Find shortest path first
         const shortestLength = finder.bfsShortestPath(startNode.id, endNode.id);
-
-        if (shortestLength === -1) {
-          return {
-            nodes: result.nodes || new Set(),
-            edges: result.edges || new Set(),
-            startNode: startNode.id,
-            endNode: endNode.id,
-            shortestPathLength: -1,
-            pathCount: 0,
-            pathsByLength: new Map()
-          };
-        }
-
-        // Count ALL paths at each length up to shortest + tolerance
+        const pathsByLength = new Map();
         let totalPaths = 0;
-        for (let length = shortestLength; length <= Math.min(maxPathLength, shortestLength + tolerance); length++) {
-          const pathsAtLength = finder.findAllPathsBFS(startNode.id, endNode.id, length)
-            .filter(path => path.length - 1 === length); // path.length - 1 = number of edges
 
-          if (pathsAtLength.length > 0) {
-            pathsByLength.set(length, pathsAtLength.length);
-            totalPaths += pathsAtLength.length;
+        if (shortestLength !== -1) {
+          const maxPathLength = 4;
+          const tolerance = 1;
+          for (let length = shortestLength; length <= Math.min(maxPathLength, shortestLength + tolerance); length++) {
+            const pathsAtLength = finder.findAllPathsBFS(startNode.id, endNode.id, length)
+              .filter(path => path.length - 1 === length);
+            if (pathsAtLength.length > 0) {
+              pathsByLength.set(length, pathsAtLength.length);
+              totalPaths += pathsAtLength.length;
+            }
           }
         }
 
-        // Count triangular connections (common neighbors)
         const startNeighbors = adjacencyList.get(startNode.id) || new Set();
         const endNeighbors = adjacencyList.get(endNode.id) || new Set();
         const commonNeighbors = Array.from(startNeighbors).filter(n => endNeighbors.has(n));
@@ -2538,202 +2545,125 @@
           endNode: endNode.id,
           shortestPathLength: shortestLength,
           pathCount: totalPaths,
-          pathsByLength: pathsByLength,
+          pathsByLength,
           commonNeighbors: commonNeighbors.length
         };
       }
 
-      // Highlight RELEVANT connections between the nodes
       function highlightAllConnections(result) {
         clearPath();
 
-        const {
-          nodes: connectedNodes,
-          edges: connectedEdges,
-          startNode,
-          endNode,
-          shortestPathLength,
-          pathCount,
-          pathsByLength,
-          commonNeighbors
-        } = result;
+        const { nodes: connectedNodes, edges: connectedEdges, startNode, endNode, shortestPathLength, pathCount, pathsByLength, commonNeighbors } = result;
 
-        // Show information about the paths found
         const pathInfoEl = document.getElementById('path-info');
-        if (shortestPathLength !== undefined && pathCount !== undefined && pathInfoEl) {
+        if (shortestPathLength !== undefined && pathInfoEl) {
           let infoText = '';
-
           if (shortestPathLength === -1) {
             infoText = 'No connection found between these nodes';
           } else if (shortestPathLength === 1) {
             infoText = 'Direct relationship identified';
             if (pathCount > 1 && pathsByLength) {
-              // Show if there are additional paths
               const additionalPaths = pathCount - (pathsByLength.get(1) || 1);
-              if (additionalPaths > 0) {
-                infoText += ` • ${additionalPaths} alternative pathway${additionalPaths > 1 ? 's' : ''} via intermediaries`;
-              }
+              if (additionalPaths > 0) infoText += ` + ${additionalPaths} alternative path${additionalPaths > 1 ? 's' : ''}`;
             }
-          } else if (shortestPathLength > 0) {
-            infoText = `Connection distance: ${shortestPathLength} degree${shortestPathLength > 1 ? 's' : ''} of separation`;
-
-            // Provide detailed path breakdown if available
+          } else {
+            infoText = `${shortestPathLength} degrees of separation`;
             if (pathsByLength && pathsByLength.size > 0) {
               const pathDetails = [];
               pathsByLength.forEach((count, length) => {
-                if (count > 0) {
-                  pathDetails.push(`${count} path${count > 1 ? 's' : ''} at ${length} degree${length > 1 ? 's' : ''}`);
-                }
+                if (count > 0) pathDetails.push(`${count} path${count > 1 ? 's' : ''} at ${length}`);
               });
-
-              if (pathDetails.length > 0) {
-                infoText += ` • Found: ${pathDetails.join(', ')}`;
-              }
-            } else if (pathCount > 1) {
-              infoText += ` • ${pathCount} connection pathway${pathCount > 1 ? 's' : ''} identified`;
+              if (pathDetails.length > 0) infoText += ` (${pathDetails.join(', ')})`;
             }
           }
+          if ((commonNeighbors || 0) > 0) infoText += ` | ${commonNeighbors} shared contact${commonNeighbors > 1 ? 's' : ''}`;
 
-          // Add info about common neighbors/shared contacts
-          const commonCount = commonNeighbors || 0;
-          if (commonCount > 0) {
-            infoText += ` • ${commonCount} shared contact${commonCount > 1 ? 's' : ''}`;
-          }
-
-          pathInfoEl.innerHTML = infoText;
+          pathInfoEl.innerHTML = infoText + '<button class="btn" style="margin-top:8px" onclick="NetworkViz.exportSubgraph()">Export Subgraph</button>';
           pathInfoEl.style.display = 'block';
         }
 
-        // Hide all nodes and links that are NOT in the connection network
         nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
           .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
 
-        // Hide links not in the connection network
-        linkElements.style("opacity", function(l) {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const edge = [sourceId, targetId].sort().join('--');
-          return connectedEdges.has(edge) ? 1 : 0;
-        })
-        .style("display", function(l) {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const edge = [sourceId, targetId].sort().join('--');
-          return connectedEdges.has(edge) ? "block" : "none";
-        });
-
-        // Highlight the connection edges
-        linkElements.each(function(l) {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const edge = [sourceId, targetId].sort().join('--');
-
-          if (connectedEdges.has(edge)) {
-            d3.select(this)
-              .classed("highlight-path", true)
-              .style("stroke-width", "3px")
-              .style("stroke", "#bf9f5f")
-              .style("stroke-opacity", 0.8);
+        // Update canvas: hide non-path edges, highlight path edges
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        linksData.forEach(l => {
+          if (connectedEdges.has(l._edgeKey)) {
+            highlightedEdges.add(l._edgeKey);
+          } else {
+            hiddenEdges.add(l._edgeKey);
           }
         });
+        pathOrSearchActive = true;
+        drawCanvasLinks();
+        updateExportButtonVisibility();
 
-        // Highlight all connected nodes
         nodeGroups.select("circle").each(function(d) {
           if (connectedNodes.has(d.id)) {
             const isEndpoint = (d.id === startNode || d.id === endNode);
             d3.select(this)
               .classed("highlight-node", true)
-              .style("stroke", isEndpoint ? "#d4af37" : "#bf9f5f")
+              .style("stroke", isEndpoint ? "#c4a35a" : "#a08a6e")
               .style("stroke-width", isEndpoint ? "4px" : "3px")
-              .style("fill", function(d) {
-                if (d.id === startNode) return "#4CAF50"; // Green for start
-                if (d.id === endNode) return "#f44336"; // Red for end
-                return d.type === 'institution' ? "#8b7355" : "#6b8e9f"; // Default colors
+              .style("fill", function() {
+                if (d.id === startNode) return "#4a7c59";
+                if (d.id === endNode) return "#8b3a3a";
+                return d.type === 'institution' ? "#8b7355" : "#6b8e9f";
               });
           }
         });
 
-        // Show labels for connected nodes
         labelElements.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
           .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
 
-        // Center on the connected subgraph
-        const connectedNodeObjects = Array.from(connectedNodes).map(id => nodesById.get(id));
-        centerNodes(connectedNodeObjects);
+        centerNodes(Array.from(connectedNodes).map(id => nodesById.get(id)));
       }
 
-      // Clear highlighted path and restore all elements
-      function clearPath() {
-        // Hide path info
-        const pathInfoEl = document.getElementById('path-info');
-        if (pathInfoEl) {
-          pathInfoEl.style.display = 'none';
-        }
+      // ═══════════════════════════════════════════════════════════════
+      // COMMUNITY DETECTION
+      // ═══════════════════════════════════════════════════════════════
 
-        // Restore all nodes to visible
-        nodeGroups
-          .style("opacity", 1)
-          .style("display", "block");
+      function runCommunityDetection() {
+        if (communityCache.size > 0) return; // Already computed
 
-        // Restore node styles
-        nodeGroups.select("circle")
-          .classed("highlight-node", false)
-          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
-          .style("stroke-width", 2)
-          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f");
-
-        // Restore all links to visible with default style
-        linkElements
-          .classed("highlight-path", false)
-          .style("opacity", 0.3)
-          .style("display", "block")
-          .style("stroke", "#c4b5a0")
-          .style("stroke-width", "1.5px")
-          .style("stroke-opacity", 0.3);
-
-        // Restore label visibility based on toggle state
-        labelElements
-          .style("opacity", labelsVisible ? 1 : 0)
-          .style("display", labelsVisible ? "block" : "none");
-      }
-
-      // Optimized community detection using Louvain algorithm
-      function detectCommunities() {
-        // Check cache first
-        if (communityCache.size > 0) {
-          return communityCache.get("communities");
-        }
-
-        // Simple label propagation for community detection
+        // Label propagation algorithm for community detection
         const labels = new Map();
-        nodesById.forEach((node, id) => labels.set(id, id));
+        const nodeIds = Array.from(nodesById.keys());
 
-        let changed = true;
-        let iterations = 0;
-        const maxIterations = 10;
+        // Initialize: each node gets its own label
+        nodeIds.forEach((id, i) => labels.set(id, i));
 
-        while (changed && iterations < maxIterations) {
-          changed = false;
-          const nodeOrder = Array.from(nodesById.keys());
-          d3.shuffle(nodeOrder);
+        // Iterate until convergence or max iterations
+        const maxIterations = 20;
+        for (let iter = 0; iter < maxIterations; iter++) {
+          let changed = false;
 
-          nodeOrder.forEach(nodeId => {
+          // Shuffle node order for each iteration
+          const shuffled = [...nodeIds];
+          for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+          }
+
+          for (const nodeId of shuffled) {
             const neighbors = adjacencyList.get(nodeId);
-            if (!neighbors || neighbors.size === 0) return;
+            if (!neighbors || neighbors.size === 0) continue;
 
-            const neighborLabels = new Map();
+            // Count labels among neighbors
+            const labelCounts = new Map();
             neighbors.forEach(neighborId => {
-              const label = labels.get(neighborId);
-              neighborLabels.set(label, (neighborLabels.get(label) || 0) + 1);
+              const lbl = labels.get(neighborId);
+              labelCounts.set(lbl, (labelCounts.get(lbl) || 0) + 1);
             });
 
+            // Find most common label
             let maxCount = 0;
             let bestLabel = labels.get(nodeId);
-
-            neighborLabels.forEach((count, label) => {
+            labelCounts.forEach((count, lbl) => {
               if (count > maxCount) {
                 maxCount = count;
-                bestLabel = label;
+                bestLabel = lbl;
               }
             });
 
@@ -2741,194 +2671,399 @@
               labels.set(nodeId, bestLabel);
               changed = true;
             }
+          }
+
+          if (!changed) break;
+        }
+
+        // Remap labels to contiguous integers
+        const labelMap = new Map();
+        let nextId = 0;
+        labels.forEach((label, nodeId) => {
+          if (!labelMap.has(label)) {
+            labelMap.set(label, nextId++);
+          }
+          communityCache.set(nodeId, labelMap.get(label));
+        });
+
+        const communityCount = labelMap.size;
+        const infoEl = document.getElementById('community-info');
+        if (infoEl) {
+          infoEl.textContent = communityCount + ' communities detected';
+        }
+      }
+
+      function toggleCommunities() {
+        if (communityCache.size === 0) runCommunityDetection();
+        communityColorActive = !communityColorActive;
+
+        const btn = document.getElementById('community-toggle');
+        const infoEl = document.getElementById('community-info');
+
+        if (communityColorActive) {
+          btn.classList.add('active');
+          if (infoEl) infoEl.style.display = 'block';
+          nodeGroups.select("circle").style("fill", d => {
+            const cId = communityCache.get(d.id);
+            return cId !== undefined ? communityPalette[cId % communityPalette.length] : '#999';
           });
-
-          iterations++;
-        }
-
-        // Cache results
-        communityCache.set("communities", labels);
-
-        return labels;
-      }
-
-      // Export network as PNG with optimizations
-      async function exportPNG() {
-        try {
-          // Clone SVG
-          const clonedSvg = svg.node().cloneNode(true);
-          const svgNS = "http://www.w3.org/2000/svg";
-
-          // Add styles
-          const styleEl = document.createElementNS(svgNS, "style");
-          styleEl.innerHTML = `
-            .link { stroke: #c4b5a0; stroke-opacity: 0.3; stroke-width: 1.5; }
-            .highlight-path { stroke: #bf9f5f; stroke-width: 3px; stroke-opacity: 0.8; }
-            .highlight-node { stroke: #d4af37; stroke-width: 3px; }
-            .label { font-size: 11px; font-family: 'Crimson Text', Georgia, serif; fill: #3a3835; }
-          `;
-          clonedSvg.insertBefore(styleEl, clonedSvg.firstChild);
-
-          // Add white background
-          const bbox = container.node().getBBox();
-          const rect = document.createElementNS(svgNS, "rect");
-          rect.setAttribute("x", bbox.x - 50);
-          rect.setAttribute("y", bbox.y - 50);
-          rect.setAttribute("width", bbox.width + 100);
-          rect.setAttribute("height", bbox.height + 100);
-          rect.setAttribute("fill", "#ffffff");
-          clonedSvg.insertBefore(rect, clonedSvg.firstChild);
-
-          // Convert to canvas
-          const svgString = new XMLSerializer().serializeToString(clonedSvg);
-          const canvas = document.createElement('canvas');
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-
-          await canvg.Canvg.fromString(ctx, svgString).render();
-
-          // Download
-          const a = document.createElement('a');
-          a.download = 'network_visualization.png';
-          a.href = canvas.toDataURL();
-          a.click();
-        } catch (error) {
-          console.error("Error exporting PNG:", error);
-          alert("Unable to generate image. Please try again or use a different browser.");
+        } else {
+          btn.classList.remove('active');
+          if (infoEl) infoEl.style.display = 'none';
+          nodeGroups.select("circle").style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f");
         }
       }
 
-      // Full reset of the visualization
-      function fullReset() {
-        clearPath();
-        resetView();
-
-        // Reset node styles
-        nodeGroups.select("circle")
-          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
-          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
-          .style("stroke-width", 1)
-          .classed("highlight-node", false);
-
-        // Reset link styles
-        linkElements
-          .classed("highlight-path", false)
-          .style("opacity", 0.3);
-
-        // Clear inputs
-        document.getElementById("search").value = "";
-        document.getElementById("start-node").value = "";
-        document.getElementById("end-node").value = "";
-        document.getElementById("degree-range").value = "0";
-        document.getElementById("degree-label").textContent = "1+";
-
-        // Clear caches
-        searchCache.clear();
-        pathCache.clear();
+      function getNodeColor(d) {
+        if (communityColorActive) {
+          const cId = communityCache.get(d.id);
+          return cId !== undefined ? communityPalette[cId % communityPalette.length] : '#999';
+        }
+        return d.type === 'institution' ? "#8b7355" : "#6b8e9f";
       }
 
-      // Initialize autocomplete with optimizations
-      function initializeAutocomplete() {
-        console.log('Initializing autocomplete with', nodesById.size, 'nodes');
+      // ═══════════════════════════════════════════════════════════════
+      // SUBGRAPH EXPORT
+      // ═══════════════════════════════════════════════════════════════
 
-        if (nodesById.size === 0) {
-          console.error('No nodes available for autocomplete');
+      function exportSubgraph() {
+        const visibleNodes = [];
+        nodeGroups.each(function(d) {
+          const el = d3.select(this);
+          const opacity = parseFloat(el.style("opacity"));
+          const display = el.style("display");
+          if (display !== "none" && opacity > 0.05) {
+            visibleNodes.push({ id: d.id, type: d.type || 'unknown' });
+          }
+        });
+
+        const visibleIds = new Set(visibleNodes.map(n => n.id));
+        const visibleLinks = [];
+        linksData.forEach(l => {
+          if (hiddenEdges.has(l._edgeKey)) return;
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          if (visibleIds.has(sourceId) && visibleIds.has(targetId)) {
+            visibleLinks.push({ source: sourceId, target: targetId });
+          }
+        });
+
+        const subgraph = { nodes: visibleNodes, links: visibleLinks };
+        const blob = new Blob([JSON.stringify(subgraph, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.download = 'subgraph-export.json';
+        a.href = url;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      function updateExportButtonVisibility() {
+        const btn = document.getElementById('export-subgraph-btn');
+        if (btn) {
+          btn.style.display = (hiddenEdges.size > 0 || pathOrSearchActive) ? 'block' : 'none';
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // 2-HOP NEIGHBORHOODS
+      // ═══════════════════════════════════════════════════════════════
+
+      function expandTwoHop() {
+        const nameEl = document.getElementById('details-name');
+        const nodeId = nameEl ? nameEl.textContent : null;
+        if (!nodeId || !nodesById.has(nodeId)) return;
+
+        const btn = document.getElementById('two-hop-btn');
+        if (twoHopActive && twoHopSourceId === nodeId) {
+          // Revert to direct neighbors
+          twoHopActive = false;
+          twoHopSourceId = null;
+          if (btn) btn.textContent = 'Show 2-hop neighborhood';
+          highlightNode(nodesById.get(nodeId));
           return;
         }
 
-        const names = Array.from(nodesById.keys()).sort();
-        console.log('Sample node names:', names.slice(0, 5));
+        twoHopActive = true;
+        twoHopSourceId = nodeId;
+        if (btn) btn.textContent = 'Show direct only';
 
-        // Remove any existing autocomplete setup
-        const inputs = ['search', 'start-node', 'end-node'];
-        inputs.forEach(id => {
+        const oneHop = adjacencyList.get(nodeId) || new Set();
+        const twoHop = new Set();
+        oneHop.forEach(neighbor => {
+          const neighborsOfNeighbor = adjacencyList.get(neighbor) || new Set();
+          neighborsOfNeighbor.forEach(nn => {
+            if (nn !== nodeId && !oneHop.has(nn)) {
+              twoHop.add(nn);
+            }
+          });
+        });
+
+        const allRelevant = new Set([nodeId, ...oneHop, ...twoHop]);
+
+        // Set node opacities
+        nodeGroups.style("opacity", d => {
+          if (d.id === nodeId || oneHop.has(d.id)) return 1;
+          if (twoHop.has(d.id)) return 0.6;
+          return 0.05;
+        }).style("display", d => allRelevant.has(d.id) ? null : null);
+
+        // Labels: show for source + 1-hop, hide for 2-hop and others
+        pathOrSearchActive = true;
+        labelElements.style("display", d => {
+          if (d.id === nodeId || oneHop.has(d.id)) return null;
+          return "none";
+        });
+
+        // Edges: show edges where both endpoints are in allRelevant
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        linksData.forEach(l => {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          if (!allRelevant.has(sourceId) || !allRelevant.has(targetId)) {
+            hiddenEdges.add(l._edgeKey);
+          } else if (sourceId === nodeId || targetId === nodeId) {
+            highlightedEdges.add(l._edgeKey);
+          }
+        });
+
+        drawCanvasLinks();
+        updateExportButtonVisibility();
+
+        // Center on the 2-hop subgraph
+        const nodesToCenter = Array.from(allRelevant).map(id => nodesById.get(id)).filter(Boolean);
+        centerNodes(nodesToCenter);
+      }
+
+      function clearPath() {
+        const pathInfoEl = document.getElementById('path-info');
+        if (pathInfoEl) {
+          pathInfoEl.style.display = 'none';
+          pathInfoEl.innerHTML = '';
+        }
+
+        // Clear explorer chips
+        explorerNodes = [];
+        renderExplorerChips();
+        const explorerInput = document.getElementById('explorer-input');
+        if (explorerInput) explorerInput.value = '';
+
+        // Reset 2-hop state
+        twoHopActive = false;
+        twoHopSourceId = null;
+        const twoHopBtn = document.getElementById('two-hop-btn');
+        if (twoHopBtn) twoHopBtn.textContent = 'Show 2-hop neighborhood';
+
+        nodeGroups.style("opacity", 1).style("display", "block");
+        nodeGroups.select("circle")
+          .classed("highlight-node", false)
+          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+          .style("stroke-width", 2)
+          .style("fill", d => getNodeColor(d));
+
+        // Reset canvas link state
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        pathOrSearchActive = false;
+        drawCanvasLinks();
+
+        // Restore label visibility based on current zoom tier
+        currentLabelTier = null; // Force recalculation
+        updateLabelVisibility(currentZoomTransform.k);
+
+        // Close details panel
+        document.getElementById('node-details').classList.remove('open');
+
+        updateExportButtonVisibility();
+      }
+
+      async function exportPNG() {
+        try {
+          // Force-show all labels for export
+          const prevTier = currentLabelTier;
+          labelElements.style("display", null);
+
+          const bbox = container.node().getBBox();
+          const padding = 50;
+          const exportWidth = bbox.width + padding * 2;
+          const exportHeight = bbox.height + padding * 2;
+
+          const exportCanvas = document.createElement('canvas');
+          exportCanvas.width = exportWidth;
+          exportCanvas.height = exportHeight;
+          const ctx = exportCanvas.getContext('2d');
+
+          // Draw background
+          ctx.fillStyle = '#f7f4ed';
+          ctx.fillRect(0, 0, exportWidth, exportHeight);
+
+          // Draw links onto export canvas (in network coordinates)
+          ctx.save();
+          ctx.translate(-bbox.x + padding, -bbox.y + padding);
+          ctx.lineWidth = 1.5;
+
+          // Normal affiliation links
+          ctx.globalAlpha = 0.4;
+          ctx.strokeStyle = '#c4b5a0';
+          ctx.beginPath();
+          for (let i = 0; i < linksData.length; i++) {
+            const l = linksData[i];
+            if (hiddenEdges.has(l._edgeKey)) continue;
+            if (highlightedEdges.has(l._edgeKey)) continue;
+            if (l.type === 'personal') continue;
+            ctx.moveTo(l.source.x, l.source.y);
+            ctx.lineTo(l.target.x, l.target.y);
+          }
+          ctx.stroke();
+
+          // Personal links
+          ctx.globalAlpha = 0.5;
+          ctx.strokeStyle = '#b07070';
+          ctx.beginPath();
+          for (let i = 0; i < linksData.length; i++) {
+            const l = linksData[i];
+            if (hiddenEdges.has(l._edgeKey)) continue;
+            if (highlightedEdges.has(l._edgeKey)) continue;
+            if (l.type !== 'personal') continue;
+            ctx.moveTo(l.source.x, l.source.y);
+            ctx.lineTo(l.target.x, l.target.y);
+          }
+          ctx.stroke();
+
+          // Highlighted links
+          if (highlightedEdges.size > 0) {
+            ctx.globalAlpha = 0.9;
+            ctx.strokeStyle = '#c4a35a';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let i = 0; i < linksData.length; i++) {
+              const l = linksData[i];
+              if (!highlightedEdges.has(l._edgeKey)) continue;
+              ctx.moveTo(l.source.x, l.source.y);
+              ctx.lineTo(l.target.x, l.target.y);
+            }
+            ctx.stroke();
+          }
+          ctx.restore();
+
+          // Render SVG nodes/labels on top
+          const clonedSvg = svg.node().cloneNode(true);
+          const svgNS = "http://www.w3.org/2000/svg";
+          const styleEl = document.createElementNS(svgNS, "style");
+          styleEl.innerHTML = `
+            .label { font-size: 12px; font-family: Georgia, serif; fill: #3d3d3d; }
+          `;
+          clonedSvg.insertBefore(styleEl, clonedSvg.firstChild);
+          clonedSvg.setAttribute("width", exportWidth);
+          clonedSvg.setAttribute("height", exportHeight);
+
+          // Adjust the transform of the container group in the clone
+          const containerGroup = clonedSvg.querySelector('g');
+          if (containerGroup) {
+            containerGroup.setAttribute("transform", `translate(${-bbox.x + padding}, ${-bbox.y + padding})`);
+          }
+
+          const svgString = new XMLSerializer().serializeToString(clonedSvg);
+          await canvg.Canvg.fromString(ctx, svgString).render();
+
+          const a = document.createElement('a');
+          a.download = 'italian-american-literary-network.png';
+          a.href = exportCanvas.toDataURL();
+          a.click();
+
+          // Restore label visibility
+          currentLabelTier = null;
+          updateLabelVisibility(currentZoomTransform.k);
+        } catch (error) {
+          console.error("Export error:", error);
+          alert("Unable to export image. Please try again.");
+        }
+      }
+
+      function fullReset() {
+        // Reset community colors
+        communityColorActive = false;
+        const communityBtn = document.getElementById('community-toggle');
+        if (communityBtn) communityBtn.classList.remove('active');
+        const communityInfo = document.getElementById('community-info');
+        if (communityInfo) communityInfo.style.display = 'none';
+
+        clearPath();
+        resetView();
+
+        nodeGroups.select("circle")
+          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f")
+          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+          .style("stroke-width", 2)
+          .classed("highlight-node", false);
+
+        document.getElementById("search").value = "";
+        const startNode = document.getElementById("start-node");
+        if (startNode) startNode.value = "";
+        const endNode = document.getElementById("end-node");
+        if (endNode) endNode.value = "";
+        document.getElementById("degree-range").value = "0";
+        document.getElementById("degree-label").textContent = "1+";
+        document.getElementById('node-details').classList.remove('open');
+
+        searchCache.clear();
+        pathCache.clear();
+        updateExportButtonVisibility();
+      }
+
+      function initializeAutocomplete() {
+        if (nodesById.size === 0) return;
+
+        const names = Array.from(nodesById.keys()).sort();
+        ['search', 'explorer-input'].forEach(id => {
           const input = document.getElementById(id);
           if (input) {
-            // Remove existing autocomplete containers
-            const existingList = document.getElementById(id + 'autocomplete-list');
-            if (existingList) {
-              existingList.remove();
-            }
-            // Remove old event listeners by cloning
+            const existing = document.getElementById(id + 'autocomplete-list');
+            if (existing) existing.remove();
             const newInput = input.cloneNode(true);
             input.parentNode.replaceChild(newInput, input);
           }
         });
 
-        // Use optimized autocomplete with fresh elements
         setTimeout(() => {
           const searchInput = document.getElementById("search");
-          const startInput = document.getElementById("start-node");
-          const endInput = document.getElementById("end-node");
+          const explorerInput = document.getElementById("explorer-input");
 
           if (searchInput) {
-            console.log('Setting up autocomplete for search input');
             createOptimizedAutocomplete(searchInput, names);
-            // Re-attach search handler after autocomplete setup
             searchInput.addEventListener("input", window.searchHandler);
           }
-          if (startInput) {
-            console.log('Setting up autocomplete for start-node input');
-            createOptimizedAutocomplete(startInput, names);
-          }
-          if (endInput) {
-            console.log('Setting up autocomplete for end-node input');
-            createOptimizedAutocomplete(endInput, names);
+          if (explorerInput) {
+            createOptimizedAutocomplete(explorerInput, names, true);
           }
         }, 100);
       }
 
-      // Optimized autocomplete implementation
-      function createOptimizedAutocomplete(input, items) {
-        if (!input || !items || items.length === 0) {
-          console.error('Invalid input or items for autocomplete');
-          return;
-        }
-
-        console.log('Creating autocomplete for', input.id, 'with', items.length, 'items');
+      function createOptimizedAutocomplete(input, items, addAsChip) {
+        if (!input || !items || items.length === 0) return;
 
         let currentFocus = -1;
-        let autocompleteList = null;
+        const searchIndex = items.map(item => ({ original: item, lower: item.toLowerCase() }));
 
-        // Build search index for faster lookups
-        const searchIndex = items.map(item => ({
-          original: item,
-          lower: item.toLowerCase()
-        }));
-
-        // Create the autocomplete handler function
-        const handleAutocomplete = function(e) {
-          console.log('Autocomplete triggered for', input.id, 'with value:', this.value);
+        const handleAutocomplete = function() {
           const val = this.value.trim().toLowerCase();
           closeAllLists();
-
-          if (!val || val.length < 1) {
-            console.log('Value too short or empty');
-            return;
-          }
+          if (!val || val.length < 1) return;
 
           currentFocus = -1;
-
-          // Create autocomplete container
-          autocompleteList = document.createElement("DIV");
+          const autocompleteList = document.createElement("DIV");
           autocompleteList.setAttribute("id", this.id + "autocomplete-list");
           autocompleteList.setAttribute("class", "autocomplete-items");
-
-          // Ensure parent has position relative
           if (!this.parentNode.style.position || this.parentNode.style.position === 'static') {
             this.parentNode.style.position = 'relative';
           }
-
           this.parentNode.appendChild(autocompleteList);
-          console.log('Created autocomplete list for', this.id);
 
-          // Find matches efficiently - prioritize prefix matches
           let matchCount = 0;
-          const maxMatches = 15; // Increased for better coverage
+          const maxMatches = 15;
           const matches = [];
 
-          // First pass: collect prefix matches
           for (let i = 0; i < searchIndex.length && matchCount < maxMatches; i++) {
             if (searchIndex[i].lower.startsWith(val)) {
               matches.push({ item: searchIndex[i], priority: 1 });
@@ -2936,7 +3071,6 @@
             }
           }
 
-          // Second pass: collect contains matches if we have room
           if (matchCount < maxMatches) {
             for (let i = 0; i < searchIndex.length && matchCount < maxMatches; i++) {
               if (!searchIndex[i].lower.startsWith(val) && searchIndex[i].lower.includes(val)) {
@@ -2946,75 +3080,69 @@
             }
           }
 
-          // Sort by priority (prefix matches first)
           matches.sort((a, b) => a.priority - b.priority);
 
-          // Create autocomplete items
           matches.forEach(match => {
             const searchItem = match.item;
             if (searchItem.lower.includes(val)) {
               const item = searchItem.original;
               const matchIndex = searchItem.lower.indexOf(val);
-
               const itemDiv = document.createElement("DIV");
-
-              // Create the display text with highlighting
-              const beforeMatch = item.substr(0, matchIndex);
-              const matchText = item.substr(matchIndex, val.length);
-              const afterMatch = item.substr(matchIndex + val.length);
-
-              // Use textContent to avoid HTML injection issues
               const strongEl = document.createElement('strong');
-              strongEl.textContent = matchText;
+              strongEl.textContent = item.substr(matchIndex, val.length);
 
-              itemDiv.textContent = beforeMatch;
+              itemDiv.textContent = item.substr(0, matchIndex);
               itemDiv.appendChild(strongEl);
-              itemDiv.appendChild(document.createTextNode(afterMatch));
-
-              // Store the value as a data attribute instead of hidden input
+              itemDiv.appendChild(document.createTextNode(item.substr(matchIndex + val.length)));
               itemDiv.dataset.value = item;
 
-              itemDiv.addEventListener("click", function(e) {
-                input.value = this.dataset.value;
-                closeAllLists();
-                // Trigger input event to update any dependent functionality
-                input.dispatchEvent(new Event('input', { bubbles: true }));
+              itemDiv.addEventListener("click", function() {
+                if (addAsChip) {
+                  addExplorerNode(this.dataset.value);
+                  input.value = '';
+                  closeAllLists();
+                } else {
+                  input.value = this.dataset.value;
+                  closeAllLists();
+                  input.dispatchEvent(new Event('input', { bubbles: true }));
+                }
               });
 
               autocompleteList.appendChild(itemDiv);
             }
           });
-
-          console.log('Added', matches.length, 'matches to autocomplete');
         };
 
-        // Attach event listeners without debouncing initially to test
         input.addEventListener("input", handleAutocomplete);
-
-        // Also trigger on focus with existing value
         input.addEventListener("focus", function(e) {
-          if (this.value.length >= 1) {
-            handleAutocomplete.call(this, e);
-          }
+          if (this.value.length >= 1) handleAutocomplete.call(this, e);
         });
 
-        // Handle keyboard navigation
         input.addEventListener("keydown", function(e) {
           let items = document.getElementById(this.id + "autocomplete-list");
           if (items) items = items.getElementsByTagName("div");
 
-          if (e.keyCode === 40) { // Down
+          if (e.keyCode === 40) {
             currentFocus++;
             addActive(items);
-          } else if (e.keyCode === 38) { // Up
+          } else if (e.keyCode === 38) {
             currentFocus--;
             addActive(items);
-          } else if (e.keyCode === 13) { // Enter
+          } else if (e.keyCode === 13) {
             e.preventDefault();
             if (currentFocus > -1 && items) {
               items[currentFocus].click();
+            } else if (addAsChip && input.value.trim()) {
+              // If no autocomplete item selected, try to add the typed value
+              const typed = input.value.trim();
+              const match = searchIndex.find(s => s.lower === typed.toLowerCase());
+              if (match) {
+                addExplorerNode(match.original);
+                input.value = '';
+                closeAllLists();
+              }
             }
-          } else if (e.keyCode === 27) { // Escape
+          } else if (e.keyCode === 27) {
             closeAllLists();
           }
         });
@@ -3028,125 +3156,94 @@
         }
 
         function removeActive(items) {
-          for (let i = 0; i < items.length; i++) {
-            items[i].classList.remove("autocomplete-active");
-          }
+          for (let i = 0; i < items.length; i++) items[i].classList.remove("autocomplete-active");
         }
 
         function closeAllLists(elmnt) {
           const items = document.getElementsByClassName("autocomplete-items");
-          for (let i = 0; i < items.length; i++) {
-            if (elmnt != items[i] && elmnt != input) {
-              items[i].parentNode.removeChild(items[i]);
-            }
+          for (let i = items.length - 1; i >= 0; i--) {
+            if (elmnt != items[i] && elmnt != input) items[i].parentNode.removeChild(items[i]);
           }
         }
 
-        // Close lists when clicking outside
-        document.addEventListener("click", function(e) {
-          closeAllLists(e.target);
-        });
-
-        // Also close on blur after a small delay
-        input.addEventListener("blur", function(e) {
-          setTimeout(() => closeAllLists(), 200);
-        });
-
-        console.log('Autocomplete setup complete for', input.id);
+        document.addEventListener("click", e => closeAllLists(e.target));
+        input.addEventListener("blur", () => setTimeout(() => closeAllLists(), 200));
       }
 
-      // Toggle label visibility
-      function toggleLabels() {
-        labelsVisible = !labelsVisible;
-        if (labelElements) {
-          labelElements.style("opacity", labelsVisible ? 1 : 0);
-        }
-      }
-
-      // Public API
       return {
         init,
-        toggleLabels,
         findPath,
+        exploreConnections,
         clearPath,
         exportPNG,
         fullReset,
-        detectCommunities,
-        autoFit: autoFitNetwork
+        toggleCommunities,
+        exportSubgraph,
+        expandTwoHop: expandTwoHop,
+        autoFit: autoFitNetwork,
+        _removeExplorerNode: removeExplorerNode,
+        _resyncCanvas: function(w, h) {
+          width = w;
+          height = h;
+          svg.attr("width", width).attr("height", height);
+          linkCtx = linkCanvas.getContext('2d');
+          drawCanvasLinks();
+        }
       };
     })();
 
-    // Toggle sidebar function (global for onclick)
+    // Global functions
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("hidden");
+      // Re-sync canvas dimensions after sidebar transition completes
+      setTimeout(() => {
+        const svgRect = document.getElementById("canvas").getBoundingClientRect();
+        const linkCanvasEl = document.getElementById("link-canvas");
+        const dpr = window.devicePixelRatio || 1;
+        linkCanvasEl.width = svgRect.width * dpr;
+        linkCanvasEl.height = svgRect.height * dpr;
+        linkCanvasEl.style.width = svgRect.width + 'px';
+        linkCanvasEl.style.height = svgRect.height + 'px';
+        const ctx = linkCanvasEl.getContext('2d');
+        ctx.scale(dpr, dpr);
+        if (typeof NetworkViz !== 'undefined') {
+          NetworkViz._resyncCanvas(svgRect.width, svgRect.height);
+        }
+      }, 350); // After CSS transition (300ms + buffer)
     }
 
-    // Modal functions (global for onclick)
     function openAboutModal() {
       const modal = document.getElementById('aboutModal');
       modal.classList.remove('closing');
       modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
     }
 
     function closeAboutModal() {
       const modal = document.getElementById('aboutModal');
       modal.classList.add('closing');
-      setTimeout(() => {
-        modal.classList.remove('show', 'closing');
-        document.body.style.overflow = 'hidden'; // Keep hidden since main view has overflow:hidden
-      }, 300);
+      setTimeout(() => modal.classList.remove('show', 'closing'), 300);
     }
 
-    // Initialize everything when DOM is ready
+    function closeNodeDetails() {
+      document.getElementById('node-details').classList.remove('open');
+    }
+
+    // Initialize
     document.addEventListener("DOMContentLoaded", function() {
-      console.log('DOM Content Loaded');
-
-      // Initialize the network visualization
-      try {
-        if (typeof NetworkViz !== 'undefined' && !window.vizInitialized) {
-          console.log('NetworkViz is defined, initializing...');
-          window.vizInitialized = true;
-          NetworkViz.init();
-        } else if (window.vizInitialized) {
-          console.log('NetworkViz already initialized');
-        } else {
-          console.error('NetworkViz is not defined!');
-        }
-      } catch (e) {
-        console.error('Error initializing NetworkViz:', e);
+      if (typeof NetworkViz !== 'undefined' && !window.vizInitialized) {
+        window.vizInitialized = true;
+        NetworkViz.init();
       }
 
-      // Mobile navigation toggle
-      const navToggle = document.getElementById("nav-toggle");
-      if (navToggle) {
-        navToggle.addEventListener("click", function() {
-          const navLinks = document.querySelector(".nav-links");
-          if (navLinks) {
-            navLinks.classList.toggle("show");
-          }
-        });
-      } else {
-        console.log('nav-toggle element not found - this is normal on desktop');
-      }
-
-      // Close modal with Escape key
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           const modal = document.getElementById('aboutModal');
-          if (modal && modal.classList.contains('show')) {
-            closeAboutModal();
-          }
+          if (modal && modal.classList.contains('show')) closeAboutModal();
         }
       });
     });
 
-    // Also log when the script loads
-    console.log('Visualization script loaded, NetworkViz defined:', typeof NetworkViz !== 'undefined');
-
-    // Failsafe: If DOM content loaded event already fired, initialize immediately
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      console.log('Document already loaded, initializing immediately...');
       setTimeout(() => {
         if (typeof NetworkViz !== 'undefined' && !window.vizInitialized) {
           window.vizInitialized = true;

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omeka Staging Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --border: #dee2e6;
+            --text: #212529;
+            --text-muted: #6c757d;
+            --primary: #0d6efd;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --success: #198754;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 { font-size: 1.5rem; font-weight: 600; }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            font-size: 0.9rem;
+        }
+
+        .stat-value { font-weight: 600; color: var(--primary); }
+
+        main { padding: 24px; max-width: 1400px; margin: 0 auto; }
+
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        input, select {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-input { width: 300px; }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #0b5ed7; }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-danger:hover { background: #bb2d3b; }
+        .btn-warning { background: var(--warning); color: #212529; }
+        .btn-warning:hover { background: #ffca2c; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: #157347; }
+        .btn-small { padding: 4px 10px; font-size: 0.8rem; }
+
+        .batch-bar {
+            background: #212529;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .batch-bar.visible { display: flex; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th.sortable {
+            cursor: pointer;
+            user-select: none;
+        }
+        th.sortable:hover { background: #e9ecef; }
+        th.sorted { color: var(--primary); }
+        th .sort-arrow { font-size: 0.7rem; margin-left: 4px; }
+
+        tr:hover { background: #f8f9fa; }
+        tr.skipped { opacity: 0.5; background: #fff3cd; }
+
+        .title-cell { max-width: 300px; }
+        .title-cell a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .title-cell a:hover { text-decoration: underline; }
+
+        .truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            display: block;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-skip { background: var(--warning); }
+        .badge-collection { background: #e9ecef; }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .tag {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.visible { display: flex; }
+
+        .modal-content {
+            background: var(--card);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 { font-size: 1.2rem; }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-body { padding: 20px; }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .description-preview {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .loading { text-align: center; padding: 40px; color: var(--text-muted); }
+        .empty { text-align: center; padding: 40px; color: var(--text-muted); }
+
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+        }
+
+        .toast {
+            background: #212529;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--danger); }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Omeka Staging Editor</h1>
+        <div class="stats">
+            <span>Staging: <span class="stat-value" id="stat-total">-</span></span>
+            <span>Skipped: <span class="stat-value" id="stat-skipped">-</span></span>
+            <span>Imported: <span class="stat-value" id="stat-imported">-</span></span>
+            <span>Ready: <span class="stat-value" id="stat-available">-</span></span>
+            <span style="border-left: 1px solid #dee2e6; padding-left: 16px;">
+                Network: <span class="stat-value" id="stat-network-nodes">-</span> nodes,
+                <span class="stat-value" id="stat-network-edges">-</span> edges
+            </span>
+        </div>
+    </header>
+
+    <main>
+        <div class="toolbar">
+            <input type="text" class="search-input" id="search" placeholder="Search title, creator, publisher...">
+            <select id="collection-filter">
+                <option value="">All Collections</option>
+            </select>
+            <select id="tag-filter">
+                <option value="">All Tags</option>
+            </select>
+            <label class="checkbox-label">
+                <input type="checkbox" id="show-skipped" checked>
+                Show skipped
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="show-imported" checked>
+                Show imported
+            </label>
+            <button class="btn btn-primary" onclick="loadItems()">Refresh</button>
+            <button class="btn btn-success" onclick="importAll()" style="margin-left: auto;">Import All to Network</button>
+        </div>
+
+        <div class="batch-bar" id="batch-bar">
+            <span><span id="selected-count">0</span> selected</span>
+            <button class="btn btn-warning btn-small" onclick="batchSkip(true)">Mark Skip</button>
+            <button class="btn btn-small" onclick="batchSkip(false)" style="background:#6c757d;color:white;">Unmark Skip</button>
+            <button class="btn btn-danger btn-small" onclick="batchDelete()">Delete</button>
+            <button class="btn btn-success btn-small" onclick="importSelected()">Import Selected</button>
+            <button class="btn btn-small" onclick="clearSelection()" style="margin-left:auto;background:#6c757d;color:white;">Clear</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:40px;"><input type="checkbox" id="select-all" onchange="toggleSelectAll()"></th>
+                    <th class="sortable" data-sort="title" onclick="setSort('title')">Title<span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="creator" onclick="setSort('creator')">Creator<span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="publisher" onclick="setSort('publisher')">Publisher<span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="date" onclick="setSort('date')" style="width:80px;">Year<span class="sort-arrow"></span></th>
+                    <th>Collection</th>
+                    <th>Tags</th>
+                    <th style="width:80px;">Status</th>
+                    <th style="width:100px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="items-body">
+                <tr><td colspan="9" class="loading">Loading...</td></tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button class="btn btn-small" id="prev-btn" onclick="prevPage()">Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button class="btn btn-small" id="next-btn" onclick="nextPage()">Next</button>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Item</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="edit-title">
+                </div>
+                <div class="form-group">
+                    <label>Creator</label>
+                    <input type="text" id="edit-creator">
+                </div>
+                <div class="form-group">
+                    <label>Publisher</label>
+                    <input type="text" id="edit-publisher">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="text" id="edit-date">
+                </div>
+                <div class="form-group">
+                    <label>Description (read-only)</label>
+                    <div class="description-preview" id="edit-description"></div>
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="edit-notes" placeholder="Your cleanup notes..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="edit-skip">
+                        Skip this item (exclude from network import)
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="deleteItem()">Delete</button>
+                <button class="btn" onclick="closeModal()" style="background:#6c757d;color:white;">Cancel</button>
+                <button class="btn btn-primary" onclick="saveItem()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        // State
+        let currentPage = 1;
+        let totalPages = 1;
+        let selectedIds = new Set();
+        let sortBy = 'id';
+        let sortOrder = 'asc';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadNetworkStats();
+            loadItems();
+
+            // Search on enter
+            document.getElementById('search').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') loadItems();
+            });
+
+            // Filter changes
+            document.getElementById('collection-filter').addEventListener('change', () => {
+                currentPage = 1;
+                loadItems();
+            });
+            document.getElementById('tag-filter').addEventListener('change', () => {
+                currentPage = 1;
+                loadItems();
+            });
+            document.getElementById('show-skipped').addEventListener('change', () => {
+                currentPage = 1;
+                loadItems();
+            });
+            document.getElementById('show-imported').addEventListener('change', () => {
+                currentPage = 1;
+                loadItems();
+            });
+
+            // Escape to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+
+        // API helpers
+        async function api(endpoint, options = {}) {
+            const response = await fetch(`/api${endpoint}`, {
+                headers: { 'Content-Type': 'application/json' },
+                ...options,
+                body: options.body ? JSON.stringify(options.body) : undefined
+            });
+            return response.json();
+        }
+
+        // Load stats
+        async function loadStats() {
+            const stats = await api('/stats');
+            document.getElementById('stat-total').textContent = stats.total;
+            document.getElementById('stat-skipped').textContent = stats.skipped;
+            document.getElementById('stat-imported').textContent = stats.imported;
+            document.getElementById('stat-available').textContent = stats.available;
+
+            // Populate collection filter
+            const collSelect = document.getElementById('collection-filter');
+            collSelect.innerHTML = '<option value="">All Collections</option>' +
+                stats.collections.map(c =>
+                    `<option value="${c.id}">${c.name} (${c.count})</option>`
+                ).join('');
+
+            // Populate tag filter
+            const tagSelect = document.getElementById('tag-filter');
+            tagSelect.innerHTML = '<option value="">All Tags</option>' +
+                stats.tags.map(t =>
+                    `<option value="${t.name}">${t.name} (${t.count})</option>`
+                ).join('');
+        }
+
+        // Load network stats
+        async function loadNetworkStats() {
+            try {
+                const stats = await api('/network/stats');
+                document.getElementById('stat-network-nodes').textContent = stats.nodes;
+                document.getElementById('stat-network-edges').textContent = stats.edges;
+            } catch (e) {
+                document.getElementById('stat-network-nodes').textContent = '?';
+                document.getElementById('stat-network-edges').textContent = '?';
+            }
+        }
+
+        // Import functions
+        async function importSelected() {
+            if (selectedIds.size === 0) return;
+            if (!confirm(`Import ${selectedIds.size} items to network? This will create nodes for creators (person) and publishers (institution), linked by edges.`)) return;
+
+            const result = await api('/import', {
+                method: 'POST',
+                body: { item_ids: Array.from(selectedIds) }
+            });
+
+            if (result.success) {
+                const s = result.stats;
+                showToast(`Imported! ${s.items_processed} items → ${s.nodes_created} nodes, ${s.edges_created} edges`, 'success');
+                loadNetworkStats();
+                clearSelection();
+            } else {
+                showToast(result.error || 'Import failed', 'error');
+            }
+        }
+
+        async function importAll() {
+            const available = parseInt(document.getElementById('stat-available').textContent) || 0;
+            if (!confirm(`Import all ${available} non-skipped items to network? This will create nodes for creators (person) and publishers (institution), linked by edges.`)) return;
+
+            const result = await api('/import', {
+                method: 'POST',
+                body: { import_all: true }
+            });
+
+            if (result.success) {
+                const s = result.stats;
+                let msg = `Imported! ${s.items_processed} items → ${s.nodes_created} new nodes, ${s.edges_created} new edges`;
+                if (s.skipped_no_creator > 0 || s.skipped_no_publisher > 0) {
+                    msg += ` (skipped: ${s.skipped_no_creator} no creator, ${s.skipped_no_publisher} no publisher)`;
+                }
+                showToast(msg, 'success');
+                loadNetworkStats();
+            } else {
+                showToast(result.error || 'Import failed', 'error');
+            }
+        }
+
+        // Load items
+        async function loadItems() {
+            const search = document.getElementById('search').value;
+            const collection = document.getElementById('collection-filter').value;
+            const tag = document.getElementById('tag-filter').value;
+            const showSkipped = document.getElementById('show-skipped').checked;
+
+            const showImported = document.getElementById('show-imported').checked;
+
+            const params = new URLSearchParams({
+                page: currentPage,
+                per_page: 50,
+                search,
+                show_skipped: showSkipped,
+                show_imported: showImported,
+                sort_by: sortBy,
+                sort_order: sortOrder
+            });
+            if (collection) params.append('collection', collection);
+            if (tag) params.append('tag', tag);
+
+            const result = await api(`/items?${params}`);
+            totalPages = result.pages;
+
+            // Update sort indicators
+            updateSortIndicators();
+
+            const tbody = document.getElementById('items-body');
+            if (result.items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" class="empty">No items found</td></tr>';
+            } else {
+                tbody.innerHTML = result.items.map(item => `
+                    <tr class="${item.skip ? 'skipped' : ''}">
+                        <td>
+                            <input type="checkbox" data-id="${item.id}"
+                                ${selectedIds.has(item.id) ? 'checked' : ''}
+                                onchange="toggleSelect(${item.id}, this.checked)">
+                        </td>
+                        <td class="title-cell">
+                            <a href="#" onclick="editItem(${item.id}); return false;">
+                                ${escapeHtml(item.title || '(No title)')}
+                            </a>
+                        </td>
+                        <td><span class="truncate">${escapeHtml(item.creator || '-')}</span></td>
+                        <td><span class="truncate">${escapeHtml(item.publisher || '-')}</span></td>
+                        <td>${escapeHtml(extractYear(item.date) || '-')}</td>
+                        <td><span class="badge badge-collection">${escapeHtml(item.collection_name || '-')}</span></td>
+                        <td>
+                            <div class="tags">
+                                ${(item.tags || []).slice(0, 3).map(t =>
+                                    `<span class="tag">${escapeHtml(t)}</span>`
+                                ).join('')}
+                                ${item.tags && item.tags.length > 3 ? `<span class="tag">+${item.tags.length - 3}</span>` : ''}
+                            </div>
+                        </td>
+                        <td>${item.skip ? '<span class="badge badge-skip">Skip</span>' : ''}</td>
+                        <td>
+                            <button class="btn btn-small btn-primary" onclick="editItem(${item.id})">Edit</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // Update pagination
+            document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+            document.getElementById('prev-btn').disabled = currentPage <= 1;
+            document.getElementById('next-btn').disabled = currentPage >= totalPages;
+        }
+
+        // Sorting
+        function setSort(field) {
+            if (sortBy === field) {
+                // Toggle order if same field
+                sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortBy = field;
+                sortOrder = 'asc';
+            }
+            currentPage = 1;
+            loadItems();
+        }
+
+        function updateSortIndicators() {
+            document.querySelectorAll('th.sortable').forEach(th => {
+                const field = th.dataset.sort;
+                const arrow = th.querySelector('.sort-arrow');
+                if (field === sortBy) {
+                    th.classList.add('sorted');
+                    arrow.textContent = sortOrder === 'asc' ? ' ▲' : ' ▼';
+                } else {
+                    th.classList.remove('sorted');
+                    arrow.textContent = '';
+                }
+            });
+        }
+
+        // Extract year from date string
+        function extractYear(dateStr) {
+            if (!dateStr) return null;
+            // Try to find a 4-digit year
+            const match = dateStr.match(/\b(1[0-9]{3}|20[0-9]{2})\b/);
+            return match ? match[1] : dateStr;
+        }
+
+        // Selection
+        function toggleSelect(id, checked) {
+            if (checked) {
+                selectedIds.add(id);
+            } else {
+                selectedIds.delete(id);
+            }
+            updateBatchBar();
+        }
+
+        function toggleSelectAll() {
+            const checked = document.getElementById('select-all').checked;
+            document.querySelectorAll('#items-body input[type="checkbox"]').forEach(cb => {
+                const id = parseInt(cb.dataset.id);
+                cb.checked = checked;
+                if (checked) {
+                    selectedIds.add(id);
+                } else {
+                    selectedIds.delete(id);
+                }
+            });
+            updateBatchBar();
+        }
+
+        function clearSelection() {
+            selectedIds.clear();
+            document.querySelectorAll('#items-body input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('select-all').checked = false;
+            updateBatchBar();
+        }
+
+        function updateBatchBar() {
+            const bar = document.getElementById('batch-bar');
+            document.getElementById('selected-count').textContent = selectedIds.size;
+            bar.classList.toggle('visible', selectedIds.size > 0);
+        }
+
+        // Batch operations
+        async function batchSkip(skip) {
+            if (selectedIds.size === 0) return;
+            await api('/batch/skip', {
+                method: 'POST',
+                body: { item_ids: Array.from(selectedIds), skip }
+            });
+            showToast(`${selectedIds.size} items ${skip ? 'marked to skip' : 'unmarked'}`, 'success');
+            clearSelection();
+            loadStats();
+            loadItems();
+        }
+
+        async function batchDelete() {
+            if (selectedIds.size === 0) return;
+            if (!confirm(`Delete ${selectedIds.size} items? This cannot be undone.`)) return;
+
+            await api('/batch/delete', {
+                method: 'POST',
+                body: { item_ids: Array.from(selectedIds) }
+            });
+            showToast(`${selectedIds.size} items deleted`, 'success');
+            clearSelection();
+            loadStats();
+            loadItems();
+        }
+
+        // Edit item
+        async function editItem(id) {
+            const item = await api(`/items/${id}`);
+
+            document.getElementById('edit-id').value = item.id;
+            document.getElementById('edit-title').value = item.title || '';
+            document.getElementById('edit-creator').value = item.creator || '';
+            document.getElementById('edit-publisher').value = item.publisher || '';
+            document.getElementById('edit-date').value = item.date || '';
+            document.getElementById('edit-description').innerHTML = item.description || '(No description)';
+            document.getElementById('edit-notes').value = item.notes || '';
+            document.getElementById('edit-skip').checked = item.skip;
+
+            document.getElementById('edit-modal').classList.add('visible');
+        }
+
+        async function saveItem() {
+            const id = document.getElementById('edit-id').value;
+            await api(`/items/${id}`, {
+                method: 'PUT',
+                body: {
+                    title: document.getElementById('edit-title').value,
+                    creator: document.getElementById('edit-creator').value,
+                    publisher: document.getElementById('edit-publisher').value,
+                    date: document.getElementById('edit-date').value,
+                    notes: document.getElementById('edit-notes').value,
+                    skip: document.getElementById('edit-skip').checked
+                }
+            });
+            showToast('Item saved', 'success');
+            closeModal();
+            loadStats();
+            loadItems();
+        }
+
+        async function deleteItem() {
+            const id = document.getElementById('edit-id').value;
+            if (!confirm('Delete this item? This cannot be undone.')) return;
+
+            await api(`/items/${id}`, { method: 'DELETE' });
+            showToast('Item deleted', 'success');
+            closeModal();
+            loadStats();
+            loadItems();
+        }
+
+        function closeModal() {
+            document.getElementById('edit-modal').classList.remove('visible');
+        }
+
+        // Pagination
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                loadItems();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadItems();
+            }
+        }
+
+        // Helpers
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text || '';
+            return div.innerHTML;
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

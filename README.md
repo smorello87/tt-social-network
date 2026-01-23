@@ -4,276 +4,167 @@ An interactive network visualization mapping transnational connections in Italia
 
 ## Overview
 
-This project visualizes a network of over 1,500 nodes (individuals and institutions) connected by nearly 3,000 edges representing various relationships including publications, collaborations, translations, and institutional affiliations. The visualization helps identify patterns of cultural exchange, influential brokers, and community formations within the Italian-American literary ecosystem.
+This project visualizes a network of individuals and institutions connected by relationships including publications, collaborations, translations, and institutional affiliations. The visualization helps identify patterns of cultural exchange, influential brokers, and community formations within the Italian-American literary ecosystem.
 
-## Live Demo
+## Quick Start
 
-The current stable version is `diva_optimized.html`. Mobile versions are in beta and require further refinement.
+```bash
+git clone https://github.com/smorello87/tt-social-network.git
+cd tt-social-network/visualization
+python3 serve.py
+```
+
+This starts a local server and opens the visualization at `http://localhost:8080`.
 
 ## Features
 
-### Main Visualization (`diva_optimized.html`)
-- **Interactive Force-Directed Graph**: Dynamic D3.js visualization with real-time physics simulation
-- **Search with Autocomplete**: Find specific individuals or institutions quickly
-- **Connection Explorer**: Discover paths and relationships between any two nodes
-- **Network Density Filter**: Filter nodes by their number of connections (1+, 5+, 10+, 30+, 40+, 50+)
-- **Export to PNG**: Save the current view as an image
-- **About Modal**: Detailed information about data sources and methodology
+### Main Visualization (`visualization/diva_optimized.html`)
+- **Interactive Force-Directed Graph**: D3.js v7 with hybrid SVG + Canvas rendering
+- **Search with Autocomplete**: Find individuals or institutions (triggers after 1 character)
+- **Connection Explorer**: Discover all paths between any two nodes (BFS with configurable depth)
+- **Node Details Panel**: Click any node for a slide-in panel showing all connections grouped by type
+- **Community Detection**: Label propagation algorithm with spatial clustering for major communities
+- **Network Density Filter**: Filter by connection count (1+, 5+, 10+, 30+, 40+, 50+)
+- **2-Hop Neighborhood**: Explore the local neighborhood around any selected node
+- **Export to PNG**: Composites canvas links + SVG nodes into a downloadable image
 
-### Experimental Features
-- **Multi-Node Connection Finder** (`multi_node_sidebar.html`):
-  - Select up to 10 nodes to analyze their connections
-  - **Direct Connections Mode**: Shows only direct edges between selected nodes
-  - **Steiner Tree Mode**: Shows minimal connecting subgraph with intermediate nodes
-  - Connection matrix visualization
-  - Isolated node detection with visual indicators
-  - Connection density statistics
+### Data Editor (`data/editor/`)
+- Browser-based CRUD interface for managing network data
+- SQLite-backed with REST API
+- Node/edge creation, editing, deletion, and merging
+- Batch operations and review workflow for unclassified edges
+- Omeka API integration for importing external collections
 
-## Installation & Usage
+### Multi-Node Analysis (`visualization/multi_node_sidebar.html`)
+- Select up to 10 nodes to analyze their connections
+- **Direct Connections Mode**: Shows only direct edges between selected nodes
+- **Steiner Tree Mode**: Minimal connecting subgraph with intermediate nodes
+- Connection matrix visualization and density statistics
 
-### Prerequisites
-- Python 3.x (for local server and data processing)
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Internet connection (for loading D3.js libraries from CDN)
+## Project Structure
 
-### Quick Start
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/smorello87/tt-social-network.git
-cd tt-social-network
+```
+tt-social-network/
+├── README.md
+├── CLAUDE.md                          # Development instructions
+├── .gitignore
+├── docs/                              # Images and documentation assets
+│   ├── divagando.png
+│   ├── Morello_figure1.png
+│   └── Morello_figure2.png
+├── data/
+│   ├── type1.csv                      # Node definitions (persons/institutions)
+│   ├── singlerows.csv                 # Edge definitions (relationships)
+│   ├── contributors_list.md           # Il Carroccio contributors list
+│   ├── contributors-and-board/        # Divagando TOC and board data (1945-1957)
+│   ├── csv-to-json.py                 # CSV → JSON converter for D3.js
+│   ├── check_single_connections.py    # Peripheral node analysis
+│   ├── add_type_column.py             # Utility: add type column to CSV
+│   ├── import_csv.py                  # Utility: CSV import to SQLite
+│   ├── review_person_connections.py   # Utility: review person-person edges
+│   ├── editor/                        # Flask data editor application
+│   │   ├── app.py                     # Main editor server (port 5001)
+│   │   ├── database.py                # SQLite operations
+│   │   ├── network.db                 # Network database
+│   │   ├── omeka_import.py            # Omeka API importer
+│   │   ├── omeka_editor.py            # Staging review UI (port 5002)
+│   │   ├── import_carroccio_contributors.py
+│   │   ├── import_atlantica_contributors.py
+│   │   ├── clean_metadata.py          # Metadata normalization
+│   │   ├── static/                    # Frontend assets (CSS, JS)
+│   │   └── templates/                 # Jinja2 templates
+│   └── cytoscape/                     # Archived legacy workflow
+├── visualization/
+│   ├── diva_optimized.html            # Main visualization (production)
+│   ├── magazines_network.html         # Subset: Divagando & Il Carroccio contributors
+│   ├── multi_node_sidebar.html        # Multi-node connection finder
+│   ├── multi_node_sidebar.js          # Multi-node algorithms
+│   ├── multi_node_sidebar.css         # Multi-node styles
+│   ├── multi_node_direct_connections.js
+│   ├── graph.json                     # Generated network data
+│   ├── graph_magazines.json           # Subset graph data
+│   ├── serve.py                       # Dev server (port 8080, CORS, auto-open)
+│   └── experimental/                  # Test, debug, and prototype files
+│       ├── diva.html                  # Original visualization
+│       ├── diva_optimized_mobile*.html
+│       └── test_*.html, debug_*.html
+└── LICENSE                            # CC BY-NC 4.0
 ```
 
-2. **Start the visualization**
-```bash
-cd visualization
-python3 serve.py
-```
-This will automatically open `diva_optimized.html` in your browser at `http://localhost:8080`
+## Data Sources
 
-**Alternative:** Use Python's built-in server
-```bash
-cd visualization
-python3 -m http.server 8080
-# Then manually navigate to: http://localhost:8080/diva_optimized.html
-```
+- [Transatlantic Transfers Atlas](https://transatlantictransfers.polimi.it/atlas)
+- Digitized tables of contents from 103 issues of *Divagando* (1945-1957)
+- Tables of contents of *Il Carroccio* (1915-1930)
+- Tables of contents of *Atlantica* (1923-1930)
+- [The Periconi Collection of Italian American Imprints](https://italianamericanimprints.omeka.net/)
+- Wikipedia biographical data
+- Metadata from the Italian Sistema Bibliotecario Nazionale (SBN)
 
-### Generating New Data
+## Usage
 
-If you need to regenerate the network from updated CSV files:
+### Generating Graph Data
 
 ```bash
 cd data
 python csv-to-json.py --types type1.csv --edges singlerows.csv --out ../visualization/graph.json
 ```
 
-**Optional encoding specification:**
+Options: `--encoding auto|utf-8|utf-8-sig|cp1252|latin-1|mac_roman`
+
+### Running the Data Editor
+
 ```bash
-python csv-to-json.py --types type1.csv --edges singlerows.csv --out ../visualization/graph.json --encoding utf-8
+cd data/editor
+python3 app.py          # Editor at http://localhost:5001
+python3 omeka_editor.py # Omeka staging at http://localhost:5002
 ```
 
-### Analyzing Network Data
-
-To identify peripheral nodes (those with only one connection):
+### Analyzing the Network
 
 ```bash
 cd data
 python check_single_connections.py singlerows.csv
 ```
 
-This analysis helps identify outlier actors/institutions and potential data quality issues.
+## Navigation
 
-## Project Structure
+- **Zoom**: Scroll or pinch
+- **Pan**: Click and drag empty space
+- **Move Nodes**: Click and drag individual nodes
+- **Node Details**: Click any node for connection info
+- **Connection Explorer**: Enter two names in the sidebar, click "Find"
+- **Community Detection**: Click "Color by Community" to identify clusters
+- **Auto-Fit**: Reset the viewport to show all nodes
 
-```
-tt-social-network/
-├── README.md                           # This file
-├── data/                               # Data processing
-│   ├── csv-to-json.py                 # Convert CSV to JSON for D3.js
-│   ├── check_single_connections.py    # Analyze peripheral nodes
-│   ├── type1.csv                      # Node definitions (~1500 entries)
-│   ├── singlerows.csv                 # Edge definitions (~2300 connections)
-│   └── cytoscape/                     # Archived scripts (outdated)
-└── visualization/                     # Visualization files
-    ├── diva_optimized.html            # Main visualization (production)
-    ├── multi_node_sidebar.html        # Multi-node connection finder (experimental)
-    ├── diva_optimized_mobile.html     # Mobile version (beta)
-    ├── diva_optimized_mobile_d3.html  # Enhanced mobile (beta)
-    ├── diva.html                      # Original version
-    ├── graph.json                     # Network data (generated)
-    ├── serve.py                       # Python server with CORS + auto-open
-    ├── multi_node_*.js                # Multi-node connection algorithms
-    ├── DIRECT_CONNECTIONS_README.md   # Multi-node algorithm documentation
-    └── test_*.html                    # Debug/testing files
-```
+## Technical Notes
 
-## Data Format
-
-### Nodes (type1.csv)
-- **Persons**: Writers, translators, scholars, editors, cultural mediators
-- **Institutions**: Publishing houses, magazines, universities, cultural organizations
-
-### Edges (singlerows.csv)
-- Bidirectional connections representing various relationships
-- Examples: authored by, published in, affiliated with, collaborated with
-
-## Technical Details
-
-### Performance Optimizations
-- Map-based data structures for O(1) lookups
-- Pre-computed node degrees and adjacency lists
-- Debounced search (300ms) and throttled zoom (16ms)
-- RequestAnimationFrame for 60fps animations
-- Circular pre-positioning to reduce initial chaos
+### Performance
+- Hybrid SVG (nodes/labels) + Canvas (edges) rendering
+- ~2,885 nodes and ~3,895 edges with 60fps interaction
+- Zoom-dependent label visibility (hub labels only at low zoom)
+- Map-based O(1) lookups, pre-computed adjacency lists
+- Debounced search, throttled zoom, RequestAnimationFrame
 
 ### Visual Design
-- **Literary Theme**: Warm ivory backgrounds with bronze/sepia accents
-- **Node Colors**:
-  - Persons: Muted blue-gray (#6b8e9f)
-  - Institutions: Bronze (#8b7355)
-- **Typography**: Crimson Text (serif) and Inter (sans-serif)
-
-## Usage Guide
-
-### Navigation
-- **Zoom**: Scroll or pinch to zoom
-- **Pan**: Click and drag on empty space
-- **Move Nodes**: Click and drag individual nodes
-- **Auto-Fit**: Click "Auto-Fit View" to center the network
-
-### Finding Connections
-1. Use the Connection Explorer in the left sidebar
-2. Enter two names (use autocomplete for accuracy)
-3. Click "Trace Connection" to see all paths between them
-4. Green = start node, Red = end node, Golden borders = intermediate nodes
-
-### Filtering
-- Use the Network Density Filter slider to show only well-connected nodes
-- Settings: 1+ (all), 5+, 10+, 30+, 40+, 50+ connections
-
-## Experimental & Mobile Versions
-
-### Mobile Versions (Beta)
-Two experimental mobile versions are included but require further development:
-- `diva_optimized_mobile.html` - Basic mobile optimizations
-- `diva_optimized_mobile_d3.html` - Enhanced touch gestures
-
-**Note**: These mobile versions are in beta and may have performance issues or bugs. The stable version `diva_optimized.html` works on both desktop and mobile browsers but is optimized for desktop viewing.
-
-### Multi-Node Analysis Tools
-- `multi_node_sidebar.html` - Experimental interface for analyzing connections between multiple nodes
-- `multi_node_direct_connections.js` - Algorithm showing only direct edges between selected nodes
-- See `visualization/DIRECT_CONNECTIONS_README.md` for detailed documentation on integration and usage
-
-## Data Sources
-
-The network data was collected from:
-- Transatlantic Transfers Atlas (Italian-American cultural exchanges database)
-- *Divagando* magazine tables of contents (103 issues, 1945-1957)
-- Wikipedia entries for individuals and institutions
-- Italian Sistema Bibliotecario Nazionale (SBN) metadata
-
-For detailed methodology, see the About section within the visualization.
-
-## Browser Compatibility
-
-- **Desktop**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
-- **Mobile**: Best viewed on desktop; mobile versions in beta
-
-## Troubleshooting
-
-### Visualization won't load
-- Ensure you're running a local server (not opening HTML directly)
-- Check that `graph.json` exists in the visualization folder
-- Open browser console (F12) for error messages
-
-### Performance issues
-- Allow the initial simulation to settle (5-8 seconds)
-- Use the Network Density Filter to reduce visible nodes
-- Try the Auto-Fit View button to reset the viewport
-
-### Autocomplete not working
-- Wait for the data to fully load (loading indicator disappears)
-- Start typing at least one character
-- Check browser console for errors
-
-### Server won't start
-- Check if port 8080 is already in use: `lsof -i :8080`
-- Kill the process using the port or use a different port
-- For custom port: edit `serve.py` and change `PORT = 8080` to your desired port
-
-## Development
-
-### Data Pipeline
-The project uses a two-stage data pipeline:
-
-1. **CSV Source Files** (`data/type1.csv`, `data/singlerows.csv`)
-   - Manually curated from historical sources
-   - `type1.csv`: Maps each entity to a type (person/institution)
-   - `singlerows.csv`: Defines bidirectional relationships
-
-2. **JSON Generation** (`data/csv-to-json.py`)
-   - Auto-detects file encoding
-   - Deduplicates entries
-   - Normalizes names while preserving display casing
-   - Outputs D3.js-compatible `graph.json`
-
-3. **Visualization** (D3.js force-directed graph)
-   - Loads `graph.json` asynchronously
-   - Applies force simulation physics
-   - Provides interactive exploration tools
-
-### Adding New Nodes or Relationships
-
-1. Edit CSV files in `data/`:
-   - Add new entities to `type1.csv` with their type
-   - Add new relationships to `singlerows.csv`
-
-2. Regenerate JSON:
-   ```bash
-   cd data
-   python csv-to-json.py --types type1.csv --edges singlerows.csv --out ../visualization/graph.json
-   ```
-
-3. Refresh visualization in browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R)
+- **Theme**: Archival/literary (warm ivory, sepia tones)
+- **Persons**: Muted blue-gray (#6b8e9f)
+- **Institutions**: Bronze (#8b7355)
+- **Typography**: Cormorant Garamond (display), Source Sans 3 (body)
 
 ## Citation
 
-If you use this visualization or code in academic work, please cite:
+Morello, Stefano. "Mapping Italian/American Crossings: A Network Approach." *Modern Language Notes* 140.1 (2025): 246-275. [DOI](https://doi.org/10.1353/mln.2025.a963658)
 
 ```
 Morello, Stefano. (2025). Italian-American Literary Network Visualization.
 GitHub repository: https://github.com/smorello87/tt-social-network
 ```
 
-**Data Sources:**
-- Transatlantic Transfers Atlas (Italian-American cultural exchanges database)
-- *Divagando* magazine tables of contents (103 issues, 1945-1957)
-- Wikipedia entries for individuals and institutions
-- Italian Sistema Bibliotecario Nazionale (SBN) metadata
-
 ## License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
-
-### You are free to:
-- **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material for scholarly and non-commercial purposes
-
-### Under the following terms:
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
-- **NonCommercial** — You may not use the material for commercial purposes
-
-This license allows scholars and researchers to repurpose the code and visualization techniques for other academic projects while preventing commercial exploitation.
-
-For the full license text, see: https://creativecommons.org/licenses/by-nc/4.0/
-
-**Data Attribution**: The network data is derived from historical sources including the Transatlantic Transfers Atlas, *Divagando* magazine archives, and other scholarly resources. Please cite appropriately when using this data.
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). See [LICENSE](LICENSE).
 
 ## Contact
 
 Created by Stefano Morello - [stefanomorello.com](https://stefanomorello.com)
-
-## Acknowledgments
-
-This visualization was developed as part of research into transnational Italian-American literary networks. Special thanks to all contributors and data sources that made this project possible.

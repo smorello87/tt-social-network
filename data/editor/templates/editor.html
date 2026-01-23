@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Data Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/editor.css?v=7">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <h1>Italian-American Literary Network</h1>
+            <span class="header-subtitle">Data Editor</span>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-primary" onclick="Editor.showAddNodeModal()">+ Node</button>
+            <button class="btn btn-primary" onclick="Editor.showAddEdgeModal()">+ Edge</button>
+            <button class="btn btn-secondary" onclick="Editor.showMergeModal()">Merge</button>
+            <a href="/visualization/diva_optimized.html" class="btn btn-secondary" target="_blank">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 5C5.6 5 1 12 1 12s4.6 7 11 7 11-7 11-7-4.6-7-11-7z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                View
+            </a>
+            <button class="btn btn-secondary" onclick="Editor.showImportModal()">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M12 3v12M5 10l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M3 17v4h18v-4" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Import
+            </button>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="stats-bar">
+        <div class="stat">
+            <span class="stat-value" id="stat-nodes">-</span>
+            <span class="stat-label">Nodes</span>
+        </div>
+        <div class="stat">
+            <span class="stat-value" id="stat-edges">-</span>
+            <span class="stat-label">Edges</span>
+        </div>
+        <div class="stat">
+            <span class="stat-value" id="stat-persons">-</span>
+            <span class="stat-label">Persons</span>
+        </div>
+        <div class="stat">
+            <span class="stat-value" id="stat-institutions">-</span>
+            <span class="stat-label">Institutions</span>
+        </div>
+        <div class="stat stat-warning">
+            <span class="stat-value" id="stat-review">-</span>
+            <span class="stat-label">Need Review</span>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <nav class="tabs">
+        <button class="tab active" data-tab="nodes" onclick="Editor.switchTab('nodes')">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Nodes
+        </button>
+        <button class="tab" data-tab="edges" onclick="Editor.switchTab('edges')">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+                <circle cx="5" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                <circle cx="19" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Edges
+        </button>
+        <button class="tab" data-tab="review" onclick="Editor.switchTab('review')">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Needs Review
+            <span class="tab-badge" id="review-badge">0</span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Filters Panel -->
+        <div class="filters-panel" id="filters-panel">
+            <!-- Node filters -->
+            <div class="filter-group" data-for="nodes">
+                <div class="filter-row">
+                    <label>Type:</label>
+                    <select id="filter-node-type" onchange="Editor.applyFilters()">
+                        <option value="">All Types</option>
+                        <option value="person">Person</option>
+                        <option value="institution">Institution</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <label>Search:</label>
+                    <div class="search-container">
+                        <input type="text" id="filter-node-search" placeholder="Search names..."
+                               oninput="Editor.showAutocomplete('filter-node-search', 'node-autocomplete')"
+                               onfocus="Editor.showAutocomplete('filter-node-search', 'node-autocomplete')"
+                               onblur="setTimeout(() => Editor.hideAutocomplete('node-autocomplete'), 200)">
+                        <div class="autocomplete-dropdown" id="node-autocomplete"></div>
+                    </div>
+                </div>
+                <button class="btn btn-small" onclick="Editor.clearFilters()">Clear Filters</button>
+                <button class="btn btn-primary btn-small" onclick="Editor.showAddNodeModal()">+ Add Node</button>
+            </div>
+
+            <!-- Edge filters -->
+            <div class="filter-group" data-for="edges" style="display: none;">
+                <div class="filter-row">
+                    <label>Edge Type:</label>
+                    <select id="filter-edge-type" onchange="Editor.applyFilters()">
+                        <option value="">All Types</option>
+                        <option value="personal">Personal</option>
+                        <option value="affiliation">Affiliation</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <label>Shared Inst.:</label>
+                    <select id="filter-shared" onchange="Editor.applyFilters()">
+                        <option value="">Any</option>
+                        <option value="0">0 (No shared)</option>
+                        <option value="1-2">1-2</option>
+                        <option value="3+">3+</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <label>Search:</label>
+                    <div class="search-container">
+                        <input type="text" id="filter-edge-search" placeholder="Search names..."
+                               oninput="Editor.showAutocomplete('filter-edge-search', 'edge-autocomplete')"
+                               onfocus="Editor.showAutocomplete('filter-edge-search', 'edge-autocomplete')"
+                               onblur="setTimeout(() => Editor.hideAutocomplete('edge-autocomplete'), 200)">
+                        <div class="autocomplete-dropdown" id="edge-autocomplete"></div>
+                    </div>
+                </div>
+                <button class="btn btn-small" onclick="Editor.clearFilters()">Clear Filters</button>
+                <button class="btn btn-primary btn-small" onclick="Editor.showAddEdgeModal()">+ Add Edge</button>
+            </div>
+
+            <!-- Review filters -->
+            <div class="filter-group" data-for="review" style="display: none;">
+                <p class="filter-info">Showing edges with type "unknown" that need classification.</p>
+                <div class="filter-row">
+                    <label>Search:</label>
+                    <div class="search-container">
+                        <input type="text" id="filter-review-search" placeholder="Search names..."
+                               oninput="Editor.showAutocomplete('filter-review-search', 'review-autocomplete')"
+                               onfocus="Editor.showAutocomplete('filter-review-search', 'review-autocomplete')"
+                               onblur="setTimeout(() => Editor.hideAutocomplete('review-autocomplete'), 200)">
+                        <div class="autocomplete-dropdown" id="review-autocomplete"></div>
+                    </div>
+                </div>
+                <button class="btn btn-small" onclick="Editor.recalculateShared()">Recalculate Shared</button>
+                <button class="btn btn-primary btn-small" onclick="Editor.showAddEdgeModal()">+ Add Edge</button>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-container">
+            <table class="data-table" id="data-table">
+                <thead id="table-header">
+                    <!-- Dynamic header -->
+                </thead>
+                <tbody id="table-body">
+                    <!-- Dynamic rows -->
+                </tbody>
+            </table>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <svg viewBox="0 0 24 24" width="48" height="48">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <p>No data found</p>
+                <span id="empty-message">Try adjusting your filters or import data.</span>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loading-state" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button class="btn btn-small" id="prev-page" onclick="Editor.prevPage()" disabled>Previous</button>
+            <span class="page-info" id="page-info">Page 1 of 1</span>
+            <button class="btn btn-small" id="next-page" onclick="Editor.nextPage()" disabled>Next</button>
+        </div>
+    </main>
+
+    <!-- Batch Action Bar -->
+    <div class="batch-bar" id="batch-bar">
+        <span class="batch-count"><span id="selected-count">0</span> selected</span>
+        <div class="batch-actions">
+            <select id="batch-type">
+                <option value="">Set Type...</option>
+                <option value="personal">Personal</option>
+                <option value="affiliation">Affiliation</option>
+                <option value="unknown">Unknown</option>
+            </select>
+            <button class="btn btn-small" onclick="BatchOps.setType()">Apply Type</button>
+            <button class="btn btn-small" onclick="BatchOps.markReviewed()">Mark Reviewed</button>
+            <button class="btn btn-small btn-danger" onclick="BatchOps.deleteSelected()">Delete</button>
+        </div>
+        <button class="btn btn-small" onclick="Editor.clearSelection()">Clear Selection</button>
+    </div>
+
+    <!-- Add Node Modal -->
+    <div class="modal" id="add-node-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Node</h2>
+                <button class="modal-close" onclick="Editor.closeModal('add-node-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="new-node-name">Name:</label>
+                    <input type="text" id="new-node-name" placeholder="Enter name...">
+                </div>
+                <div class="form-group">
+                    <label for="new-node-type">Type:</label>
+                    <select id="new-node-type">
+                        <option value="person">Person</option>
+                        <option value="institution">Institution</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Editor.closeModal('add-node-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="Editor.createNode()">Create Node</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Node Modal -->
+    <div class="modal" id="edit-node-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Node</h2>
+                <button class="modal-close" onclick="Editor.closeModal('edit-node-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="edit-node-id">
+                <div class="form-group">
+                    <label for="edit-node-name">Name:</label>
+                    <input type="text" id="edit-node-name">
+                </div>
+                <div class="form-group">
+                    <label for="edit-node-type">Type:</label>
+                    <select id="edit-node-type">
+                        <option value="person">Person</option>
+                        <option value="institution">Institution</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="Editor.deleteNode()">Delete Node</button>
+                <button class="btn btn-secondary" onclick="Editor.closeModal('edit-node-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="Editor.updateNode()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Edge Modal -->
+    <div class="modal" id="edit-edge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Edge</h2>
+                <button class="modal-close" onclick="Editor.closeModal('edit-edge-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="edit-edge-id">
+                <div class="form-group">
+                    <label for="edit-edge-source-search">Source Node:</label>
+                    <input type="text" id="edit-edge-source-search" placeholder="Search..." oninput="Editor.searchEditEdgeSource()">
+                    <select id="edit-edge-source-select" size="3" style="width: 100%; margin-top: 8px;"></select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-edge-target-search">Target Node:</label>
+                    <input type="text" id="edit-edge-target-search" placeholder="Search..." oninput="Editor.searchEditEdgeTarget()">
+                    <select id="edit-edge-target-select" size="3" style="width: 100%; margin-top: 8px;"></select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-edge-type">Type:</label>
+                    <select id="edit-edge-type">
+                        <option value="unknown">Unknown (needs review)</option>
+                        <option value="personal">Personal</option>
+                        <option value="affiliation">Affiliation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Shared Institutions:</label>
+                    <div id="shared-institutions-list" class="shared-list"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="Editor.deleteEdge()">Delete Edge</button>
+                <button class="btn btn-secondary" onclick="Editor.closeModal('edit-edge-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="Editor.updateEdge()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="modal" id="import-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Import CSV Data</h2>
+                <button class="modal-close" onclick="Editor.closeModal('import-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-info">Import data from CSV files. This will add new nodes and edges to the database.</p>
+
+                <div class="import-option">
+                    <h3>Option 1: Import from disk</h3>
+                    <p>Import from <code>type1.csv</code> and <code>singlerows.csv</code> in the data folder.</p>
+                    <button class="btn btn-primary" onclick="Editor.importFromDisk()">Import from Disk</button>
+                </div>
+
+                <div class="import-divider">or</div>
+
+                <div class="import-option">
+                    <h3>Option 2: Upload files</h3>
+                    <div class="form-group">
+                        <label for="upload-types">Types file (type1.csv):</label>
+                        <input type="file" id="upload-types" accept=".csv">
+                    </div>
+                    <div class="form-group">
+                        <label for="upload-edges">Edges file (singlerows.csv):</label>
+                        <input type="file" id="upload-edges" accept=".csv">
+                    </div>
+                    <button class="btn btn-primary" onclick="Editor.importFromUpload()">Upload & Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Batch Connect Modal -->
+    <div class="modal" id="batch-connect-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Connections</h2>
+                <button class="modal-close" onclick="Editor.closeModal('batch-connect-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Create edges from <span id="batch-source-count">0</span> selected nodes to:</p>
+                <div class="form-group">
+                    <label for="batch-target-search">Target Node:</label>
+                    <input type="text" id="batch-target-search" placeholder="Search for target..." oninput="Editor.searchTargetNode()">
+                    <select id="batch-target-select" size="5" style="width: 100%; margin-top: 8px;">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="batch-connect-type">Edge Type:</label>
+                    <select id="batch-connect-type">
+                        <option value="affiliation">Affiliation</option>
+                        <option value="personal">Personal</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Editor.closeModal('batch-connect-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="BatchOps.createConnections()">Create Connections</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Edge Modal -->
+    <div class="modal" id="add-edge-modal">
+        <div class="modal-content" style="max-width: 550px;">
+            <div class="modal-header">
+                <h2>Add New Edge(s)</h2>
+                <button class="modal-close" onclick="Editor.closeModal('add-edge-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="add-edge-source-search">Source Node:</label>
+                    <input type="text" id="add-edge-source-search" placeholder="Search for source..." oninput="Editor.searchAddEdgeSource()">
+                    <select id="add-edge-source-select" size="3" style="width: 100%; margin-top: 8px;" onchange="Editor.onSourceChange()"></select>
+                </div>
+                <div class="form-group">
+                    <label>Target Node(s):</label>
+                    <input type="text" id="add-edge-target-search" placeholder="Search and click + to add targets..." oninput="Editor.searchAddEdgeTarget()">
+                    <div class="selected-targets" id="selected-targets-container"></div>
+                    <div class="target-results-list" id="target-results-list"></div>
+                </div>
+                <div class="form-group">
+                    <label for="add-edge-type">Edge Type:</label>
+                    <select id="add-edge-type">
+                        <option value="affiliation">Affiliation</option>
+                        <option value="personal">Personal</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Editor.closeModal('add-edge-modal')">Cancel</button>
+                <button class="btn btn-primary" id="create-edges-btn" onclick="Editor.createEdges()">Create Edge(s)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Merge Nodes Modal -->
+    <div class="modal" id="merge-modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Merge Nodes</h2>
+                <button class="modal-close" onclick="Editor.closeModal('merge-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-info">Merge two nodes into one. All edges from the secondary node will be transferred to the primary node, then the secondary node will be deleted.</p>
+                <div class="form-group">
+                    <label>Primary Node (keep this one):</label>
+                    <input type="text" id="merge-primary-search" placeholder="Search for primary node..." oninput="Editor.searchMergeNode('primary')">
+                    <select id="merge-primary-select" size="3" style="width: 100%; margin-top: 8px;"></select>
+                </div>
+                <div class="form-group">
+                    <label>Secondary Node (merge into primary, then delete):</label>
+                    <input type="text" id="merge-secondary-search" placeholder="Search for secondary node..." oninput="Editor.searchMergeNode('secondary')">
+                    <select id="merge-secondary-select" size="3" style="width: 100%; margin-top: 8px;"></select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Editor.closeModal('merge-modal')">Cancel</button>
+                <button class="btn btn-danger" onclick="Editor.mergeNodes()">Merge Nodes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connections Modal -->
+    <div class="modal" id="connections-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="connections-modal-title">Connections</h2>
+                <button class="modal-close" onclick="Editor.closeModal('connections-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="connections-list" class="connections-list"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Editor.closeModal('connections-modal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="/static/js/api.js?v=8"></script>
+    <script src="/static/js/batch.js?v=8"></script>
+    <script src="/static/js/editor.js?v=8"></script>
+</body>
+</html>

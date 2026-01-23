@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian-American Literary Network</title>
+  <title>Divagando & Il Carroccio Network</title>
 
   <!-- Libraries -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -392,64 +392,27 @@
     .legend-line.affiliation { background: #c4b5a0; }
     .legend-line.personal { background: #b07070; }
 
-    /* Community toggle */
-    .btn.active {
-      background: var(--sepia);
-      color: var(--parchment);
-    }
-
-    #community-info {
-      margin-top: 8px;
-      font-size: 0.78rem;
-      color: var(--ink-light);
-    }
-
-    /* 2-hop button in details panel */
-    .details-expand-btn {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      padding: 7px 12px;
-      background: var(--parchment);
-      border: 1px solid var(--sepia);
-      border-radius: 4px;
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--sepia-dark);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .details-expand-btn:hover {
-      background: var(--sepia);
-      color: var(--parchment);
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* Toggle button (in header) */
+    /* Toggle button */
     #toggle-sidebar {
+      position: fixed;
+      top: calc(var(--header-height) + 12px);
+      left: 12px;
       width: 36px;
       height: 36px;
-      background: transparent;
-      border: 1px solid rgba(247, 244, 237, 0.2);
+      background: var(--ink-dark);
+      border: none;
       border-radius: 4px;
       cursor: pointer;
+      z-index: 1001;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.2s ease;
-      flex-shrink: 0;
+      box-shadow: 0 2px 8px var(--shadow-deep);
     }
 
     #toggle-sidebar:hover {
-      background: rgba(247, 244, 237, 0.1);
-      border-color: rgba(247, 244, 237, 0.3);
+      background: var(--sepia-dark);
     }
 
     #toggle-sidebar svg {
@@ -458,6 +421,10 @@
       stroke: var(--parchment);
       stroke-width: 2;
       fill: none;
+    }
+
+    #sidebar:not(.hidden) ~ #toggle-sidebar {
+      left: calc(var(--sidebar-width) + 12px);
     }
 
     /* ═══════════════════════════════════════════════════════════════
@@ -514,30 +481,12 @@
       left: var(--sidebar-width);
       width: calc(100vw - var(--sidebar-width));
       height: calc(100vh - var(--header-height));
-      background: transparent;
-      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 2;
-    }
-
-    #sidebar.hidden ~ #canvas {
-      left: 0;
-      width: 100vw;
-    }
-
-    #link-canvas {
-      position: fixed;
-      top: var(--header-height);
-      left: var(--sidebar-width);
-      width: calc(100vw - var(--sidebar-width));
-      height: calc(100vh - var(--header-height));
-      pointer-events: none;
-      z-index: 1;
       background:
         radial-gradient(ellipse at center, var(--parchment) 0%, var(--parchment-dark) 100%);
       transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    #sidebar.hidden ~ #link-canvas {
+    #sidebar.hidden ~ #canvas {
       left: 0;
       width: 100vw;
     }
@@ -568,6 +517,24 @@
         -1px 1px 0 var(--parchment),
         1px 1px 0 var(--parchment),
         0 0 8px var(--parchment);
+    }
+
+    .link {
+      stroke: #c4b5a0;
+      stroke-opacity: 0.4;
+      stroke-width: 1.5;
+      transition: stroke-opacity 0.3s ease;
+    }
+
+    .link.personal {
+      stroke: #b07070;
+      stroke-opacity: 0.5;
+    }
+
+    .highlight-path {
+      stroke: var(--gold) !important;
+      stroke-width: 3px !important;
+      stroke-opacity: 0.9 !important;
     }
 
     .highlight-node {
@@ -799,285 +766,6 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       EXPLORER CHIPS
-    ═══════════════════════════════════════════════════════════════ */
-
-    .explorer-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 8px;
-      min-height: 0;
-    }
-
-    .explorer-chips:empty {
-      display: none;
-    }
-
-    .explorer-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 3px 8px;
-      background: var(--parchment-dark);
-      border: 1px solid rgba(139, 115, 85, 0.25);
-      border-radius: 3px;
-      font-size: 0.72rem;
-      color: var(--ink-medium);
-      max-width: 100%;
-      animation: chipIn 0.2s ease-out;
-    }
-
-    @keyframes chipIn {
-      from { opacity: 0; transform: scale(0.85); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .explorer-chip-name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 180px;
-    }
-
-    .explorer-chip-remove {
-      width: 14px;
-      height: 14px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      padding: 0;
-      opacity: 0.5;
-      transition: opacity 0.15s;
-      flex-shrink: 0;
-    }
-
-    .explorer-chip-remove:hover {
-      opacity: 1;
-      background: rgba(139, 90, 60, 0.15);
-    }
-
-    .explorer-chip-remove svg {
-      width: 10px;
-      height: 10px;
-      stroke: var(--ink-medium);
-      stroke-width: 2.5;
-    }
-
-    .explorer-result-count {
-      font-size: 0.78rem;
-      color: var(--sepia);
-      font-style: italic;
-      margin-top: 6px;
-      padding: 0 2px;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       NODE DETAILS PANEL
-    ═══════════════════════════════════════════════════════════════ */
-
-    #node-details {
-      position: fixed;
-      right: 0;
-      top: var(--header-height);
-      width: 320px;
-      height: calc(100vh - var(--header-height));
-      background: var(--parchment);
-      border-left: 1px solid var(--parchment-dark);
-      box-shadow: -4px 0 24px var(--shadow-deep);
-      z-index: 950;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    #node-details.open {
-      transform: translateX(0);
-    }
-
-    .details-header {
-      padding: 24px 20px 16px;
-      border-bottom: 1px solid var(--parchment-dark);
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .details-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 28px;
-      height: 28px;
-      background: transparent;
-      border: 1px solid var(--parchment-dark);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
-
-    .details-close:hover {
-      background: var(--parchment-dark);
-      border-color: var(--sepia-light);
-    }
-
-    .details-close svg {
-      width: 14px;
-      height: 14px;
-      stroke: var(--ink-medium);
-      stroke-width: 2;
-    }
-
-    .details-node-name {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--ink-dark);
-      line-height: 1.3;
-      padding-right: 36px;
-      margin-bottom: 8px;
-    }
-
-    .details-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .details-type-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 3px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .details-type-badge.person {
-      background: rgba(107, 142, 159, 0.12);
-      color: var(--accent-blue);
-    }
-
-    .details-type-badge.institution {
-      background: rgba(139, 115, 85, 0.12);
-      color: var(--sepia-dark);
-    }
-
-    .details-type-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .details-type-badge.person::before {
-      background: var(--accent-blue-light);
-    }
-
-    .details-type-badge.institution::before {
-      background: var(--sepia);
-    }
-
-    .details-degree {
-      font-size: 0.8rem;
-      color: var(--ink-light);
-      font-style: italic;
-    }
-
-    .details-connections {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0;
-    }
-
-    .details-connections::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .details-connections::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .details-connections::-webkit-scrollbar-thumb {
-      background: var(--sepia-light);
-      border-radius: 2px;
-    }
-
-    .details-section-heading {
-      position: sticky;
-      top: 0;
-      padding: 12px 20px 8px;
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--sepia);
-      background: linear-gradient(180deg, var(--parchment) 70%, transparent);
-      z-index: 1;
-    }
-
-    .details-connection-item {
-      padding: 8px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: background 0.15s ease;
-      border-bottom: 1px solid rgba(235, 230, 218, 0.5);
-    }
-
-    .details-connection-item:hover {
-      background: var(--parchment-dark);
-    }
-
-    .details-connection-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .details-connection-dot.person {
-      background: var(--accent-blue-light);
-    }
-
-    .details-connection-dot.institution {
-      background: var(--sepia);
-    }
-
-    .details-connection-name {
-      font-size: 0.85rem;
-      color: var(--ink-medium);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .details-connection-item:hover .details-connection-name {
-      color: var(--ink-dark);
-    }
-
-    .details-empty {
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      font-style: italic;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════════════════════════════════ */
 
@@ -1099,8 +787,8 @@
         width: 100vw;
       }
 
-      #node-details {
-        width: 100%;
+      #toggle-sidebar {
+        left: 12px !important;
       }
 
       .header-title span {
@@ -1123,16 +811,7 @@
 
   <!-- Header -->
   <header id="header">
-    <div class="header-left">
-      <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar">
-        <svg viewBox="0 0 24 24">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-      <h1 class="header-title">Italian-American Literary Network <span>1920-1980</span></h1>
-    </div>
+    <h1 class="header-title">Divagando & Il Carroccio <span>Contributors Network</span></h1>
     <div class="header-actions">
       <button class="header-btn" onclick="openAboutModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1143,6 +822,15 @@
       </button>
     </div>
   </header>
+
+  <!-- Sidebar Toggle -->
+  <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
 
   <!-- Sidebar -->
   <aside id="sidebar">
@@ -1164,14 +852,16 @@
     <div class="sidebar-section">
       <div class="section-title">
         Connection Explorer
-        <span class="help-tip" data-tip="2 nodes: trace paths. 3+ nodes: find shared connections.">?</span>
+        <span class="help-tip" data-tip="Discover paths linking two figures or institutions in the network">?</span>
       </div>
-      <div id="explorer-chips" class="explorer-chips"></div>
       <div class="autocomplete">
-        <input type="text" id="explorer-input" class="input-field" placeholder="Add a node...">
+        <input type="text" id="start-node" class="input-field" placeholder="Starting point...">
+      </div>
+      <div class="autocomplete">
+        <input type="text" id="end-node" class="input-field" placeholder="Destination...">
       </div>
       <div class="btn-row">
-        <button class="btn" onclick="NetworkViz.exploreConnections()">Find</button>
+        <button class="btn" onclick="NetworkViz.findPath()">Trace Path</button>
         <button class="btn" onclick="NetworkViz.clearPath()">Clear</button>
       </div>
       <div id="path-info"></div>
@@ -1189,20 +879,9 @@
       </div>
     </div>
 
-    <!-- Communities -->
-    <div class="sidebar-section">
-      <div class="section-title">
-        Communities
-        <span class="help-tip" data-tip="Detect clusters using label propagation and color nodes by community">?</span>
-      </div>
-      <button class="btn" id="community-toggle" onclick="NetworkViz.toggleCommunities()">Color by Community</button>
-      <div id="community-info" style="display:none"></div>
-    </div>
-
     <!-- Actions -->
     <div class="sidebar-section">
       <button class="btn" onclick="NetworkViz.exportPNG()">Download Image</button>
-      <button class="btn" id="export-subgraph-btn" style="display:none" onclick="NetworkViz.exportSubgraph()">Export Visible Subgraph</button>
       <button class="btn" onclick="NetworkViz.fullReset()">Reset View</button>
     </div>
 
@@ -1236,28 +915,8 @@
     </div>
   </aside>
 
-  <!-- Link Canvas (behind SVG for performance) -->
-  <canvas id="link-canvas"></canvas>
-  <!-- SVG Canvas (nodes and labels only) -->
+  <!-- Canvas -->
   <svg id="canvas"></svg>
-
-  <!-- Node Details Panel -->
-  <aside id="node-details">
-    <div class="details-header">
-      <button class="details-close" onclick="closeNodeDetails()" aria-label="Close details">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M18 6L6 18M6 6l12 12"/>
-        </svg>
-      </button>
-      <div class="details-node-name" id="details-name"></div>
-      <div class="details-meta">
-        <span class="details-type-badge" id="details-type"></span>
-        <span class="details-degree" id="details-degree"></span>
-      </div>
-      <button class="details-expand-btn" id="two-hop-btn" onclick="NetworkViz.expandTwoHop()">Show 2-hop neighborhood</button>
-    </div>
-    <div class="details-connections" id="details-list"></div>
-  </aside>
 
   <!-- About Modal -->
   <div id="aboutModal" class="modal">
@@ -1276,23 +935,13 @@
           This visualization maps the transnational network of Italian-American literary culture, revealing connections between writers, translators, scholars, and cultural institutions. Each node represents either an individual contributor to Italian-American letters or an institution, while edges trace relationships of collaboration, translation, correspondence, and intellectual exchange.
         </p>
         <p>
-          The network currently comprises <strong><span id="about-node-count">--</span> nodes</strong> connected by <strong><span id="about-edge-count">--</span> edges</strong>.
+          The dataset draws from multiple sources: the <a href="https://transatlantictransfers.polimi.it/atlas">Transatlantic Transfers Atlas</a>, digitized tables of contents from 103 issues of <em>Divagando</em>, Wikipedia biographical data, and metadata from the Italian Sistema Bibliotecario Nazionale (SBN).
         </p>
         <p>
-          The network distinguishes between individual actors and institutional entities. Connections are classified as either "affiliations" (institutional relationships) or "personal" (direct interpersonal connections), visualized with subtly different colors.
+          The network distinguishes between individual actors and institutional entities. Connections are classified as either "affiliations" (institutional relationships) or "personal" (direct interpersonal connections), visualized in different colors.
         </p>
-        <h3 style="margin-top:1.2em;margin-bottom:0.4em;font-family:'Cormorant Garamond',serif;font-size:1.1em;">Data Sources</h3>
-        <ul style="margin:0.4em 0 1em 1.2em;line-height:1.6;">
-          <li><a href="https://transatlantictransfers.polimi.it/atlas">Transatlantic Transfers Atlas</a></li>
-          <li>Digitized tables of contents from 103 issues of <em>Divagando</em> (1945&ndash;1957)</li>
-          <li>Tables of contents of <em>Il Carroccio</em> (1915&ndash;1930)</li>
-          <li>Tables of contents of <em>Atlantica</em> (1923&ndash;1930)</li>
-          <li><a href="https://italianamericanimprints.omeka.net/">The Periconi Collection of Italian American Imprints</a></li>
-          <li>Wikipedia biographical data</li>
-          <li>Metadata from the Italian Sistema Bibliotecario Nazionale (SBN)</li>
-        </ul>
         <p>
-          To learn more, see the <a href="https://doi.org/10.1353/mln.2025.a963658">article published in <em>Modern Language Notes</em></a> (2025).
+          The network comprises over 1,500 nodes connected by nearly 3,000 edges. To learn more, see the <a href="https://doi.org/10.1353/mln.2025.a963658">article published in <em>Modern Language Notes</em></a> (2025).
         </p>
       </div>
       <div class="modal-footer">
@@ -1314,19 +963,8 @@
     const NetworkViz = (function() {
       // Private state
       let svg, width, height, simulation;
-      let nodeGroups, labelElements;
+      let nodeGroups, linkElements, labelElements;
       let container, zoom;
-
-      // Canvas link layer
-      let linkCanvas, linkCtx;
-      let linksData = [];
-      let highlightedEdges = new Set();
-      let hiddenEdges = new Set();
-      let currentZoomTransform = d3.zoomIdentity;
-
-      // Zoom-dependent label visibility
-      let currentLabelTier = 'all'; // 'none' | 'hubs' | 'all'
-      let pathOrSearchActive = false;
 
       // Data structures
       let nodesById = new Map();
@@ -1334,9 +972,6 @@
       let adjacencyList = new Map();
       let nodeDegrees = new Map();
       let nodeIndexMap = new Map();
-
-      // Explorer state
-      let explorerNodes = [];
 
       // State
       let currentPath = [];
@@ -1353,29 +988,6 @@
       const pathCache = new Map();
       const searchCache = new Map();
       const communityCache = new Map();
-      let communitySizes = new Map();
-
-      // Community detection state
-      let communityColorActive = false;
-      let preCommunityPositions = null;
-      const communityPalette = [
-        '#7a9e7e', // sage
-        '#b0704e', // terracotta
-        '#5e7f8c', // slate blue
-        '#b8963e', // ochre
-        '#9e7a8a', // dusty rose
-        '#6b8a5e', // olive
-        '#8a6b5e', // umber
-        '#5e6b8a', // steel
-        '#8a8a5e', // khaki
-        '#7a5e8a', // plum
-        '#5e8a7a', // teal
-        '#8a5e5e'  // brick
-      ];
-
-      // 2-hop state
-      let twoHopActive = false;
-      let twoHopSourceId = null;
 
       // Utilities
       function debounce(func, wait) {
@@ -1395,34 +1007,6 @@
             setTimeout(() => inThrottle = false, limit);
           }
         };
-      }
-
-      function clusterForce(strength, minSize) {
-        let nodes;
-        function force(alpha) {
-          const centroids = new Map();
-          const counts = new Map();
-          nodes.forEach(d => {
-            const cId = communityCache.get(d.id);
-            if (cId === undefined) return;
-            if ((communitySizes.get(cId) || 0) < minSize) return;
-            if (!centroids.has(cId)) { centroids.set(cId, {x: 0, y: 0}); counts.set(cId, 0); }
-            centroids.get(cId).x += d.x;
-            centroids.get(cId).y += d.y;
-            counts.set(cId, counts.get(cId) + 1);
-          });
-          centroids.forEach((c, cId) => { c.x /= counts.get(cId); c.y /= counts.get(cId); });
-          nodes.forEach(d => {
-            const cId = communityCache.get(d.id);
-            if (cId === undefined) return;
-            if ((communitySizes.get(cId) || 0) < minSize) return;
-            const c = centroids.get(cId);
-            d.vx += (c.x - d.x) * strength * alpha;
-            d.vy += (c.y - d.y) * strength * alpha;
-          });
-        }
-        force.initialize = function(_) { nodes = _; };
-        return force;
       }
 
       function autoFitNetwork() {
@@ -1505,167 +1089,14 @@
 
         svg.attr("width", width).attr("height", height);
 
-        // Initialize link canvas
-        linkCanvas = document.getElementById('link-canvas');
-        linkCanvas.width = width * (window.devicePixelRatio || 1);
-        linkCanvas.height = height * (window.devicePixelRatio || 1);
-        linkCanvas.style.width = width + 'px';
-        linkCanvas.style.height = height + 'px';
-        linkCtx = linkCanvas.getContext('2d');
-        linkCtx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
-
         zoom = d3.zoom()
           .scaleExtent([0.05, 10])
           .on("zoom", throttle((e) => {
-            currentZoomTransform = e.transform;
             container.attr("transform", e.transform);
-            drawCanvasLinks();
-            updateLabelVisibility(e.transform.k);
           }, 16));
 
         svg.call(zoom);
         container = svg.append("g");
-      }
-
-      function updateLabelVisibility(scale) {
-        if (pathOrSearchActive) return; // Don't change labels during highlights
-
-        let newTier;
-        if (scale < 0.3) newTier = 'none';
-        else if (scale < 0.8) newTier = 'hubs';
-        else newTier = 'all';
-
-        if (newTier === currentLabelTier) return;
-        currentLabelTier = newTier;
-
-        if (!labelElements) return;
-
-        if (newTier === 'none') {
-          labelElements.style("display", "none");
-        } else if (newTier === 'hubs') {
-          labelElements.style("display", d => (nodeDegrees.get(d.id) || 0) >= 10 ? null : "none");
-        } else {
-          labelElements.style("display", null);
-        }
-      }
-
-      function drawCanvasLinks() {
-        if (!linkCtx || linksData.length === 0) return;
-
-        const dpr = window.devicePixelRatio || 1;
-        linkCtx.save();
-        linkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        linkCtx.clearRect(0, 0, width, height);
-
-        const t = currentZoomTransform;
-        // Scale line width with zoom to match SVG stroke scaling behavior
-        const scaledWidth = Math.max(0.5, 1.5 * t.k);
-
-        // Draw normal links
-        linkCtx.globalAlpha = 0.4;
-        linkCtx.strokeStyle = '#c4b5a0';
-        linkCtx.lineWidth = scaledWidth;
-        linkCtx.beginPath();
-
-        const personalLinks = [];
-        const highlightLinks = [];
-        const crossCommunityLinks = [];
-        const drawnEdges = new Set();
-
-        for (let i = 0; i < linksData.length; i++) {
-          const l = linksData[i];
-          const edgeKey = l._edgeKey;
-
-          // Skip duplicate edges (same pair drawn twice due to A→B and B→A)
-          if (drawnEdges.has(edgeKey)) continue;
-          drawnEdges.add(edgeKey);
-
-          if (hiddenEdges.has(edgeKey)) continue;
-
-          if (highlightedEdges.has(edgeKey)) {
-            highlightLinks.push(l);
-            continue;
-          }
-
-          // Separate cross-community edges when community coloring is active
-          if (communityColorActive) {
-            const sCid = communityCache.get(l.source.id || l.source);
-            const tCid = communityCache.get(l.target.id || l.target);
-            if (sCid !== tCid) {
-              crossCommunityLinks.push(l);
-              continue;
-            }
-          }
-
-          if (l.type === 'personal') {
-            personalLinks.push(l);
-            continue;
-          }
-
-          const sx = t.applyX(l.source.x);
-          const sy = t.applyY(l.source.y);
-          const tx = t.applyX(l.target.x);
-          const ty = t.applyY(l.target.y);
-          linkCtx.moveTo(sx, sy);
-          linkCtx.lineTo(tx, ty);
-        }
-        linkCtx.stroke();
-
-        // Draw personal links (same opacity, subtler color difference)
-        if (personalLinks.length > 0) {
-          linkCtx.globalAlpha = 0.4;
-          linkCtx.strokeStyle = '#b09a8a';
-          linkCtx.lineWidth = scaledWidth;
-          linkCtx.beginPath();
-          for (let i = 0; i < personalLinks.length; i++) {
-            const l = personalLinks[i];
-            const sx = t.applyX(l.source.x);
-            const sy = t.applyY(l.source.y);
-            const tx = t.applyX(l.target.x);
-            const ty = t.applyY(l.target.y);
-            linkCtx.moveTo(sx, sy);
-            linkCtx.lineTo(tx, ty);
-          }
-          linkCtx.stroke();
-        }
-
-        // Draw cross-community links dimmed
-        if (crossCommunityLinks.length > 0) {
-          linkCtx.globalAlpha = 0.08;
-          linkCtx.strokeStyle = '#c4b5a0';
-          linkCtx.lineWidth = scaledWidth * 0.5;
-          linkCtx.beginPath();
-          for (let i = 0; i < crossCommunityLinks.length; i++) {
-            const l = crossCommunityLinks[i];
-            const sx = t.applyX(l.source.x);
-            const sy = t.applyY(l.source.y);
-            const tx = t.applyX(l.target.x);
-            const ty = t.applyY(l.target.y);
-            linkCtx.moveTo(sx, sy);
-            linkCtx.lineTo(tx, ty);
-          }
-          linkCtx.stroke();
-        }
-
-        // Draw highlighted links on top
-        if (highlightLinks.length > 0) {
-          linkCtx.globalAlpha = 0.9;
-          linkCtx.strokeStyle = '#c4a35a';
-          linkCtx.lineWidth = Math.max(1.5, 3 * t.k);
-          linkCtx.beginPath();
-          for (let i = 0; i < highlightLinks.length; i++) {
-            const l = highlightLinks[i];
-            const sx = t.applyX(l.source.x);
-            const sy = t.applyY(l.source.y);
-            const tx = t.applyX(l.target.x);
-            const ty = t.applyY(l.target.y);
-            linkCtx.moveTo(sx, sy);
-            linkCtx.lineTo(tx, ty);
-          }
-          linkCtx.stroke();
-        }
-
-        linkCtx.restore();
       }
 
       async function loadData() {
@@ -1675,32 +1106,29 @@
           let data;
           // Try API first (when served from Flask editor), then fall back to static file
           const apiUrl = window.location.port === '5001'
-            ? '/api/graph.json'
+            ? '/api/graph_magazines.json'
             : null;
 
           try {
             if (apiUrl) {
               data = await d3.json(apiUrl);
             } else {
-              data = await d3.json("graph.json");
+              data = await d3.json("graph_magazines.json");
             }
           } catch (err) {
             // Fallback: try relative path
             const basePath = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
-            data = await d3.json(basePath + '/graph.json');
+            data = await d3.json(basePath + '/graph_magazines.json');
           }
 
           updateLoadingStatus('Processing relationships...', 40);
           processData(data);
 
-          updateLoadingStatus('Computing layout...', 55);
+          updateLoadingStatus('Computing layout...', 60);
           initializeSimulation(data);
 
-          updateLoadingStatus('Rendering network...', 75);
+          updateLoadingStatus('Rendering network...', 80);
           renderNetwork(data);
-
-          updateLoadingStatus('Detecting communities...', 85);
-          runCommunityDetection();
 
           updateLoadingStatus('Finalizing...', 90);
           setupEventHandlers();
@@ -1712,7 +1140,7 @@
           setTimeout(() => {
             updateLoadingStatus('Ready', 100);
             setTimeout(hideLoadingIndicator, 500);
-          }, 2500);
+          }, 4000);
 
         } catch (error) {
           console.error("Load error:", error);
@@ -1780,8 +1208,8 @@
               const degree = nodeDegrees.get(d.id) || 1;
               return baseForces.chargeStrength * (1 + Math.log(degree) * 0.15);
             })
-            .distanceMax(500)
-            .theta(1.2))
+            .distanceMax(600)
+            .theta(0.9))
           .force("center", d3.forceCenter(width / 2, height / 2).strength(0.02))
           .force("collision", d3.forceCollide()
             .radius(d => {
@@ -1789,11 +1217,11 @@
               return baseForces.collisionRadius + Math.min(degree * 0.5, 20);
             })
             .strength(0.7)
-            .iterations(1))
+            .iterations(2))
           .velocityDecay(0.7)
-          .alphaDecay(0.04)
+          .alphaDecay(0.025)
           .alphaMin(0.001)
-          .alpha(0.5);
+          .alpha(0.3);
 
         simulation.baseForces = baseForces;
         simulation.on("tick", onTick);
@@ -1804,7 +1232,7 @@
             isSimulationActive = false;
             setTimeout(autoFitNetwork, 200);
           }
-        }, 3000);
+        }, 4500);
       }
 
       function onTick() {
@@ -1818,18 +1246,23 @@
 
       function updatePositions() {
         if (nodeGroups) nodeGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
-        drawCanvasLinks();
+        if (linkElements) {
+          linkElements
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+        }
       }
 
       function renderNetwork(data) {
-        // Store links data for canvas rendering (no SVG lines)
-        linksData = data.links;
-        // Pre-compute edge keys for fast Set lookups
-        linksData.forEach(l => {
-          const sourceId = typeof l.source === 'string' ? l.source : l.source.id;
-          const targetId = typeof l.target === 'string' ? l.target : l.target.id;
-          l._edgeKey = [sourceId, targetId].sort().join('--');
-        });
+        linkElements = container.append("g")
+          .attr("class", "links")
+          .selectAll("line")
+          .data(data.links)
+          .join("line")
+          .classed("link", true)
+          .classed("personal", d => d.type === "personal");
 
         nodeGroups = container.append("g")
           .attr("class", "nodes")
@@ -1864,9 +1297,6 @@
           .on("mouseenter", handleNodeMouseEnter)
           .on("mouseleave", handleNodeMouseLeave)
           .on("click", handleNodeClick);
-
-        // Initial canvas draw
-        drawCanvasLinks();
       }
 
       function createOptimizedDrag() {
@@ -1888,7 +1318,10 @@
 
             if (nodeGroups) {
               nodeGroups.filter(n => n === d).attr("transform", `translate(${d.x}, ${d.y})`);
-              drawCanvasLinks();
+              if (linkElements) {
+                linkElements.filter(l => l.source === d).attr("x1", d.x).attr("y1", d.y);
+                linkElements.filter(l => l.target === d).attr("x2", d.x).attr("y2", d.y);
+              }
             }
           })
           .on("end", (e, d) => {
@@ -1922,114 +1355,18 @@
       function handleNodeClick(e, d) {
         e.stopPropagation();
         highlightNode(d);
-        showNodeDetails(d);
       }
 
       function highlightNode(node) {
-        // Reset 2-hop if switching nodes
-        if (twoHopSourceId && twoHopSourceId !== node.id) {
-          twoHopActive = false;
-          twoHopSourceId = null;
-          const btn = document.getElementById('two-hop-btn');
-          if (btn) btn.textContent = 'Show 2-hop neighborhood';
-        }
-
         const connectedNodes = new Set([node.id]);
         adjacencyList.get(node.id).forEach(id => connectedNodes.add(id));
 
         nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0.1);
-
-        // Force-show labels for connected nodes
-        pathOrSearchActive = true;
-        labelElements.style("display", d => connectedNodes.has(d.id) ? null : "none");
-
-        // Update canvas: show only edges where BOTH endpoints are in the connected set
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
+        linkElements.style("opacity", l => {
           const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
           const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          if (!connectedNodes.has(sourceId) || !connectedNodes.has(targetId)) {
-            hiddenEdges.add(l._edgeKey);
-          }
+          return (connectedNodes.has(sourceId) || connectedNodes.has(targetId)) ? 1 : 0.1;
         });
-        drawCanvasLinks();
-        updateExportButtonVisibility();
-      }
-
-      function showNodeDetails(node) {
-        const panel = document.getElementById('node-details');
-        const nameEl = document.getElementById('details-name');
-        const typeEl = document.getElementById('details-type');
-        const degreeEl = document.getElementById('details-degree');
-        const listEl = document.getElementById('details-list');
-
-        const degree = nodeDegrees.get(node.id) || 0;
-        const neighbors = adjacencyList.get(node.id) || new Set();
-
-        nameEl.textContent = node.id;
-
-        const nodeType = node.type || 'unknown';
-        typeEl.className = 'details-type-badge ' + (nodeType === 'institution' ? 'institution' : 'person');
-        typeEl.textContent = nodeType === 'institution' ? 'Institution' : 'Person';
-
-        degreeEl.textContent = degree + ' connection' + (degree !== 1 ? 's' : '');
-
-        // Build connections list grouped by type
-        const connections = [];
-        neighbors.forEach(id => {
-          const n = nodesById.get(id);
-          if (n) connections.push({ id: n.id, type: n.type || 'unknown' });
-        });
-        connections.sort((a, b) => a.id.localeCompare(b.id));
-
-        const institutions = connections.filter(c => c.type === 'institution');
-        const persons = connections.filter(c => c.type !== 'institution');
-
-        let html = '';
-        if (persons.length > 0) {
-          html += '<div class="details-section-heading">Persons (' + persons.length + ')</div>';
-          persons.forEach(c => {
-            html += '<div class="details-connection-item" data-node="' + c.id.replace(/"/g, '&quot;') + '">'
-              + '<span class="details-connection-dot person"></span>'
-              + '<span class="details-connection-name">' + c.id + '</span></div>';
-          });
-        }
-        if (institutions.length > 0) {
-          html += '<div class="details-section-heading">Institutions (' + institutions.length + ')</div>';
-          institutions.forEach(c => {
-            html += '<div class="details-connection-item" data-node="' + c.id.replace(/"/g, '&quot;') + '">'
-              + '<span class="details-connection-dot institution"></span>'
-              + '<span class="details-connection-name">' + c.id + '</span></div>';
-          });
-        }
-        if (connections.length === 0) {
-          html = '<div class="details-empty">No connections found</div>';
-        }
-
-        listEl.innerHTML = html;
-
-        // Click handler for connection items to navigate
-        listEl.querySelectorAll('.details-connection-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const targetId = item.dataset.node;
-            const targetNode = nodesById.get(targetId);
-            if (targetNode) {
-              highlightNode(targetNode);
-              showNodeDetails(targetNode);
-            }
-          });
-        });
-
-        // Update 2-hop button state
-        const twoHopBtn = document.getElementById('two-hop-btn');
-        if (twoHopBtn) {
-          twoHopBtn.textContent = (twoHopActive && twoHopSourceId === node.id)
-            ? 'Show direct only'
-            : 'Show 2-hop neighborhood';
-        }
-
-        panel.classList.add('open');
       }
 
       function setupEventHandlers() {
@@ -2078,33 +1415,17 @@
         if (matched.length > 0) {
           const matchedSet = new Set(matched);
           const important = new Set([...matched, ...connected]);
-          const importantIds = new Set();
-          important.forEach(n => importantIds.add(n.id));
-          const matchedIds = new Set();
-          matchedSet.forEach(n => matchedIds.add(n.id));
 
           nodeGroups.style("opacity", d => important.has(d) ? 1 : 0.1);
-
-          // Force-show labels for matched nodes
-          pathOrSearchActive = true;
-          labelElements.style("display", d => importantIds.has(d.id) ? null : "none");
-
-          // Update canvas links
-          hiddenEdges.clear();
-          highlightedEdges.clear();
-          linksData.forEach(l => {
-            const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-            const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-            const sourceMatched = matchedIds.has(sourceId);
-            const targetMatched = matchedIds.has(targetId);
-            const sourceImportant = importantIds.has(sourceId);
-            const targetImportant = importantIds.has(targetId);
-            if (!((sourceMatched && targetImportant) || (targetMatched && sourceImportant))) {
-              hiddenEdges.add(l._edgeKey);
-            }
+          linkElements.style("opacity", l => {
+            const source = typeof l.source === 'object' ? l.source : nodesById.get(l.source);
+            const target = typeof l.target === 'object' ? l.target : nodesById.get(l.target);
+            const sourceMatched = matchedSet.has(source);
+            const targetMatched = matchedSet.has(target);
+            const sourceImportant = important.has(source);
+            const targetImportant = important.has(target);
+            return ((sourceMatched && targetImportant) || (targetMatched && sourceImportant)) ? 1 : 0.1;
           });
-          drawCanvasLinks();
-          updateExportButtonVisibility();
 
           centerNodes(matched);
         }
@@ -2118,21 +1439,11 @@
         document.getElementById("degree-label").textContent = threshold + "+";
 
         nodeGroups.style("opacity", d => (nodeDegrees.get(d.id) >= threshold) ? 1 : 0.1);
-
-        // Update canvas link visibility based on degree
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        if (threshold > 1) {
-          linksData.forEach(l => {
-            const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-            const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-            if (nodeDegrees.get(sourceId) < threshold && nodeDegrees.get(targetId) < threshold) {
-              hiddenEdges.add(l._edgeKey);
-            }
-          });
-        }
-        drawCanvasLinks();
-        updateExportButtonVisibility();
+        linkElements.style("opacity", l => {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          return (nodeDegrees.get(sourceId) >= threshold || nodeDegrees.get(targetId) >= threshold) ? 0.6 : 0.1;
+        });
       }
 
       function handleResize() {
@@ -2140,16 +1451,6 @@
         width = rect.width;
         height = rect.height;
         svg.attr("width", width).attr("height", height);
-
-        // Resize link canvas
-        const dpr = window.devicePixelRatio || 1;
-        linkCanvas.width = width * dpr;
-        linkCanvas.height = height * dpr;
-        linkCanvas.style.width = width + 'px';
-        linkCanvas.style.height = height + 'px';
-        linkCtx = linkCanvas.getContext('2d');
-        linkCtx.scale(dpr, dpr);
-        drawCanvasLinks();
 
         if (simulation) {
           simulation.force("center", d3.forceCenter(width / 2, height / 2).strength(0.05));
@@ -2160,13 +1461,7 @@
 
       function resetView() {
         nodeGroups.style("opacity", 1);
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        pathOrSearchActive = false;
-        drawCanvasLinks();
-        updateExportButtonVisibility();
-        currentLabelTier = null;
-        updateLabelVisibility(currentZoomTransform.k);
+        linkElements.style("opacity", 0.3);
         autoFitNetwork();
         searchCache.clear();
       }
@@ -2197,171 +1492,34 @@
 
       // Path finding
       function findPath() {
-        // Legacy support: called with 2 explorer nodes
-        if (explorerNodes.length === 2) {
-          exploreConnections();
-        }
-      }
+        const startInput = document.getElementById("start-node").value.trim();
+        const endInput = document.getElementById("end-node").value.trim();
 
-      function exploreConnections() {
-        if (explorerNodes.length < 2) {
-          alert("Please add at least 2 nodes to explore.");
+        if (!startInput || !endInput) {
+          alert("Please select both a starting point and destination.");
           return;
         }
 
-        if (explorerNodes.length === 2) {
-          // Two nodes: use existing path finding
-          const startInput = explorerNodes[0];
-          const endInput = explorerNodes[1];
-
-          const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
-          if (pathCache.has(cacheKey)) {
-            const cached = pathCache.get(cacheKey);
-            if (cached.nodes.size > 0) {
-              highlightAllConnections(cached);
-            } else {
-              alert("No connection found between these nodes.");
-            }
-            return;
-          }
-
-          const result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
-          pathCache.set(cacheKey, result);
-          if (pathCache.size > 100) pathCache.delete(pathCache.keys().next().value);
-
-          if (result.nodes.size > 0) {
-            highlightAllConnections(result);
+        const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
+        if (pathCache.has(cacheKey)) {
+          const cached = pathCache.get(cacheKey);
+          if (cached.nodes.size > 0) {
+            highlightAllConnections(cached);
           } else {
-            alert("No connections found between these nodes.");
+            alert("No connection found between these nodes.");
           }
+          return;
+        }
+
+        const result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
+        pathCache.set(cacheKey, result);
+        if (pathCache.size > 100) pathCache.delete(pathCache.keys().next().value);
+
+        if (result.nodes.size > 0) {
+          highlightAllConnections(result);
         } else {
-          // 3+ nodes: find shared connections (intersection of neighbor sets)
-          findSharedConnections(explorerNodes);
+          alert("No connections found between these nodes.");
         }
-      }
-
-      function findSharedConnections(selectedNames) {
-        // Get adjacency sets for each selected node
-        const sets = [];
-        const selectedIds = new Set();
-
-        for (const name of selectedNames) {
-          const node = nodesById.get(name) || nodesByIdLower.get(name.toLowerCase());
-          if (!node) {
-            alert(`Node "${name}" not found in the network.`);
-            return;
-          }
-          selectedIds.add(node.id);
-          const neighbors = adjacencyList.get(node.id);
-          if (neighbors) {
-            sets.push(new Set(neighbors));
-          } else {
-            sets.push(new Set());
-          }
-        }
-
-        // Compute intersection of all neighbor sets
-        if (sets.length === 0) return;
-        let shared = new Set(sets[0]);
-        for (let i = 1; i < sets.length; i++) {
-          const next = sets[i];
-          shared = new Set([...shared].filter(id => next.has(id)));
-        }
-
-        // Remove selected nodes from the shared set (they aren't "shared connections")
-        selectedIds.forEach(id => shared.delete(id));
-
-        if (shared.size === 0) {
-          const pathInfoEl = document.getElementById('path-info');
-          if (pathInfoEl) {
-            pathInfoEl.style.display = 'block';
-            pathInfoEl.innerHTML = '<span class="explorer-result-count">No shared connections found between all selected nodes.</span>';
-          }
-          return;
-        }
-
-        // Build the set of all nodes and edges to show
-        const connectedNodes = new Set([...selectedIds, ...shared]);
-        const connectedEdges = new Set();
-
-        // Add edges from each selected node to each shared node
-        linksData.forEach(l => {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          const sourceIsSelected = selectedIds.has(sourceId);
-          const targetIsSelected = selectedIds.has(targetId);
-          const sourceIsShared = shared.has(sourceId);
-          const targetIsShared = shared.has(targetId);
-
-          if ((sourceIsSelected && targetIsShared) || (targetIsSelected && sourceIsShared)) {
-            connectedEdges.add(l._edgeKey);
-          }
-        });
-
-        // Show result info
-        const pathInfoEl = document.getElementById('path-info');
-        if (pathInfoEl) {
-          pathInfoEl.style.display = 'block';
-          pathInfoEl.innerHTML = '<span class="explorer-result-count">' + shared.size + ' shared connection' + (shared.size !== 1 ? 's' : '') + ' found</span>'
-            + '<button class="btn" style="margin-top:8px" onclick="NetworkViz.exportSubgraph()">Export Subgraph</button>';
-        }
-
-        // Highlight: dim unrelated nodes, show only relevant edges
-        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
-          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
-
-        // Style selected nodes distinctly
-        nodeGroups.select("circle")
-          .style("stroke", function(d) {
-            if (selectedIds.has(d.id)) return "#c4a35a";
-            return d.type === 'institution' ? "#6d5a44" : "#546f7d";
-          })
-          .style("stroke-width", d => selectedIds.has(d.id) ? 4 : 2);
-
-        // Force-show labels
-        pathOrSearchActive = true;
-        labelElements.style("display", d => connectedNodes.has(d.id) ? null : "none");
-
-        // Canvas edges
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
-          if (connectedEdges.has(l._edgeKey)) {
-            highlightedEdges.add(l._edgeKey);
-          } else {
-            hiddenEdges.add(l._edgeKey);
-          }
-        });
-        drawCanvasLinks();
-        updateExportButtonVisibility();
-
-        // Center the view on shared nodes
-        const allVisible = Array.from(connectedNodes).map(id => nodesById.get(id)).filter(Boolean);
-        centerNodes(allVisible);
-      }
-
-      function addExplorerNode(name) {
-        if (!name || explorerNodes.includes(name)) return;
-        explorerNodes.push(name);
-        renderExplorerChips();
-      }
-
-      function removeExplorerNode(name) {
-        explorerNodes = explorerNodes.filter(n => n !== name);
-        renderExplorerChips();
-      }
-
-      function renderExplorerChips() {
-        const container = document.getElementById('explorer-chips');
-        if (!container) return;
-        container.innerHTML = explorerNodes.map(name =>
-          '<span class="explorer-chip">' +
-            '<span class="explorer-chip-name">' + name + '</span>' +
-            '<button class="explorer-chip-remove" onclick="NetworkViz._removeExplorerNode(\'' + name.replace(/'/g, "\\'") + '\')">' +
-              '<svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
-            '</button>' +
-          '</span>'
-        ).join('');
       }
 
       class MultiNodeConnectionFinder {
@@ -2574,7 +1732,7 @@
       function findAllConnections(startId, endId) {
         const finder = new MultiNodeConnectionFinder(
           Array.from(nodesById.values()),
-          linksData,
+          linkElements ? linkElements.data() : [],
           adjacencyList
         );
 
@@ -2647,26 +1805,30 @@
           }
           if ((commonNeighbors || 0) > 0) infoText += ` | ${commonNeighbors} shared contact${commonNeighbors > 1 ? 's' : ''}`;
 
-          pathInfoEl.innerHTML = infoText + '<button class="btn" style="margin-top:8px" onclick="NetworkViz.exportSubgraph()">Export Subgraph</button>';
+          pathInfoEl.innerHTML = infoText;
           pathInfoEl.style.display = 'block';
         }
 
         nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
           .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
 
-        // Update canvas: hide non-path edges, highlight path edges
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
-          if (connectedEdges.has(l._edgeKey)) {
-            highlightedEdges.add(l._edgeKey);
-          } else {
-            hiddenEdges.add(l._edgeKey);
+        linkElements.style("opacity", function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          return connectedEdges.has([sourceId, targetId].sort().join('--')) ? 1 : 0;
+        }).style("display", function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          return connectedEdges.has([sourceId, targetId].sort().join('--')) ? "block" : "none";
+        });
+
+        linkElements.each(function(l) {
+          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+          if (connectedEdges.has([sourceId, targetId].sort().join('--'))) {
+            d3.select(this).classed("highlight-path", true);
           }
         });
-        pathOrSearchActive = true;
-        drawCanvasLinks();
-        updateExportButtonVisibility();
 
         nodeGroups.select("circle").each(function(d) {
           if (connectedNodes.has(d.id)) {
@@ -2689,395 +1851,62 @@
         centerNodes(Array.from(connectedNodes).map(id => nodesById.get(id)));
       }
 
-      // ═══════════════════════════════════════════════════════════════
-      // COMMUNITY DETECTION
-      // ═══════════════════════════════════════════════════════════════
-
-      function runCommunityDetection() {
-        if (communityCache.size > 0) return; // Already computed
-
-        // Label propagation algorithm for community detection
-        const labels = new Map();
-        const nodeIds = Array.from(nodesById.keys());
-
-        // Initialize: each node gets its own label
-        nodeIds.forEach((id, i) => labels.set(id, i));
-
-        // Iterate until convergence or max iterations
-        const maxIterations = 20;
-        for (let iter = 0; iter < maxIterations; iter++) {
-          let changed = false;
-
-          // Shuffle node order for each iteration
-          const shuffled = [...nodeIds];
-          for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-          }
-
-          for (const nodeId of shuffled) {
-            const neighbors = adjacencyList.get(nodeId);
-            if (!neighbors || neighbors.size === 0) continue;
-
-            // Count labels among neighbors
-            const labelCounts = new Map();
-            neighbors.forEach(neighborId => {
-              const lbl = labels.get(neighborId);
-              labelCounts.set(lbl, (labelCounts.get(lbl) || 0) + 1);
-            });
-
-            // Find most common label
-            let maxCount = 0;
-            let bestLabel = labels.get(nodeId);
-            labelCounts.forEach((count, lbl) => {
-              if (count > maxCount) {
-                maxCount = count;
-                bestLabel = lbl;
-              }
-            });
-
-            if (bestLabel !== labels.get(nodeId)) {
-              labels.set(nodeId, bestLabel);
-              changed = true;
-            }
-          }
-
-          if (!changed) break;
-        }
-
-        // Remap labels to contiguous integers
-        const labelMap = new Map();
-        let nextId = 0;
-        labels.forEach((label, nodeId) => {
-          if (!labelMap.has(label)) {
-            labelMap.set(label, nextId++);
-          }
-          communityCache.set(nodeId, labelMap.get(label));
-        });
-
-        const communityCount = labelMap.size;
-
-        // Compute community sizes
-        communitySizes = new Map();
-        communityCache.forEach((cId) => {
-          communitySizes.set(cId, (communitySizes.get(cId) || 0) + 1);
-        });
-
-        const majorCount = [...communitySizes.values()].filter(s => s >= 20).length;
-        const infoEl = document.getElementById('community-info');
-        if (infoEl) {
-          infoEl.textContent = communityCount + ' communities detected (' + majorCount + ' major, spatially clustered)';
-        }
-      }
-
-      function toggleCommunities() {
-        if (communityCache.size === 0) runCommunityDetection();
-        communityColorActive = !communityColorActive;
-
-        const btn = document.getElementById('community-toggle');
-        const infoEl = document.getElementById('community-info');
-
-        if (communityColorActive) {
-          btn.classList.add('active');
-          if (infoEl) infoEl.style.display = 'block';
-          // Save current positions so we can restore on deactivation
-          preCommunityPositions = new Map();
-          simulation.nodes().forEach(d => {
-            preCommunityPositions.set(d.id, {x: d.x, y: d.y});
-          });
-          nodeGroups.select("circle").style("fill", d => {
-            const cId = communityCache.get(d.id);
-            return cId !== undefined ? communityPalette[cId % communityPalette.length] : '#999';
-          });
-          // Weaken cross-community links so clusters can separate
-          simulation.force("link").strength(link => {
-            const sCid = communityCache.get(link.source.id || link.source);
-            const tCid = communityCache.get(link.target.id || link.target);
-            return sCid !== undefined && sCid === tCid ? 0.15 : 0.005;
-          });
-          simulation.force("cluster", clusterForce(0.12, 20));
-          simulation.alpha(0.5).restart();
-          setTimeout(() => { if (!isDragging) { simulation.stop(); autoFitNetwork(); } }, 4000);
-        } else {
-          btn.classList.remove('active');
-          if (infoEl) infoEl.style.display = 'none';
-          nodeGroups.select("circle").style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f");
-          // Restore uniform link strength and original positions
-          simulation.force("link").strength(0.15);
-          simulation.force("cluster", null);
-          if (preCommunityPositions) {
-            simulation.nodes().forEach(d => {
-              const pos = preCommunityPositions.get(d.id);
-              if (pos) { d.x = pos.x; d.y = pos.y; d.vx = 0; d.vy = 0; }
-            });
-            preCommunityPositions = null;
-          }
-          simulation.alpha(0.05).restart();
-          setTimeout(() => { if (!isDragging) { simulation.stop(); autoFitNetwork(); } }, 1000);
-        }
-      }
-
-      function getNodeColor(d) {
-        if (communityColorActive) {
-          const cId = communityCache.get(d.id);
-          return cId !== undefined ? communityPalette[cId % communityPalette.length] : '#999';
-        }
-        return d.type === 'institution' ? "#8b7355" : "#6b8e9f";
-      }
-
-      // ═══════════════════════════════════════════════════════════════
-      // SUBGRAPH EXPORT
-      // ═══════════════════════════════════════════════════════════════
-
-      function exportSubgraph() {
-        const visibleNodes = [];
-        nodeGroups.each(function(d) {
-          const el = d3.select(this);
-          const opacity = parseFloat(el.style("opacity"));
-          const display = el.style("display");
-          if (display !== "none" && opacity > 0.05) {
-            visibleNodes.push({ id: d.id, type: d.type || 'unknown' });
-          }
-        });
-
-        const visibleIds = new Set(visibleNodes.map(n => n.id));
-        const visibleLinks = [];
-        linksData.forEach(l => {
-          if (hiddenEdges.has(l._edgeKey)) return;
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          if (visibleIds.has(sourceId) && visibleIds.has(targetId)) {
-            visibleLinks.push({ source: sourceId, target: targetId });
-          }
-        });
-
-        const subgraph = { nodes: visibleNodes, links: visibleLinks };
-        const blob = new Blob([JSON.stringify(subgraph, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.download = 'subgraph-export.json';
-        a.href = url;
-        a.click();
-        URL.revokeObjectURL(url);
-      }
-
-      function updateExportButtonVisibility() {
-        const btn = document.getElementById('export-subgraph-btn');
-        if (btn) {
-          btn.style.display = (hiddenEdges.size > 0 || pathOrSearchActive) ? 'block' : 'none';
-        }
-      }
-
-      // ═══════════════════════════════════════════════════════════════
-      // 2-HOP NEIGHBORHOODS
-      // ═══════════════════════════════════════════════════════════════
-
-      function expandTwoHop() {
-        const nameEl = document.getElementById('details-name');
-        const nodeId = nameEl ? nameEl.textContent : null;
-        if (!nodeId || !nodesById.has(nodeId)) return;
-
-        const btn = document.getElementById('two-hop-btn');
-        if (twoHopActive && twoHopSourceId === nodeId) {
-          // Revert to direct neighbors
-          twoHopActive = false;
-          twoHopSourceId = null;
-          if (btn) btn.textContent = 'Show 2-hop neighborhood';
-          highlightNode(nodesById.get(nodeId));
-          return;
-        }
-
-        twoHopActive = true;
-        twoHopSourceId = nodeId;
-        if (btn) btn.textContent = 'Show direct only';
-
-        const oneHop = adjacencyList.get(nodeId) || new Set();
-        const twoHop = new Set();
-        oneHop.forEach(neighbor => {
-          const neighborsOfNeighbor = adjacencyList.get(neighbor) || new Set();
-          neighborsOfNeighbor.forEach(nn => {
-            if (nn !== nodeId && !oneHop.has(nn)) {
-              twoHop.add(nn);
-            }
-          });
-        });
-
-        const allRelevant = new Set([nodeId, ...oneHop, ...twoHop]);
-
-        // Set node opacities
-        nodeGroups.style("opacity", d => {
-          if (d.id === nodeId || oneHop.has(d.id)) return 1;
-          if (twoHop.has(d.id)) return 0.6;
-          return 0.05;
-        }).style("display", d => allRelevant.has(d.id) ? null : null);
-
-        // Labels: show for source + 1-hop, hide for 2-hop and others
-        pathOrSearchActive = true;
-        labelElements.style("display", d => {
-          if (d.id === nodeId || oneHop.has(d.id)) return null;
-          return "none";
-        });
-
-        // Edges: show edges where both endpoints are in allRelevant
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
-          const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-          const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          if (!allRelevant.has(sourceId) || !allRelevant.has(targetId)) {
-            hiddenEdges.add(l._edgeKey);
-          } else if (sourceId === nodeId || targetId === nodeId) {
-            highlightedEdges.add(l._edgeKey);
-          }
-        });
-
-        drawCanvasLinks();
-        updateExportButtonVisibility();
-
-        // Center on the 2-hop subgraph
-        const nodesToCenter = Array.from(allRelevant).map(id => nodesById.get(id)).filter(Boolean);
-        centerNodes(nodesToCenter);
-      }
-
       function clearPath() {
         const pathInfoEl = document.getElementById('path-info');
-        if (pathInfoEl) {
-          pathInfoEl.style.display = 'none';
-          pathInfoEl.innerHTML = '';
-        }
-
-        // Clear explorer chips
-        explorerNodes = [];
-        renderExplorerChips();
-        const explorerInput = document.getElementById('explorer-input');
-        if (explorerInput) explorerInput.value = '';
-
-        // Reset 2-hop state
-        twoHopActive = false;
-        twoHopSourceId = null;
-        const twoHopBtn = document.getElementById('two-hop-btn');
-        if (twoHopBtn) twoHopBtn.textContent = 'Show 2-hop neighborhood';
+        if (pathInfoEl) pathInfoEl.style.display = 'none';
 
         nodeGroups.style("opacity", 1).style("display", "block");
         nodeGroups.select("circle")
           .classed("highlight-node", false)
           .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
           .style("stroke-width", 2)
-          .style("fill", d => getNodeColor(d));
+          .style("fill", d => d.type === 'institution' ? "#8b7355" : "#6b8e9f");
 
-        // Reset canvas link state
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        pathOrSearchActive = false;
-        drawCanvasLinks();
+        linkElements
+          .classed("highlight-path", false)
+          .style("opacity", 0.4)
+          .style("display", "block");
 
-        // Restore label visibility based on current zoom tier
-        currentLabelTier = null; // Force recalculation
-        updateLabelVisibility(currentZoomTransform.k);
-
-        // Close details panel
-        document.getElementById('node-details').classList.remove('open');
-
-        updateExportButtonVisibility();
+        labelElements
+          .style("opacity", labelsVisible ? 1 : 0)
+          .style("display", labelsVisible ? "block" : "none");
       }
 
       async function exportPNG() {
         try {
-          // Force-show all labels for export
-          const prevTier = currentLabelTier;
-          labelElements.style("display", null);
-
-          const bbox = container.node().getBBox();
-          const padding = 50;
-          const exportWidth = bbox.width + padding * 2;
-          const exportHeight = bbox.height + padding * 2;
-
-          const exportCanvas = document.createElement('canvas');
-          exportCanvas.width = exportWidth;
-          exportCanvas.height = exportHeight;
-          const ctx = exportCanvas.getContext('2d');
-
-          // Draw background
-          ctx.fillStyle = '#f7f4ed';
-          ctx.fillRect(0, 0, exportWidth, exportHeight);
-
-          // Draw links onto export canvas (in network coordinates)
-          ctx.save();
-          ctx.translate(-bbox.x + padding, -bbox.y + padding);
-          ctx.lineWidth = 1.5;
-
-          // Normal affiliation links
-          ctx.globalAlpha = 0.4;
-          ctx.strokeStyle = '#c4b5a0';
-          ctx.beginPath();
-          for (let i = 0; i < linksData.length; i++) {
-            const l = linksData[i];
-            if (hiddenEdges.has(l._edgeKey)) continue;
-            if (highlightedEdges.has(l._edgeKey)) continue;
-            if (l.type === 'personal') continue;
-            ctx.moveTo(l.source.x, l.source.y);
-            ctx.lineTo(l.target.x, l.target.y);
-          }
-          ctx.stroke();
-
-          // Personal links
-          ctx.globalAlpha = 0.5;
-          ctx.strokeStyle = '#b07070';
-          ctx.beginPath();
-          for (let i = 0; i < linksData.length; i++) {
-            const l = linksData[i];
-            if (hiddenEdges.has(l._edgeKey)) continue;
-            if (highlightedEdges.has(l._edgeKey)) continue;
-            if (l.type !== 'personal') continue;
-            ctx.moveTo(l.source.x, l.source.y);
-            ctx.lineTo(l.target.x, l.target.y);
-          }
-          ctx.stroke();
-
-          // Highlighted links
-          if (highlightedEdges.size > 0) {
-            ctx.globalAlpha = 0.9;
-            ctx.strokeStyle = '#c4a35a';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            for (let i = 0; i < linksData.length; i++) {
-              const l = linksData[i];
-              if (!highlightedEdges.has(l._edgeKey)) continue;
-              ctx.moveTo(l.source.x, l.source.y);
-              ctx.lineTo(l.target.x, l.target.y);
-            }
-            ctx.stroke();
-          }
-          ctx.restore();
-
-          // Render SVG nodes/labels on top
           const clonedSvg = svg.node().cloneNode(true);
           const svgNS = "http://www.w3.org/2000/svg";
+
           const styleEl = document.createElementNS(svgNS, "style");
           styleEl.innerHTML = `
+            .link { stroke: #c4b5a0; stroke-opacity: 0.4; stroke-width: 1.5; }
+            .link.personal { stroke: #b07070; }
+            .highlight-path { stroke: #c4a35a; stroke-width: 3px; stroke-opacity: 0.9; }
             .label { font-size: 12px; font-family: Georgia, serif; fill: #3d3d3d; }
           `;
           clonedSvg.insertBefore(styleEl, clonedSvg.firstChild);
-          clonedSvg.setAttribute("width", exportWidth);
-          clonedSvg.setAttribute("height", exportHeight);
 
-          // Adjust the transform of the container group in the clone
-          const containerGroup = clonedSvg.querySelector('g');
-          if (containerGroup) {
-            containerGroup.setAttribute("transform", `translate(${-bbox.x + padding}, ${-bbox.y + padding})`);
-          }
+          const bbox = container.node().getBBox();
+          const rect = document.createElementNS(svgNS, "rect");
+          rect.setAttribute("x", bbox.x - 50);
+          rect.setAttribute("y", bbox.y - 50);
+          rect.setAttribute("width", bbox.width + 100);
+          rect.setAttribute("height", bbox.height + 100);
+          rect.setAttribute("fill", "#f7f4ed");
+          clonedSvg.insertBefore(rect, clonedSvg.firstChild);
 
           const svgString = new XMLSerializer().serializeToString(clonedSvg);
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+
           await canvg.Canvg.fromString(ctx, svgString).render();
 
           const a = document.createElement('a');
           a.download = 'italian-american-literary-network.png';
-          a.href = exportCanvas.toDataURL();
+          a.href = canvas.toDataURL();
           a.click();
-
-          // Restore label visibility
-          currentLabelTier = null;
-          updateLabelVisibility(currentZoomTransform.k);
         } catch (error) {
           console.error("Export error:", error);
           alert("Unable to export image. Please try again.");
@@ -3085,14 +1914,6 @@
       }
 
       function fullReset() {
-        // Reset community colors and clustering force
-        communityColorActive = false;
-        simulation.force("cluster", null);
-        const communityBtn = document.getElementById('community-toggle');
-        if (communityBtn) communityBtn.classList.remove('active');
-        const communityInfo = document.getElementById('community-info');
-        if (communityInfo) communityInfo.style.display = 'none';
-
         clearPath();
         resetView();
 
@@ -3102,25 +1923,23 @@
           .style("stroke-width", 2)
           .classed("highlight-node", false);
 
+        linkElements.classed("highlight-path", false).style("opacity", 0.4);
+
         document.getElementById("search").value = "";
-        const startNode = document.getElementById("start-node");
-        if (startNode) startNode.value = "";
-        const endNode = document.getElementById("end-node");
-        if (endNode) endNode.value = "";
+        document.getElementById("start-node").value = "";
+        document.getElementById("end-node").value = "";
         document.getElementById("degree-range").value = "0";
         document.getElementById("degree-label").textContent = "1+";
-        document.getElementById('node-details').classList.remove('open');
 
         searchCache.clear();
         pathCache.clear();
-        updateExportButtonVisibility();
       }
 
       function initializeAutocomplete() {
         if (nodesById.size === 0) return;
 
         const names = Array.from(nodesById.keys()).sort();
-        ['search', 'explorer-input'].forEach(id => {
+        ['search', 'start-node', 'end-node'].forEach(id => {
           const input = document.getElementById(id);
           if (input) {
             const existing = document.getElementById(id + 'autocomplete-list');
@@ -3132,19 +1951,19 @@
 
         setTimeout(() => {
           const searchInput = document.getElementById("search");
-          const explorerInput = document.getElementById("explorer-input");
+          const startInput = document.getElementById("start-node");
+          const endInput = document.getElementById("end-node");
 
           if (searchInput) {
             createOptimizedAutocomplete(searchInput, names);
             searchInput.addEventListener("input", window.searchHandler);
           }
-          if (explorerInput) {
-            createOptimizedAutocomplete(explorerInput, names, true);
-          }
+          if (startInput) createOptimizedAutocomplete(startInput, names);
+          if (endInput) createOptimizedAutocomplete(endInput, names);
         }, 100);
       }
 
-      function createOptimizedAutocomplete(input, items, addAsChip) {
+      function createOptimizedAutocomplete(input, items) {
         if (!input || !items || items.length === 0) return;
 
         let currentFocus = -1;
@@ -3201,15 +2020,9 @@
               itemDiv.dataset.value = item;
 
               itemDiv.addEventListener("click", function() {
-                if (addAsChip) {
-                  addExplorerNode(this.dataset.value);
-                  input.value = '';
-                  closeAllLists();
-                } else {
-                  input.value = this.dataset.value;
-                  closeAllLists();
-                  input.dispatchEvent(new Event('input', { bubbles: true }));
-                }
+                input.value = this.dataset.value;
+                closeAllLists();
+                input.dispatchEvent(new Event('input', { bubbles: true }));
               });
 
               autocompleteList.appendChild(itemDiv);
@@ -3234,18 +2047,7 @@
             addActive(items);
           } else if (e.keyCode === 13) {
             e.preventDefault();
-            if (currentFocus > -1 && items) {
-              items[currentFocus].click();
-            } else if (addAsChip && input.value.trim()) {
-              // If no autocomplete item selected, try to add the typed value
-              const typed = input.value.trim();
-              const match = searchIndex.find(s => s.lower === typed.toLowerCase());
-              if (match) {
-                addExplorerNode(match.original);
-                input.value = '';
-                closeAllLists();
-              }
-            }
+            if (currentFocus > -1 && items) items[currentFocus].click();
           } else if (e.keyCode === 27) {
             closeAllLists();
           }
@@ -3277,67 +2079,28 @@
       return {
         init,
         findPath,
-        exploreConnections,
         clearPath,
         exportPNG,
         fullReset,
-        toggleCommunities,
-        exportSubgraph,
-        expandTwoHop: expandTwoHop,
-        autoFit: autoFitNetwork,
-        _removeExplorerNode: removeExplorerNode,
-        getStats: function() {
-          return { nodes: nodesById ? nodesById.size : 0, edges: linksData ? linksData.length : 0 };
-        },
-        _resyncCanvas: function(w, h) {
-          width = w;
-          height = h;
-          svg.attr("width", width).attr("height", height);
-          linkCtx = linkCanvas.getContext('2d');
-          drawCanvasLinks();
-        }
+        autoFit: autoFitNetwork
       };
     })();
 
     // Global functions
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("hidden");
-      // Re-sync canvas dimensions after sidebar transition completes
-      setTimeout(() => {
-        const svgRect = document.getElementById("canvas").getBoundingClientRect();
-        const linkCanvasEl = document.getElementById("link-canvas");
-        const dpr = window.devicePixelRatio || 1;
-        linkCanvasEl.width = svgRect.width * dpr;
-        linkCanvasEl.height = svgRect.height * dpr;
-        linkCanvasEl.style.width = svgRect.width + 'px';
-        linkCanvasEl.style.height = svgRect.height + 'px';
-        const ctx = linkCanvasEl.getContext('2d');
-        ctx.scale(dpr, dpr);
-        if (typeof NetworkViz !== 'undefined') {
-          NetworkViz._resyncCanvas(svgRect.width, svgRect.height);
-        }
-      }, 350); // After CSS transition (300ms + buffer)
     }
 
     function openAboutModal() {
       const modal = document.getElementById('aboutModal');
       modal.classList.remove('closing');
       modal.classList.add('show');
-      const stats = NetworkViz.getStats();
-      const nodeEl = document.getElementById('about-node-count');
-      const edgeEl = document.getElementById('about-edge-count');
-      if (nodeEl && stats.nodes > 0) nodeEl.textContent = stats.nodes.toLocaleString();
-      if (edgeEl && stats.edges > 0) edgeEl.textContent = stats.edges.toLocaleString();
     }
 
     function closeAboutModal() {
       const modal = document.getElementById('aboutModal');
       modal.classList.add('closing');
       setTimeout(() => modal.classList.remove('show', 'closing'), 300);
-    }
-
-    function closeNodeDetails() {
-      document.getElementById('node-details').classList.remove('open');
     }
 
     // Initialize

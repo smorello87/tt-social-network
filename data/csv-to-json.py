@@ -118,13 +118,14 @@ def read_edges(path, delimiter, has_header=True, encoding_opt="auto"):
     rows, used_enc = _read_csv_rows(path, delimiter, has_header, encoding_opt)
     print(f"[info] {path}: decoded as {used_enc}", file=sys.stderr)
 
-    edges = set()          # (src_lower, tgt_lower)
+    edges = {}             # (src_lower, tgt_lower) -> edge_type
     display_names = {}     # lower_name -> first-seen original casing
 
     for row in rows:
         if not row or len(row) < 2:
             continue
         raw_src, raw_tgt = row[0], row[1]
+        raw_type = row[2].strip() if len(row) >= 3 else ""
         src = norm(raw_src)
         tgt = norm(raw_tgt)
         if not src or not tgt:
@@ -133,7 +134,7 @@ def read_edges(path, delimiter, has_header=True, encoding_opt="auto"):
         key = (src.lower(), tgt.lower())
         if key in edges:
             continue
-        edges.add(key)
+        edges[key] = raw_type if raw_type else "affiliation"  # default to affiliation
 
         display_names.setdefault(src.lower(), raw_src.strip())
         display_names.setdefault(tgt.lower(), raw_tgt.strip())
@@ -174,10 +175,11 @@ def main():
 
     # Build links using display names for source/target
     links = []
-    for src_l, tgt_l in sorted(edges):
+    for (src_l, tgt_l), edge_type in sorted(edges.items()):
         links.append({
             "source": display.get(src_l, src_l),
             "target": display.get(tgt_l, tgt_l),
+            "type": edge_type,
         })
 
     graph = {"nodes": nodes, "links": links}

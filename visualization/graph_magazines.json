@@ -1,0 +1,286 @@
+{
+  "nodes": [
+    {
+      "id": "Giacomo di Giacomo",
+      "type": "person"
+    },
+    {
+      "id": "Giovanni Bertacchi",
+      "type": "person"
+    },
+    {
+      "id": "Guelfo Civinini",
+      "type": "person"
+    },
+    {
+      "id": "Franco Lalli",
+      "type": "person"
+    },
+    {
+      "id": "Trilussa",
+      "type": "person"
+    },
+    {
+      "id": "Alfredo Panzini",
+      "type": "person"
+    },
+    {
+      "id": "Onorio Ruotolo",
+      "type": "person"
+    },
+    {
+      "id": "Francesco Pastonchi",
+      "type": "person"
+    },
+    {
+      "id": "Il Carroccio",
+      "type": "institution"
+    },
+    {
+      "id": "Agostino de Biasi",
+      "type": "person"
+    },
+    {
+      "id": "Alfonso Carpentieri",
+      "type": "person"
+    },
+    {
+      "id": "Divagando",
+      "type": "institution"
+    },
+    {
+      "id": "Andre Luotto",
+      "type": "person"
+    },
+    {
+      "id": "Eligio G Barberis",
+      "type": "person"
+    },
+    {
+      "id": "Carlo Romano",
+      "type": "person"
+    },
+    {
+      "id": "Mario Puccini",
+      "type": "person"
+    },
+    {
+      "id": "Matilde Serao",
+      "type": "person"
+    },
+    {
+      "id": "Maria Luisa Fiumi",
+      "type": "person"
+    },
+    {
+      "id": "Giovanni Papini",
+      "type": "person"
+    },
+    {
+      "id": "Adolfo Padovan",
+      "type": "person"
+    },
+    {
+      "id": "Gabriele d'Annunzio",
+      "type": "person"
+    },
+    {
+      "id": "Giovanni Pascoli",
+      "type": "person"
+    },
+    {
+      "id": "Luigi Pirandello",
+      "type": "person"
+    },
+    {
+      "id": "Ada Negri",
+      "type": "person"
+    }
+  ],
+  "links": [
+    {
+      "source": "Divagando",
+      "target": "Andre Luotto"
+    },
+    {
+      "source": "Divagando",
+      "target": "Franco Lalli"
+    },
+    {
+      "source": "Andre Luotto",
+      "target": "Divagando"
+    },
+    {
+      "source": "Andre Luotto",
+      "target": "Luigi Pirandello"
+    },
+    {
+      "source": "Andre Luotto",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Giovanni Papini",
+      "target": "Divagando"
+    },
+    {
+      "source": "Giovanni Papini",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Gabriele d'Annunzio",
+      "target": "Divagando"
+    },
+    {
+      "source": "Gabriele d'Annunzio",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Luigi Pirandello",
+      "target": "Divagando"
+    },
+    {
+      "source": "Luigi Pirandello",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Franco Lalli",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Il Carroccio",
+      "target": "Onorio Ruotolo"
+    },
+    {
+      "source": "Ada Negri",
+      "target": "Divagando"
+    },
+    {
+      "source": "Ada Negri",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Giovanni Bertacchi",
+      "target": "Divagando"
+    },
+    {
+      "source": "Giovanni Bertacchi",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Alfredo Panzini",
+      "target": "Divagando"
+    },
+    {
+      "source": "Alfredo Panzini",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Francesco Pastonchi",
+      "target": "Divagando"
+    },
+    {
+      "source": "Francesco Pastonchi",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Giovanni Pascoli",
+      "target": "Divagando"
+    },
+    {
+      "source": "Giovanni Pascoli",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Trilussa",
+      "target": "Divagando"
+    },
+    {
+      "source": "Trilussa",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Eligio G Barberis",
+      "target": "Divagando"
+    },
+    {
+      "source": "Eligio G Barberis",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Guelfo Civinini",
+      "target": "Divagando"
+    },
+    {
+      "source": "Guelfo Civinini",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Agostino de Biasi",
+      "target": "Divagando"
+    },
+    {
+      "source": "Agostino de Biasi",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Alfonso Carpentieri",
+      "target": "Divagando"
+    },
+    {
+      "source": "Alfonso Carpentieri",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Mario Puccini",
+      "target": "Divagando"
+    },
+    {
+      "source": "Mario Puccini",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Maria Luisa Fiumi",
+      "target": "Divagando"
+    },
+    {
+      "source": "Maria Luisa Fiumi",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Onorio Ruotolo",
+      "target": "Divagando"
+    },
+    {
+      "source": "Matilde Serao",
+      "target": "Divagando"
+    },
+    {
+      "source": "Matilde Serao",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Adolfo Padovan",
+      "target": "Divagando"
+    },
+    {
+      "source": "Adolfo Padovan",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Carlo Romano",
+      "target": "Divagando"
+    },
+    {
+      "source": "Carlo Romano",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Giacomo di Giacomo",
+      "target": "Divagando"
+    },
+    {
+      "source": "Giacomo di Giacomo",
+      "target": "Il Carroccio"
+    }
+  ]
+}

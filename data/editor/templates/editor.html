@@ -20,13 +20,19 @@
             <button class="btn btn-primary" onclick="Editor.showAddNodeModal()">+ Node</button>
             <button class="btn btn-primary" onclick="Editor.showAddEdgeModal()">+ Edge</button>
             <button class="btn btn-secondary" onclick="Editor.showMergeModal()">Merge</button>
-            <a href="/visualization/index.html" class="btn btn-secondary" target="_blank">
+            <a href="/visualization/" class="btn btn-secondary" target="_blank">
                 <svg viewBox="0 0 24 24" width="16" height="16">
                     <circle cx="12" cy="12" r="3"/>
                     <path d="M12 5C5.6 5 1 12 1 12s4.6 7 11 7 11-7 11-7-4.6-7-11-7z" fill="none" stroke="currentColor" stroke-width="2"/>
                 </svg>
                 View
             </a>
+            <button class="btn btn-secondary" onclick="Editor.exportGraph()">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M12 3v12M5 10l7 7 7-7M5 21h14" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Export
+            </button>
             <button class="btn btn-secondary" onclick="Editor.showImportModal()">
                 <svg viewBox="0 0 24 24" width="16" height="16">
                     <path d="M12 3v12M5 10l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2"/>

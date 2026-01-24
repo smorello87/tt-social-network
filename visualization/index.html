@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Italian-American Literary Network</title>
 
   <!-- Libraries -->
@@ -153,6 +153,10 @@
 
     #sidebar.hidden {
       transform: translateX(-100%);
+    }
+
+    #sidebar-backdrop {
+      display: none;
     }
 
     #sidebar::-webkit-scrollbar {
@@ -1078,33 +1082,217 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       RESPONSIVE
+       RESPONSIVE — MOBILE
     ═══════════════════════════════════════════════════════════════ */
 
     @media (max-width: 768px) {
       :root {
-        --sidebar-width: 100%;
+        --sidebar-width: 85vw;
+        --header-height: 50px;
       }
 
-      #sidebar {
-        transform: translateX(-100%);
+      /* Header: compact for mobile */
+      #header {
+        padding: 0 12px;
       }
 
-      #sidebar.show {
-        transform: translateX(0);
-      }
-
-      #canvas {
-        left: 0;
-        width: 100vw;
-      }
-
-      #node-details {
-        width: 100%;
+      .header-title {
+        font-size: 1.15rem;
       }
 
       .header-title span {
         display: none;
+      }
+
+      .header-actions {
+        gap: 8px;
+      }
+
+      .header-btn {
+        padding: 8px 10px;
+        font-size: 0.7rem;
+      }
+
+      .header-btn span {
+        display: none;
+      }
+
+      #toggle-sidebar {
+        width: 44px;
+        height: 44px;
+      }
+
+      /* Sidebar: slide-in overlay with backdrop */
+      #sidebar {
+        width: var(--sidebar-width);
+        max-width: 320px;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 24px rgba(26, 26, 26, 0.3);
+      }
+
+      #sidebar:not(.hidden) {
+        transform: translateX(0);
+      }
+
+      /* Sidebar backdrop overlay */
+      #sidebar-backdrop {
+        display: none;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 26, 26, 0.4);
+        z-index: 899;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #sidebar-backdrop.visible {
+        display: block;
+        opacity: 1;
+      }
+
+      .sidebar-section {
+        padding: 16px;
+      }
+
+      /* Canvas & link-canvas: always full width on mobile */
+      #canvas,
+      #link-canvas {
+        left: 0 !important;
+        width: 100vw !important;
+      }
+
+      /* Touch-friendly inputs */
+      .input-field {
+        padding: 12px 14px;
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        margin-bottom: 10px;
+      }
+
+      /* Touch-friendly buttons */
+      .btn {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-row {
+        gap: 6px;
+      }
+
+      /* Touch-friendly slider */
+      .slider-wrap input[type="range"] {
+        height: 8px;
+      }
+
+      .slider-wrap input[type="range"]::-webkit-slider-thumb {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* Touch-friendly autocomplete */
+      .autocomplete-items div {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Node details panel: full width on mobile */
+      #node-details {
+        width: 100%;
+      }
+
+      .details-header {
+        padding: 16px;
+      }
+
+      .details-connection-item {
+        padding: 12px 16px;
+        min-height: 44px;
+      }
+
+      .details-expand-btn {
+        min-height: 44px;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+      }
+
+      /* Modal: better mobile sizing */
+      .modal-content {
+        width: 95%;
+        max-height: 85vh;
+        margin: 0 auto;
+      }
+
+      .modal-body {
+        max-height: 60vh;
+        padding: 16px;
+      }
+
+      .modal-header {
+        padding: 16px;
+      }
+
+      .modal-close {
+        width: 44px;
+        height: 44px;
+      }
+
+      /* Footer: smaller on mobile */
+      footer {
+        font-size: 0.65rem;
+        padding: 6px 10px;
+      }
+
+      /* Explorer chips */
+      .explorer-chip {
+        padding: 6px 10px;
+        font-size: 0.78rem;
+      }
+
+      .explorer-chip-remove {
+        width: 22px;
+        height: 22px;
+      }
+
+      /* Legend: single column on mobile */
+      .legend-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      /* Community info */
+      #community-info {
+        font-size: 0.72rem;
+      }
+
+      /* Help tips: below instead of right */
+      .help-tip::after {
+        left: 50%;
+        top: calc(100% + 8px);
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Small phone screens */
+    @media (max-width: 380px) {
+      :root {
+        --sidebar-width: 100vw;
+      }
+
+      #sidebar {
+        max-width: none;
+      }
+
+      .header-title {
+        font-size: 1rem;
       }
     }
   </style>
@@ -1143,6 +1331,9 @@
       </button>
     </div>
   </header>
+
+  <!-- Sidebar backdrop (mobile) -->
+  <div id="sidebar-backdrop" onclick="toggleSidebar()"></div>
 
   <!-- Sidebar -->
   <aside id="sidebar">
@@ -3301,7 +3492,20 @@
 
     // Global functions
     function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("hidden");
+      const sidebar = document.getElementById("sidebar");
+      const backdrop = document.getElementById("sidebar-backdrop");
+      sidebar.classList.toggle("hidden");
+
+      // Toggle backdrop on mobile
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile && backdrop) {
+        if (sidebar.classList.contains("hidden")) {
+          backdrop.classList.remove("visible");
+        } else {
+          backdrop.classList.add("visible");
+        }
+      }
+
       // Re-sync canvas dimensions after sidebar transition completes
       setTimeout(() => {
         const svgRect = document.getElementById("canvas").getBoundingClientRect();
@@ -3342,6 +3546,11 @@
 
     // Initialize
     document.addEventListener("DOMContentLoaded", function() {
+      // Hide sidebar by default on mobile
+      if (window.innerWidth <= 768) {
+        document.getElementById("sidebar").classList.add("hidden");
+      }
+
       if (typeof NetworkViz !== 'undefined' && !window.vizInitialized) {
         window.vizInitialized = true;
         NetworkViz.init();
@@ -3351,6 +3560,13 @@
         if (e.key === 'Escape') {
           const modal = document.getElementById('aboutModal');
           if (modal && modal.classList.contains('show')) closeAboutModal();
+          // Also close sidebar on mobile with Escape
+          if (window.innerWidth <= 768) {
+            const sidebar = document.getElementById("sidebar");
+            if (!sidebar.classList.contains("hidden")) {
+              toggleSidebar();
+            }
+          }
         }
       });
     });

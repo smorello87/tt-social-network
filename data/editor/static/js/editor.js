@@ -1399,6 +1399,20 @@ const Editor = {
         div.textContent = text;
         return div.innerHTML;
     },
+
+    async exportGraph() {
+        try {
+            const res = await fetch('/api/export-graph', { method: 'POST' });
+            const data = await res.json();
+            if (data.success) {
+                alert(`Exported graph.json: ${data.nodes} nodes, ${data.links} edges`);
+            } else {
+                alert('Export failed');
+            }
+        } catch (err) {
+            alert('Export error: ' + err.message);
+        }
+    },
 };
 
 // Initialize when DOM is ready

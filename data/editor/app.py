@@ -24,6 +24,11 @@ def editor():
     """Serve the data editor UI."""
     return render_template('editor.html')
 
+@app.route('/visualization/')
+def serve_visualization_index():
+    """Serve visualization index."""
+    return send_from_directory(VISUALIZATION_DIR, 'index.html')
+
 @app.route('/visualization/<path:filename>')
 def serve_visualization(filename):
     """Serve visualization files."""
@@ -37,6 +42,16 @@ def serve_visualization(filename):
 def graph_json():
     """Get graph data for visualization (same format as static graph.json)."""
     return jsonify(db.get_graph_json())
+
+@app.route('/api/export-graph', methods=['POST'])
+def export_graph():
+    """Export graph.json to visualization directory from database."""
+    import json
+    data = db.get_graph_json()
+    output_path = os.path.join(VISUALIZATION_DIR, 'graph.json')
+    with open(output_path, 'w') as f:
+        json.dump(data, f, indent=2)
+    return jsonify({'success': True, 'nodes': len(data['nodes']), 'links': len(data['links'])})
 
 # =============================================================================
 # Node API
@@ -478,7 +493,7 @@ if __name__ == '__main__':
     print("Network Data Editor")
     print("="*60)
     print("\nEditor:        http://localhost:5001")
-    print("Visualization: http://localhost:5001/visualization/index.html")
+    print("Visualization: http://localhost:5001/visualization/")
     print("API:           http://localhost:5001/api/graph.json")
     print("\n" + "="*60 + "\n")
     app.run(debug=False, port=5001, threaded=True)

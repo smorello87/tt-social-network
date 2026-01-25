@@ -69,7 +69,7 @@ def init_db():
 # Node Operations
 # =============================================================================
 
-def get_nodes(type_filter=None, search=None, page=1, per_page=50, sort_by=None, sort_dir='desc'):
+def get_nodes(type_filter=None, subtype_filter=None, search=None, page=1, per_page=50, sort_by=None, sort_dir='desc'):
     """Get paginated list of nodes with optional filters and sorting."""
     with get_db() as conn:
         query = """
@@ -84,22 +84,34 @@ def get_nodes(type_filter=None, search=None, page=1, per_page=50, sort_by=None, 
             query += " AND n.type = ?"
             params.append(type_filter)
 
+        if subtype_filter:
+            if subtype_filter == 'uncategorized':
+                query += " AND n.subtype IS NULL"
+            else:
+                query += " AND n.subtype = ?"
+                params.append(subtype_filter)
+
         if search:
             query += " AND n.name_normalized LIKE ?"
             params.append(f"%{normalize_name(search)}%")
 
-        # Get total count
-        count_query = query.replace("SELECT n.*, ", "SELECT COUNT(*) as count FROM nodes n WHERE 1=1 AND n.id IN (SELECT id FROM nodes WHERE 1=1")
+        # Get total count - build count query with same filters
+        count_query = "SELECT COUNT(*) as count FROM nodes n WHERE 1=1"
+        count_params = []
         if type_filter:
-            count_query = f"SELECT COUNT(*) as count FROM nodes n WHERE n.type = ?"
-            if search:
-                count_query += " AND n.name_normalized LIKE ?"
-        elif search:
-            count_query = f"SELECT COUNT(*) as count FROM nodes n WHERE n.name_normalized LIKE ?"
-        else:
-            count_query = "SELECT COUNT(*) as count FROM nodes"
+            count_query += " AND n.type = ?"
+            count_params.append(type_filter)
+        if subtype_filter:
+            if subtype_filter == 'uncategorized':
+                count_query += " AND n.subtype IS NULL"
+            else:
+                count_query += " AND n.subtype = ?"
+                count_params.append(subtype_filter)
+        if search:
+            count_query += " AND n.name_normalized LIKE ?"
+            count_params.append(f"%{normalize_name(search)}%")
 
-        total = conn.execute(count_query, params).fetchone()["count"]
+        total = conn.execute(count_query, count_params).fetchone()["count"]
 
         # Add ordering
         sort_direction = 'DESC' if sort_dir == 'desc' else 'ASC'
@@ -145,33 +157,38 @@ def get_node_by_name(name):
         ).fetchone()
         return dict(row) if row else None
 
-def create_node(name, node_type):
+def create_node(name, node_type, subtype=None):
     """Create a new node."""
     with get_db() as conn:
         cursor = conn.execute(
-            "INSERT INTO nodes (name, name_normalized, type) VALUES (?, ?, ?)",
-            (name.strip(), normalize_name(name), node_type)
+            "INSERT INTO nodes (name, name_normalized, type, subtype) VALUES (?, ?, ?, ?)",
+            (name.strip(), normalize_name(name), node_type, subtype)
         )
         return cursor.lastrowid
 
-def update_node(node_id, name=None, node_type=None):
+def update_node(node_id, name=None, node_type=None, subtype=None):
     """Update a node."""
     with get_db() as conn:
-        if name and node_type:
-            conn.execute(
-                "UPDATE nodes SET name = ?, name_normalized = ?, type = ? WHERE id = ?",
-                (name.strip(), normalize_name(name), node_type, node_id)
-            )
-        elif name:
-            conn.execute(
-                "UPDATE nodes SET name = ?, name_normalized = ? WHERE id = ?",
-                (name.strip(), normalize_name(name), node_id)
-            )
-        elif node_type:
-            conn.execute(
-                "UPDATE nodes SET type = ? WHERE id = ?",
-                (node_type, node_id)
-            )
+        # Build dynamic update
+        updates = []
+        params = []
+        if name is not None:
+            updates.append("name = ?")
+            params.append(name.strip())
+            updates.append("name_normalized = ?")
+            params.append(normalize_name(name))
+        if node_type is not None:
+            updates.append("type = ?")
+            params.append(node_type)
+        if subtype is not None:
+            # Allow setting to NULL with empty string
+            updates.append("subtype = ?")
+            params.append(subtype if subtype else None)
+
+        if updates:
+            params.append(node_id)
+            conn.execute(f"UPDATE nodes SET {', '.join(updates)} WHERE id = ?", params)
+
         # Recalculate needs_review for affected edges
         recalculate_needs_review_for_node(conn, node_id)
 
@@ -272,11 +289,12 @@ def get_all_nodes_for_dropdown():
         return [dict(row) for row in rows]
 
 def get_node_connections(node_id):
-    """Get all nodes connected to a given node."""
+    """Get all nodes connected to a given node, including their connection counts."""
     with get_db() as conn:
         # Get connections where this node is the source
         as_source = conn.execute("""
-            SELECT n.id, n.name, n.type, e.type as edge_type
+            SELECT n.id, n.name, n.type, e.type as edge_type,
+                   (SELECT COUNT(*) FROM edges e2 WHERE e2.source_id = n.id OR e2.target_id = n.id) as connection_count
             FROM nodes n
             JOIN edges e ON e.target_id = n.id
             WHERE e.source_id = ?
@@ -285,7 +303,8 @@ def get_node_connections(node_id):
 
         # Get connections where this node is the target
         as_target = conn.execute("""
-            SELECT n.id, n.name, n.type, e.type as edge_type
+            SELECT n.id, n.name, n.type, e.type as edge_type,
+                   (SELECT COUNT(*) FROM edges e2 WHERE e2.source_id = n.id OR e2.target_id = n.id) as connection_count
             FROM nodes n
             JOIN edges e ON e.source_id = n.id
             WHERE e.target_id = ?
@@ -480,6 +499,17 @@ def delete_edge(edge_id):
 # Batch Operations
 # =============================================================================
 
+def batch_update_node_subtype(node_ids, subtype):
+    """Set subtype for multiple nodes (institutions)."""
+    with get_db() as conn:
+        placeholders = ",".join("?" * len(node_ids))
+        # Only update institution nodes
+        conn.execute(
+            f"UPDATE nodes SET subtype = ? WHERE id IN ({placeholders}) AND type = 'institution'",
+            [subtype if subtype else None] + list(node_ids)
+        )
+        return len(node_ids)
+
 def batch_update_edge_type(edge_ids, edge_type):
     """Set type for multiple edges. Setting personal/affiliation clears needs_review."""
     with get_db() as conn:
@@ -630,8 +660,8 @@ def recalculate_all_shared_institutions():
 def get_graph_json():
     """Export database as graph JSON for visualization."""
     with get_db() as conn:
-        # Get nodes
-        nodes = conn.execute("SELECT name as id, type FROM nodes ORDER BY name").fetchall()
+        # Get nodes (include subtype for institutions)
+        nodes = conn.execute("SELECT name as id, type, subtype FROM nodes ORDER BY name").fetchall()
 
         # Get edges with names
         links = conn.execute("""
@@ -698,6 +728,26 @@ def get_stats():
         stats["shared_distribution"] = {row["bucket"]: row["count"] for row in shared_dist}
 
         return stats
+
+def get_subtypes():
+    """Get list of available institution subtypes with counts."""
+    with get_db() as conn:
+        rows = conn.execute("""
+            SELECT subtype, COUNT(*) as count
+            FROM nodes
+            WHERE type = 'institution'
+            GROUP BY subtype
+            ORDER BY count DESC
+        """).fetchall()
+        result = []
+        for row in rows:
+            subtype = row['subtype']
+            result.append({
+                'value': subtype if subtype else 'uncategorized',
+                'label': (subtype or 'uncategorized').title(),
+                'count': row['count']
+            })
+        return result
 
 # Initialize database on import
 init_db()

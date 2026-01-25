@@ -54,10 +54,10 @@ const API = {
         return this.request(`/nodes/${id}`);
     },
 
-    async createNode(name, type) {
+    async createNode(name, type, subtype = null) {
         return this.request('/nodes', {
             method: 'POST',
-            body: { name, type },
+            body: { name, type, subtype },
         });
     },
 
@@ -121,6 +121,13 @@ const API = {
     // ==========================================================================
     // Batch Operations
     // ==========================================================================
+
+    async batchUpdateSubtype(nodeIds, subtype) {
+        return this.request('/batch/nodes/subtype', {
+            method: 'POST',
+            body: { node_ids: nodeIds, subtype },
+        });
+    },
 
     async batchUpdateType(edgeIds, type) {
         return this.request('/batch/edges/type', {
@@ -189,5 +196,9 @@ const API = {
 
     async getStats() {
         return this.request('/stats');
+    },
+
+    async getSubtypes() {
+        return this.request('/subtypes');
     },
 };

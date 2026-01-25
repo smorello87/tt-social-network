@@ -12,6 +12,35 @@ const BatchOps = {
     },
 
     /**
+     * Set subtype for all selected nodes (institutions only)
+     */
+    async setSubtype() {
+        const ids = this.getSelectedIds();
+        const subtype = document.getElementById('batch-subtype').value;
+
+        if (!ids.length) {
+            Editor.showToast('No items selected', 'error');
+            return;
+        }
+
+        if (!subtype) {
+            Editor.showToast('Please select a subtype', 'error');
+            return;
+        }
+
+        try {
+            const result = await API.batchUpdateSubtype(ids, subtype);
+            Editor.showToast(`Updated ${result.updated} nodes to "${subtype}"`, 'success');
+            Editor.clearSelection();
+            await Editor.loadStats();
+            await Editor.loadSubtypes();
+            await Editor.loadData();
+        } catch (error) {
+            Editor.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    /**
      * Set type for all selected edges
      */
     async setType() {

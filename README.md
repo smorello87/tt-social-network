@@ -99,7 +99,7 @@ tt-social-network/
 - Tables of contents of *Atlantica* (1923-1930)
 - [The Periconi Collection of Italian American Imprints](https://italianamericanimprints.omeka.net/)
 - Wikipedia biographical data
-- Metadata from the Italian Sistema Bibliotecario Nazionale (SBN)
+- Metadata from the Italian Sistema Bibliotecario Nazionale (SBN) and OCLC
 
 ## Usage
 

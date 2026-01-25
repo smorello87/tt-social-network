@@ -28,8 +28,15 @@ const Editor = {
         // Load initial data
         await Promise.all([
             this.loadStats(),
+            this.loadSubtypes(),
             this.loadData(),
         ]);
+
+        // Set initial batch actions visibility based on current tab
+        const nodesActions = document.getElementById('batch-actions-nodes');
+        const edgesActions = document.getElementById('batch-actions-edges');
+        if (nodesActions) nodesActions.style.display = this.state.currentTab === 'nodes' ? 'flex' : 'none';
+        if (edgesActions) edgesActions.style.display = this.state.currentTab === 'edges' ? 'flex' : 'none';
 
         // Set up keyboard shortcuts
         document.addEventListener('keydown', (e) => {
@@ -39,6 +46,49 @@ const Editor = {
         });
 
         console.log('Editor initialized');
+    },
+
+    /**
+     * Load available subtypes
+     */
+    async loadSubtypes() {
+        try {
+            this.state.subtypes = await API.getSubtypes();
+            this.populateSubtypeFilter();
+        } catch (error) {
+            console.error('Failed to load subtypes:', error);
+            this.state.subtypes = [];
+        }
+    },
+
+    /**
+     * Populate subtype filter dropdown
+     */
+    populateSubtypeFilter() {
+        const select = document.getElementById('filter-node-subtype');
+        if (!select) return;
+        select.innerHTML = '<option value="">All Subtypes</option>';
+        for (const subtype of this.state.subtypes) {
+            const option = document.createElement('option');
+            option.value = subtype.value;
+            option.textContent = `${subtype.label} (${subtype.count})`;
+            select.appendChild(option);
+        }
+    },
+
+    /**
+     * Handle type filter change - clear subtype if person selected
+     */
+    onTypeFilterChange() {
+        const typeFilter = document.getElementById('filter-node-type')?.value || '';
+        const subtypeSelect = document.getElementById('filter-node-subtype');
+
+        // Clear subtype selection when filtering to person (subtypes only apply to institutions)
+        if (typeFilter === 'person' && subtypeSelect) {
+            subtypeSelect.value = '';
+        }
+
+        this.applyFilters();
     },
 
     // ==========================================================================
@@ -92,10 +142,12 @@ const Editor = {
             per_page: this.state.perPage,
         };
 
-        const typeFilter = document.getElementById('filter-node-type').value;
-        const search = document.getElementById('filter-node-search').value;
+        const typeFilter = document.getElementById('filter-node-type')?.value || '';
+        const subtypeFilter = document.getElementById('filter-node-subtype')?.value || '';
+        const search = document.getElementById('filter-node-search')?.value || '';
 
         if (typeFilter) params.type = typeFilter;
+        if (subtypeFilter) params.subtype = subtypeFilter;
         if (search) params.search = search;
 
         // Add sorting parameters
@@ -194,7 +246,10 @@ const Editor = {
                            onchange="Editor.toggleSelect(${node.id}, this.checked)">
                 </td>
                 <td>${this.escapeHtml(node.name)}</td>
-                <td><span class="badge badge-${node.type}">${node.type}</span></td>
+                <td>
+                    <span class="badge badge-${node.type}">${node.type}</span>
+                    ${node.subtype ? `<span class="badge badge-subtype">${node.subtype}</span>` : ''}
+                </td>
                 <td>
                     <span class="connection-count" onclick="Editor.showConnections(${node.id}, '${this.escapeHtml(node.name).replace(/'/g, "\\'")}')">${node.connection_count || 0}</span>
                 </td>
@@ -282,6 +337,12 @@ const Editor = {
         document.querySelectorAll('.filter-group').forEach(group => {
             group.style.display = group.dataset.for === tab ? 'flex' : 'none';
         });
+
+        // Show/hide appropriate batch actions
+        const nodesActions = document.getElementById('batch-actions-nodes');
+        const edgesActions = document.getElementById('batch-actions-edges');
+        if (nodesActions) nodesActions.style.display = tab === 'nodes' ? 'flex' : 'none';
+        if (edgesActions) edgesActions.style.display = tab === 'edges' ? 'flex' : 'none';
 
         // Load data
         this.loadData();
@@ -427,8 +488,12 @@ const Editor = {
      */
     clearFilters() {
         if (this.state.currentTab === 'nodes') {
-            document.getElementById('filter-node-type').value = '';
-            document.getElementById('filter-node-search').value = '';
+            const nodeType = document.getElementById('filter-node-type');
+            const nodeSubtype = document.getElementById('filter-node-subtype');
+            const nodeSearch = document.getElementById('filter-node-search');
+            if (nodeType) nodeType.value = '';
+            if (nodeSubtype) nodeSubtype.value = '';
+            if (nodeSearch) nodeSearch.value = '';
         } else if (this.state.currentTab === 'edges') {
             document.getElementById('filter-edge-type').value = '';
             document.getElementById('filter-shared').value = '';
@@ -555,12 +620,15 @@ const Editor = {
             if (connections.length === 0) {
                 list.innerHTML = '<div class="connections-empty">No connections found</div>';
             } else {
+                // Sort by connection count descending
+                connections.sort((a, b) => (b.connection_count || 0) - (a.connection_count || 0));
                 list.innerHTML = connections.map(conn => `
                     <div class="connection-item" onclick="Editor.searchForNode('${this.escapeHtml(conn.name).replace(/'/g, "\\'")}')">
                         <span class="connection-name">${this.escapeHtml(conn.name)}</span>
                         <div class="connection-badges">
                             <span class="badge badge-${conn.type}">${conn.type}</span>
                             <span class="badge badge-${conn.edge_type}">${conn.edge_type}</span>
+                            <span class="badge badge-count">${conn.connection_count || 0}</span>
                         </div>
                     </div>
                 `).join('');
@@ -711,10 +779,27 @@ const Editor = {
             document.getElementById('edit-node-id').value = node.id;
             document.getElementById('edit-node-name').value = node.name;
             document.getElementById('edit-node-type').value = node.type;
+            document.getElementById('edit-node-subtype').value = node.subtype || '';
+
+            // Show/hide subtype field based on type
+            const subtypeGroup = document.getElementById('edit-node-subtype-group');
+            subtypeGroup.style.display = node.type === 'institution' ? 'block' : 'none';
 
             this.showModal('edit-node-modal');
         } catch (error) {
             this.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    /**
+     * Handle type change in edit node modal
+     */
+    onEditNodeTypeChange() {
+        const type = document.getElementById('edit-node-type').value;
+        const subtypeGroup = document.getElementById('edit-node-subtype-group');
+        subtypeGroup.style.display = type === 'institution' ? 'block' : 'none';
+        if (type !== 'institution') {
+            document.getElementById('edit-node-subtype').value = '';
         }
     },
 
@@ -725,6 +810,7 @@ const Editor = {
         const id = document.getElementById('edit-node-id').value;
         const name = document.getElementById('edit-node-name').value.trim();
         const type = document.getElementById('edit-node-type').value;
+        const subtype = document.getElementById('edit-node-subtype').value;
 
         if (!name) {
             this.showToast('Please enter a name', 'error');
@@ -732,9 +818,10 @@ const Editor = {
         }
 
         try {
-            await API.updateNode(id, { name, type });
+            await API.updateNode(id, { name, type, subtype: type === 'institution' ? subtype : '' });
             this.showToast('Node updated', 'success');
             this.closeModal('edit-node-modal');
+            this.loadSubtypes(); // Refresh subtype counts
             this.loadData();
             this.loadStats();
         } catch (error) {

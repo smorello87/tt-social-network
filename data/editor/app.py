@@ -61,6 +61,7 @@ def export_graph():
 def list_nodes():
     """List nodes with optional filtering, sorting, and pagination."""
     type_filter = request.args.get('type')
+    subtype_filter = request.args.get('subtype')
     search = request.args.get('search')
     page = int(request.args.get('page', 1))
     per_page = int(request.args.get('per_page', 50))
@@ -69,6 +70,7 @@ def list_nodes():
 
     result = db.get_nodes(
         type_filter=type_filter,
+        subtype_filter=subtype_filter,
         search=search,
         page=page,
         per_page=per_page,
@@ -81,6 +83,11 @@ def list_nodes():
 def all_nodes_dropdown():
     """Get all nodes for dropdown/autocomplete (lightweight)."""
     return jsonify(db.get_all_nodes_for_dropdown())
+
+@app.route('/api/subtypes', methods=['GET'])
+def get_subtypes():
+    """Get available institution subtypes."""
+    return jsonify(db.get_subtypes())
 
 @app.route('/api/nodes/<int:node_id>', methods=['GET'])
 def get_node(node_id):
@@ -96,6 +103,7 @@ def create_node():
     data = request.json
     name = data.get('name', '').strip()
     node_type = data.get('type', 'unknown')
+    subtype = data.get('subtype')
 
     if not name:
         return jsonify({'error': 'Name is required'}), 400
@@ -109,8 +117,8 @@ def create_node():
         return jsonify({'error': 'Node already exists', 'existing': existing}), 409
 
     try:
-        node_id = db.create_node(name, node_type)
-        return jsonify({'id': node_id, 'name': name, 'type': node_type}), 201
+        node_id = db.create_node(name, node_type, subtype)
+        return jsonify({'id': node_id, 'name': name, 'type': node_type, 'subtype': subtype}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -120,12 +128,13 @@ def update_node(node_id):
     data = request.json
     name = data.get('name')
     node_type = data.get('type')
+    subtype = data.get('subtype')
 
     if node_type and node_type not in ('person', 'institution', 'unknown'):
         return jsonify({'error': 'Invalid type'}), 400
 
     try:
-        db.update_node(node_id, name=name, node_type=node_type)
+        db.update_node(node_id, name=name, node_type=node_type, subtype=subtype)
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -265,6 +274,26 @@ def delete_edge(edge_id):
 # =============================================================================
 # Batch Operations API
 # =============================================================================
+
+@app.route('/api/batch/nodes/subtype', methods=['POST'])
+def batch_update_subtype():
+    """Set subtype for multiple nodes."""
+    data = request.json
+    node_ids = data.get('node_ids', [])
+    subtype = data.get('subtype')
+
+    if not node_ids:
+        return jsonify({'error': 'node_ids is required'}), 400
+
+    valid_subtypes = ('magazine', 'publisher', 'university', 'organization', 'media', 'business', 'event', 'government', 'other', '')
+    if subtype not in valid_subtypes:
+        return jsonify({'error': 'Invalid subtype'}), 400
+
+    try:
+        count = db.batch_update_node_subtype(node_ids, subtype)
+        return jsonify({'updated': count})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/batch/edges/type', methods=['POST'])
 def batch_update_type():

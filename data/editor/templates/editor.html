@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/editor.css?v=7">
+    <link rel="stylesheet" href="/static/css/editor.css?v=11">
 </head>
 <body>
     <!-- Header -->
@@ -102,11 +102,17 @@
             <div class="filter-group" data-for="nodes">
                 <div class="filter-row">
                     <label>Type:</label>
-                    <select id="filter-node-type" onchange="Editor.applyFilters()">
+                    <select id="filter-node-type" onchange="Editor.onTypeFilterChange()">
                         <option value="">All Types</option>
                         <option value="person">Person</option>
                         <option value="institution">Institution</option>
                         <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                <div class="filter-row" id="subtype-filter-row">
+                    <label>Subtype:</label>
+                    <select id="filter-node-subtype" onchange="Editor.applyFilters()">
+                        <option value="">All Subtypes</option>
                     </select>
                 </div>
                 <div class="filter-row">
@@ -214,7 +220,23 @@
     <!-- Batch Action Bar -->
     <div class="batch-bar" id="batch-bar">
         <span class="batch-count"><span id="selected-count">0</span> selected</span>
-        <div class="batch-actions">
+        <div class="batch-actions" id="batch-actions-nodes">
+            <select id="batch-subtype">
+                <option value="">Set Subtype...</option>
+                <option value="magazine">Magazine</option>
+                <option value="publisher">Publisher</option>
+                <option value="university">University</option>
+                <option value="organization">Organization</option>
+                                <option value="media">Media</option>
+                                <option value="business">Business</option>
+                <option value="event">Event</option>
+                <option value="government">Government</option>
+                <option value="other">Other</option>
+            </select>
+            <button class="btn btn-small" onclick="BatchOps.setSubtype()">Apply Subtype</button>
+            <button class="btn btn-small btn-danger" onclick="BatchOps.deleteSelected()">Delete</button>
+        </div>
+        <div class="batch-actions" id="batch-actions-edges" style="display: none;">
             <select id="batch-type">
                 <option value="">Set Type...</option>
                 <option value="personal">Personal</option>
@@ -270,10 +292,25 @@
                 </div>
                 <div class="form-group">
                     <label for="edit-node-type">Type:</label>
-                    <select id="edit-node-type">
+                    <select id="edit-node-type" onchange="Editor.onEditNodeTypeChange()">
                         <option value="person">Person</option>
                         <option value="institution">Institution</option>
                         <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                <div class="form-group" id="edit-node-subtype-group" style="display: none;">
+                    <label for="edit-node-subtype">Subtype:</label>
+                    <select id="edit-node-subtype">
+                        <option value="">None</option>
+                        <option value="magazine">Magazine</option>
+                        <option value="publisher">Publisher</option>
+                        <option value="university">University</option>
+                        <option value="organization">Organization</option>
+                                                <option value="media">Media</option>
+                                                <option value="business">Business</option>
+                        <option value="event">Event</option>
+                        <option value="government">Government</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
             </div>
@@ -471,8 +508,8 @@
     <div class="toast-container" id="toast-container"></div>
 
     <!-- Scripts -->
-    <script src="/static/js/api.js?v=8"></script>
-    <script src="/static/js/batch.js?v=8"></script>
-    <script src="/static/js/editor.js?v=8"></script>
+    <script src="/static/js/api.js?v=12"></script>
+    <script src="/static/js/batch.js?v=12"></script>
+    <script src="/static/js/editor.js?v=13"></script>
 </body>
 </html>

@@ -2449,7 +2449,7 @@
 
       const handleNodeMouseEnter = throttle((e, d) => {
         const degree = nodeDegrees.get(d.id);
-        tooltip.html(`<strong>${d.id}</strong><br>Connections: ${degree}`)
+        tooltip.html(`<strong>${d.id.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong><br>Connections: ${degree}`)
           .style("left", (e.pageX + 10) + "px")
           .style("top", (e.pageY - 10) + "px")
           .style("display", "block");
@@ -3925,7 +3925,7 @@
         oneHop.forEach(neighbor => {
           const neighborsOfNeighbor = adjacencyList.get(neighbor) || new Set();
           neighborsOfNeighbor.forEach(nn => {
-            if (nn !== nodeId && !oneHop.has(nn)) {
+            if (nn !== nodeId && !oneHop.has(nn) && nodesById.has(nn)) {
               twoHop.add(nn);
             }
           });
@@ -3999,7 +3999,7 @@
         nodeGroups.style("opacity", 1).style("display", "block");
         nodeGroups.select("circle")
           .classed("highlight-node", false)
-          .style("stroke", d => d.type === 'institution' ? "#6d5a44" : "#546f7d")
+          .style("stroke", d => getNodeStroke(d))
           .style("stroke-width", 2)
           .style("fill", d => getNodeColor(d));
 

@@ -201,4 +201,8 @@ const API = {
     async getSubtypes() {
         return this.request('/subtypes');
     },
+
+    async getAudit() {
+        return this.request('/audit');
+    },
 };

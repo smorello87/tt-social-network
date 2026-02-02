@@ -1225,6 +1225,125 @@ body {
    Responsive
    ============================================================================= */
 
+/* =============================================================================
+   Audit Tab
+   ============================================================================= */
+
+.audit-content {
+    padding: 24px;
+    padding-bottom: 80px;
+}
+
+.audit-section {
+    background: white;
+    border: 1px solid var(--parchment-darker);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.audit-section.audit-clean {
+    opacity: 0.6;
+}
+
+.audit-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+}
+
+.audit-section-header:hover {
+    background: var(--parchment);
+}
+
+.audit-section-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--parchment-dark);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink-medium);
+    flex-shrink: 0;
+}
+
+.audit-section-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink-dark);
+}
+
+.audit-section-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    background: var(--parchment-dark);
+    color: var(--ink-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.audit-section-count.has-issues {
+    background: var(--gold);
+    color: white;
+}
+
+.audit-section-chevron {
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    flex-shrink: 0;
+}
+
+.audit-section-body {
+    padding: 0 20px 16px;
+    border-top: 1px solid var(--parchment);
+}
+
+.audit-description {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin: 12px 0;
+}
+
+.audit-table-wrap {
+    overflow-x: auto;
+    margin-top: 8px;
+}
+
+.audit-table {
+    font-size: 0.85rem;
+}
+
+.audit-table th {
+    padding: 10px 12px;
+    font-size: 0.75rem;
+}
+
+.audit-table td {
+    padding: 8px 12px;
+}
+
+.audit-all-clear {
+    text-align: center;
+    padding: 24px;
+    color: var(--success);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;

@@ -17,6 +17,9 @@ const Editor = {
         sortDirection: 'desc', // 'asc' or 'desc'
         selectedTargets: [], // For accumulative target selection in Add Edge modal
         sourceConnections: new Set(), // IDs of nodes already connected to source in Add Edge modal
+        auditData: null, // Cached audit response
+        auditActiveCategory: null, // Which category is selected for batch context
+        auditExpandedSections: new Set(), // Which sections are expanded
     },
 
     /**
@@ -44,6 +47,13 @@ const Editor = {
                 this.closeAllModals();
             }
         });
+
+        // Fire-and-forget: populate audit badge on startup
+        API.getAudit().then(data => {
+            this.state.auditData = data;
+            const badge = document.getElementById('audit-badge');
+            if (badge) badge.textContent = data.total_issues || 0;
+        }).catch(() => {});
 
         console.log('Editor initialized');
     },
@@ -343,8 +353,28 @@ const Editor = {
         // Show/hide appropriate batch actions
         const nodesActions = document.getElementById('batch-actions-nodes');
         const edgesActions = document.getElementById('batch-actions-edges');
+        const auditActions = document.getElementById('batch-actions-audit');
         if (nodesActions) nodesActions.style.display = tab === 'nodes' ? 'flex' : 'none';
         if (edgesActions) edgesActions.style.display = (tab === 'edges' || tab === 'review') ? 'flex' : 'none';
+        if (auditActions) auditActions.style.display = tab === 'audit' ? 'flex' : 'none';
+
+        // Handle audit tab specially
+        const auditContent = document.getElementById('audit-content');
+        const tableContainer = document.querySelector('.table-container');
+        const pagination = document.getElementById('pagination');
+
+        if (tab === 'audit') {
+            if (tableContainer) tableContainer.style.display = 'none';
+            if (pagination) pagination.style.display = 'none';
+            if (auditContent) auditContent.style.display = 'block';
+            this.loadAuditData();
+            return;
+        }
+
+        // Non-audit tabs
+        if (tableContainer) tableContainer.style.display = '';
+        if (pagination) pagination.style.display = '';
+        if (auditContent) auditContent.style.display = 'none';
 
         // Load data
         this.loadData();
@@ -1432,6 +1462,368 @@ const Editor = {
         select.innerHTML = filtered.map(node =>
             `<option value="${node.id}">${this.escapeHtml(node.name)} (${node.type})</option>`
         ).join('');
+    },
+
+    // ==========================================================================
+    // Audit Tab
+    // ==========================================================================
+
+    async loadAuditData() {
+        const auditContent = document.getElementById('audit-content');
+        if (!auditContent) return;
+        auditContent.innerHTML = '<div class="loading-state" style="display:flex;"><div class="spinner"></div><p>Loading audit data...</p></div>';
+
+        try {
+            const data = await API.getAudit();
+            this.state.auditData = data;
+            const badge = document.getElementById('audit-badge');
+            if (badge) badge.textContent = data.total_issues || 0;
+            try {
+                this.renderAuditContent(data);
+            } catch (renderErr) {
+                console.error('Audit render error:', renderErr);
+                auditContent.innerHTML = '';
+                const errDiv = document.createElement('div');
+                errDiv.className = 'audit-all-clear';
+                errDiv.style.color = 'var(--review-warning)';
+                errDiv.textContent = 'Error rendering audit data. Try refreshing.';
+                auditContent.appendChild(errDiv);
+            }
+        } catch (error) {
+            auditContent.innerHTML = '';
+            const errDiv = document.createElement('div');
+            errDiv.className = 'audit-all-clear';
+            errDiv.style.color = 'var(--review-warning)';
+            errDiv.textContent = 'Error loading audit data: ' + error.message;
+            auditContent.appendChild(errDiv);
+        }
+    },
+
+    renderAuditContent(data) {
+        const container = document.getElementById('audit-content');
+        if (!container) return;
+
+        const sections = [
+            {
+                key: 'unknown_edges',
+                title: 'Unknown Edge Types',
+                icon: '?',
+                description: 'Edges with type "unknown" that need classification as personal or affiliation.',
+                items: data.unknown_edges,
+            },
+            {
+                key: 'missing_subtypes',
+                title: 'Missing Institution Subtypes',
+                icon: '!',
+                description: 'Institutions without a subtype classification.',
+                items: data.missing_subtypes,
+            },
+            {
+                key: 'orphan_nodes',
+                title: 'Orphan Nodes',
+                icon: '\u29B8',
+                description: 'Nodes with no connections. These may be data entry errors.',
+                items: data.orphan_nodes,
+            },
+            {
+                key: 'needs_review',
+                title: 'Edges Needing Review',
+                icon: '\u26A0',
+                description: 'Edges flagged for manual review (needs_review=1).',
+                items: data.needs_review,
+            },
+            {
+                key: 'potential_duplicates',
+                title: 'Potential Duplicate Nodes',
+                icon: '\u2261',
+                description: 'Node pairs with similar names that may be duplicates.',
+                items: data.potential_duplicates,
+            },
+        ];
+
+        // Build DOM elements instead of innerHTML to avoid XSS
+        container.innerHTML = '';
+
+        if (data.total_issues === 0) {
+            const allClear = document.createElement('div');
+            allClear.className = 'audit-all-clear';
+            allClear.textContent = 'All clear! No data quality issues found.';
+            container.appendChild(allClear);
+        }
+
+        for (const section of sections) {
+            const count = section.items.length;
+            const isExpanded = this.state.auditExpandedSections.has(section.key);
+            const hasIssues = count > 0;
+
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'audit-section' + (hasIssues ? '' : ' audit-clean');
+
+            const header = document.createElement('div');
+            header.className = 'audit-section-header';
+            header.onclick = () => this.toggleAuditSection(section.key);
+
+            const iconSpan = document.createElement('span');
+            iconSpan.className = 'audit-section-icon';
+            iconSpan.textContent = section.icon;
+
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'audit-section-title';
+            titleSpan.textContent = section.title;
+
+            const countSpan = document.createElement('span');
+            countSpan.className = 'audit-section-count' + (hasIssues ? ' has-issues' : '');
+            countSpan.textContent = count;
+
+            const chevron = document.createElement('span');
+            chevron.className = 'audit-section-chevron';
+            chevron.textContent = isExpanded ? '\u25BC' : '\u25B6';
+
+            header.append(iconSpan, titleSpan, countSpan, chevron);
+
+            const body = document.createElement('div');
+            body.className = 'audit-section-body';
+            body.style.display = isExpanded ? 'block' : 'none';
+
+            const desc = document.createElement('p');
+            desc.className = 'audit-description';
+            desc.textContent = section.description;
+            body.appendChild(desc);
+
+            // Render items using innerHTML with escapeHtml (consistent with rest of codebase)
+            const itemsDiv = document.createElement('div');
+            itemsDiv.innerHTML = this.renderAuditSectionItems(section.key, section.items);
+            body.appendChild(itemsDiv);
+
+            sectionDiv.append(header, body);
+            container.appendChild(sectionDiv);
+        }
+    },
+
+    renderAuditSectionItems(key, items) {
+        if (items.length === 0) {
+            return '<div class="audit-all-clear">No issues in this category.</div>';
+        }
+
+        if (key === 'unknown_edges') {
+            return `
+                <div class="audit-table-wrap">
+                    <table class="data-table audit-table">
+                        <thead><tr>
+                            <th><input type="checkbox" onchange="Editor.toggleAuditSelectAll('unknown_edges', this.checked)"></th>
+                            <th>Source</th><th>Target</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody>${items.map(e => `
+                            <tr>
+                                <td><input type="checkbox" data-audit-id="${e.id}" data-audit-cat="unknown_edges"
+                                    ${this.state.selectedItems.has(e.id) ? 'checked' : ''}
+                                    onchange="Editor.toggleAuditSelect(${e.id}, 'unknown_edges', this.checked)"></td>
+                                <td>${this.escapeHtml(e.source_name)} <span class="badge badge-${this.escapeHtml(e.source_type)}" style="font-size:0.65rem;padding:2px 6px;">${this.escapeHtml(e.source_type).charAt(0).toUpperCase()}</span></td>
+                                <td>${this.escapeHtml(e.target_name)} <span class="badge badge-${this.escapeHtml(e.target_type)}" style="font-size:0.65rem;padding:2px 6px;">${this.escapeHtml(e.target_type).charAt(0).toUpperCase()}</span></td>
+                                <td><button class="btn btn-small" onclick="Editor.editEdge(${parseInt(e.id)})">Edit</button></td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                </div>`;
+        }
+
+        if (key === 'missing_subtypes') {
+            return `
+                <div class="audit-table-wrap">
+                    <table class="data-table audit-table">
+                        <thead><tr>
+                            <th><input type="checkbox" onchange="Editor.toggleAuditSelectAll('missing_subtypes', this.checked)"></th>
+                            <th>Name</th><th>Type</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody>${items.map(n => `
+                            <tr>
+                                <td><input type="checkbox" data-audit-id="${n.id}" data-audit-cat="missing_subtypes"
+                                    ${this.state.selectedItems.has(n.id) ? 'checked' : ''}
+                                    onchange="Editor.toggleAuditSelect(${parseInt(n.id)}, 'missing_subtypes', this.checked)"></td>
+                                <td>${this.escapeHtml(n.name)}</td>
+                                <td><span class="badge badge-institution">institution</span></td>
+                                <td><button class="btn btn-small" onclick="Editor.editNode(${parseInt(n.id)})">Edit</button></td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                </div>`;
+        }
+
+        if (key === 'orphan_nodes') {
+            return `
+                <div class="audit-table-wrap">
+                    <table class="data-table audit-table">
+                        <thead><tr>
+                            <th><input type="checkbox" onchange="Editor.toggleAuditSelectAll('orphan_nodes', this.checked)"></th>
+                            <th>Name</th><th>Type</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody>${items.map(n => `
+                            <tr>
+                                <td><input type="checkbox" data-audit-id="${n.id}" data-audit-cat="orphan_nodes"
+                                    ${this.state.selectedItems.has(n.id) ? 'checked' : ''}
+                                    onchange="Editor.toggleAuditSelect(${parseInt(n.id)}, 'orphan_nodes', this.checked)"></td>
+                                <td>${this.escapeHtml(n.name)}</td>
+                                <td><span class="badge badge-${this.escapeHtml(n.type)}">${this.escapeHtml(n.type)}</span></td>
+                                <td>
+                                    <button class="btn btn-small" onclick="Editor.editNode(${parseInt(n.id)})">Edit</button>
+                                    <button class="btn btn-small btn-danger" onclick="Editor.deleteOrphanNode(${parseInt(n.id)}, '${this.escapeHtml(n.name).replace(/'/g, "\\'")}')">Delete</button>
+                                </td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                </div>`;
+        }
+
+        if (key === 'needs_review') {
+            return `
+                <div class="audit-table-wrap">
+                    <table class="data-table audit-table">
+                        <thead><tr>
+                            <th><input type="checkbox" onchange="Editor.toggleAuditSelectAll('needs_review', this.checked)"></th>
+                            <th>Source</th><th>Target</th><th>Type</th><th>Shared</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody>${items.map(e => `
+                            <tr>
+                                <td><input type="checkbox" data-audit-id="${e.id}" data-audit-cat="needs_review"
+                                    ${this.state.selectedItems.has(e.id) ? 'checked' : ''}
+                                    onchange="Editor.toggleAuditSelect(${parseInt(e.id)}, 'needs_review', this.checked)"></td>
+                                <td>${this.escapeHtml(e.source_name)}</td>
+                                <td>${this.escapeHtml(e.target_name)}</td>
+                                <td><span class="badge badge-${this.escapeHtml(e.type)}">${this.escapeHtml(e.type)}</span></td>
+                                <td>${parseInt(e.shared_count)}</td>
+                                <td><button class="btn btn-small" onclick="Editor.editEdge(${parseInt(e.id)})">Edit</button></td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                </div>`;
+        }
+
+        if (key === 'potential_duplicates') {
+            return `
+                <div class="audit-table-wrap">
+                    <table class="data-table audit-table">
+                        <thead><tr>
+                            <th>Node A</th><th>Node B</th><th>Similarity</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody>${items.map(d => `
+                            <tr>
+                                <td>${this.escapeHtml(d.node_a.name)} <span class="badge badge-${this.escapeHtml(d.node_a.type)}" style="font-size:0.65rem;padding:2px 6px;">${this.escapeHtml(d.node_a.type).charAt(0).toUpperCase()}</span></td>
+                                <td>${this.escapeHtml(d.node_b.name)} <span class="badge badge-${this.escapeHtml(d.node_b.type)}" style="font-size:0.65rem;padding:2px 6px;">${this.escapeHtml(d.node_b.type).charAt(0).toUpperCase()}</span></td>
+                                <td>${Math.round(d.similarity * 100)}%</td>
+                                <td><button class="btn btn-small" onclick="Editor.quickMerge(${parseInt(d.node_a.id)}, ${parseInt(d.node_b.id)}, '${this.escapeHtml(d.node_a.name).replace(/'/g, "\\'")}', '${this.escapeHtml(d.node_b.name).replace(/'/g, "\\'")}')">Merge</button></td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                </div>`;
+        }
+
+        return '';
+    },
+
+    toggleAuditSection(key) {
+        if (this.state.auditExpandedSections.has(key)) {
+            this.state.auditExpandedSections.delete(key);
+        } else {
+            this.state.auditExpandedSections.add(key);
+        }
+        if (this.state.auditData) {
+            this.renderAuditContent(this.state.auditData);
+        }
+    },
+
+    toggleAuditSelect(id, category, checked) {
+        if (checked) {
+            this.state.selectedItems.add(id);
+            this.state.auditActiveCategory = category;
+        } else {
+            this.state.selectedItems.delete(id);
+        }
+        this.updateAuditBatchContext();
+        this.updateBatchBar();
+    },
+
+    toggleAuditSelectAll(category, checked) {
+        document.querySelectorAll(`input[data-audit-cat="${category}"]`).forEach(cb => {
+            const id = parseInt(cb.dataset.auditId);
+            if (checked) {
+                this.state.selectedItems.add(id);
+            } else {
+                this.state.selectedItems.delete(id);
+            }
+            cb.checked = checked;
+        });
+        if (checked) this.state.auditActiveCategory = category;
+        this.updateAuditBatchContext();
+        this.updateBatchBar();
+    },
+
+    updateAuditBatchContext() {
+        const actionSelect = document.getElementById('batch-audit-action');
+        const subtypeSelect = document.getElementById('batch-audit-subtype');
+        if (!actionSelect) return;
+
+        const cat = this.state.auditActiveCategory;
+        let options = '<option value="">Action...</option>';
+
+        if (cat === 'unknown_edges') {
+            options += '<option value="set-type-personal">Set type: Personal</option>';
+            options += '<option value="set-type-affiliation">Set type: Affiliation</option>';
+        } else if (cat === 'missing_subtypes') {
+            options += '<option value="set-subtype">Set subtype (choose below)</option>';
+        } else if (cat === 'needs_review') {
+            options += '<option value="mark-reviewed">Mark as reviewed</option>';
+            options += '<option value="set-type-personal">Set type: Personal</option>';
+            options += '<option value="set-type-affiliation">Set type: Affiliation</option>';
+        } else if (cat === 'orphan_nodes') {
+            options += '<option value="delete">Delete selected</option>';
+        }
+
+        actionSelect.innerHTML = options;
+        if (subtypeSelect) {
+            subtypeSelect.style.display = cat === 'missing_subtypes' ? '' : 'none';
+        }
+    },
+
+    async deleteOrphanNode(id, name) {
+        if (!confirm(`Delete orphan node "${name}"? This cannot be undone.`)) return;
+        try {
+            await API.deleteNode(id);
+            this.showToast(`Deleted "${name}"`, 'success');
+            await this.loadStats();
+            await this.loadAuditData();
+        } catch (error) {
+            this.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    async quickMerge(idA, idB, nameA, nameB) {
+        const keep = prompt(
+            `Merge duplicate nodes:\n  A: "${nameA}" (ID ${idA})\n  B: "${nameB}" (ID ${idB})\n\nWhich should be the PRIMARY (kept)? Enter A or B:`,
+            'A'
+        );
+        if (!keep) return;
+
+        let primaryId, secondaryId, primaryName, secondaryName;
+        if (keep.toUpperCase() === 'A') {
+            primaryId = idA; secondaryId = idB; primaryName = nameA; secondaryName = nameB;
+        } else if (keep.toUpperCase() === 'B') {
+            primaryId = idB; secondaryId = idA; primaryName = nameB; secondaryName = nameA;
+        } else {
+            this.showToast('Invalid choice. Enter A or B.', 'error');
+            return;
+        }
+
+        if (!confirm(`Merge "${secondaryName}" into "${primaryName}"? Edges will be transferred and "${secondaryName}" will be deleted.`)) return;
+
+        try {
+            const result = await API.mergeNodes(primaryId, secondaryId);
+            this.showToast(`Merged: ${result.edges_transferred} edges transferred`, 'success');
+            this.state.allNodes = await API.getAllNodes();
+            await this.loadStats();
+            await this.loadAuditData();
+        } catch (error) {
+            this.showToast(`Error: ${error.message}`, 'error');
+        }
     },
 
     // ==========================================================================

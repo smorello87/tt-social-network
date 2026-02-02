@@ -514,6 +514,11 @@ def get_stats():
     """Get network statistics."""
     return jsonify(db.get_stats())
 
+@app.route('/api/audit', methods=['GET'])
+def get_audit():
+    """Get data quality audit report."""
+    return jsonify(db.get_audit_report())
+
 # =============================================================================
 # Main
 # =============================================================================

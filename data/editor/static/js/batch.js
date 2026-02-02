@@ -189,4 +189,93 @@ const BatchOps = {
             Editor.showToast(`Error: ${error.message}`, 'error');
         }
     },
+
+    /**
+     * Apply batch action from audit tab
+     */
+    async applyAuditAction() {
+        const ids = this.getSelectedIds();
+        const action = document.getElementById('batch-audit-action').value;
+        const cat = Editor.state.auditActiveCategory;
+
+        if (!ids.length) {
+            Editor.showToast('No items selected', 'error');
+            return;
+        }
+        if (!action) {
+            Editor.showToast('Please select an action', 'error');
+            return;
+        }
+
+        try {
+            if (action === 'set-type-personal' || action === 'set-type-affiliation') {
+                const type = action === 'set-type-personal' ? 'personal' : 'affiliation';
+                const result = await API.batchUpdateType(ids, type);
+                Editor.showToast(`Updated ${result.updated} edges to "${type}"`, 'success');
+            } else if (action === 'mark-reviewed') {
+                const result = await API.batchMarkReviewed(ids, true);
+                Editor.showToast(`Marked ${result.updated} edges as reviewed`, 'success');
+            } else if (action === 'set-subtype') {
+                const subtype = document.getElementById('batch-audit-subtype').value;
+                if (!subtype) {
+                    Editor.showToast('Please select a subtype', 'error');
+                    return;
+                }
+                const result = await API.batchUpdateSubtype(ids, subtype);
+                Editor.showToast(`Updated ${result.updated} nodes to "${subtype}"`, 'success');
+            } else if (action === 'delete') {
+                if (!confirm(`Delete ${ids.length} selected items?`)) return;
+                if (cat === 'orphan_nodes') {
+                    let deleted = 0;
+                    for (const id of ids) {
+                        try { await API.deleteNode(id); deleted++; } catch (e) {}
+                    }
+                    Editor.showToast(`Deleted ${deleted} nodes`, 'success');
+                }
+            }
+
+            Editor.clearSelection();
+            await Editor.loadStats();
+            await Editor.loadAuditData();
+        } catch (error) {
+            Editor.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    /**
+     * Delete selected items from audit tab
+     */
+    async deleteAuditSelected() {
+        const ids = this.getSelectedIds();
+        const cat = Editor.state.auditActiveCategory;
+
+        if (!ids.length) {
+            Editor.showToast('No items selected', 'error');
+            return;
+        }
+
+        const isEdge = (cat === 'unknown_edges' || cat === 'needs_review');
+        const label = isEdge ? 'edges' : 'nodes';
+
+        if (!confirm(`Delete ${ids.length} ${label}?`)) return;
+
+        try {
+            if (isEdge) {
+                const result = await API.batchDeleteEdges(ids);
+                Editor.showToast(`Deleted ${result.deleted} edges`, 'success');
+            } else {
+                let deleted = 0;
+                for (const id of ids) {
+                    try { await API.deleteNode(id); deleted++; } catch (e) {}
+                }
+                Editor.showToast(`Deleted ${deleted} nodes`, 'success');
+            }
+
+            Editor.clearSelection();
+            await Editor.loadStats();
+            await Editor.loadAuditData();
+        } catch (error) {
+            Editor.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
 };

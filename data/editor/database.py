@@ -748,6 +748,117 @@ def get_stats():
 
         return stats
 
+def _similarity(s1, s2):
+    """Normalized Levenshtein similarity (0-1), pure Python two-row DP."""
+    if s1 == s2:
+        return 1.0
+    len1, len2 = len(s1), len(s2)
+    if not len1 or not len2:
+        return 0.0
+    prev = list(range(len2 + 1))
+    for i in range(1, len1 + 1):
+        curr = [i] + [0] * len2
+        for j in range(1, len2 + 1):
+            cost = 0 if s1[i - 1] == s2[j - 1] else 1
+            curr[j] = min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost)
+        prev = curr
+    return 1.0 - prev[len2] / max(len1, len2)
+
+def get_audit_report():
+    """Return data quality audit with 5 issue categories."""
+    with get_db() as conn:
+        # 1. Unknown edges
+        unknown_edges = [dict(r) for r in conn.execute("""
+            SELECT e.id, e.source_id, e.target_id,
+                   ns.name as source_name, ns.type as source_type,
+                   nt.name as target_name, nt.type as target_type
+            FROM edges e
+            JOIN nodes ns ON e.source_id = ns.id
+            JOIN nodes nt ON e.target_id = nt.id
+            WHERE e.type = 'unknown'
+            ORDER BY ns.name, nt.name
+        """).fetchall()]
+
+        # 2. Missing subtypes (institutions with NULL subtype)
+        missing_subtypes = [dict(r) for r in conn.execute("""
+            SELECT id, name, type
+            FROM nodes
+            WHERE type = 'institution' AND (subtype IS NULL OR subtype = '')
+            ORDER BY name
+        """).fetchall()]
+
+        # 3. Orphan nodes (no edges at all)
+        orphan_nodes = [dict(r) for r in conn.execute("""
+            SELECT n.id, n.name, n.type, n.subtype
+            FROM nodes n
+            WHERE NOT EXISTS (
+                SELECT 1 FROM edges e WHERE e.source_id = n.id OR e.target_id = n.id
+            )
+            ORDER BY n.name
+        """).fetchall()]
+
+        # 4. Needs review edges
+        needs_review = [dict(r) for r in conn.execute("""
+            SELECT e.id, e.type, e.needs_review,
+                   ns.name as source_name, ns.type as source_type,
+                   nt.name as target_name, nt.type as target_type,
+                   (SELECT COUNT(*) FROM shared_institutions si WHERE si.edge_id = e.id) as shared_count
+            FROM edges e
+            JOIN nodes ns ON e.source_id = ns.id
+            JOIN nodes nt ON e.target_id = nt.id
+            WHERE e.needs_review = 1
+            ORDER BY ns.name, nt.name
+        """).fetchall()]
+
+        # 5. Potential duplicates - bucket by first 3 chars of name_normalized
+        all_nodes = conn.execute("""
+            SELECT id, name, name_normalized, type, subtype
+            FROM nodes
+            ORDER BY name_normalized
+        """).fetchall()
+
+        buckets = {}
+        for node in all_nodes:
+            key = (node['name_normalized'] or '')[:3].lower()
+            if len(key) < 2:
+                continue
+            buckets.setdefault(key, []).append(dict(node))
+
+        potential_duplicates = []
+        seen_pairs = set()
+        for bucket_nodes in buckets.values():
+            if len(bucket_nodes) < 2:
+                continue
+            for i in range(len(bucket_nodes)):
+                for j in range(i + 1, len(bucket_nodes)):
+                    a, b = bucket_nodes[i], bucket_nodes[j]
+                    norm_a = (a['name_normalized'] or '').lower()
+                    norm_b = (b['name_normalized'] or '').lower()
+                    sim = _similarity(norm_a, norm_b)
+                    if sim >= 0.85:
+                        pair_key = (min(a['id'], b['id']), max(a['id'], b['id']))
+                        if pair_key not in seen_pairs:
+                            seen_pairs.add(pair_key)
+                            potential_duplicates.append({
+                                'node_a': a,
+                                'node_b': b,
+                                'similarity': round(sim, 3),
+                            })
+
+        potential_duplicates.sort(key=lambda x: -x['similarity'])
+
+        return {
+            'unknown_edges': unknown_edges,
+            'missing_subtypes': missing_subtypes,
+            'orphan_nodes': orphan_nodes,
+            'needs_review': needs_review,
+            'potential_duplicates': potential_duplicates,
+            'total_issues': (
+                len(unknown_edges) + len(missing_subtypes) +
+                len(orphan_nodes) + len(needs_review) + len(potential_duplicates)
+            ),
+        }
+
 def get_subtypes():
     """Get list of available institution subtypes with counts."""
     with get_db() as conn:

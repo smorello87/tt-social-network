@@ -3626,11 +3626,6 @@
       "subtype": null
     },
     {
-      "id": "Anna von Weiskopf-Weiskoppen",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Calogero Tumminelli",
       "type": "person",
       "subtype": null
@@ -4254,11 +4249,6 @@
       "id": "War Department's Information",
       "type": "institution",
       "subtype": "government"
-    },
-    {
-      "id": "Belfagor",
-      "type": "institution",
-      "subtype": "periodical"
     },
     {
       "id": "Paola Mazzetti",
@@ -5141,11 +5131,6 @@
       "subtype": null
     },
     {
-      "id": "Alfredo Manzini",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Augusto Berty",
       "type": "person",
       "subtype": null
@@ -5552,11 +5537,6 @@
     },
     {
       "id": "Trilussa",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Amanda Guglielminetti",
       "type": "person",
       "subtype": null
     },
@@ -6201,11 +6181,6 @@
       "subtype": null
     },
     {
-      "id": "Pietro Fortunato",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Onorio Ruotolo",
       "type": "person",
       "subtype": null
@@ -6442,11 +6417,6 @@
     },
     {
       "id": "Elsie Garaventa",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Enrico Caprili",
       "type": "person",
       "subtype": null
     },
@@ -11256,11 +11226,6 @@
       "subtype": null
     },
     {
-      "id": "Onorato Tava",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Onorio Ruvolo",
       "type": "person",
       "subtype": null
@@ -13186,11 +13151,6 @@
       "subtype": null
     },
     {
-      "id": "Filippo Crisconti",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Angelo Oliviero Olivetti",
       "type": "person",
       "subtype": null
@@ -13812,11 +13772,6 @@
     },
     {
       "id": "Francesco Sulpizi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Mario Carfi",
       "type": "person",
       "subtype": null
     },
@@ -16346,7 +16301,7 @@
       "subtype": null
     },
     {
-      "id": "Guido Treves",
+      "id": "Luigi Sola",
       "type": "person",
       "subtype": null
     }
@@ -23038,6 +22993,10 @@
     },
     {
       "source": "Enrico Caprile",
+      "target": "Angelo Fortunato Formiggini"
+    },
+    {
+      "source": "Enrico Caprile",
       "target": "Atlantica"
     },
     {
@@ -23346,10 +23305,6 @@
     },
     {
       "source": "Eva Ponti",
-      "target": "Divagando"
-    },
-    {
-      "source": "Alfredo Manzini",
       "target": "Divagando"
     },
     {
@@ -23823,22 +23778,6 @@
     {
       "source": "Trilussa",
       "target": "SF Vanni Publishers and Booksellers"
-    },
-    {
-      "source": "Amanda Guglielminetti",
-      "target": "Rizzoli Editore"
-    },
-    {
-      "source": "Amanda Guglielminetti",
-      "target": "Divagando"
-    },
-    {
-      "source": "Amanda Guglielminetti",
-      "target": "Arnoldo Mondadori Editore"
-    },
-    {
-      "source": "Amanda Guglielminetti",
-      "target": "Guido Gozzano"
     },
     {
       "source": "Pietro Greco",
@@ -24725,10 +24664,6 @@
       "target": "Divagando"
     },
     {
-      "source": "Pietro Fortunato",
-      "target": "Divagando"
-    },
-    {
       "source": "Onorio Ruotolo",
       "target": "Divagando"
     },
@@ -24957,10 +24892,6 @@
       "target": "Dorothy Parker"
     },
     {
-      "source": "Enrico Caprili",
-      "target": "Angelo Fortunato Formiggini"
-    },
-    {
       "source": "Ester Danesi Traversari",
       "target": "Natalia Danesi Murray"
     },
@@ -25087,6 +25018,10 @@
     {
       "source": "La Follia di New York",
       "target": "Salvatore Benanti"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Luigi Sola"
     },
     {
       "source": "La Settimana",
@@ -26538,7 +26473,23 @@
     },
     {
       "source": "Amalia Guglielminetti",
+      "target": "Rizzoli Editore"
+    },
+    {
+      "source": "Amalia Guglielminetti",
+      "target": "Divagando"
+    },
+    {
+      "source": "Amalia Guglielminetti",
+      "target": "Arnoldo Mondadori Editore"
+    },
+    {
+      "source": "Amalia Guglielminetti",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Amalia Guglielminetti",
+      "target": "Guido Gozzano"
     },
     {
       "source": "Amalia Guglielminetti",
@@ -27699,6 +27650,10 @@
     {
       "source": "Filippo Crispolti",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Filippo Crispolti",
+      "target": "Atlantica"
     },
     {
       "source": "Filippo Robotti",
@@ -29013,6 +28968,10 @@
       "target": "Il Carroccio"
     },
     {
+      "source": "Mario Carli",
+      "target": "Atlantica"
+    },
+    {
       "source": "Mario dei Gaslini",
       "target": "Il Carroccio"
     },
@@ -29242,10 +29201,6 @@
     },
     {
       "source": "Onorato Roux",
-      "target": "Il Carroccio"
-    },
-    {
-      "source": "Onorato Tava",
       "target": "Il Carroccio"
     },
     {
@@ -30873,10 +30828,6 @@
       "target": "Atlantica"
     },
     {
-      "source": "Filippo Crisconti",
-      "target": "Atlantica"
-    },
-    {
       "source": "Angelo Oliviero Olivetti",
       "target": "Atlantica"
     },
@@ -31378,10 +31329,6 @@
     },
     {
       "source": "Francesco Sulpizi",
-      "target": "Atlantica"
-    },
-    {
-      "source": "Mario Carfi",
       "target": "Atlantica"
     },
     {

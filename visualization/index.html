@@ -7,9 +7,6 @@
 
   <!-- Libraries -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://unpkg.com/graphology@0.24.1/dist/graphology.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ngraph.graph@19.1.0/dist/ngraph.graph.min.js"></script>
-  <script src="https://unpkg.com/ngraph.path@1.3.1/dist/ngraph.path.min.js"></script>
   <script src="https://unpkg.com/canvg@3.0.7/lib/umd.js"></script>
 
   <!-- Typography -->
@@ -42,7 +39,7 @@
       --shadow-deep: rgba(26, 26, 26, 0.15);
 
       /* Institution subtype palette - warm scholarly tones */
-      --subtype-magazine: #b8860b;     /* Dark goldenrod - periodicals */
+      --subtype-periodical: #b8860b;   /* Dark goldenrod - periodicals */
       --subtype-publisher: #8b7355;    /* Original sepia - books */
       --subtype-university: #5d6d7e;   /* Slate blue-gray - academia */
       --subtype-organization: #9a7b4f; /* Warm bronze - cultural orgs */
@@ -405,6 +402,9 @@
 
     .legend-dot.person { background: var(--accent-blue-light); }
     .legend-dot.institution { background: var(--sepia); }
+
+    .legend-line.affiliation { background: #c4b5a0; }
+    .legend-line.personal { background: #b09a8a; }
 
     /* ═══════════════════════════════════════════════════════════════
        FILTER PILLS - Interactive type filtering
@@ -1025,6 +1025,96 @@
       padding: 0 2px;
     }
 
+    .explorer-mode-toggle {
+      display: flex;
+      gap: 0;
+      margin-bottom: 8px;
+      border: 1px solid rgba(139, 115, 85, 0.3);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .explorer-mode-btn {
+      flex: 1;
+      padding: 5px 8px;
+      border: none;
+      background: transparent;
+      font-size: 0.72rem;
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: all 0.15s;
+      letter-spacing: 0.02em;
+    }
+
+    .explorer-mode-btn + .explorer-mode-btn {
+      border-left: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .explorer-mode-btn.active {
+      background: rgba(139, 115, 85, 0.15);
+      color: var(--ink-medium);
+      font-weight: 600;
+    }
+
+    .explorer-mode-btn:hover:not(.active) {
+      background: rgba(139, 115, 85, 0.08);
+    }
+
+    .explorer-results-list {
+      margin-top: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(139, 115, 85, 0.3) transparent;
+    }
+
+    .explorer-results-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .explorer-results-list::-webkit-scrollbar-thumb {
+      background: rgba(139, 115, 85, 0.3);
+      border-radius: 2px;
+    }
+
+    .explorer-result-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 4px;
+      font-size: 0.75rem;
+      color: var(--ink-medium);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+      cursor: default;
+    }
+
+    .explorer-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .explorer-result-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .explorer-result-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .explorer-result-type {
+      margin-left: auto;
+      font-size: 0.65rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
     /* ═══════════════════════════════════════════════════════════════
        NODE DETAILS PANEL
     ═══════════════════════════════════════════════════════════════ */
@@ -1506,6 +1596,10 @@
       <div class="autocomplete">
         <input type="text" id="explorer-input" class="input-field" placeholder="Add a node...">
       </div>
+      <div id="explorer-mode" class="explorer-mode-toggle" style="display:none;">
+        <button class="explorer-mode-btn active" data-mode="all" onclick="NetworkViz.setExplorerMode('all')">All Paths</button>
+        <button class="explorer-mode-btn" data-mode="direct" onclick="NetworkViz.setExplorerMode('direct')">Direct Only</button>
+      </div>
       <div class="btn-row">
         <button class="btn" onclick="NetworkViz.exploreConnections()">Find</button>
         <button class="btn" onclick="NetworkViz.clearPath()">Clear</button>
@@ -1548,9 +1642,9 @@
 
         <span class="filter-section-label" id="subtype-label" style="display: none;">Institution Subtypes</span>
         <div class="filter-pills" id="subtype-pills" style="display: none;">
-          <button class="filter-pill" data-subtype="magazine" onclick="NetworkViz.filterBySubtype('magazine')">
+          <button class="filter-pill" data-subtype="periodical" onclick="NetworkViz.filterBySubtype('periodical')">
             <span class="pill-dot" style="background: #b8860b;"></span>
-            Magazine
+            Periodical
           </button>
           <button class="filter-pill" data-subtype="publisher" onclick="NetworkViz.filterBySubtype('publisher')">
             <span class="pill-dot" style="background: #8b7355;"></span>
@@ -1738,6 +1832,8 @@
 
       // Explorer state
       let explorerNodes = [];
+      let explorerMode = 'all'; // 'all' or 'direct'
+      let lastExplorerResult = null; // cached result for mode switching
 
       // State
       let currentPath = [];
@@ -1751,7 +1847,7 @@
 
       // Institution subtype color palette
       const subtypeColors = {
-        magazine: '#b8860b',     // Dark goldenrod - periodicals
+        periodical: '#b8860b',   // Dark goldenrod - periodicals
         publisher: '#8b7355',    // Original sepia - books
         university: '#5d6d7e',   // Slate blue-gray - academia
         organization: '#9a7b4f', // Warm bronze - cultural orgs
@@ -1763,7 +1859,7 @@
       };
 
       const subtypeStrokes = {
-        magazine: '#8a6508',
+        periodical: '#8a6508',
         publisher: '#6d5a44',
         university: '#4a5766',
         organization: '#7a6240',
@@ -2162,6 +2258,7 @@
           console.error("Load error:", error);
           updateLoadingStatus('Failed to load: ' + error.message, 0);
           setTimeout(hideLoadingIndicator, 2000);
+          return;
         }
       }
 
@@ -2436,40 +2533,38 @@
         const institutions = connections.filter(c => c.type === 'institution');
         const persons = connections.filter(c => c.type !== 'institution');
 
-        let html = '';
-        if (persons.length > 0) {
-          html += '<div class="details-section-heading">Persons (' + persons.length + ')</div>';
-          persons.forEach(c => {
-            html += '<div class="details-connection-item" data-node="' + c.id.replace(/"/g, '&quot;') + '">'
-              + '<span class="details-connection-dot person"></span>'
-              + '<span class="details-connection-name">' + c.id + '</span></div>';
+        listEl.textContent = '';
+
+        function appendConnectionGroup(label, items, dotClass) {
+          if (items.length === 0) return;
+          const heading = document.createElement('div');
+          heading.className = 'details-section-heading';
+          heading.textContent = label + ' (' + items.length + ')';
+          listEl.appendChild(heading);
+          items.forEach(c => {
+            const row = document.createElement('div');
+            row.className = 'details-connection-item';
+            row.dataset.node = c.id;
+            const dot = document.createElement('span');
+            dot.className = 'details-connection-dot ' + dotClass;
+            const name = document.createElement('span');
+            name.className = 'details-connection-name';
+            name.textContent = c.id;
+            row.appendChild(dot);
+            row.appendChild(name);
+            listEl.appendChild(row);
           });
         }
-        if (institutions.length > 0) {
-          html += '<div class="details-section-heading">Institutions (' + institutions.length + ')</div>';
-          institutions.forEach(c => {
-            html += '<div class="details-connection-item" data-node="' + c.id.replace(/"/g, '&quot;') + '">'
-              + '<span class="details-connection-dot institution"></span>'
-              + '<span class="details-connection-name">' + c.id + '</span></div>';
-          });
-        }
+
+        appendConnectionGroup('Persons', persons, 'person');
+        appendConnectionGroup('Institutions', institutions, 'institution');
+
         if (connections.length === 0) {
-          html = '<div class="details-empty">No connections found</div>';
+          const empty = document.createElement('div');
+          empty.className = 'details-empty';
+          empty.textContent = 'No connections found';
+          listEl.appendChild(empty);
         }
-
-        listEl.innerHTML = html;
-
-        // Click handler for connection items to navigate
-        listEl.querySelectorAll('.details-connection-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const targetId = item.dataset.node;
-            const targetNode = nodesById.get(targetId);
-            if (targetNode) {
-              highlightNode(targetNode);
-              showNodeDetails(targetNode);
-            }
-          });
-        });
 
         // Update 2-hop button state
         const twoHopBtn = document.getElementById('two-hop-btn');
@@ -2490,6 +2585,28 @@
         handleDegreeFilter({ target: degreeRange });
 
         window.addEventListener("resize", debounce(handleResize, 250));
+
+        // Event delegation for node details connection items
+        const detailsList = document.getElementById('details-list');
+        if (detailsList) {
+          detailsList.addEventListener('click', function(e) {
+            const item = e.target.closest('.details-connection-item');
+            if (!item) return;
+            const targetId = item.dataset.node;
+            const targetNode = nodesById.get(targetId);
+            if (targetNode) {
+              highlightNode(targetNode);
+              showNodeDetails(targetNode);
+            }
+          });
+        }
+
+        // Dismiss tooltip on mobile when tapping outside a node
+        document.addEventListener('touchstart', function(e) {
+          if (!e.target.closest('circle')) {
+            tooltip.style("display", "none");
+          }
+        }, { passive: true });
       }
 
       function handleSearch(e) {
@@ -2505,7 +2622,8 @@
           return;
         }
 
-        const regex = new RegExp(term, 'i');
+        const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(escaped, 'i');
         const matched = [];
         const connected = new Set();
 
@@ -2573,7 +2691,7 @@
 
       // Multi-select filter state
       const selectedTypes = new Set();      // 'person', 'institution'
-      const selectedSubtypes = new Set();   // 'magazine', 'publisher', etc.
+      const selectedSubtypes = new Set();   // 'periodical', 'publisher', etc.
       let currentDegreeThreshold = 1;
       let filterMode = 'or';                // 'or' or 'and' for subtype matching
 
@@ -2725,6 +2843,11 @@
 
         drawCanvasLinks();
         updateExportButtonVisibility();
+
+        // Stop simulation when no visible nodes to save CPU
+        if (visibleCount === 0 && simulation) {
+          simulation.stop();
+        }
       }
 
       function isConnectedToSelectedSubtypes(node) {
@@ -2854,12 +2977,15 @@
         const centerX = (xExtent[0] + xExtent[1]) / 2;
         const centerY = (yExtent[0] + yExtent[1]) / 2;
 
-        let scale = 1;
-        if (xExtent[1] - xExtent[0] > 0 && yExtent[1] - yExtent[0] > 0) {
-          scale = Math.min(8, 0.9 / Math.max(
-            (xExtent[1] - xExtent[0]) / width,
-            (yExtent[1] - yExtent[0]) / height
-          ));
+        let scale = 2;
+        const dx = xExtent[1] - xExtent[0];
+        const dy = yExtent[1] - yExtent[0];
+        if (dx > 0 && dy > 0) {
+          scale = Math.min(8, 0.9 / Math.max(dx / width, dy / height));
+        } else if (dx > 0) {
+          scale = Math.min(8, 0.9 / (dx / width));
+        } else if (dy > 0) {
+          scale = Math.min(8, 0.9 / (dy / height));
         }
         if (nodesToCenter.length === 1) scale = Math.min(scale, 2);
 
@@ -2878,52 +3004,270 @@
         }
       }
 
+      function setExplorerMode(mode) {
+        explorerMode = mode;
+        document.querySelectorAll('.explorer-mode-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.mode === mode);
+        });
+        // Re-run with new mode if we have a cached result
+        if (lastExplorerResult && explorerNodes.length === 2) {
+          applyExplorerResult(lastExplorerResult);
+        }
+      }
+
       function exploreConnections() {
         if (explorerNodes.length < 2) {
           alert("Please add at least 2 nodes to explore.");
           return;
         }
 
+        // Show mode toggle for 2-node mode
+        const modeEl = document.getElementById('explorer-mode');
+        if (modeEl) modeEl.style.display = explorerNodes.length === 2 ? 'flex' : 'none';
+
         if (explorerNodes.length === 2) {
-          // Two nodes: use existing path finding
           const startInput = explorerNodes[0];
           const endInput = explorerNodes[1];
 
           const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
+          let result;
           if (pathCache.has(cacheKey)) {
-            const cached = pathCache.get(cacheKey);
-            if (cached.nodes.size > 0) {
-              highlightAllConnections(cached);
-            } else {
-              alert("No connection found between these nodes.");
-            }
-            return;
+            result = pathCache.get(cacheKey);
+          } else {
+            result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
+            pathCache.set(cacheKey, result);
+            if (pathCache.size > 100) pathCache.delete(pathCache.keys().next().value);
           }
 
-          const result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
-          pathCache.set(cacheKey, result);
-          if (pathCache.size > 100) pathCache.delete(pathCache.keys().next().value);
-
           if (result.nodes.size > 0) {
-            highlightAllConnections(result);
+            lastExplorerResult = result;
+            applyExplorerResult(result);
           } else {
+            lastExplorerResult = null;
             alert("No connections found between these nodes.");
           }
         } else {
-          // 3+ nodes: find shared connections (intersection of neighbor sets)
+          lastExplorerResult = null;
           findSharedConnections(explorerNodes);
         }
       }
 
+      function buildResultsList(displayNodes, startNode, endNode) {
+        // Build a safe DOM-based results list
+        const container = document.createElement('div');
+        container.className = 'explorer-results-list';
+
+        // Show endpoints first
+        [startNode, endNode].forEach(nodeId => {
+          const node = nodesById.get(nodeId);
+          if (!node) return;
+          const item = document.createElement('div');
+          item.className = 'explorer-result-item';
+          const dot = document.createElement('span');
+          dot.className = 'explorer-result-dot';
+          dot.style.background = nodeId === startNode ? '#4a7c59' : '#8b3a3a';
+          const name = document.createElement('span');
+          name.className = 'explorer-result-name';
+          name.textContent = node.id;
+          const type = document.createElement('span');
+          type.className = 'explorer-result-type';
+          type.textContent = node.type;
+          item.append(dot, name, type);
+          container.appendChild(item);
+        });
+
+        // Then intermediaries sorted alphabetically
+        const intermediateNodes = [];
+        displayNodes.forEach(nodeId => {
+          if (nodeId !== startNode && nodeId !== endNode) {
+            const node = nodesById.get(nodeId);
+            if (node) intermediateNodes.push(node);
+          }
+        });
+        intermediateNodes.sort((a, b) => a.id.localeCompare(b.id));
+
+        intermediateNodes.forEach(node => {
+          const item = document.createElement('div');
+          item.className = 'explorer-result-item';
+          const dot = document.createElement('span');
+          dot.className = 'explorer-result-dot';
+          dot.style.background = getNodeColor(node);
+          const name = document.createElement('span');
+          name.className = 'explorer-result-name';
+          name.textContent = node.id;
+          const type = document.createElement('span');
+          type.className = 'explorer-result-type';
+          type.textContent = node.type;
+          item.append(dot, name, type);
+          container.appendChild(item);
+        });
+
+        return container;
+      }
+
+      function applyExplorerResult(result) {
+        // Save state before clearPath wipes it
+        const savedNodes = [...explorerNodes];
+        const savedMode = explorerMode;
+        clearPath();
+        explorerNodes = savedNodes;
+        explorerMode = savedMode;
+        lastExplorerResult = result;
+        renderExplorerChips();
+        // Restore mode button UI
+        document.querySelectorAll('.explorer-mode-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.mode === explorerMode);
+        });
+
+        const { nodes: allConnectedNodes, edges: allConnectedEdges, startNode, endNode, shortestPathLength, pathCount, pathsByLength, commonNeighbors } = result;
+
+        let displayNodes, displayEdges;
+
+        if (explorerMode === 'direct') {
+          displayNodes = new Set();
+          displayEdges = new Set();
+          if (startNode) displayNodes.add(startNode);
+          if (endNode) displayNodes.add(endNode);
+          // Add direct edge if it exists
+          if (startNode && endNode) {
+            const directKey = [startNode, endNode].sort().join('--');
+            if (allConnectedEdges.has(directKey)) {
+              displayEdges.add(directKey);
+            }
+            // Also add shared direct neighbors (1-hop common contacts)
+            const startNeighbors = adjacencyList.get(startNode) || new Set();
+            const endNeighbors = adjacencyList.get(endNode) || new Set();
+            startNeighbors.forEach(n => {
+              if (endNeighbors.has(n)) {
+                displayNodes.add(n);
+                displayEdges.add([startNode, n].sort().join('--'));
+                displayEdges.add([endNode, n].sort().join('--'));
+              }
+            });
+          }
+          if (displayNodes.size <= 2 && displayEdges.size === 0) {
+            const pathInfoEl = document.getElementById('path-info');
+            if (pathInfoEl) {
+              pathInfoEl.style.display = 'block';
+              pathInfoEl.textContent = '';
+              const msg = document.createElement('span');
+              msg.className = 'explorer-result-count';
+              msg.textContent = 'No direct connection between these nodes.';
+              pathInfoEl.appendChild(msg);
+            }
+            const modeEl = document.getElementById('explorer-mode');
+            if (modeEl) modeEl.style.display = 'flex';
+            return;
+          }
+        } else {
+          displayNodes = allConnectedNodes;
+          displayEdges = allConnectedEdges;
+        }
+
+        // Build path info
+        const pathInfoEl = document.getElementById('path-info');
+        if (shortestPathLength !== undefined && pathInfoEl) {
+          pathInfoEl.textContent = '';
+
+          let infoText = '';
+          if (shortestPathLength === -1) {
+            infoText = 'No connection found between these nodes';
+          } else if (shortestPathLength === 1) {
+            infoText = 'Direct relationship identified';
+            if (pathCount > 1 && pathsByLength) {
+              const additionalPaths = pathCount - (pathsByLength.get(1) || 1);
+              if (additionalPaths > 0) infoText += ' + ' + additionalPaths + ' alternative path' + (additionalPaths > 1 ? 's' : '');
+            }
+          } else {
+            infoText = shortestPathLength + ' degrees of separation';
+            if (pathsByLength && pathsByLength.size > 0) {
+              const pathDetails = [];
+              pathsByLength.forEach((count, length) => {
+                if (count > 0) pathDetails.push(count + ' path' + (count > 1 ? 's' : '') + ' at ' + length);
+              });
+              if (pathDetails.length > 0) infoText += ' (' + pathDetails.join(', ') + ')';
+            }
+          }
+          if ((commonNeighbors || 0) > 0) infoText += ' | ' + commonNeighbors + ' shared contact' + (commonNeighbors > 1 ? 's' : '');
+
+          const infoSpan = document.createElement('span');
+          infoSpan.textContent = infoText;
+          pathInfoEl.appendChild(infoSpan);
+
+          // Node count summary
+          const countSpan = document.createElement('div');
+          countSpan.className = 'explorer-result-count';
+          countSpan.textContent = displayNodes.size + ' nodes shown';
+          pathInfoEl.appendChild(countSpan);
+
+          // Results list
+          pathInfoEl.appendChild(buildResultsList(displayNodes, startNode, endNode));
+
+          // Export button
+          const exportBtn = document.createElement('button');
+          exportBtn.className = 'btn';
+          exportBtn.style.marginTop = '8px';
+          exportBtn.textContent = 'Export Subgraph';
+          exportBtn.addEventListener('click', () => NetworkViz.exportSubgraph());
+          pathInfoEl.appendChild(exportBtn);
+
+          pathInfoEl.style.display = 'block';
+        }
+
+        // Show mode toggle
+        const modeEl = document.getElementById('explorer-mode');
+        if (modeEl) modeEl.style.display = 'flex';
+
+        // Highlight nodes
+        nodeGroups.style("opacity", d => displayNodes.has(d.id) ? 1 : 0)
+          .style("display", d => displayNodes.has(d.id) ? "block" : "none");
+
+        // Update canvas edges
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        linksData.forEach(l => {
+          if (displayEdges.has(l._edgeKey)) {
+            highlightedEdges.add(l._edgeKey);
+          } else {
+            hiddenEdges.add(l._edgeKey);
+          }
+        });
+        pathOrSearchActive = true;
+        drawCanvasLinks();
+        updateExportButtonVisibility();
+
+        // Style endpoint nodes
+        nodeGroups.select("circle").each(function(d) {
+          if (displayNodes.has(d.id)) {
+            const isEndpoint = (d.id === startNode || d.id === endNode);
+            d3.select(this)
+              .classed("highlight-node", true)
+              .style("stroke", isEndpoint ? "#c4a35a" : "#a08a6e")
+              .style("stroke-width", isEndpoint ? "4px" : "3px")
+              .style("fill", function() {
+                if (d.id === startNode) return "#4a7c59";
+                if (d.id === endNode) return "#8b3a3a";
+                return getNodeColor(d);
+              });
+          }
+        });
+
+        labelElements.style("opacity", d => displayNodes.has(d.id) ? 1 : 0)
+          .style("display", d => displayNodes.has(d.id) ? "block" : "none");
+
+        centerNodes(Array.from(displayNodes).map(id => nodesById.get(id)));
+      }
+
       function findSharedConnections(selectedNames) {
-        // Get adjacency sets for each selected node
+        // Save names before clearPath wipes them
+        const savedNames = [...selectedNames];
         const sets = [];
         const selectedIds = new Set();
 
-        for (const name of selectedNames) {
+        for (const name of savedNames) {
           const node = nodesById.get(name) || nodesByIdLower.get(name.toLowerCase());
           if (!node) {
-            alert(`Node "${name}" not found in the network.`);
+            alert('Node "' + name + '" not found in the network.');
             return;
           }
           selectedIds.add(node.id);
@@ -2943,14 +3287,22 @@
           shared = new Set([...shared].filter(id => next.has(id)));
         }
 
-        // Remove selected nodes from the shared set (they aren't "shared connections")
+        // Remove selected nodes from the shared set
         selectedIds.forEach(id => shared.delete(id));
+
+        // Restore chips
+        explorerNodes = savedNames;
+        renderExplorerChips();
 
         if (shared.size === 0) {
           const pathInfoEl = document.getElementById('path-info');
           if (pathInfoEl) {
             pathInfoEl.style.display = 'block';
-            pathInfoEl.innerHTML = '<span class="explorer-result-count">No shared connections found between all selected nodes.</span>';
+            pathInfoEl.textContent = '';
+            const msg = document.createElement('span');
+            msg.className = 'explorer-result-count';
+            msg.textContent = 'No shared connections found between all selected nodes.';
+            pathInfoEl.appendChild(msg);
           }
           return;
         }
@@ -2959,7 +3311,6 @@
         const connectedNodes = new Set([...selectedIds, ...shared]);
         const connectedEdges = new Set();
 
-        // Add edges from each selected node to each shared node
         linksData.forEach(l => {
           const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
           const targetId = typeof l.target === 'object' ? l.target.id : l.target;
@@ -2973,15 +3324,70 @@
           }
         });
 
-        // Show result info
+        // Show result info with node list
         const pathInfoEl = document.getElementById('path-info');
         if (pathInfoEl) {
+          pathInfoEl.textContent = '';
           pathInfoEl.style.display = 'block';
-          pathInfoEl.innerHTML = '<span class="explorer-result-count">' + shared.size + ' shared connection' + (shared.size !== 1 ? 's' : '') + ' found</span>'
-            + '<button class="btn" style="margin-top:8px" onclick="NetworkViz.exportSubgraph()">Export Subgraph</button>';
+
+          const countSpan = document.createElement('span');
+          countSpan.className = 'explorer-result-count';
+          countSpan.textContent = shared.size + ' shared connection' + (shared.size !== 1 ? 's' : '') + ' found';
+          pathInfoEl.appendChild(countSpan);
+
+          // Results list
+          const resultsList = document.createElement('div');
+          resultsList.className = 'explorer-results-list';
+
+          // Selected nodes first
+          selectedIds.forEach(nodeId => {
+            const node = nodesById.get(nodeId);
+            if (!node) return;
+            const item = document.createElement('div');
+            item.className = 'explorer-result-item';
+            const dot = document.createElement('span');
+            dot.className = 'explorer-result-dot';
+            dot.style.background = '#c4a35a';
+            const name = document.createElement('span');
+            name.className = 'explorer-result-name';
+            name.textContent = node.id;
+            const type = document.createElement('span');
+            type.className = 'explorer-result-type';
+            type.textContent = 'selected';
+            item.append(dot, name, type);
+            resultsList.appendChild(item);
+          });
+
+          // Shared nodes sorted
+          const sharedNodes = Array.from(shared).map(id => nodesById.get(id)).filter(Boolean);
+          sharedNodes.sort((a, b) => a.id.localeCompare(b.id));
+          sharedNodes.forEach(node => {
+            const item = document.createElement('div');
+            item.className = 'explorer-result-item';
+            const dot = document.createElement('span');
+            dot.className = 'explorer-result-dot';
+            dot.style.background = getNodeColor(node);
+            const name = document.createElement('span');
+            name.className = 'explorer-result-name';
+            name.textContent = node.id;
+            const type = document.createElement('span');
+            type.className = 'explorer-result-type';
+            type.textContent = node.type;
+            item.append(dot, name, type);
+            resultsList.appendChild(item);
+          });
+
+          pathInfoEl.appendChild(resultsList);
+
+          const exportBtn = document.createElement('button');
+          exportBtn.className = 'btn';
+          exportBtn.style.marginTop = '8px';
+          exportBtn.textContent = 'Export Subgraph';
+          exportBtn.addEventListener('click', () => NetworkViz.exportSubgraph());
+          pathInfoEl.appendChild(exportBtn);
         }
 
-        // Highlight: dim unrelated nodes, show only relevant edges
+        // Highlight nodes
         nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
           .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
 
@@ -3010,7 +3416,7 @@
         drawCanvasLinks();
         updateExportButtonVisibility();
 
-        // Center the view on shared nodes
+        // Center the view
         const allVisible = Array.from(connectedNodes).map(id => nodesById.get(id)).filter(Boolean);
         centerNodes(allVisible);
       }
@@ -3029,14 +3435,28 @@
       function renderExplorerChips() {
         const container = document.getElementById('explorer-chips');
         if (!container) return;
-        container.innerHTML = explorerNodes.map(name =>
-          '<span class="explorer-chip">' +
-            '<span class="explorer-chip-name">' + name + '</span>' +
-            '<button class="explorer-chip-remove" onclick="NetworkViz._removeExplorerNode(\'' + name.replace(/'/g, "\\'") + '\')">' +
-              '<svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
-            '</button>' +
-          '</span>'
-        ).join('');
+        container.textContent = '';
+        const svgNS = 'http://www.w3.org/2000/svg';
+        explorerNodes.forEach(name => {
+          const chip = document.createElement('span');
+          chip.className = 'explorer-chip';
+          const chipName = document.createElement('span');
+          chipName.className = 'explorer-chip-name';
+          chipName.textContent = name;
+          const btn = document.createElement('button');
+          btn.className = 'explorer-chip-remove';
+          const icon = document.createElementNS(svgNS, 'svg');
+          icon.setAttribute('viewBox', '0 0 24 24');
+          icon.setAttribute('fill', 'none');
+          const path = document.createElementNS(svgNS, 'path');
+          path.setAttribute('d', 'M18 6L6 18M6 6l12 12');
+          icon.appendChild(path);
+          btn.appendChild(icon);
+          btn.addEventListener('click', () => removeExplorerNode(name));
+          chip.appendChild(chipName);
+          chip.appendChild(btn);
+          container.appendChild(chip);
+        });
       }
 
       class MultiNodeConnectionFinder {
@@ -3179,8 +3599,10 @@
         findAllPathsBFS(start, end, maxLength) {
           const allPaths = [];
           const queue = [[start]];
+          const MAX_QUEUE = 50000;
 
           while (queue.length > 0) {
+            if (queue.length > MAX_QUEUE) break;
             const path = queue.shift();
             const currentNode = path[path.length - 1];
 
@@ -3294,75 +3716,7 @@
         };
       }
 
-      function highlightAllConnections(result) {
-        clearPath();
-
-        const { nodes: connectedNodes, edges: connectedEdges, startNode, endNode, shortestPathLength, pathCount, pathsByLength, commonNeighbors } = result;
-
-        const pathInfoEl = document.getElementById('path-info');
-        if (shortestPathLength !== undefined && pathInfoEl) {
-          let infoText = '';
-          if (shortestPathLength === -1) {
-            infoText = 'No connection found between these nodes';
-          } else if (shortestPathLength === 1) {
-            infoText = 'Direct relationship identified';
-            if (pathCount > 1 && pathsByLength) {
-              const additionalPaths = pathCount - (pathsByLength.get(1) || 1);
-              if (additionalPaths > 0) infoText += ` + ${additionalPaths} alternative path${additionalPaths > 1 ? 's' : ''}`;
-            }
-          } else {
-            infoText = `${shortestPathLength} degrees of separation`;
-            if (pathsByLength && pathsByLength.size > 0) {
-              const pathDetails = [];
-              pathsByLength.forEach((count, length) => {
-                if (count > 0) pathDetails.push(`${count} path${count > 1 ? 's' : ''} at ${length}`);
-              });
-              if (pathDetails.length > 0) infoText += ` (${pathDetails.join(', ')})`;
-            }
-          }
-          if ((commonNeighbors || 0) > 0) infoText += ` | ${commonNeighbors} shared contact${commonNeighbors > 1 ? 's' : ''}`;
-
-          pathInfoEl.innerHTML = infoText + '<button class="btn" style="margin-top:8px" onclick="NetworkViz.exportSubgraph()">Export Subgraph</button>';
-          pathInfoEl.style.display = 'block';
-        }
-
-        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
-          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
-
-        // Update canvas: hide non-path edges, highlight path edges
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
-          if (connectedEdges.has(l._edgeKey)) {
-            highlightedEdges.add(l._edgeKey);
-          } else {
-            hiddenEdges.add(l._edgeKey);
-          }
-        });
-        pathOrSearchActive = true;
-        drawCanvasLinks();
-        updateExportButtonVisibility();
-
-        nodeGroups.select("circle").each(function(d) {
-          if (connectedNodes.has(d.id)) {
-            const isEndpoint = (d.id === startNode || d.id === endNode);
-            d3.select(this)
-              .classed("highlight-node", true)
-              .style("stroke", isEndpoint ? "#c4a35a" : "#a08a6e")
-              .style("stroke-width", isEndpoint ? "4px" : "3px")
-              .style("fill", function() {
-                if (d.id === startNode) return "#4a7c59";
-                if (d.id === endNode) return "#8b3a3a";
-                return getNodeColor(d);
-              });
-          }
-        });
-
-        labelElements.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
-          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
-
-        centerNodes(Array.from(connectedNodes).map(id => nodesById.get(id)));
-      }
+      // highlightAllConnections replaced by applyExplorerResult
 
       // ═══════════════════════════════════════════════════════════════
       // COMMUNITY DETECTION
@@ -3618,14 +3972,23 @@
         const pathInfoEl = document.getElementById('path-info');
         if (pathInfoEl) {
           pathInfoEl.style.display = 'none';
-          pathInfoEl.innerHTML = '';
+          pathInfoEl.textContent = '';
         }
 
-        // Clear explorer chips
+        // Clear explorer state
         explorerNodes = [];
+        lastExplorerResult = null;
         renderExplorerChips();
         const explorerInput = document.getElementById('explorer-input');
         if (explorerInput) explorerInput.value = '';
+
+        // Hide mode toggle and reset to 'all'
+        const modeEl = document.getElementById('explorer-mode');
+        if (modeEl) modeEl.style.display = 'none';
+        explorerMode = 'all';
+        document.querySelectorAll('.explorer-mode-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.mode === 'all');
+        });
 
         // Reset 2-hop state
         twoHopActive = false;
@@ -3753,20 +4116,22 @@
           a.download = 'italian-american-literary-network.png';
           a.href = exportCanvas.toDataURL();
           a.click();
-
-          // Restore label visibility
-          currentLabelTier = null;
-          updateLabelVisibility(currentZoomTransform.k);
         } catch (error) {
           console.error("Export error:", error);
           alert("Unable to export image. Please try again.");
+        } finally {
+          // Restore label visibility regardless of success or failure
+          currentLabelTier = null;
+          updateLabelVisibility(currentZoomTransform.k);
         }
       }
 
       function fullReset() {
         // Reset community colors and clustering force
         communityColorActive = false;
+        preCommunityPositions = null;
         simulation.force("cluster", null);
+        simulation.force("link").strength(0.15);
         const communityBtn = document.getElementById('community-toggle');
         if (communityBtn) communityBtn.classList.remove('active');
         const communityInfo = document.getElementById('community-info');
@@ -3968,6 +4333,7 @@
         expandTwoHop: expandTwoHop,
         autoFit: autoFitNetwork,
         _removeExplorerNode: removeExplorerNode,
+        setExplorerMode,
         filterByType,
         filterBySubtype,
         setFilterMode,

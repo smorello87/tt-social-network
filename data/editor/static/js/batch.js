@@ -112,10 +112,21 @@ const BatchOps = {
         try {
             if (Editor.state.currentTab === 'nodes') {
                 // Delete nodes one by one (cascade deletes edges)
+                let deleted = 0;
+                let failed = 0;
                 for (const id of ids) {
-                    await API.deleteNode(id);
+                    try {
+                        await API.deleteNode(id);
+                        deleted++;
+                    } catch (e) {
+                        failed++;
+                    }
                 }
-                Editor.showToast(`Deleted ${ids.length} nodes`, 'success');
+                if (failed > 0) {
+                    Editor.showToast(`Deleted ${deleted} nodes (${failed} failed)`, deleted > 0 ? 'success' : 'error');
+                } else {
+                    Editor.showToast(`Deleted ${deleted} nodes`, 'success');
+                }
             } else {
                 const result = await API.batchDeleteEdges(ids);
                 Editor.showToast(`Deleted ${result.deleted} edges`, 'success');
@@ -125,6 +136,9 @@ const BatchOps = {
             await Editor.loadStats();
             await Editor.loadData();
         } catch (error) {
+            Editor.clearSelection();
+            await Editor.loadStats();
+            await Editor.loadData();
             Editor.showToast(`Error: ${error.message}`, 'error');
         }
     },

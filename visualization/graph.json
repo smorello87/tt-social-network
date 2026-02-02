@@ -33,7 +33,7 @@
     {
       "id": "Botteghe Oscure",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Marguerite Chapin Caetani",
@@ -68,7 +68,7 @@
     {
       "id": "Italian Quarterly",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Alfred Kazin",
@@ -113,7 +113,7 @@
     {
       "id": "Divagando",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Andre Luotto",
@@ -153,7 +153,7 @@
     {
       "id": "Tempo Presente",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giuseppe Berto",
@@ -258,12 +258,12 @@
     {
       "id": "Harper's Bazaar",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "The Literary Review",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giuseppe Ungaretti",
@@ -288,12 +288,12 @@
     {
       "id": "Chelsea",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "The Italian Scene",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Michele Cantarella",
@@ -353,7 +353,7 @@
     {
       "id": "La Voce",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "International Committee on Intellectual Cooperation",
@@ -363,17 +363,17 @@
     {
       "id": "Il Tempo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Resto del Carlino",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Borghese",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Marianne Ceconi Gifford",
@@ -408,7 +408,7 @@
     {
       "id": "Corriere della Sera",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giulio Einaudi",
@@ -548,12 +548,12 @@
     {
       "id": "L'Europeo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Corriere della Sera",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Grove Press",
@@ -693,12 +693,12 @@
     {
       "id": "The New Yorker",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Partisan Review",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Gruppo '63",
@@ -708,7 +708,7 @@
     {
       "id": "Commerce",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Harper & Brothers",
@@ -773,7 +773,7 @@
     {
       "id": "Books Abroad",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Noonday Press",
@@ -788,12 +788,12 @@
     {
       "id": "Time",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Vogue",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Prince of Bassiano Roffredo Caetani",
@@ -888,22 +888,22 @@
     {
       "id": "Il Corriere del Connecticut",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Progresso Italo-Americano",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Italy-America Review",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giornalino",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Italian Ministry of Culture",
@@ -942,11 +942,6 @@
     },
     {
       "id": "Janet Flanner",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Moravia",
       "type": "person",
       "subtype": null
     },
@@ -1043,17 +1038,17 @@
     {
       "id": "Mademoiselle",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Bellissima",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Epoca",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "World's Fair",
@@ -1093,22 +1088,22 @@
     {
       "id": "La Stampa",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Reporter",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Saturday Review",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "The Critic",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Feltrinelli",
@@ -1128,7 +1123,7 @@
     {
       "id": "Italian Poetry Review",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Columbia University",
@@ -1178,27 +1173,27 @@
     {
       "id": "Il Tevere",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Giornalissimo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Quotidiano",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Voce Repubblicana",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Momento",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "US Embassy in Rome",
@@ -1243,7 +1238,7 @@
     {
       "id": "New York Times",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "US Army",
@@ -1393,7 +1388,7 @@
     {
       "id": "L'Espresso",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Johns Hopkins University",
@@ -1538,7 +1533,7 @@
     {
       "id": "Il Cammeo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Pellegrini & Cudahy",
@@ -1708,7 +1703,7 @@
     {
       "id": "Oggi",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "George Howe",
@@ -1873,7 +1868,7 @@
     {
       "id": "Times Literary Supplement",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "University of Liverpool",
@@ -1983,7 +1978,7 @@
     {
       "id": "Sunday Times",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Villa Medici",
@@ -2008,12 +2003,12 @@
     {
       "id": "The Atlantic Monthly",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Cornhill Magazine",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Frank V Liotta",
@@ -2073,12 +2068,12 @@
     {
       "id": "Il Carroccio",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "L'Americolo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Sergio Perosa",
@@ -2453,22 +2448,22 @@
     {
       "id": "L'Italia Libera",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "The New Republic",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Mondo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Dissent",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Leonardo Sciascia",
@@ -2518,7 +2513,7 @@
     {
       "id": "Encounter",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "David McDowell",
@@ -2798,7 +2793,7 @@
     {
       "id": "Studies in Short Fictions",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "The Dial Press",
@@ -2993,7 +2988,7 @@
     {
       "id": "Cuadernos",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Cultural and Scientific Conference for World Peace in New York",
@@ -3063,12 +3058,12 @@
     {
       "id": "Politics",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "The Nation",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Revolution Proletarienne",
@@ -3303,7 +3298,7 @@
     {
       "id": "New York Herald Tribune",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "International News Services",
@@ -3478,7 +3473,7 @@
     {
       "id": "Americana",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "RCS Libri",
@@ -3873,12 +3868,12 @@
     {
       "id": "Briarcliff Quarterly",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Imitations",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Poetry Center in New York",
@@ -4263,7 +4258,7 @@
     {
       "id": "Belfagor",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Paola Mazzetti",
@@ -4388,7 +4383,7 @@
     {
       "id": "Observer",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Pamela Swinglehurst",
@@ -4438,7 +4433,7 @@
     {
       "id": "The Kenyon Review",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Cornell University Press",
@@ -4538,12 +4533,12 @@
     {
       "id": "Il Tarocco",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Pianeta Fresco",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Donatella Manganotti",
@@ -6343,7 +6338,7 @@
     {
       "id": "Annabella",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Antonio Margheriti",
@@ -6409,11 +6404,6 @@
       "id": "Cinecitta",
       "type": "institution",
       "subtype": "media"
-    },
-    {
-      "id": "Claudia Cardinale",
-      "type": "person",
-      "subtype": null
     },
     {
       "id": "Commercial Radio Service",
@@ -6493,12 +6483,12 @@
     {
       "id": "Gente",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Gioia",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giovanni Schiavo",
@@ -6508,7 +6498,7 @@
     {
       "id": "Grazia",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Guido Gozzano",
@@ -6518,22 +6508,22 @@
     {
       "id": "Il Commercio",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Fuoco",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Milione",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Il Nuovo Mondo/La Stampa Libera",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Incom",
@@ -6578,37 +6568,37 @@
     {
       "id": "L'Italia che scrive",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "L'Unita",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Donna",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Follia di New York",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Giustizia",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Lettura",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Settimana",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Laura Vagliasindi",
@@ -6627,11 +6617,6 @@
     },
     {
       "id": "Lydia Magliano",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Marcello Mastroianni",
       "type": "person",
       "subtype": null
     },
@@ -6663,12 +6648,12 @@
     {
       "id": "Novella",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Nuovi Argomenti",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Perry Como",
@@ -6711,11 +6696,6 @@
       "subtype": "event"
     },
     {
-      "id": "Sophia Loren",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "St John's University",
       "type": "institution",
       "subtype": "university"
@@ -6728,7 +6708,7 @@
     {
       "id": "The Italian Tribune",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Vamba",
@@ -6748,7 +6728,7 @@
     {
       "id": "Leonardo Annual Magazine",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Libero Andreotti",
@@ -7088,7 +7068,7 @@
     {
       "id": "Panorama",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Fortuna Publishing",
@@ -7098,7 +7078,7 @@
     {
       "id": "Le maschere",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giuliano Gerbi",
@@ -7323,7 +7303,7 @@
     {
       "id": "Corriere d'America",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Riccardo Cordiferro",
@@ -7398,7 +7378,7 @@
     {
       "id": "Fortune",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Luigi Carnovale",
@@ -7498,7 +7478,7 @@
     {
       "id": "Il Martello",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giuseppe Cadicamo",
@@ -7533,7 +7513,7 @@
     {
       "id": "Zarathustra",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Libreria dell'I.W.W.",
@@ -7548,7 +7528,7 @@
     {
       "id": "Vita: rivista dei nostri giorni",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Italian-American Publishing Co.",
@@ -7608,7 +7588,7 @@
     {
       "id": "La Lucerna",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Editrice Convivio Letterario",
@@ -7638,7 +7618,7 @@
     {
       "id": "Baionetta d'Italia",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Vincenzo Polidori",
@@ -7653,7 +7633,7 @@
     {
       "id": "L'Italiano in America",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giuseppe Genovese",
@@ -7663,17 +7643,17 @@
     {
       "id": "Corriere Siciliano",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giovinezza",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Atlantica",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Filippo Cassola",
@@ -7688,7 +7668,7 @@
     {
       "id": "Il Grido della Stirpe",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Domenico Trombetta",
@@ -7698,7 +7678,7 @@
     {
       "id": "Il Crociato",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Carlo de Biasi",
@@ -7713,17 +7693,17 @@
     {
       "id": "Il Solco",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "L'Avanti",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "La Strada",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Alberto Cupelli",
@@ -7773,7 +7753,7 @@
     {
       "id": "Quaderni Italiani",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Enzo Tagliacozzo",
@@ -7798,12 +7778,12 @@
     {
       "id": "Il Telegrafo",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "L'Araldo Italiano",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Italy America Society",
@@ -7813,7 +7793,7 @@
     {
       "id": "La Voce dell'Emigrato",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Giuseppe Stella",
@@ -14428,7 +14408,7 @@
     {
       "id": "Il Pungolo Verde",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Alberindo Grimani",
@@ -14823,7 +14803,7 @@
     {
       "id": "La Nuova Italia Letteraria",
       "type": "institution",
-      "subtype": "magazine"
+      "subtype": "periodical"
     },
     {
       "id": "Agostino Minichiello",
@@ -16309,6 +16289,66 @@
       "id": "Dorrance",
       "type": "institution",
       "subtype": "publisher"
+    },
+    {
+      "id": "Italy Today",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Felice Ferrero",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Ettore Cadorin",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Italian Bureau of Public Information",
+      "type": "institution",
+      "subtype": "government"
+    },
+    {
+      "id": "Il Cristoforo Colombo",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Giovanni Francesco Secchi de Casali",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "L'Eco d'Italia",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Giovanni Vicario",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "L'Adunata dei Refrattari",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Raffaele Schiavina",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giuseppe Grivetti",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Guido Treves",
+      "type": "person",
+      "subtype": null
     }
   ],
   "links": [
@@ -16663,10 +16703,6 @@
     {
       "source": "Pier Paolo Pasolini",
       "target": "Cinecitta"
-    },
-    {
-      "source": "Pier Paolo Pasolini",
-      "target": "Marcello Mastroianni"
     },
     {
       "source": "New Directions",
@@ -17126,6 +17162,10 @@
     },
     {
       "source": "Natalia Danesi Murray",
+      "target": "Alberto Moravia"
+    },
+    {
+      "source": "Natalia Danesi Murray",
       "target": "The New Yorker"
     },
     {
@@ -17143,10 +17183,6 @@
     {
       "source": "Natalia Danesi Murray",
       "target": "Janet Flanner"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "Moravia"
     },
     {
       "source": "Natalia Danesi Murray",
@@ -20598,31 +20634,7 @@
     },
     {
       "source": "Andrea Ragusa",
-      "target": "Gabriele d'Annunzio"
-    },
-    {
-      "source": "Andrea Ragusa",
       "target": "Columbia University"
-    },
-    {
-      "source": "Andrea Ragusa",
-      "target": "Mario Pei"
-    },
-    {
-      "source": "Andrea Ragusa",
-      "target": "Arthur Livingston"
-    },
-    {
-      "source": "Andrea Ragusa",
-      "target": "Anna von Weiskopf-Weiskoppen"
-    },
-    {
-      "source": "Andrea Ragusa",
-      "target": "Calogero Tumminelli"
-    },
-    {
-      "source": "Andrea Ragusa",
-      "target": "Emiliano Peruzzi"
     },
     {
       "source": "Andrea Ragusa",
@@ -20647,10 +20659,6 @@
     {
       "source": "Andrea Ragusa",
       "target": "Permanent Exhibition of Italian Books"
-    },
-    {
-      "source": "Andrea Ragusa",
-      "target": "Giosue\u0300 Carducci"
     },
     {
       "source": "Harper's Bazaar",
@@ -22014,19 +22022,11 @@
     },
     {
       "source": "Italo Calvino",
-      "target": "Claudia Cardinale"
-    },
-    {
-      "source": "Italo Calvino",
       "target": "Compagnia Italiana Cinematografica Lux"
     },
     {
       "source": "Italo Calvino",
       "target": "Franco Cristaldi"
-    },
-    {
-      "source": "Italo Calvino",
-      "target": "Marcello Mastroianni"
     },
     {
       "source": "Italo Calvino",
@@ -22071,10 +22071,6 @@
     {
       "source": "Alberto Moravia",
       "target": "Nuovi Argomenti"
-    },
-    {
-      "source": "Alberto Moravia",
-      "target": "Sophia Loren"
     },
     {
       "source": "Ezra Pound",
@@ -22390,6 +22386,10 @@
     },
     {
       "source": "Il Mondo",
+      "target": "Gaetano Salvemini"
+    },
+    {
+      "source": "Il Mondo",
       "target": "Giuseppe Lupis"
     },
     {
@@ -22489,7 +22489,19 @@
       "target": "American Philological Association"
     },
     {
+      "source": "Calogero Tumminelli",
+      "target": "Treves-Treccani-Tumminelli"
+    },
+    {
+      "source": "Emiliano Peruzzi",
+      "target": "SF Vanni Publishers and Booksellers"
+    },
+    {
       "source": "Olga Ragusa",
+      "target": "SF Vanni Publishers and Booksellers"
+    },
+    {
+      "source": "Isa Ragusa",
       "target": "SF Vanni Publishers and Booksellers"
     },
     {
@@ -22499,6 +22511,10 @@
     {
       "source": "Treves-Treccani-Tumminelli",
       "target": "Adolfo Rossi"
+    },
+    {
+      "source": "Permanent Exhibition of Italian Books",
+      "target": "Salvatore Viola"
     },
     {
       "source": "Peter Sammartino",
@@ -26001,6 +26017,10 @@
       "target": "Atlantica"
     },
     {
+      "source": "Alfonso Arbib-Costa",
+      "target": "Italy Today"
+    },
+    {
       "source": "Angelo De Gaudenzi",
       "target": "Italian Book Company"
     },
@@ -26097,12 +26117,20 @@
       "target": "Rodolfo Pucelli"
     },
     {
+      "source": "Vincenzo Polidori",
+      "target": "Il Cristoforo Colombo"
+    },
+    {
       "source": "Carlo Barsotti",
       "target": "Il Progresso Italo-Americano"
     },
     {
       "source": "L'Italiano in America",
       "target": "Mario de Biasi"
+    },
+    {
+      "source": "L'Italiano in America",
+      "target": "Giuseppe Grivetti"
     },
     {
       "source": "Corriere Siciliano",
@@ -26229,12 +26257,20 @@
       "target": "Renato Treves"
     },
     {
-      "source": "Renato Treves",
-      "target": "Treves-Treccani-Tumminelli"
+      "source": "Adolfo Rossi",
+      "target": "Il Progresso Italo-Americano"
     },
     {
       "source": "Il Telegrafo",
       "target": "Bernardino Ciambelli"
+    },
+    {
+      "source": "L'Araldo Italiano",
+      "target": "Vincenzo Polidori"
+    },
+    {
+      "source": "L'Araldo Italiano",
+      "target": "Giovanni Vicario"
     },
     {
       "source": "Giuseppe Stella",
@@ -33327,6 +33363,34 @@
     {
       "source": "Mirto Lauri",
       "target": "Cocc\u00e8 Press"
+    },
+    {
+      "source": "Italy Today",
+      "target": "Emilio Guglielmotti"
+    },
+    {
+      "source": "Italy Today",
+      "target": "Robert Underwood Johnson"
+    },
+    {
+      "source": "Italy Today",
+      "target": "Felice Ferrero"
+    },
+    {
+      "source": "Italy Today",
+      "target": "Ettore Cadorin"
+    },
+    {
+      "source": "Italy Today",
+      "target": "Italian Bureau of Public Information"
+    },
+    {
+      "source": "Giovanni Francesco Secchi de Casali",
+      "target": "L'Eco d'Italia"
+    },
+    {
+      "source": "L'Adunata dei Refrattari",
+      "target": "Raffaele Schiavina"
     }
   ]
 }

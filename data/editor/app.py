@@ -5,6 +5,7 @@ Serves both the editor UI and the visualization API.
 """
 
 import os
+import sqlite3
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_cors import CORS
 import database as db
@@ -285,7 +286,7 @@ def batch_update_subtype():
     if not node_ids:
         return jsonify({'error': 'node_ids is required'}), 400
 
-    valid_subtypes = ('magazine', 'publisher', 'university', 'organization', 'media', 'business', 'event', 'government', 'other', '')
+    valid_subtypes = ('periodical', 'publisher', 'university', 'organization', 'media', 'business', 'event', 'government', 'other', '')
     if subtype not in valid_subtypes:
         return jsonify({'error': 'Invalid subtype'}), 400
 
@@ -451,8 +452,8 @@ def import_csv():
             node_id = db.create_node(node['name'], node_type)
             name_to_id[normalize_name(node['name'])] = node_id
             nodes_created += 1
-        except:
-            # Node might already exist
+        except sqlite3.IntegrityError:
+            # Node already exists
             existing = db.get_node_by_name(node['name'])
             if existing:
                 name_to_id[normalize_name(node['name'])] = existing['id']
@@ -486,8 +487,8 @@ def import_csv():
         try:
             db.create_edge(name_to_id[source_norm], name_to_id[target_norm], edge['type'])
             edges_created += 1
-        except:
-            pass  # Edge might already exist
+        except sqlite3.IntegrityError:
+            pass  # Edge already exists
 
     return jsonify({
         'success': True,
@@ -521,7 +522,10 @@ if __name__ == '__main__':
     print("\n" + "="*60)
     print("Network Data Editor")
     print("="*60)
-    print("\nEditor:        http://localhost:5001")
+    backup_path = db.backup_db()
+    if backup_path:
+        print(f"\nBackup:        {backup_path}")
+    print(f"\nEditor:        http://localhost:5001")
     print("Visualization: http://localhost:5001/visualization/")
     print("API:           http://localhost:5001/api/graph.json")
     print("\n" + "="*60 + "\n")

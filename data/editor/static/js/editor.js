@@ -36,7 +36,7 @@ const Editor = {
         const nodesActions = document.getElementById('batch-actions-nodes');
         const edgesActions = document.getElementById('batch-actions-edges');
         if (nodesActions) nodesActions.style.display = this.state.currentTab === 'nodes' ? 'flex' : 'none';
-        if (edgesActions) edgesActions.style.display = this.state.currentTab === 'edges' ? 'flex' : 'none';
+        if (edgesActions) edgesActions.style.display = (this.state.currentTab === 'edges' || this.state.currentTab === 'review') ? 'flex' : 'none';
 
         // Set up keyboard shortcuts
         document.addEventListener('keydown', (e) => {
@@ -305,7 +305,9 @@ const Editor = {
                     <span class="badge badge-${edge.target_type}" style="font-size: 0.65rem; padding: 2px 6px; margin-left: 4px;">${edge.target_type.charAt(0).toUpperCase()}</span>
                 </td>
                 <td><span class="badge badge-${edge.type}">${edge.type}</span></td>
-                <td>${edge.shared_count || 0}</td>
+                <td>${edge.shared_count > 0
+                    ? `<span class="connection-count" onclick="Editor.showSharedInstitutions(${edge.id}, '${this.escapeHtml(edge.source_name).replace(/'/g, "\\'")}', '${this.escapeHtml(edge.target_name).replace(/'/g, "\\'")}')">${edge.shared_count}</span>`
+                    : '0'}</td>
                 <td>${edge.needs_review ? '<span class="review-flag">!</span>' : '-'}</td>
                 <td>
                     <button class="btn btn-small" onclick="Editor.editEdge(${edge.id})">Edit</button>
@@ -342,7 +344,7 @@ const Editor = {
         const nodesActions = document.getElementById('batch-actions-nodes');
         const edgesActions = document.getElementById('batch-actions-edges');
         if (nodesActions) nodesActions.style.display = tab === 'nodes' ? 'flex' : 'none';
-        if (edgesActions) edgesActions.style.display = tab === 'edges' ? 'flex' : 'none';
+        if (edgesActions) edgesActions.style.display = (tab === 'edges' || tab === 'review') ? 'flex' : 'none';
 
         // Load data
         this.loadData();
@@ -365,8 +367,11 @@ const Editor = {
      */
     debounceSearch() {
         clearTimeout(this.state.searchTimeout);
+        const tab = this.state.currentTab;
         this.state.searchTimeout = setTimeout(() => {
-            this.applyFilters();
+            if (this.state.currentTab === tab) {
+                this.applyFilters();
+            }
         }, 300);
     },
 
@@ -641,6 +646,35 @@ const Editor = {
     },
 
     /**
+     * Show shared institutions for an edge
+     */
+    async showSharedInstitutions(edgeId, sourceName, targetName) {
+        try {
+            const edge = await API.getEdge(edgeId);
+            const institutions = edge.shared_institutions || [];
+
+            document.getElementById('connections-modal-title').textContent =
+                `Shared institutions: ${sourceName} & ${targetName}`;
+
+            const list = document.getElementById('connections-list');
+
+            if (institutions.length === 0) {
+                list.innerHTML = '<div class="connections-empty">No shared institutions found</div>';
+            } else {
+                list.innerHTML = institutions.map(inst => `
+                    <div class="connection-item" onclick="Editor.searchForNode('${this.escapeHtml(inst.name).replace(/'/g, "\\'")}')">
+                        <span class="connection-name">${this.escapeHtml(inst.name)}</span>
+                    </div>
+                `).join('');
+            }
+
+            this.showModal('connections-modal');
+        } catch (error) {
+            this.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    /**
      * Search for a specific node (from connections click)
      */
     searchForNode(name) {
@@ -721,7 +755,7 @@ const Editor = {
             this.closeModal('merge-modal');
 
             // Refresh node cache and data
-            this.state.allNodes = [];
+            this.state.allNodes = await API.getAllNodes();
             await this.loadStats();
             await this.loadData();
         } catch (error) {
@@ -758,8 +792,8 @@ const Editor = {
             const newNode = await API.createNode(name, type);
             this.showToast(`Created node "${name}"`, 'success');
             this.closeModal('add-node-modal');
-            // Clear cache so new node appears in dropdowns
-            this.state.allNodes = [];
+            // Refresh cache so new node appears in dropdowns
+            this.state.allNodes = await API.getAllNodes();
             await this.loadData();
             await this.loadStats();
             return newNode;
@@ -918,15 +952,15 @@ const Editor = {
             node.name.toLowerCase().includes(search)
         );
 
-        // Ensure selected node is always in the list
+        filtered = filtered.slice(0, 100);
+
+        // Ensure selected node is always in the list (even after slicing)
         if (selectedId && !filtered.find(n => n.id === selectedId)) {
             const selectedNode = this.state.allNodes.find(n => n.id === selectedId);
             if (selectedNode) {
                 filtered = [selectedNode, ...filtered];
             }
         }
-
-        filtered = filtered.slice(0, 100);
 
         select.innerHTML = filtered.map(node =>
             `<option value="${node.id}" ${node.id === selectedId ? 'selected' : ''}>${this.escapeHtml(node.name)} (${node.type})</option>`
@@ -1001,8 +1035,14 @@ const Editor = {
         this.state.sourceConnections = new Set();
         this.renderSelectedTargets();
 
+        // Show modal first so async operations update a visible modal
+        this.showModal('add-edge-modal');
+
         // Load all nodes for selection
         await this.loadTargetNodes();
+
+        // Bail if user closed modal during load
+        if (!document.getElementById('add-edge-modal').classList.contains('visible')) return;
 
         if (preselectedSourceId && preselectedSourceName) {
             // Pre-select the source node
@@ -1021,13 +1061,14 @@ const Editor = {
             this.filterAddEdgeNodes('add-edge-source-select', '', false);
         }
 
+        // Bail if user closed modal during load
+        if (!document.getElementById('add-edge-modal').classList.contains('visible')) return;
+
         // Render empty target results
         this.renderTargetResults('');
 
         // Update button text
         this.updateCreateEdgesButton();
-
-        this.showModal('add-edge-modal');
     },
 
     /**
@@ -1148,9 +1189,9 @@ const Editor = {
 
         try {
             const result = await API.createNode(name, type.toLowerCase());
-            // Clear cache and reload
-            this.state.allNodes = [];
-            await this.loadTargetNodes();
+            // Refresh cache and reload
+            this.state.allNodes = await API.getAllNodes();
+            this.filterTargetNodes('');
             // Add to selected targets
             this.addTarget(result.id, result.name, result.type);
             this.showToast(`Created "${name}" and added as target`, 'success');
@@ -1251,21 +1292,24 @@ const Editor = {
 
         try {
             let created = 0;
-            let errors = 0;
+            const failedTargets = [];
 
             for (const targetId of validTargets) {
                 try {
                     await API.createEdge(parseInt(sourceId), targetId, type);
                     created++;
                 } catch (e) {
-                    errors++;
+                    const target = this.state.selectedTargets.find(t => t.id === targetId);
+                    failedTargets.push(target ? target.name : `ID ${targetId}`);
                 }
             }
 
-            if (created > 0) {
-                this.showToast(`Created ${created} edge${created !== 1 ? 's' : ''}${errors > 0 ? ` (${errors} failed/existed)` : ''}`, 'success');
+            if (created > 0 && failedTargets.length > 0) {
+                this.showToast(`Created ${created} edge${created !== 1 ? 's' : ''}. Failed: ${failedTargets.join(', ')}`, 'success');
+            } else if (created > 0) {
+                this.showToast(`Created ${created} edge${created !== 1 ? 's' : ''}`, 'success');
             } else {
-                this.showToast('No edges created (may already exist)', 'error');
+                this.showToast(`No edges created. Already exist: ${failedTargets.join(', ')}`, 'error');
             }
 
             this.closeModal('add-edge-modal');

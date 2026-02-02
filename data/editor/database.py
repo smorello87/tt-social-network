@@ -5,10 +5,13 @@ Handles nodes, edges, and shared institution caching.
 
 import sqlite3
 import re
+import shutil
 from pathlib import Path
 from contextlib import contextmanager
+from datetime import datetime
 
 DB_PATH = Path(__file__).parent / "network.db"
+BACKUP_DIR = Path(__file__).parent / "backups"
 
 def normalize_name(name: str) -> str:
     """Normalize name for matching: strip whitespace, collapse spaces, lowercase."""
@@ -39,7 +42,8 @@ def init_db():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT UNIQUE NOT NULL,
                 name_normalized TEXT NOT NULL,
-                type TEXT NOT NULL CHECK (type IN ('person', 'institution', 'unknown'))
+                type TEXT NOT NULL CHECK (type IN ('person', 'institution', 'unknown')),
+                subtype TEXT
             );
 
             CREATE TABLE IF NOT EXISTS edges (
@@ -64,6 +68,20 @@ def init_db():
             CREATE INDEX IF NOT EXISTS idx_edges_source ON edges(source_id);
             CREATE INDEX IF NOT EXISTS idx_edges_target ON edges(target_id);
         """)
+
+def backup_db():
+    """Create a timestamped backup of the database. Keeps last 10 backups."""
+    if not DB_PATH.exists():
+        return None
+    BACKUP_DIR.mkdir(exist_ok=True)
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    backup_path = BACKUP_DIR / f"network.db.{timestamp}"
+    shutil.copy2(DB_PATH, backup_path)
+    # Remove old backups, keep last 10
+    backups = sorted(BACKUP_DIR.glob("network.db.*"), key=lambda p: p.stat().st_mtime, reverse=True)
+    for old in backups[10:]:
+        old.unlink()
+    return backup_path
 
 # =============================================================================
 # Node Operations
@@ -203,6 +221,7 @@ def merge_nodes(primary_id, secondary_id):
     Returns count of edges transferred.
     """
     with get_db() as conn:
+        conn.execute("BEGIN IMMEDIATE")
         # Get node info for validation
         primary = conn.execute("SELECT * FROM nodes WHERE id = ?", (primary_id,)).fetchone()
         secondary = conn.execute("SELECT * FROM nodes WHERE id = ?", (secondary_id,)).fetchone()

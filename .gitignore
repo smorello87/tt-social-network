@@ -8,9 +8,13 @@ __pycache__/
 
 # Backups
 *.backup.*
+data/editor/backups/
 
 # SQLite staging (can be regenerated from Omeka API)
 data/editor/omeka_staging.db
 
 # Generated graph data (regenerate with csv-to-json.py)
 # visualization/graph.json
+
+# Draft proposals
+docs/proposal-ethnic-press-methodology*.md

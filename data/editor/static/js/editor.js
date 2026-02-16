@@ -20,6 +20,8 @@ const Editor = {
         auditData: null, // Cached audit response
         auditActiveCategory: null, // Which category is selected for batch context
         auditExpandedSections: new Set(), // Which sections are expanded
+        connectionsNodeId: null, // Node ID for connections modal refresh
+        connectionsNodeName: null, // Node name for connections modal refresh
     },
 
     /**
@@ -645,6 +647,10 @@ const Editor = {
      */
     async showConnections(nodeId, nodeName) {
         try {
+            // Store current node for refresh after deletion
+            this.state.connectionsNodeId = nodeId;
+            this.state.connectionsNodeName = nodeName;
+
             const connections = await API.getNodeConnections(nodeId);
 
             document.getElementById('connections-modal-title').textContent =
@@ -658,18 +664,69 @@ const Editor = {
                 // Sort by connection count descending
                 connections.sort((a, b) => (b.connection_count || 0) - (a.connection_count || 0));
                 list.innerHTML = connections.map(conn => `
-                    <div class="connection-item" onclick="Editor.searchForNode('${this.escapeHtml(conn.name).replace(/'/g, "\\'")}')">
-                        <span class="connection-name">${this.escapeHtml(conn.name)}</span>
-                        <div class="connection-badges">
-                            <span class="badge badge-${conn.type}">${conn.type}</span>
-                            <span class="badge badge-${conn.edge_type}">${conn.edge_type}</span>
-                            <span class="badge badge-count">${conn.connection_count || 0}</span>
+                    <div class="connection-item">
+                        <div class="connection-info" onclick="Editor.searchForNode('${this.escapeHtml(conn.name).replace(/'/g, "\\'")}')">
+                            <span class="connection-name">${this.escapeHtml(conn.name)}</span>
+                            <div class="connection-badges">
+                                <span class="badge badge-${conn.type}">${conn.type}</span>
+                                ${conn.subtype ? `<span class="badge badge-subtype">${conn.subtype}</span>` : ''}
+                                <span class="badge badge-${conn.edge_type}">${conn.edge_type}</span>
+                                <span class="badge badge-count" title="Total connections">${conn.connection_count || 0}</span>
+                            </div>
+                        </div>
+                        <div class="connection-actions">
+                            <button class="btn btn-tiny btn-danger" onclick="event.stopPropagation(); Editor.deleteConnection(${conn.edge_id})" title="Remove this edge only">×</button>
+                            <button class="btn btn-tiny btn-danger" onclick="event.stopPropagation(); Editor.deleteConnectionAndNode(${conn.edge_id}, ${conn.id}, '${this.escapeHtml(conn.name).replace(/'/g, "\\'")}', ${conn.connection_count || 0})" title="Delete node entirely">🗑</button>
                         </div>
                     </div>
                 `).join('');
             }
 
             this.showModal('connections-modal');
+        } catch (error) {
+            this.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    /**
+     * Delete a connection (edge) and refresh the connections list
+     */
+    async deleteConnection(edgeId) {
+        if (!confirm('Remove this connection?')) return;
+        try {
+            await API.deleteEdge(edgeId);
+            this.showToast('Connection removed', 'success');
+            // Refresh the connections list
+            await this.showConnections(this.state.connectionsNodeId, this.state.connectionsNodeName);
+            await this.loadStats();
+        } catch (error) {
+            this.showToast(`Error: ${error.message}`, 'error');
+        }
+    },
+
+    /**
+     * Delete a connection and also delete the connected node entirely
+     */
+    async deleteConnectionAndNode(edgeId, nodeId, nodeName, connectionCount) {
+        // Show different warning based on connection count
+        let message;
+        if (connectionCount <= 1) {
+            message = `Delete "${nodeName}"?\n\nThis node has no other connections and will be removed entirely.`;
+        } else {
+            message = `⚠️ DELETE "${nodeName}"?\n\nThis node has ${connectionCount} connections. Deleting it will remove ALL its edges from the network.\n\nThis cannot be undone.`;
+        }
+
+        if (!confirm(message)) return;
+
+        try {
+            // Delete the node (cascade deletes all its edges)
+            await API.deleteNode(nodeId);
+            this.showToast(`Deleted "${nodeName}" and all its connections`, 'success');
+            // Refresh the connections list
+            await this.showConnections(this.state.connectionsNodeId, this.state.connectionsNodeName);
+            await this.loadStats();
+            // Refresh node cache
+            this.state.allNodes = await API.getAllNodes();
         } catch (error) {
             this.showToast(`Error: ${error.message}`, 'error');
         }
@@ -803,7 +860,21 @@ const Editor = {
     showAddNodeModal() {
         document.getElementById('new-node-name').value = '';
         document.getElementById('new-node-type').value = 'person';
+        document.getElementById('new-node-subtype').value = '';
+        document.getElementById('new-node-subtype-group').style.display = 'none';
         this.showModal('add-node-modal');
+    },
+
+    /**
+     * Handle type change in add node modal
+     */
+    onAddNodeTypeChange() {
+        const type = document.getElementById('new-node-type').value;
+        const subtypeGroup = document.getElementById('new-node-subtype-group');
+        subtypeGroup.style.display = type === 'institution' ? 'block' : 'none';
+        if (type !== 'institution') {
+            document.getElementById('new-node-subtype').value = '';
+        }
     },
 
     /**
@@ -812,6 +883,7 @@ const Editor = {
     async createNode() {
         const name = document.getElementById('new-node-name').value.trim();
         const type = document.getElementById('new-node-type').value;
+        const subtype = type === 'institution' ? document.getElementById('new-node-subtype').value : null;
 
         if (!name) {
             this.showToast('Please enter a name', 'error');
@@ -819,7 +891,7 @@ const Editor = {
         }
 
         try {
-            const newNode = await API.createNode(name, type);
+            const newNode = await API.createNode(name, type, subtype);
             this.showToast(`Created node "${name}"`, 'success');
             this.closeModal('add-node-modal');
             // Refresh cache so new node appears in dropdowns

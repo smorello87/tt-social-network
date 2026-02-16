@@ -96,7 +96,7 @@ tt-social-network/
 - [Transatlantic Transfers Atlas](https://transatlantictransfers.polimi.it/atlas)
 - Digitized tables of contents from 103 issues of *Divagando* (1945-1957)
 - Tables of contents of *Il Carroccio* (1915-1930)
-- Tables of contents of *Atlantica* (1923-1930)
+- Tables of contents of *Atlantica* (1923-1934)
 - [The Periconi Collection of Italian American Imprints](https://italianamericanimprints.omeka.net/)
 - Wikipedia biographical data
 - Metadata from the Italian Sistema Bibliotecario Nazionale (SBN) and OCLC

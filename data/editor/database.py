@@ -308,11 +308,11 @@ def get_all_nodes_for_dropdown():
         return [dict(row) for row in rows]
 
 def get_node_connections(node_id):
-    """Get all nodes connected to a given node, including their connection counts."""
+    """Get all nodes connected to a given node, including their connection counts and edge info."""
     with get_db() as conn:
         # Get connections where this node is the source
         as_source = conn.execute("""
-            SELECT n.id, n.name, n.type, e.type as edge_type,
+            SELECT n.id, n.name, n.type, n.subtype, e.id as edge_id, e.type as edge_type,
                    (SELECT COUNT(*) FROM edges e2 WHERE e2.source_id = n.id OR e2.target_id = n.id) as connection_count
             FROM nodes n
             JOIN edges e ON e.target_id = n.id
@@ -322,7 +322,7 @@ def get_node_connections(node_id):
 
         # Get connections where this node is the target
         as_target = conn.execute("""
-            SELECT n.id, n.name, n.type, e.type as edge_type,
+            SELECT n.id, n.name, n.type, n.subtype, e.id as edge_id, e.type as edge_type,
                    (SELECT COUNT(*) FROM edges e2 WHERE e2.source_id = n.id OR e2.target_id = n.id) as connection_count
             FROM nodes n
             JOIN edges e ON e.source_id = n.id
@@ -330,12 +330,12 @@ def get_node_connections(node_id):
             ORDER BY n.name
         """, (node_id,)).fetchall()
 
-        # Combine and dedupe
+        # Combine - use edge_id as key since same node can have multiple edges
         connections = {}
         for row in as_source:
-            connections[row['id']] = dict(row)
+            connections[row['edge_id']] = dict(row)
         for row in as_target:
-            connections[row['id']] = dict(row)
+            connections[row['edge_id']] = dict(row)
 
         return list(connections.values())
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Italian-American Literary Network</title>
+  <title>Reti di Carta — Italian American Print Network (1890–1980)</title>
 
   <!-- Libraries -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -99,12 +99,16 @@
       font-weight: 500;
       color: var(--parchment);
       letter-spacing: 0.02em;
+      line-height: 1.1;
     }
 
-    .header-title span {
-      font-style: italic;
+    .header-title .subtitle {
+      display: block;
+      font-size: 0.65em;
       font-weight: 400;
+      font-style: italic;
       opacity: 0.8;
+      letter-spacing: 0.04em;
     }
 
     .header-actions {
@@ -1057,8 +1061,13 @@
       font-weight: 600;
     }
 
-    .explorer-mode-btn:hover:not(.active) {
+    .explorer-mode-btn:hover:not(.active):not(:disabled) {
       background: rgba(139, 115, 85, 0.08);
+    }
+
+    .explorer-mode-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
 
     .explorer-results-list {
@@ -1335,8 +1344,8 @@
         font-size: 1.15rem;
       }
 
-      .header-title span {
-        display: none;
+      .header-title .subtitle {
+        font-size: 0.6em;
       }
 
       .header-actions {
@@ -1527,7 +1536,7 @@
       }
 
       .header-title {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -1554,7 +1563,7 @@
           <line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
-      <h1 class="header-title">Italian-American Literary Network <span>1890-1980</span></h1>
+      <h1 class="header-title">Reti di Carta <span class="subtitle">Italian American Print Network (1890–1980)</span></h1>
     </div>
     <div class="header-actions">
       <button class="header-btn" onclick="openAboutModal()">
@@ -1597,8 +1606,9 @@
         <input type="text" id="explorer-input" class="input-field" placeholder="Add a node...">
       </div>
       <div id="explorer-mode" class="explorer-mode-toggle" style="display:none;">
-        <button class="explorer-mode-btn active" data-mode="all" onclick="NetworkViz.setExplorerMode('all')">All Paths</button>
+        <button class="explorer-mode-btn" data-mode="shortest" onclick="NetworkViz.setExplorerMode('shortest')">Shortest</button>
         <button class="explorer-mode-btn" data-mode="direct" onclick="NetworkViz.setExplorerMode('direct')">Direct Only</button>
+        <button class="explorer-mode-btn active" data-mode="all" onclick="NetworkViz.setExplorerMode('all')">All Paths</button>
       </div>
       <div class="btn-row">
         <button class="btn" onclick="NetworkViz.exploreConnections()">Find</button>
@@ -1696,7 +1706,7 @@
         Communities
         <span class="help-tip" data-tip="Detect clusters using label propagation and color nodes by community">?</span>
       </div>
-      <button class="btn" id="community-toggle" onclick="NetworkViz.toggleCommunities()">Color by Community</button>
+      <button class="btn" id="community-toggle" onclick="NetworkViz.toggleCommunities()">Cluster by Community</button>
       <div id="community-info" style="display:none"></div>
     </div>
 
@@ -1756,7 +1766,7 @@
     <div class="modal-overlay" onclick="closeAboutModal()"></div>
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">About This Project</h2>
+        <h2 class="modal-title">About Reti di Carta</h2>
         <button class="modal-close" onclick="closeAboutModal()">
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18M6 6l12 12"/>
@@ -1765,7 +1775,7 @@
       </div>
       <div class="modal-body">
         <p>
-          This visualization maps the transnational network of Italian-American literary culture, revealing connections between writers, translators, scholars, and cultural institutions. Each node represents either an individual contributor to Italian-American letters or an institution, while edges trace relationships of collaboration, translation, correspondence, and intellectual exchange.
+          <em>Reti di Carta</em> maps the Italian American print network (1890–1980), revealing connections between writers, translators, scholars, and cultural institutions. Each node represents either an individual contributor to Italian-American letters or an institution, while edges trace relationships of collaboration, translation, correspondence, and intellectual exchange.
         </p>
         <p>
           The network currently comprises <strong><span id="about-node-count">--</span> nodes</strong> connected by <strong><span id="about-edge-count">--</span> edges</strong>.
@@ -1778,11 +1788,16 @@
           <li><a href="https://transatlantictransfers.polimi.it/atlas">Transatlantic Transfers Atlas</a></li>
           <li>Digitized tables of contents from 103 issues of <em>Divagando</em> (1945&ndash;1957)</li>
           <li>Tables of contents of <em>Il Carroccio</em> (1915&ndash;1930)</li>
-          <li>Tables of contents of <em>Atlantica</em> (1923&ndash;1930)</li>
+          <li>Tables of contents of <em>Atlantica</em> (1923&ndash;1934)</li>
+          <li>Tables of contents of <em>Le Grandi Firme / Il Milione</em> (1924&ndash;1939)*</li>
+          <li>Tables of contents of <em>Epoca</em> (1950&ndash;1976)*</li>
           <li><a href="https://italianamericanimprints.omeka.net/">The Periconi Collection of Italian American Imprints</a></li>
           <li>Wikipedia biographical data</li>
           <li>Metadata from the Italian Sistema Bibliotecario Nazionale (SBN) and OCLC</li>
         </ul>
+        <p style="font-size:0.85em;color:#8a7e6b;margin-top:-0.4em;line-height:1.5;">
+          *Only contributors who also appear in other network sources were included, consistent with the project&rsquo;s focus on transnational Italian&ndash;American literary exchange.
+        </p>
         <p>
           To learn more, see the <a href="https://doi.org/10.1353/mln.2025.a963658">article published in <em>Modern Language Notes</em></a> (2025).
         </p>
@@ -1832,7 +1847,7 @@
 
       // Explorer state
       let explorerNodes = [];
-      let explorerMode = 'all'; // 'all' or 'direct'
+      let explorerMode = 'all'; // 'all', 'direct', or 'shortest'
       let lastExplorerResult = null; // cached result for mode switching
 
       // State
@@ -3005,9 +3020,12 @@
       }
 
       function setExplorerMode(mode) {
+        // Don't switch to a disabled mode
+        const btn = document.querySelector(`.explorer-mode-btn[data-mode="${mode}"]`);
+        if (btn && btn.disabled) return;
         explorerMode = mode;
-        document.querySelectorAll('.explorer-mode-btn').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.mode === mode);
+        document.querySelectorAll('.explorer-mode-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.mode === mode);
         });
         // Re-run with new mode if we have a cached result
         if (lastExplorerResult && explorerNodes.length === 2) {
@@ -3114,6 +3132,24 @@
         explorerMode = savedMode;
         lastExplorerResult = result;
         renderExplorerChips();
+
+        // Handle overflow: disable "All Paths" and auto-switch if needed
+        const allBtn = document.querySelector('.explorer-mode-btn[data-mode="all"]');
+        if (result.overflow) {
+          if (allBtn) {
+            allBtn.disabled = true;
+            allBtn.title = 'Too many paths to display';
+          }
+          if (explorerMode === 'all') {
+            explorerMode = 'shortest';
+          }
+        } else {
+          if (allBtn) {
+            allBtn.disabled = false;
+            allBtn.title = '';
+          }
+        }
+
         // Restore mode button UI
         document.querySelectorAll('.explorer-mode-btn').forEach(btn => {
           btn.classList.toggle('active', btn.dataset.mode === explorerMode);
@@ -3123,7 +3159,38 @@
 
         let displayNodes, displayEdges;
 
-        if (explorerMode === 'direct') {
+        if (explorerMode === 'shortest') {
+          displayNodes = new Set();
+          displayEdges = new Set();
+          if (startNode && endNode) {
+            const finder = new MultiNodeConnectionFinder(
+              Array.from(nodesById.values()),
+              linksData,
+              adjacencyList
+            );
+            const shortestPath = finder.bfsShortestPathNodes(startNode, endNode);
+            if (shortestPath) {
+              shortestPath.forEach(nodeId => displayNodes.add(nodeId));
+              for (let i = 0; i < shortestPath.length - 1; i++) {
+                displayEdges.add([shortestPath[i], shortestPath[i + 1]].sort().join('--'));
+              }
+            }
+          }
+          if (displayNodes.size === 0) {
+            const pathInfoEl = document.getElementById('path-info');
+            if (pathInfoEl) {
+              pathInfoEl.style.display = 'block';
+              pathInfoEl.textContent = '';
+              const msg = document.createElement('span');
+              msg.className = 'explorer-result-count';
+              msg.textContent = 'No path found between these nodes.';
+              pathInfoEl.appendChild(msg);
+            }
+            const modeEl = document.getElementById('explorer-mode');
+            if (modeEl) modeEl.style.display = 'flex';
+            return;
+          }
+        } else if (explorerMode === 'direct') {
           displayNodes = new Set();
           displayEdges = new Set();
           if (startNode) displayNodes.add(startNode);
@@ -3189,6 +3256,7 @@
             }
           }
           if ((commonNeighbors || 0) > 0) infoText += ' | ' + commonNeighbors + ' shared contact' + (commonNeighbors > 1 ? 's' : '');
+          if (result.overflow) infoText += ' (results truncated)';
 
           const infoSpan = document.createElement('span');
           infoSpan.textContent = infoText;
@@ -3489,7 +3557,7 @@
             connectedEdges.add([node.id, neighbor].sort().join('--'));
           });
 
-          return { nodes: connectedNodes, edges: connectedEdges };
+          return { nodes: connectedNodes, edges: connectedEdges, overflow: false };
         }
 
         findTwoNodePaths(startId, endId) {
@@ -3502,11 +3570,11 @@
           const connectedEdges = new Set();
           const shortestLength = this.bfsShortestPath(startNode.id, endNode.id);
 
-          if (shortestLength === -1) return { nodes: new Set(), edges: new Set() };
+          if (shortestLength === -1) return { nodes: new Set(), edges: new Set(), overflow: false };
 
           const maxPathLength = 4;
           const pathLengthTolerance = 1;
-          const paths = this.findAllPathsBFS(startNode.id, endNode.id, Math.min(maxPathLength, shortestLength + pathLengthTolerance));
+          const { paths, overflow } = this.findAllPathsBFS(startNode.id, endNode.id, Math.min(maxPathLength, shortestLength + pathLengthTolerance));
 
           paths.forEach(path => {
             path.forEach(nodeId => connectedNodes.add(nodeId));
@@ -3516,7 +3584,7 @@
           });
 
           this.addCommonNeighbors(startNode.id, endNode.id, connectedNodes, connectedEdges);
-          return { nodes: connectedNodes, edges: connectedEdges };
+          return { nodes: connectedNodes, edges: connectedEdges, overflow };
         }
 
         findSteinerTree(terminalNodeIds) {
@@ -3538,7 +3606,7 @@
               if (shortestDist !== -1) {
                 shortestDistances.set(key, shortestDist);
                 const maxLength = Math.min(maxPathLength, shortestDist + pathLengthTolerance);
-                const paths = this.findAllPathsBFS(source, target, maxLength);
+                const { paths } = this.findAllPathsBFS(source, target, maxLength);
                 if (paths.length > 0) allPairPaths.set(key, paths);
               }
             }
@@ -3596,17 +3664,44 @@
           return -1;
         }
 
+        bfsShortestPathNodes(start, end) {
+          if (start === end) return [start];
+          const queue = [[start]];
+          const visited = new Set([start]);
+
+          while (queue.length > 0) {
+            const path = queue.shift();
+            const node = path[path.length - 1];
+
+            const neighbors = this.adjacencyList.get(node);
+            if (neighbors) {
+              for (const neighbor of neighbors) {
+                if (visited.has(neighbor)) continue;
+                const newPath = [...path, neighbor];
+                if (neighbor === end) return newPath;
+                visited.add(neighbor);
+                queue.push(newPath);
+              }
+            }
+          }
+          return null;
+        }
+
         findAllPathsBFS(start, end, maxLength) {
           const allPaths = [];
           const queue = [[start]];
           const MAX_QUEUE = 50000;
+          const bestDepth = new Map();
+          bestDepth.set(start, 0);
+          let overflow = false;
 
           while (queue.length > 0) {
-            if (queue.length > MAX_QUEUE) break;
+            if (queue.length > MAX_QUEUE) { overflow = true; break; }
             const path = queue.shift();
             const currentNode = path[path.length - 1];
+            const depth = path.length - 1;
 
-            if (path.length > maxLength + 1) continue;
+            if (depth > maxLength) continue;
             if (currentNode === end) {
               allPaths.push([...path]);
               continue;
@@ -3615,11 +3710,17 @@
             const neighbors = this.adjacencyList.get(currentNode);
             if (neighbors) {
               neighbors.forEach(neighbor => {
-                if (!path.includes(neighbor)) queue.push([...path, neighbor]);
+                if (path.includes(neighbor)) return;
+                const newDepth = depth + 1;
+                const prevBest = bestDepth.get(neighbor);
+                if (prevBest === undefined || newDepth <= prevBest) {
+                  bestDepth.set(neighbor, newDepth);
+                  queue.push([...path, neighbor]);
+                }
               });
             }
           }
-          return allPaths;
+          return { paths: allPaths, overflow };
         }
 
         addCommonNeighbors(startId, endId, connectedNodes, connectedEdges) {
@@ -3680,19 +3781,21 @@
         const endNode = nodesByIdLower.get(endId.toLowerCase());
 
         if (!startNode || !endNode) {
-          return { nodes: new Set(), edges: new Set(), startNode: null, endNode: null, shortestPathLength: -1, pathCount: 0, pathsByLength: new Map() };
+          return { nodes: new Set(), edges: new Set(), startNode: null, endNode: null, shortestPathLength: -1, pathCount: 0, pathsByLength: new Map(), overflow: false };
         }
 
         const shortestLength = finder.bfsShortestPath(startNode.id, endNode.id);
         const pathsByLength = new Map();
         let totalPaths = 0;
+        let anyOverflow = result.overflow || false;
 
         if (shortestLength !== -1) {
           const maxPathLength = 4;
           const tolerance = 1;
           for (let length = shortestLength; length <= Math.min(maxPathLength, shortestLength + tolerance); length++) {
-            const pathsAtLength = finder.findAllPathsBFS(startNode.id, endNode.id, length)
-              .filter(path => path.length - 1 === length);
+            const { paths: rawPaths, overflow: lenOverflow } = finder.findAllPathsBFS(startNode.id, endNode.id, length);
+            if (lenOverflow) anyOverflow = true;
+            const pathsAtLength = rawPaths.filter(path => path.length - 1 === length);
             if (pathsAtLength.length > 0) {
               pathsByLength.set(length, pathsAtLength.length);
               totalPaths += pathsAtLength.length;
@@ -3712,7 +3815,8 @@
           shortestPathLength: shortestLength,
           pathCount: totalPaths,
           pathsByLength,
-          commonNeighbors: commonNeighbors.length
+          commonNeighbors: commonNeighbors.length,
+          overflow: anyOverflow
         };
       }
 
@@ -3988,6 +4092,8 @@
         explorerMode = 'all';
         document.querySelectorAll('.explorer-mode-btn').forEach(btn => {
           btn.classList.toggle('active', btn.dataset.mode === 'all');
+          btn.disabled = false;
+          btn.title = '';
         });
 
         // Reset 2-hop state
@@ -3995,6 +4101,26 @@
         twoHopSourceId = null;
         const twoHopBtn = document.getElementById('two-hop-btn');
         if (twoHopBtn) twoHopBtn.textContent = 'Show 2-hop neighborhood';
+
+        // Reset community clustering if active
+        if (communityColorActive) {
+          communityColorActive = false;
+          simulation.force("cluster", null);
+          simulation.force("link").strength(0.15);
+          const communityBtn = document.getElementById('community-toggle');
+          if (communityBtn) communityBtn.classList.remove('active');
+          const communityInfo = document.getElementById('community-info');
+          if (communityInfo) communityInfo.style.display = 'none';
+          if (preCommunityPositions) {
+            simulation.nodes().forEach(d => {
+              const pos = preCommunityPositions.get(d.id);
+              if (pos) { d.x = pos.x; d.y = pos.y; d.vx = 0; d.vy = 0; }
+            });
+            preCommunityPositions = null;
+          }
+          simulation.alpha(0.05).restart();
+          setTimeout(() => { if (!isDragging) { simulation.stop(); autoFitNetwork(); } }, 1000);
+        }
 
         nodeGroups.style("opacity", 1).style("display", "block");
         nodeGroups.select("circle")

@@ -13,7 +13,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-left">
-            <h1>Italian-American Literary Network</h1>
+            <h1>Reti di Carta</h1>
             <span class="header-subtitle">Data Editor</span>
         </div>
         <div class="header-right">
@@ -300,9 +300,24 @@
                 </div>
                 <div class="form-group">
                     <label for="new-node-type">Type:</label>
-                    <select id="new-node-type">
+                    <select id="new-node-type" onchange="Editor.onAddNodeTypeChange()">
                         <option value="person">Person</option>
                         <option value="institution">Institution</option>
+                    </select>
+                </div>
+                <div class="form-group" id="new-node-subtype-group" style="display: none;">
+                    <label for="new-node-subtype">Subtype:</label>
+                    <select id="new-node-subtype">
+                        <option value="">None</option>
+                        <option value="periodical">Periodical</option>
+                        <option value="publisher">Publisher</option>
+                        <option value="university">University</option>
+                        <option value="organization">Organization</option>
+                        <option value="media">Media</option>
+                        <option value="business">Business</option>
+                        <option value="event">Event</option>
+                        <option value="government">Government</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
             </div>
@@ -524,9 +539,9 @@
         </div>
     </div>
 
-    <!-- Connections Modal -->
+    <!-- Connections Modal (Large) -->
     <div class="modal" id="connections-modal">
-        <div class="modal-content">
+        <div class="modal-content modal-large">
             <div class="modal-header">
                 <h2 id="connections-modal-title">Connections</h2>
                 <button class="modal-close" onclick="Editor.closeModal('connections-modal')">&times;</button>
@@ -544,8 +559,8 @@
     <div class="toast-container" id="toast-container"></div>
 
     <!-- Scripts -->
-    <script src="/static/js/api.js?v=13"></script>
-    <script src="/static/js/batch.js?v=13"></script>
-    <script src="/static/js/editor.js?v=14"></script>
+    <script src="/static/js/api.js?v=15"></script>
+    <script src="/static/js/batch.js?v=15"></script>
+    <script src="/static/js/editor.js?v=15"></script>
 </body>
 </html>

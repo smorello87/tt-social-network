@@ -101,11 +101,6 @@
       "subtype": "university"
     },
     {
-      "id": "Lydia Holland",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Iris Origo",
       "type": "person",
       "subtype": null
@@ -186,11 +181,6 @@
       "subtype": null
     },
     {
-      "id": "Tommaso Landolfi",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Dante Arfelli",
       "type": "person",
       "subtype": null
@@ -264,11 +254,6 @@
       "id": "The Literary Review",
       "type": "institution",
       "subtype": "periodical"
-    },
-    {
-      "id": "Giuseppe Ungaretti",
-      "type": "person",
-      "subtype": null
     },
     {
       "id": "United States Information Agency",
@@ -356,11 +341,6 @@
       "subtype": "periodical"
     },
     {
-      "id": "International Committee on Intellectual Cooperation",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
       "id": "Il Tempo",
       "type": "institution",
       "subtype": "periodical"
@@ -382,11 +362,6 @@
     },
     {
       "id": "Stuart Hood",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Mario Schifano",
       "type": "person",
       "subtype": null
     },
@@ -452,11 +427,6 @@
     },
     {
       "id": "Ernest Hemingway",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Elio Vittorini",
       "type": "person",
       "subtype": null
     },
@@ -577,11 +547,6 @@
     },
     {
       "id": "Federico Garcia Lorca",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Jorge Luis Borges",
       "type": "person",
       "subtype": null
     },
@@ -786,19 +751,9 @@
       "subtype": "publisher"
     },
     {
-      "id": "Time",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
       "id": "Vogue",
       "type": "institution",
       "subtype": "periodical"
-    },
-    {
-      "id": "Prince of Bassiano Roffredo Caetani",
-      "type": "person",
-      "subtype": null
     },
     {
       "id": "Elsa Dallolio",
@@ -841,22 +796,12 @@
       "subtype": null
     },
     {
-      "id": "William P Wilcox",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Cass Canfield",
       "type": "person",
       "subtype": null
     },
     {
       "id": "Peter Tompkins",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Blanche Knopf",
       "type": "person",
       "subtype": null
     },
@@ -936,17 +881,7 @@
       "subtype": "event"
     },
     {
-      "id": "William Murray",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Janet Flanner",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Leonor Finti",
       "type": "person",
       "subtype": null
     },
@@ -957,26 +892,6 @@
     },
     {
       "id": "Alcide De Gasperi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Sandro Pertini",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Rufus Morey",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Joseph Burstyn",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Anna Magnani",
       "type": "person",
       "subtype": null
     },
@@ -1006,11 +921,6 @@
       "subtype": null
     },
     {
-      "id": "President Johnson",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Sergio Fenoaltea",
       "type": "person",
       "subtype": null
@@ -1026,16 +936,6 @@
       "subtype": "media"
     },
     {
-      "id": "Women Army Corps",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "National Liberation Committee",
-      "type": "institution",
-      "subtype": "organization"
-    },
-    {
       "id": "Mademoiselle",
       "type": "institution",
       "subtype": "periodical"
@@ -1049,11 +949,6 @@
       "id": "Epoca",
       "type": "institution",
       "subtype": "periodical"
-    },
-    {
-      "id": "World's Fair",
-      "type": "institution",
-      "subtype": "event"
     },
     {
       "id": "Helen Mollica",
@@ -1154,11 +1049,6 @@
       "id": "Carlo Cardazzo",
       "type": "person",
       "subtype": null
-    },
-    {
-      "id": "Fondazione Museo d'Arte Contemporanea in Memoria di Carlo Cardazzo",
-      "type": "institution",
-      "subtype": "organization"
     },
     {
       "id": "Vito Beltrani",
@@ -1431,11 +1321,6 @@
       "subtype": null
     },
     {
-      "id": "Villa I Tatti",
-      "type": "institution",
-      "subtype": null
-    },
-    {
       "id": "Salzburg Seminar in American Studies",
       "type": "institution",
       "subtype": "event"
@@ -1646,11 +1531,6 @@
       "subtype": null
     },
     {
-      "id": "Giaime Pintor",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Bruno Zevi",
       "type": "person",
       "subtype": null
@@ -1669,36 +1549,6 @@
       "id": "Alberto Tarchiani",
       "type": "person",
       "subtype": null
-    },
-    {
-      "id": "Elizabeth Bogert",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Ennio Caretto",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Arturo Zampaglione",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Vittorio Ivella",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Stefano Eco",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "University of Rome",
-      "type": "institution",
-      "subtype": "university"
     },
     {
       "id": "Oggi",
@@ -1836,54 +1686,9 @@
       "subtype": "publisher"
     },
     {
-      "id": "Margaret Leonora Eyles",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "David L Murray",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Vivyan Leonora Eyles",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Mario Praz",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Wolfgang Fritz Volbach",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Angus Davidson",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Times Literary Supplement",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
-      "id": "University of Liverpool",
+      "id": "University of Rome La Sapienza",
       "type": "institution",
       "subtype": "university"
-    },
-    {
-      "id": "La Sapienza",
-      "type": "institution",
-      "subtype": "university"
-    },
-    {
-      "id": "Secker & Warburg",
-      "type": "institution",
-      "subtype": "publisher"
     },
     {
       "id": "Penguin",
@@ -1896,47 +1701,12 @@
       "subtype": null
     },
     {
-      "id": "Sybil Cuffe",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Edith Wharton",
       "type": "person",
       "subtype": null
     },
     {
-      "id": "George Santayana",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Antonio Origo",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Cecil Pinsent",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Virginia Woolf",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Leonard Woolf",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Giacomo Leopardi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Cola di Rienzo",
       "type": "person",
       "subtype": null
     },
@@ -1951,44 +1721,9 @@
       "subtype": null
     },
     {
-      "id": "Francesco Datini",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Lord Byron",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Teresa Guiccioli",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Elena Croce",
       "type": "person",
       "subtype": null
-    },
-    {
-      "id": "Giovanna Benzoni",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Sunday Times",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
-      "id": "Villa Medici",
-      "type": "institution",
-      "subtype": null
-    },
-    {
-      "id": "Hogarth Press",
-      "type": "institution",
-      "subtype": "publisher"
     },
     {
       "id": "New York Review Classics",
@@ -1996,17 +1731,7 @@
       "subtype": "publisher"
     },
     {
-      "id": "Radcliffe College",
-      "type": "institution",
-      "subtype": "university"
-    },
-    {
       "id": "The Atlantic Monthly",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
-      "id": "Cornhill Magazine",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -2241,11 +1966,6 @@
       "subtype": null
     },
     {
-      "id": "Thomas Mann",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Gerhart Hauptmann",
       "type": "person",
       "subtype": null
@@ -2281,27 +2001,7 @@
       "subtype": null
     },
     {
-      "id": "Giorgio Diaz de Santillana",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Dino Terra",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Francesco Grandjacquet",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Carlo Rosselli",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Mario Levi",
       "type": "person",
       "subtype": null
     },
@@ -2321,52 +2021,7 @@
       "subtype": null
     },
     {
-      "id": "Franco Venturi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Paul Desjardins",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Renzo Guia",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Giuseppe Emanuele Modigliani",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Giuseppe Faravelli",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Angelo Tasca",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Albert Camus",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Lamberto Borghi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Aldo Bruzzichelli",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Meyer Schapiro",
       "type": "person",
       "subtype": null
     },
@@ -2377,16 +2032,6 @@
     },
     {
       "id": "Mary McCarthy",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Hannah Arendt",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Lionel Abel",
       "type": "person",
       "subtype": null
     },
@@ -2417,26 +2062,6 @@
     },
     {
       "id": "Sidney Hook",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Simone Weil",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "PJ Proudhon",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Georges Gurvitch",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "HJ Kaplan",
       "type": "person",
       "subtype": null
     },
@@ -2492,11 +2117,6 @@
     },
     {
       "id": "Elemire Zolla",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Isaiah Berlin",
       "type": "person",
       "subtype": null
     },
@@ -2601,11 +2221,6 @@
       "subtype": null
     },
     {
-      "id": "Stuart J Woolf",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Leonardo De Benedetti",
       "type": "person",
       "subtype": null
@@ -2649,41 +2264,6 @@
       "id": "Ca' Foscari University",
       "type": "institution",
       "subtype": "university"
-    },
-    {
-      "id": "Charles Sanders Peirce",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "William James",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "George Berkeley",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Herbert Spencer",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Walt Whitman",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Dorothy Canfield Fisher",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Pope Celestine VI",
-      "type": "person",
-      "subtype": null
     },
     {
       "id": "Henry Miller",
@@ -2761,49 +2341,9 @@
       "subtype": "government"
     },
     {
-      "id": "Jack Murphy",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Susan Sontag",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Isak Dinesen",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Leonard Michaels",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Patricia M Gathercole",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Edgar Allan Poe",
       "type": "person",
       "subtype": null
-    },
-    {
-      "id": "Studies in Short Fictions",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
-      "id": "The Dial Press",
-      "type": "institution",
-      "subtype": "publisher"
-    },
-    {
-      "id": "Dover Publications",
-      "type": "institution",
-      "subtype": "publisher"
     },
     {
       "id": "Marino Moretti",
@@ -3001,11 +2541,6 @@
       "subtype": "organization"
     },
     {
-      "id": "Alfred Rosmer",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Jean-Paul Sartre",
       "type": "person",
       "subtype": null
@@ -3064,21 +2599,6 @@
       "id": "The Nation",
       "type": "institution",
       "subtype": "periodical"
-    },
-    {
-      "id": "Revolution Proletarienne",
-      "type": "institution",
-      "subtype": "organization"
-    },
-    {
-      "id": "Friends of Russian Freedom",
-      "type": "institution",
-      "subtype": "organization"
-    },
-    {
-      "id": "Americans for Intellectual Freedom",
-      "type": "institution",
-      "subtype": "organization"
     },
     {
       "id": "Edward M Cifelli",
@@ -3841,127 +3361,7 @@
       "subtype": null
     },
     {
-      "id": "Luciano Rebay",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Isabella Gardner",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Ivar Ivask",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Andrew Wylie",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Briarcliff Quarterly",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
-      "id": "Imitations",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
-      "id": "Poetry Center in New York",
-      "type": "institution",
-      "subtype": "business"
-    },
-    {
-      "id": "William Benton",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Edward W Barret",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Dean Acheson",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "President Eisenhower",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Theodore C Streibert",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Clare Boothe Luce",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Office of Government Report",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "Coordinator of Inter-American Affairs",
-      "type": "institution",
-      "subtype": "business"
-    },
-    {
-      "id": "Office of the Coordinator of Information",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "Office of International Information and Cultural Affairs",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "International Broadcasting Division",
-      "type": "institution",
-      "subtype": "media"
-    },
-    {
-      "id": "International Press and Publication Division",
-      "type": "institution",
-      "subtype": "publisher"
-    },
-    {
-      "id": "International Motion Picture Division",
-      "type": "institution",
-      "subtype": "media"
-    },
-    {
-      "id": "International Exchange of Persons Division",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "Division of Libraries and Institutes",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "International Information Administration",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "President's Committee on International Information Activities",
-      "type": "institution",
-      "subtype": "government"
-    },
-    {
-      "id": "Jackson Committee",
       "type": "person",
       "subtype": null
     },
@@ -4251,129 +3651,14 @@
       "subtype": "government"
     },
     {
-      "id": "Paola Mazzetti",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Robert Einstein",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Albert Einstein",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Franz Kafka",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Lindsay Anderson",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Tony Richardson",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Karel Reisz",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Marguerite Waldeman",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Slade School of Fine Art",
-      "type": "institution",
-      "subtype": "university"
-    },
-    {
-      "id": "Free Cinema Movement",
-      "type": "institution",
-      "subtype": "organization"
-    },
-    {
       "id": "David McKay Company",
       "type": "institution",
       "subtype": "publisher"
     },
     {
-      "id": "George Weidenfeld",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Terence Kilmartin",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "L K Conrad",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Vernon Scannel",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Josephine de Boer",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "William Mostyn-Owen",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Irwin Shaw",
       "type": "person",
       "subtype": null
-    },
-    {
-      "id": "Piero Sraffa",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Francis Bacon",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Eric Hobsbawm",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Antonia Fraser",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "John Pope-Hennessy",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "St Martin's School of Art",
-      "type": "institution",
-      "subtype": "university"
-    },
-    {
-      "id": "Observer",
-      "type": "institution",
-      "subtype": "periodical"
     },
     {
       "id": "Pamela Swinglehurst",
@@ -5292,11 +4577,6 @@
     },
     {
       "id": "B T Avancini",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Carlo Cecioli",
       "type": "person",
       "subtype": null
     },
@@ -6336,11 +5616,6 @@
       "subtype": null
     },
     {
-      "id": "Bernard Wall",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Borla",
       "type": "institution",
       "subtype": "publisher"
@@ -6389,11 +5664,6 @@
       "id": "Compagnia Italiana Cinematografica Lux",
       "type": "institution",
       "subtype": "media"
-    },
-    {
-      "id": "Dino De Laurentis",
-      "type": "person",
-      "subtype": null
     },
     {
       "id": "Domenico Modugno",
@@ -6621,11 +5891,6 @@
       "subtype": "periodical"
     },
     {
-      "id": "Nuovi Argomenti",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
       "id": "Perry Como",
       "type": "person",
       "subtype": null
@@ -6637,11 +5902,6 @@
     },
     {
       "id": "Pietro Di Donato",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Pietro Germi",
       "type": "person",
       "subtype": null
     },
@@ -6747,11 +6007,6 @@
     },
     {
       "id": "Pasquale de Biasi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Giacomo N. de Martino",
       "type": "person",
       "subtype": null
     },
@@ -7046,7 +6301,7 @@
       "subtype": "publisher"
     },
     {
-      "id": "Le maschere",
+      "id": "Le Maschere",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -7558,7 +6813,7 @@
     {
       "id": "La Lucerna",
       "type": "institution",
-      "subtype": "periodical"
+      "subtype": "publisher"
     },
     {
       "id": "Editrice Convivio Letterario",
@@ -11226,11 +10481,6 @@
       "subtype": null
     },
     {
-      "id": "Onorio Ruvolo",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Orazio Pedrazzi",
       "type": "person",
       "subtype": null
@@ -14417,8 +13667,8 @@
     },
     {
       "id": "Columbian Academy (St Louis, Mo)",
-      "type": "person",
-      "subtype": null
+      "type": "institution",
+      "subtype": "organization"
     },
     {
       "id": "Damiano Leo",
@@ -16304,6 +15554,131 @@
       "id": "Luigi Sola",
       "type": "person",
       "subtype": null
+    },
+    {
+      "id": "Vinti Advertising Company",
+      "type": "institution",
+      "subtype": "business"
+    },
+    {
+      "id": "Life",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Donato La Penna",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Nick Di Domenico",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Rino Albertarelli",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Gino Boccasile",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Enzo Biagi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Il Milione (US Version)",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Francesco Ventresca",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Daniel Ryerson",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Biblioteca Rossa",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Flavio Venanzi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Italian Labor Publishing Co. (Chicago)",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Antonio Tua",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Italian American Printing",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Edizioni in Esilio",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Le Edizioni Sociali",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Milano Sera",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Mengarelli",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "Columbia University Press",
+      "type": "institution",
+      "subtype": "publisher"
+    },
+    {
+      "id": "The Survey",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Charities",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Tempo",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Aldo Palazzi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Bruno Munari",
+      "type": "person",
+      "subtype": null
     }
   ],
   "links": [
@@ -16353,10 +15728,6 @@
     },
     {
       "source": "Giuseppe Prezzolini",
-      "target": "International Committee on Intellectual Cooperation"
-    },
-    {
-      "source": "Giuseppe Prezzolini",
       "target": "Il Tempo"
     },
     {
@@ -16369,7 +15740,19 @@
     },
     {
       "source": "Giuseppe Prezzolini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giuseppe Prezzolini",
       "target": "Columbia University"
+    },
+    {
+      "source": "Giuseppe Prezzolini",
+      "target": "Oggi"
+    },
+    {
+      "source": "Giuseppe Prezzolini",
+      "target": "Treves-Treccani-Tumminelli"
     },
     {
       "source": "Giuseppe Prezzolini",
@@ -16409,10 +15792,6 @@
     },
     {
       "source": "Goffredo Parise",
-      "target": "Mario Schifano"
-    },
-    {
-      "source": "Goffredo Parise",
       "target": "Farrar, Straus & Company"
     },
     {
@@ -16426,6 +15805,10 @@
     {
       "source": "Goffredo Parise",
       "target": "Il Corriere della Sera"
+    },
+    {
+      "source": "Goffredo Parise",
+      "target": "Epoca"
     },
     {
       "source": "Giulio Einaudi Editore",
@@ -16486,10 +15869,6 @@
     {
       "source": "Giulio Einaudi Editore",
       "target": "Ernest Hemingway"
-    },
-    {
-      "source": "Giulio Einaudi Editore",
-      "target": "Elio Vittorini"
     },
     {
       "source": "Giulio Einaudi Editore",
@@ -16593,10 +15972,6 @@
     },
     {
       "source": "Pier Paolo Pasolini",
-      "target": "Elio Vittorini"
-    },
-    {
-      "source": "Pier Paolo Pasolini",
       "target": "William Weaver"
     },
     {
@@ -16649,6 +16024,10 @@
     },
     {
       "source": "Pier Paolo Pasolini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Pier Paolo Pasolini",
       "target": "Federico Fellini"
     },
     {
@@ -16673,23 +16052,11 @@
     },
     {
       "source": "New Directions",
-      "target": "Tommaso Landolfi"
-    },
-    {
-      "source": "New Directions",
-      "target": "Giuseppe Ungaretti"
-    },
-    {
-      "source": "New Directions",
       "target": "Cesare Pavese"
     },
     {
       "source": "New Directions",
       "target": "Renato Poggioli"
-    },
-    {
-      "source": "New Directions",
-      "target": "Elio Vittorini"
     },
     {
       "source": "New Directions",
@@ -16706,10 +16073,6 @@
     {
       "source": "New Directions",
       "target": "Federico Garcia Lorca"
-    },
-    {
-      "source": "New Directions",
-      "target": "Jorge Luis Borges"
     },
     {
       "source": "New Directions",
@@ -16828,6 +16191,14 @@
       "target": "Harcourt"
     },
     {
+      "source": "Alba de Cespedes",
+      "target": "Epoca"
+    },
+    {
+      "source": "Alba de Cespedes",
+      "target": "Il Milione"
+    },
+    {
       "source": "Botteghe Oscure",
       "target": "Marguerite Chapin Caetani"
     },
@@ -16838,10 +16209,6 @@
     {
       "source": "Botteghe Oscure",
       "target": "Archibald MacLeish"
-    },
-    {
-      "source": "Botteghe Oscure",
-      "target": "Giuseppe Ungaretti"
     },
     {
       "source": "Botteghe Oscure",
@@ -16921,19 +16288,11 @@
     },
     {
       "source": "Botteghe Oscure",
-      "target": "Time"
-    },
-    {
-      "source": "Botteghe Oscure",
       "target": "Vogue"
     },
     {
       "source": "Marguerite Chapin Caetani",
       "target": "Ignazio Silone"
-    },
-    {
-      "source": "Marguerite Chapin Caetani",
-      "target": "Giuseppe Ungaretti"
     },
     {
       "source": "Marguerite Chapin Caetani",
@@ -16950,10 +16309,6 @@
     {
       "source": "Marguerite Chapin Caetani",
       "target": "Guglielmo Petroni"
-    },
-    {
-      "source": "Marguerite Chapin Caetani",
-      "target": "Prince of Bassiano Roffredo Caetani"
     },
     {
       "source": "Marguerite Chapin Caetani",
@@ -16989,19 +16344,11 @@
     },
     {
       "source": "Marguerite Chapin Caetani",
-      "target": "William P Wilcox"
-    },
-    {
-      "source": "Marguerite Chapin Caetani",
       "target": "Cass Canfield"
     },
     {
       "source": "Marguerite Chapin Caetani",
       "target": "Peter Tompkins"
-    },
-    {
-      "source": "Marguerite Chapin Caetani",
-      "target": "Blanche Knopf"
     },
     {
       "source": "Marguerite Chapin Caetani",
@@ -17097,10 +16444,6 @@
     },
     {
       "source": "Natalia Danesi Murray",
-      "target": "Giuseppe Ungaretti"
-    },
-    {
-      "source": "Natalia Danesi Murray",
       "target": "United States Information Service"
     },
     {
@@ -17133,15 +16476,7 @@
     },
     {
       "source": "Natalia Danesi Murray",
-      "target": "William Murray"
-    },
-    {
-      "source": "Natalia Danesi Murray",
       "target": "Janet Flanner"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "Leonor Finti"
     },
     {
       "source": "Natalia Danesi Murray",
@@ -17150,22 +16485,6 @@
     {
       "source": "Natalia Danesi Murray",
       "target": "Alcide De Gasperi"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "Sandro Pertini"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "Rufus Morey"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "Joseph Burstyn"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "Anna Magnani"
     },
     {
       "source": "Natalia Danesi Murray",
@@ -17189,10 +16508,6 @@
     },
     {
       "source": "Natalia Danesi Murray",
-      "target": "President Johnson"
-    },
-    {
-      "source": "Natalia Danesi Murray",
       "target": "Sergio Fenoaltea"
     },
     {
@@ -17205,14 +16520,6 @@
     },
     {
       "source": "Natalia Danesi Murray",
-      "target": "Women Army Corps"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "National Liberation Committee"
-    },
-    {
-      "source": "Natalia Danesi Murray",
       "target": "Mademoiselle"
     },
     {
@@ -17222,10 +16529,6 @@
     {
       "source": "Natalia Danesi Murray",
       "target": "Epoca"
-    },
-    {
-      "source": "Natalia Danesi Murray",
-      "target": "World's Fair"
     },
     {
       "source": "Antonio Barolini",
@@ -17321,10 +16624,6 @@
     },
     {
       "source": "Milena Milani",
-      "target": "Giuseppe Ungaretti"
-    },
-    {
-      "source": "Milena Milani",
       "target": "Arnoldo Mondadori Editore"
     },
     {
@@ -17342,10 +16641,6 @@
     {
       "source": "Milena Milani",
       "target": "Carlo Cardazzo"
-    },
-    {
-      "source": "Milena Milani",
-      "target": "Fondazione Museo d'Arte Contemporanea in Memoria di Carlo Cardazzo"
     },
     {
       "source": "Elma Baccanelli",
@@ -17629,10 +16924,6 @@
     },
     {
       "source": "Alfred Kazin",
-      "target": "Villa I Tatti"
-    },
-    {
-      "source": "Alfred Kazin",
       "target": "Salzburg Seminar in American Studies"
     },
     {
@@ -17881,10 +17172,6 @@
     },
     {
       "source": "Ugo Stille",
-      "target": "Elio Vittorini"
-    },
-    {
-      "source": "Ugo Stille",
       "target": "Il Corriere della Sera"
     },
     {
@@ -17921,10 +17208,6 @@
     },
     {
       "source": "Ugo Stille",
-      "target": "Giaime Pintor"
-    },
-    {
-      "source": "Ugo Stille",
       "target": "Bruno Zevi"
     },
     {
@@ -17941,31 +17224,11 @@
     },
     {
       "source": "Ugo Stille",
-      "target": "Elizabeth Bogert"
-    },
-    {
-      "source": "Ugo Stille",
-      "target": "Ennio Caretto"
-    },
-    {
-      "source": "Ugo Stille",
-      "target": "Arturo Zampaglione"
-    },
-    {
-      "source": "Ugo Stille",
-      "target": "Vittorio Ivella"
-    },
-    {
-      "source": "Ugo Stille",
-      "target": "Stefano Eco"
-    },
-    {
-      "source": "Ugo Stille",
-      "target": "University of Rome"
-    },
-    {
-      "source": "Ugo Stille",
       "target": "Oggi"
+    },
+    {
+      "source": "Ugo Stille",
+      "target": "University of Rome La Sapienza"
     },
     {
       "source": "American Academy",
@@ -18132,66 +17395,6 @@
       "target": "Princeton University Press"
     },
     {
-      "source": "Lydia Holland",
-      "target": "Farrar, Straus & Company"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Alberto Moravia"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Signet Books"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "New American Library"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Margaret Leonora Eyles"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "David L Murray"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Vivyan Leonora Eyles"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Mario Praz"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Wolfgang Fritz Volbach"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Angus Davidson"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Times Literary Supplement"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "University of Liverpool"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "La Sapienza"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Secker & Warburg"
-    },
-    {
-      "source": "Lydia Holland",
-      "target": "Penguin"
-    },
-    {
       "source": "Iris Origo",
       "target": "Botteghe Oscure"
     },
@@ -18233,39 +17436,7 @@
     },
     {
       "source": "Iris Origo",
-      "target": "Sybil Cuffe"
-    },
-    {
-      "source": "Iris Origo",
       "target": "Edith Wharton"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "George Santayana"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Antonio Origo"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Cecil Pinsent"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Virginia Woolf"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Leonard Woolf"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Giacomo Leopardi"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Cola di Rienzo"
     },
     {
       "source": "Iris Origo",
@@ -18277,35 +17448,7 @@
     },
     {
       "source": "Iris Origo",
-      "target": "Francesco Datini"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Lord Byron"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Teresa Guiccioli"
-    },
-    {
-      "source": "Iris Origo",
       "target": "Elena Croce"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Giovanna Benzoni"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Sunday Times"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Villa Medici"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Hogarth Press"
     },
     {
       "source": "Iris Origo",
@@ -18313,15 +17456,7 @@
     },
     {
       "source": "Iris Origo",
-      "target": "Radcliffe College"
-    },
-    {
-      "source": "Iris Origo",
       "target": "The Atlantic Monthly"
-    },
-    {
-      "source": "Iris Origo",
-      "target": "Cornhill Magazine"
     },
     {
       "source": "Divagando",
@@ -18689,19 +17824,7 @@
     },
     {
       "source": "Paolo Milano",
-      "target": "Times Literary Supplement"
-    },
-    {
-      "source": "Paolo Milano",
-      "target": "University of Liverpool"
-    },
-    {
-      "source": "Paolo Milano",
-      "target": "La Sapienza"
-    },
-    {
-      "source": "Paolo Milano",
-      "target": "Secker & Warburg"
+      "target": "University of Rome La Sapienza"
     },
     {
       "source": "Paolo Milano",
@@ -18710,10 +17833,6 @@
     {
       "source": "Paolo Milano",
       "target": "Silvio D'Amico"
-    },
-    {
-      "source": "Paolo Milano",
-      "target": "Thomas Mann"
     },
     {
       "source": "Paolo Milano",
@@ -18785,6 +17904,10 @@
     },
     {
       "source": "Nicola Chiaromonte",
+      "target": "Epoca"
+    },
+    {
+      "source": "Nicola Chiaromonte",
       "target": "Office of War Information"
     },
     {
@@ -18805,7 +17928,7 @@
     },
     {
       "source": "Nicola Chiaromonte",
-      "target": "University of Rome"
+      "target": "University of Rome La Sapienza"
     },
     {
       "source": "Nicola Chiaromonte",
@@ -18817,23 +17940,7 @@
     },
     {
       "source": "Nicola Chiaromonte",
-      "target": "Giorgio Diaz de Santillana"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Dino Terra"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Francesco Grandjacquet"
-    },
-    {
-      "source": "Nicola Chiaromonte",
       "target": "Carlo Rosselli"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Mario Levi"
     },
     {
       "source": "Nicola Chiaromonte",
@@ -18849,43 +17956,7 @@
     },
     {
       "source": "Nicola Chiaromonte",
-      "target": "Franco Venturi"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Paul Desjardins"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Renzo Guia"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Giuseppe Emanuele Modigliani"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Giuseppe Faravelli"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Angelo Tasca"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Albert Camus"
-    },
-    {
-      "source": "Nicola Chiaromonte",
       "target": "Lamberto Borghi"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Aldo Bruzzichelli"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Meyer Schapiro"
     },
     {
       "source": "Nicola Chiaromonte",
@@ -18894,14 +17965,6 @@
     {
       "source": "Nicola Chiaromonte",
       "target": "Mary McCarthy"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Hannah Arendt"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Lionel Abel"
     },
     {
       "source": "Nicola Chiaromonte",
@@ -18926,22 +17989,6 @@
     {
       "source": "Nicola Chiaromonte",
       "target": "Sidney Hook"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Simone Weil"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "PJ Proudhon"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "Georges Gurvitch"
-    },
-    {
-      "source": "Nicola Chiaromonte",
-      "target": "HJ Kaplan"
     },
     {
       "source": "Nicola Chiaromonte",
@@ -18993,10 +18040,6 @@
     },
     {
       "source": "Tempo Presente",
-      "target": "Albert Camus"
-    },
-    {
-      "source": "Tempo Presente",
       "target": "Dwight Macdonald"
     },
     {
@@ -19033,10 +18076,6 @@
     },
     {
       "source": "Tempo Presente",
-      "target": "Isaiah Berlin"
-    },
-    {
-      "source": "Tempo Presente",
       "target": "Guido Piovene"
     },
     {
@@ -19057,10 +18096,6 @@
     },
     {
       "source": "Giuseppe Berto",
-      "target": "Elio Vittorini"
-    },
-    {
-      "source": "Giuseppe Berto",
       "target": "Alberto Moravia"
     },
     {
@@ -19073,6 +18108,10 @@
     },
     {
       "source": "Giuseppe Berto",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giuseppe Berto",
       "target": "Claudio Gora"
     },
     {
@@ -19082,10 +18121,6 @@
     {
       "source": "Giuseppe Berto",
       "target": "New American Library"
-    },
-    {
-      "source": "Giuseppe Berto",
-      "target": "Angus Davidson"
     },
     {
       "source": "Giuseppe Berto",
@@ -19157,10 +18192,6 @@
     },
     {
       "source": "Isabel Quigly",
-      "target": "Angus Davidson"
-    },
-    {
-      "source": "Isabel Quigly",
       "target": "Penguin"
     },
     {
@@ -19213,10 +18244,6 @@
     },
     {
       "source": "Primo Levi",
-      "target": "Stuart J Woolf"
-    },
-    {
-      "source": "Primo Levi",
       "target": "Leonardo De Benedetti"
     },
     {
@@ -19265,6 +18292,10 @@
     },
     {
       "source": "Giovanni Papini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giovanni Papini",
       "target": "Columbia University"
     },
     {
@@ -19278,34 +18309,6 @@
     {
       "source": "Giovanni Papini",
       "target": "Greenwood Press"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "Charles Sanders Peirce"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "William James"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "George Berkeley"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "Herbert Spencer"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "Walt Whitman"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "Dorothy Canfield Fisher"
-    },
-    {
-      "source": "Giovanni Papini",
-      "target": "Pope Celestine VI"
     },
     {
       "source": "Giovanni Papini",
@@ -19389,6 +18392,10 @@
     },
     {
       "source": "Ignazio Silone",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ignazio Silone",
       "target": "New York Times"
     },
     {
@@ -19418,66 +18425,6 @@
     {
       "source": "Ignazio Silone",
       "target": "Central Intelligence Agency"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Marguerite Chapin Caetani"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Bompiani Editore"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "James Laughlin"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Jorge Luis Borges"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "New York Times"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Encounter"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Jack Murphy"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Susan Sontag"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Isak Dinesen"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Leonard Michaels"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Patricia M Gathercole"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Edgar Allan Poe"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Studies in Short Fictions"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "The Dial Press"
-    },
-    {
-      "source": "Tommaso Landolfi",
-      "target": "Dover Publications"
     },
     {
       "source": "Dante Arfelli",
@@ -19753,10 +18700,6 @@
     },
     {
       "source": "Europe-America Groups",
-      "target": "Albert Camus"
-    },
-    {
-      "source": "Europe-America Groups",
       "target": "Lamberto Borghi"
     },
     {
@@ -19790,10 +18733,6 @@
     {
       "source": "Europe-America Groups",
       "target": "Nicolas Nabokov"
-    },
-    {
-      "source": "Europe-America Groups",
-      "target": "Alfred Rosmer"
     },
     {
       "source": "Europe-America Groups",
@@ -19842,18 +18781,6 @@
     {
       "source": "Europe-America Groups",
       "target": "The Nation"
-    },
-    {
-      "source": "Europe-America Groups",
-      "target": "Revolution Proletarienne"
-    },
-    {
-      "source": "Europe-America Groups",
-      "target": "Friends of Russian Freedom"
-    },
-    {
-      "source": "Europe-America Groups",
-      "target": "Americans for Intellectual Freedom"
     },
     {
       "source": "John Anthony Ciardi",
@@ -20149,10 +19076,6 @@
     },
     {
       "source": "Bompiani Editore",
-      "target": "Elio Vittorini"
-    },
-    {
-      "source": "Bompiani Editore",
       "target": "Philip Roth"
     },
     {
@@ -20182,10 +19105,6 @@
     {
       "source": "Bompiani Editore",
       "target": "Raffaele La Capria"
-    },
-    {
-      "source": "Bompiani Editore",
-      "target": "George Santayana"
     },
     {
       "source": "Bompiani Editore",
@@ -20413,6 +19332,10 @@
     },
     {
       "source": "Gabriele d'Annunzio",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Gabriele d'Annunzio",
       "target": "Atlantica"
     },
     {
@@ -20637,10 +19560,6 @@
     },
     {
       "source": "The Literary Review",
-      "target": "Giuseppe Ungaretti"
-    },
-    {
-      "source": "The Literary Review",
       "target": "Italo Calvino"
     },
     {
@@ -20828,86 +19747,6 @@
       "target": "Niccolo\u0300 Machiavelli"
     },
     {
-      "source": "Giuseppe Ungaretti",
-      "target": "Allen Ginsberg"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Renato Poggioli"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "William Weaver"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Harvard University"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Eugenio Montale"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Umberto Saba"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Columbia University"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Salvatore Quasimodo"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Louis Simpson"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Giacomo Leopardi"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Robert Lowell"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Edgar Allan Poe"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Sergio Pacifici"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Luciano Rebay"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Isabella Gardner"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Ivar Ivask"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Andrew Wylie"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Briarcliff Quarterly"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Imitations"
-    },
-    {
-      "source": "Giuseppe Ungaretti",
-      "target": "Poetry Center in New York"
-    },
-    {
       "source": "United States Information Agency",
       "target": "United States Information Service"
     },
@@ -20917,75 +19756,7 @@
     },
     {
       "source": "United States Information Agency",
-      "target": "William Benton"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Edward W Barret"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Dean Acheson"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "President Eisenhower"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Theodore C Streibert"
-    },
-    {
-      "source": "United States Information Agency",
       "target": "Clare Boothe Luce"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Office of Government Report"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Coordinator of Inter-American Affairs"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Office of the Coordinator of Information"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Office of International Information and Cultural Affairs"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "International Broadcasting Division"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "International Press and Publication Division"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "International Motion Picture Division"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "International Exchange of Persons Division"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Division of Libraries and Institutes"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "International Information Administration"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "President's Committee on International Information Activities"
-    },
-    {
-      "source": "United States Information Agency",
-      "target": "Jackson Committee"
     },
     {
       "source": "United States Information Service",
@@ -21017,15 +19788,7 @@
     },
     {
       "source": "Arnoldo Mondadori Editore",
-      "target": "Giuseppe Ungaretti"
-    },
-    {
-      "source": "Arnoldo Mondadori Editore",
       "target": "Cesare Pavese"
-    },
-    {
-      "source": "Arnoldo Mondadori Editore",
-      "target": "Elio Vittorini"
     },
     {
       "source": "Arnoldo Mondadori Editore",
@@ -21381,51 +20144,7 @@
     },
     {
       "source": "Lorenza Mazzetti",
-      "target": "Times Literary Supplement"
-    },
-    {
-      "source": "Lorenza Mazzetti",
       "target": "Sergio Pacifici"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Paola Mazzetti"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Robert Einstein"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Albert Einstein"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Franz Kafka"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Lindsay Anderson"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Tony Richardson"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Karel Reisz"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Marguerite Waldeman"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Slade School of Fine Art"
-    },
-    {
-      "source": "Lorenza Mazzetti",
-      "target": "Free Cinema Movement"
     },
     {
       "source": "Lorenza Mazzetti",
@@ -21461,63 +20180,7 @@
     },
     {
       "source": "Gaia Servadio",
-      "target": "Isaiah Berlin"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "George Weidenfeld"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Terence Kilmartin"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "L K Conrad"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Vernon Scannel"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Josephine de Boer"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "William Mostyn-Owen"
-    },
-    {
-      "source": "Gaia Servadio",
       "target": "Irwin Shaw"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Piero Sraffa"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Francis Bacon"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Eric Hobsbawm"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Antonia Fraser"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "John Pope-Hennessy"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "St Martin's School of Art"
-    },
-    {
-      "source": "Gaia Servadio",
-      "target": "Observer"
     },
     {
       "source": "Oriana Fallaci",
@@ -21534,6 +20197,10 @@
     {
       "source": "Oriana Fallaci",
       "target": "L'Europeo"
+    },
+    {
+      "source": "Oriana Fallaci",
+      "target": "Epoca"
     },
     {
       "source": "Oriana Fallaci",
@@ -21574,6 +20241,10 @@
     {
       "source": "Cesare Pavese",
       "target": "Noonday Press"
+    },
+    {
+      "source": "Cesare Pavese",
+      "target": "Epoca"
     },
     {
       "source": "Cesare Pavese",
@@ -21749,10 +20420,6 @@
     },
     {
       "source": "Allen Ginsberg",
-      "target": "Elio Vittorini"
-    },
-    {
-      "source": "Allen Ginsberg",
       "target": "Ezra Pound"
     },
     {
@@ -21881,6 +20548,10 @@
     },
     {
       "source": "Fernanda Pivano",
+      "target": "Epoca"
+    },
+    {
+      "source": "Fernanda Pivano",
       "target": "East 128"
     },
     {
@@ -21924,52 +20595,20 @@
       "target": "Pianeta Fresco"
     },
     {
-      "source": "Mario Schifano",
-      "target": "Giuseppe Ungaretti"
-    },
-    {
-      "source": "Mario Schifano",
-      "target": "Alberto Moravia"
-    },
-    {
-      "source": "Mario Schifano",
-      "target": "Sandro Penna"
-    },
-    {
-      "source": "Mario Schifano",
-      "target": "Renato Guttuso"
-    },
-    {
       "source": "Renato Poggioli",
       "target": "Quaderni Italiani"
     },
     {
-      "source": "Elio Vittorini",
-      "target": "Italo Calvino"
+      "source": "Luigi Einaudi",
+      "target": "Epoca"
     },
     {
-      "source": "Elio Vittorini",
-      "target": "John Steinbeck"
+      "source": "Ernest Hemingway",
+      "target": "Epoca"
     },
     {
-      "source": "Elio Vittorini",
-      "target": "James Laughlin"
-    },
-    {
-      "source": "Elio Vittorini",
-      "target": "Edgar Allan Poe"
-    },
-    {
-      "source": "Elio Vittorini",
-      "target": "Compagnia Italiana Cinematografica Lux"
-    },
-    {
-      "source": "Elio Vittorini",
-      "target": "John Fante"
-    },
-    {
-      "source": "Elio Vittorini",
-      "target": "William Saroyan"
+      "source": "Italo Calvino",
+      "target": "Epoca"
     },
     {
       "source": "Italo Calvino",
@@ -21988,6 +20627,22 @@
       "target": "Mario Monicelli"
     },
     {
+      "source": "Giorgio Bassani",
+      "target": "Epoca"
+    },
+    {
+      "source": "Natalia Ginzburg",
+      "target": "Epoca"
+    },
+    {
+      "source": "Elsa Morante",
+      "target": "Epoca"
+    },
+    {
+      "source": "Vittorio De Sica",
+      "target": "Epoca"
+    },
+    {
       "source": "Alberto Moravia",
       "target": "Farrar, Straus & Company"
     },
@@ -22001,6 +20656,10 @@
     },
     {
       "source": "Alberto Moravia",
+      "target": "Epoca"
+    },
+    {
+      "source": "Alberto Moravia",
       "target": "Mario Soldati"
     },
     {
@@ -22009,23 +20668,23 @@
     },
     {
       "source": "Alberto Moravia",
-      "target": "Angus Davidson"
-    },
-    {
-      "source": "Alberto Moravia",
       "target": "Cesare Zavattini"
-    },
-    {
-      "source": "Alberto Moravia",
-      "target": "Bernard Wall"
     },
     {
       "source": "Alberto Moravia",
       "target": "Carlo Ponti"
     },
     {
-      "source": "Alberto Moravia",
-      "target": "Nuovi Argomenti"
+      "source": "William Faulkner",
+      "target": "Epoca"
+    },
+    {
+      "source": "John Steinbeck",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ezra Pound",
+      "target": "Epoca"
     },
     {
       "source": "Ezra Pound",
@@ -22044,6 +20703,30 @@
       "target": "Elio Petri"
     },
     {
+      "source": "Mario Luzi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Eugenio Montale",
+      "target": "Epoca"
+    },
+    {
+      "source": "Andrea Zanzotto",
+      "target": "Epoca"
+    },
+    {
+      "source": "Tommaso Giglio",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giorgio Monicelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Enrico Pea",
+      "target": "Epoca"
+    },
+    {
       "source": "Partisan Review",
       "target": "Archibald MacLeish"
     },
@@ -22058,6 +20741,22 @@
     {
       "source": "Doubleday & Company",
       "target": "Oriana Fallaci"
+    },
+    {
+      "source": "Vasco Pratolini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Carlo Cassola",
+      "target": "Epoca"
+    },
+    {
+      "source": "Guglielmo Petroni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Guglielmo Petroni",
+      "target": "Oggi"
     },
     {
       "source": "Giuseppe Tomasi di Lampedusa",
@@ -22076,6 +20775,18 @@
       "target": "Cinecitta"
     },
     {
+      "source": "Giorgio Caproni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Carlo Levi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Umberto Saba",
+      "target": "Epoca"
+    },
+    {
       "source": "Umberto Saba",
       "target": "SF Vanni Publishers and Booksellers"
     },
@@ -22089,7 +20800,51 @@
     },
     {
       "source": "Luigi Barzini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luigi Barzini",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Alcide De Gasperi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Alfonso Gatto",
+      "target": "Epoca"
+    },
+    {
+      "source": "Alfonso Gatto",
+      "target": "Oggi"
+    },
+    {
+      "source": "Vittorio Sereni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Arnoldo Mondadori",
+      "target": "Epoca"
+    },
+    {
+      "source": "Nando Sampietro",
+      "target": "Epoca"
+    },
+    {
+      "source": "Epoca",
+      "target": "Rizzoli Editore"
+    },
+    {
+      "source": "Epoca",
+      "target": "Arnoldo Mondadori Editore"
+    },
+    {
+      "source": "Epoca",
+      "target": "Enzo Biagi"
+    },
+    {
+      "source": "Adriano Olivetti",
+      "target": "Epoca"
     },
     {
       "source": "Columbia University",
@@ -22128,6 +20883,10 @@
       "target": "New York City Landmarks Preservation Commission"
     },
     {
+      "source": "Carlo Cardazzo",
+      "target": "Epoca"
+    },
+    {
       "source": "Fiorello La Guardia",
       "target": "Il Carroccio"
     },
@@ -22136,8 +20895,36 @@
       "target": "L'Americolo"
     },
     {
+      "source": "Carlo Laurenzi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Vitaliano Brancati",
+      "target": "Epoca"
+    },
+    {
       "source": "Vitaliano Brancati",
       "target": "Il Milione"
+    },
+    {
+      "source": "Manlio Cancogni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Pier Maria Pasinetti",
+      "target": "Corriere della Sera"
+    },
+    {
+      "source": "Pier Maria Pasinetti",
+      "target": "Yale University"
+    },
+    {
+      "source": "Pier Maria Pasinetti",
+      "target": "University of California"
+    },
+    {
+      "source": "Pier Maria Pasinetti",
+      "target": "Oggi"
     },
     {
       "source": "Mario Pei",
@@ -22160,6 +20947,10 @@
       "target": "Atlantica"
     },
     {
+      "source": "Salvatore Quasimodo",
+      "target": "Epoca"
+    },
+    {
       "source": "Giovanni Verga",
       "target": "SF Vanni Publishers and Booksellers"
     },
@@ -22172,8 +20963,20 @@
       "target": "SF Vanni Publishers and Booksellers"
     },
     {
+      "source": "Mario Soldati",
+      "target": "Epoca"
+    },
+    {
+      "source": "Dante Society of America",
+      "target": "Eugene Luotto"
+    },
+    {
       "source": "Luigi Pirandello",
       "target": "Divagando"
+    },
+    {
+      "source": "Luigi Pirandello",
+      "target": "Epoca"
     },
     {
       "source": "Luigi Pirandello",
@@ -22201,11 +21004,47 @@
     },
     {
       "source": "Giovanni Ansaldo",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giovanni Ansaldo",
       "target": "Gaetano Salvemini"
     },
     {
       "source": "Giovanni Ansaldo",
       "target": "L'Unita"
+    },
+    {
+      "source": "Indro Montanelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Dino Buzzati",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ennio Flaiano",
+      "target": "Epoca"
+    },
+    {
+      "source": "Claudio Gora",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luigi Bartolini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luigi Bartolini",
+      "target": "Oggi"
+    },
+    {
+      "source": "Giovanni Comisso",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giovanni Comisso",
+      "target": "Oggi"
     },
     {
       "source": "Giovanni Comisso",
@@ -22229,6 +21068,10 @@
     },
     {
       "source": "Giuseppe Marotta",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giuseppe Marotta",
       "target": "Cesare Zavattini"
     },
     {
@@ -22236,16 +21079,92 @@
       "target": "Il Milione"
     },
     {
+      "source": "Federico Fellini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luchino Visconti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Riccardo Bacchelli",
+      "target": "Epoca"
+    },
+    {
       "source": "Giovanni Gentile",
       "target": "Atlantica"
+    },
+    {
+      "source": "Bruno Zevi",
+      "target": "Epoca"
     },
     {
       "source": "Alberto Tarchiani",
       "target": "Il Carroccio"
     },
     {
-      "source": "Angus Davidson",
-      "target": "Farrar, Straus & Company"
+      "source": "Oggi",
+      "target": "Elsa Morante"
+    },
+    {
+      "source": "Oggi",
+      "target": "Alberto Moravia"
+    },
+    {
+      "source": "Oggi",
+      "target": "John Steinbeck"
+    },
+    {
+      "source": "Oggi",
+      "target": "Eugenio Montale"
+    },
+    {
+      "source": "Oggi",
+      "target": "Carlo Cassola"
+    },
+    {
+      "source": "Oggi",
+      "target": "Vitaliano Brancati"
+    },
+    {
+      "source": "Oggi",
+      "target": "Ennio Flaiano"
+    },
+    {
+      "source": "Oggi",
+      "target": "Irwin Shaw"
+    },
+    {
+      "source": "Oggi",
+      "target": "Achille Campanile"
+    },
+    {
+      "source": "Oggi",
+      "target": "John Fante"
+    },
+    {
+      "source": "Oggi",
+      "target": "Renato Guttuso"
+    },
+    {
+      "source": "Oggi",
+      "target": "William Saroyan"
+    },
+    {
+      "source": "Oggi",
+      "target": "Curzio Malaparte"
+    },
+    {
+      "source": "Gian Carlo Menotti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ugo Moretti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Carlo Emilio Gadda",
+      "target": "Epoca"
     },
     {
       "source": "Giacomo Leopardi",
@@ -22254,6 +21173,18 @@
     {
       "source": "Giacomo Leopardi",
       "target": "Atlantica"
+    },
+    {
+      "source": "Lauro de Bosis",
+      "target": "Harvard University"
+    },
+    {
+      "source": "Lauro de Bosis",
+      "target": "Italy America Society"
+    },
+    {
+      "source": "Ruth Draper",
+      "target": "Lauro de Bosis"
     },
     {
       "source": "Pietro Novasio",
@@ -22308,6 +21239,18 @@
       "target": "Costa & Aliani Press"
     },
     {
+      "source": "Franco Lalli",
+      "target": "Il Milione (US Version)"
+    },
+    {
+      "source": "Marcello Marchesi",
+      "target": "Oggi"
+    },
+    {
+      "source": "Carlo Coccioli",
+      "target": "Divagando"
+    },
+    {
       "source": "Arturo Toscanini",
       "target": "WOV"
     },
@@ -22332,12 +21275,40 @@
       "target": "Cocc\u00e8 Press"
     },
     {
+      "source": "Stephen Spender",
+      "target": "Epoca"
+    },
+    {
+      "source": "Tennessee Williams",
+      "target": "Epoca"
+    },
+    {
+      "source": "Vittorio Gassman",
+      "target": "Epoca"
+    },
+    {
+      "source": "Camillo Mastrocinque",
+      "target": "Epoca"
+    },
+    {
+      "source": "Silvio D'Amico",
+      "target": "Epoca"
+    },
+    {
       "source": "Silvio D'Amico",
       "target": "Il Carroccio"
     },
     {
       "source": "Adriano Tilgher",
+      "target": "Oggi"
+    },
+    {
+      "source": "Adriano Tilgher",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Lionello Venturi",
+      "target": "Epoca"
     },
     {
       "source": "Il Mondo",
@@ -22348,36 +21319,120 @@
       "target": "Giuseppe Lupis"
     },
     {
+      "source": "Leonardo Sciascia",
+      "target": "Epoca"
+    },
+    {
+      "source": "Altiero Spinelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Guido Piovene",
+      "target": "Epoca"
+    },
+    {
+      "source": "Arthur Miller",
+      "target": "Epoca"
+    },
+    {
       "source": "Edgar Allan Poe",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Marino Moretti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Michele Prisco",
+      "target": "Epoca"
+    },
+    {
+      "source": "Arthur Koestler",
+      "target": "Epoca"
     },
     {
       "source": "Benedetto Croce",
       "target": "Il Carroccio"
     },
     {
+      "source": "John Knox Jessup",
+      "target": "Life"
+    },
+    {
+      "source": "Giuseppe Pella",
+      "target": "Epoca"
+    },
+    {
       "source": "Cesare Zavattini",
       "target": "Divagando"
+    },
+    {
+      "source": "Cesare Zavattini",
+      "target": "Epoca"
     },
     {
       "source": "Cesare Zavattini",
       "target": "Il Milione"
     },
     {
+      "source": "Mario Sironi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Franco Ferrarotti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Edoardo Amaldi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Laura Lilli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Beniamino Gigli",
+      "target": "Epoca"
+    },
+    {
       "source": "Aldo Palazzeschi",
       "target": "Divagando"
+    },
+    {
+      "source": "Aldo Palazzeschi",
+      "target": "Epoca"
     },
     {
       "source": "Aldo Palazzeschi",
       "target": "SF Vanni Publishers and Booksellers"
     },
     {
+      "source": "Valentino Bompiani",
+      "target": "Epoca"
+    },
+    {
       "source": "George Plimpton Adams",
       "target": "Divagando"
     },
     {
+      "source": "Nathaniel Hawthorne",
+      "target": "Oggi"
+    },
+    {
+      "source": "Jack London",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Emilio Cecchi",
+      "target": "Epoca"
+    },
+    {
       "source": "Emilio Cecchi",
       "target": "G.C. Sansoni Editore"
+    },
+    {
+      "source": "Corrado Alvaro",
+      "target": "Epoca"
     },
     {
       "source": "Corrado Alvaro",
@@ -22389,7 +21444,23 @@
     },
     {
       "source": "Ercole Patti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ercole Patti",
       "target": "Il Milione"
+    },
+    {
+      "source": "Mario Pomilio",
+      "target": "Epoca"
+    },
+    {
+      "source": "Bonaventura Tecchi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Bonaventura Tecchi",
+      "target": "Oggi"
     },
     {
       "source": "Arthur Livingston",
@@ -22398,6 +21469,18 @@
     {
       "source": "Arthur Livingston",
       "target": "SF Vanni Publishers and Booksellers"
+    },
+    {
+      "source": "Henry Luce",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giose Rimanelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Erich Linder",
+      "target": "Epoca"
     },
     {
       "source": "Frank Snowden Jr",
@@ -22472,6 +21555,70 @@
       "target": "Salvatore Viola"
     },
     {
+      "source": "Attilio Bertolucci",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giacinto Spagnoletti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Marino Marini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mino Maccari",
+      "target": "Epoca"
+    },
+    {
+      "source": "Domenico Rea",
+      "target": "Epoca"
+    },
+    {
+      "source": "Anna Banti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Anna Banti",
+      "target": "Oggi"
+    },
+    {
+      "source": "Gianna Manzini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Gianna Manzini",
+      "target": "Oggi"
+    },
+    {
+      "source": "Maria Luisa Spaziani",
+      "target": "Epoca"
+    },
+    {
+      "source": "Sandro Penna",
+      "target": "Epoca"
+    },
+    {
+      "source": "Sandro Penna",
+      "target": "Oggi"
+    },
+    {
+      "source": "Carlo Betocchi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Raffaele Carrieri",
+      "target": "Epoca"
+    },
+    {
+      "source": "Libero De Libero",
+      "target": "Epoca"
+    },
+    {
+      "source": "Libero De Libero",
+      "target": "Oggi"
+    },
+    {
       "source": "Peter Sammartino",
       "target": "Atlantica"
     },
@@ -22484,20 +21631,96 @@
       "target": "Il Carroccio"
     },
     {
+      "source": "Walt Disney",
+      "target": "Epoca"
+    },
+    {
+      "source": "Pearl S Buck",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luigi Santucci",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ugo Zatterin",
+      "target": "Epoca"
+    },
+    {
+      "source": "Saverio Strati",
+      "target": "Epoca"
+    },
+    {
       "source": "Antonio Fogazzaro",
       "target": "SF Vanni Publishers and Booksellers"
+    },
+    {
+      "source": "Franco Fortini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Franco Fortini",
+      "target": "Oggi"
+    },
+    {
+      "source": "Guido Lopez",
+      "target": "Epoca"
+    },
+    {
+      "source": "Glauco Cambon",
+      "target": "Epoca"
+    },
+    {
+      "source": "Rocco Scotellaro",
+      "target": "Epoca"
+    },
+    {
+      "source": "Leonardo Sinisgalli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Leonardo Sinisgalli",
+      "target": "Oggi"
     },
     {
       "source": "Leonardo Sinisgalli",
       "target": "Il Milione"
     },
     {
+      "source": "Carlo Sforza",
+      "target": "Epoca"
+    },
+    {
+      "source": "Aldo Garosci",
+      "target": "Epoca"
+    },
+    {
+      "source": "Irwin Shaw",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luciano Bianciardi",
+      "target": "Epoca"
+    },
+    {
       "source": "Carlo Corsi",
       "target": "Il Carroccio"
     },
     {
+      "source": "Alberto Arbasino",
+      "target": "Epoca"
+    },
+    {
       "source": "Alberto Mondadori",
       "target": "Arnoldo Mondadori Editore"
+    },
+    {
+      "source": "Alberto Mondadori",
+      "target": "Epoca"
+    },
+    {
+      "source": "Oreste del Buono",
+      "target": "Epoca"
     },
     {
       "source": "Charles L'Episcopo",
@@ -22644,6 +21867,10 @@
       "target": "Divagando"
     },
     {
+      "source": "Marco Valsecchi",
+      "target": "Epoca"
+    },
+    {
       "source": "Umberto Gozzano",
       "target": "Divagando"
     },
@@ -22664,6 +21891,10 @@
       "target": "Divagando"
     },
     {
+      "source": "Gino Valori",
+      "target": "Il Milione"
+    },
+    {
       "source": "Mary Carrara",
       "target": "Divagando"
     },
@@ -22678,6 +21909,10 @@
     {
       "source": "Carola Prosperi",
       "target": "Divagando"
+    },
+    {
+      "source": "Carola Prosperi",
+      "target": "Il Milione"
     },
     {
       "source": "Carola Prosperi",
@@ -22709,6 +21944,10 @@
     },
     {
       "source": "Clara Grifoni",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Clara Grifoni",
       "target": "La Lettura"
     },
     {
@@ -22722,6 +21961,10 @@
     {
       "source": "Valentino Gavi",
       "target": "Divagando"
+    },
+    {
+      "source": "Valentino Gavi",
+      "target": "Il Milione"
     },
     {
       "source": "Nicola Boileau",
@@ -22748,6 +21991,14 @@
       "target": "Divagando"
     },
     {
+      "source": "Carlo Manzoni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Carlo Manzoni",
+      "target": "Oggi"
+    },
+    {
       "source": "Milly Dandolo",
       "target": "Rizzoli Editore"
     },
@@ -22769,7 +22020,7 @@
     },
     {
       "source": "Dino Falconi",
-      "target": "Anna Magnani"
+      "target": "Epoca"
     },
     {
       "source": "Dino Falconi",
@@ -22794,6 +22045,10 @@
     {
       "source": "Dino Provenzal",
       "target": "Arnoldo Mondadori Editore"
+    },
+    {
+      "source": "Dino Provenzal",
+      "target": "Epoca"
     },
     {
       "source": "Dino Provenzal",
@@ -22849,6 +22104,10 @@
     },
     {
       "source": "Salvator Gotta",
+      "target": "Oggi"
+    },
+    {
+      "source": "Salvator Gotta",
       "target": "Guido Gozzano"
     },
     {
@@ -22885,6 +22144,10 @@
     },
     {
       "source": "Diego Valeri",
+      "target": "Epoca"
+    },
+    {
+      "source": "Diego Valeri",
       "target": "Domenico Porzio"
     },
     {
@@ -22906,10 +22169,6 @@
     {
       "source": "Aldo Capasso",
       "target": "Divagando"
-    },
-    {
-      "source": "Aldo Capasso",
-      "target": "Giuseppe Ungaretti"
     },
     {
       "source": "Aldo Capasso",
@@ -22938,6 +22197,10 @@
     {
       "source": "W S Maugham",
       "target": "Divagando"
+    },
+    {
+      "source": "W S Maugham",
+      "target": "Epoca"
     },
     {
       "source": "Alessandro Dumas",
@@ -23157,11 +22420,23 @@
     },
     {
       "source": "Diego Calcagno",
+      "target": "Epoca"
+    },
+    {
+      "source": "Diego Calcagno",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Diego Calcagno",
       "target": "Sanremo Festival"
     },
     {
       "source": "Vittorio Calvino",
       "target": "Divagando"
+    },
+    {
+      "source": "Vittorio Calvino",
+      "target": "Epoca"
     },
     {
       "source": "AM Ciriello",
@@ -23206,6 +22481,10 @@
     {
       "source": "Edoardo Zavattari",
       "target": "Divagando"
+    },
+    {
+      "source": "Edoardo Zavattari",
+      "target": "Epoca"
     },
     {
       "source": "Arnaldo Cipolla",
@@ -23270,10 +22549,6 @@
     {
       "source": "Elpidio Jenco",
       "target": "Divagando"
-    },
-    {
-      "source": "Elpidio Jenco",
-      "target": "Giuseppe Ungaretti"
     },
     {
       "source": "Enrica Viviani Della Robbia",
@@ -23412,8 +22687,20 @@
       "target": "Jack Kerouac"
     },
     {
+      "source": "Domenico Porzio",
+      "target": "Epoca"
+    },
+    {
       "source": "Orio Vergani",
       "target": "Divagando"
+    },
+    {
+      "source": "Orio Vergani",
+      "target": "Epoca"
+    },
+    {
+      "source": "Orio Vergani",
+      "target": "Il Milione"
     },
     {
       "source": "Orio Vergani",
@@ -23476,6 +22763,10 @@
       "target": "Divagando"
     },
     {
+      "source": "De Gennaro",
+      "target": "Epoca"
+    },
+    {
       "source": "Ciro Poggiali",
       "target": "Divagando"
     },
@@ -23529,10 +22820,6 @@
     },
     {
       "source": "B T Avancini",
-      "target": "Divagando"
-    },
-    {
-      "source": "Carlo Cecioli",
       "target": "Divagando"
     },
     {
@@ -23596,6 +22883,10 @@
       "target": "Divagando"
     },
     {
+      "source": "Mark Twain",
+      "target": "Il Milione"
+    },
+    {
       "source": "Mario Basile",
       "target": "Divagando"
     },
@@ -23606,6 +22897,10 @@
     {
       "source": "Gastone Tanzi",
       "target": "Divagando"
+    },
+    {
+      "source": "Gastone Tanzi",
+      "target": "Il Milione"
     },
     {
       "source": "Marta Belloni",
@@ -23817,11 +23112,19 @@
     },
     {
       "source": "Marise Ferro",
+      "target": "Epoca"
+    },
+    {
+      "source": "Marise Ferro",
       "target": "Guido Piovene"
     },
     {
       "source": "Marise Ferro",
       "target": "Carlo Bo"
+    },
+    {
+      "source": "Marise Ferro",
+      "target": "Il Milione"
     },
     {
       "source": "Felice Soffre'",
@@ -24009,6 +23312,10 @@
     },
     {
       "source": "Erberto Landi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Erberto Landi",
       "target": "Office of War Information"
     },
     {
@@ -24080,8 +23387,16 @@
       "target": "Divagando"
     },
     {
+      "source": "Giulio Pastore",
+      "target": "Epoca"
+    },
+    {
       "source": "Ivan Matteo Lombardo",
       "target": "Divagando"
+    },
+    {
+      "source": "Ivan Matteo Lombardo",
+      "target": "Epoca"
     },
     {
       "source": "Serafino Romualdi",
@@ -24102,6 +23417,10 @@
     {
       "source": "Luigi Antonini",
       "target": "Divagando"
+    },
+    {
+      "source": "Luigi Antonini",
+      "target": "Epoca"
     },
     {
       "source": "Luigi Antonini",
@@ -24130,6 +23449,10 @@
     {
       "source": "Vanni Buscemi Montana",
       "target": "Ignazio Silone"
+    },
+    {
+      "source": "Vanni Buscemi Montana",
+      "target": "Epoca"
     },
     {
       "source": "Vanni Buscemi Montana",
@@ -24229,6 +23552,10 @@
     },
     {
       "source": "Pina Ballario",
+      "target": "Epoca"
+    },
+    {
+      "source": "Pina Ballario",
       "target": "Grazia"
     },
     {
@@ -24258,6 +23585,10 @@
     {
       "source": "Guglielmo Giannini",
       "target": "Divagando"
+    },
+    {
+      "source": "Guglielmo Giannini",
+      "target": "Epoca"
     },
     {
       "source": "Guelfo Civinini",
@@ -24321,6 +23652,10 @@
     },
     {
       "source": "Achille Campanile",
+      "target": "Epoca"
+    },
+    {
+      "source": "Achille Campanile",
       "target": "Carosello"
     },
     {
@@ -24342,6 +23677,10 @@
     {
       "source": "Mario Buzzichini",
       "target": "Divagando"
+    },
+    {
+      "source": "Mario Buzzichini",
+      "target": "Oggi"
     },
     {
       "source": "Agostino de Biasi",
@@ -24404,6 +23743,10 @@
       "target": "Divagando"
     },
     {
+      "source": "Lalla Romano",
+      "target": "Epoca"
+    },
+    {
       "source": "Carlo Poerio",
       "target": "Divagando"
     },
@@ -24445,7 +23788,15 @@
     },
     {
       "source": "Mario Puccini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mario Puccini",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Mario Puccini",
+      "target": "Il Milione"
     },
     {
       "source": "Mario Puccini",
@@ -24554,6 +23905,10 @@
     {
       "source": "Dario Cecchi",
       "target": "Divagando"
+    },
+    {
+      "source": "Dario Cecchi",
+      "target": "Epoca"
     },
     {
       "source": "Gian Mirola",
@@ -24669,6 +24024,10 @@
     },
     {
       "source": "Onorio Ruotolo",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Onorio Ruotolo",
       "target": "Amalgamated Clothing Workers of America"
     },
     {
@@ -24776,6 +24135,10 @@
       "target": "Divagando"
     },
     {
+      "source": "Mario Musella",
+      "target": "Epoca"
+    },
+    {
       "source": "Mino Caudana",
       "target": "Divagando"
     },
@@ -24832,8 +24195,20 @@
       "target": "Divagando"
     },
     {
+      "source": "Carlo Bo",
+      "target": "Epoca"
+    },
+    {
+      "source": "Carlo Ponti",
+      "target": "Epoca"
+    },
+    {
       "source": "Carlo Tresca",
       "target": "Italian-American Labor Council"
+    },
+    {
+      "source": "Carlo Tresca",
+      "target": "Biblioteca Rossa"
     },
     {
       "source": "Cinecitta",
@@ -24861,15 +24236,11 @@
     },
     {
       "source": "Compagnia Italiana Cinematografica Lux",
-      "target": "Dino De Laurentis"
-    },
-    {
-      "source": "Compagnia Italiana Cinematografica Lux",
       "target": "Mario Monicelli"
     },
     {
-      "source": "Compagnia Italiana Cinematografica Lux",
-      "target": "Pietro Germi"
+      "source": "Domenico Modugno",
+      "target": "Epoca"
     },
     {
       "source": "Edward Corsi",
@@ -24908,6 +24279,14 @@
       "target": "Atlantica"
     },
     {
+      "source": "Franco Cristaldi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Frank Capra",
+      "target": "Epoca"
+    },
+    {
       "source": "Giovanni Schiavo",
       "target": "Il Carroccio"
     },
@@ -24920,12 +24299,24 @@
       "target": "The Vigo Press"
     },
     {
+      "source": "Grazia",
+      "target": "Bruno Munari"
+    },
+    {
       "source": "Il Milione",
       "target": "Arnoldo Mondadori Editore"
     },
     {
       "source": "Il Milione",
       "target": "Pitigrilli"
+    },
+    {
+      "source": "Il Milione",
+      "target": "Rino Albertarelli"
+    },
+    {
+      "source": "Il Milione",
+      "target": "Gino Boccasile"
     },
     {
       "source": "Incom",
@@ -25028,6 +24419,18 @@
       "target": "Edward Corsi"
     },
     {
+      "source": "Mario Monicelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Michelangelo Antonioni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mike Bongiorno",
+      "target": "Epoca"
+    },
+    {
       "source": "Mike Bongiorno",
       "target": "WOV"
     },
@@ -25088,6 +24491,10 @@
       "target": "Lydia Magliano"
     },
     {
+      "source": "Renato Guttuso",
+      "target": "Epoca"
+    },
+    {
       "source": "Salvatore Castagna",
       "target": "Divagando"
     },
@@ -25106,6 +24513,18 @@
     {
       "source": "Vamba",
       "target": "Divagando"
+    },
+    {
+      "source": "Vamba",
+      "target": "Il Milione"
+    },
+    {
+      "source": "William Saroyan",
+      "target": "Epoca"
+    },
+    {
+      "source": "William Saroyan",
+      "target": "Il Milione"
     },
     {
       "source": "Leonardo Annual Magazine",
@@ -25186,10 +24605,6 @@
     {
       "source": "Leonardo Annual Magazine",
       "target": "Pasquale de Biasi"
-    },
-    {
-      "source": "Leonardo Annual Magazine",
-      "target": "Giacomo N. de Martino"
     },
     {
       "source": "Leonardo Annual Magazine",
@@ -25312,8 +24727,16 @@
       "target": "Nicola Brunori"
     },
     {
+      "source": "Leonardo Annual Magazine",
+      "target": "Giacomo De Martino"
+    },
+    {
       "source": "Paolo Boselli",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Roberto Bracco",
+      "target": "Epoca"
     },
     {
       "source": "Roberto Bracco",
@@ -25353,10 +24776,6 @@
     },
     {
       "source": "Pasquale de Biasi",
-      "target": "Il Carroccio"
-    },
-    {
-      "source": "Giacomo N. de Martino",
       "target": "Il Carroccio"
     },
     {
@@ -25413,6 +24832,10 @@
     },
     {
       "source": "Ugo Betti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ugo Betti",
       "target": "SF Vanni Publishers and Booksellers"
     },
     {
@@ -25422,6 +24845,10 @@
     {
       "source": "Ugo Betti",
       "target": "Atlantica"
+    },
+    {
+      "source": "Massimo Bontempelli",
+      "target": "Epoca"
     },
     {
       "source": "Massimo Bontempelli",
@@ -25438,6 +24865,10 @@
     {
       "source": "Libero Bovio",
       "target": "Italian Book Company"
+    },
+    {
+      "source": "Anton Giulio Bragaglia",
+      "target": "Epoca"
     },
     {
       "source": "Anton Giulio Bragaglia",
@@ -25473,7 +24904,15 @@
     },
     {
       "source": "Angelo Frattini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Angelo Frattini",
       "target": "Il Milione"
+    },
+    {
+      "source": "Guido Milanesi",
+      "target": "Epoca"
     },
     {
       "source": "Guido Milanesi",
@@ -25517,7 +24956,15 @@
     },
     {
       "source": "Lorenzo Gigli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Lorenzo Gigli",
       "target": "Il Milione"
+    },
+    {
+      "source": "Carlo Salsa",
+      "target": "Epoca"
     },
     {
       "source": "Carlo Salsa",
@@ -25529,11 +24976,23 @@
     },
     {
       "source": "Leo Longanesi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Leo Longanesi",
       "target": "Il Milione"
     },
     {
       "source": "Leonida Repaci",
+      "target": "Epoca"
+    },
+    {
+      "source": "Leonida Repaci",
       "target": "Il Milione"
+    },
+    {
+      "source": "Vittorio Gorresio",
+      "target": "Epoca"
     },
     {
       "source": "Vittorio Gorresio",
@@ -25545,7 +25004,15 @@
     },
     {
       "source": "Gian Gaspare Napolitano",
+      "target": "Epoca"
+    },
+    {
+      "source": "Gian Gaspare Napolitano",
       "target": "Il Milione"
+    },
+    {
+      "source": "Arturo Tofanelli",
+      "target": "Epoca"
     },
     {
       "source": "Arturo Tofanelli",
@@ -25553,7 +25020,19 @@
     },
     {
       "source": "Alessandro Bonsanti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Alessandro Bonsanti",
+      "target": "Oggi"
+    },
+    {
+      "source": "Alessandro Bonsanti",
       "target": "Il Milione"
+    },
+    {
+      "source": "Vincenzo Talarico",
+      "target": "Epoca"
     },
     {
       "source": "Vincenzo Talarico",
@@ -25568,11 +25047,11 @@
       "target": "Corriere d'America"
     },
     {
-      "source": "Le maschere",
+      "source": "Le Maschere",
       "target": "Franco Lalli"
     },
     {
-      "source": "Le maschere",
+      "source": "Le Maschere",
       "target": "Joseph Zappulla"
     },
     {
@@ -25592,6 +25071,10 @@
       "target": "WOV"
     },
     {
+      "source": "Carlo Vinti",
+      "target": "Vinti Advertising Company"
+    },
+    {
       "source": "WABD",
       "target": "Andre Luotto"
     },
@@ -25606,6 +25089,10 @@
     {
       "source": "Renzo Renzi",
       "target": "Voice of America"
+    },
+    {
+      "source": "Roberto Campa",
+      "target": "Epoca"
     },
     {
       "source": "Roberto Campa",
@@ -25720,6 +25207,38 @@
       "target": "Tullio Pane"
     },
     {
+      "source": "Claudio Villa",
+      "target": "Epoca"
+    },
+    {
+      "source": "Carla Boni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Connie Francis",
+      "target": "Epoca"
+    },
+    {
+      "source": "Renato Carosone",
+      "target": "Epoca"
+    },
+    {
+      "source": "Nino Taranto",
+      "target": "Epoca"
+    },
+    {
+      "source": "Sergio Bruni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Achille Togliani",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luciano Virgili",
+      "target": "Epoca"
+    },
+    {
       "source": "Pitigrilli",
       "target": "Atlantica"
     },
@@ -25829,6 +25348,10 @@
     },
     {
       "source": "Mario de Biasi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mario de Biasi",
       "target": "Il Carroccio"
     },
     {
@@ -25893,7 +25416,27 @@
     },
     {
       "source": "Ezio Taddei",
+      "target": "Giulio Einaudi Editore"
+    },
+    {
+      "source": "Ezio Taddei",
       "target": "Societ\u00e0 Editrice Americana"
+    },
+    {
+      "source": "Ezio Taddei",
+      "target": "Edizioni in Esilio"
+    },
+    {
+      "source": "Ezio Taddei",
+      "target": "Le Edizioni Sociali"
+    },
+    {
+      "source": "Ezio Taddei",
+      "target": "Milano Sera"
+    },
+    {
+      "source": "Ezio Taddei",
+      "target": "Mengarelli"
     },
     {
       "source": "Il Martello Publ. Co., Inc.",
@@ -26124,12 +25667,20 @@
       "target": "La Strada"
     },
     {
+      "source": "Vincenzo Vacirca",
+      "target": "Italian Labor Publishing Co. (Chicago)"
+    },
+    {
       "source": "Alberto Cupelli",
       "target": "Labor Press"
     },
     {
       "source": "Alfredo Bosi",
       "target": "Bagnasco Press"
+    },
+    {
+      "source": "Nicola Fusco",
+      "target": "Epoca"
     },
     {
       "source": "Nicola Fusco",
@@ -26192,6 +25743,10 @@
       "target": "Renato Treves"
     },
     {
+      "source": "Renato Treves",
+      "target": "Epoca"
+    },
+    {
       "source": "Adolfo Rossi",
       "target": "Il Progresso Italo-Americano"
     },
@@ -26249,6 +25804,10 @@
     },
     {
       "source": "Adolfo Franci",
+      "target": "Oggi"
+    },
+    {
+      "source": "Adolfo Franci",
       "target": "Il Carroccio"
     },
     {
@@ -26268,12 +25827,20 @@
       "target": "Il Carroccio"
     },
     {
+      "source": "Adone Nosari",
+      "target": "Il Milione"
+    },
+    {
       "source": "Adriano Alberti",
       "target": "Il Carroccio"
     },
     {
       "source": "Agostino Gemelli",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Agostino Lanzillo",
+      "target": "Epoca"
     },
     {
       "source": "Agostino Lanzillo",
@@ -26505,6 +26072,14 @@
     },
     {
       "source": "Amedeo Tosti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Amedeo Tosti",
+      "target": "Oggi"
+    },
+    {
+      "source": "Amedeo Tosti",
       "target": "Il Carroccio"
     },
     {
@@ -26646,6 +26221,10 @@
     {
       "source": "Antonio Beltramelli",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Antonio Bruers",
+      "target": "Epoca"
     },
     {
       "source": "Antonio Bruers",
@@ -27141,6 +26720,10 @@
     },
     {
       "source": "Curzio Malaparte",
+      "target": "Epoca"
+    },
+    {
+      "source": "Curzio Malaparte",
       "target": "Il Carroccio"
     },
     {
@@ -27181,6 +26764,10 @@
     },
     {
       "source": "Di Bernezzo",
+      "target": "Epoca"
+    },
+    {
+      "source": "Di Bernezzo",
       "target": "Il Carroccio"
     },
     {
@@ -27190,6 +26777,10 @@
     {
       "source": "Dino Daniele",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Dino Grandi",
+      "target": "Epoca"
     },
     {
       "source": "Dino Grandi",
@@ -27242,6 +26833,10 @@
     {
       "source": "Douglas Grant Ainslee",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "E. A. Mario",
+      "target": "Epoca"
     },
     {
       "source": "E. A. Mario",
@@ -27357,6 +26952,10 @@
     },
     {
       "source": "Elio Zorzi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Elio Zorzi",
       "target": "Il Carroccio"
     },
     {
@@ -27402,6 +27001,10 @@
     {
       "source": "Emilio Guglielmotti",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Emilio Servadio",
+      "target": "Epoca"
     },
     {
       "source": "Emilio Servadio",
@@ -27677,6 +27280,10 @@
     },
     {
       "source": "Francesco Coppola",
+      "target": "Epoca"
+    },
+    {
+      "source": "Francesco Coppola",
       "target": "Il Carroccio"
     },
     {
@@ -27734,6 +27341,10 @@
     {
       "source": "Francesco Ruffini",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Francesco S. Nitti",
+      "target": "Epoca"
     },
     {
       "source": "Francesco S. Nitti",
@@ -27822,6 +27433,10 @@
     {
       "source": "G. A. Beneduce",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Giovanni Battista Angioletti",
+      "target": "Oggi"
     },
     {
       "source": "Giovanni Battista Angioletti",
@@ -27981,6 +27596,10 @@
     },
     {
       "source": "Gino Pestelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Gino Pestelli",
       "target": "Il Carroccio"
     },
     {
@@ -27988,12 +27607,40 @@
       "target": "Il Carroccio"
     },
     {
+      "source": "Gino Rocca",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Gino Speranza",
+      "target": "The Atlantic Monthly"
+    },
+    {
       "source": "Gino Speranza",
       "target": "Il Carroccio"
     },
     {
+      "source": "Gino Speranza",
+      "target": "Columbia University Press"
+    },
+    {
+      "source": "Gino Speranza",
+      "target": "The Survey"
+    },
+    {
+      "source": "Gino Speranza",
+      "target": "Charities"
+    },
+    {
+      "source": "Gioacchino Volpe",
+      "target": "Epoca"
+    },
+    {
       "source": "Gioacchino Volpe",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Giorgio Abetti",
+      "target": "Epoca"
     },
     {
       "source": "Giorgio Abetti",
@@ -28034,6 +27681,10 @@
     {
       "source": "Giovanni Almagi\u00e0",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Giovanni Bovio",
+      "target": "Epoca"
     },
     {
       "source": "Giovanni Bovio",
@@ -28165,6 +27816,10 @@
     },
     {
       "source": "Giuseppe Bottai",
+      "target": "Epoca"
+    },
+    {
+      "source": "Giuseppe Bottai",
       "target": "Il Carroccio"
     },
     {
@@ -28258,6 +27913,14 @@
     {
       "source": "Gloria Ashford",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Goffredo Bellonci",
+      "target": "Epoca"
+    },
+    {
+      "source": "Goffredo Bellonci",
+      "target": "Oggi"
     },
     {
       "source": "Goffredo Bellonci",
@@ -28561,6 +28224,10 @@
     },
     {
       "source": "John dos Passos",
+      "target": "Epoca"
+    },
+    {
+      "source": "John dos Passos",
       "target": "Il Carroccio"
     },
     {
@@ -28681,6 +28348,10 @@
     },
     {
       "source": "Leonardo Azzarita",
+      "target": "Epoca"
+    },
+    {
+      "source": "Leonardo Azzarita",
       "target": "Il Carroccio"
     },
     {
@@ -28753,7 +28424,19 @@
     },
     {
       "source": "Lorenzo Giusso",
+      "target": "Epoca"
+    },
+    {
+      "source": "Lorenzo Giusso",
+      "target": "Oggi"
+    },
+    {
+      "source": "Lorenzo Giusso",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Lorenzo Giusso",
+      "target": "Il Milione"
     },
     {
       "source": "Lorenzo Spiotta",
@@ -28777,7 +28460,15 @@
     },
     {
       "source": "Luciano Folgore",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luciano Folgore",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Luciano Folgore",
+      "target": "Il Milione"
     },
     {
       "source": "Lucio Levi",
@@ -28817,6 +28508,10 @@
     },
     {
       "source": "Luigi Freddi",
+      "target": "Epoca"
+    },
+    {
+      "source": "Luigi Freddi",
       "target": "Il Carroccio"
     },
     {
@@ -28834,6 +28529,10 @@
     {
       "source": "Luigi Luzzatti",
       "target": "Atlantica"
+    },
+    {
+      "source": "Luigi Milano Rossi",
+      "target": "Epoca"
     },
     {
       "source": "Luigi Milano Rossi",
@@ -28985,6 +28684,10 @@
     },
     {
       "source": "Mario Labroca",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mario Labroca",
       "target": "Il Carroccio"
     },
     {
@@ -28997,7 +28700,19 @@
     },
     {
       "source": "Mario Missiroli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mario Missiroli",
+      "target": "Oggi"
+    },
+    {
+      "source": "Mario Missiroli",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Mario Monti",
+      "target": "Epoca"
     },
     {
       "source": "Mario Monti",
@@ -29204,10 +28919,6 @@
       "target": "Il Carroccio"
     },
     {
-      "source": "Onorio Ruvolo",
-      "target": "Il Carroccio"
-    },
-    {
       "source": "Orazio Pedrazzi",
       "target": "Il Carroccio"
     },
@@ -29284,6 +28995,10 @@
       "target": "Il Carroccio"
     },
     {
+      "source": "Paolo Buzzi",
+      "target": "Il Milione"
+    },
+    {
       "source": "Paolo Ginisty",
       "target": "Il Carroccio"
     },
@@ -29294,6 +29009,10 @@
     {
       "source": "Paolo Savj-Lopez",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Paolo Toschi",
+      "target": "Epoca"
     },
     {
       "source": "Paolo Toschi",
@@ -29385,6 +29104,10 @@
     },
     {
       "source": "Piero Parini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Piero Parini",
       "target": "Il Carroccio"
     },
     {
@@ -29438,6 +29161,10 @@
     {
       "source": "Raffaele de Luca",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Raffaele Paolucci",
+      "target": "Epoca"
     },
     {
       "source": "Raffaele Paolucci",
@@ -29542,6 +29269,10 @@
     {
       "source": "Richard Washburn Child",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Richard Washburn Child",
+      "target": "Il Milione"
     },
     {
       "source": "Rina Ciancaglini-Gera",
@@ -29821,6 +29552,10 @@
     },
     {
       "source": "Ugo Ojetti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Ugo Ojetti",
       "target": "Il Carroccio"
     },
     {
@@ -29849,6 +29584,10 @@
     },
     {
       "source": "Umberto Nobile",
+      "target": "Epoca"
+    },
+    {
+      "source": "Umberto Nobile",
       "target": "Il Carroccio"
     },
     {
@@ -29862,6 +29601,10 @@
     {
       "source": "Umberto Olivieri",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Umberto Toschi",
+      "target": "Epoca"
     },
     {
       "source": "Umberto Toschi",
@@ -29925,6 +29668,10 @@
     },
     {
       "source": "Vincenzo Tieri",
+      "target": "Epoca"
+    },
+    {
+      "source": "Vincenzo Tieri",
       "target": "Il Carroccio"
     },
     {
@@ -29966,6 +29713,10 @@
     {
       "source": "Vittorio Angius",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Vittorio Beonio Brocchieri",
+      "target": "Epoca"
     },
     {
       "source": "Vittorio Beonio Brocchieri",
@@ -30157,6 +29908,10 @@
     },
     {
       "source": "Gustavo Brigante Colonna",
+      "target": "Epoca"
+    },
+    {
+      "source": "Gustavo Brigante Colonna",
       "target": "Atlantica"
     },
     {
@@ -30174,6 +29929,10 @@
     {
       "source": "Clarice Tartufari",
       "target": "Atlantica"
+    },
+    {
+      "source": "Piero Scarpa",
+      "target": "Epoca"
     },
     {
       "source": "Piero Scarpa",
@@ -30285,6 +30044,10 @@
     },
     {
       "source": "Umberto Mancuso",
+      "target": "Epoca"
+    },
+    {
+      "source": "Umberto Mancuso",
       "target": "Atlantica"
     },
     {
@@ -30298,6 +30061,10 @@
     {
       "source": "Peter M. Riccio",
       "target": "Atlantica"
+    },
+    {
+      "source": "Giovanni Lume",
+      "target": "Epoca"
     },
     {
       "source": "Giovanni Lume",
@@ -30401,6 +30168,10 @@
     },
     {
       "source": "Manlio Miserocchi",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Manlio Miserocchi",
       "target": "Atlantica"
     },
     {
@@ -30493,11 +30264,19 @@
     },
     {
       "source": "Giacomo De Martino",
+      "target": "Il Carroccio"
+    },
+    {
+      "source": "Giacomo De Martino",
       "target": "Atlantica"
     },
     {
       "source": "C. L. Brautovich",
       "target": "Atlantica"
+    },
+    {
+      "source": "Virgilio Brocchi",
+      "target": "Epoca"
     },
     {
       "source": "Virgilio Brocchi",
@@ -30741,6 +30520,10 @@
     },
     {
       "source": "Arturo Castiglioni",
+      "target": "Epoca"
+    },
+    {
+      "source": "Arturo Castiglioni",
       "target": "Atlantica"
     },
     {
@@ -30754,6 +30537,14 @@
     {
       "source": "Silvio W. Rola",
       "target": "Atlantica"
+    },
+    {
+      "source": "Cesare Giardini",
+      "target": "Epoca"
+    },
+    {
+      "source": "Cesare Giardini",
+      "target": "Oggi"
     },
     {
       "source": "Cesare Giardini",
@@ -30893,6 +30684,10 @@
     },
     {
       "source": "Charlotte Adams",
+      "target": "Epoca"
+    },
+    {
+      "source": "Charlotte Adams",
       "target": "Atlantica"
     },
     {
@@ -30925,7 +30720,15 @@
     },
     {
       "source": "Gio Ponti",
+      "target": "Epoca"
+    },
+    {
+      "source": "Gio Ponti",
       "target": "Atlantica"
+    },
+    {
+      "source": "Alberto De' Stefani",
+      "target": "Epoca"
     },
     {
       "source": "Alberto De' Stefani",
@@ -30970,6 +30773,10 @@
     {
       "source": "Luigi Quagliata",
       "target": "Atlantica"
+    },
+    {
+      "source": "Luigi Antonelli",
+      "target": "Il Milione"
     },
     {
       "source": "Luigi Antonelli",
@@ -31089,6 +30896,10 @@
     },
     {
       "source": "Marcello Gallian",
+      "target": "Il Milione"
+    },
+    {
+      "source": "Marcello Gallian",
       "target": "Atlantica"
     },
     {
@@ -31106,6 +30917,10 @@
     {
       "source": "Emmanuele Ralji",
       "target": "Atlantica"
+    },
+    {
+      "source": "Corrado Govoni",
+      "target": "Epoca"
     },
     {
       "source": "Corrado Govoni",
@@ -31133,6 +30948,10 @@
     },
     {
       "source": "Cesare Giulio Viola",
+      "target": "Epoca"
+    },
+    {
+      "source": "Cesare Giulio Viola",
       "target": "Atlantica"
     },
     {
@@ -31150,6 +30969,10 @@
     {
       "source": "Carlo Barzini",
       "target": "Atlantica"
+    },
+    {
+      "source": "Salvatore Rosati",
+      "target": "Oggi"
     },
     {
       "source": "Salvatore Rosati",
@@ -31349,6 +31172,10 @@
     },
     {
       "source": "Mario Vinciguerra",
+      "target": "Epoca"
+    },
+    {
+      "source": "Mario Vinciguerra",
       "target": "Atlantica"
     },
     {
@@ -31369,11 +31196,23 @@
     },
     {
       "source": "Emilio Canevari",
+      "target": "Epoca"
+    },
+    {
+      "source": "Emilio Canevari",
+      "target": "Oggi"
+    },
+    {
+      "source": "Emilio Canevari",
       "target": "Atlantica"
     },
     {
       "source": "Piero Landini",
       "target": "Atlantica"
+    },
+    {
+      "source": "Gino Doria",
+      "target": "Epoca"
     },
     {
       "source": "Gino Doria",
@@ -31473,6 +31312,10 @@
     },
     {
       "source": "Raffaele Corso",
+      "target": "Epoca"
+    },
+    {
+      "source": "Raffaele Corso",
       "target": "Atlantica"
     },
     {
@@ -31542,6 +31385,10 @@
     {
       "source": "Filippo Giusti",
       "target": "Atlantica"
+    },
+    {
+      "source": "Alfredo Testoni",
+      "target": "Il Milione"
     },
     {
       "source": "Alfredo Testoni",
@@ -31922,6 +31769,10 @@
     {
       "source": "Girolamo Secondo Calamia",
       "target": "Il Pungolo Verde"
+    },
+    {
+      "source": "Giuseppe Ambrosini",
+      "target": "Epoca"
     },
     {
       "source": "Giuseppe Ambrosini",
@@ -32652,6 +32503,10 @@
       "target": "Nicoletti Bros Press"
     },
     {
+      "source": "Enzo Giustiniani",
+      "target": "Il Grido della Stirpe"
+    },
+    {
       "source": "Filippo De Filippi",
       "target": "Nicoletti Bros Press"
     },
@@ -32829,6 +32684,10 @@
     },
     {
       "source": "Arthur Conan Doyle",
+      "target": "Epoca"
+    },
+    {
+      "source": "Arthur Conan Doyle",
       "target": "SF Vanni Publishers and Booksellers"
     },
     {
@@ -32938,6 +32797,10 @@
     {
       "source": "Gaetano Massa",
       "target": "SF Vanni Publishers and Booksellers"
+    },
+    {
+      "source": "Giacomo Devoto",
+      "target": "Epoca"
     },
     {
       "source": "Giacomo Devoto",
@@ -33253,6 +33116,10 @@
     },
     {
       "source": "Piero Calamandrei",
+      "target": "Epoca"
+    },
+    {
+      "source": "Piero Calamandrei",
       "target": "Italian Book Company"
     },
     {
@@ -33338,6 +33205,74 @@
     {
       "source": "L'Adunata dei Refrattari",
       "target": "Raffaele Schiavina"
+    },
+    {
+      "source": "L'Adunata dei Refrattari",
+      "target": "Donato La Penna"
+    },
+    {
+      "source": "L'Adunata dei Refrattari",
+      "target": "Nick Di Domenico"
+    },
+    {
+      "source": "Life",
+      "target": "Henry Luce"
+    },
+    {
+      "source": "Rino Albertarelli",
+      "target": "Epoca"
+    },
+    {
+      "source": "Francesco Ventresca",
+      "target": "Daniel Ryerson"
+    },
+    {
+      "source": "Biblioteca Rossa",
+      "target": "Flavio Venanzi"
+    },
+    {
+      "source": "Antonio Tua",
+      "target": "Italian American Printing"
+    },
+    {
+      "source": "Tempo",
+      "target": "Pier Paolo Pasolini"
+    },
+    {
+      "source": "Tempo",
+      "target": "Arnoldo Mondadori Editore"
+    },
+    {
+      "source": "Tempo",
+      "target": "Arnoldo Mondadori"
+    },
+    {
+      "source": "Tempo",
+      "target": "Salvatore Quasimodo"
+    },
+    {
+      "source": "Tempo",
+      "target": "Indro Montanelli"
+    },
+    {
+      "source": "Tempo",
+      "target": "Alberto Mondadori"
+    },
+    {
+      "source": "Tempo",
+      "target": "Massimo Bontempelli"
+    },
+    {
+      "source": "Tempo",
+      "target": "Curzio Malaparte"
+    },
+    {
+      "source": "Tempo",
+      "target": "Aldo Palazzi"
+    },
+    {
+      "source": "Tempo",
+      "target": "Bruno Munari"
     }
   ]
 }

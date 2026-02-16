@@ -18,3 +18,12 @@ data/editor/omeka_staging.db
 
 # Draft proposals
 docs/proposal-ethnic-press-methodology*.md
+
+Env
+*.env
+
+# SSH keys
+id_rsa*
+
+# Playwright MCP artifacts
+.playwright-mcp/

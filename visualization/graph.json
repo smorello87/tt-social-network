@@ -381,11 +381,6 @@
       "subtype": "publisher"
     },
     {
-      "id": "Corriere della Sera",
-      "type": "institution",
-      "subtype": "periodical"
-    },
-    {
       "id": "Giulio Einaudi",
       "type": "person",
       "subtype": null
@@ -6017,11 +6012,6 @@
     },
     {
       "id": "Salvatore di Giacomo",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Favonio di Giura",
       "type": "person",
       "subtype": null
     },
@@ -15679,6 +15669,26 @@
       "id": "Bruno Munari",
       "type": "person",
       "subtype": null
+    },
+    {
+      "id": "Fernando Della Rocca",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "La Gerla",
+      "type": "institution",
+      "subtype": null
+    },
+    {
+      "id": "Il Bollettino della Sera",
+      "type": "institution",
+      "subtype": null
+    },
+    {
+      "id": "L'Opinione",
+      "type": "institution",
+      "subtype": null
     }
   ],
   "links": [
@@ -16480,10 +16490,6 @@
     },
     {
       "source": "Natalia Danesi Murray",
-      "target": "Luigi Barzini"
-    },
-    {
-      "source": "Natalia Danesi Murray",
       "target": "Alcide De Gasperi"
     },
     {
@@ -16648,11 +16654,11 @@
     },
     {
       "source": "Elma Baccanelli",
-      "target": "Corriere della Sera"
+      "target": "Giorgio Bassani"
     },
     {
       "source": "Elma Baccanelli",
-      "target": "Giorgio Bassani"
+      "target": "Il Corriere della Sera"
     },
     {
       "source": "Elma Baccanelli",
@@ -20800,6 +20806,10 @@
     },
     {
       "source": "Luigi Barzini",
+      "target": "Il Corriere della Sera"
+    },
+    {
+      "source": "Luigi Barzini",
       "target": "Epoca"
     },
     {
@@ -20912,7 +20922,7 @@
     },
     {
       "source": "Pier Maria Pasinetti",
-      "target": "Corriere della Sera"
+      "target": "Il Corriere della Sera"
     },
     {
       "source": "Pier Maria Pasinetti",
@@ -21241,6 +21251,10 @@
     {
       "source": "Franco Lalli",
       "target": "Il Milione (US Version)"
+    },
+    {
+      "source": "Franco Lalli",
+      "target": "La Gerla"
     },
     {
       "source": "Marcello Marchesi",
@@ -21833,10 +21847,6 @@
     {
       "source": "Amerigo Ruggiero",
       "target": "Il Progresso Italo-Americano"
-    },
-    {
-      "source": "Amerigo Ruggiero",
-      "target": "Luigi Barzini"
     },
     {
       "source": "Amerigo Ruggiero",
@@ -24287,6 +24297,26 @@
       "target": "Epoca"
     },
     {
+      "source": "Generoso Pope",
+      "target": "Il Progresso Italo-Americano"
+    },
+    {
+      "source": "Generoso Pope",
+      "target": "WHOM"
+    },
+    {
+      "source": "Generoso Pope",
+      "target": "Corriere d'America"
+    },
+    {
+      "source": "Generoso Pope",
+      "target": "Il Bollettino della Sera"
+    },
+    {
+      "source": "Generoso Pope",
+      "target": "L'Opinione"
+    },
+    {
       "source": "Giovanni Schiavo",
       "target": "Il Carroccio"
     },
@@ -24433,10 +24463,6 @@
     {
       "source": "Mike Bongiorno",
       "target": "WOV"
-    },
-    {
-      "source": "Mike Bongiorno",
-      "target": "Generoso Pope"
     },
     {
       "source": "Mike Bongiorno",
@@ -24616,10 +24642,6 @@
     },
     {
       "source": "Leonardo Annual Magazine",
-      "target": "Favonio di Giura"
-    },
-    {
-      "source": "Leonardo Annual Magazine",
       "target": "Giuseppe Errico"
     },
     {
@@ -24721,6 +24743,10 @@
     {
       "source": "Leonardo Annual Magazine",
       "target": "Aldo di Lea"
+    },
+    {
+      "source": "Leonardo Annual Magazine",
+      "target": "Giovanni Favoino di Giura"
     },
     {
       "source": "Leonardo Annual Magazine",
@@ -25241,6 +25267,10 @@
     {
       "source": "Pitigrilli",
       "target": "Atlantica"
+    },
+    {
+      "source": "Corriere d'America",
+      "target": "Luigi Barzini"
     },
     {
       "source": "Corriere d'America",
@@ -27712,7 +27742,23 @@
     },
     {
       "source": "Giovanni Favoino di Giura",
+      "target": "Il Progresso Italo-Americano"
+    },
+    {
+      "source": "Giovanni Favoino di Giura",
       "target": "Il Carroccio"
+    },
+    {
+      "source": "Giovanni Favoino di Giura",
+      "target": "Cocc\u00e8 Press"
+    },
+    {
+      "source": "Giovanni Favoino di Giura",
+      "target": "Il Carroccio Publ. Co."
+    },
+    {
+      "source": "Giovanni Favoino di Giura",
+      "target": "Il Bollettino della Sera"
     },
     {
       "source": "Giovanni Gargiulo",
@@ -33273,6 +33319,10 @@
     {
       "source": "Tempo",
       "target": "Bruno Munari"
+    },
+    {
+      "source": "La Gerla",
+      "target": "Cocc\u00e8 Press"
     }
   ]
 }

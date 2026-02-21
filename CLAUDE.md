@@ -100,6 +100,9 @@ Key internal structures (all inside the `NetworkViz` IIFE):
 - `communitySizes` (Map): node count per community
 - `hiddenEdges` / `highlightedEdges` (Sets): control canvas edge drawing
 - `preCommunityPositions` (Map): saved positions for toggle restore
+- `explorerDisplayNodes` (Set|null): visible nodes from explorer/search/click, or null when inactive
+- `explorerDisplayEdges` (Set|null): visible edges from explorer, or null
+- `explorerAnchorNodes` (Set|null): searched/clicked endpoint nodes, always visible in explorer mode
 
 Exposed API via `const NetworkViz` (script scope, not on `window`): `init`, `findPath`, `exploreConnections`, `clearPath`, `exportPNG`, `fullReset`, `toggleCommunities`, `exportSubgraph`, `expandTwoHop`, `autoFit`, `getStats`, `filterByType`, `filterBySubtype`, `setFilterMode`, `resetFilters`, `setExplorerMode`
 
@@ -113,6 +116,21 @@ Exposed API via `const NetworkViz` (script scope, not on `window`): `init`, `fin
 - **AND/OR toggle**: When Person + 2+ subtypes selected, toggle appears to switch between:
   - OR (Any): persons connected to at least one selected subtype
   - AND (All selected): persons connected to ALL selected subtypes
+
+**Composite visibility system** (`applyCompositeVisibility()`):
+- Central function that computes node/edge visibility by intersecting explorer state with filter state
+- Called by `highlightNode()`, `applySearchResults()`, `applyExplorerResult()`, `findSharedConnections()`, and `applyAllFilters()`
+- When explorer + filters both active: anchors always visible, other nodes must be in explorer set AND pass filter
+- When explorer + subtype filters active: **2-hop expansion** from anchors through `adjacencyList` to find matching institutions via intermediary persons
+- Edge computation: induced subgraph (all edges between visible nodes) when subtypes active; filtered explorer edges otherwise
+- Non-visible nodes always faded (`opacity: 0.1` for explorer, `0.08` for filters), never `display:none`
+- Callers manage label styling (font-size, font-weight, opacity) after composite visibility returns
+
+**Reset functions:**
+- `resetExplorerVisuals()`: resets DOM styles (nodes, edges, labels) without clearing explorer/filter state. Used by `applyExplorerResult()`
+- `clearPath()`: clears all explorer state variables + resets DOM + re-applies filters on full graph. Filters persist after clearing
+- `resetView()`: clears explorer state + re-applies filters if active, or resets all styles. Called when search is cleared
+- `fullReset()`: calls `resetFilters()` then `clearPath()` then `resetView()` — complete state wipe
 
 Data loading: port 5001 → `/api/graph.json` (live DB); otherwise → static `graph.json`.
 
@@ -208,6 +226,14 @@ Institution subtypes: `periodical`, `publisher`, `university`, `organization`, `
 - `explorerMode` state: `'all'` (default), `'direct'`, or `'shortest'`
 - When BFS overflow occurs, "All Paths" button auto-disables and mode switches to "shortest"
 - `clearPath()` re-enables all mode buttons on reset
+
+### Explorer-Filter Interaction (2-hop expansion)
+- Search/click sets `explorerDisplayNodes`/`explorerDisplayEdges`/`explorerAnchorNodes`
+- Type filters (Person/Institution) use simple intersection with explorer nodes
+- **Subtype filters trigger 2-hop expansion**: from each anchor, traverse `adjacencyList` 2 hops to find institutions matching the subtype, including intermediary person nodes
+- Example: Search "Divagando" → click "Business" → shows Divagando + intermediary persons (Erberto Landi, etc.) + business institutions (Landi Advertisement Co, etc.)
+- Edges computed as induced subgraph of all visible nodes when subtypes active
+- No state mutation — expansion computed inside `applyCompositeVisibility()` from existing data structures
 
 ### Subgraph Export
 - Exports the induced subgraph of all visible nodes (opacity > 0.05, display ≠ none)

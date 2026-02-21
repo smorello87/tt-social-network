@@ -1849,6 +1849,9 @@
       let explorerNodes = [];
       let explorerMode = 'all'; // 'all', 'direct', or 'shortest'
       let lastExplorerResult = null; // cached result for mode switching
+      let explorerDisplayNodes = null; // Set<string> — visible nodes from explorer, or null
+      let explorerDisplayEdges = null; // Set<string> — visible edges from explorer, or null
+      let explorerAnchorNodes = null;  // Set<string> — searched-for endpoint nodes, always visible
 
       // State
       let currentPath = [];
@@ -2480,6 +2483,14 @@
         showNodeDetails(d);
       }
 
+      function updateLabelsForExplorer(visibleNodes, anchorNodes) {
+        labelElements
+          .style("opacity", d => visibleNodes.has(d.id) ? 1 : 0)
+          .style("display", d => visibleNodes.has(d.id) ? null : "none")
+          .style("font-size", d => anchorNodes.has(d.id) ? "36px" : "12px")
+          .style("font-weight", d => anchorNodes.has(d.id) ? "700" : ((nodeDegrees.get(d.id) || 1) > 10 ? "600" : "400"));
+      }
+
       function highlightNode(node) {
         // Reset 2-hop if switching nodes
         if (twoHopSourceId && twoHopSourceId !== node.id) {
@@ -2492,24 +2503,23 @@
         const connectedNodes = new Set([node.id]);
         adjacencyList.get(node.id).forEach(id => connectedNodes.add(id));
 
-        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0.1);
-
-        // Force-show labels for connected nodes
-        pathOrSearchActive = true;
-        labelElements.style("display", d => connectedNodes.has(d.id) ? null : "none");
-
-        // Update canvas: show only edges where BOTH endpoints are in the connected set
-        hiddenEdges.clear();
-        highlightedEdges.clear();
+        // Store focused view state for composite visibility
+        explorerDisplayNodes = connectedNodes;
+        explorerAnchorNodes = new Set([node.id]);
+        explorerDisplayEdges = new Set();
         linksData.forEach(l => {
           const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
           const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          if (!connectedNodes.has(sourceId) || !connectedNodes.has(targetId)) {
-            hiddenEdges.add(l._edgeKey);
+          if (connectedNodes.has(sourceId) && connectedNodes.has(targetId)) {
+            explorerDisplayEdges.add(l._edgeKey);
           }
         });
-        drawCanvasLinks();
-        updateExportButtonVisibility();
+
+        // Delegate to composite visibility (handles filter intersection)
+        const visibleNodes = applyCompositeVisibility();
+
+        // Re-apply label styles for focused view
+        updateLabelsForExplorer(visibleNodes, explorerAnchorNodes);
       }
 
       function showNodeDetails(node) {
@@ -2631,6 +2641,18 @@
           return;
         }
 
+        // Exact match takes priority over cache (dropdown selection should
+        // always produce single-node results, even if a regex search for the
+        // same lowercased term was previously cached with multiple matches)
+        const exactNode = nodesById.get(e.target.value.trim());
+        if (exactNode) {
+          const matched = [exactNode];
+          const connected = new Set();
+          adjacencyList.get(exactNode.id).forEach(connId => connected.add(nodesById.get(connId)));
+          applySearchResults(matched, connected);
+          return;
+        }
+
         if (searchCache.has(term)) {
           const cached = searchCache.get(term);
           applySearchResults(cached.matched, cached.connected);
@@ -2641,7 +2663,6 @@
         const regex = new RegExp(escaped, 'i');
         const matched = [];
         const connected = new Set();
-
         nodesById.forEach((node, id) => {
           if (regex.test(id)) {
             matched.push(node);
@@ -2659,22 +2680,16 @@
 
       function applySearchResults(matched, connected) {
         if (matched.length > 0) {
-          const matchedSet = new Set(matched);
-          const important = new Set([...matched, ...connected]);
-          const importantIds = new Set();
-          important.forEach(n => importantIds.add(n.id));
           const matchedIds = new Set();
-          matchedSet.forEach(n => matchedIds.add(n.id));
+          matched.forEach(n => matchedIds.add(n.id));
+          const importantIds = new Set();
+          matched.forEach(n => importantIds.add(n.id));
+          connected.forEach(n => importantIds.add(n.id));
 
-          nodeGroups.style("opacity", d => important.has(d) ? 1 : 0.1);
-
-          // Force-show labels for matched nodes
-          pathOrSearchActive = true;
-          labelElements.style("display", d => importantIds.has(d.id) ? null : "none");
-
-          // Update canvas links
-          hiddenEdges.clear();
-          highlightedEdges.clear();
+          // Store focused view state for composite visibility
+          explorerDisplayNodes = importantIds;
+          explorerAnchorNodes = matchedIds;
+          explorerDisplayEdges = new Set();
           linksData.forEach(l => {
             const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
             const targetId = typeof l.target === 'object' ? l.target.id : l.target;
@@ -2682,12 +2697,16 @@
             const targetMatched = matchedIds.has(targetId);
             const sourceImportant = importantIds.has(sourceId);
             const targetImportant = importantIds.has(targetId);
-            if (!((sourceMatched && targetImportant) || (targetMatched && sourceImportant))) {
-              hiddenEdges.add(l._edgeKey);
+            if ((sourceMatched && targetImportant) || (targetMatched && sourceImportant)) {
+              explorerDisplayEdges.add(l._edgeKey);
             }
           });
-          drawCanvasLinks();
-          updateExportButtonVisibility();
+
+          // Delegate to composite visibility (handles filter intersection)
+          const visibleNodes = applyCompositeVisibility();
+
+          // Re-apply label styles for search results
+          updateLabelsForExplorer(visibleNodes, matchedIds);
 
           centerNodes(matched);
         }
@@ -2817,50 +2836,16 @@
         const sliderValue = parseInt(document.getElementById('degree-range')?.value || 0);
         currentDegreeThreshold = DEGREE_THRESHOLDS[sliderValue];
 
-        // Apply filters to nodes and count visible
-        let visibleCount = 0;
-        const totalCount = nodesById.size;
+        // Delegate to composite visibility (handles explorer+filter intersection)
+        const visibleNodes = applyCompositeVisibility();
 
-        nodeGroups.each(function(d) {
-          const isVisible = isNodeVisible(d);
-          d3.select(this).style("opacity", isVisible ? 1 : 0.08);
-          if (isVisible) visibleCount++;
-        });
-
-        // Update filter count display
-        const filterCountEl = document.getElementById('filter-count');
-        if (filterCountEl) {
-          const hasFilters = selectedTypes.size > 0 || selectedSubtypes.size > 0 || currentDegreeThreshold > 1;
-          if (hasFilters && visibleCount < totalCount) {
-            filterCountEl.textContent = `Showing ${visibleCount.toLocaleString()} of ${totalCount.toLocaleString()} nodes`;
-            filterCountEl.style.display = 'block';
-          } else {
-            filterCountEl.style.display = 'none';
-          }
+        // When explorer is active, re-apply label and endpoint styles
+        if (explorerDisplayNodes !== null) {
+          updateLabelsForExplorer(visibleNodes, explorerAnchorNodes || new Set());
         }
-
-        // Update canvas link visibility
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-
-        if (linksData) {
-          linksData.forEach(l => {
-            const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
-            const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-            const sourceNode = nodesById.get(sourceId);
-            const targetNode = nodesById.get(targetId);
-
-            if (!isNodeVisible(sourceNode) || !isNodeVisible(targetNode)) {
-              hiddenEdges.add(l._edgeKey);
-            }
-          });
-        }
-
-        drawCanvasLinks();
-        updateExportButtonVisibility();
 
         // Stop simulation when no visible nodes to save CPU
-        if (visibleCount === 0 && simulation) {
+        if (visibleNodes.size === 0 && simulation) {
           simulation.stop();
         }
       }
@@ -2930,6 +2915,146 @@
         return true;
       }
 
+      function applyCompositeVisibility() {
+        if (!nodeGroups) return new Set();
+
+        const hasExplorer = explorerDisplayNodes !== null;
+        const hasFilters = selectedTypes.size > 0 || selectedSubtypes.size > 0 || currentDegreeThreshold > 1;
+
+        // Compute visible node set
+        const visibleNodes = new Set();
+
+        nodesById.forEach((node, id) => {
+          if (hasExplorer && hasFilters) {
+            if (selectedSubtypes.size > 0) {
+              // 2-hop expansion handled below — skip per-node iteration here
+            } else {
+              // Intersection: anchor nodes always visible, others must be in explorer AND pass filter
+              if (explorerAnchorNodes && explorerAnchorNodes.has(id)) {
+                visibleNodes.add(id);
+              } else if (explorerDisplayNodes.has(id) && isNodeVisible(node)) {
+                visibleNodes.add(id);
+              }
+            }
+          } else if (hasExplorer) {
+            if (explorerDisplayNodes.has(id)) visibleNodes.add(id);
+          } else if (hasFilters) {
+            if (isNodeVisible(node)) visibleNodes.add(id);
+          } else {
+            visibleNodes.add(id);
+          }
+        });
+
+        // 2-hop expansion for subtype filters with explorer state
+        if (hasExplorer && hasFilters && selectedSubtypes.size > 0) {
+          // Always include anchor nodes
+          const anchors = explorerAnchorNodes || new Set();
+          anchors.forEach(id => visibleNodes.add(id));
+
+          // From each anchor, traverse 2 hops to find matching institutions
+          anchors.forEach(anchorId => {
+            const hop1Neighbors = adjacencyList.get(anchorId) || new Set();
+            hop1Neighbors.forEach(hop1Id => {
+              const hop1Node = nodesById.get(hop1Id);
+              if (!hop1Node) return;
+
+              // Check if 1-hop neighbor itself passes the filter
+              if (isNodeVisible(hop1Node)) {
+                visibleNodes.add(hop1Id);
+              }
+
+              // Check 2-hop neighbors for subtype matches
+              const hop2Neighbors = adjacencyList.get(hop1Id) || new Set();
+              hop2Neighbors.forEach(hop2Id => {
+                if (anchors.has(hop2Id)) return; // skip back-edges to anchors
+                const hop2Node = nodesById.get(hop2Id);
+                if (!hop2Node) return;
+                if (isNodeVisible(hop2Node)) {
+                  visibleNodes.add(hop2Id);  // matching institution
+                  visibleNodes.add(hop1Id);  // intermediary person
+                }
+              });
+            });
+          });
+        }
+
+        // Compute visible edge set
+        const visibleEdges = new Set();
+
+        if (hasExplorer) {
+          if (selectedSubtypes.size > 0) {
+            // Induced subgraph: include ALL edges between visible nodes
+            linksData.forEach(l => {
+              const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+              const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+              if (visibleNodes.has(sourceId) && visibleNodes.has(targetId)) {
+                visibleEdges.add(l._edgeKey);
+              }
+            });
+          } else {
+            // Start with explorer edges, then remove edges where either node is now hidden
+            explorerDisplayEdges.forEach(edgeKey => {
+              visibleEdges.add(edgeKey);
+            });
+            // Filter out edges whose endpoints aren't both visible
+            linksData.forEach(l => {
+              const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+              const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+              if (visibleEdges.has(l._edgeKey)) {
+                if (!visibleNodes.has(sourceId) || !visibleNodes.has(targetId)) {
+                  visibleEdges.delete(l._edgeKey);
+                }
+              }
+            });
+          }
+        }
+
+        // Apply to DOM — fade non-visible nodes (never display:none, preserves graph context)
+        nodeGroups
+          .style("opacity", d => visibleNodes.has(d.id) ? 1 : (hasExplorer ? 0.1 : 0.08))
+          .style("display", "block");
+
+        // Update canvas edges
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+
+        if (hasExplorer) {
+          linksData.forEach(l => {
+            if (visibleEdges.has(l._edgeKey)) {
+              highlightedEdges.add(l._edgeKey);
+            } else {
+              hiddenEdges.add(l._edgeKey);
+            }
+          });
+          pathOrSearchActive = true;
+        } else {
+          linksData.forEach(l => {
+            const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+            const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+            if (!visibleNodes.has(sourceId) || !visibleNodes.has(targetId)) {
+              hiddenEdges.add(l._edgeKey);
+            }
+          });
+          pathOrSearchActive = false;
+        }
+
+        drawCanvasLinks();
+
+        // Update filter count
+        const filterCountEl = document.getElementById('filter-count');
+        if (filterCountEl) {
+          if ((hasFilters || hasExplorer) && visibleNodes.size < nodesById.size) {
+            filterCountEl.textContent = `Showing ${visibleNodes.size.toLocaleString()} of ${nodesById.size.toLocaleString()} nodes`;
+            filterCountEl.style.display = 'block';
+          } else {
+            filterCountEl.style.display = 'none';
+          }
+        }
+
+        updateExportButtonVisibility();
+        return visibleNodes;
+      }
+
       function resetFilters() {
         selectedTypes.clear();
         selectedSubtypes.clear();
@@ -2972,16 +3097,29 @@
       }
 
       function resetView() {
-        nodeGroups.style("opacity", 1);
-        hiddenEdges.clear();
-        highlightedEdges.clear();
+        // Clear focused view state so filters apply to full graph
+        explorerDisplayNodes = null;
+        explorerDisplayEdges = null;
+        explorerAnchorNodes = null;
+
         pathOrSearchActive = false;
-        drawCanvasLinks();
-        updateExportButtonVisibility();
+        searchCache.clear();
+
+        // Re-apply filters (or show everything if no filters active)
+        const hasFilters = selectedTypes.size > 0 || selectedSubtypes.size > 0 || currentDegreeThreshold > 1;
+        if (hasFilters) {
+          applyAllFilters();
+        } else {
+          nodeGroups.style("opacity", 1);
+          hiddenEdges.clear();
+          highlightedEdges.clear();
+          drawCanvasLinks();
+          updateExportButtonVisibility();
+        }
+
         currentLabelTier = null;
         updateLabelVisibility(currentZoomTransform.k);
         autoFitNetwork();
-        searchCache.clear();
       }
 
       function centerNodes(nodesToCenter) {
@@ -3124,12 +3262,8 @@
       }
 
       function applyExplorerResult(result) {
-        // Save state before clearPath wipes it
-        const savedNodes = [...explorerNodes];
-        const savedMode = explorerMode;
-        clearPath();
-        explorerNodes = savedNodes;
-        explorerMode = savedMode;
+        // Reset visuals without clearing filters or explorer state
+        resetExplorerVisuals();
         lastExplorerResult = result;
         renderExplorerChips();
 
@@ -3177,6 +3311,11 @@
             }
           }
           if (displayNodes.size === 0) {
+            explorerDisplayNodes = new Set();
+            explorerDisplayEdges = new Set();
+            explorerAnchorNodes = new Set();
+            if (startNode) explorerAnchorNodes.add(startNode);
+            if (endNode) explorerAnchorNodes.add(endNode);
             const pathInfoEl = document.getElementById('path-info');
             if (pathInfoEl) {
               pathInfoEl.style.display = 'block';
@@ -3213,6 +3352,11 @@
             });
           }
           if (displayNodes.size <= 2 && displayEdges.size === 0) {
+            explorerDisplayNodes = new Set();
+            explorerDisplayEdges = new Set();
+            explorerAnchorNodes = new Set();
+            if (startNode) explorerAnchorNodes.add(startNode);
+            if (endNode) explorerAnchorNodes.add(endNode);
             const pathInfoEl = document.getElementById('path-info');
             if (pathInfoEl) {
               pathInfoEl.style.display = 'block';
@@ -3230,6 +3374,13 @@
           displayNodes = allConnectedNodes;
           displayEdges = allConnectedEdges;
         }
+
+        // Store explorer state for composite visibility
+        explorerDisplayNodes = displayNodes;
+        explorerDisplayEdges = displayEdges;
+        explorerAnchorNodes = new Set();
+        if (startNode) explorerAnchorNodes.add(startNode);
+        if (endNode) explorerAnchorNodes.add(endNode);
 
         // Build path info
         const pathInfoEl = document.getElementById('path-info');
@@ -3286,27 +3437,12 @@
         const modeEl = document.getElementById('explorer-mode');
         if (modeEl) modeEl.style.display = 'flex';
 
-        // Highlight nodes
-        nodeGroups.style("opacity", d => displayNodes.has(d.id) ? 1 : 0)
-          .style("display", d => displayNodes.has(d.id) ? "block" : "none");
-
-        // Update canvas edges
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
-          if (displayEdges.has(l._edgeKey)) {
-            highlightedEdges.add(l._edgeKey);
-          } else {
-            hiddenEdges.add(l._edgeKey);
-          }
-        });
-        pathOrSearchActive = true;
-        drawCanvasLinks();
-        updateExportButtonVisibility();
+        // Apply composite visibility (intersect explorer with any active filters)
+        const visibleNodes = applyCompositeVisibility();
 
         // Style endpoint nodes
         nodeGroups.select("circle").each(function(d) {
-          if (displayNodes.has(d.id)) {
+          if (visibleNodes.has(d.id)) {
             const isEndpoint = (d.id === startNode || d.id === endNode);
             d3.select(this)
               .classed("highlight-node", true)
@@ -3320,14 +3456,12 @@
           }
         });
 
-        labelElements.style("opacity", d => displayNodes.has(d.id) ? 1 : 0)
-          .style("display", d => displayNodes.has(d.id) ? "block" : "none");
+        updateLabelsForExplorer(visibleNodes, new Set([startNode, endNode]));
 
-        centerNodes(Array.from(displayNodes).map(id => nodesById.get(id)));
+        centerNodes(Array.from(visibleNodes).map(id => nodesById.get(id)).filter(Boolean));
       }
 
       function findSharedConnections(selectedNames) {
-        // Save names before clearPath wipes them
         const savedNames = [...selectedNames];
         const sets = [];
         const selectedIds = new Set();
@@ -3358,11 +3492,14 @@
         // Remove selected nodes from the shared set
         selectedIds.forEach(id => shared.delete(id));
 
-        // Restore chips
+        // Restore chips (composite visibility handles DOM updates)
         explorerNodes = savedNames;
         renderExplorerChips();
 
         if (shared.size === 0) {
+          explorerDisplayNodes = new Set(selectedIds);
+          explorerDisplayEdges = new Set();
+          explorerAnchorNodes = new Set(selectedIds);
           const pathInfoEl = document.getElementById('path-info');
           if (pathInfoEl) {
             pathInfoEl.style.display = 'block';
@@ -3391,6 +3528,11 @@
             connectedEdges.add(l._edgeKey);
           }
         });
+
+        // Store explorer state for composite visibility
+        explorerDisplayNodes = connectedNodes;
+        explorerDisplayEdges = connectedEdges;
+        explorerAnchorNodes = new Set(selectedIds);
 
         // Show result info with node list
         const pathInfoEl = document.getElementById('path-info');
@@ -3455,9 +3597,8 @@
           pathInfoEl.appendChild(exportBtn);
         }
 
-        // Highlight nodes
-        nodeGroups.style("opacity", d => connectedNodes.has(d.id) ? 1 : 0)
-          .style("display", d => connectedNodes.has(d.id) ? "block" : "none");
+        // Apply composite visibility (intersect explorer with any active filters)
+        const visibleNodes = applyCompositeVisibility();
 
         // Style selected nodes distinctly
         nodeGroups.select("circle")
@@ -3468,24 +3609,10 @@
           .style("stroke-width", d => selectedIds.has(d.id) ? 4 : 2);
 
         // Force-show labels
-        pathOrSearchActive = true;
-        labelElements.style("display", d => connectedNodes.has(d.id) ? null : "none");
-
-        // Canvas edges
-        hiddenEdges.clear();
-        highlightedEdges.clear();
-        linksData.forEach(l => {
-          if (connectedEdges.has(l._edgeKey)) {
-            highlightedEdges.add(l._edgeKey);
-          } else {
-            hiddenEdges.add(l._edgeKey);
-          }
-        });
-        drawCanvasLinks();
-        updateExportButtonVisibility();
+        updateLabelsForExplorer(visibleNodes, selectedIds);
 
         // Center the view
-        const allVisible = Array.from(connectedNodes).map(id => nodesById.get(id)).filter(Boolean);
+        const allVisible = Array.from(visibleNodes).map(id => nodesById.get(id)).filter(Boolean);
         centerNodes(allVisible);
       }
 
@@ -4037,39 +4164,75 @@
 
         const allRelevant = new Set([nodeId, ...oneHop, ...twoHop]);
 
-        // Set node opacities
-        nodeGroups.style("opacity", d => {
-          if (d.id === nodeId || oneHop.has(d.id)) return 1;
-          if (twoHop.has(d.id)) return 0.6;
-          return 0.05;
-        }).style("display", d => allRelevant.has(d.id) ? null : null);
-
-        // Labels: show for source + 1-hop, hide for 2-hop and others
-        pathOrSearchActive = true;
-        labelElements.style("display", d => {
-          if (d.id === nodeId || oneHop.has(d.id)) return null;
-          return "none";
-        });
-
-        // Edges: show edges where both endpoints are in allRelevant
-        hiddenEdges.clear();
-        highlightedEdges.clear();
+        // Set explorer state for composite visibility
+        explorerDisplayNodes = allRelevant;
+        explorerAnchorNodes = new Set([nodeId]);
+        explorerDisplayEdges = new Set();
         linksData.forEach(l => {
           const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
           const targetId = typeof l.target === 'object' ? l.target.id : l.target;
-          if (!allRelevant.has(sourceId) || !allRelevant.has(targetId)) {
-            hiddenEdges.add(l._edgeKey);
-          } else if (sourceId === nodeId || targetId === nodeId) {
-            highlightedEdges.add(l._edgeKey);
+          if (allRelevant.has(sourceId) && allRelevant.has(targetId)) {
+            explorerDisplayEdges.add(l._edgeKey);
           }
         });
 
-        drawCanvasLinks();
+        // Delegate to composite visibility (handles filter intersection)
+        const visibleNodes = applyCompositeVisibility();
+
+        // Apply 2-hop opacity distinction: 2-hop nodes at 0.6 (override the 1.0 from composite)
+        nodeGroups.style("opacity", d => {
+          if (!visibleNodes.has(d.id)) return 0.1;
+          if (d.id === nodeId || oneHop.has(d.id)) return 1;
+          return 0.6;
+        });
+
+        // Labels: show for source + 1-hop only (2-hop nodes are too numerous)
+        const oneHopVisible = new Set();
+        visibleNodes.forEach(id => {
+          if (id === nodeId || oneHop.has(id)) oneHopVisible.add(id);
+        });
+        updateLabelsForExplorer(oneHopVisible, explorerAnchorNodes);
+
         updateExportButtonVisibility();
 
         // Center on the 2-hop subgraph
-        const nodesToCenter = Array.from(allRelevant).map(id => nodesById.get(id)).filter(Boolean);
+        const nodesToCenter = Array.from(visibleNodes).map(id => nodesById.get(id)).filter(Boolean);
         centerNodes(nodesToCenter);
+      }
+
+      function resetExplorerVisuals() {
+        // Reset node circle styles without touching filter state or explorer state
+        if (nodeGroups) {
+          nodeGroups.style("opacity", 1).style("display", "block");
+          nodeGroups.select("circle")
+            .classed("highlight-node", false)
+            .style("stroke", d => getNodeStroke(d))
+            .style("stroke-width", 2)
+            .style("fill", d => getNodeColor(d));
+        }
+
+        // Reset canvas link state
+        hiddenEdges.clear();
+        highlightedEdges.clear();
+        pathOrSearchActive = false;
+        drawCanvasLinks();
+
+        // Reset label styles and restore visibility based on current zoom tier
+        if (labelElements) {
+          labelElements
+            .style("opacity", null)
+            .style("font-size", "12px")
+            .style("font-weight", d => (nodeDegrees.get(d.id) || 1) > 10 ? "600" : "400");
+          currentLabelTier = null;
+          updateLabelVisibility(currentZoomTransform.k);
+        }
+
+        // Hide path info
+        const pathInfoEl = document.getElementById('path-info');
+        if (pathInfoEl) {
+          pathInfoEl.style.display = 'none';
+          pathInfoEl.textContent = '';
+        }
       }
 
       function clearPath() {
@@ -4082,6 +4245,9 @@
         // Clear explorer state
         explorerNodes = [];
         lastExplorerResult = null;
+        explorerDisplayNodes = null;
+        explorerDisplayEdges = null;
+        explorerAnchorNodes = null;
         renderExplorerChips();
         const explorerInput = document.getElementById('explorer-input');
         if (explorerInput) explorerInput.value = '';
@@ -4122,6 +4288,7 @@
           setTimeout(() => { if (!isDragging) { simulation.stop(); autoFitNetwork(); } }, 1000);
         }
 
+        // Reset node styles
         nodeGroups.style("opacity", 1).style("display", "block");
         nodeGroups.select("circle")
           .classed("highlight-node", false)
@@ -4135,15 +4302,18 @@
         pathOrSearchActive = false;
         drawCanvasLinks();
 
-        // Restore label visibility based on current zoom tier
+        // Reset label styles and restore visibility based on current zoom tier
+        labelElements
+          .style("opacity", null)
+          .style("font-size", "12px")
+          .style("font-weight", d => (nodeDegrees.get(d.id) || 1) > 10 ? "600" : "400");
         currentLabelTier = null; // Force recalculation
         updateLabelVisibility(currentZoomTransform.k);
 
         // Close details panel
         document.getElementById('node-details').classList.remove('open');
 
-        // Reset type/subtype filters
-        resetFilters();
+        // Re-apply filters on full graph (filters persist after clearing explorer)
         applyAllFilters();
 
         updateExportButtonVisibility();
@@ -4263,6 +4433,8 @@
         const communityInfo = document.getElementById('community-info');
         if (communityInfo) communityInfo.style.display = 'none';
 
+        // Reset filters before clearPath so applyAllFilters() sees clean state
+        resetFilters();
         clearPath();
         resetView();
 
@@ -4280,8 +4452,6 @@
         document.getElementById("degree-range").value = "0";
         document.getElementById("degree-label").textContent = "1+";
 
-        // Reset type filters
-        resetFilters();
         document.getElementById('node-details').classList.remove('open');
 
         searchCache.clear();

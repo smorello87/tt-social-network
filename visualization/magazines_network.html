@@ -1392,7 +1392,8 @@
           return;
         }
 
-        const regex = new RegExp(term, 'i');
+        const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(escaped, 'i');
         const matched = [];
         const connected = new Set();
 

@@ -136,8 +136,10 @@ class MultiNodeConnectionFinder {
 
     // Highlight matching text in autocomplete results
     highlightMatch(text, query) {
+        // Sanitize text to prevent HTML injection from node IDs
+        const safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
-        return text.replace(regex, '<span class="highlight">$1</span>');
+        return safe.replace(regex, '<span class="highlight">$1</span>');
     }
 
     // Escape regex special characters
@@ -326,41 +328,63 @@ class MultiNodeConnectionFinder {
     }
 
     // Display connection results
+    // Handles multiple provider shapes:
+    //   index.html: { nodes: Set, edges: Set, overflow: bool }
+    //   direct_connections: { nodes: [], links: [], info: { message, directConnectionCount, ... } }
+    //   legacy: { connections: [], totalPaths, commonNeighbors: [] }
     displayResults(results, selectedNodes) {
         const summaryDiv = document.getElementById('results-summary');
         const contentDiv = document.getElementById('results-content');
 
         if (!summaryDiv || !contentDiv) return;
+        contentDiv.textContent = '';
 
-        // Format results
-        let html = `
-            <div style="margin-bottom: 10px;">
-                <strong>Selected nodes:</strong> ${selectedNodes.length}
-            </div>
-        `;
+        // Normalize edge/connection count from whichever shape we received
+        let edgeCount = 0;
+        let hasResults = false;
+        let message = '';
 
-        if (results.connections && results.connections.length > 0) {
-            html += `
-                <div style="margin-bottom: 10px;">
-                    <strong>Direct connections found:</strong> ${results.connections.length}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <strong>Total paths:</strong> ${results.totalPaths || 0}
-                </div>
-            `;
-
-            if (results.commonNeighbors && results.commonNeighbors.length > 0) {
-                html += `
-                    <div>
-                        <strong>Common connections:</strong> ${results.commonNeighbors.length}
-                    </div>
-                `;
-            }
-        } else {
-            html = '<div style="color: #8b7355;">No direct connections found between selected nodes.</div>';
+        if (results.info && results.info.message) {
+            // direct_connections provider
+            edgeCount = results.links ? results.links.length : 0;
+            hasResults = edgeCount > 0;
+            message = results.info.message;
+        } else if (results.edges instanceof Set || Array.isArray(results.edges)) {
+            // index.html provider (Set) or array
+            edgeCount = results.edges instanceof Set ? results.edges.size : results.edges.length;
+            const nodeCount = results.nodes instanceof Set ? results.nodes.size : (results.nodes ? results.nodes.length : 0);
+            hasResults = edgeCount > 0;
+            message = hasResults
+                ? `Found ${edgeCount} connection${edgeCount !== 1 ? 's' : ''} across ${nodeCount} nodes`
+                : '';
+        } else if (results.connections) {
+            // legacy shape
+            edgeCount = results.connections.length;
+            hasResults = edgeCount > 0;
+            message = `Direct connections: ${edgeCount}, Total paths: ${results.totalPaths || 0}`;
         }
 
-        contentDiv.innerHTML = html;
+        // Build DOM nodes instead of innerHTML
+        const countDiv = document.createElement('div');
+        countDiv.style.marginBottom = '10px';
+        const countLabel = document.createElement('strong');
+        countLabel.textContent = 'Selected nodes: ';
+        countDiv.appendChild(countLabel);
+        countDiv.appendChild(document.createTextNode(String(selectedNodes.length)));
+
+        if (hasResults) {
+            contentDiv.appendChild(countDiv);
+            const msgDiv = document.createElement('div');
+            msgDiv.style.marginBottom = '10px';
+            msgDiv.textContent = message;
+            contentDiv.appendChild(msgDiv);
+        } else {
+            const noResultDiv = document.createElement('div');
+            noResultDiv.style.color = '#8b7355';
+            noResultDiv.textContent = 'No direct connections found between selected nodes.';
+            contentDiv.appendChild(noResultDiv);
+        }
+
         summaryDiv.style.display = 'block';
     }
 

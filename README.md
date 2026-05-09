@@ -70,6 +70,7 @@ tt-social-network/
 │   │   ├── omeka_editor.py            # Staging review UI (port 5002)
 │   │   ├── import_carroccio_contributors.py
 │   │   ├── import_atlantica_contributors.py
+│   │   ├── import_parola_contributors.py
 │   │   ├── clean_metadata.py          # Metadata normalization
 │   │   ├── static/                    # Frontend assets (CSS, JS)
 │   │   └── templates/                 # Jinja2 templates
@@ -97,6 +98,7 @@ tt-social-network/
 - Digitized tables of contents from 103 issues of *Divagando* (1945-1957)
 - Tables of contents of *Il Carroccio* (1915-1930)
 - Tables of contents of *Atlantica* (1923-1934)
+- Mastheads and tables of contents from 74 issues of *La Parola del Popolo* (1951-1982)
 - [The Periconi Collection of Italian American Imprints](https://italianamericanimprints.omeka.net/)
 - Wikipedia biographical data
 - Metadata from the Italian Sistema Bibliotecario Nazionale (SBN) and OCLC

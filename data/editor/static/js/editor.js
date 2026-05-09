@@ -1402,16 +1402,24 @@ const Editor = {
                     created++;
                 } catch (e) {
                     const target = this.state.selectedTargets.find(t => t.id === targetId);
-                    failedTargets.push(target ? target.name : `ID ${targetId}`);
+                    const targetName = target ? target.name : `ID ${targetId}`;
+                    const isDuplicate = e.message && (e.message.includes('UNIQUE') || e.message.includes('already exists'));
+                    failedTargets.push({ name: targetName, duplicate: isDuplicate, error: e.message });
                 }
             }
 
-            if (created > 0 && failedTargets.length > 0) {
-                this.showToast(`Created ${created} edge${created !== 1 ? 's' : ''}. Failed: ${failedTargets.join(', ')}`, 'success');
+            if (failedTargets.length > 0) {
+                const dupes = failedTargets.filter(f => f.duplicate);
+                const errors = failedTargets.filter(f => !f.duplicate);
+                if (errors.length > 0) {
+                    this.showToast(`Failed to create edge: ${errors[0].error}`, 'error');
+                } else if (created > 0) {
+                    this.showToast(`Created ${created} edge${created !== 1 ? 's' : ''}. Already linked: ${dupes.map(f => f.name).join(', ')}`, 'success');
+                } else {
+                    this.showToast(`Edges already exist for: ${dupes.map(f => f.name).join(', ')}`, 'warning');
+                }
             } else if (created > 0) {
                 this.showToast(`Created ${created} edge${created !== 1 ? 's' : ''}`, 'success');
-            } else {
-                this.showToast(`No edges created. Already exist: ${failedTargets.join(', ')}`, 'error');
             }
 
             this.closeModal('add-edge-modal');

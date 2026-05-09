@@ -71,6 +71,7 @@ python3 clean_metadata.py            # Normalize metadata
 cd data/editor
 python3 import_carroccio_contributors.py    # Import Il Carroccio TOC contributors
 python3 import_atlantica_contributors.py    # Import Atlantica TOC contributors
+python3 import_parola_contributors.py       # Import La Parola del Popolo masthead/TOC contributors
 ```
 These scripts parse contributor files and add nodes/edges to the database. They handle name normalization and duplicate detection.
 
@@ -124,7 +125,7 @@ Exposed API via `const NetworkViz` (script scope, not on `window`): `init`, `fin
 - When explorer + subtype filters active: **2-hop expansion** from anchors through `adjacencyList` to find matching institutions via intermediary persons
 - Edge computation: induced subgraph (all edges between visible nodes) when subtypes active; filtered explorer edges otherwise
 - Non-visible nodes always faded (`opacity: 0.1` for explorer, `0.08` for filters), never `display:none`
-- Callers manage label styling (font-size, font-weight, opacity) after composite visibility returns
+- `updateLabelsForExplorer(visibleNodes, anchorNodes)`: shared helper for post-visibility label styling — anchors get 36px/700, visible nodes get 12px, hidden nodes get opacity 0
 
 **Reset functions:**
 - `resetExplorerVisuals()`: resets DOM styles (nodes, edges, labels) without clearing explorer/filter state. Used by `applyExplorerResult()`
@@ -148,19 +149,34 @@ Data loading: port 5001 → `/api/graph.json` (live DB); otherwise → static `g
 
 ### Data Editor (`data/editor/`)
 
-Flask app with SQLite backend.
+Flask app with SQLite backend. CORS restricted to localhost/127.0.0.1 origins only.
 
 **Database schema:**
 ```sql
 nodes (id, name, name_normalized, type, subtype)
-edges (id, source_id, target_id, type, needs_review)
+edges (id, source_id, target_id, type, needs_review)  -- UNIQUE(source_id, target_id)
 shared_institutions (edge_id, institution_id)
 ```
 
 Node types: `person`, `institution`
 Institution subtypes: `periodical`, `publisher`, `university`, `organization`, `media`, `business`, `event`, `government`, `other`
 
+**Edge integrity (canonical ordering):**
+- All edges stored with `source_id <= target_id` — enforced by SQLite triggers (`enforce_edge_direction_insert`, `enforce_edge_direction_update`)
+- `create_edge()`, `update_edge()`, `batch_create_edges()`, and `merge_nodes()` all normalize direction before writing
+- `migrate_deduplicate_edges()` runs at startup: removes reverse-duplicate edges, normalizes existing edges (idempotent)
+- When checking for duplicate edges, always check both directions: `(source_id=? AND target_id=?) OR (source_id=? AND target_id=?)`
+
+**Input validation and error handling:**
+- `safe_int()` helper in `app.py` validates integer query params (`page`, `per_page`), returns 400 JSON on invalid input
+- `get_edges()` raises `ValueError` on invalid `min_shared`/`max_shared`; caller catches and returns 400
+- Batch operations return `cursor.rowcount` (actual rows affected), not `len(input_ids)`
+- Edge creation/update returns 409 on UNIQUE constraint violations (duplicate edges), not 500
+- Frontend `createEdges()` distinguishes duplicate errors from other API errors in toast messages
+
 **Editor tabs:** Nodes, Edges, Needs Review, Data Quality
+
+**Stats API:** `GET /api/stats` returns `needs_review` (backward compat) and `unclassified_edges` (preferred) — both count edges with `type='unknown'`
 
 **Data Quality tab** (`database.py:get_audit_report()`):
 - 5 collapsible sections: unknown edges, missing subtypes, orphan nodes, needs_review edges, potential duplicates
@@ -266,7 +282,14 @@ Production site: `reti.stefanomorello.com`
 - SSH key stored as `id_rsa` in project root (gitignored)
 - Only deploy `visualization/index.html` and `visualization/graph.json`
 - Always regenerate `graph.json` from the database before deploying
-- Deploy command: `scp -o IdentitiesOnly=yes -i id_rsa visualization/index.html visualization/graph.json stefanom@stefanomorello.com:/home/stefanom/reti.stefanomorello.com/`
+- Deploy command (requires `expect` for passphrase from `.env`):
+  ```bash
+  expect -c '
+  spawn scp -o IdentitiesOnly=yes -i id_rsa visualization/index.html visualization/graph.json stefanom@stefanomorello.com:/home/stefanom/reti.stefanomorello.com/
+  expect "passphrase" { send "<passphrase-from-env>\r"; exp_continue }
+  expect eof
+  '
+  ```
 
 ## Citation
 

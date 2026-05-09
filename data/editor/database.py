@@ -67,6 +67,20 @@ def init_db():
             CREATE INDEX IF NOT EXISTS idx_edges_review ON edges(needs_review);
             CREATE INDEX IF NOT EXISTS idx_edges_source ON edges(source_id);
             CREATE INDEX IF NOT EXISTS idx_edges_target ON edges(target_id);
+
+            CREATE TRIGGER IF NOT EXISTS enforce_edge_direction_insert
+            BEFORE INSERT ON edges
+            BEGIN
+              SELECT RAISE(ABORT, 'source_id must be <= target_id')
+              WHERE NEW.source_id > NEW.target_id;
+            END;
+
+            CREATE TRIGGER IF NOT EXISTS enforce_edge_direction_update
+            BEFORE UPDATE OF source_id, target_id ON edges
+            BEGIN
+              SELECT RAISE(ABORT, 'source_id must be <= target_id')
+              WHERE NEW.source_id > NEW.target_id;
+            END;
         """)
 
 def backup_db():
@@ -82,6 +96,29 @@ def backup_db():
     for old in backups[10:]:
         old.unlink()
     return backup_path
+
+def migrate_deduplicate_edges():
+    """One-time migration: remove reverse-duplicate edges and normalize direction."""
+    with get_db() as conn:
+        # Find and remove reverse duplicates (keep lower-id edge)
+        dupes = conn.execute("""
+            SELECT e2.id FROM edges e1
+            JOIN edges e2 ON e1.source_id = e2.target_id AND e1.target_id = e2.source_id
+            WHERE e1.id < e2.id
+        """).fetchall()
+        if dupes:
+            dupe_ids = [r["id"] for r in dupes]
+            placeholders = ",".join("?" * len(dupe_ids))
+            conn.execute(f"DELETE FROM edges WHERE id IN ({placeholders})", dupe_ids)
+            print(f"  Deduplicated {len(dupe_ids)} reverse-duplicate edges")
+
+        # Normalize remaining edges: source_id should be <= target_id
+        swapped = conn.execute("""
+            UPDATE edges SET source_id = target_id, target_id = source_id
+            WHERE source_id > target_id
+        """).rowcount
+        if swapped:
+            print(f"  Normalized direction of {swapped} edges")
 
 # =============================================================================
 # Node Operations
@@ -246,19 +283,19 @@ def merge_nodes(primary_id, secondary_id):
             if target_id == primary_id:
                 conn.execute("DELETE FROM edges WHERE id = ?", (edge["id"],))
                 continue
-            # Check if edge already exists
+            # Normalize direction
+            s, t = (primary_id, target_id) if primary_id <= target_id else (target_id, primary_id)
+            # Check if edge already exists (both directions)
             existing = conn.execute(
-                "SELECT id FROM edges WHERE source_id = ? AND target_id = ?",
-                (primary_id, target_id)
+                "SELECT id FROM edges WHERE (source_id = ? AND target_id = ?) OR (source_id = ? AND target_id = ?)",
+                (s, t, t, s)
             ).fetchone()
             if existing:
-                # Edge already exists, just delete the duplicate
                 conn.execute("DELETE FROM edges WHERE id = ?", (edge["id"],))
             else:
-                # Transfer edge to primary
                 conn.execute(
-                    "UPDATE edges SET source_id = ? WHERE id = ?",
-                    (primary_id, edge["id"])
+                    "UPDATE edges SET source_id = ?, target_id = ? WHERE id = ?",
+                    (s, t, edge["id"])
                 )
                 edges_transferred += 1
 
@@ -274,19 +311,19 @@ def merge_nodes(primary_id, secondary_id):
             if source_id == primary_id:
                 conn.execute("DELETE FROM edges WHERE id = ?", (edge["id"],))
                 continue
-            # Check if edge already exists
+            # Normalize direction
+            s, t = (source_id, primary_id) if source_id <= primary_id else (primary_id, source_id)
+            # Check if edge already exists (both directions)
             existing = conn.execute(
-                "SELECT id FROM edges WHERE source_id = ? AND target_id = ?",
-                (source_id, primary_id)
+                "SELECT id FROM edges WHERE (source_id = ? AND target_id = ?) OR (source_id = ? AND target_id = ?)",
+                (s, t, t, s)
             ).fetchone()
             if existing:
-                # Edge already exists, just delete the duplicate
                 conn.execute("DELETE FROM edges WHERE id = ?", (edge["id"],))
             else:
-                # Transfer edge to primary
                 conn.execute(
-                    "UPDATE edges SET target_id = ? WHERE id = ?",
-                    (primary_id, edge["id"])
+                    "UPDATE edges SET source_id = ?, target_id = ? WHERE id = ?",
+                    (s, t, edge["id"])
                 )
                 edges_transferred += 1
 
@@ -385,9 +422,17 @@ def get_edges(type_filter=None, needs_review=None, source_type=None, target_type
         if min_shared is not None or max_shared is not None:
             having_clauses = []
             if min_shared is not None:
-                having_clauses.append(f"shared_count >= {int(min_shared)}")
+                try:
+                    min_shared = int(min_shared)
+                except (ValueError, TypeError):
+                    raise ValueError(f"Invalid min_shared: {min_shared}")
+                having_clauses.append(f"shared_count >= {min_shared}")
             if max_shared is not None:
-                having_clauses.append(f"shared_count <= {int(max_shared)}")
+                try:
+                    max_shared = int(max_shared)
+                except (ValueError, TypeError):
+                    raise ValueError(f"Invalid max_shared: {max_shared}")
+                having_clauses.append(f"shared_count <= {max_shared}")
             # We need to restructure for HAVING - use a subquery
             base_query = query
             query = f"""
@@ -457,7 +502,9 @@ def get_edge(edge_id):
         return result
 
 def create_edge(source_id, target_id, edge_type):
-    """Create a new edge."""
+    """Create a new edge. Normalizes direction so source_id <= target_id."""
+    if source_id > target_id:
+        source_id, target_id = target_id, source_id
     with get_db() as conn:
         cursor = conn.execute(
             "INSERT INTO edges (source_id, target_id, type, needs_review) VALUES (?, ?, ?, 0)",
@@ -479,14 +526,18 @@ def update_edge(edge_id, source_id=None, target_id=None, edge_type=None, needs_r
         # Track if we need to recompute shared institutions
         recompute_shared = False
 
-        if source_id is not None:
+        if source_id is not None or target_id is not None:
+            current = conn.execute("SELECT source_id, target_id FROM edges WHERE id = ?", (edge_id,)).fetchone()
+            if not current:
+                return
+            final_source = source_id if source_id is not None else current["source_id"]
+            final_target = target_id if target_id is not None else current["target_id"]
+            if final_source > final_target:
+                final_source, final_target = final_target, final_source
             updates.append("source_id = ?")
-            params.append(source_id)
-            recompute_shared = True
-
-        if target_id is not None:
+            params.append(final_source)
             updates.append("target_id = ?")
-            params.append(target_id)
+            params.append(final_target)
             recompute_shared = True
 
         if edge_type is not None:
@@ -523,11 +574,11 @@ def batch_update_node_subtype(node_ids, subtype):
     with get_db() as conn:
         placeholders = ",".join("?" * len(node_ids))
         # Only update institution nodes
-        conn.execute(
+        cursor = conn.execute(
             f"UPDATE nodes SET subtype = ? WHERE id IN ({placeholders}) AND type = 'institution'",
             [subtype if subtype else None] + list(node_ids)
         )
-        return len(node_ids)
+        return cursor.rowcount
 
 def batch_update_edge_type(edge_ids, edge_type):
     """Set type for multiple edges. Setting personal/affiliation clears needs_review."""
@@ -535,36 +586,37 @@ def batch_update_edge_type(edge_ids, edge_type):
         placeholders = ",".join("?" * len(edge_ids))
         if edge_type in ('personal', 'affiliation'):
             # Clear needs_review when assigning a definite type
-            conn.execute(
+            cursor = conn.execute(
                 f"UPDATE edges SET type = ?, needs_review = 0 WHERE id IN ({placeholders})",
                 [edge_type] + list(edge_ids)
             )
         else:
-            conn.execute(
+            cursor = conn.execute(
                 f"UPDATE edges SET type = ? WHERE id IN ({placeholders})",
                 [edge_type] + list(edge_ids)
             )
-        return len(edge_ids)
+        return cursor.rowcount
 
 def batch_mark_reviewed(edge_ids, reviewed=True):
     """Mark multiple edges as reviewed (clears needs_review flag)."""
     with get_db() as conn:
         placeholders = ",".join("?" * len(edge_ids))
-        conn.execute(
+        cursor = conn.execute(
             f"UPDATE edges SET needs_review = ? WHERE id IN ({placeholders})",
             [0 if reviewed else 1] + list(edge_ids)
         )
-        return len(edge_ids)
+        return cursor.rowcount
 
 def batch_create_edges(source_ids, target_id, edge_type):
     """Create edges from multiple sources to one target."""
     created = []
     with get_db() as conn:
         for source_id in source_ids:
+            s, t = (source_id, target_id) if source_id <= target_id else (target_id, source_id)
             try:
                 cursor = conn.execute(
                     "INSERT INTO edges (source_id, target_id, type, needs_review) VALUES (?, ?, ?, 0)",
-                    (source_id, target_id, edge_type)
+                    (s, t, edge_type)
                 )
                 edge_id = cursor.lastrowid
                 created.append(edge_id)
@@ -582,8 +634,8 @@ def batch_delete_edges(edge_ids):
     """Delete multiple edges."""
     with get_db() as conn:
         placeholders = ",".join("?" * len(edge_ids))
-        conn.execute(f"DELETE FROM edges WHERE id IN ({placeholders})", list(edge_ids))
-        return len(edge_ids)
+        cursor = conn.execute(f"DELETE FROM edges WHERE id IN ({placeholders})", list(edge_ids))
+        return cursor.rowcount
 
 # =============================================================================
 # Shared Institutions Computation
@@ -719,11 +771,12 @@ def get_stats():
         stats["edges"] = {row["type"]: row["count"] for row in edge_counts}
         stats["edges"]["total"] = sum(stats["edges"].values())
 
-        # Needs review count (edges with type 'unknown' need classification)
-        needs_review = conn.execute(
+        # Unclassified edges (type 'unknown' need classification)
+        count = conn.execute(
             "SELECT COUNT(*) as count FROM edges WHERE type = 'unknown'"
-        ).fetchone()
-        stats["needs_review"] = needs_review["count"]
+        ).fetchone()["count"]
+        stats["needs_review"] = count          # backward compat
+        stats["unclassified_edges"] = count    # new key
 
         # Shared institution distribution for person-to-person edges
         shared_dist = conn.execute("""
@@ -879,5 +932,6 @@ def get_subtypes():
             })
         return result
 
-# Initialize database on import
+# Initialize database and run migrations on import
 init_db()
+migrate_deduplicate_edges()

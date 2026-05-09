@@ -11,7 +11,23 @@ from flask_cors import CORS
 import database as db
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$"])
+
+
+def safe_int(value, default, param_name):
+    """Parse int query param. Returns default if None, aborts 400 if invalid."""
+    if value is None:
+        return default
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        from flask import abort
+        abort(400, description=f"Invalid integer for '{param_name}': {value}")
+
+
+@app.errorhandler(400)
+def bad_request(e):
+    return jsonify({'error': e.description or 'Bad request'}), 400
 
 # Serve visualization files
 VISUALIZATION_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'visualization'))
@@ -64,8 +80,8 @@ def list_nodes():
     type_filter = request.args.get('type')
     subtype_filter = request.args.get('subtype')
     search = request.args.get('search')
-    page = int(request.args.get('page', 1))
-    per_page = int(request.args.get('per_page', 50))
+    page = safe_int(request.args.get('page'), 1, 'page')
+    per_page = safe_int(request.args.get('per_page'), 50, 'per_page')
     sort_by = request.args.get('sort_by')
     sort_dir = request.args.get('sort_dir', 'desc')
 
@@ -192,8 +208,8 @@ def list_edges():
     min_shared = request.args.get('min_shared')
     max_shared = request.args.get('max_shared')
     search = request.args.get('search')
-    page = int(request.args.get('page', 1))
-    per_page = int(request.args.get('per_page', 50))
+    page = safe_int(request.args.get('page'), 1, 'page')
+    per_page = safe_int(request.args.get('per_page'), 50, 'per_page')
     sort_by = request.args.get('sort_by')
     sort_dir = request.args.get('sort_dir', 'desc')
 
@@ -201,19 +217,22 @@ def list_edges():
     if needs_review is not None:
         needs_review = needs_review.lower() in ('true', '1', 'yes')
 
-    result = db.get_edges(
-        type_filter=type_filter,
-        needs_review=needs_review,
-        source_type=source_type,
-        target_type=target_type,
-        min_shared=min_shared,
-        max_shared=max_shared,
-        search=search,
-        page=page,
-        per_page=per_page,
-        sort_by=sort_by,
-        sort_dir=sort_dir
-    )
+    try:
+        result = db.get_edges(
+            type_filter=type_filter,
+            needs_review=needs_review,
+            source_type=source_type,
+            target_type=target_type,
+            min_shared=min_shared,
+            max_shared=max_shared,
+            search=search,
+            page=page,
+            per_page=per_page,
+            sort_by=sort_by,
+            sort_dir=sort_dir
+        )
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
     return jsonify(result)
 
 @app.route('/api/edges/<int:edge_id>', methods=['GET'])
@@ -260,6 +279,8 @@ def update_edge(edge_id):
         db.update_edge(edge_id, source_id=source_id, target_id=target_id,
                        edge_type=edge_type, needs_review=needs_review)
         return jsonify({'success': True})
+    except sqlite3.IntegrityError:
+        return jsonify({'error': 'Edge with that source/target already exists'}), 409
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

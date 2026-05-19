@@ -1,6 +1,6 @@
-# Italian-American Literary Network Visualization
+# Reti di Carta: Italian-American Print Networks (1890-1980)
 
-An interactive network visualization mapping transnational connections in Italian-American literary culture, revealing relationships between writers, translators, scholars, and cultural institutions.
+An interactive network visualization mapping transnational connections in Italian-American print culture, revealing relationships between writers, translators, scholars, and cultural institutions.
 
 ## Overview
 
@@ -159,7 +159,7 @@ python check_single_connections.py singlerows.csv
 Morello, Stefano. "Mapping Italian/American Crossings: A Network Approach." *Modern Language Notes* 140.1 (2025): 246-275. [DOI](https://doi.org/10.1353/mln.2025.a963658)
 
 ```
-Morello, Stefano. (2025). Italian-American Literary Network Visualization.
+Morello, Stefano. (2025). Reti di Carta: Italian-American Print Networks (1890-1980).
 GitHub repository: https://github.com/smorello87/tt-social-network
 ```
 

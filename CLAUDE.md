@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Network visualization project mapping relationships in a transnational Italian-American literary network (1890-1980). Visualizes connections between writers, translators, scholars, and cultural institutions (~3,100 nodes, ~4,400 edges).
+**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (~3,850 nodes, ~5,200 edges).
 
 ## Data Flow (Source of Truth)
 

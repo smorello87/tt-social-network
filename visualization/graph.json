@@ -13246,7 +13246,12 @@
       "subtype": null
     },
     {
-      "id": "Luigi Barzini",
+      "id": "Luigi Barzini Jr",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Luigi Barzini Sr",
       "type": "person",
       "subtype": null
     },
@@ -28109,6 +28114,11 @@
     },
     {
       "source": "Epoca",
+      "target": "Luigi Barzini Jr",
+      "type": "affiliation"
+    },
+    {
+      "source": "Epoca",
       "target": "Luigi Freddi",
       "type": "affiliation"
     },
@@ -31145,6 +31155,11 @@
     {
       "source": "I-AM",
       "target": "Lino Dina",
+      "type": "affiliation"
+    },
+    {
+      "source": "I-AM",
+      "target": "Luigi Barzini Jr",
       "type": "affiliation"
     },
     {
@@ -36344,7 +36359,12 @@
     },
     {
       "source": "Il Corriere della Sera",
-      "target": "Luigi Barzini",
+      "target": "Luigi Barzini Jr",
+      "type": "affiliation"
+    },
+    {
+      "source": "Il Corriere della Sera",
+      "target": "Luigi Barzini Sr",
       "type": "affiliation"
     },
     {
@@ -43073,27 +43093,17 @@
       "type": "affiliation"
     },
     {
-      "source": "Luigi Barzini",
+      "source": "Luigi Barzini Sr",
       "target": "Corriere d'America",
       "type": "affiliation"
     },
     {
-      "source": "Luigi Barzini",
-      "target": "Epoca",
-      "type": "affiliation"
-    },
-    {
-      "source": "Luigi Barzini",
-      "target": "I-AM",
-      "type": "affiliation"
-    },
-    {
-      "source": "Luigi Barzini",
+      "source": "Luigi Barzini Sr",
       "target": "Il Carroccio",
       "type": "affiliation"
     },
     {
-      "source": "Luigi Barzini",
+      "source": "Luigi Barzini Sr",
       "target": "Leonardo Annual Magazine",
       "type": "affiliation"
     },

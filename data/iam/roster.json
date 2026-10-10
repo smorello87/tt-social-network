@@ -72,18 +72,6 @@
       "note": "merged with existing 'D Bartoli' (id 1141, Divagando)"
     },
     {
-      "name": "Luigi Barzini",
-      "roles": [
-        "author"
-      ],
-      "issues": [
-        "1977-05"
-      ],
-      "status": "existing",
-      "node_id": 216,
-      "note": "excerpt from O America: When You and I Were Young (May 1977)"
-    },
-    {
       "name": "Ira Berger",
       "roles": [
         "author"
@@ -691,6 +679,18 @@
       ],
       "status": "existing",
       "node_id": 4342
+    },
+    {
+      "name": "Luigi Barzini Jr",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 4406,
+      "note": "excerpt from O America: When You and I Were Young (May 1977)"
     },
     {
       "name": "Robert S. Kane",

@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (~3,850 nodes, ~5,200 edges).
+**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (~4,060 nodes, ~5,450 edges).
 
 ## Data Flow (Source of Truth)
 
@@ -44,14 +44,10 @@ cd visualization && python3 serve.py
 Starts at port 8080, auto-opens browser. Loads static `graph.json`.
 
 ### Regenerate graph.json from database (command line)
-```python
-import sqlite3, json
-db = sqlite3.connect('data/editor/network.db')
-db.row_factory = sqlite3.Row
-nodes = [dict(r) for r in db.execute('SELECT name as id, type, subtype FROM nodes')]
-edges = [dict(r) for r in db.execute('SELECT n1.name as source, n2.name as target FROM edges e JOIN nodes n1 ON e.source_id=n1.id JOIN nodes n2 ON e.target_id=n2.id')]
-json.dump({'nodes': nodes, 'links': edges}, open('visualization/graph.json','w'), indent=2)
+```bash
+cd data/editor && python3 -c "import json, database as db; json.dump(db.get_graph_json(), open('../../visualization/graph.json','w'), indent=2)"
 ```
+Uses the same `get_graph_json()` as the editor's Export button (includes edge `type`, which drives edge colors). Don't hand-roll the SQL.
 
 ### Generate from CSV (legacy)
 ```bash
@@ -81,7 +77,13 @@ python3 import_contributors.py iam
 - **Review is mandatory between steps 1 and 2.** Check every TOC page against the scan (`data/<slug>/pages/`, gitignored). Qwen's main error: putting article *subjects* (names in the description line) into bylines; the byline is the LAST line of a TOC entry.
 - All review decisions live in `data/<slug>/review.json` (`not_authors`, `drop`, `add`, `aliases`, `skip`, `match`, `new`, `notes`, page→issue `issues`) so `build_roster.py` is re-runnable. Field docs are in the `build_roster.py` docstring.
 - `build_roster.py` flags fuzzy candidates (same surname + first initial, or Levenshtein ≥ 0.85, e.g. "John Ciardi" ~ "John Anthony Ciardi"). Resolve each with `match` (existing node id) or `new`; don't merge uncertain ones.
-- `roster.json` keeps each person's roles and issues; the DB schema does not store them.
+- `roster.json` keeps each person's roles and issues; the DB schema does not store them (deliberately — no roles in the DB for now).
+
+### Scripted data fixes (merge / rename / split nodes)
+- Use `database.py` helpers from `data/editor/`: `backup_db()` first, then `merge_nodes(primary, secondary)`, `update_node(id, name=...)`, `create_node`, `create_edge`, `update_edge` — they keep `name_normalized`, canonical edge direction, and `needs_review` in sync. Avoid raw SQL writes.
+- After a fix that touches an imported periodical, record it in that periodical's `data/<slug>/review.json` (`match`/`aliases`) so re-running `build_roster.py` doesn't undo it.
+- Name conventions: generational suffixes without a period (`Luigi Barzini Jr`, `Luigi Barzini Sr`). Split homonymous father/son nodes by date (e.g. anything after Barzini Sr's death in 1947 is Jr).
+- New data source → add it to both the About modal "Data Sources" list in `visualization/index.html` and the README sources list.
 
 Legacy one-off importers (`import_carroccio_contributors.py`, `import_atlantica_contributors.py`, `import_parola_contributors.py`) parse their own text formats; keep them for reference, don't extend them.
 
@@ -293,14 +295,16 @@ Production site: `reti.stefanomorello.com`
 - SSH key stored as `id_rsa` in project root (gitignored)
 - Only deploy `visualization/index.html` and `visualization/graph.json`
 - Always regenerate `graph.json` from the database before deploying
-- Deploy command (requires `expect` for passphrase from `.env`):
+- `.env` is free-form notes, not `KEY=value`; the key passphrase is on the `passcode: ` line. Never `cat`/`sed`-print `.env` — read the passphrase straight into a variable.
+- Deploy command (requires `expect`):
   ```bash
-  expect -c '
+  export PASS="$(sed -n 's/^passcode: //p' .env)" && expect -c '
+  set timeout 120
   spawn scp -o IdentitiesOnly=yes -i id_rsa visualization/index.html visualization/graph.json stefanom@stefanomorello.com:/home/stefanom/reti.stefanomorello.com/
-  expect "passphrase" { send "<passphrase-from-env>\r"; exp_continue }
-  expect eof
+  expect { "passphrase" { send "$env(PASS)\r"; exp_continue } eof }
   '
   ```
+- Verify live: `curl -s https://reti.stefanomorello.com/graph.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d['nodes']), len(d['links']))"`
 
 ## Citation
 

@@ -1,0 +1,319 @@
+{
+  "issue": "June 1977",
+  "volume": "Volume 1, Number 8",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSOCIATE ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANT",
+      "names": [
+        "Anna Linetti"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "Robert S. Kane",
+        "John Mariani",
+        "Rick Minicucci",
+        "Philip Nobile",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF CORPORATE AFFAIRS",
+      "names": [
+        "Joseph Randisi"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Treasurer",
+      "name": "Ronald Ellman"
+    },
+    {
+      "role": "Secretary",
+      "name": "Ralph Brozan"
+    }
+  ],
+  "cover_credit": [
+    {
+      "role": "photographer",
+      "name": "Richard Taylor"
+    }
+  ],
+  "articles": [
+    {
+      "page": 22,
+      "section": "feature",
+      "title": "Beautiful Busseto",
+      "byline": [
+        "Mark Kirmayer"
+      ],
+      "photo_or_art": [
+        "Richard Taylor"
+      ],
+      "subjects": [
+        "Verdi",
+        "Bussetani"
+      ]
+    },
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "The Rediscovery of America",
+      "byline": [
+        "Anne Marie Riccitelli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 34,
+      "section": "feature",
+      "title": "Faces of My Fathers",
+      "byline": [],
+      "photo_or_art": [
+        "Melchior Di Giacomo"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "Silk City, Part II",
+      "byline": [
+        "Alex Cornella"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 50,
+      "section": "feature",
+      "title": "I Remember Mamma",
+      "byline": [
+        "Ron Butler"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Ann Cornelisen"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Lively Arts",
+      "byline": [
+        "Jo Ann Tedesco"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Benno Blimpie"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall 'Italia",
+      "byline": [
+        "Ettore Della Giovanna",
+        "Camillo Olivetti"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 46,
+      "section": "department",
+      "title": "Cinema",
+      "byline": [
+        "Melton Davis"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 58,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Anne Dieli Allen"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 72,
+      "section": "department",
+      "title": "Viewpoint",
+      "byline": [
+        "Fred Ferretti"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "Mark Kirmayer (partially cut off on page 0, but fully visible on page 1)",
+    "Anne Marie Riccitelli (partially cut off on page 0, but fully visible on page 1)",
+    "Melchior Di Giacomo (partially cut off on page 0, but fully visible on page 1)",
+    "Alex Cornella (partially cut off on page 0, but fully visible on page 1)",
+    "Ron Butler (partially cut off on page 0, but fully visible on page 1)",
+    "Ann Cornelisen (partially cut off on page 0, but fully visible on page 1)",
+    "Jo Ann Tedesco (partially cut off on page 0, but fully visible on page 1)",
+    "Ettore Della Giovanna (partially cut off on page 0, but fully visible on page 1)",
+    "Camillo Olivetti (partially cut off on page 0, but fully visible on page 1)",
+    "Melton Davis (partially cut off on page 0, but fully visible on page 1)",
+    "Anne Dieli Allen (partially cut off on page 0, but fully visible on page 1)",
+    "Fred Ferretti (partially cut off on page 0, but fully visible on page 1)"
+  ],
+  "_page": 16
+}

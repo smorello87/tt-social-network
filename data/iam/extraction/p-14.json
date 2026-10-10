@@ -1,0 +1,339 @@
+{
+  "issue": "May 1977",
+  "volume": "Volume 1, Number 7",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSOCIATE ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "Robert S. Kane",
+        "John Mariani",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF CORPORATE AFFAIRS",
+      "names": [
+        "Joseph Randisi"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Treasurer",
+      "name": "Ronald Ellman"
+    },
+    {
+      "role": "Secretary",
+      "name": "Ralph Brozan"
+    }
+  ],
+  "cover_credit": [],
+  "articles": [
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "The Third and Ultimate Destruction of Pompeii",
+      "byline": [
+        "Bruno Molajoli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 36,
+      "section": "feature",
+      "title": "Our Greatest Hits",
+      "byline": [
+        "Peter Meyer"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 38,
+      "section": "feature",
+      "title": "Silk City",
+      "byline": [
+        "Alex Cornella"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "They Seek a Sign",
+      "byline": [],
+      "photo_or_art": [
+        "Santi Visalli",
+        "Melchior Di Giacomo",
+        "Michael A. Vaccaro"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 48,
+      "section": "feature",
+      "title": "Princess Luciana’s Beauty Secrets",
+      "byline": [
+        "Anne Marie Riccitelli"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Luciana Avedon"
+      ]
+    },
+    {
+      "page": 60,
+      "section": "feature",
+      "title": "Through Tuscany with Knife and Fork",
+      "byline": [
+        "Anthony Dias Blue"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From The Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Culture",
+      "byline": [
+        "Fred Ferretti"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Art",
+      "byline": [
+        "Edward Higgins"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Piccirilli"
+      ]
+    },
+    {
+      "page": 16,
+      "section": "department",
+      "title": "People",
+      "byline": [
+        "Richard Gambino"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Ambassador Richard Gardner"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [
+        "Ettore Della Giovanna",
+        "Nantas Salvalaggio",
+        "Eugenio Montale"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 26,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Luigi Barzini"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 58,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Jack Valenti",
+        "Anne Dieli Allen"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "Page 2, right column, page 36: 'Our G' is cut off, likely 'Our Greatest Hits'.",
+    "Page 2, right column, page 38: 'Silk C' is cut off, likely 'Silk City'.",
+    "Page 2, right column, page 42: 'They S' is cut off, likely 'They Seek a Sign'.",
+    "Page 2, right column, page 48: 'Prince' is cut off, likely 'Princess Luciana’s Beauty Secrets'.",
+    "Page 2, right column, page 60: 'Throug' is cut off, likely 'Through Tuscany with Knife and Fork'.",
+    "Page 2, right column, Departments: 'Dep' is cut off, likely 'Departments'.",
+    "Page 2, right column, page 4: 'From T' is cut off, likely 'From The Editor'.",
+    "Page 2, right column, page 8: 'Nota B' is cut off, likely 'Nota Bene'.",
+    "Page 2, right column, page 10: 'Name C' is cut off, likely 'Name Change'.",
+    "Page 2, right column, page 12: 'Piccirilli' is cut off, likely 'Piccirilli: Monumental Artigiano'.",
+    "Page 2, right column, page 16: 'Ambass' is cut off, likely 'Ambassador Richard Gardner'.",
+    "Page 2, right column, page 17: 'Letter fr' is cut off, likely 'Letter from Rome; La Contessa; Poesie'.",
+    "Page 2, right column, page 22: 'The Taj' is cut off, likely 'The Taj and I'.",
+    "Page 2, right column, page 26: 'O Americ' is cut off, likely 'O America: When You and I Were Young'.",
+    "Page 2, right column, page 58: 'Jack Val' is cut off, likely 'Jack Valenti'.",
+    "Page 2, right column, page 58: 'Anne Die' is cut off, likely 'Anne Dieli Allen'."
+  ],
+  "_page": 14
+}

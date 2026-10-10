@@ -1,0 +1,333 @@
+{
+  "issue": "FEBRUARY, 1977",
+  "volume": "VOLUME 1, NUMBER 4",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSISTANT ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "John Mariani",
+        "Richard Nageli",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGER",
+      "names": [
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Albano Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "TREASURER",
+      "names": [
+        "Ronald Ellman"
+      ]
+    },
+    {
+      "role": "SECRETARY",
+      "names": [
+        "Ralph Brozan"
+      ]
+    },
+    {
+      "role": "CIRCULATION CONSULTANT",
+      "names": [
+        "S. O. Shapiro"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANTS TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Francesco Cantarella",
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Publisher",
+      "name": "I-AM Publishing Corp."
+    },
+    {
+      "role": "Advertising Representative in Italy",
+      "name": "S.I.P. Società Internazionale Pubblicità"
+    },
+    {
+      "role": "Advertising Representative in Italy",
+      "name": "S.P.I. Società per la Pubblicità in Italia"
+    }
+  ],
+  "cover_credit": [
+    {
+      "role": "illustrator",
+      "name": "Richard Gambino"
+    }
+  ],
+  "articles": [
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "A Death in Springfield, Part II",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Massachusetts",
+        "Graziano",
+        "Facente"
+      ]
+    },
+    {
+      "page": 34,
+      "section": "feature",
+      "title": "Roseto Revisited",
+      "byline": [
+        "Robert Oppedisano"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "Sant’ Angelo: Fashion’s Royal Maverick",
+      "byline": [
+        "Leslie Maitland"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 48,
+      "section": "feature",
+      "title": "Stage Struck",
+      "byline": [
+        "Jerry Granozio"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 60,
+      "section": "feature",
+      "title": "Oregano: Green Goddess",
+      "byline": [
+        "Richard Nageli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [
+        "Gilbert Uvaddi"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "St. Valentine’s Day"
+      ]
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Music",
+      "byline": [
+        "Bert Greene"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "Lively Arts",
+      "byline": [
+        "Eleanor D’Antuono",
+        "Mike Iachetta"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": [
+        "SID"
+      ]
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Richard Gambino"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "New Orleans"
+      ]
+    },
+    {
+      "page": 26,
+      "section": "department",
+      "title": "People",
+      "byline": [
+        "Andrew Tartaglino",
+        "Thomas De Baggio"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "INTERPOL"
+      ]
+    },
+    {
+      "page": 58,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Mike Iachetta",
+        "Marilyn Stasio"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "The text 'Vendetta' in the cover credit is visible but its context as a book title is inferred from the sentence structure.",
+    "The text 'Page 71' for Photo Credits is visible but the full context is cut off.",
+    "The text 'NU' at the end of the volume/number line is cut off, assumed to be 'NUMBER 4'."
+  ],
+  "_page": 8
+}

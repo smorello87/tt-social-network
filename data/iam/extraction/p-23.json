@@ -1,0 +1,310 @@
+{
+  "issue": "null",
+  "volume": "null",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "MANAGING EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSOCIATE ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANT",
+      "names": [
+        "Anna Linetti"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Jean Bergantini Grillo",
+        "Robert S. Kane",
+        "John Mariani",
+        "Rick Minicucci",
+        "Philip Nobile",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF CORPORATE AFFAIRS",
+      "names": [
+        "Joseph Randisi"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF SUBSCRIPTION SERVICES",
+      "names": [
+        "Jeanne M. Sartan"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Treasurer",
+      "name": "Ralph Brozan"
+    },
+    {
+      "role": "Secretary",
+      "name": "Ronald Ellman"
+    }
+  ],
+  "cover_credit": [],
+  "articles": [
+    {
+      "page": 26,
+      "section": "feature",
+      "title": "In Memoriam",
+      "byline": [
+        "Frederick Busi"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Sacco",
+        "Vanzetti"
+      ]
+    },
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "Italian School of Fashion",
+      "byline": [
+        "Patricia Gatto"
+      ],
+      "photo_or_art": [
+        "Ira Lerner"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 38,
+      "section": "feature",
+      "title": "La Scuola di Moda Italiana",
+      "byline": [
+        "Graziella Vigo"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 44,
+      "section": "feature",
+      "title": "From Rags to Ricchezze",
+      "byline": [
+        "Peter Meyer"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Jeno Paulucci"
+      ]
+    },
+    {
+      "page": 46,
+      "section": "feature",
+      "title": "Sooner or Later, Everyone Stops In at Harry’s Bar",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 48,
+      "section": "feature",
+      "title": "Lincoln’s Famous Pizza",
+      "byline": [
+        "Cynthia Carlson"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "the Valentinos"
+      ]
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "People",
+      "byline": [
+        "Maria Terrone"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 11,
+      "section": "department",
+      "title": "Lively Arts",
+      "byline": [
+        "Kiki Olson"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "Mary LoGiudice"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Franky",
+        "Johnny Were Poccias"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [
+        "Ettore Della Giovanna",
+        "Giorgio Saviane",
+        "Sebastian Passione"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Music",
+      "byline": [
+        "Gregory Peterson"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Corsaro"
+      ]
+    },
+    {
+      "page": 66,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Anne Dieli Allen",
+        "Dorothy Sandler"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 72,
+      "section": "department",
+      "title": "Viewpoint",
+      "byline": [
+        "Ernest Lotito"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Societa Internazionale Pubblicita",
+    "S.P.I. Societa per la Pubblicita In Italia"
+  ],
+  "uncertain": [
+    "Page 71 (Photo Credits: Page 71) - The actual photo credits are not visible on this page, only a reference to them."
+  ],
+  "_page": 23
+}

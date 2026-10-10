@@ -1,0 +1,1612 @@
+{
+  "periodical": "I-AM",
+  "source": "I-AM: The National Magazine for Italian-Americans. Mastheads and tables of contents, Vol. 1 nos. 1-10 (Nov 1976 - Aug 1977) and Nov 1977; scan Documento_2025-09-29_131756.pdf (pages 2,4,...,20,23 = TOC; 22 = 'Dear Reader' letter)",
+  "method": "Extracted with Qwen3-VL-235B on Bedrock (extract_toc.py), hand-checked against the scans",
+  "people": [
+    {
+      "name": "Adolfo Alessandrini",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 4300,
+      "note": "printed 'Adolfo Allessandrini' (Mar 1977)"
+    },
+    {
+      "name": "Anne Allen",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4299
+    },
+    {
+      "name": "Ken Auletta",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-11"
+      ],
+      "status": "existing",
+      "node_id": 4301
+    },
+    {
+      "name": "Thomas De Baggio",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4302
+    },
+    {
+      "name": "Domenico Bartoli",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 1141,
+      "note": "merged with existing 'D Bartoli' (id 1141, Divagando)"
+    },
+    {
+      "name": "Luigi Barzini",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 216,
+      "note": "excerpt from O America: When You and I Were Young (May 1977)"
+    },
+    {
+      "name": "Ira Berger",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 4304
+    },
+    {
+      "name": "David Bertugli",
+      "roles": [
+        "masthead: Managing Editor",
+        "masthead: Senior Editor"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4305
+    },
+    {
+      "name": "Anthony Dias Blue",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03",
+        "1977-05",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4306
+    },
+    {
+      "name": "Marziano Brignoli",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4307
+    },
+    {
+      "name": "Ralph Brozan",
+      "roles": [
+        "masthead: Secretary",
+        "officer: Secretary"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4308
+    },
+    {
+      "name": "Frederick Busi",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4309
+    },
+    {
+      "name": "Ron Butler",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4310
+    },
+    {
+      "name": "Francesco Cantarella",
+      "roles": [
+        "masthead: Assistants To The Publisher For Public Relations"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4311
+    },
+    {
+      "name": "George Carbone",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4312
+    },
+    {
+      "name": "Cynthia Carlson",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4313
+    },
+    {
+      "name": "Robert Cassidy",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 4314
+    },
+    {
+      "name": "John Ciardi",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 43
+    },
+    {
+      "name": "John V. Ciofalo",
+      "roles": [
+        "masthead: Graphics Director"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4315
+    },
+    {
+      "name": "Paul Ciotti",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4316
+    },
+    {
+      "name": "Ann Cornelisen",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4317
+    },
+    {
+      "name": "Alex Cornella",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05",
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4318
+    },
+    {
+      "name": "Joy Darlington",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 4319
+    },
+    {
+      "name": "Melton Davis",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4320
+    },
+    {
+      "name": "Domenick DiFrisco",
+      "roles": [
+        "masthead: Midwest Representative"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 4321
+    },
+    {
+      "name": "Lino Dina",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-04"
+      ],
+      "status": "existing",
+      "node_id": 4322
+    },
+    {
+      "name": "Leo Duranona",
+      "roles": [
+        "cover illustrator"
+      ],
+      "issues": [
+        "1976-12"
+      ],
+      "status": "existing",
+      "node_id": 4323
+    },
+    {
+      "name": "Ronald Ellman",
+      "roles": [
+        "masthead: Treasurer",
+        "officer: Treasurer"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4324
+    },
+    {
+      "name": "David Ely",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-12"
+      ],
+      "status": "existing",
+      "node_id": 4325
+    },
+    {
+      "name": "Fred Ferretti",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05",
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4326
+    },
+    {
+      "name": "Jack Fincher",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-12"
+      ],
+      "status": "existing",
+      "node_id": 4327,
+      "note": "printed 'Jack Finscher' (Dec 1976, 'Leonardo was a Lefty'); author of Sinister People (1977) on left-handedness"
+    },
+    {
+      "name": "Ray G. Forenza",
+      "roles": [
+        "masthead: Director Of Advertising"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4328
+    },
+    {
+      "name": "Richard Gambino",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4329
+    },
+    {
+      "name": "Patricia Gatto",
+      "roles": [
+        "author",
+        "masthead: Assistant Editors",
+        "masthead: Editorial Assistant",
+        "masthead: Editorial Assistants"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4330
+    },
+    {
+      "name": "Kerry Gavin",
+      "roles": [
+        "masthead: Assistant Art Director",
+        "masthead: Associate Art Director"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4331
+    },
+    {
+      "name": "Guido Gerosa",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-04"
+      ],
+      "status": "existing",
+      "node_id": 4332
+    },
+    {
+      "name": "Melchior Di Giacomo",
+      "roles": [
+        "photographer/illustrator"
+      ],
+      "issues": [
+        "1977-05",
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4333
+    },
+    {
+      "name": "Ettore Della Giovanna",
+      "roles": [
+        "author",
+        "masthead: Chief Of Rome Bureau"
+      ],
+      "issues": [
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4334
+    },
+    {
+      "name": "Norman Thomas di Giovanni",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-01"
+      ],
+      "status": "existing",
+      "node_id": 145
+    },
+    {
+      "name": "Ken Gouldthorpe",
+      "roles": [
+        "author",
+        "masthead: Editorial Director"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12"
+      ],
+      "status": "existing",
+      "node_id": 4335
+    },
+    {
+      "name": "Jerry Granozio",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4336
+    },
+    {
+      "name": "Bert Greene",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-01",
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4337
+    },
+    {
+      "name": "Jean Bergantini Grillo",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4338
+    },
+    {
+      "name": "Edward Higgins",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 4339
+    },
+    {
+      "name": "Burnham Holmes",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-12",
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4340
+    },
+    {
+      "name": "Norman Hoss",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-12"
+      ],
+      "status": "existing",
+      "node_id": 4341
+    },
+    {
+      "name": "Michael Iachetta",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4342
+    },
+    {
+      "name": "Robert S. Kane",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1977-01",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4343
+    },
+    {
+      "name": "Mark Kirmayer",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4344
+    },
+    {
+      "name": "Don De Koven",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4345
+    },
+    {
+      "name": "Ira Lerner",
+      "roles": [
+        "photographer/illustrator"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4346
+    },
+    {
+      "name": "Steven Levy",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4347
+    },
+    {
+      "name": "Anna Linetti",
+      "roles": [
+        "masthead: Editorial Assistant"
+      ],
+      "issues": [
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4348
+    },
+    {
+      "name": "Mary LoGiudice",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4349
+    },
+    {
+      "name": "Anthony V. Lombardi",
+      "roles": [
+        "masthead: Account Managers"
+      ],
+      "issues": [
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4350
+    },
+    {
+      "name": "Tom Long",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-12",
+        "1977-04",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4351
+    },
+    {
+      "name": "Ernest Lotito",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4352
+    },
+    {
+      "name": "Alfred Lubrano",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4353
+    },
+    {
+      "name": "Lani Luciano",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-01"
+      ],
+      "status": "existing",
+      "node_id": 4354
+    },
+    {
+      "name": "Piero Magi",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4355
+    },
+    {
+      "name": "Enzo Magrì",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4356
+    },
+    {
+      "name": "Leslie Maitland",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4357
+    },
+    {
+      "name": "Lina Manca",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-04"
+      ],
+      "status": "existing",
+      "node_id": 4358
+    },
+    {
+      "name": "Marie Antoinette Manca",
+      "roles": [
+        "masthead: Assistant To The Publisher For Italian Affairs"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4359
+    },
+    {
+      "name": "Paul De Marchi",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-11"
+      ],
+      "status": "existing",
+      "node_id": 4360
+    },
+    {
+      "name": "John Mariani",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4361
+    },
+    {
+      "name": "Peter Meyer",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-01",
+        "1977-05",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4362
+    },
+    {
+      "name": "Rick Minicucci",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4363
+    },
+    {
+      "name": "Bruno Molajoli",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 4364
+    },
+    {
+      "name": "Eugenio Montale",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 133,
+      "note": "Poesie (May 1977)"
+    },
+    {
+      "name": "Claire Murray",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4365
+    },
+    {
+      "name": "Richard Nageli",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04"
+      ],
+      "status": "existing",
+      "node_id": 4366
+    },
+    {
+      "name": "Randy Newman",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-04"
+      ],
+      "status": "existing",
+      "node_id": 4367
+    },
+    {
+      "name": "Philip Nobile",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-12",
+        "1977-03",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4368
+    },
+    {
+      "name": "Joe Oldham",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-11",
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4369
+    },
+    {
+      "name": "Camillo Olivetti",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4370,
+      "note": "'Lettere americane' (Jun 1977): posthumous letters (d. 1943)"
+    },
+    {
+      "name": "Kiki Olson",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4371
+    },
+    {
+      "name": "Robert Oppedisano",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4372
+    },
+    {
+      "name": "Egidio Ortona",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4373
+    },
+    {
+      "name": "Ron de Paolo",
+      "roles": [
+        "author",
+        "masthead: Editor"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4374
+    },
+    {
+      "name": "Sebastian Passione",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4375
+    },
+    {
+      "name": "Gregory Peterson",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4376
+    },
+    {
+      "name": "Joseph F. Randisi",
+      "roles": [
+        "author: 'Dear Reader' letter",
+        "masthead: Director Of Corporate Affairs"
+      ],
+      "issues": [
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4377
+    },
+    {
+      "name": "Anne Marie Riccitelli",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4378
+    },
+    {
+      "name": "Vincent Romano",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4379
+    },
+    {
+      "name": "Vito Russo",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1976-12",
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 4380
+    },
+    {
+      "name": "Don Sabath",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4381
+    },
+    {
+      "name": "Nantas Salvalaggio",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-05"
+      ],
+      "status": "existing",
+      "node_id": 4382
+    },
+    {
+      "name": "Dorothy Sandler",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4383
+    },
+    {
+      "name": "Jeanne M. Sartan",
+      "roles": [
+        "masthead: Director Of Subscription Services"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4384
+    },
+    {
+      "name": "Giorgio Saviane",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4385
+    },
+    {
+      "name": "Albert B. Schrager",
+      "roles": [
+        "masthead: Publisher",
+        "officer: Chairman"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4386
+    },
+    {
+      "name": "S. O. Shapiro",
+      "roles": [
+        "masthead: Circulation Consultant"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04"
+      ],
+      "status": "existing",
+      "node_id": 4387
+    },
+    {
+      "name": "Sebastian Sisti",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4388
+    },
+    {
+      "name": "Maria Luisa Spaziani",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 827,
+      "note": "Poesie (Jul 1977)"
+    },
+    {
+      "name": "Marilyn Stasio",
+      "roles": [
+        "author",
+        "masthead: Contributing Editors"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4389
+    },
+    {
+      "name": "Jeffrey Stoll",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4390
+    },
+    {
+      "name": "Richard Taylor",
+      "roles": [
+        "photographer/illustrator"
+      ],
+      "issues": [
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4391
+    },
+    {
+      "name": "Jo Ann Tedesco",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-04",
+        "1977-06"
+      ],
+      "status": "existing",
+      "node_id": 4392
+    },
+    {
+      "name": "Maria Terrone",
+      "roles": [
+        "author",
+        "masthead: Assistant Editors",
+        "masthead: Editorial Assistants"
+      ],
+      "issues": [
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4393
+    },
+    {
+      "name": "Gilbert Uvaddi",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-01",
+        "1977-02"
+      ],
+      "status": "existing",
+      "node_id": 4394,
+      "note": "spelling as printed (Jan, Feb 1977)"
+    },
+    {
+      "name": "Michael A. Vaccaro",
+      "roles": [
+        "cover photographer",
+        "masthead: Contributing Editors",
+        "masthead: Contributing Editors (Photography)",
+        "photographer/illustrator"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4395
+    },
+    {
+      "name": "Graziella Vigo",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4396
+    },
+    {
+      "name": "Santi Visalli",
+      "roles": [
+        "cover photographer",
+        "masthead: Director Of Photography",
+        "photographer/illustrator"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4397
+    },
+    {
+      "name": "Vinnie Volpe",
+      "roles": [
+        "masthead: Advertising Assistant"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4398
+    },
+    {
+      "name": "James Wagenvoord",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-01"
+      ],
+      "status": "existing",
+      "node_id": 4399
+    },
+    {
+      "name": "Bernadette Wagner",
+      "roles": [
+        "masthead: Production Manager"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08"
+      ],
+      "status": "existing",
+      "node_id": 4400
+    },
+    {
+      "name": "Richard Weiner",
+      "roles": [
+        "masthead: Assistant To The Publisher For Public Relations",
+        "masthead: Assistants To The Publisher For Public Relations",
+        "masthead: Public Relations"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4401
+    },
+    {
+      "name": "Sheldon Widelitz",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-03"
+      ],
+      "status": "existing",
+      "node_id": 4402
+    },
+    {
+      "name": "Ken Wilson",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4403
+    },
+    {
+      "name": "Christopher Winner",
+      "roles": [
+        "author"
+      ],
+      "issues": [
+        "1977-07"
+      ],
+      "status": "existing",
+      "node_id": 4404
+    },
+    {
+      "name": "Don Zanone",
+      "roles": [
+        "masthead: Account Manager",
+        "masthead: Account Managers"
+      ],
+      "issues": [
+        "1976-11",
+        "1976-12",
+        "1977-01",
+        "1977-02",
+        "1977-03",
+        "1977-04",
+        "1977-05",
+        "1977-06",
+        "1977-07",
+        "1977-08",
+        "1977-11"
+      ],
+      "status": "existing",
+      "node_id": 4405
+    }
+  ]
+}

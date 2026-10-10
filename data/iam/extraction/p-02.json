@@ -1,0 +1,393 @@
+{
+  "issue": "NOVEMBER, 1976",
+  "volume": "VOLUME 1, NUMBER 1",
+  "masthead": [
+    {
+      "role": "EDITORIAL DIRECTOR",
+      "names": [
+        "Ken Gouldthorpe"
+      ]
+    },
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANT",
+      "names": [
+        "Patricia Gatto"
+      ]
+    },
+    {
+      "role": "ASSISTANT ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "John Mariani",
+        "Richard Nageli",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGER",
+      "names": [
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "TREASURER",
+      "names": [
+        "Ronald Ellman"
+      ]
+    },
+    {
+      "role": "SECRETARY",
+      "names": [
+        "Ralph Brozan"
+      ]
+    },
+    {
+      "role": "CIRCULATION CONSULTANT",
+      "names": [
+        "S. O. Shapiro"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANTS TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Francesco Cantarella",
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie-Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Publisher company",
+      "name": "I-AM Publishing Corp."
+    },
+    {
+      "role": "Advertising Representative in Italy",
+      "name": "S.I.P. Società Internazionale Pubblicità"
+    },
+    {
+      "role": "Advertising Representative in Italy",
+      "name": "S.P.I. Società per la Pubblicità in Italia"
+    }
+  ],
+  "cover_credit": [
+    {
+      "role": "Photographer",
+      "name": "Michael A. Vaccaro"
+    }
+  ],
+  "articles": [
+    {
+      "page": 28,
+      "section": "feature",
+      "title": "The Case for Ethnicity",
+      "byline": [
+        "Richard Gambino"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 32,
+      "section": "feature",
+      "title": "Little Italy",
+      "byline": [],
+      "photo_or_art": [
+        "Santi Visalli"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 38,
+      "section": "feature",
+      "title": "Gay Talese: Honor Thy Author",
+      "byline": [
+        "Mike Iachetta"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 40,
+      "section": "feature",
+      "title": "Arrivederci Kitchens...",
+      "byline": [
+        "Jean Bergantini Grillo"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 44,
+      "section": "feature",
+      "title": "Cavalleria Robustana",
+      "byline": [
+        "Ron de Paolo"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 46,
+      "section": "feature",
+      "title": "The Powerhouse Priest",
+      "byline": [
+        "Anne Allen"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Monsignor Geno Baroni"
+      ]
+    },
+    {
+      "page": 48,
+      "section": "feature",
+      "title": "Garlic: A Breath of the Old Country",
+      "byline": [
+        "Richard Nageli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 52,
+      "section": "feature",
+      "title": "The Lancia Legend Lives",
+      "byline": [
+        "Joe Oldham"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 56,
+      "section": "feature",
+      "title": "Chianti: It’s No Fiasco, But a Tuscan Treasure",
+      "byline": [
+        "Ken Gouldthorpe"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 60,
+      "section": "feature",
+      "title": "Chinaglia of the Cosmos",
+      "byline": [
+        "Paul De Marchi"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Chinaglia"
+      ]
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editors",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Rick Minicucci"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Cinema",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Lina",
+        "Luigi"
+      ]
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Music",
+      "byline": [
+        "Anne Marie Riccitelli"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Chuck Mangione"
+      ]
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "The Lively Arts",
+      "byline": [
+        "Marilyn Stasio"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Paul Sorvino"
+      ]
+    },
+    {
+      "page": 16,
+      "section": "department",
+      "title": "People",
+      "byline": [
+        "Paul Ciotti"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "George Moscone"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "John Ciardi"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 24,
+      "section": "department",
+      "title": "Interviews",
+      "byline": [
+        "Anne Allen",
+        "Ken Auletta"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Gerald Ford",
+        "Jimmy Carter"
+      ]
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "The text 'VOLUME 1, NUMBER 1' is visible on image 1 but is cut off on image 0, so it is included based on image 1.",
+    "The text 'I-AM, the National Magazine for Italian-Americans' is visible on image 0 but is cut off on image 1, so it is included based on image 0.",
+    "The text 'Photo Credits: Page 66' is visible on image 1 but is cut off on image 0, so it is included based on image 1.",
+    "The text 'Address letters to the Editor, I-AM Magazine, 527 Madison Ave., N.Y. 10022' is visible on image 1 but is cut off on image 0, so it is included based on image 1."
+  ],
+  "_page": 2
+}

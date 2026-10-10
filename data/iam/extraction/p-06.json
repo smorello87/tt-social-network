@@ -1,0 +1,368 @@
+{
+  "issue": null,
+  "volume": null,
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANTS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSISTANT ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "John Mariani",
+        "Richard Nageli",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGER",
+      "names": [
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "TREASURER",
+      "names": [
+        "Ronald Ellman"
+      ]
+    },
+    {
+      "role": "SECRETARY",
+      "names": [
+        "Ralph Brozan"
+      ]
+    },
+    {
+      "role": "CIRCULATION CONSULTANT",
+      "names": [
+        "S. O. Shapiro"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANTS TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Francesco Cantarella",
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie-Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    }
+  ],
+  "cover_credit": [],
+  "articles": [
+    {
+      "page": 28,
+      "section": "feature",
+      "title": "A Death in Springfield",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Graziano"
+      ]
+    },
+    {
+      "page": 32,
+      "section": "feature",
+      "title": "The Grape Man",
+      "byline": [
+        "James Wagenvoord"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 36,
+      "section": "feature",
+      "title": "The Man Behind the Fonzi",
+      "byline": [
+        "Mike Iachetta"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Garry Marshall"
+      ]
+    },
+    {
+      "page": 38,
+      "section": "feature",
+      "title": "Gin, by Juniper!",
+      "byline": [
+        "Gilbert Uvaddi"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 40,
+      "section": "feature",
+      "title": "Milan’s Magnificent Short Shrift",
+      "byline": [
+        "Robert Kane"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 48,
+      "section": "feature",
+      "title": "Cheese It!",
+      "byline": [
+        "Bert Greene"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 58,
+      "section": "feature",
+      "title": "Welcome, Welcome, Emigranti",
+      "byline": [
+        "Lani Luciano"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "Letters",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Peter Meyer"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "The Godfather"
+      ]
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "The Lively Arts",
+      "byline": [
+        "Marilyn Stasio"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Frank Langella"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": [
+        "Carter"
+      ]
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Cinema",
+      "byline": [
+        "Norman Thomas di Giovanni"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Bertolucci"
+      ]
+    },
+    {
+      "page": 62,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Jean Bergantini Grillo"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "Graziano (from 'Massachusetts vs. Graziano and...')",
+    "Marini (from 'migration of the Marini, and others')",
+    "Carter (from 'election of Carter')",
+    "The Godfather (from 'Sons of The Godfather')",
+    "Frank Langella (from 'Frank Langella: prince of a paisan')",
+    "Bertolucci (from 'Bertolucci’s 1900')",
+    "Norman Thomas di Giovanni (from 'Norman Thomas di Giovanni')",
+    "Jean Bergantini Grillo (from 'Jean Bergantini Grillo')",
+    "Garry Marshall (from 'Garry Marshall: The sit-com king...')",
+    "Mike Iachetta (from 'Mike Iachetta')",
+    "Gilbert Uvaddi (from 'Gilbert Uvaddi')",
+    "Robert Kane (from 'Robert Kane')",
+    "Bert Greene (from 'Bert Greene')",
+    "Lani Luciano (from 'Lani Luciano')",
+    "Peter Meyer (from 'Peter Meyer')",
+    "Marilyn Stasio (from 'Marilyn Stasio')",
+    "John Mariani (from 'John Mariani')",
+    "James Wagenvoord (from 'James Wagenvoord')",
+    "Michael Iachetta (from 'Michael Iachetta')",
+    "Richard Nageli (from 'Richard Nageli')",
+    "Anne Marie Riccitelli (from 'Anne Marie Riccitelli')",
+    "Michael A. Vaccaro (from 'Michael A. Vaccaro (photography)')",
+    "Ray G. Forenza (from 'Ray G. Forenza')",
+    "Don Zanone (from 'Don Zanone')",
+    "Vinnie Volpe (from 'Vinnie Volpe')",
+    "Bernadette Wagner (from 'Bernadette Wagner')",
+    "Albert B. Schrager (from 'Albert B. Schrager')",
+    "Ronald Ellman (from 'Ronald Ellman')",
+    "Ralph Brozan (from 'Ralph Brozan')",
+    "S. O. Shapiro (from 'S. O. Shapiro')",
+    "Francesco Cantarella (from 'Francesco Cantarella')",
+    "Richard Weiner (from 'Richard Weiner')",
+    "Marie-Antoinette Manca (from 'Marie-Antoinette Manca')",
+    "Domenick DiFrisco (from 'Domenick DiFrisco')",
+    "Ettore Della Giovanna (from 'Ettore Della Giovanna')",
+    "Patricia Gatto (from 'Patricia Gatto')",
+    "Maria Terrone (from 'Maria Terrone')",
+    "Kerry Gavin (from 'Kerry Gavin')",
+    "Anne Allen (from 'Anne Allen')",
+    "John Ciardi (from 'John Ciardi')",
+    "Paul Ciotti (from 'Paul Ciotti')",
+    "Richard Gambino (from 'Richard Gambino')",
+    "Jean Bergantini Grillo (from 'Jean Bergantini Grillo')",
+    "John Mariani (from 'John Mariani')",
+    "Richard Nageli (from 'Richard Nageli')",
+    "Anne Marie Riccitelli (from 'Anne Marie Riccitelli')",
+    "Marilyn Stasio (from 'Marilyn Stasio')",
+    "Michael A. Vaccaro (from 'Michael A. Vaccaro')",
+    "Santi Visalli (from 'Santi Visalli')",
+    "David Bertugli (from 'David Bertugli')",
+    "John V. Ciofalo (from 'John V. Ciofalo')",
+    "Ron de Paolo (from 'Ron de Paolo')"
+  ],
+  "_page": 6
+}

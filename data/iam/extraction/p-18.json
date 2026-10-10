@@ -1,0 +1,335 @@
+{
+  "issue": "July 1977",
+  "volume": "Volume 1, Number 9",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSOCIATE ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANT",
+      "names": [
+        "Anna Linetti"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "Robert S. Kane",
+        "John Mariani",
+        "Rick Minicucci",
+        "Philip Nobile",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF CORPORATE AFFAIRS",
+      "names": [
+        "Joseph Randisi"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Treasurer",
+      "name": "Ronald Ellman"
+    },
+    {
+      "role": "Secretary",
+      "name": "Ralph Brozan"
+    }
+  ],
+  "cover_credit": [
+    {
+      "role": "photographer",
+      "name": "Santi Visalli"
+    }
+  ],
+  "articles": [
+    {
+      "page": 24,
+      "section": "feature",
+      "title": "Living with the Mark of Cain",
+      "byline": [
+        "Richard Gambino"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 26,
+      "section": "feature",
+      "title": "Sons of David, Sons of Dante",
+      "byline": [
+        "Burnham Holmes"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "Hi There, Italianians",
+      "byline": [
+        "Ken Wilson"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 32,
+      "section": "feature",
+      "title": "Lassos, Lariats, and . . . Lasagna?",
+      "byline": [
+        "Enzo Magrì"
+      ],
+      "photo_or_art": [
+        "Santi Visalli"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 40,
+      "section": "feature",
+      "title": "Rome’s Other Glories",
+      "byline": [
+        "Christopher Winner"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "Giugiaro in the Lead",
+      "byline": [
+        "Joe Oldham"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "George Carbone",
+        "Marziano Brignoli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "People",
+      "byline": [
+        "Don Sabath"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Vincent Marotta"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [
+        "Ettore Della Giovanna",
+        "Maria Luisa Spaziani"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Music",
+      "byline": [
+        "Michael Iachetta"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "E Luciano",
+        "la Stella"
+      ]
+    },
+    {
+      "page": 64,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Claire Murray",
+        "Tom Long"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 72,
+      "section": "department",
+      "title": "Viewpoint",
+      "byline": [
+        "Sebastian Sisti"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "Otis Rosasco (cover credit, partially cut off)",
+    "Ed Rosasco (cover credit, partially cut off)",
+    "Burnham Holmes (byline, partially cut off on page 26)",
+    "Ken Wilson (byline, partially cut off on page 30)",
+    "Enzo Magrì (byline, partially cut off on page 32)",
+    "Christopher Winner (byline, partially cut off on page 40)",
+    "Joe Oldham (byline, partially cut off on page 42)",
+    "George Carbone (byline, partially cut off on page 10)",
+    "Marziano Brignoli (byline, partially cut off on page 10)",
+    "Don Sabath (byline, partially cut off on page 14)",
+    "Ettore Della Giovanna (byline, partially cut off on page 17)",
+    "Maria Luisa Spaziani (byline, partially cut off on page 17)",
+    "Michael Iachetta (byline, partially cut off on page 22)",
+    "Claire Murray (byline, partially cut off on page 64)",
+    "Tom Long (byline, partially cut off on page 64)",
+    "Sebastian Sisti (byline, partially cut off on page 72)"
+  ],
+  "_page": 18
+}

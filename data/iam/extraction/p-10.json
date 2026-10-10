@@ -1,0 +1,328 @@
+{
+  "issue": "null",
+  "volume": "null",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSISTANT ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "John Mariani",
+        "Richard Nageli",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "TREASURER",
+      "names": [
+        "Ronald Ellman"
+      ]
+    },
+    {
+      "role": "SECRETARY",
+      "names": [
+        "Ralph Brozan"
+      ]
+    },
+    {
+      "role": "CIRCULATION CONSULTANT",
+      "names": [
+        "S. O. Shapiro"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    }
+  ],
+  "cover_credit": [],
+  "articles": [
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "No Blues in St. Louis",
+      "byline": [
+        "Robert Cassidy"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 38,
+      "section": "feature",
+      "title": "Una Vita Più Nobile",
+      "byline": [
+        "Philip Nobile"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Umberto Nobile"
+      ]
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "Lambrusco: Vino frizzante",
+      "byline": [
+        "Anthony Dias Blue"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 44,
+      "section": "feature",
+      "title": "Golden Grappler",
+      "byline": [
+        "Bruno Sammartino",
+        "Sheldon Widelitz",
+        "Ira Berger"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Bruno Sammartino"
+      ]
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Letters: our readers respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Domenico Bartoli"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Domenico Bartoli"
+      ]
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "People",
+      "byline": [
+        "Steven Levy"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Frank Rizzo"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [
+        "Adolfo Allessandrini",
+        "Ettore Della Giovanna"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Yugoslavia",
+        "Messina"
+      ]
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "Music",
+      "byline": [
+        "Mike Iachetta"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Frank Zappa"
+      ]
+    },
+    {
+      "page": 26,
+      "section": "department",
+      "title": "Cinema",
+      "byline": [
+        "Maria Terrone",
+        "Vito Russo"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Stallone"
+      ]
+    },
+    {
+      "page": 50,
+      "section": "department",
+      "title": "Culture",
+      "byline": [
+        "John Ciardi"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 68,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Joy Darlington",
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità In Italia"
+  ],
+  "uncertain": [
+    "Page 71 (Photo Credits: Page 71) - The page number '71' is visible but the actual photo credits are not on this page.",
+    "The full title of the article on page 30 is cut off: 'No Blues in St. L...'",
+    "The full title of the article on page 38 is cut off: 'Una Vita Più Nob...'",
+    "The full title of the article on page 42 is cut off: 'Lambrusco: Vino...'",
+    "The full title of the article on page 44 is cut off: 'Golden Grappler...'",
+    "The full title of the article on page 10 is cut off: 'In the absence of Caesars...'",
+    "The full title of the article on page 14 is cut off: 'Frank Rizzo: the Philadelphia story...'",
+    "The full title of the article on page 17 is cut off: 'Yugoslavia; Messina...'",
+    "The full title of the article on page 22 is cut off: 'Frank Zappa zaps back...'",
+    "The full title of the article on page 26 is cut off: 'Stallone: writer, star, survivor...'",
+    "The full title of the article on page 50 is cut off: '\"A Five-Year Step\"...'",
+    "The full title of the article on page 68 is cut off: 'I-AM looks at people who are making news and shaping views...'"
+  ],
+  "_page": 10
+}

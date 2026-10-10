@@ -1,0 +1,343 @@
+{
+  "issue": "August 1977",
+  "volume": "Volume 1, Number 10",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "MANAGING EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSOCIATE ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANT",
+      "names": [
+        "Anna Linetti"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "Robert S. Kane",
+        "John Mariani",
+        "Rick Minicucci",
+        "Philip Nobile",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF CORPORATE AFFAIRS",
+      "names": [
+        "Joseph Randisi"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Treasurer",
+      "name": "Ronald Ellman"
+    },
+    {
+      "role": "Secretary",
+      "name": "Ralph Brozan"
+    }
+  ],
+  "cover_credit": [
+    {
+      "role": "photographer",
+      "name": "Santi Visalli"
+    }
+  ],
+  "articles": [
+    {
+      "page": 18,
+      "section": "feature",
+      "title": "The Mark of Cain, Part II",
+      "byline": [
+        "Richard Gambino"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 22,
+      "section": "feature",
+      "title": "That Daring Young Man and His Flying Machine",
+      "byline": [
+        "Peter Meyer"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Cesare Sabelli"
+      ]
+    },
+    {
+      "page": 26,
+      "section": "feature",
+      "title": "An Act of Love",
+      "byline": [
+        "Jeffrey Stoll"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 31,
+      "section": "feature",
+      "title": "Dall’Italia",
+      "byline": [
+        "Ettore Della Giovanna",
+        "Egidio Ortona"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "Those Oldies But Goodies",
+      "byline": [
+        "Steven Levy"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 50,
+      "section": "feature",
+      "title": "Il Calcio in Costume",
+      "byline": [
+        "Piero Magi"
+      ],
+      "photo_or_art": [
+        "Bazzechi"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Lively Arts",
+      "byline": [
+        "Marilyn Stasio",
+        "Jean Bergantini Grillo"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "Alfred Lubrano"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "Music",
+      "byline": [
+        "Don De Koven"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Ruggiero Ricci"
+      ]
+    },
+    {
+      "page": 39,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Patricia Gatto",
+        "Dorothy Sandler"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 46,
+      "section": "department",
+      "title": "O Soave Famoso",
+      "byline": [
+        "Anthony Dias Blue"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 58,
+      "section": "department",
+      "title": "To the Romagnolis’ Table",
+      "byline": [
+        "Tom Long"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 68,
+      "section": "department",
+      "title": "Viewpoint",
+      "byline": [
+        "Vincent Romano"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Societa Internazionale Pubblicita",
+    "S.P.I. Societa per la Pubblicita In Italia"
+  ],
+  "uncertain": [
+    "Giulio Andreotti (from cover credit, partially cut off)",
+    "Cesare Sabelli (from feature 22, partially cut off)",
+    "Egidio Ortona (from feature 31, partially cut off)",
+    "Piero Magi (from feature 50, partially cut off)",
+    "Bazzechi (from feature 50, partially cut off)",
+    "Marilyn Stasio (from department 10, partially cut off)",
+    "Jean Bergantini Grillo (from department 10, partially cut off)",
+    "Alfred Lubrano (from department 12, partially cut off)",
+    "Ruggiero Ricci (from department 14, partially cut off)",
+    "Don De Koven (from department 14, partially cut off)",
+    "Patricia Gatto (from department 39, partially cut off)",
+    "Dorothy Sandler (from department 39, partially cut off)",
+    "Anthony Dias Blue (from department 46, partially cut off)",
+    "Tom Long (from department 58, partially cut off)",
+    "Vincent Romano (from department 68, partially cut off)"
+  ],
+  "_page": 20
+}

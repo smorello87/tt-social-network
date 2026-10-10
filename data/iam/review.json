@@ -1,0 +1,104 @@
+{
+  "periodical": "I-AM",
+  "source": "I-AM: The National Magazine for Italian-Americans. Mastheads and tables of contents, Vol. 1 nos. 1-10 (Nov 1976 - Aug 1977) and Nov 1977; scan Documento_2025-09-29_131756.pdf (pages 2,4,...,20,23 = TOC; 22 = 'Dear Reader' letter)",
+  "method": "Extracted with Qwen3-VL-235B on Bedrock (extract_toc.py), hand-checked against the scans",
+  "issues": {
+    "6": "1977-01",
+    "10": "1977-03",
+    "22": "1977-11",
+    "23": "1977-11"
+  },
+  "not_authors": [
+    "John Pastore",
+    "Eleanor D'Antuono",
+    "Andrew Tartaglino",
+    "Bruno Sammartino",
+    "Jack Valenti"
+  ],
+  "drop": [
+    [
+      8,
+      "Richard Gambino",
+      "cover"
+    ],
+    [
+      16,
+      "Richard Taylor",
+      "cover"
+    ],
+    [
+      23,
+      "Ronald Ellman",
+      "officer"
+    ],
+    [
+      23,
+      "Ralph Brozan",
+      "officer"
+    ]
+  ],
+  "add": [
+    [
+      12,
+      "Lino Dina",
+      "author"
+    ],
+    [
+      18,
+      "Santi Visalli",
+      "cover photographer"
+    ],
+    [
+      22,
+      "Joseph F. Randisi",
+      "author: 'Dear Reader' letter"
+    ],
+    [
+      23,
+      "Ronald Ellman",
+      "officer: Treasurer"
+    ],
+    [
+      23,
+      "Ralph Brozan",
+      "officer: Secretary"
+    ]
+  ],
+  "aliases": {
+    "Mike Iachetta": "Michael Iachetta",
+    "Anne Dieli Allen": "Anne Allen",
+    "Robert Kane": "Robert S. Kane",
+    "Joseph Randisi": "Joseph F. Randisi",
+    "Bernadette Albano Wagner": "Bernadette Wagner",
+    "Marie-Antoinette Manca": "Marie Antoinette Manca",
+    "Jack Finscher": "Jack Fincher",
+    "Adolfo Allessandrini": "Adolfo Alessandrini"
+  },
+  "skip": [
+    "Bazzechi",
+    "Harry W. Hochman Associates, Inc.",
+    "I-AM Publishing Corp.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "match": {
+    "John Ciardi": 43,
+    "Domenico Bartoli": 1141
+  },
+  "new": [
+    "Bert Greene",
+    "Lani Luciano",
+    "Vinnie Volpe",
+    "Richard Weiner"
+  ],
+  "notes": {
+    "Jack Fincher": "printed 'Jack Finscher' (Dec 1976, 'Leonardo was a Lefty'); author of Sinister People (1977) on left-handedness",
+    "Camillo Olivetti": "'Lettere americane' (Jun 1977): posthumous letters (d. 1943)",
+    "Eugenio Montale": "Poesie (May 1977)",
+    "Maria Luisa Spaziani": "Poesie (Jul 1977)",
+    "Luigi Barzini": "excerpt from O America: When You and I Were Young (May 1977)",
+    "Domenico Bartoli": "merged with existing 'D Bartoli' (id 1141, Divagando)",
+    "Gilbert Uvaddi": "spelling as printed (Jan, Feb 1977)",
+    "Adolfo Alessandrini": "printed 'Adolfo Allessandrini' (Mar 1977)"
+  }
+}

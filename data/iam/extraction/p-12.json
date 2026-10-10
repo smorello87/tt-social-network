@@ -1,0 +1,312 @@
+{
+  "issue": "APRIL 1977",
+  "volume": "VOLUME 1,",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "ASSISTANT EDITORS",
+      "names": [
+        "Patricia Gatto",
+        "Maria Terrone"
+      ]
+    },
+    {
+      "role": "ASSISTANT ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "Robert Kane",
+        "John Mariani",
+        "Richard Nageli",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGERS",
+      "names": [
+        "Anthony V. Lombardi",
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "TREASURER",
+      "names": [
+        "Ronald Ellman"
+      ]
+    },
+    {
+      "role": "SECRETARY",
+      "names": [
+        "Ralph Brozan"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF CORPORATE AFFAIRS",
+      "names": [
+        "Joseph F. Randisi"
+      ]
+    },
+    {
+      "role": "CIRCULATION CONSULTANT",
+      "names": [
+        "S. O. Shapiro"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "PUBLIC RELATIONS",
+      "names": [
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    }
+  ],
+  "cover_credit": [],
+  "articles": [
+    {
+      "page": 22,
+      "section": "feature",
+      "title": "What’s a Myth?",
+      "byline": [
+        "Richard Gambino"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 26,
+      "section": "feature",
+      "title": "Look At Me, I’m Not Sandra Dee",
+      "byline": [
+        "Jo Ann Tedesco"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 28,
+      "section": "feature",
+      "title": "Act without Words",
+      "byline": [
+        "Patricia Gatto"
+      ],
+      "photo_or_art": [
+        "Santi Visalli"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 34,
+      "section": "feature",
+      "title": "Vito Antuofermo: Real-life Italian star",
+      "byline": [
+        "Randy Newman"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Vito Antuofermo"
+      ]
+    },
+    {
+      "page": 38,
+      "section": "feature",
+      "title": "For Your Easter Basket",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 44,
+      "section": "feature",
+      "title": "A Passage to Arcosanti",
+      "byline": [
+        "Guido Gerosa"
+      ],
+      "photo_or_art": [
+        "Santi Visalli"
+      ],
+      "subjects": [
+        "Paolo Soleri"
+      ]
+    },
+    {
+      "page": 50,
+      "section": "feature",
+      "title": "Respectable Ricotta",
+      "byline": [
+        "Richard Nageli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "From the Editor",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "Letters: Our Readers Respond",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "John Ciardi"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Lively Arts",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Andrea Marcovici"
+      ]
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [
+        "Lina Manca"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Lino Dina"
+      ]
+    },
+    {
+      "page": 58,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Tom Long"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "The full title of the article on page 34 is cut off; it appears to be 'Vito Antuofermo: Real-life Italian star' but the last word is partially obscured.",
+    "The full title of the article on page 44 is cut off; it appears to be 'A Passage to Arcosanti' but the last letter of 'Arcosanti' is partially obscured.",
+    "The full title of the article on page 50 is cut off; it appears to be 'Respectable Ricotta' but the last letter is partially obscured.",
+    "The full title of the article on page 12 is cut off; it appears to be 'Lively Arts' with a sub-headline 'Andrea Marcovici: very special reserve' but the last word is partially obscured.",
+    "The full title of the article on page 17 is cut off; it appears to be 'Dall’Italia' with a sub-headline 'Houston hospital; Poesie' but the last word is partially obscured."
+  ],
+  "_page": 12
+}

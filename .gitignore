@@ -27,3 +27,5 @@ id_rsa*
 
 # Playwright MCP artifacts
 .playwright-mcp/
+# Rendered scan pages from extract_toc.py (large; regenerate from the PDF)
+data/*/pages/

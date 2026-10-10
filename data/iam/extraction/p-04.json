@@ -1,0 +1,433 @@
+{
+  "issue": "DECEMBER, 1976",
+  "volume": "VOLUME 1, NUMBER 2",
+  "masthead": [
+    {
+      "role": "EDITOR",
+      "names": [
+        "Ron de Paolo"
+      ]
+    },
+    {
+      "role": "GRAPHICS DIRECTOR",
+      "names": [
+        "John V. Ciofalo"
+      ]
+    },
+    {
+      "role": "SENIOR EDITOR",
+      "names": [
+        "David Bertugli"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF PHOTOGRAPHY",
+      "names": [
+        "Santi Visalli"
+      ]
+    },
+    {
+      "role": "CHIEF OF ROME BUREAU",
+      "names": [
+        "Ettore Della Giovanna"
+      ]
+    },
+    {
+      "role": "EDITORIAL ASSISTANT",
+      "names": [
+        "Patricia Gatto"
+      ]
+    },
+    {
+      "role": "ASSISTANT ART DIRECTOR",
+      "names": [
+        "Kerry Gavin"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS",
+      "names": [
+        "Anne Allen",
+        "John Ciardi",
+        "Paul Ciotti",
+        "Richard Gambino",
+        "Jean Bergantini Grillo",
+        "Michael Iachetta",
+        "John Mariani",
+        "Richard Nageli",
+        "Anne Marie Riccitelli",
+        "Marilyn Stasio",
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "CONTRIBUTING EDITORS (photography)",
+      "names": [
+        "Michael A. Vaccaro"
+      ]
+    },
+    {
+      "role": "DIRECTOR OF ADVERTISING",
+      "names": [
+        "Ray G. Forenza"
+      ]
+    },
+    {
+      "role": "ACCOUNT MANAGER",
+      "names": [
+        "Don Zanone"
+      ]
+    },
+    {
+      "role": "ADVERTISING ASSISTANT",
+      "names": [
+        "Vinnie Volpe"
+      ]
+    },
+    {
+      "role": "PRODUCTION MANAGER",
+      "names": [
+        "Bernadette Wagner"
+      ]
+    },
+    {
+      "role": "PUBLISHER",
+      "names": [
+        "Albert B. Schrager"
+      ]
+    },
+    {
+      "role": "TREASURER",
+      "names": [
+        "Ronald Ellman"
+      ]
+    },
+    {
+      "role": "SECRETARY",
+      "names": [
+        "Ralph Brozan"
+      ]
+    },
+    {
+      "role": "CIRCULATION CONSULTANT",
+      "names": [
+        "S. O. Shapiro"
+      ]
+    },
+    {
+      "role": "SUBSCRIPTIONS",
+      "names": [
+        "Harry W. Hochman Associates, Inc."
+      ]
+    },
+    {
+      "role": "ASSISTANTS TO THE PUBLISHER FOR PUBLIC RELATIONS",
+      "names": [
+        "Francesco Cantarella",
+        "Richard Weiner"
+      ]
+    },
+    {
+      "role": "ASSISTANT TO THE PUBLISHER FOR ITALIAN AFFAIRS",
+      "names": [
+        "Marie-Antoinette Manca"
+      ]
+    },
+    {
+      "role": "MIDWEST REPRESENTATIVE",
+      "names": [
+        "Domenick DiFrisco"
+      ]
+    }
+  ],
+  "fine_print": [
+    {
+      "role": "Chairman",
+      "name": "Albert B. Schrager"
+    },
+    {
+      "role": "Publisher",
+      "name": "I-AM Publishing Corp."
+    },
+    {
+      "role": "Advertising Representative in Italy",
+      "name": "S.I.P. Società Internazionale Pubblicità"
+    },
+    {
+      "role": "Advertising Representative in Italy",
+      "name": "S.P.I. Società per la Pubblicità in Italia"
+    }
+  ],
+  "cover_credit": [
+    {
+      "role": "illustrator",
+      "name": "Leo Duranona"
+    }
+  ],
+  "articles": [
+    {
+      "page": 26,
+      "section": "feature",
+      "title": "I Was Joe Colombo’s Rewrite Man",
+      "byline": [
+        "Burnham Holmes"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Joe Colombo"
+      ]
+    },
+    {
+      "page": 30,
+      "section": "feature",
+      "title": "Saving the Tower",
+      "byline": [
+        "Philip Nobile"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Pisa’s tower"
+      ]
+    },
+    {
+      "page": 35,
+      "section": "feature",
+      "title": "The Complete Italian Christmas Shopper",
+      "byline": [],
+      "photo_or_art": [
+        "Michael A. Vaccaro"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 42,
+      "section": "feature",
+      "title": "The Lion in Winter",
+      "byline": [
+        "John Pastore",
+        "Anne Marie Riccitelli"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "John Pastore"
+      ]
+    },
+    {
+      "page": 44,
+      "section": "feature",
+      "title": "Natale in Roma",
+      "byline": [],
+      "photo_or_art": [
+        "Michael A. Vaccaro"
+      ],
+      "subjects": []
+    },
+    {
+      "page": 52,
+      "section": "feature",
+      "title": "Trouble by the Bay",
+      "byline": [
+        "Paul Ciotti"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 56,
+      "section": "feature",
+      "title": "Salute!",
+      "byline": [
+        "Ken Gouldthorpe"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 58,
+      "section": "feature",
+      "title": "From Zuppa to Noci",
+      "byline": [
+        "Richard Nageli"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 62,
+      "section": "feature",
+      "title": "Searching for Garibaldi",
+      "byline": [
+        "David Ely"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Garibaldi"
+      ]
+    },
+    {
+      "page": 4,
+      "section": "department",
+      "title": "Nota Bene",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 6,
+      "section": "department",
+      "title": "From the Editors",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 8,
+      "section": "department",
+      "title": "Books",
+      "byline": [
+        "Norman Hoss"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 10,
+      "section": "department",
+      "title": "Cinema",
+      "byline": [
+        "John Mariani"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 12,
+      "section": "department",
+      "title": "Culture",
+      "byline": [
+        "Jack Finscher"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Leonardo"
+      ]
+    },
+    {
+      "page": 14,
+      "section": "department",
+      "title": "Music",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": []
+    },
+    {
+      "page": 17,
+      "section": "department",
+      "title": "Dall’Italia",
+      "byline": [],
+      "photo_or_art": [],
+      "subjects": [
+        "Andreotti"
+      ]
+    },
+    {
+      "page": 22,
+      "section": "department",
+      "title": "The Lively Arts",
+      "byline": [
+        "Marilyn Stasio"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Vincent Gardenia"
+      ]
+    },
+    {
+      "page": 24,
+      "section": "department",
+      "title": "The Lively Arts",
+      "byline": [
+        "Vito Russo"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Kaye Ballard"
+      ]
+    },
+    {
+      "page": 54,
+      "section": "department",
+      "title": "Heritage",
+      "byline": [
+        "John Ciardi"
+      ],
+      "photo_or_art": [],
+      "subjects": [
+        "Vandal"
+      ]
+    },
+    {
+      "page": 74,
+      "section": "department",
+      "title": "Galleria",
+      "byline": [
+        "Anne Allen",
+        "Rick Minicucci",
+        "Tom Long"
+      ],
+      "photo_or_art": [],
+      "subjects": []
+    }
+  ],
+  "organizations": [
+    "I-AM Publishing Corp.",
+    "Harry W. Hochman Associates, Inc.",
+    "S.I.P. Società Internazionale Pubblicità",
+    "S.P.I. Società per la Pubblicità in Italia"
+  ],
+  "uncertain": [
+    "The name 'Leo Duranona' is partially cut off in the cover credit, but the visible letters strongly suggest this spelling.",
+    "The name 'Michael A. Vaccaro' appears in the masthead and as a photographer; the 'A.' is visible but the full middle name is not.",
+    "The name 'Domenick DiFrisco' is listed as Midwest Representative; the spelling is clear but the hyphenation is assumed from context.",
+    "The name 'Marie-Antoinette Manca' is listed as Assistant to the Publisher for Italian Affairs; the hyphenation is clear from the text.",
+    "The name 'S. O. Shapiro' is listed as Circulation Consultant; the initials are clear but the full name is not provided.",
+    "The name 'Francesco Cantarella' is listed as Assistant to the Publisher for Public Relations; the spelling is clear from the text.",
+    "The name 'Richard Weiner' is listed as Assistant to the Publisher for Public Relations; the spelling is clear from the text.",
+    "The name 'Ronald Ellman' is listed as Treasurer; the spelling is clear from the text.",
+    "The name 'Ralph Brozan' is listed as Secretary; the spelling is clear from the text.",
+    "The name 'Bernadette Wagner' is listed as Production Manager; the spelling is clear from the text.",
+    "The name 'Vinnie Volpe' is listed as Advertising Assistant; the spelling is clear from the text.",
+    "The name 'Don Zanone' is listed as Account Manager; the spelling is clear from the text.",
+    "The name 'Ray G. Forenza' is listed as Director of Advertising; the spelling is clear from the text.",
+    "The name 'Kerry Gavin' is listed as Assistant Art Director; the spelling is clear from the text.",
+    "The name 'Patricia Gatto' is listed as Editorial Assistant; the spelling is clear from the text.",
+    "The name 'Ettore Della Giovanna' is listed as Chief of Rome Bureau; the spelling is clear from the text.",
+    "The name 'Santi Visalli' is listed as Director of Photography; the spelling is clear from the text.",
+    "The name 'David Bertugli' is listed as Senior Editor; the spelling is clear from the text.",
+    "The name 'John V. Ciofalo' is listed as Graphics Director; the spelling is clear from the text.",
+    "The name 'Ron de Paolo' is listed as Editor; the spelling is clear from the text.",
+    "The name 'Anne Allen' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'John Ciardi' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Paul Ciotti' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Richard Gambino' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Jean Bergantini Grillo' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Michael Iachetta' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'John Mariani' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Richard Nageli' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Anne Marie Riccitelli' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Marilyn Stasio' is listed as Contributing Editor; the spelling is clear from the text.",
+    "The name 'Michael A. Vaccaro' is listed as Contributing Editor (photography); the spelling is clear from the text.",
+    "The name 'Ken Gouldthorpe' is listed as author of 'Salute!'; the spelling is clear from the text.",
+    "The name 'David Ely' is listed as author of 'Searching for Garibaldi'; the spelling is clear from the text.",
+    "The name 'Norman Hoss' is listed as author of 'Books'; the spelling is clear from the text.",
+    "The name 'Jack Finscher' is listed as author of 'Culture'; the spelling is clear from the text.",
+    "The name 'John Mariani' is listed as author of 'Cinema'; the spelling is clear from the text.",
+    "The name 'Marilyn Stasio' is listed as author of 'The Lively Arts' (page 22); the spelling is clear from the text.",
+    "The name 'Vito Russo' is listed as author of 'The Lively Arts' (page 24); the spelling is clear from the text.",
+    "The name 'John Ciardi' is listed as author of 'Heritage'; the spelling is clear from the text.",
+    "The name 'Anne Allen' is listed as author of 'Galleria'; the spelling is clear from the text.",
+    "The name 'Rick Minicucci' is listed as author of 'Galleria'; the spelling is clear from the text.",
+    "The name 'Tom Long' is listed as author of 'Galleria'; the spelling is clear from the text."
+  ],
+  "_page": 4
+}

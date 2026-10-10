@@ -66,14 +66,24 @@ python3 omeka_editor.py              # Review at http://localhost:5002
 python3 clean_metadata.py            # Normalize metadata
 ```
 
-### Import contributor lists
+### Import a periodical's masthead + contributors (scanned PDF → DB)
+Use this pipeline for new periodicals. "The usual thing" = everyone on the masthead (editorial and business staff) plus every TOC byline/photographer, each linked to the periodical by an `affiliation` edge.
 ```bash
 cd data/editor
-python3 import_carroccio_contributors.py    # Import Il Carroccio TOC contributors
-python3 import_atlantica_contributors.py    # Import Atlantica TOC contributors
-python3 import_parola_contributors.py       # Import La Parola del Popolo masthead/TOC contributors
+# 1. Extract with Qwen3-VL on Bedrock (us-east-1); per-page JSON -> data/<slug>/extraction/
+python3 extract_toc.py SCAN.pdf --slug iam --periodical "I-AM" --pages 2,4,6-10
+# 2. Merge pages + review decisions, match names against the DB -> data/<slug>/roster.json
+python3 build_roster.py iam
+# 3. Import (refuses while any match is unresolved; backs up DB to data/editor/backups/)
+python3 import_contributors.py iam --dry-run
+python3 import_contributors.py iam
 ```
-These scripts parse contributor files and add nodes/edges to the database. They handle name normalization and duplicate detection.
+- **Review is mandatory between steps 1 and 2.** Check every TOC page against the scan (`data/<slug>/pages/`, gitignored). Qwen's main error: putting article *subjects* (names in the description line) into bylines; the byline is the LAST line of a TOC entry.
+- All review decisions live in `data/<slug>/review.json` (`not_authors`, `drop`, `add`, `aliases`, `skip`, `match`, `new`, `notes`, page→issue `issues`) so `build_roster.py` is re-runnable. Field docs are in the `build_roster.py` docstring.
+- `build_roster.py` flags fuzzy candidates (same surname + first initial, or Levenshtein ≥ 0.85, e.g. "John Ciardi" ~ "John Anthony Ciardi"). Resolve each with `match` (existing node id) or `new`; don't merge uncertain ones.
+- `roster.json` keeps each person's roles and issues; the DB schema does not store them.
+
+Legacy one-off importers (`import_carroccio_contributors.py`, `import_atlantica_contributors.py`, `import_parola_contributors.py`) parse their own text formats; keep them for reference, don't extend them.
 
 ### Ports
 | Service | Port | Command |
@@ -208,6 +218,7 @@ Institution subtypes: `periodical`, `publisher`, `university`, `organization`, `
 │   ├── contributors_list.md           # Il Carroccio contributor names
 │   ├── contributors-and-board/        # Divagando TOC data (1945-1957)
 │   ├── csv-to-json.py                 # CSV→JSON converter (legacy)
+│   ├── iam/                           # I-AM (1976-77): extraction/, review.json, roster.json
 │   ├── editor/                        # Flask editor + SQLite DB
 │   └── cytoscape/                     # Archived (outdated)
 ├── visualization/

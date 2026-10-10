@@ -100,6 +100,7 @@ tt-social-network/
 - Tables of contents of *Atlantica* (1923-1934)
 - Mastheads and tables of contents from 74 issues of *La Parola del Popolo* (1951-1982)
 - [The Periconi Collection of Italian American Imprints](https://italianamericanimprints.omeka.net/)
+- *Italian American Who's Who: A Biographical Dictionary of Outstanding Italo-Americans and Italian Residents of the United States* (New York: The Vigo Press, 1935)
 - Wikipedia biographical data
 - Metadata from the Italian Sistema Bibliotecario Nazionale (SBN) and OCLC
 

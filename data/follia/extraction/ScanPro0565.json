@@ -1,0 +1,24 @@
+{
+  "file": "ScanPro0565.pdf",
+  "pages": [
+    {"page": 1, "issue": "1959-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1959"},
+    {"page": 2, "issue": "1959-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1959"},
+    {"page": 3, "issue": "1959-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1959"},
+    {"page": 4, "issue": "1959-06", "footer": "no footer (full-page Italian Line ad, apparently back cover); issue inferred from preceding pages (Giugno 1959), not certain", "issue_inferred": true},
+    {"page": 5, "issue": "1959-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1959"},
+    {"page": 6, "issue": "1959-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1959"},
+    {"page": 7, "issue": "1959-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1959"},
+    {"page": 8, "issue": "1959-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1959"},
+    {"page": 9, "issue": "1959-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1959"},
+    {"page": 10, "issue": "1959-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1959"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1959-06", "name": "Maria Iacovella", "as_printed": "MARIA IACOVELLA", "title": "Generoso Pope: una pagina di storia vissuta", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1959-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'orticaria", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1959-07", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Quando il caldo toglie l'appetito", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1959-07", "name": "Pietro Fera", "as_printed": "PIETRO FERA, Campora San Giovanni, Cosenza", "title": "Senza titolo", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 6, "issue": "1959-08", "name": "e. d. g.", "as_printed": "e. d. g.", "title": "Lyda Borelli: Celebre diva del muto", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials as printed"},
+    {"page": 8, "issue": "1959-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: In tema di igiene e di bellezza", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1959-09", "name": "Luca", "as_printed": "LUCA", "title": "La cittadina che protesta", "position": "signature", "kind": "article", "confidence": "medium", "note": "pseudonym or first name only; same signature as in March 1959"}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "file": "ScanPro0517.pdf",
+  "pages": [
+    {"page": 1, "issue": "1965-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1965"},
+    {"page": 2, "issue": "1965-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1965"},
+    {"page": 3, "issue": "1965-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1965"},
+    {"page": 4, "issue": "1965-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1965"},
+    {"page": 5, "issue": "1965-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1965"},
+    {"page": 6, "issue": "1965-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1965"},
+    {"page": 7, "issue": "1965-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1965"},
+    {"page": 8, "issue": "1966-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1966"},
+    {"page": 9, "issue": "1966-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1966"},
+    {"page": 10, "issue": "1966-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1966"},
+    {"page": 11, "issue": "1966-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1966"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1965-11", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Con l'avanzare degli anni bisogna dormire di più", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 2, "issue": "1965-12", "name": "Giacomo Grillo", "as_printed": "GIACOMO GRILLO", "title": "(Natale a Boston; title on a preceding page not in scan)", "position": "signature", "kind": "article", "confidence": "high", "note": "end of an article continued from an earlier page; title not visible"},
+    {"page": 4, "issue": "1965-12", "name": "Giulio de Moro", "as_printed": "di GIULIO DE MORO", "title": "Il paese della malia", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 5, "issue": "1965-12", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 7, "issue": "1965-12", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Attenti ai piedi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1966-01", "name": "Marziale Sisca", "as_printed": "MARZIALE SISCA", "title": "Edward Corsi", "position": "signature", "kind": "article", "confidence": "high", "note": "obituary tribute begun on p. 8"},
+    {"page": 10, "issue": "1966-01", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 11, "issue": "1966-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Le temutissime rughe", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 11, "issue": "1966-01", "name": "Tebi Biondi", "as_printed": "Tebi Biondi", "title": "Giacomo Grillo ritorna al giornale bilingue Post-Gazette di Boston", "position": "signature", "kind": "article", "confidence": "high", "note": "signature closes the quoted part; article attributed to Biondi of Agenzia Giornalistica Romana (AGR)"},
+    {"page": 11, "issue": "1966-01", "name": "Vanni B. Montana", "as_printed": "VANNI B. MONTANA", "title": "Entusiastici commenti dell'on. Rooney sull'Italia", "position": "signature", "kind": "article", "confidence": "high"}
+  ]
+}

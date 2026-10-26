@@ -1,0 +1,23 @@
+{
+  "file": "ScanPro0519.pdf",
+  "pages": [
+    {"page": 1, "issue": "1966-04", "footer": "la follia di new york — aprile 1966"},
+    {"page": 2, "issue": "1966-04", "footer": "la follia di new york — aprile 1966"},
+    {"page": 3, "issue": "1966-04", "footer": "la follia di new york — aprile 1966", "note": "spread scan: right edge shows part of another page ('E' propr...' with byline 'd...' cut off) — byline not readable"},
+    {"page": 4, "issue": "1966-04", "footer": "la follia di new york — aprile 19.. (year cut off)", "issue_inferred": true, "note": "year cut off at right edge; inferred from adjacent April 1966 pages; right column (short story) cut off, no signature visible"},
+    {"page": 5, "issue": "1966-04", "footer": "la follia di new york — aprile 1966"},
+    {"page": 6, "issue": "1966-04", "footer": "la follia di new york — aprile 1966"},
+    {"page": 7, "issue": "1966-05", "footer": "la follia di new york — maggio 1966"},
+    {"page": 8, "issue": "1966-05", "footer": "la follia di new york — maggio 1966"},
+    {"page": 9, "issue": "1966-05", "footer": "la follia di new york — maggio 1966"},
+    {"page": 10, "issue": "1966-05", "footer": "la follia di new york — maggio 1966"},
+    {"page": 11, "issue": "1966-05", "footer": "la follia di new york — maggio 1966"}
+  ],
+  "signatures": [
+    {"page": 3, "issue": "1966-04", "name": "Vanni B. Montana", "as_printed": "di VANNI B. MONTANA", "title": "Invito della Sardegna alla giovane America", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 5, "issue": "1966-04", "name": "Dora Tranchino", "as_printed": "MRS. DORA TRANCHINO Delegata Corrispondente", "title": "Un sodalizio di poeti, musicisti e pittori", "position": "signature", "kind": "other", "confidence": "high", "note": "notice signed as corresponding delegate of the Sodalizio (Naples)"},
+    {"page": 5, "issue": "1966-04", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'alimentazione e l'età", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1966-05", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 11, "issue": "1966-05", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il riso", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

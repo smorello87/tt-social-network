@@ -1,0 +1,30 @@
+{
+  "file": "ScanPro0580.pdf",
+  "pages": [
+    {"page": 1, "issue": "1963-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1963"},
+    {"page": 2, "issue": "1964-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1964"},
+    {"page": 3, "issue": "1964-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1964"},
+    {"page": 4, "issue": "1964-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1964"},
+    {"page": 5, "issue": "1964-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1964"},
+    {"page": 6, "issue": "1964-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1964"},
+    {"page": 7, "issue": "1964-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1964"},
+    {"page": 8, "issue": "1964-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1964"},
+    {"page": 9, "issue": "1964-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1964"},
+    {"page": 10, "issue": "1964-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1964"}
+  ],
+  "signatures": [
+    {"page": 2, "issue": "1964-01", "name": "Tilde Longo", "as_printed": "di TILDE LONGO", "title": "Il periodo toscano, Dante, la Vita Nuova e la Divina Commedia", "position": "byline", "kind": "article", "confidence": "high", "note": "part 1 (continues p. 3 and in Feb. 1964 issue)"},
+    {"page": 4, "issue": "1964-01", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI, Rochester, N. Y., 10 novembre 1963", "title": "Doveroso omaggio (Agostino De Biasi)", "position": "signature", "kind": "article", "confidence": "high", "note": "obituary tribute"},
+    {"page": 4, "issue": "1964-01", "name": "Matteo Teresi", "as_printed": "Matteo Teresi, Rochester, N. Y., 8 gennaio 1964", "title": "Doveroso omaggio (Agostino De Biasi) — nota", "position": "signature", "kind": "other", "confidence": "high", "note": "short italic note appended to the tribute"},
+    {"page": 4, "issue": "1964-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Non a tutti necessita lo stesso numero di calorie", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1964-02", "name": "Il Folle", "as_printed": "IL FOLLE", "title": "Echi e commenti", "position": "signature", "kind": "column", "confidence": "high", "note": "pseudonym/persona; signs the Echi e commenti column"},
+    {"page": 5, "issue": "1964-02", "name": "Gennaro Capalbo", "as_printed": "Avv. GENNARO CAPALBO", "title": "De Sanctis a Cosenza", "position": "signature", "kind": "article", "confidence": "high", "note": "continuation from previous page"},
+    {"page": 6, "issue": "1964-02", "name": "Giulio de Moro", "as_printed": "GIULIO de MORO", "title": "Quando il soffrir supera la forza", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1964-02", "name": "Giulio de Moro", "as_printed": "GIULIO de MORO", "title": "Le caviglie di Mimì", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1964-02", "name": "Salvatore Di Giacomo", "as_printed": "SALVATORE DI GIACOMO", "title": "Lettera amirosa", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Di Giacomo d. 1934); dialetto napoletano"},
+    {"page": 7, "issue": "1964-02", "name": "Tilde Longo", "as_printed": "di TILDE LONGO", "title": "Il periodo toscano, Dante, la Vita Nuova e la Divina Commedia", "position": "byline", "kind": "article", "confidence": "high", "note": "continuation and end of the Jan. piece"},
+    {"page": 9, "issue": "1964-02", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Fra gli angoli oscuri della vita", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 10, "issue": "1964-02", "name": "Agostino De Biasi", "as_printed": "Vostro Agostino de Biasi", "title": "Una lettera significativa di Agostino De Biasi", "position": "signature", "kind": "letter", "confidence": "high", "note": "published letter dated 27 febbraio 1954 to Pucelli (Rodolfo Pucelli); De Biasi d. 6 Jan 1964; notable person, not reader mail"},
+    {"page": 10, "issue": "1964-02", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Guardarsi dall'influenza", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

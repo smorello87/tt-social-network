@@ -1,0 +1,26 @@
+{
+  "file": "ScanPro0528.pdf",
+  "pages": [
+    {"page": 1, "issue": "1968-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1968"},
+    {"page": 2, "issue": "1968-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1968"},
+    {"page": 3, "issue": "1968-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1968"},
+    {"page": 4, "issue": "1968-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1968"},
+    {"page": 5, "issue": "1968-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1968"},
+    {"page": 6, "issue": "1968-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1968"},
+    {"page": 7, "issue": "1968-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1968"},
+    {"page": 8, "issue": "1968-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1968"},
+    {"page": 9, "issue": "1968-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1968"},
+    {"page": 10, "issue": "1968-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1968"},
+    {"page": 11, "issue": "1968-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1968"},
+    {"page": 12, "issue": "1968-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1968"}
+  ],
+  "signatures": [
+    {"page": 2, "issue": "1968-05", "name": "Bruno Zirato", "as_printed": "di BRUNO ZIRATO", "title": "Gabriele D'Annunzio cronista \"mondano\"", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1968-05", "name": "Giuseppe Zuzolo", "as_printed": "Con stima, Giuseppe Zuzolo", "title": "Saluto di omaggio a S.E. John Volpe", "position": "signature", "kind": "letter", "confidence": "high", "note": "open greeting to Gov. Volpe, introduced by editors as 'scritto augurale' of 'fedele lettore'"},
+    {"page": 9, "issue": "1968-06", "name": "Bruno Zirato", "as_printed": "di BRUNO ZIRATO", "title": "L'Italia nel mondo", "position": "byline", "kind": "article", "confidence": "high", "note": "continues scan p.10"},
+    {"page": 11, "issue": "1968-06", "name": "Marcello Spaccini", "as_printed": "DOTT. ING. MARCELLO SPACCINI, Sindaco di Trieste", "title": "Il Sindaco di Trieste dice: \"Vi aspettiamo per la Celebrazione del Cinquantenario\"", "position": "signature", "kind": "letter", "confidence": "high", "note": "open letter to Vanni B. Montana, reprinted"},
+    {"page": 11, "issue": "1968-06", "name": "VBM", "as_printed": "—VBM.", "title": "Il Sindaco di Trieste dice... (commento)", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials; almost certainly Vanni B. Montana (named in the commentary)"},
+    {"page": 11, "issue": "1968-06", "name": "A.C.", "as_printed": "—A.C.", "title": "Il Sindaco di Trieste dice... (nota: Evviva Trieste!)", "position": "signature", "kind": "other", "confidence": "medium", "note": "initials of an ex-bersagliere/linotypist; identity unknown"},
+    {"page": 12, "issue": "1968-06", "name": "Lee Posner", "as_printed": "(Photo courtesy: Lee Posner, director of A.A.P.A.)", "title": "Boys Club di Queens (photo)", "position": "signature", "kind": "photo", "confidence": "high", "note": "publicity courtesy credit"}
+  ]
+}

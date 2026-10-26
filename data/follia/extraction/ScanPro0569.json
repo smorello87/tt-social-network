@@ -1,0 +1,148 @@
+{
+ "file": "ScanPro0569.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1960-09",
+   "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1960"
+  },
+  {
+   "page": 2,
+   "issue": "1960-10",
+   "footer": "cover; no footer. Inferred October 1960 from Nixon/Lodge campaign cover, between Sept (p1) and Oct (p3) pages",
+   "issue_inferred": true
+  },
+  {
+   "page": 3,
+   "issue": "1960-10",
+   "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1960"
+  },
+  {
+   "page": 4,
+   "issue": "1960-10",
+   "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1960"
+  },
+  {
+   "page": 5,
+   "issue": "1960-10",
+   "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1960"
+  },
+  {
+   "page": 6,
+   "issue": "1960-10",
+   "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1960"
+  },
+  {
+   "page": 7,
+   "issue": "1960-10",
+   "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1960"
+  },
+  {
+   "page": 8,
+   "issue": "1960-10",
+   "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1960"
+  },
+  {
+   "page": 9,
+   "issue": "1960-11",
+   "footer": "cover masthead band: NOVEMBRE 1960"
+  },
+  {
+   "page": 10,
+   "issue": "1960-11",
+   "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1960"
+  },
+  {
+   "page": 11,
+   "issue": "1960-11",
+   "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1960"
+  },
+  {
+   "page": 12,
+   "issue": "1960-11",
+   "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1960"
+  },
+  {
+   "page": 13,
+   "issue": "1960-11",
+   "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1960"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1960-09",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Non trascurare i capelli",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 3,
+   "issue": "1960-10",
+   "name": "Agostino de Biasi",
+   "as_printed": "di Agostino de Biasi",
+   "title": "Il maglio del destino",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "letter-form piece ('Caro Direttore'), also signed at end 'Agostino de Biasi, legionario di Fiume, New York'; reprints text of his 1919 Carroccio article"
+  },
+  {
+   "page": 5,
+   "issue": "1960-10",
+   "name": "Agostino de Biasi",
+   "as_printed": "AGOSTINO DE BIASI, Ottobre 1919",
+   "title": "La Passione di Fiume",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "reprint of 1919 text (dated Ottobre 1919); piece starts p3 bottom"
+  },
+  {
+   "page": 6,
+   "issue": "1960-10",
+   "name": "Bruno Zirato",
+   "as_printed": "di BRUNO ZIRATO",
+   "title": "Gabriele D'Annunzio",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "continues p7; '(Continuazione e fine dei numeri precedenti)'"
+  },
+  {
+   "page": 8,
+   "issue": "1960-10",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Curare la salute se si vuol conservare la freschezza della pelle",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 10,
+   "issue": "1960-11",
+   "name": "Rodolfo Pucelli",
+   "as_printed": "Rodolfo Pucelli",
+   "title": "Mary O'Connor mi scrisse poche ore prima di morire",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "contains a quoted letter from poet Mary O'Connor (26 ottobre 1960), signed 'Mary O'Connor'; not a separate signed piece"
+  },
+  {
+   "page": 11,
+   "issue": "1960-11",
+   "name": "Agostino de Biasi",
+   "as_printed": "di AGOSTINO de BIASI",
+   "title": "Il più grande Emigrato (Marconi Day)",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "continues p12-13; also signed at end on p13"
+  }
+ ]
+}

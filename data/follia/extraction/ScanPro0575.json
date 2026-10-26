@@ -1,0 +1,30 @@
+{
+  "file": "ScanPro0575.pdf",
+  "pages": [
+    {"page": 1, "issue": "1962-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1962"},
+    {"page": 2, "issue": "1962-09", "footer": "no footer (cover); issue inferred from 'REC'D SEP 19 1962' stamp and adjacent Sept 1962 pages", "issue_inferred": true},
+    {"page": 3, "issue": "1962-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1962"},
+    {"page": 4, "issue": "1962-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1962"},
+    {"page": 5, "issue": "1962-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1962"},
+    {"page": 6, "issue": "1962-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1962"},
+    {"page": 7, "issue": "1962-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1962"},
+    {"page": 8, "issue": "1962-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1962"},
+    {"page": 9, "issue": "1962-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1962"},
+    {"page": 10, "issue": "1962-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1962"},
+    {"page": 11, "issue": "1962-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1962"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1962-07", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Non vi preoccupate", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 1, "issue": "1962-07", "name": "Sebastiano Trucco", "as_printed": "SEBASTIANO TRUCCO", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter from Erie, Pa., dated Giugno 1962"},
+    {"page": 3, "issue": "1962-09", "name": "B. Z.", "as_printed": "B. Z.", "title": "Alberto Sciarretti", "position": "signature", "kind": "article", "confidence": "medium", "note": "obituary of pianist Alberto Sciarretti; initials as printed"},
+    {"page": 3, "issue": "1962-09", "name": "Soave Marotta", "as_printed": "SOAVE-MAROTTA, Brooklyn, N. Y.", "title": "Chi è Alma del Rio?", "position": "signature", "kind": "letter", "confidence": "medium", "note": "hyphen/spacing in surname unclear in scan; reader letter to Sisca"},
+    {"page": 3, "issue": "1962-09", "name": "Luigi Russo", "as_printed": "LUIGI RUSSO", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter from Norwood, Mass., dated Giugno 1962"},
+    {"page": 4, "issue": "1962-09", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Per una nuova strategia nella lotta contro il comunismo", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1962-09", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Durante i mesi estivi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 8, "issue": "1962-10", "name": "Domenico Tarantino", "as_printed": "DOMENICO TARANTINO", "title": "La Politica Italiana", "position": "signature", "kind": "letter", "confidence": "high", "note": "published reader letter ('Riceviamo e pubblichiamo')"},
+    {"page": 9, "issue": "1962-10", "name": "Domenico Tarantino", "as_printed": "DOMENICO TARANTINO", "title": "La Politica Italiana", "position": "signature", "kind": "letter", "confidence": "high", "note": "published reader letter; same page repeated as p. 8 in scan (duplicate page image)"},
+    {"page": 10, "issue": "1962-10", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per vincere la stanchezza", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1962-10", "name": "Rodolfo Pucelli", "as_printed": "Rodolfo Pucelli", "title": "Panorami Italici di Giuseppe Luongo da S. Angelo a Fasanella", "position": "signature", "kind": "article", "confidence": "high", "note": "book review"},
+    {"page": 11, "issue": "1962-11", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La ginnastica e l'età", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

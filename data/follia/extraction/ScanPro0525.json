@@ -1,0 +1,37 @@
+{
+  "file": "ScanPro0525.pdf",
+  "pages": [
+    {"page": 1, "issue": "1967-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1967"},
+    {"page": 2, "issue": "1967-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1967"},
+    {"page": 3, "issue": "1967-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1967"},
+    {"page": 4, "issue": "1967-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1967"},
+    {"page": 5, "issue": "1967-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1967"},
+    {"page": 6, "issue": "1967-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1967"},
+    {"page": 7, "issue": "1967-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1967"},
+    {"page": 8, "issue": "1967-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1967"},
+    {"page": 9, "issue": "1967-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1967"},
+    {"page": 10, "issue": "1967-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1967"},
+    {"page": 11, "issue": "1967-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1967"}
+  ],
+  "signatures": [
+    {"page": 2, "issue": "1967-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per chi non vuole ingrassare", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 2, "issue": "1967-08", "name": "Giuseppe Zuzolo", "as_printed": "GIUSEPPE ZUZOLO", "title": "La vera fonte che disseta", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1967-08", "name": "Alberto Piraccini", "as_printed": "ALBERTO PIRACCINI, Poeta e scrittore", "title": "Una recensione (Giuseppe Luongo, Le Quattro Stagioni)", "position": "signature", "kind": "article", "confidence": "high", "note": "book review"},
+    {"page": 3, "issue": "1967-09", "name": "Agostino De Biasi", "as_printed": "AGOSTINO DE BIASI", "title": "Il piu' grande emigrato", "position": "signature", "kind": "article", "confidence": "high", "note": "probably reprint (De Biasi d. 1964); piece on Marconi"},
+    {"page": 3, "issue": "1967-09", "name": "Siculo", "as_printed": "SICULO", "title": "Verita' dolorose", "position": "signature", "kind": "article", "confidence": "high", "note": "pseudonym"},
+    {"page": 4, "issue": "1967-09", "name": "Giulio de Moro", "as_printed": "di GIULIO DE MORO", "title": "Lo specchio della storia si appanna", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 5, "issue": "1967-09", "name": "Joseph A. Tigani", "as_printed": "di JOSEPH A. TIGANI", "title": "L'influenza delle donne nella storia d'Italia", "position": "byline", "kind": "article", "confidence": "high", "note": "continued p.13 (scan page 6)"},
+    {"page": 5, "issue": "1967-09", "name": "James Visceglia", "as_printed": "JAMES VISCEGLIA", "title": "L'Italia ed il Mercato Comune", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 7, "issue": "1967-09", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il bagno giornaliero", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1967-09", "name": "Lee Posner", "as_printed": "(Photo Courtesy of Lee Posner, Dir. of AAPA)", "title": "The Tiger and the Pussycat (film still)", "position": "signature", "kind": "photo", "confidence": "high", "note": "publicity courtesy credit, not necessarily the photographer"},
+    {"page": 8, "issue": "1967-10", "name": "Giacomo Grillo", "as_printed": "di Giacomo Grillo", "title": "Eloquente tributo a Marziale Sisca dell'Agenzia Giornalistica Romana", "position": "byline", "kind": "article", "confidence": "high", "note": "continues on scan p.9, also signed at end 'GIACOMO GRILLO, Boston, 26 settembre 1967'"},
+    {"page": 9, "issue": "1967-10", "name": "Siculo", "as_printed": "SICULO", "title": "Tutti poeti!... Hurrah!", "position": "signature", "kind": "article", "confidence": "high", "note": "pseudonym"},
+    {"page": 9, "issue": "1967-10", "name": "Samarat", "as_printed": "SAMARAT", "title": "Le gonne corte (Mini-skirts)", "position": "signature", "kind": "poem", "confidence": "high", "note": "pseudonym"},
+    {"page": 10, "issue": "1967-10", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 11, "issue": "1967-10", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "A ognuno il suo", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 11, "issue": "1967-10", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per conservare i capelli", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 11, "issue": "1967-10", "name": "Siculo", "as_printed": "SICULO", "title": "Tramonto", "position": "signature", "kind": "article", "confidence": "high", "note": "pseudonym"},
+    {"page": 11, "issue": "1967-10", "name": "Rodolfo Pucelli", "as_printed": "Rodolfo Pucelli", "title": "Libri: Lungo il sentiero (Attilio Altavilla)", "position": "signature", "kind": "article", "confidence": "high", "note": "book review"},
+    {"page": 11, "issue": "1967-10", "name": "Gaetano Ricciardi", "as_printed": "GAETANO RICCIARDI", "title": "La neve", "position": "signature", "kind": "poem", "confidence": "high"}
+  ]
+}

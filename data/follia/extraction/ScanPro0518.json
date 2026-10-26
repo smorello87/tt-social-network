@@ -1,0 +1,32 @@
+{
+  "file": "ScanPro0518.pdf",
+  "pages": [
+    {"page": 1, "issue": "1966-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1966"},
+    {"page": 2, "issue": "1966-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1966"},
+    {"page": 3, "issue": "1966-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1966"},
+    {"page": 4, "issue": "1966-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1966"},
+    {"page": 5, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 6, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 7, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 8, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 9, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 10, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 11, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"},
+    {"page": 12, "issue": "1966-03", "footer": "la follia di new york — marzo 1966"}
+  ],
+  "signatures": [
+    {"page": 3, "issue": "1966-02", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 4, "issue": "1966-02", "name": "Amedeo Fusaro", "as_printed": "AMEDEO FUSARO", "title": "Gennaro Capalbo", "position": "signature", "kind": "article", "confidence": "high", "note": "obituary of lawyer/writer Gennaro Capalbo of Acri"},
+    {"page": 4, "issue": "1966-02", "name": "Rocco de Russo", "as_printed": "ROCCO DE RUSSO", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 4, "issue": "1966-02", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per le caviglie", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1966-03", "name": "John Mocerino", "as_printed": "JOHN MOCERINO", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 5, "issue": "1966-03", "name": "Vincenzo Foti", "as_printed": "VINCENZO FOTI", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 5, "issue": "1966-03", "name": "Diletta Lanza", "as_printed": "DILETTA LANZA", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 5, "issue": "1966-03", "name": "Isolina Gemignani", "as_printed": "ISOLINA GEMIGNANI", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 5, "issue": "1966-03", "name": "Eugene Santonocito", "as_printed": "EUGENE SANTONOCITO", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "spelled SANTONOCITO in ScanPro0514"},
+    {"page": 8, "issue": "1966-03", "name": "Il Folle", "as_printed": "IL FOLLE", "title": "Echi e commenti", "position": "signature", "kind": "column", "confidence": "high", "note": "pseudonym; signs the column's items (La luna di febbraio; La femme, toujours la femme)"},
+    {"page": 9, "issue": "1966-03", "name": "Giacomo Grillo", "as_printed": "di GIACOMO GRILLO", "title": "Lincoln amò l'Italia", "position": "byline", "kind": "article", "confidence": "high", "note": "dateline Boston, febbraio 1966"},
+    {"page": 10, "issue": "1966-03", "name": "Giulio de Moro", "as_printed": "di GIULIO de MORO", "title": "Aria italiana in scatola", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 12, "issue": "1966-03", "name": "Leo Rugens", "as_printed": "LEO RUGENS", "title": "Pioniere della radio italiana: Una nomina ben meritata", "position": "signature", "kind": "article", "confidence": "high", "note": "on Nino Bellassai (WHBI)"}
+  ]
+}

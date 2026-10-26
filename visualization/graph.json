@@ -96,6 +96,16 @@
       "subtype": null
     },
     {
+      "id": "A. Quintieri",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "A. Russo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "A. Sandoval",
       "type": "person",
       "subtype": null
@@ -301,6 +311,11 @@
       "subtype": "business"
     },
     {
+      "id": "Agostino Allori",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Agostino Gemelli",
       "type": "person",
       "subtype": null
@@ -322,6 +337,11 @@
     },
     {
       "id": "Agostino Pernice",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Agostino Trovaioli",
       "type": "person",
       "subtype": null
     },
@@ -561,6 +581,11 @@
       "subtype": null
     },
     {
+      "id": "Alberto Piraccini",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Alberto Pirelli",
       "type": "person",
       "subtype": null
@@ -741,6 +766,11 @@
       "subtype": null
     },
     {
+      "id": "Alessandro Dommarco",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Alessandro Dumas",
       "type": "person",
       "subtype": null
@@ -782,11 +812,6 @@
     },
     {
       "id": "Alessandro Sardi",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Alessandro Sisca",
       "type": "person",
       "subtype": null
     },
@@ -946,6 +971,11 @@
       "subtype": null
     },
     {
+      "id": "Alfredo Della Valle",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Alfredo Galletti",
       "type": "person",
       "subtype": null
@@ -981,6 +1011,11 @@
       "subtype": null
     },
     {
+      "id": "Alfredo Massa",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Alfredo Obertello",
       "type": "person",
       "subtype": null
@@ -1012,6 +1047,11 @@
     },
     {
       "id": "Alfredo Sanza",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Alfredo Sisca",
       "type": "person",
       "subtype": null
     },
@@ -1096,6 +1136,11 @@
       "subtype": null
     },
     {
+      "id": "Alpinolo Danielli",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Altiero Spinelli",
       "type": "person",
       "subtype": null
@@ -1157,6 +1202,11 @@
     },
     {
       "id": "Amedeo Canessa",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Amedeo Fusaro",
       "type": "person",
       "subtype": null
     },
@@ -1406,6 +1456,11 @@
       "subtype": null
     },
     {
+      "id": "Angelo Casci\u00e0",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Angelo Conti",
       "type": "person",
       "subtype": null
@@ -1472,6 +1527,11 @@
     },
     {
       "id": "Angelo Maria Tirabassi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Angelo Marsala",
       "type": "person",
       "subtype": null
     },
@@ -1601,6 +1661,11 @@
       "subtype": null
     },
     {
+      "id": "Anna Lannutti",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Anna Linetti",
       "type": "person",
       "subtype": null
@@ -1686,6 +1751,11 @@
       "subtype": null
     },
     {
+      "id": "Annibale Centoni",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Annibale M. Pastore",
       "type": "person",
       "subtype": null
@@ -1702,6 +1772,11 @@
     },
     {
       "id": "Annunciata Spinelli",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Annunciata Spinelli Dommarco",
       "type": "person",
       "subtype": null
     },
@@ -2036,6 +2111,11 @@
       "subtype": null
     },
     {
+      "id": "Antonio Lezza",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Antonio Locatelli",
       "type": "person",
       "subtype": null
@@ -2071,7 +2151,17 @@
       "subtype": null
     },
     {
+      "id": "Antonio Mordente",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Antonio Motta",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Antonio Negri",
       "type": "person",
       "subtype": null
     },
@@ -2087,6 +2177,11 @@
     },
     {
       "id": "Antonio Parente",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Antonio Pederzoli",
       "type": "person",
       "subtype": null
     },
@@ -2207,6 +2302,11 @@
     },
     {
       "id": "Armando Bonugli",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Armando Cenerazzo",
       "type": "person",
       "subtype": null
     },
@@ -2341,6 +2441,11 @@
       "subtype": null
     },
     {
+      "id": "Arrigo Sorini",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Arthur Benington",
       "type": "person",
       "subtype": null
@@ -2426,6 +2531,11 @@
       "subtype": null
     },
     {
+      "id": "Arturo Cardaropoli",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Arturo Caroti",
       "type": "person",
       "subtype": null
@@ -2466,6 +2576,11 @@
       "subtype": null
     },
     {
+      "id": "Arturo Tesi",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Arturo Tofanelli",
       "type": "person",
       "subtype": null
@@ -2501,12 +2616,27 @@
       "subtype": "periodical"
     },
     {
+      "id": "Attilio Altavilla",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Attilio Bernasconi",
       "type": "person",
       "subtype": null
     },
     {
       "id": "Attilio Bertolucci",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Attilio D'Ambrogi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Attilio Dell'Orso",
       "type": "person",
       "subtype": null
     },
@@ -2766,6 +2896,11 @@
       "subtype": null
     },
     {
+      "id": "Bayard Taylor",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Beatrice Argano",
       "type": "person",
       "subtype": null
@@ -2971,6 +3106,11 @@
       "subtype": null
     },
     {
+      "id": "Biagio Occhipinti",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Bianca G Serra",
       "type": "person",
       "subtype": null
@@ -3096,6 +3236,11 @@
       "subtype": null
     },
     {
+      "id": "Bruna J. Bernardara",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Bruno Biagi",
       "type": "person",
       "subtype": null
@@ -3147,6 +3292,11 @@
     },
     {
       "id": "Bruno Roselli",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Bruno Scala",
       "type": "person",
       "subtype": null
     },
@@ -3332,6 +3482,11 @@
     },
     {
       "id": "Carla Elda Webb",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Carla Fiordise",
       "type": "person",
       "subtype": null
     },
@@ -3811,12 +3966,22 @@
       "subtype": null
     },
     {
+      "id": "Cesare Luscambro",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Cesare Maccari",
       "type": "person",
       "subtype": null
     },
     {
       "id": "Cesare Pavese",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Cesare Tomasulo",
       "type": "person",
       "subtype": null
     },
@@ -3917,6 +4082,11 @@
     },
     {
       "id": "Charles L'Episcopo",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Charles L. Fasullo",
       "type": "person",
       "subtype": null
     },
@@ -4054,6 +4224,11 @@
       "id": "Circolo dei Poeti (New York)",
       "type": "institution",
       "subtype": "organization"
+    },
+    {
+      "id": "Ciro Pellechia",
+      "type": "person",
+      "subtype": null
     },
     {
       "id": "Ciro Poggiali",
@@ -4731,6 +4906,11 @@
       "subtype": null
     },
     {
+      "id": "Diletta Lanza",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Dina Faivano",
       "type": "person",
       "subtype": null
@@ -4961,6 +5141,11 @@
       "subtype": null
     },
     {
+      "id": "Domenico Treccase",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Domenico Trentacoste",
       "type": "person",
       "subtype": null
@@ -5171,6 +5356,11 @@
       "subtype": null
     },
     {
+      "id": "Duilio Marazzi",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Durant Drake",
       "type": "person",
       "subtype": null
@@ -5214,6 +5404,11 @@
       "id": "E. Clemente & Sons",
       "type": "institution",
       "subtype": "publisher"
+    },
+    {
+      "id": "E. De Stefano",
+      "type": "person",
+      "subtype": null
     },
     {
       "id": "E. Grifi",
@@ -5581,6 +5776,11 @@
       "subtype": null
     },
     {
+      "id": "Elia Dominianni",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Elide Lapi Bonifazi",
       "type": "person",
       "subtype": null
@@ -5747,6 +5947,11 @@
     },
     {
       "id": "Emil Vetter",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Emilia Caputo",
       "type": "person",
       "subtype": null
     },
@@ -6087,6 +6292,11 @@
     },
     {
       "id": "Enzo De Luca",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Enzo Feola",
       "type": "person",
       "subtype": null
     },
@@ -6471,6 +6681,11 @@
       "subtype": null
     },
     {
+      "id": "Eugenio Santonocito",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Eugenio Tignola",
       "type": "person",
       "subtype": null
@@ -6601,6 +6816,11 @@
       "subtype": null
     },
     {
+      "id": "F. Oliveri",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "F. Vinci Roman",
       "type": "person",
       "subtype": null
@@ -6676,6 +6896,11 @@
       "subtype": null
     },
     {
+      "id": "Fausto Belfiori",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Fausto M. Martini",
       "type": "person",
       "subtype": null
@@ -6692,6 +6917,11 @@
     },
     {
       "id": "Fedele Carboni",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Federico Fabozzi",
       "type": "person",
       "subtype": null
     },
@@ -6827,6 +7057,11 @@
     },
     {
       "id": "Ferdinando Martini",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Ferdinando Papa",
       "type": "person",
       "subtype": null
     },
@@ -7016,6 +7251,11 @@
       "subtype": null
     },
     {
+      "id": "Filomeno Argenio",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Finch College",
       "type": "institution",
       "subtype": "university"
@@ -7186,6 +7426,11 @@
       "subtype": null
     },
     {
+      "id": "Francesco Boneschi",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Francesco Cantarella",
       "type": "person",
       "subtype": null
@@ -7326,6 +7571,11 @@
       "subtype": null
     },
     {
+      "id": "Francesco Restivo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Francesco Ribezzo",
       "type": "person",
       "subtype": null
@@ -7421,6 +7671,11 @@
       "subtype": null
     },
     {
+      "id": "Francis Norelli",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Francis Snow",
       "type": "person",
       "subtype": null
@@ -7497,6 +7752,11 @@
     },
     {
       "id": "Franco Ligi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Franco Maletta",
       "type": "person",
       "subtype": null
     },
@@ -7601,6 +7861,11 @@
       "subtype": null
     },
     {
+      "id": "Frank Capalbo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Frank Capra",
       "type": "person",
       "subtype": null
@@ -7636,6 +7901,21 @@
       "subtype": null
     },
     {
+      "id": "Frank La Raia",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Frank M. Giunta",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Frank M. Zottoli",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Frank Pellegrini",
       "type": "person",
       "subtype": null
@@ -7651,12 +7931,32 @@
       "subtype": null
     },
     {
+      "id": "Frank S. Reale",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Frank Short",
       "type": "person",
       "subtype": null
     },
     {
       "id": "Frank Snowden Jr",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Frank Spadola",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Frank Taccino",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Frank Tortorelli",
       "type": "person",
       "subtype": null
     },
@@ -7866,7 +8166,17 @@
       "subtype": null
     },
     {
+      "id": "G. Mordente",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "G. Mungo",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "G. Paolino De' Sardi",
       "type": "person",
       "subtype": null
     },
@@ -7961,6 +8271,11 @@
       "subtype": null
     },
     {
+      "id": "Gaetano Lacalamita",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Gaetano Lama",
       "type": "person",
       "subtype": null
@@ -7997,6 +8312,11 @@
     },
     {
       "id": "Gaetano Preziosi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Gaetano Ricciardi",
       "type": "person",
       "subtype": null
     },
@@ -8277,6 +8597,11 @@
     },
     {
       "id": "Germano Formica",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Germoglino Saggio",
       "type": "person",
       "subtype": null
     },
@@ -8816,6 +9141,11 @@
       "subtype": null
     },
     {
+      "id": "Giorgio Pillon",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giorgio Pitacco",
       "type": "person",
       "subtype": null
@@ -8926,6 +9256,11 @@
       "subtype": null
     },
     {
+      "id": "Giovanni Artieri",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giovanni Azzo",
       "type": "person",
       "subtype": null
@@ -8972,6 +9307,11 @@
     },
     {
       "id": "Giovanni Bovio",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giovanni Bozzacco",
       "type": "person",
       "subtype": null
     },
@@ -9077,6 +9417,11 @@
     },
     {
       "id": "Giovanni Girardon",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giovanni Girgenti",
       "type": "person",
       "subtype": null
     },
@@ -9272,6 +9617,11 @@
     },
     {
       "id": "Giovanni Semeria",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giovanni Solone",
       "type": "person",
       "subtype": null
     },
@@ -9506,6 +9856,11 @@
       "subtype": null
     },
     {
+      "id": "Giulio de Moro",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giuseppe Agostini",
       "type": "person",
       "subtype": null
@@ -9641,6 +9996,11 @@
       "subtype": null
     },
     {
+      "id": "Giuseppe Civitarese",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giuseppe Colli",
       "type": "person",
       "subtype": null
@@ -9677,6 +10037,11 @@
     },
     {
       "id": "Giuseppe De Michelis",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giuseppe De Rizzo",
       "type": "person",
       "subtype": null
     },
@@ -9751,6 +10116,11 @@
       "subtype": null
     },
     {
+      "id": "Giuseppe Langone",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giuseppe Leonida Capobianco",
       "type": "person",
       "subtype": null
@@ -9782,6 +10152,11 @@
     },
     {
       "id": "Giuseppe Mazzini",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giuseppe Mirabella",
       "type": "person",
       "subtype": null
     },
@@ -9911,6 +10286,11 @@
       "subtype": null
     },
     {
+      "id": "Giuseppe Tirinnanzi",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giuseppe Tomasi di Lampedusa",
       "type": "person",
       "subtype": null
@@ -9981,6 +10361,11 @@
       "subtype": null
     },
     {
+      "id": "Giuseppe Zuzolo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Giuseppina Ferioli",
       "type": "person",
       "subtype": null
@@ -9997,6 +10382,11 @@
     },
     {
       "id": "Giusi Farnese",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Giustino Ausanio",
       "type": "person",
       "subtype": null
     },
@@ -10177,6 +10567,11 @@
     },
     {
       "id": "Guglielmo Ricciardi",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Guido Albanese",
       "type": "person",
       "subtype": null
     },
@@ -11106,6 +11501,16 @@
       "subtype": null
     },
     {
+      "id": "Isidoro Filocco",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Isolina Gemignani",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Istituto dell'Enciclopedia Italiana Treccani",
       "type": "institution",
       "subtype": "publisher"
@@ -11257,6 +11662,11 @@
     },
     {
       "id": "Italo L. Ponterotto",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Italo Limbara",
       "type": "person",
       "subtype": null
     },
@@ -11576,6 +11986,11 @@
       "subtype": null
     },
     {
+      "id": "Jerome La Scala",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Jerry Granozio",
       "type": "person",
       "subtype": null
@@ -11691,6 +12106,11 @@
       "subtype": null
     },
     {
+      "id": "John Dalbonia",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "John Dewey",
       "type": "person",
       "subtype": null
@@ -11761,6 +12181,11 @@
       "subtype": null
     },
     {
+      "id": "John J. Alifano",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "John Knox Jessup",
       "type": "person",
       "subtype": null
@@ -11792,6 +12217,11 @@
     },
     {
       "id": "John Mariani",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "John Mocerino",
       "type": "person",
       "subtype": null
     },
@@ -11896,6 +12326,11 @@
       "subtype": null
     },
     {
+      "id": "Joseph A. Tigani",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Joseph A. Zullo",
       "type": "person",
       "subtype": null
@@ -11907,6 +12342,11 @@
     },
     {
       "id": "Joseph Catalanotti",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Joseph E. Conte",
       "type": "person",
       "subtype": null
     },
@@ -11926,6 +12366,11 @@
       "subtype": null
     },
     {
+      "id": "Joseph Gioe",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Joseph Guerin Fucilla",
       "type": "person",
       "subtype": null
@@ -11937,6 +12382,11 @@
     },
     {
       "id": "Joseph La Gattuta",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Joseph Lippe",
       "type": "person",
       "subtype": null
     },
@@ -12476,7 +12926,17 @@
       "subtype": "periodical"
     },
     {
+      "id": "Lea Ferranti",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Leda Zincani",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Lee Lemeni",
       "type": "person",
       "subtype": null
     },
@@ -12602,6 +13062,11 @@
     },
     {
       "id": "Leonardo De Benedetti",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Leonardo Dia",
       "type": "person",
       "subtype": null
     },
@@ -12779,6 +13244,11 @@
       "id": "Life",
       "type": "institution",
       "subtype": "periodical"
+    },
+    {
+      "id": "Lilia Lodolini",
+      "type": "person",
+      "subtype": null
     },
     {
       "id": "Lilian T. Mowrer",
@@ -13186,6 +13656,11 @@
       "subtype": null
     },
     {
+      "id": "Lucio Seminara",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Lucius Martucci",
       "type": "person",
       "subtype": null
@@ -13387,6 +13862,11 @@
     },
     {
       "id": "Luigi Luzzatti",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Luigi Maida",
       "type": "person",
       "subtype": null
     },
@@ -13696,6 +14176,16 @@
       "subtype": null
     },
     {
+      "id": "Manfredi Fasulo",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Manfredi Greco",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Manfredi Nicoletti",
       "type": "person",
       "subtype": null
@@ -13826,6 +14316,11 @@
       "subtype": null
     },
     {
+      "id": "Marco Marchesan",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Marco Valsecchi",
       "type": "person",
       "subtype": null
@@ -13952,6 +14447,11 @@
     },
     {
       "id": "Maria Godoli Papini",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Maria Iannella",
       "type": "person",
       "subtype": null
     },
@@ -14087,6 +14587,11 @@
     },
     {
       "id": "Marino Lazzari",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Marino Mancini",
       "type": "person",
       "subtype": null
     },
@@ -14441,6 +14946,11 @@
       "subtype": null
     },
     {
+      "id": "Marsio Prato",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Marta Belloni",
       "type": "person",
       "subtype": null
@@ -14482,6 +14992,11 @@
     },
     {
       "id": "Mary Falica",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Mary Ferraiuolo",
       "type": "person",
       "subtype": null
     },
@@ -14582,6 +15097,11 @@
     },
     {
       "id": "Matilde Valenti Pfeiffer",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Matteo Teresi",
       "type": "person",
       "subtype": null
     },
@@ -14811,6 +15331,11 @@
       "subtype": null
     },
     {
+      "id": "Michael Sisca",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Michael Wharf",
       "type": "person",
       "subtype": null
@@ -15026,6 +15551,11 @@
       "subtype": "publisher"
     },
     {
+      "id": "Modestino Sessa",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Mondo Nuovo",
       "type": "institution",
       "subtype": "periodical"
@@ -15077,6 +15607,11 @@
     },
     {
       "id": "Nando Sampietro",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Nanni Andriolli",
       "type": "person",
       "subtype": null
     },
@@ -15256,6 +15791,11 @@
       "subtype": null
     },
     {
+      "id": "Nicholas Intrieri",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Nicholas Murray Butler",
       "type": "person",
       "subtype": null
@@ -15337,6 +15877,11 @@
     },
     {
       "id": "Nicola Grilli",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Nicola Lanza",
       "type": "person",
       "subtype": null
     },
@@ -15581,6 +16126,11 @@
       "subtype": null
     },
     {
+      "id": "Olga Malchiodi Cavaliere",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Olga Maria Bartoletti Ludovici",
       "type": "person",
       "subtype": null
@@ -15731,6 +16281,11 @@
       "subtype": null
     },
     {
+      "id": "Oscar Mazzitelli",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Oscar Pio",
       "type": "person",
       "subtype": null
@@ -15786,6 +16341,11 @@
       "subtype": null
     },
     {
+      "id": "P. Conti Tarantino",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Pablo Neruda",
       "type": "person",
       "subtype": null
@@ -15819,6 +16379,11 @@
       "id": "Pantheon Books",
       "type": "institution",
       "subtype": "publisher"
+    },
+    {
+      "id": "Paola Adele Morsellino",
+      "type": "person",
+      "subtype": null
     },
     {
       "id": "Paola Elia",
@@ -16017,6 +16582,11 @@
     },
     {
       "id": "Pasquale Farina",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Pasquale Forte",
       "type": "person",
       "subtype": null
     },
@@ -16301,6 +16871,11 @@
       "subtype": "business"
     },
     {
+      "id": "Philip Bertolotta",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Philip Harkins",
       "type": "person",
       "subtype": null
@@ -16382,6 +16957,11 @@
     },
     {
       "id": "Pier Paolo Pasolini",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Pier Petrucelli della Gattina",
       "type": "person",
       "subtype": null
     },
@@ -16536,6 +17116,11 @@
       "subtype": null
     },
     {
+      "id": "Pietro Fera",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Pietro G. Varvaro",
       "type": "person",
       "subtype": null
@@ -16572,6 +17157,11 @@
     },
     {
       "id": "Pietro Paolo Parzanese",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Pietro Pasquali",
       "type": "person",
       "subtype": null
     },
@@ -16827,6 +17417,11 @@
     },
     {
       "id": "Raimondo Fazio",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Raimondo Manzini",
       "type": "person",
       "subtype": null
     },
@@ -17127,6 +17722,11 @@
     },
     {
       "id": "Richard Bagot",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Richard Cassar",
       "type": "person",
       "subtype": null
     },
@@ -17656,6 +18256,11 @@
       "subtype": null
     },
     {
+      "id": "Rosario Torregrossa",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Rosario di Vita",
       "type": "person",
       "subtype": null
@@ -17786,7 +18391,17 @@
       "subtype": null
     },
     {
+      "id": "S. D'Agostini",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "S. O. Shapiro",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "S. Politi",
       "type": "person",
       "subtype": null
     },
@@ -17851,6 +18466,11 @@
       "subtype": null
     },
     {
+      "id": "Salvatore Di Leo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Salvatore Di Marco",
       "type": "person",
       "subtype": null
@@ -17867,6 +18487,11 @@
     },
     {
       "id": "Salvatore Mario Castagna",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Salvatore Moncada",
       "type": "person",
       "subtype": null
     },
@@ -17937,6 +18562,11 @@
     },
     {
       "id": "Samuel H. Miller",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Samuel J. Renda",
       "type": "person",
       "subtype": null
     },
@@ -18056,6 +18686,11 @@
       "subtype": "publisher"
     },
     {
+      "id": "Scipio di Dario",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Sebastian Passione",
       "type": "person",
       "subtype": null
@@ -18072,6 +18707,11 @@
     },
     {
       "id": "Sebastiano Sani",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Sebastiano Trucco",
       "type": "person",
       "subtype": null
     },
@@ -18152,6 +18792,11 @@
     },
     {
       "id": "Settimio Maciocia",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Severina Magni",
       "type": "person",
       "subtype": null
     },
@@ -18246,6 +18891,11 @@
       "subtype": null
     },
     {
+      "id": "Silvio Coscia",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Silvio D'Amico",
       "type": "person",
       "subtype": null
@@ -18267,6 +18917,11 @@
     },
     {
       "id": "Silvio Picchianti",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Silvio Serafini",
       "type": "person",
       "subtype": null
     },
@@ -18381,6 +19036,11 @@
       "subtype": null
     },
     {
+      "id": "Stephen Lo Iacono",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Stephen Spender",
       "type": "person",
       "subtype": null
@@ -18462,6 +19122,11 @@
     },
     {
       "id": "Tani Gira",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Tebi Biondi",
       "type": "person",
       "subtype": null
     },
@@ -18641,6 +19306,11 @@
       "subtype": null
     },
     {
+      "id": "Thomas Bailey Aldrich",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Thomas Bergin",
       "type": "person",
       "subtype": null
@@ -18701,6 +19371,11 @@
       "subtype": null
     },
     {
+      "id": "Tilde Longo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Time",
       "type": "institution",
       "subtype": "periodical"
@@ -18752,6 +19427,11 @@
     },
     {
       "id": "Tomaso Sillani",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Tommaso Dell'Erba",
       "type": "person",
       "subtype": null
     },
@@ -19021,6 +19701,11 @@
       "subtype": null
     },
     {
+      "id": "Ugo Piazza",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Ugo Pirro",
       "type": "person",
       "subtype": null
@@ -19201,6 +19886,16 @@
       "subtype": null
     },
     {
+      "id": "V. A. Castellucci",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "V. E. Cinquegrana",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "V. Grassi",
       "type": "institution",
       "subtype": "publisher"
@@ -19311,6 +20006,11 @@
       "subtype": "periodical"
     },
     {
+      "id": "Vincent De Lalla",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Vincent La Gamba",
       "type": "person",
       "subtype": null
@@ -19327,6 +20027,11 @@
     },
     {
       "id": "Vincenzo Ambrosiano",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Vincenzo Bellezza",
       "type": "person",
       "subtype": null
     },
@@ -19362,6 +20067,11 @@
     },
     {
       "id": "Vincenzo Cocuzza",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Vincenzo Corbacio",
       "type": "person",
       "subtype": null
     },
@@ -19646,6 +20356,11 @@
       "subtype": null
     },
     {
+      "id": "Vito De Bartolo",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Vito Floriano",
       "type": "person",
       "subtype": null
@@ -19692,6 +20407,11 @@
     },
     {
       "id": "Vittoria Bradshaw",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Vittoria Di Giulio",
       "type": "person",
       "subtype": null
     },
@@ -20535,6 +21255,16 @@
     {
       "source": "Alberto Tarchiani",
       "target": "Il Carroccio",
+      "type": "affiliation"
+    },
+    {
+      "source": "Alberto Tarchiani",
+      "target": "La Follia di New York",
+      "type": "affiliation"
+    },
+    {
+      "source": "Alberto Viviani",
+      "target": "La Follia di New York",
       "type": "affiliation"
     },
     {
@@ -23705,6 +24435,11 @@
     {
       "source": "Bagnasco Press",
       "target": "Vincenzo Bello",
+      "type": "affiliation"
+    },
+    {
+      "source": "Benedetto Ciaceri",
+      "target": "La Follia di New York",
       "type": "affiliation"
     },
     {
@@ -29435,6 +30170,11 @@
     {
       "source": "G Bongiovanni",
       "target": "La Parola del Popolo",
+      "type": "affiliation"
+    },
+    {
+      "source": "Gabriele Villa",
+      "target": "La Follia di New York",
       "type": "affiliation"
     },
     {
@@ -38229,7 +38969,82 @@
     },
     {
       "source": "La Follia di New York",
-      "target": "Alessandro Sisca",
+      "target": "A. Quintieri",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "A. Russo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Agostino Allori",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Agostino Trovaioli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Alberto Piraccini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Alessandro Dommarco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Alfredo Della Valle",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Alfredo Massa",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Alfredo Sisca",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Alpinolo Danielli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Amedeo Fusaro",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Angelo Casci\u00e0",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Angelo M. Virga",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Angelo Marsala",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Anna Lannutti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Annibale Centoni",
       "type": "affiliation"
     },
     {
@@ -38239,7 +39054,97 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Annunciata Spinelli Dommarco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Anthony Marino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Antonino Crivello",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Antonio Calitri",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Antonio Fiorentino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Antonio Lezza",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Antonio Mordente",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Antonio Negri",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Antonio Pederzoli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Ario Flamma",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Armando Cenerazzo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Armando Mazza",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Arrigo Sorini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Arturo Cardaropoli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Arturo Tesi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Attilio Altavilla",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Attilio D'Ambrogi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Attilio Dell'Orso",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Bayard Taylor",
       "type": "affiliation"
     },
     {
@@ -38249,7 +39154,62 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Biagio Occhipinti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Bruna J. Bernardara",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Bruno Scala",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Bruno Zirato",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Carla Fiordise",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Carlo Salvo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Carlo Vinti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Carmine Manzi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Cesare Luscambro",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Cesare Tomasulo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Charles L. Fasullo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Ciro Pellechia",
       "type": "affiliation"
     },
     {
@@ -38259,7 +39219,107 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Diletta Lanza",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Domenico Adamo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Domenico Treccase",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Dora Chiaramonte Tranchino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Duilio Marazzi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "E. De Stefano",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Edoardo Vergara-Caffarelli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Elia Dominianni",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Emilia Caputo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Enzo Feola",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Eugenio Santonocito",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "F. Oliveri",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Fabio Schettini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Fausto Belfiori",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Federico Fabozzi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Ferdinando Papa",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Filippo Fichera",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Filomeno Argenio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Francesco Boneschi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Francesco Greco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Francesco Restivo",
       "type": "affiliation"
     },
     {
@@ -38274,7 +39334,187 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Francis Norelli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Franco Maletta",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Franco Monaco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank Capalbo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank La Raia",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank M. Giunta",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank M. Zottoli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank S. Reale",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank Spadola",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank Taccino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Frank Tortorelli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "G Baldassare",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "G. Mordente",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "G. Paolino De' Sardi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Gaetano Lacalamita",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Gaetano Ricciardi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Gennaro Capalbo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Germoglino Saggio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giacomo Grillo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giorgio Pillon",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giovanni Artieri",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giovanni Bozzacco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Giovanni De Rosalia",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giovanni Favoino di Giura",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giovanni Girgenti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giovanni Solone",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giulio de Moro",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Chiarella",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Civitarese",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe D. Procopio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe De Rizzo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Incalicchio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Langone",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Luongo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Mirabella",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Rosa",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Rovito",
       "type": "affiliation"
     },
     {
@@ -38284,7 +39524,27 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Giuseppe Tirinnanzi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Giuseppe Zappulla",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giuseppe Zuzolo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Giustino Ausanio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Guerino D'Alessandro",
       "type": "affiliation"
     },
     {
@@ -38294,7 +39554,107 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Guido Albanese",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Isidoro Filocco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Isolina Gemignani",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Italo Limbara",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "James Visceglia",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Jerome La Scala",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "John Dalbonia",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "John J. Alifano",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "John Mocerino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Joseph A. Tigani",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Joseph E. Conte",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Joseph Gioe",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Joseph Lippe",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Lea Ferranti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Lee Lemeni",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Leo Rugens",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Leonardo Dia",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Lilia Lodolini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Lucio Seminara",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Luigi Dommarco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Luigi Maida",
       "type": "affiliation"
     },
     {
@@ -38304,7 +39664,87 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Manfredi Fasulo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Manfredi Greco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Marco Marchesan",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Maria Iannella",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Marino Mancini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Marsio Prato",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Mary Ferraiuolo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Mary Iacovella",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Mary Liquori Vecchione",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Marziale Sisca",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Matteo Teresi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Michael Sisca",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Michele Pane",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Modestino Sessa",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Nanni Andriolli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Nichola Testi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Nicholas Intrieri",
       "type": "affiliation"
     },
     {
@@ -38314,7 +39754,92 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Nicola Lanza",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Nino Bellassai",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Nino Caradonna",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Olga Malchiodi Cavaliere",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Oscar Mazzitelli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "P. Conti Tarantino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Paola Adele Morsellino",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Pasquale Forte",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Pasquale Spataro",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Pasquale de Biasi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Philip Bertolotta",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Pier Petrucelli della Gattina",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Pietro Fera",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Pietro Greco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Pietro Pasquali",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Plinio Bulleri",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Publio Rinelli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Raimondo Manzini",
       "type": "affiliation"
     },
     {
@@ -38324,7 +39849,32 @@
     },
     {
       "source": "La Follia di New York",
+      "target": "Richard Cassar",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
       "target": "Rodolfo Pucelli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Rosario Torregrossa",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Rudolph Vecoli",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "S. D'Agostini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "S. Politi",
       "type": "affiliation"
     },
     {
@@ -38335,6 +39885,156 @@
     {
       "source": "La Follia di New York",
       "target": "Salvatore Benanti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Salvatore Di Leo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Salvatore Moncada",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Salvatore di Giacomo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Samuel J. Renda",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Scipio di Dario",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Sebastiano Trucco",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Severina Magni",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Silvio Coscia",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Silvio Serafini",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Sinibaldo Rovito",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Soave Marotta",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Stephen Lo Iacono",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Tebi Biondi",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Thomas Bailey Aldrich",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Tilde Longo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Tommaso Dell'Erba",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Ugo Piazza",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Umberto Liberatore",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "V. A. Castellucci",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "V. E. Cinquegrana",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincent De Lalla",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincenzo Bellezza",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincenzo Corbacio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincenzo D'Ambrosio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincenzo Foti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincenzo Manente",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vincenzo Vacirca",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vito De Bartolo",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vittoria Di Giulio",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Follia di New York",
+      "target": "Vittorio Nardi",
       "type": "affiliation"
     },
     {
@@ -43553,6 +45253,11 @@
       "type": "affiliation"
     },
     {
+      "source": "Nando Rossi",
+      "target": "La Follia di New York",
+      "type": "affiliation"
+    },
+    {
       "source": "Nando Sampietro",
       "target": "Epoca",
       "type": "affiliation"
@@ -44845,6 +46550,11 @@
     {
       "source": "Partisan Review",
       "target": "William Phillips",
+      "type": "affiliation"
+    },
+    {
+      "source": "Pasquale Ruocco",
+      "target": "La Follia di New York",
       "type": "affiliation"
     },
     {

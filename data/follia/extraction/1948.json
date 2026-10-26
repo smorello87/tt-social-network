@@ -1,0 +1,117 @@
+{
+ "file": "1948.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1948-12",
+   "footer": "no date visible; running head only. Dated by the identical Opera Liquor 'si e' trasferita dal 355 West 38th St' ad also on p.9 (weak inference)",
+   "issue_inferred": true
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "footer": "no running head/date; poem is dated 30 Ottobre 1911 (an old poem reprinted), so no clue to issue date"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "footer": "page 6 ('6 — LA FOLLIA DI NEW YORK'); no date. Month unknown"
+  },
+  {
+   "page": 4,
+   "issue": null,
+   "footer": "lower/right part of the same page 6 as p.3; no date"
+  },
+  {
+   "page": 5,
+   "issue": "1948-12",
+   "footer": "full-page 'Caro Cugino' ad; no running head. p.9 says 'il grande avviso che appare in questo numero' about Caro Cugino, so same issue as p.8-9",
+   "issue_inferred": true
+  },
+  {
+   "page": 6,
+   "issue": null,
+   "footer": "page 4 ('4 — LA FOLLIA DI NEW YORK'); no date. Article signed 'Brooklyn, Ottobre 1948' and Truman election piece (after 2 Nov 1948), so Nov/Dec 1948 but day/month not printed"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "footer": "no date; poem is dated 3 Maggio 1932 (reprint), no clue to issue date"
+  },
+  {
+   "page": 8,
+   "issue": "1948-12",
+   "footer": "page 1 clipping, masthead strip reads '...948 / Michele Sisca, General Manager' (month cut off); text reports concert of 'venerdi 26 novembre' as past, so issue is late Nov/Dec 1948",
+   "issue_inferred": true
+  },
+  {
+   "page": 9,
+   "issue": "1948-12",
+   "footer": "page 2 continuing p.8 ('Continua da pagina 1', same Hunter College concert story)",
+   "issue_inferred": true
+  },
+  {
+   "page": 10,
+   "issue": "1948-12",
+   "footer": "page 7 with Buon Natale e Felice Capodanno ads; year not printed, assumed 1948 from file name",
+   "issue_inferred": true
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1948-12",
+   "name": "Arrigo Sorini",
+   "as_printed": "ARRIGO SORINI (Dal 'Nuovo Corriere' di Firenze)",
+   "title": "Un poeta italo-americano: Plinio Bulleri di Ponte Buggianese",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "reprint from Nuovo Corriere (Florence); subject Plinio Bulleri of Cicero, Ill."
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "name": "Antonino Crivello",
+   "as_printed": "ANTONINO CRIVELLO, New York, N.Y. 30 Ottobre 1911",
+   "title": "Halloween d'altri tempi",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "poem dated 1911, reprinted"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "name": "Annibale Centoni",
+   "as_printed": "Annibale Centoni",
+   "title": "La radio, il grammofono e il telefono",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "humorous dialogue piece"
+  },
+  {
+   "page": 6,
+   "issue": null,
+   "name": "G. D. Procopio",
+   "as_printed": "G. D. PROCOPIO, Brooklyn, Ottobre 1948",
+   "title": "Il mio primo Maestro (review of poemetto by Onorio Ruotolo)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "review of Onorio Ruotolo's poem; Ruotolo is the subject, not the author of this piece"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "name": "Antonino Crivello",
+   "as_printed": "ANTONINO CRIVELLO, New York, 3 Maggio 1932",
+   "title": "Oh, mia Sicilia!",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "poem dated 1932, reprinted"
+  }
+ ]
+}

@@ -1,0 +1,353 @@
+{
+  "file": "ScanPro0524.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 2,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 3,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 4,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 5,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 6,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 7,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 8,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 9,
+      "issue": "1967-06",
+      "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1967"
+    },
+    {
+      "page": 10,
+      "issue": "1967-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1967"
+    },
+    {
+      "page": 11,
+      "issue": "1967-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1967"
+    },
+    {
+      "page": 12,
+      "issue": "1967-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1967"
+    },
+    {
+      "page": 13,
+      "issue": "1967-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1967"
+    },
+    {
+      "page": 14,
+      "issue": "1967-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1967"
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1967-06",
+      "name": "Maria Iannella",
+      "as_printed": "From the desk of Maria Iannella, Executive Editor of La Follia di New York",
+      "title": "From the desk of Maria Iannella",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "English-language column; no signature at end"
+    },
+    {
+      "page": 2,
+      "issue": "1967-06",
+      "name": "Bruno Zirato",
+      "as_printed": "BRUNO ZIRATO",
+      "title": "Romeo Salta \"debutta\" nella congelazione",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 3,
+      "issue": "1967-06",
+      "name": "Tebi Biondi",
+      "as_printed": "TEBI BIONDI & YVON DE BEGNAC, Direttori di \"A.G.R.\"",
+      "title": "Message on Donna Carmela / Marziale Sisca (letter from A.G.R. directors)",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "medium",
+      "note": "jointly signed by the directors of A.G.R. (Agenzie Giornalistiche Associate, Rome); text begins on previous page"
+    },
+    {
+      "page": 3,
+      "issue": "1967-06",
+      "name": "Yvon de Begnac",
+      "as_printed": "TEBI BIONDI & YVON DE BEGNAC, Direttori di \"A.G.R.\"",
+      "title": "Message on Donna Carmela / Marziale Sisca (letter from A.G.R. directors)",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "medium",
+      "note": "jointly signed by the directors of A.G.R. (Agenzie Giornalistiche Associate, Rome); text begins on previous page"
+    },
+    {
+      "page": 5,
+      "issue": "1967-06",
+      "name": "Matteo Teresi",
+      "as_printed": "MATTEO TERESI",
+      "title": "Padre Dante, grazie!",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "reader contribution/letter-like piece"
+    },
+    {
+      "page": 6,
+      "issue": "1967-06",
+      "name": "Maria Iannella",
+      "as_printed": "di Maria Iannella",
+      "title": "Parole alla mia Gente",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 7,
+      "issue": "1967-06",
+      "name": "Giulio de Moro",
+      "as_printed": "di GIULIO de MORO",
+      "title": "Il tramonto delle \"Piccole Italie\": Le frantuma l'orgoglio!",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1967-06",
+      "name": "Matteo Teresi",
+      "as_printed": "MATTEO TERESI",
+      "title": "Autorevoli consensi (ends on this page; begins previous page)",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1967-06",
+      "name": "Benedetto Ciaceri",
+      "as_printed": "Novella di Benedetto Ciaceri",
+      "title": "Il bene degli altri",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "novella; begins on this page"
+    },
+    {
+      "page": 9,
+      "issue": "1967-06",
+      "name": "Antonio Fiorentino",
+      "as_printed": "ANTONIO FIORENTINO",
+      "title": "La cava dei marmi",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "closing of a short prose piece"
+    },
+    {
+      "page": 9,
+      "issue": "1967-06",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: Ginnastica",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 9,
+      "issue": "1967-06",
+      "name": "Trilussa",
+      "as_printed": "TRILUSSA",
+      "title": "L'ospite (dialetto romanesco)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "reprint (Trilussa d. 1950)"
+    },
+    {
+      "page": 9,
+      "issue": "1967-06",
+      "name": "Giuseppe Zuzolo",
+      "as_printed": "Giuseppe Zuzolo",
+      "title": "Aphorisms (*** items) at foot of Per le nostre signore column",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "medium",
+      "note": "signs short maxims"
+    },
+    {
+      "page": 9,
+      "issue": "1967-06",
+      "name": "Vincenzo Foti",
+      "as_printed": "VINCENZO FOTI",
+      "title": "Pii desideri",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 10,
+      "issue": "1967-07",
+      "name": "S. Samuel Di Falco",
+      "as_printed": "S. SAMUEL DI FALCO, National Chairman, Italian-American League To Combat Defamation",
+      "title": "Letter to Maria Iannella congratulating her appointment",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high",
+      "note": "published letter from organizational leader (Judge Di Falco), not reader mail"
+    },
+    {
+      "page": 10,
+      "issue": "1967-07",
+      "name": "Lorenzo Rondine",
+      "as_printed": "LORENZO RONDINE, Seg. Esecutivo, Italian Actors Union",
+      "title": "Letter to Marziale Sisca congratulating on Iannella's appointment",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "medium",
+      "note": "published letter from union secretary; surname reading 'Rondine' fairly clear but not certain"
+    },
+    {
+      "page": 11,
+      "issue": "1967-07",
+      "name": "Maria Iannella",
+      "as_printed": "di Maria Iannella",
+      "title": "Parole alla mia Gente",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 12,
+      "issue": "1967-07",
+      "name": "Nicola Romeo",
+      "as_printed": "On. Avv. Nicola Romeo",
+      "title": "Vogliamo salvarci? (parliamentary question)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "low",
+      "note": "one of four deputies signing a quoted parliamentary interrogation; not the author of the Follia piece"
+    },
+    {
+      "page": 12,
+      "issue": "1967-07",
+      "name": "Tullio Abelli",
+      "as_printed": "On. Tullio Abelli",
+      "title": "Vogliamo salvarci? (parliamentary question)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "low",
+      "note": "signatory of quoted parliamentary question"
+    },
+    {
+      "page": 12,
+      "issue": "1967-07",
+      "name": "Achille Cruciani",
+      "as_printed": "On. Prof. Achille Cruciani",
+      "title": "Vogliamo salvarci? (parliamentary question)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "low",
+      "note": "signatory of quoted parliamentary question"
+    },
+    {
+      "page": 12,
+      "issue": "1967-07",
+      "name": "Franco Maria Servello",
+      "as_printed": "On. Franco Maria Servello",
+      "title": "Vogliamo salvarci? (parliamentary question)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "low",
+      "note": "signatory of quoted parliamentary question"
+    },
+    {
+      "page": 13,
+      "issue": "1967-07",
+      "name": "Federico Fabozzi",
+      "as_printed": "Federico Fabozzi",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "medium",
+      "note": "surname reading slightly uncertain"
+    },
+    {
+      "page": 13,
+      "issue": "1967-07",
+      "name": "Pinella Urbani-Capece",
+      "as_printed": "Mrs. Pinella Urbani-Capece, Corona, N. Y.",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 13,
+      "issue": "1967-07",
+      "name": "Rodolfo Pucelli",
+      "as_printed": "Rodolfo Pucelli",
+      "title": "Libri: I canti lametini di Antonio Fiorentino",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "high",
+      "note": "book review"
+    },
+    {
+      "page": 13,
+      "issue": "1967-07",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: Il bagno",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 14,
+      "issue": "1967-07",
+      "name": "Maria Iannella",
+      "as_printed": "From the desk of Maria Iannella, Executive Editor of La Follia di New York",
+      "title": "From the desk of Maria Iannella",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    }
+  ]
+}

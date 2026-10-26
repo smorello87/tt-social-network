@@ -1,0 +1,37 @@
+{
+  "file": "ScanPro0577.pdf",
+  "pages": [
+    {"page": 1, "issue": "1963-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1963"},
+    {"page": 2, "issue": "1963-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1963 (duplicate scan of previous page)"},
+    {"page": 3, "issue": "1963-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1963"},
+    {"page": 4, "issue": "1963-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1963"},
+    {"page": 5, "issue": "1963-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1963"},
+    {"page": 6, "issue": "1963-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1963"},
+    {"page": 7, "issue": "1963-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1963"},
+    {"page": 8, "issue": "1963-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1963"},
+    {"page": 9, "issue": "1963-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1963"},
+    {"page": 10, "issue": "1963-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1963"},
+    {"page": 11, "issue": "1963-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1963"},
+    {"page": 12, "issue": "1963-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1963"}
+  ],
+  "signatures": [
+    {"page": 3, "issue": "1963-04", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Alla conquista della linea", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 3, "issue": "1963-04", "name": "Federico Fabozzi", "as_printed": "FEDERICO FABOZZI, Staten Island, N. Y.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 3, "issue": "1963-04", "name": "Aldo Bartoli", "as_printed": "D.mo ALDO BARTOLI, Brooklyn", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "dated 15/3/63"},
+    {"page": 3, "issue": "1963-04", "name": "Antonio Ardolino", "as_printed": "ANTONIO ARDOLINO, New Haven, Conn.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 6, "issue": "1963-05", "name": "M. T.", "as_printed": "M. T.", "title": "Vivo di memorie", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials as printed; possibly Matteo Teresi, who signs the adjacent article"},
+    {"page": 6, "issue": "1963-05", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Per l'insegnamento della lingua italiana in America", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 7, "issue": "1963-05", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La ginnastica del riposo", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1963-05", "name": "Pietro Fiore", "as_printed": "PIETRO FIORE, New York", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "dated 3/19/63"},
+    {"page": 7, "issue": "1963-05", "name": "Attilio D'Ambrogi", "as_printed": "ATTILIO D'AMBROGI, Baltimore", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "dated 9 Marzo 1963"},
+    {"page": 7, "issue": "1963-05", "name": "Joseph Visceglia", "as_printed": "JOSEPH VISCEGLIA", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 7, "issue": "1963-05", "name": "Silvio Coscia", "as_printed": "SILVIO COSCIA, Corona, L. I.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "dated April 11, 1963"},
+    {"page": 7, "issue": "1963-05", "name": "Angelo Di Rienzo", "as_printed": "ANGELO DI RIENZO, Henderson, Nevada", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "dated 24/4/63; letter text begins mid-column and ends at bottom of page"},
+    {"page": 8, "issue": "1963-06", "name": "Carmine Manzi", "as_printed": "Articolo di CARMINE MANZI", "title": "Salvatore Di Giacomo e l'Ottocento napoletano", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 10, "issue": "1963-06", "name": "A. Russo", "as_printed": "Photo by A. Russo, Stanford, Conn.", "title": "Mr. Carmelo Buscema, Knighted", "position": "signature", "kind": "photo", "confidence": "medium", "note": "'Stanford, Conn.' as printed (Stamford?)"},
+    {"page": 10, "issue": "1963-06", "name": "n. b.", "as_printed": "— n. b.", "title": "Mr. Carmelo Buscema, Knighted", "position": "signature", "kind": "article", "confidence": "medium", "note": "lowercase initials as printed; possibly Nino Bellassai"},
+    {"page": 11, "issue": "1963-06", "name": "Gennaro Capalbo", "as_printed": "AVV. GENNARO CAPALBO", "title": "Saverio Altimare (Calabria leggendaria ed eroica)", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 12, "issue": "1963-06", "name": "Maria Luisa", "as_printed": "MARIA LUISA", "title": "Joseph Fabrizio, rinomato pellicciaio, predice il gran ritorno del visone scuro", "position": "signature", "kind": "article", "confidence": "medium", "note": "signature/pen name at end of Per le nostre signore piece, followed by Reiss & Fabrizio address"},
+    {"page": 12, "issue": "1963-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per conciliare il sonno", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

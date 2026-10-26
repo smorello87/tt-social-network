@@ -1,0 +1,182 @@
+{
+  "periodical": "La Follia di New York",
+  "source": "Scans in Dropbox: Lung Block/Follia Non Ciamb/FOLLIA Reti (58 PDFs, 1940-1975)",
+  "scan_dir": "/Volumes/DataMacMini/Dropbox/Lung Block/Follia Non Ciamb/FOLLIA Reti",
+  "method": "Signed pieces (bylines, end signatures, photo credits, letters) read page by page from 90 dpi renders by Claude (Opus pilot, Sonnet batches); issue date per page from footer/header/masthead. Not the TOC.",
+  "letter_rule": "Letter writers are kept only if they write in 2+ issues or already exist in network.db.",
+  "aliases": {
+    "R. Cordiferro": "Riccardo Cordiferro",
+    "G. Incalicchio": "Giuseppe Incalicchio",
+    "G. Imcalicchio": "Giuseppe Incalicchio",
+    "Luigi Dommaco": "Luigi Dommarco",
+    "Annunciata Dommarco": "Annunciata Spinelli Dommarco",
+    "Eugene Santonocito": "Eugenio Santonocito",
+    "F. Argenio": "Filomeno Argenio",
+    "V. Corbacio": "Vincenzo Corbacio",
+    "A. D'Ambrogi": "Attilio D'Ambrogi",
+    "G. Lacalamita": "Gaetano Lacalamita",
+    "Stephen LoIacono": "Stephen Lo Iacono",
+    "P. Bertolotta": "Philip Bertolotta",
+    "Mary D. Ferraiuolo": "Mary Ferraiuolo",
+    "Joseph Conte": "Joseph E. Conte",
+    "Frank Reale": "Frank S. Reale",
+    "A. Centoni": "Annibale Centoni",
+    "A. Mordente": "Antonio Mordente",
+    "V. Manente": "Vincenzo Manente",
+    "Paola Adele": "Paola Adele Morsellino",
+    "Capalbo": "Gennaro Capalbo",
+    "Br. Zir.": "Bruno Zirato",
+    "B. Acquaro-Deodati": "Beniamino Aquaro-Deodati",
+    "B. Aquaro-Deodati": "Beniamino Aquaro-Deodati",
+    "Francesco S. Riccio": "Francesco Saverio Riccio",
+    "Francis Sisca": "Francesco Sisca",
+    "Vanni B. Montana": "Vanni Buscemi Montana",
+    "Rudolph J. Vecoli": "Rudolph Vecoli",
+    "B. Z.": "Bruno Zirato",
+    "Maria Vecchione": "Mary Liquori Vecchione",
+    "Maria Iacovella": "Mary Iacovella",
+    "G. Baldassarre": "G Baldassare",
+    "Alberto Viviano": "Alberto Viviani",
+    "Dora Tranchino": "Dora Chiaramonte Tranchino",
+    "Nicola Testi": "Nichola Testi",
+    "G. D. Procopio": "Giuseppe D. Procopio",
+    "VBM": "Vanni Buscemi Montana",
+    "Italo": "Italo Stanco",
+    "Sandro": "Riccardo Cordiferro",
+    "Alessandro Sisca": "Riccardo Cordiferro",
+    "Michele Sisca": "Michael Sisca",
+    "G. Ricciardi": "Guglielmo Ricciardi",
+    "F. Argento": "Filomeno Argenio",
+    "r. p.": "Rodolfo Pucelli",
+    "i. s.": "Italo Stanco",
+    "M. T.": "Matteo Teresi",
+    "n. b.": "Nino Bellassai",
+    "Ironheart": "Riccardo Cordiferro",
+    "I. B. Aldrich": "Thomas Bailey Aldrich",
+    "Favoino di Giura": "Giovanni Favoino di Giura",
+    "F. Nando Rossi": "Nando Rossi",
+    "Angelo Cascia'": "Angelo Cascià"
+  },
+  "skip": [
+    "Anonimo",
+    "La Redazione",
+    "Vaticana Felici",
+    "Generale Diaz",
+    "Tullio Abelli",
+    "Achille Cruciani",
+    "Nicola Romeo",
+    "Franco Maria Servello",
+    "Nina e Bruno",
+    "Seeno",
+    "[?] Bottiglieri"
+  ],
+  "drop": [
+    [
+      "1964.pdf",
+      2,
+      "Alessandro Sisca"
+    ]
+  ],
+  "notes": {
+    "Francesco Sisca": "Signs 'Il consiglio del medico' as 'Dr. Francis Sisca'; DB node already linked to La Follia.",
+    "Bruno Zirato": "Merged here: 'Br. Zir.', 'B. Z.' / '(bz)' (review).",
+    "Riccardo Cordiferro": "Pen name of Alessandro Sisca (d. 1940). Review comment: 'Alessandro Sisca and Riccardo Cordiferro should be a single entry' -> DB node 1594 (Alessandro Sisca) merged into 1588 on 2026-10-25. Most appearances are reprints.",
+    "Rudolph Vecoli": "1968 letter (ScanPro0530 p1).",
+    "Alessandro Sisca": "1964.pdf p2 '(ALESSANDRO SISCA)' is the subtitle under the Cordiferro title (subject), not a byline.",
+    "Michael Sisca": "Yes just make all Michael Sisca",
+    "Vice-Simili": "This appears to be an internal name, hard to connect to a real person. ",
+    "Teresah": "This appears to be an internal name, hard to connect to a real person. ",
+    "Filomeno Argenio": "Also printed 'F. Argento' (ScanPro0522 p2, Nov 1966): same West Pittston, Pa. subscriber.",
+    "Thomas Bailey Aldrich": "Printed 'I. B. Aldrich' / 'Adrich' over Crivello translations; original author.",
+    "Giovanni Favoino di Giura": "Printed 'Favoino di Giura' in La Follia; DB node 2141 (review; it.wikipedia.org/wiki/Giovanni_Favoino_di_Giura).",
+    "Nando Rossi": "Printed 'F. Nando Rossi' (1949 p1, Neapolitan sketch); 'Nando' = Ferdinando. DB node 1026 (review)."
+  },
+  "open_questions": {},
+  "resolved_questions": {
+    "B. Z.": {
+      "question": "Probably Bruno Zirato (6 issues; a letter beside one opens 'Mio carissimo Zirato'). Merge?",
+      "answer": "Bruno Zirato"
+    },
+    "Sandro": {
+      "question": "Cordiferro pseudonym per one batch (1949 p13 dialect sketch). Merge into Riccardo Cordiferro?",
+      "answer": "yes merge into cordiferro"
+    },
+    "VBM": {
+      "question": "Probably Vanni B. Montana (named in the commentary). Merge?",
+      "answer": "yes"
+    },
+    "DB duplicate": {
+      "question": "network.db has both 'Riccardo Cordiferro' (1588) and 'Alessandro Sisca' (1594) — same person.",
+      "answer": "Merged 1594 into 1588 (review comment)."
+    },
+    "Maria Iacovella": {
+      "question": "DB has 'Mary Iacovella' (Atlantica). Same person?",
+      "answer": "yes"
+    },
+    "G. D. Procopio": {
+      "question": "DB has 'Giuseppe D. Procopio' (La Parola del Popolo). Same person?",
+      "answer": "yes"
+    },
+    "Maria Vecchione": {
+      "question": "DB has 'Mary Liquori Vecchione' (poet). Same person?",
+      "answer": "merged into Mary Liquori Vecchione"
+    },
+    "Dora Tranchino": {
+      "question": "DB has 'Dora Chiaramonte Tranchino'. Same person?",
+      "answer": "merged into Dora Chiaramonte Tranchino"
+    },
+    "Nicola Testi": {
+      "question": "DB has 'Nichola Testi'. Same person?",
+      "answer": "merged into Nichola Testi"
+    },
+    "G. Baldassarre": {
+      "question": "DB has 'G Baldassare'. Same person?",
+      "answer": "merged into G Baldassare"
+    },
+    "Alberto Viviano": {
+      "question": "DB has 'Alberto Viviani' (Divagando). Same person or misreading?",
+      "answer": "merged into Alberto Viviani"
+    },
+    "F. Argento": {
+      "question": "One 1966 letter; possibly a misreading of Argenio.",
+      "answer": "merged into Filomeno Argenio (same West Pittston, Pa. subscriber)"
+    },
+    "Initials": {
+      "question": "r. p. (Rodolfo Pucelli?), i. s. (Italo Stanco?), M. T. (Matteo Teresi?), n. b. (Nino Bellassai?), plus unresolved: A. C., F. B., G. B., L., P. P., S. I. M., a. m., e. d. g., t., E., GA., Dott. D. S.",
+      "answer": "yes: r. p. -> Rodolfo Pucelli, i. s. -> Italo Stanco, M. T. -> Matteo Teresi, n. b. -> Nino Bellassai; other initials stay excluded"
+    },
+    "Translated foreign authors": {
+      "question": "Bayard Taylor, I. B. Aldrich (originals of Crivello translations). Keep?",
+      "answer": "yes, keep"
+    },
+    "Composers": {
+      "question": "Joseph Gioe, Guido Albanese, Alfredo Della Valle credited for music; one batch excluded a 'Mo. J. Gioè' credit in 1954. Keep composers?",
+      "answer": "yes, keep composers (added 1954 p4 'Mo. J. Gioè' credit)"
+    }
+  },
+  "new": [
+    "Tilde Longo",
+    "Alfredo Sisca",
+    "Angelo Marsala",
+    "Antonio Negri",
+    "Gaetano Ricciardi",
+    "Giuseppe De Rizzo",
+    "Marino Mancini",
+    "Michael Sisca"
+  ],
+  "exclude": {
+    "Vice-Simili": "pseudonym / internal name, not identifiable (review comment)",
+    "Teresah": "pseudonym / internal name, not identifiable (review comment)",
+    "Gigi": "pen name, not identifiable (review)",
+    "Il Folle": "pen name, not identifiable (review)",
+    "Siculo": "pen name, not identifiable (review)",
+    "Samarat": "pen name, not identifiable (review)",
+    "Luca": "pen name, not identifiable (review)",
+    "Folgore": "pen name, not identifiable (review)",
+    "Leucosia": "pen name, not identifiable (review)",
+    "Maria Luisa": "pen name, not identifiable (review)",
+    "Nonno Gigino": "pen name, not identifiable (review)",
+    "Spartaco": "pen name, not identifiable (review)",
+    "Vedetta": "pen name, not identifiable (review)"
+  }
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signature Reviewer — {{ slug }}</title>
+<style>
+  :root {
+    --parchment: #f7f4ed; --parchment-dark: #ebe6da; --parchment-darker: #ddd8cc;
+    --ink-dark: #1a1a1a; --ink-medium: #3d3d3d; --ink-light: #6b6b6b;
+    --sepia: #8b7355; --sepia-dark: #6d5a44; --accent-blue: #4a6670; --rust: #8b5a3c;
+    --gold: #c4a35a; --success: #27ae60; --success-bg: #f0f9f4;
+    --warn: #c0392b; --warn-bg: #fdf2f2;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.4 -apple-system, "Source Sans 3", sans-serif; color: var(--ink-dark);
+         background: var(--parchment); height: 100vh; display: grid; grid-template-rows: auto 1fr; }
+  header { padding: 10px 16px; background: var(--sepia-dark); color: var(--parchment);
+           display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+  header h1 { margin: 0; font: 600 18px Georgia, serif; }
+  #summary { font-size: 12px; opacity: .85; }
+  main { display: grid; grid-template-columns: 300px minmax(380px, 1fr) minmax(380px, 1.2fr); min-height: 0; }
+  aside, #detail, #viewer { overflow: auto; min-height: 0; }
+  aside { border-right: 1px solid var(--parchment-darker); background: var(--parchment-dark); display: flex; flex-direction: column; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px; }
+  .tabs button { flex: 1 1 auto; }
+  #search { flex: 0 0 auto; margin: 0 8px 8px; padding: 6px 8px; border: 1px solid var(--parchment-darker); border-radius: 4px; }
+  #list { list-style: none; margin: 0; padding: 0; overflow: auto; flex: 1; }
+  #list li { padding: 6px 10px; border-bottom: 1px solid var(--parchment-darker); cursor: pointer; display: flex; gap: 6px; align-items: center; }
+  #list li:hover { background: var(--parchment); }
+  #list li.sel { background: var(--parchment); box-shadow: inset 3px 0 var(--rust); }
+  #list .n { flex: 1; }
+  #list .c { color: var(--ink-light); font-size: 12px; }
+  .badge { font-size: 11px; padding: 1px 5px; border-radius: 8px; white-space: nowrap; }
+  .b-net { background: var(--success-bg); color: var(--success); }
+  .b-cand { background: #fdf6e3; color: #9a6b00; }
+  .b-q { background: var(--warn-bg); color: var(--warn); }
+  .b-out { background: var(--parchment-darker); color: var(--ink-light); }
+  #detail { padding: 14px 18px; border-right: 1px solid var(--parchment-darker); }
+  #detail h2 { margin: 0 0 4px; font: 600 22px Georgia, serif; }
+  .meta { color: var(--ink-light); font-size: 12px; margin-bottom: 10px; }
+  .box { background: #fff; border: 1px solid var(--parchment-darker); border-radius: 6px; padding: 10px 12px; margin: 10px 0; }
+  .box h3 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--sepia-dark); }
+  .q { background: var(--warn-bg); border-color: #f0c8c2; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+  input[type=text], textarea { padding: 5px 7px; border: 1px solid var(--parchment-darker); border-radius: 4px; font: inherit; }
+  input[type=text] { flex: 1; min-width: 160px; }
+  textarea { width: 100%; min-height: 48px; }
+  button { font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 4px; border: 1px solid var(--sepia);
+           background: var(--parchment); color: var(--sepia-dark); cursor: pointer; }
+  button:hover { background: var(--parchment-darker); }
+  button.primary { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+  button.danger { border-color: var(--warn); color: var(--warn); }
+  button.on { background: var(--sepia-dark); color: var(--parchment); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  td { padding: 5px 4px; border-bottom: 1px solid var(--parchment-dark); vertical-align: top; }
+  tr.app { cursor: pointer; }
+  tr.app:hover, tr.app.sel { background: var(--parchment); }
+  .small { font-size: 11px; color: var(--ink-light); }
+  .conf-low, .conf-medium { color: #9a6b00; font-weight: 600; }
+  #viewer { background: #2b2925; color: var(--parchment); padding: 10px; }
+  #viewer .cap { font-size: 12px; margin-bottom: 8px; opacity: .9; }
+  #viewer img { width: 100%; cursor: zoom-in; background: #fff; }
+  #viewer img.zoom { width: 200%; cursor: zoom-out; }
+  #viewer .empty { opacity: .6; padding: 40px 10px; text-align: center; }
+  #toast { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--ink-medium);
+           color: #fff; padding: 8px 14px; border-radius: 6px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 80vw; }
+  #toast.show { opacity: 1; }
+  @media (max-width: 1000px) { main { grid-template-columns: 1fr; } aside { max-height: 40vh; } }
+</style>
+</head>
+<body>
+<header><h1>Signature Reviewer</h1><span id="periodical"></span><span id="summary"></span></header>
+<main>
+  <aside>
+    <div class="tabs">
+      <button data-tab="review" class="on">Needs review</button>
+      <button data-tab="all">All included</button>
+      <button data-tab="out">Excluded</button>
+      <button data-tab="questions">Open questions</button>
+    </div>
+    <input id="search" type="text" placeholder="Search names…">
+    <ul id="list"></ul>
+  </aside>
+  <section id="detail"><p class="small">Select a contributor.</p></section>
+  <section id="viewer"><div class="empty">Click an appearance to see the scan page.<br>Click the image to zoom.</div></section>
+</main>
+<datalist id="names"></datalist>
+<div id="toast"></div>
+
+<script>
+(() => {
+  let state = null, tab = 'review', selected = null, selectedApp = null;
+
+  const $ = (sel) => document.querySelector(sel);
+  const el = (tag, props = {}, ...kids) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (k === 'class') n.className = v;
+      else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+      else n[k] = v;
+    }
+    for (const k of kids) if (k != null) n.append(k.nodeType ? k : document.createTextNode(k));
+    return n;
+  };
+  const toast = (msg) => { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 4000); };
+
+  const questions = () => state.review.open_questions || {};
+  const questionFor = (c) => questions()[c.name] || c.source_names.map(n => questions()[n]).find(Boolean);
+  const isInitials = (c) => !c.name.split(/[\s.'-]+/).some(w => w.length > 3);
+  const needsReview = (c) => c.include && (c.network_candidates.length || questionFor(c) || isInitials(c)
+    || c.appearances.some(a => a.confidence && a.confidence !== 'high'));
+
+  async function load(keep) {
+    const r = await fetch('/api/data');
+    state = await r.json();
+    const cs = state.contributors;
+    $('#periodical').textContent = cs.periodical || '';
+    $('#summary').textContent = `${cs.files} PDFs · ${cs.pages} pages · ${cs.signature_count} signatures · `
+      + `${cs.included_count} contributors included · ${Object.keys(questions()).length} open questions`;
+    const dl = $('#names'); dl.replaceChildren();
+    const names = new Set([...cs.contributors.map(c => c.name), ...state.db_people]);
+    for (const n of names) dl.append(el('option', { value: n }));
+    if (keep) selected = keep;
+    renderList();
+    if (selected) showContributor(selected);
+  }
+
+  function renderList() {
+    const q = $('#search').value.trim().toLowerCase();
+    const list = $('#list'); list.replaceChildren();
+    if (tab === 'questions') { renderQuestions(); return; }
+    let cs = state.contributors.contributors;
+    cs = tab === 'review' ? cs.filter(needsReview) : tab === 'all' ? cs.filter(c => c.include) : cs.filter(c => !c.include);
+    // Real decisions first: DB matches and open questions, then initials, then low-confidence readings.
+    const rank = (c) => (c.network_candidates.length || questionFor(c)) ? 0 : isInitials(c) ? 1 : 2;
+    if (tab === 'review') cs = [...cs].sort((a, b) => rank(a) - rank(b));
+    if (q) cs = cs.filter(c => c.name.toLowerCase().includes(q) || c.names_as_printed.some(n => n.toLowerCase().includes(q)));
+    for (const c of cs) {
+      const li = el('li', { class: c.name === selected ? 'sel' : '', onclick: () => { selected = c.name; selectedApp = null; renderList(); showContributor(c.name); } },
+        el('span', { class: 'n' }, c.name), el('span', { class: 'c' }, String(c.issue_count)));
+      if (c.network_node) li.append(el('span', { class: 'badge b-net' }, 'in network'));
+      if (c.network_candidates.length) li.append(el('span', { class: 'badge b-cand' }, '~ match?'));
+      if (questionFor(c)) li.append(el('span', { class: 'badge b-q' }, '?'));
+      if (!c.include) li.append(el('span', { class: 'badge b-out' }, c.excluded_reason === 'one-off letter writer' ? 'letter ×1' : c.excluded_reason === 'initials only, no match' ? 'initials' : 'excluded'));
+      list.append(li);
+    }
+    if (!cs.length) list.append(el('li', {}, el('span', { class: 'small' }, 'Nothing here.')));
+  }
+
+  function renderQuestions() {
+    const d = $('#detail'); d.replaceChildren(el('h2', {}, 'Open questions'));
+    const qs = Object.entries(questions());
+    if (!qs.length) d.append(el('p', { class: 'small' }, 'All resolved.'));
+    for (const [key, text] of qs) {
+      const answer = el('input', { type: 'text', placeholder: 'Answer / decision (saved to review.json)' });
+      d.append(el('div', { class: 'box q' }, el('h3', {}, key), el('div', {}, text),
+        el('div', { class: 'row' }, answer, el('button', { class: 'primary', onclick: () => decide({ action: 'resolve', key, answer: answer.value }, null) }, 'Resolve'))));
+      const c = state.contributors.contributors.find(c => c.name === key);
+      if (c) d.lastChild.append(el('div', { class: 'row' }, el('button', { onclick: () => { tab = 'all'; selected = key; setTab('all'); showContributor(key); } }, `Open ${key} →`)));
+    }
+    const resolved = Object.entries(state.review.resolved_questions || {});
+    if (resolved.length) {
+      d.append(el('h3', { class: 'small' }, `Resolved (${resolved.length})`));
+      for (const [k, v] of resolved) d.append(el('div', { class: 'small' }, `${k}: ${v.answer || '(no answer)'}`));
+    }
+  }
+
+  function showContributor(name) {
+    const c = state.contributors.contributors.find(c => c.name === name);
+    const d = $('#detail');
+    if (!c) { d.replaceChildren(el('p', { class: 'small' }, `${name} no longer exists (merged or skipped).`)); return; }
+    d.replaceChildren(
+      el('h2', {}, c.name),
+      el('div', { class: 'meta' }, `${c.issue_count} issues · ${c.kinds.join(', ')} · `
+        + (c.network_node ? `in network (node ${c.network_node.id})` : 'not in network')
+        + (c.include ? '' : ` · excluded (${c.excluded_reason})`)),
+      el('div', { class: 'small' }, 'Printed as: ' + c.names_as_printed.join(' · ')));
+
+    const q = questionFor(c);
+    if (q) {
+      const key = questions()[c.name] ? c.name : c.source_names.find(n => questions()[n]);
+      const answer = el('input', { type: 'text', placeholder: 'Answer (optional)' });
+      d.append(el('div', { class: 'box q' }, el('h3', {}, 'Open question'), el('div', {}, q),
+        el('div', { class: 'row' }, answer, el('button', { onclick: () => decide({ action: 'resolve', key, answer: answer.value }, c.name) }, 'Mark resolved'))));
+    }
+    if (c.note) d.append(el('div', { class: 'box' }, el('h3', {}, 'Note'), el('div', {}, c.note)));
+
+    if (c.network_candidates.length) {
+      const box = el('div', { class: 'box' }, el('h3', {}, 'Possible match in network'));
+      for (const cand of c.network_candidates) {
+        box.append(el('div', { class: 'row' }, el('span', { style: 'flex:1' }, `${cand.name} (node ${cand.id}, ${cand.type}, sim ${cand.score})`),
+          el('button', { class: 'primary', onclick: () => decide({ action: 'merge', name: c.name, target: cand.name, source_names: c.source_names }, cand.name) }, 'Same person')));
+      }
+      box.append(el('div', { class: 'row' }, el('button', { onclick: () => decide({ action: 'distinct', name: c.name }, c.name) }, 'Different person(s)')));
+      d.append(box);
+    }
+
+    const target = el('input', { type: 'text', placeholder: 'Merge into… (contributor or network name)' });
+    target.setAttribute('list', 'names');
+    d.append(el('div', { class: 'box' }, el('h3', {}, 'Actions'),
+      el('div', { class: 'row' }, target, el('button', { class: 'primary', onclick: () => {
+        const t = target.value.trim();
+        if (t) decide({ action: 'merge', name: c.name, target: t, source_names: c.source_names }, t);
+      } }, 'Merge / rename')),
+      el('div', { class: 'row' }, el('button', { class: 'danger', onclick: () => {
+        if (confirm(`Skip "${c.name}" everywhere (not a contributor)?`)) decide({ action: 'skip', name: c.name, source_names: c.source_names }, null);
+      } }, 'Not a contributor (skip)'),
+        (state.review.exclude || {})[c.name] !== undefined
+          ? el('button', { onclick: () => decide({ action: 'include', name: c.name }, c.name) }, 'Include in network again')
+          : el('button', { title: 'Keep the credits in the data but leave this name out of the network', onclick: () => {
+              const reason = prompt('Reason for leaving out of the network?', 'pseudonym / not identifiable');
+              if (reason !== null) decide({ action: 'exclude', name: c.name, reason }, c.name);
+            } }, 'Exclude from network (keep data)'))));
+
+    const note = el('textarea', { value: (state.review.notes || {})[c.name] || '' });
+    d.append(el('div', { class: 'box' }, el('h3', {}, 'Review note'), note,
+      el('div', { class: 'row' }, el('button', { onclick: () => decide({ action: 'note', name: c.name, note: note.value }, c.name) }, 'Save note'))));
+
+    const tbody = el('tbody');
+    c.appearances.forEach((a, i) => {
+      const tr = el('tr', { class: 'app' + (selectedApp === `${a.file}#${a.page}#${i}` ? ' sel' : ''), onclick: () => showScan(a, `${a.file}#${a.page}#${i}`, tr) },
+        el('td', {}, a.issue || el('span', { class: 'small' }, 'undated')),
+        el('td', {}, el('div', {}, a.title || ''), el('div', { class: 'small' },
+          `${a.file} p.${a.page} · ${a.kind || ''} · ${a.position || ''}` + (a.source_name !== c.name ? ` · as "${a.source_name}"` : '')),
+          a.note ? el('div', { class: 'small' }, a.note) : null),
+        el('td', { class: a.confidence ? 'conf-' + a.confidence : '' }, a.confidence || ''),
+        el('td', {}, el('button', { class: 'danger', title: 'Drop this one credit', onclick: (e) => {
+          e.stopPropagation();
+          if (confirm(`Drop this credit (${a.file} p.${a.page})?`)) decide({ action: 'drop', file: a.file, page: a.page, source_name: a.source_name }, c.name);
+        } }, '×')));
+      tbody.append(tr);
+    });
+    d.append(el('div', { class: 'box' }, el('h3', {}, `Appearances (${c.appearances.length})`), el('table', {}, tbody)));
+    if (c.appearances.length && !selectedApp) showScan(c.appearances[0], `${c.appearances[0].file}#${c.appearances[0].page}#0`, tbody.firstChild);
+  }
+
+  function showScan(a, key, tr) {
+    selectedApp = key;
+    document.querySelectorAll('tr.app.sel').forEach(r => r.classList.remove('sel'));
+    if (tr) tr.classList.add('sel');
+    const img = el('img', { src: `/scan/${encodeURIComponent(a.file)}/${a.page}.png`, alt: `${a.file} page ${a.page}`,
+      onclick: () => img.classList.toggle('zoom') });
+    $('#viewer').replaceChildren(el('div', { class: 'cap' }, `${a.file} — page ${a.page} — ${a.issue || 'undated'} — ${a.title || ''}`), img);
+  }
+
+  async function decide(body, nextSelected) {
+    const r = await fetch('/api/decision', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const res = await r.json();
+    if (!r.ok) { toast('Error: ' + (res.error || r.status)); return; }
+    toast('Saved · ' + res.summary);
+    selectedApp = null;
+    await load(nextSelected);
+  }
+
+  function setTab(t) {
+    tab = t;
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === t));
+    renderList();
+  }
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
+  $('#search').addEventListener('input', renderList);
+  load();
+})();
+</script>
+</body>
+</html>

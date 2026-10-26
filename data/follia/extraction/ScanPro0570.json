@@ -1,0 +1,283 @@
+{
+ "file": "ScanPro0570.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1960-11",
+   "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1960"
+  },
+  {
+   "page": 2,
+   "issue": "1960-11",
+   "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1960"
+  },
+  {
+   "page": 3,
+   "issue": "1960-12",
+   "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1960"
+  },
+  {
+   "page": 4,
+   "issue": "1960-12",
+   "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1960"
+  },
+  {
+   "page": 5,
+   "issue": "1961-01",
+   "footer": "cover masthead band: GENNAIO 1961"
+  },
+  {
+   "page": 6,
+   "issue": "1961-01",
+   "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1961"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1961"
+  },
+  {
+   "page": 8,
+   "issue": "1961-02",
+   "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1961"
+  },
+  {
+   "page": 9,
+   "issue": "1961-02",
+   "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1961"
+  },
+  {
+   "page": 10,
+   "issue": "1961-03",
+   "footer": "LA FOLLIA DI NEW YORK — MARZO 1961"
+  },
+  {
+   "page": 11,
+   "issue": "1961-03",
+   "footer": "LA FOLLIA DI NEW YORK — MARZO 1961"
+  },
+  {
+   "page": 12,
+   "issue": "1961-03",
+   "footer": "LA FOLLIA DI NEW YORK — MARZO 1961"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1960-11",
+   "name": "Carmine Manzi",
+   "as_printed": "CARMINE MANZI",
+   "title": "Storia, costumi e tradizioni dell'antica Volcei (Bellezze d'Italia)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "rubrica 'Bellezze d'Italia'"
+  },
+  {
+   "page": 2,
+   "issue": "1960-11",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: In tema di calorie",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 2,
+   "issue": "1960-11",
+   "name": "A. D'Ambrogi",
+   "as_printed": "A. D'AMBROGI, Baltimore, Md.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 3,
+   "issue": "1960-12",
+   "name": "Agostino de Biasi",
+   "as_printed": "di Agostino de Biasi",
+   "title": "Lo spirito pioniero",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "also signed at end"
+  },
+  {
+   "page": 4,
+   "issue": "1960-12",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: La nostra alimentazione",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: La ginnastica",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "name": "Agostino Trovaioli",
+   "as_printed": "AGOSTINO TROVAIOLI, Uniontown, Pa.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "name": "Cosimo Almerto",
+   "as_printed": "COSIMO ALMERTO, Rochester, N. Y.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "name": "Sebastiano Trucco",
+   "as_printed": "SEBASTIANO TRUCCO, Erie, Pa.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "name": "N. A. Ricci",
+   "as_printed": "N. A. RICCI, Warren, Ohio",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1961-01",
+   "name": "Vincenzo Foti",
+   "as_printed": "VINCENZO FOTI, Elizabeth, N. J.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 9,
+   "issue": "1961-02",
+   "name": "Carlo Perilli",
+   "as_printed": "DOTT. CARLO PERILLI",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "printed 'Dott.'; letter about subscription for Dr. James P. Croce"
+  },
+  {
+   "page": 9,
+   "issue": "1961-02",
+   "name": "Eugenio Santonocito",
+   "as_printed": "EUGENIO SANTONOCITO, Long Island City, N. Y.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 9,
+   "issue": "1961-02",
+   "name": "Pasquale Forte",
+   "as_printed": "PASQUALE FORTE",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 9,
+   "issue": "1961-02",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Prendete cura delle vostre mani",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 10,
+   "issue": "1961-03",
+   "name": "Mary Iacovella",
+   "as_printed": "MARY IACOVELLA",
+   "title": "Memorie di una contessa (on Margherita Cassini, 'Never a Dull Moment')",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "book review; Margherita Cassini is the subject (name in header), not the author"
+  },
+  {
+   "page": 11,
+   "issue": "1961-03",
+   "name": "Lee Lemeni",
+   "as_printed": "LEE LEMENI (Napoli)",
+   "title": "Non tornare emigrante",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "reading 'Lemeni' confirmed at 200 dpi"
+  },
+  {
+   "page": 11,
+   "issue": "1961-03",
+   "name": "Rodolfo Pucelli",
+   "as_printed": "RODOLFO PUCELLI",
+   "title": "Antonio De Francisci, Scultore",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "sonnet; boxed note signed 'R. P.' says it is from his volume of 112 sonnets on Italo-Americans"
+  },
+  {
+   "page": 12,
+   "issue": "1961-03",
+   "name": "P. Testa",
+   "as_printed": "P. TESTA, Syracuse, N. Y.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1961-03",
+   "name": "Attilio D'Ambrogi",
+   "as_printed": "ATTILIO D'AMBROGI, Towson, Md.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1961-03",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Una buona abitudine",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  }
+ ]
+}

@@ -1,0 +1,332 @@
+{
+  "file": "ScanPro0522.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1966-11",
+      "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1966"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1966"
+    },
+    {
+      "page": 3,
+      "issue": "1966-12",
+      "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1966"
+    },
+    {
+      "page": 4,
+      "issue": "1966-12",
+      "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1966"
+    },
+    {
+      "page": 5,
+      "issue": "1966-12",
+      "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1966"
+    },
+    {
+      "page": 6,
+      "issue": "1967-01",
+      "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1967"
+    },
+    {
+      "page": 7,
+      "issue": "1967-01",
+      "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1967"
+    },
+    {
+      "page": 8,
+      "issue": "1967-01",
+      "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1967"
+    },
+    {
+      "page": 9,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    },
+    {
+      "page": 10,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    },
+    {
+      "page": 11,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    },
+    {
+      "page": 12,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    },
+    {
+      "page": 13,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    },
+    {
+      "page": 14,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    },
+    {
+      "page": 15,
+      "issue": "1967-02",
+      "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1967"
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1966-11",
+      "name": "Rodolfo Pucelli",
+      "as_printed": "—Rodolfo Pucelli",
+      "title": "Libri: Domenico Urbani, Ricordi e impressioni",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "high",
+      "note": "book review"
+    },
+    {
+      "page": 1,
+      "issue": "1966-11",
+      "name": "Rodolfo Pucelli",
+      "as_printed": "—Rodolfo Pucelli",
+      "title": "Libri: Il Cantico di Lucifero (Antonio Misuraca)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "high",
+      "note": "book review"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "Amedeo Fusaro",
+      "as_printed": "WESTERLY, R. I. (Amedeo Fusaro)",
+      "title": "Nostra corrispondenza",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "correspondence column from Westerly, R.I."
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "Philip Bertolotta",
+      "as_printed": "Philip Bertolotta, Woodside, N. Y.",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "Diletta Lanza",
+      "as_printed": "Diletta Lanza, Crum Lynne, Pa.",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "Pietro Bertuccelli",
+      "as_printed": "Pietro Bertuccelli, Chicago, Illinois",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "F. Argento",
+      "as_printed": "F. Argento, West Pittston, Pa.",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: I nostri cari bambini",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1966-11",
+      "name": "Giuseppe Zuzolo",
+      "as_printed": "Giuseppe Zuzolo",
+      "title": "Aphorisms (*** items) after Il consiglio del medico",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "medium",
+      "note": "signs short maxims; recurring contributor"
+    },
+    {
+      "page": 5,
+      "issue": "1966-12",
+      "name": "Samarat",
+      "as_printed": "Samarat",
+      "title": "Natale / La bandiera",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "signature follows La bandiera; Natale presumably same author"
+    },
+    {
+      "page": 6,
+      "issue": "1967-01",
+      "name": "Giacomo Grillo",
+      "as_printed": "Articolo di GIACOMO GRILLO",
+      "title": "Barzini insulta gli Italiani con un \"Documentario\"(?) televisivo",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 7,
+      "issue": "1967-01",
+      "name": "Giacomo Grillo",
+      "as_printed": "GIACOMO GRILLO, Boston, Mass., 5 gennaio 1967",
+      "title": "Barzini insulta gli Italiani... (continuation)",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "continuation; byline on previous page"
+    },
+    {
+      "page": 8,
+      "issue": "1967-01",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: L'aria nelle vostre case",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1967-01",
+      "name": "Maria Vecchione",
+      "as_printed": "MARIA VECCHIONE",
+      "title": "Michele Pesci non ne porta",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1967-01",
+      "name": "Attilio Altavilla",
+      "as_printed": "ATTILIO ALTAVILLA",
+      "title": "A Carlo Bianco",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1967-01",
+      "name": "Marino Mancini",
+      "as_printed": "MARINO MANCINI",
+      "title": "La socera me (dialetto abruzzese)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1967-01",
+      "name": "Antonio Fiorentino",
+      "as_printed": "ANTONIO FIORENTINO",
+      "title": "Peppe 'e Marchise (dialetto calabrese)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 9,
+      "issue": "1967-02",
+      "name": "Nina e Bruno",
+      "as_printed": "NINA E BRUNO",
+      "title": "Tributo personale a Miss Tee",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "medium",
+      "note": "signed with first names only (couple)"
+    },
+    {
+      "page": 11,
+      "issue": "1967-02",
+      "name": "Giacomo Grillo",
+      "as_printed": "di GIACOMO GRILLO",
+      "title": "Si profila campagna per la candidatura del Governatore Volpe a Vice Presidente",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 12,
+      "issue": "1967-02",
+      "name": "Ciro Pellechia",
+      "as_printed": "Articolo di CIRO PELLECHIA",
+      "title": "1966 — Le notizie curiose di un anno",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 13,
+      "issue": "1967-02",
+      "name": "Riccardo Cordiferro",
+      "as_printed": "RICCARDO CORDIFERRO",
+      "title": "Ave Maria",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "reprint (Cordiferro d. 1940)"
+    },
+    {
+      "page": 13,
+      "issue": "1967-02",
+      "name": "Russell Baker",
+      "as_printed": "Sincerely, RUSSELL BAKER",
+      "title": "Quoted letter to Bruno Zirato about the article on Abuso dell'esagerazione",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high",
+      "note": "published letter from New York Times columnist (public figure), not reader mail; quoted in English"
+    },
+    {
+      "page": 14,
+      "issue": "1967-02",
+      "name": "Pasquale Ruocco",
+      "as_printed": "PASQUALE RUOCCO",
+      "title": "Donne e pellicce",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 15,
+      "issue": "1967-02",
+      "name": "Giuseppe Zuzolo",
+      "as_printed": "Giuseppe Zuzolo",
+      "title": "Quoted maxim on Enrico De Nicola (Tributo di omaggio a Ottaviano Natale page)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "medium",
+      "note": "attribution under a short quotation; likely Zuzolo's own aphorism"
+    }
+  ]
+}

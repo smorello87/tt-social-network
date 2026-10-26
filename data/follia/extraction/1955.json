@@ -1,0 +1,354 @@
+{
+ "file": "1955.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1955-01",
+   "footer": "Masthead: 'Vol. 64 - No. 1 GENNAIO 1955'"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "footer": "Page '12' 'Per le signore'; no date; cannot be fixed (probably Jan 1955 issue but unverified)"
+  },
+  {
+   "page": 3,
+   "issue": "1955-01",
+   "footer": "No footer; first page of Francesco Greco article continued on p.4 (header 'GENNAIO 1955'), inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 4,
+   "issue": "1955-01",
+   "footer": "Header: 'GENNAIO 1955'"
+  },
+  {
+   "page": 5,
+   "issue": "1955-02",
+   "footer": "No date line; article announces concert 'la sera del due marzo prossimo' at Hunter College -> Feb 1955 issue, inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 6,
+   "issue": "1955-02",
+   "footer": "Duplicate scan of p.5 (same concert article); Feb 1955 inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "footer": "No date; poem page; cannot be fixed"
+  },
+  {
+   "page": 8,
+   "issue": null,
+   "footer": "Page '14' 'Nostalgia di terra lontana'; no date; cannot be fixed"
+  },
+  {
+   "page": 9,
+   "issue": null,
+   "footer": "No date; poem; text cut at top reads 'Da New York, 6 Novembre 1954' for preceding item; cannot be fixed"
+  },
+  {
+   "page": 10,
+   "issue": null,
+   "footer": "No date; partial page (cut off); 'Il Milione di Franco Lalli' first number; cannot be fixed"
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "footer": "Page '17'; no date; cannot be fixed"
+  },
+  {
+   "page": 12,
+   "issue": "1955-06",
+   "footer": "Masthead: 'Vol. 64 - No. 6 GIUGNO 1955'"
+  },
+  {
+   "page": 13,
+   "issue": "1955-06",
+   "footer": "Page '4'; continuation of 'La Rivendicazione di Corsi' from p.12 (Giugno 1955), inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "footer": "Page '16' Plausi e Consensi; no date line; letters dated 29 Aprile and 29 maggio 1955 -> June 1955 issue inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 15,
+   "issue": "1955-06",
+   "footer": "Header: 'Giugno 1955'"
+  },
+  {
+   "page": 16,
+   "issue": "1955-08",
+   "footer": "Page '4'; no date line; editorial 'Riccardo Cordiferro' says 'quindici anni fa' (d. Aug 1940) and mentions 1956 elections -> Aug 1955 inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 17,
+   "issue": null,
+   "footer": "Page '16' (partial); no date; cannot be fixed"
+  },
+  {
+   "page": 18,
+   "issue": "1955-10",
+   "footer": "Header: 'Ottobre 1955'"
+  },
+  {
+   "page": 19,
+   "issue": null,
+   "footer": "Page '6'; no date; poem 'To Doct...' dated 'August 1955' so issue is Aug 1955 or later; cannot be fixed"
+  },
+  {
+   "page": 20,
+   "issue": null,
+   "footer": "No date; 'Per le nostre signore' (autumn fashion); cannot be fixed"
+  },
+  {
+   "page": 21,
+   "issue": null,
+   "footer": "No date; same column as p.20 (autumn fashion); cannot be fixed"
+  },
+  {
+   "page": 22,
+   "issue": "1955-12",
+   "footer": "Header: 'Dicembre 1955'"
+  },
+  {
+   "page": 23,
+   "issue": "1955-12",
+   "footer": "Header: 'Dicembre 1955'"
+  },
+  {
+   "page": 24,
+   "issue": "1955-12",
+   "footer": "Header: 'Dicembre 1955'"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 2,
+   "issue": null,
+   "name": "Annunciata Spinelli Dommarco",
+   "as_printed": "ANNUNCIATA SPINELLI DOMMARCO, Ortona a mare",
+   "title": "Ascoltate anche voi con me",
+   "position": "signature",
+   "kind": "other",
+   "confidence": "high",
+   "note": "prose-poem/meditation"
+  },
+  {
+   "page": 3,
+   "issue": "1955-01",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "nel giudizio di Riccardo Cordiferro",
+   "title": "Francesco Greco nel giudizio di Riccardo Cordiferro",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "subtitle attributes the judgment to Cordiferro (d. 1940), so a reprint; the piece is written in the first person by Cordiferro, no closing signature on p.4"
+  },
+  {
+   "page": 4,
+   "issue": "1955-01",
+   "name": "Frank Spadola",
+   "as_printed": "FRANK SPADOLA",
+   "title": "My Malady",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "name": "Antonino Crivello",
+   "as_printed": "Antonino Crivello",
+   "title": "Il fare piani e' stupido...",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": null,
+   "name": "Olga Malchiodi Cavaliere",
+   "as_printed": "Olga Malchiodi Cavaliere",
+   "title": "Nostalgia di terra lontana: I nostri poeti d'America",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 9,
+   "issue": null,
+   "name": "Giuseppe Incalicchio",
+   "as_printed": "GIUSEPPE INCALICCHIO",
+   "title": "La Televisione",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Domenico Adamo, poeta autodidatta",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Giuseppe Coco",
+   "as_printed": "GIUSEPPE COCO, Lawrence, Mass.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Antonio Anania",
+   "as_printed": "ANTONIO ANANIA, Brockton, Mass.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Domenico Adamo",
+   "as_printed": "DOMENICO ADAMO",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "letter dated 29 Aprile 1955; Adamo is also a poet (see 1954 p.7)"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Pietro Greco",
+   "as_printed": "PIETRO GRECO, Brooklyn 18, N. Y.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "letter dated Brooklyn, 29 maggio 1955"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Giovanni Solone",
+   "as_printed": "GIOVANNI SOLONE, Chicago, Ill.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Filadelfo J. Mondello",
+   "as_printed": "FILADELFO J. MONDELLO, Bronx, N. Y.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "medium",
+   "note": "place read as 'Bronx'; print slightly smudged"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Alfredo Massa",
+   "as_printed": "ALFREDO MASSA, San Severo, Italia",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "verse letter from Italy; Massa also signs a review on p.19"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Dante J. Morgana",
+   "as_printed": "DANTE J. MORGANA",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "introduced as 'Dottor D. J. Morgana di Buffalo'; letter praises Bruno Zirato"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Joseph Bruno",
+   "as_printed": "JOSEPH BRUNO",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "introduced as 'Joseph Bruno di New York'"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "A. Granata",
+   "as_printed": "A. GRANATA, Philadelphia, Pa.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 14,
+   "issue": "1955-06",
+   "name": "Vincenzo Foti",
+   "as_printed": "VINCENZO FOTI, Elizabeth, N. J.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 17,
+   "issue": null,
+   "name": "Filippo Fichera",
+   "as_printed": "FILIPPO FICHERA",
+   "title": "Omaggio del chiarissimo Prof. Filippo Fichera di Bergamo alla memoria di Riccardo Cordiferro e a 'La Follia di New York'",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "letter to Marziale Sisca from Prof. Filippo Fichera, notable literary figure (not reader mail)"
+  },
+  {
+   "page": 19,
+   "issue": null,
+   "name": "r. p.",
+   "as_printed": "- r. p.",
+   "title": "Due nuovi libri di versi di Italo-Americani (reviews of Vincenzo Foti and Francesco Saverio Riccio)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "initials as printed; possibly Rodolfo Pucelli (unverified)"
+  },
+  {
+   "page": 19,
+   "issue": null,
+   "name": "Alfredo Massa",
+   "as_printed": "- Alfredo Massa",
+   "title": "Due nuovi libri di versi: review of 'Date anche a me l'ulivo' by Francesco Fiumara",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  }
+ ]
+}

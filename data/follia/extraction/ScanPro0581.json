@@ -1,0 +1,35 @@
+{
+  "file": "ScanPro0581.pdf",
+  "pages": [
+    {"page": 1, "issue": "1964-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1964"},
+    {"page": 2, "issue": "1964-04", "footer": "no footer (front cover, Robert Moses photo); dated from 'REC'D APR 30 1964' stamp, World's Fair opening 22 April, and cross-ref 'Vedi articolo a pagina 6' (= p4 of this PDF, APRILE 1964)", "issue_inferred": true},
+    {"page": 3, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 4, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 5, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 6, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 7, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 8, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 9, "issue": "1964-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1964"},
+    {"page": 10, "issue": "1964-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1964"},
+    {"page": 11, "issue": "1964-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1964"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1964-03", "name": "Ferdinando Papa", "as_printed": "FERDINANDO PAPA", "title": "All'amico A. Quintieri", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto napoletano"},
+    {"page": 1, "issue": "1964-03", "name": "Domenico Treccase", "as_printed": "DOMENICO TRECCASE", "title": "A Sicaretta", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto calabrese"},
+    {"page": 1, "issue": "1964-03", "name": "Federico Fabozzi", "as_printed": "FEDERICO FABOZZI", "title": "Metempsicosi", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 3, "issue": "1964-04", "name": "Maria Vecchione", "as_printed": "Maria Vecchione", "title": "Un libro che apprezzo", "position": "signature", "kind": "article", "confidence": "high", "note": "review of Giuseppe Incalicchio's book of poems"},
+    {"page": 3, "issue": "1964-04", "name": "t.", "as_printed": "(t.)", "title": "Aura D'Angelo canta per i poveri", "position": "signature", "kind": "article", "confidence": "medium", "note": "initial only; dateline also credits (AGR) agency"},
+    {"page": 5, "issue": "1964-04", "name": "B. Z.", "as_printed": "B. Z.", "title": "\"La Pietà\" alla Fiera Mondiale", "position": "signature", "kind": "article", "confidence": "high", "note": "piece begins on p4; B. Z. likely Bruno Zirato (letter below is addressed 'Mio carissimo Zirato')"},
+    {"page": 5, "issue": "1964-04", "name": "B. Z.", "as_printed": "— B. Z.", "title": "Un'interessante lettera del Maestro Bellezza (introduction)", "position": "signature", "kind": "article", "confidence": "high", "note": "signed intro to the Bellezza letter"},
+    {"page": 5, "issue": "1964-04", "name": "Vincenzo Bellezza", "as_printed": "VINCENZO BELLEZZA", "title": "Un'interessante lettera del Maestro Bellezza: Caruso al Costanzi di Roma", "position": "signature", "kind": "other", "confidence": "high", "note": "letter dated Bitonto 1 Dec 1921 from conductor Vincenzo Bellezza to Zirato, published posthumously; not reader mail"},
+    {"page": 6, "issue": "1964-04", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Domando la parola", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 7, "issue": "1964-04", "name": "Giulio de Moro", "as_printed": "GIULIO DE MORO", "title": "Problemi dell'altro sesso", "position": "signature", "kind": "article", "confidence": "high", "note": "piece begins on p6"},
+    {"page": 8, "issue": "1964-04", "name": "Trilussa", "as_printed": "TRILUSSA", "title": "Le parole inutili", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint; dialetto romanesco"},
+    {"page": 8, "issue": "1964-04", "name": "Guerino D'Alessandro", "as_printed": "GUERINO D'ALESSANDRO", "title": "Agli Stati Uniti d'America", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 9, "issue": "1964-04", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Sempre ottimo il latte", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1964-04", "name": "Emilia Caputo", "as_printed": "Emilia Caputo", "title": "\"La Ballata della Speranza\"", "position": "signature", "kind": "article", "confidence": "high", "note": "review of Maria Vecchione's poetry collection"},
+    {"page": 10, "issue": "1964-05", "name": "Giulio de Moro", "as_printed": "di GIULIO DE MORO", "title": "Perchè la nostra stampa è in agonia", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 10, "issue": "1964-05", "name": "Matteo Teresi", "as_printed": "Matteo Teresi", "title": "Memorie giovanili", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 11, "issue": "1964-05", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Contro la stanchezza", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

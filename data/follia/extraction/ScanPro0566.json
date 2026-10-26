@@ -1,0 +1,31 @@
+{
+  "file": "ScanPro0566.pdf",
+  "pages": [
+    {"page": 1, "issue": "1959-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1959"},
+    {"page": 2, "issue": "1959-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1959"},
+    {"page": 3, "issue": "1959-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1959"},
+    {"page": 4, "issue": "1959-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1959"},
+    {"page": 5, "issue": "1959-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1959"},
+    {"page": 6, "issue": "1959-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1959"},
+    {"page": 7, "issue": "1959-11", "footer": "no footer (full-page Medaglia d'Oro Christmas ad, apparently back cover); issue inferred from preceding page (Novembre 1959), could belong to Dicembre", "issue_inferred": true},
+    {"page": 8, "issue": "1959-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1959"},
+    {"page": 9, "issue": "1959-12", "footer": "no footer (full-page Delmonico's ad, apparently back cover); issue inferred from preceding page (Dicembre 1959)", "issue_inferred": true},
+    {"page": 10, "issue": "1960-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1960"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1959-09", "name": "Dott. D. S.", "as_printed": "DOTT. D. S.", "title": "Il grottesco dell'astrattismo (continuation)", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials as printed; piece starts p. 9 of the same issue (Settembre 1959)"},
+    {"page": 3, "issue": "1959-09", "name": "Gennaro Capalbo", "as_printed": "Avv. GENNARO CAPALBO", "title": "\"Personaggi\"... a buon mercato", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1959-09", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Una pessima abitudine", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 4, "issue": "1959-10", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Note di igiene", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 4, "issue": "1959-10", "name": "F. Argenio", "as_printed": "F. ARGENIO, W. Pittston, Pa.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 4, "issue": "1959-10", "name": "Lucio Seminara", "as_printed": "LUCIO SEMINARA, Brooklyn, N. Y.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 4, "issue": "1959-10", "name": "Frank Gillest De Gattis", "as_printed": "FRANK GILLEST DE GATTIS, New Castle, Pa.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "medium", "note": "middle name 'Gillest' as printed; check against other issues"},
+    {"page": 5, "issue": "1959-11", "name": "Luca", "as_printed": "LUCA", "title": "La cittadina che protesta", "position": "signature", "kind": "article", "confidence": "medium", "note": "pseudonym or first name only"},
+    {"page": 5, "issue": "1959-11", "name": "Luca", "as_printed": "LUCA", "title": "Avviso importante (ends 'La cittadina che protesta' column; announces his Diario Intimo)", "position": "signature", "kind": "other", "confidence": "medium", "note": "pseudonym; second signature on same page"},
+    {"page": 6, "issue": "1959-11", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'alimentazione dei ragazzi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 6, "issue": "1959-11", "name": "Agostino Trovaioli", "as_printed": "AGOSTINO TROVAIOLI, Uniontown, Pa.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 6, "issue": "1959-11", "name": "Lucio Seminara", "as_printed": "LUCIO SEMINARA", "title": "Un buon consiglio", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 8, "issue": "1959-12", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Un ottimo esercizio", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1960-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Igiene per la bocca", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

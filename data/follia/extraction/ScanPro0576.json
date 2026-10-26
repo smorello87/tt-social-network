@@ -1,0 +1,38 @@
+{
+  "file": "ScanPro0576.pdf",
+  "pages": [
+    {"page": 1, "issue": "1962-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1962"},
+    {"page": 2, "issue": "1962-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1962"},
+    {"page": 3, "issue": "1963-01", "footer": "no footer (cover); issue inferred from 'REC'D JAN ... 1963' stamp and adjacent Gennaio 1963 pages", "issue_inferred": true},
+    {"page": 4, "issue": "1963-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1963"},
+    {"page": 5, "issue": "1963-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1963"},
+    {"page": 6, "issue": "1963-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1963"},
+    {"page": 7, "issue": "1963-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1963"},
+    {"page": 8, "issue": "1963-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1963"},
+    {"page": 9, "issue": "1963-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1963"},
+    {"page": 10, "issue": "1963-03", "footer": "no footer (cover); issue inferred: cover refers to article on p. 5 of March 1963 issue (Anna Moffo); library stamp 'APR 1 1963'", "issue_inferred": true},
+    {"page": 11, "issue": "1963-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1963"},
+    {"page": 12, "issue": "1963-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1963"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1962-12", "name": "Luigi Sola", "as_printed": "A cura di LUIGI SOLA", "title": "Industrie che onorano l'Italia: La Buitoni-Perugina", "position": "byline", "kind": "article", "confidence": "high", "note": "'a cura di'"},
+    {"page": 2, "issue": "1962-12", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La ginnastica", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1963-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Necessaria una dieta leggera dopo le feste", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1963-01", "name": "Stephen Lo Iacono", "as_printed": "STEPHEN LO IACONO, Lodi, N. J.", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 5, "issue": "1963-01", "name": "Antonio Andrioli", "as_printed": "ANTONIO ANDRIOLI, New York City", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 5, "issue": "1963-01", "name": "Luigi Dommarco", "as_printed": "LUIGI DOMMARCO, Roma", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter to Marziale Sisca from Rome"},
+    {"page": 5, "issue": "1963-01", "name": "Salvatore Di Leo", "as_printed": "SALVATORE DI LEO", "title": "L'Ummira", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto siciliano"},
+    {"page": 7, "issue": "1963-02", "name": "Annunciata Spinelli Dommarco", "as_printed": "ANNUNCIATA SPINELLI DOMMARCO", "title": "Ascoltate anche voi con me", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 8, "issue": "1963-02", "name": "Vincenzo Manente", "as_printed": "VINCENZO MANENTE", "title": "Una notte a Capri", "position": "signature", "kind": "poem", "confidence": "high", "note": "for music"},
+    {"page": 8, "issue": "1963-02", "name": "Luigi Dommaco", "as_printed": "LUIGI DOMMACO", "title": "Radio Squadra", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto abruzzese; printed 'Dommaco', probably same as Luigi Dommarco (p. 5 of Jan 1963)"},
+    {"page": 8, "issue": "1963-02", "name": "Salvatore Di Leo", "as_printed": "SALVATORE DI LEO", "title": "La me' casuzza", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto siciliano"},
+    {"page": 8, "issue": "1963-02", "name": "Salvatore Di Giacomo", "as_printed": "SALVATORE DI GIACOMO", "title": "Avite maie ligguito...", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Di Giacomo d. 1934); dialetto napoletano"},
+    {"page": 8, "issue": "1963-02", "name": "Antonio Fiorentino", "as_printed": "ANTONIO FIORENTINO", "title": "Sapienza dell'asino", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto calabrese"},
+    {"page": 8, "issue": "1963-02", "name": "Giuseppe Cappuccio", "as_printed": "GIUSEPPE CAPPUCCIO, Lodi, N. J.", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 8, "issue": "1963-02", "name": "Mary Ferraiuolo", "as_printed": "MRS. MARY FERRAIUOLO, Hanover, N. J.", "title": "Plausi e Consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 9, "issue": "1963-02", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Ancora in tema di regimi dimagranti", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1963-02", "name": "Frank Taccino", "as_printed": "FRANK TACCINO", "title": "Nu pappagallu", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto celichese"},
+    {"page": 11, "issue": "1963-03", "name": "Br. Zir.", "as_printed": "Br. Zir.", "title": "Ad Majora: Anna Moffo", "position": "signature", "kind": "article", "confidence": "medium", "note": "abbreviated signature as printed; possibly Bruno Zirato"},
+    {"page": 12, "issue": "1963-03", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per mantenersi in salute", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

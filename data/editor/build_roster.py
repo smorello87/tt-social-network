@@ -120,9 +120,12 @@ def candidates_for(name, nodes):
     for nid, nm, ntype, toks2, key2 in nodes:
         if not toks2:
             continue
-        score = _similarity(key, key2)
         # "John Ciardi" ~ "John Anthony Ciardi", "Domenico Bartoli" ~ "D Bartoli"
         same_person_shape = toks2[-1] == toks[-1] and toks2[0][0] == toks[0][0] and len(toks[-1]) > 3
+        # Edit distance >= length difference, so a >15% length gap can't reach 0.85; skip the costly DP.
+        if not same_person_shape and abs(len(key) - len(key2)) > 0.15 * max(len(key), len(key2)):
+            continue
+        score = _similarity(key, key2)
         if score >= 0.85 or same_person_shape:
             found.append({"id": nid, "name": nm, "type": ntype, "score": round(score, 2)})
     return sorted(found, key=lambda c: -c["score"])[:5]

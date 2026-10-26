@@ -1,0 +1,32 @@
+{
+  "file": "ScanPro0526.pdf",
+  "pages": [
+    {"page": 1, "issue": "1967-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1967"},
+    {"page": 2, "issue": "1967-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1967"},
+    {"page": 3, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 4, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 5, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 6, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 7, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 8, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 9, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"},
+    {"page": 10, "issue": "1967-12", "footer": "LA FOLLIA DI NEW YORK - DICEMBRE 1967"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1967-11", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI, 20 ottobre 1967", "title": "Confessioni", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1967-11", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'alimentazione per i vostri bambini", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 2, "issue": "1967-11", "name": "Giuseppe Zuzolo", "as_printed": "GIUSEPPE ZUZOLO", "title": "Omaggio all'Irpinia (Alla gente d'Ischia)", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 2, "issue": "1967-11", "name": "Samarat", "as_printed": "SAMARAT", "title": "Il garofano e la rosa", "position": "signature", "kind": "poem", "confidence": "high", "note": "pseudonym"},
+    {"page": 5, "issue": "1967-12", "name": "Maria Iannella", "as_printed": "by Maria Iannella", "title": "From Rome with Love", "position": "byline", "kind": "article", "confidence": "high", "note": "in English"},
+    {"page": 7, "issue": "1967-12", "name": "Spartaco", "as_printed": "SPARTACO", "title": "For Civil Rights", "position": "signature", "kind": "poem", "confidence": "high", "note": "pseudonym; English translation by Rodolfo Pucelli"},
+    {"page": 7, "issue": "1967-12", "name": "Rodolfo Pucelli", "as_printed": "Translated from the Italian by Rodolfo Pucelli", "title": "For Civil Rights", "position": "signature", "kind": "poem", "confidence": "high", "note": "translator"},
+    {"page": 7, "issue": "1967-12", "name": "Gaetanina Mottola", "as_printed": "Gaetanina Mottola, Cambridge, Mass.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 7, "issue": "1967-12", "name": "Frank Cardinale", "as_printed": "Frank Cardinale, Redwood City, Calif.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 7, "issue": "1967-12", "name": "Fred V. Cannata", "as_printed": "Fred V. Cannata, Houston, Texas", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 8, "issue": "1967-12", "name": "Maria Iannella", "as_printed": "di MARIA IANNELLA", "title": "Lettera dall'Italia", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 10, "issue": "1967-12", "name": "Antonio Pederzoli", "as_printed": "ANTONIO PEDERZOLI", "title": "Il primo partito politico dell'emigrazione", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 10, "issue": "1967-12", "name": "Giuseppe Zuzolo", "as_printed": "GIUSEPPE ZUZOLO", "title": "(aforismi) Dove si respira aria pura della vita...", "position": "signature", "kind": "other", "confidence": "high", "note": "short aphorisms, untitled"},
+    {"page": 10, "issue": "1967-12", "name": "Rodolfo Pucelli", "as_printed": "RODOLFO PUCELLI", "title": "Libri: Dalle due sponde (Luigi Lappa)", "position": "signature", "kind": "article", "confidence": "high", "note": "book review"},
+    {"page": 10, "issue": "1967-12", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Cure costanti della pelle", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "file": "1954.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1953-12-15",
+      "footer": "No footer/date on page; Christmas poem (Il Brindisi di Natale); assigned to 15 Dicembre 1953 issue (p.2 header) - low-confidence inference; could be 1 Dec 1953",
+      "issue_inferred": true
+    },
+    {
+      "page": 2,
+      "issue": "1953-12-15",
+      "footer": "Header: '15 Dicembre 1953'"
+    },
+    {
+      "page": 3,
+      "issue": null,
+      "footer": "'Pagina 7'; no date; Cordiferro reprint poem, cannot be dated"
+    },
+    {
+      "page": 4,
+      "issue": "1954-02-15",
+      "footer": "Header: '15 FEBBRAIO 1954'"
+    },
+    {
+      "page": 5,
+      "issue": null,
+      "footer": "No date; editorial appeal 'Il lungo cammino d'un giornale'; cannot be dated"
+    },
+    {
+      "page": 6,
+      "issue": null,
+      "footer": "'Pagina 2'; no date visible; 'Per le nostre signore' (Primavera fashion suggests spring 1954?) - cannot be fixed"
+    },
+    {
+      "page": 7,
+      "issue": null,
+      "footer": "No date; memorial poem dated 'New York, Agosto 1940' (anniversary issue, possibly Aug 1954 but not certain)"
+    },
+    {
+      "page": 8,
+      "issue": "1954-08",
+      "footer": "Masthead: 'Vol. 63 - No. 12 AGOSTO 1954' (no day given; summer issues monthly)"
+    },
+    {
+      "page": 9,
+      "issue": null,
+      "footer": "No date; Libri ricevuti; cannot be fixed (adjacent to Aug-Oct 1954 pages but unverified)"
+    },
+    {
+      "page": 10,
+      "issue": "1954-10-01",
+      "footer": "Header: '1 Ottobre 1954'"
+    },
+    {
+      "page": 11,
+      "issue": "1954-10-15",
+      "footer": "No date line; obituary of Dr Antonio Pisani 'Giovedi, 14 ottobre' (1954) -> issue of 15 Oct 1954 inferred",
+      "issue_inferred": true
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1953-12-15",
+      "name": "Riccardo Cordiferro",
+      "as_printed": "RICCARDO CORDIFERRO",
+      "title": "Il Brindisi di Natale",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "reprint (Cordiferro d. 1940); issue date inferred"
+    },
+    {
+      "page": 3,
+      "issue": null,
+      "name": "Riccardo Cordiferro",
+      "as_printed": "RICCARDO CORDIFERRO",
+      "title": "Leggenda e realta' (Alla Signorina Maria Tranchida)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "reprint (Cordiferro d. 1940); undated page"
+    },
+    {
+      "page": 4,
+      "issue": "1954-02-15",
+      "name": "Riccardo Cordiferro",
+      "as_printed": "RICCARDO CORDIFERRO",
+      "title": "Caruso ancora canta!",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "reprint (Cordiferro d. 1940); dialetto napoletano; music credited to 'Mo. J. Gioe' (composer credit, not recorded as signature)"
+    },
+    {
+      "page": 4,
+      "issue": "1954-02-15",
+      "name": "Joseph Gioe",
+      "as_printed": "Musica del Mo. J. GIOE",
+      "title": "Caruso ancora canta! (music)",
+      "position": "byline",
+      "kind": "other",
+      "confidence": "high",
+      "note": "composer credit; added in review (composers count)"
+    },
+    {
+      "page": 7,
+      "issue": null,
+      "name": "Domenico Adamo",
+      "as_printed": "DOMENICO ADAMO",
+      "title": "In Memoria di Riccardo Cordiferro",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "poem dated New York, Agosto 1940"
+    },
+    {
+      "page": 9,
+      "issue": null,
+      "name": "G. Ricciardi",
+      "as_printed": "G. Ricciardi",
+      "title": "Libri Ricevuti",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "medium",
+      "note": "initial as printed; signs the Libri Ricevuti note (book notes on Giuseppe Rosa 'Eco')"
+    },
+    {
+      "page": 10,
+      "issue": "1954-10-01",
+      "name": "Riccardo Cordiferro",
+      "as_printed": "RICCARDO CORDIFERRO",
+      "title": "Salve, Calabria!",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "reprint (Cordiferro d. 1940)"
+    },
+    {
+      "page": 10,
+      "issue": "1954-10-01",
+      "name": "Sinibaldo Rovito",
+      "as_printed": "SINIBALDO ROVITO",
+      "title": "Riccardo Cordiferro, calabrese (note on Cordiferro with quoted verses)",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "medium",
+      "note": "signature closes the column beside 'Salve, Calabria!' about Cordiferro; title not printed, descriptive"
+    },
+    {
+      "page": 10,
+      "issue": "1954-10-01",
+      "name": "Vanni B. Montana",
+      "as_printed": "VANNI B. MONTANA, Direttore dell'Ufficio Stampa del Consiglio Italo-Americano del Lavoro",
+      "title": "Esperimento Italo-Americano di Turismo in Massa",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high"
+    }
+  ]
+}

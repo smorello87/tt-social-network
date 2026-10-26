@@ -1,0 +1,95 @@
+{
+ "file": "1975.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1975-01",
+   "footer": "la follia di new york — gennaio 1975 (p. 10)"
+  },
+  {
+   "page": 2,
+   "issue": "1975-01",
+   "footer": "la follia di new york — gennaio 1975 (p. 11)"
+  },
+  {
+   "page": 3,
+   "issue": "1975-03",
+   "footer": "la follia di new york — marzo 1975 (p. 3); masthead Vol. 83 - No. 3, March 1975"
+  },
+  {
+   "page": 4,
+   "issue": "1975-03",
+   "footer": "la follia di new york — marzo 1975; masthead Vol. 83 - No. 3, March, 1975"
+  },
+  {
+   "page": 5,
+   "issue": "1975-03",
+   "footer": "la follia di new york — marzo 1975 (p. 8)"
+  },
+  {
+   "page": 6,
+   "issue": "1975-03",
+   "footer": "la follia di new york — marzo 1975"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "footer": "no footer visible; page sits in the PDF between March 1975 p. 9 (PDF p6) and April 1975 p. 9 (PDF p9), so it may belong to either issue; content (Giorgio Pillon's visit to Bergen Community College) not decisive"
+  },
+  {
+   "page": 8,
+   "issue": null,
+   "footer": "no footer visible; page sits in the PDF between March 1975 p. 9 (PDF p6) and April 1975 p. 9 (PDF p9), so it may belong to either issue; content (Giorgio Pillon's visit to Bergen Community College) not decisive"
+  },
+  {
+   "page": 9,
+   "issue": "1975-04",
+   "footer": "masthead Vol. 83 - No. 4, April 1975; footer \"york — aprile 1975\" (cut off at left)"
+  },
+  {
+   "page": 10,
+   "issue": "1975-04",
+   "footer": "la follia di new york — aprile 1975 (p. 10)"
+  },
+  {
+   "page": 11,
+   "issue": "1975-04",
+   "footer": "la follia di new york — aprile 1975 (p. 11)"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1975-01",
+   "name": "Stephen Lo Iacono",
+   "as_printed": "by STEPHEN LO IACONO",
+   "title": "A Profile of Edward Corsi",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "continues on p. 2"
+  },
+  {
+   "page": 6,
+   "issue": "1975-03",
+   "name": "La Redazione",
+   "as_printed": "La Redazione",
+   "title": "Un omaggio e un invito alla Comunità Italiana del New Jersey (end)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "collective editorial signature, not a person; piece begins on p. 5"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "name": "Giorgio Pillon",
+   "as_printed": "di Giorgio Pillon",
+   "title": "Scuole «made in USA» e «in Italy»",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "dateline New York; continues on p. 8; issue undetermined"
+  }
+ ]
+}

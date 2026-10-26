@@ -1,0 +1,32 @@
+{
+  "file": "ScanPro0520.pdf",
+  "pages": [
+    {"page": 1, "issue": "1966-06", "footer": "la follia di new york — giugno 1966"},
+    {"page": 2, "issue": "1966-06", "footer": "la follia di new york — giugno 1966"},
+    {"page": 3, "issue": "1966-06", "footer": "la follia di new york — giugno 1966"},
+    {"page": 4, "issue": "1966-06", "footer": "la follia di new york — giugno 1966"},
+    {"page": 5, "issue": "1966-07", "footer": "la follia di new york — luglio 1966; masthead box Vol. 74 - No. 7, July, 1966"},
+    {"page": 6, "issue": "1966-07", "footer": "la follia di new york — luglio 1966"},
+    {"page": 7, "issue": "1966-07", "footer": "la follia di new york — luglio 1966"},
+    {"page": 8, "issue": "1966-07", "footer": "la follia di new york — luglio 1966"},
+    {"page": 9, "issue": "1966-08", "footer": "cover: AGOSTO 1966 (masthead box)"},
+    {"page": 10, "issue": "1966-08", "footer": "la follia di new york — agosto 1966"},
+    {"page": 11, "issue": "1966-08", "footer": "la follia di new york — agosto 1966"},
+    {"page": 12, "issue": "1966-08", "footer": "la follia di new york — agosto 1966"},
+    {"page": 13, "issue": "1966-08", "footer": "la follia di new york — agosto 1966"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1966-06", "name": "Giulio de Moro", "as_printed": "di Giulio de Moro", "title": "Fascino d'un Nome (Punto interrogativo per gli Italiani di Filadelfia)", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1966-06", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 4, "issue": "1966-06", "name": "B. Z.", "as_printed": "(bz)", "title": "Maria José Sayao", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials in lowercase at end of obituary; possibly Bruno Zirato (named as collaborator in Ottobre 1965 editor note), unconfirmed"},
+    {"page": 4, "issue": "1966-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Non abbiate fretta", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 6, "issue": "1966-07", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "(sul progetto \"Apollo\")", "position": "signature", "kind": "article", "confidence": "high", "note": "title only partly visible (page cropped at left); piece begins on previous page not in this PDF"},
+    {"page": 6, "issue": "1966-07", "name": "Vedetta", "as_printed": "VEDETTA", "title": "Studentesse, attenti!", "position": "signature", "kind": "article", "confidence": "high", "note": "pseudonym"},
+    {"page": 7, "issue": "1966-07", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 9, "issue": "1966-08", "name": "Vaticana Felici", "as_printed": "Fotografia Vaticana Felici", "title": "Cover photo: Paolo VI receives Carlo de Biasi", "position": "signature", "kind": "photo", "confidence": "medium", "note": "photo credit appears to be the Vatican photographic studio Felici"},
+    {"page": 10, "issue": "1966-08", "name": "Nanni Andriolli", "as_printed": "di Nanni Andriolli", "title": "Così è se vi pare (Walkabout in Manhattan)", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 13, "issue": "1966-08", "name": "Giuseppe Zuzolo", "as_printed": "GIUSEPPE ZUZOLO", "title": "(closing piece beneath 'L'abbronzatura')", "position": "signature", "kind": "article", "confidence": "medium", "note": "signs the closing paragraphs directly under the Sisca column text; unclear whether it is part of the Sisca column or a separate short piece"},
+    {"page": 13, "issue": "1966-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'abbronzatura", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 13, "issue": "1966-08", "name": "Anonimo", "as_printed": "ANONIMO, Pompano Beach, Florida", "title": "A \"La Follia di N. Y.\"", "position": "signature", "kind": "poem", "confidence": "high", "note": "reader poem signed Anonimo"}
+  ]
+}

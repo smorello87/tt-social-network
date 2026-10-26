@@ -1,0 +1,25 @@
+{
+  "file": "ScanPro0573.pdf",
+  "pages": [
+    {"page": 1, "issue": "1962-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1962"},
+    {"page": 2, "issue": "1962-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1962"},
+    {"page": 3, "issue": "1962-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1962"},
+    {"page": 4, "issue": "1962-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1962"},
+    {"page": 5, "issue": "1962-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1962"},
+    {"page": 6, "issue": "1962-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1962"},
+    {"page": 7, "issue": "1962-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1962"},
+    {"page": 8, "issue": "1962-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1962"},
+    {"page": 9, "issue": "1962-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1962"},
+    {"page": 10, "issue": "1962-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1962"},
+    {"page": 11, "issue": "1962-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1962"},
+    {"page": 12, "issue": "1962-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1962"}
+  ],
+  "signatures": [
+    {"page": 4, "issue": "1962-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Aver cura degli occhi: che sono preziosi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 6, "issue": "1962-02", "name": "Bruno Zirato", "as_printed": "BRUNO ZIRATO", "title": "Echi del passato (lettera sull'incidente Toscanini a Bologna)", "position": "signature", "kind": "letter", "confidence": "high", "note": "historical letter from Zirato's archive to a California editor (c. 1931), printed by the magazine; not a letter to the editor"},
+    {"page": 6, "issue": "1962-02", "name": "Luigi Sola", "as_printed": "a cura di LUIGI SOLA, già corrispondente del \"Corriere della Sera\"", "title": "Pompei, Parte IV: Le parti più importanti della casa pompeiana", "position": "byline", "kind": "article", "confidence": "high", "note": "serial, part IV"},
+    {"page": 7, "issue": "1962-02", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Vi sentite stanche?", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1962-03", "name": "Favoino di Giura", "as_printed": "di FAVOINO DI GIURA", "title": "Girandola della politica: Italiani nel dramma della demografia francese", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 12, "issue": "1962-03", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Una deliziosa pratica d'igiene e pulizia", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

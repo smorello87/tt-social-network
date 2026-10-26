@@ -1,0 +1,30 @@
+{
+  "file": "1949-50.pdf",
+  "pages": [
+    {"page": 1, "issue": "1949-10-01", "footer": "'1 OTTOBRE 1949' page header over 'La Pagina dei Poeti'"},
+    {"page": 2, "issue": null, "footer": "clipping without date; quotes a letter dated Acri 10/8/1949, so issue is after Aug 1949 but no issue date visible"},
+    {"page": 3, "issue": null, "footer": "clipping of political advertisement (Marcantonio, NYC mayoral election Nov 1949); no date printed"},
+    {"page": 4, "issue": null, "footer": "page 8 header 'LA FOLLIA DI NEW YORK' without date; undatable (Busoni centenary/World Wide Broadcasting series, autumn 1949)"},
+    {"page": 5, "issue": null, "footer": "clipping of political advertisement (Marcantonio, election Nov 1949); no date printed"},
+    {"page": 6, "issue": "1949-12-01", "footer": "'1 Dicembre 1949' page header"},
+    {"page": 7, "issue": "1949-12-15", "footer": "'15 Dicembre 1949  LA FOLLIA DI NEW YORK' page header"},
+    {"page": 8, "issue": null, "footer": "page 5 header without date (Asti restaurant ad); undatable, probably winter 1949-50"},
+    {"page": 9, "issue": "1950-01-01", "footer": "'1 Gennaio 1950  LA FOLLIA DI NEW YORK' page header (page 3)"},
+    {"page": 10, "issue": "1950-01-15", "footer": "'15 Gennaio 1950' page header"},
+    {"page": 11, "issue": "1950-02-01", "footer": "'1 Febbraio 1950' page header"},
+    {"page": 12, "issue": null, "footer": "'Pagina 3' header without date; undatable (follows 1 Feb 1950 page in sequence)"},
+    {"page": 13, "issue": null, "footer": "clipping of film advertisement (Stromboli, early 1950); no date printed"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1949-10-01", "name": "Antonio Mordente", "as_printed": "ANTONIO MORDENTE", "title": "A Riccardo Cordiferro (Nel nono anniversario della sua morte)", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 1, "issue": "1949-10-01", "name": "Rosario Torregrossa", "as_printed": "ROSARIO TORREGROSSA", "title": "Una dedica", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 4, "issue": null, "name": "Francis Norelli", "as_printed": "FRANCIS NORELLI, Capo del Dipartimento Italiano, World Wide Broadcasting Foundation", "title": "Le Radiotrasmissioni a Onde Corte in Lingua Italiana", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 4, "issue": null, "name": "Bruno Scala", "as_printed": "BRUNO SCALA", "title": "Tra i Libri: \"Luci e Ombre\", poesie di Florio Vitullo", "position": "signature", "kind": "article", "confidence": "high", "note": "book review; Florio Vitullo is the subject, not the author"},
+    {"page": 6, "issue": "1949-12-01", "name": "B. Acquaro-Deodati", "as_printed": "DR. B. ACQUARO-DEODATI, Piroscafo \"Italia\", 15 Novembre 1949", "title": "Al Commendatore Bernardo De Muro", "position": "signature", "kind": "poem", "confidence": "high", "note": "name given as 'Dr. B. Acquaro-Deodati'; first name not printed"},
+    {"page": 7, "issue": "1949-12-15", "name": "Onorio Ruotolo", "as_printed": "ONORIO RUOTOLO", "title": "Natale nel villaggio", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 9, "issue": "1950-01-01", "name": "Antonio Calitri", "as_printed": "ANTONIO CALITRI, New York, 8 Dicembre 1949", "title": "Peccato e Luce (review of Giuseppe Tusiani's poetry)", "position": "signature", "kind": "article", "confidence": "high", "note": "heading reads 'di Giuseppe Tusiani' but Tusiani is the subject; Calitri signs the piece"},
+    {"page": 9, "issue": "1950-01-01", "name": "Jerome La Scala", "as_printed": "JEROME LA SCALA", "title": "Al mio \"Cane\" [Monito]", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 10, "issue": "1950-01-15", "name": "Riccardo Cordiferro", "as_printed": "RICCARDO CORDIFERRO", "title": "Stecchettiana", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Cordiferro d. 1940)"},
+    {"page": 12, "issue": null, "name": "Antonino Crivello", "as_printed": "ANTONINO CRIVELLO", "title": "Ad Arturo Giovannitti", "position": "signature", "kind": "poem", "confidence": "high", "note": "same poem also printed in 1 Agosto 1949 issue"}
+  ]
+}

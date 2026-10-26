@@ -1,0 +1,258 @@
+{
+ "file": "1947-48.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": null,
+   "footer": "clipping, page number 8; no date visible (ad mentions 'feste di Natale e Capodanno', so probably Dec 1947 or so)"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "footer": "clipping with no running head/date (Christmas poem + January zodiac column suggest Dec 1947/Jan 1948 but nothing printed)"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "footer": "page 4 clipping, running head 'LA FOLLIA DI NE[W YORK]' with no date; text says 'nell'anno in corso, 1948' so 1948 (month unknown)"
+  },
+  {
+   "page": 4,
+   "issue": "1948-02-01",
+   "footer": "masthead: 'Vol. 56 - No. 3 - New York, N.Y., 1 Febbraio 1948' (front page; day-dated issue)"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "footer": "clipping with no running head/date; left edge of page cut off (partial names)"
+  },
+  {
+   "page": 6,
+   "issue": null,
+   "footer": "page 3 clipping ('...ORK 3'); no date; Centenario dell'oro in California suggests 1948 but month unknown"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "footer": "clipping with no running head/date"
+  },
+  {
+   "page": 8,
+   "issue": null,
+   "footer": "page 1 of an issue (first part of 'La Donna nella Poesia Italiana'); no date visible"
+  },
+  {
+   "page": 9,
+   "issue": null,
+   "footer": "page 3 of same issue as p.8 ('continuazione dalla 1a pagina'); no date visible"
+  },
+  {
+   "page": 10,
+   "issue": null,
+   "footer": "clipping with no running head/date"
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "footer": "page 4 ('4 — LA FOLLIA DI NEW YORK'); no date printed; 'Rievocando il 48' piece suggests 1948"
+  },
+  {
+   "page": 12,
+   "issue": "1948-08",
+   "footer": "no running head/date; dated by the acrostic 'Nell'ottavo anniversario della sua morte' (Cordiferro died 25 Aug 1940)",
+   "issue_inferred": true
+  }
+ ],
+ "signatures": [
+  {
+   "page": 2,
+   "issue": null,
+   "name": "Antonino Crivello",
+   "as_printed": "ANTONINO CRIVELLO",
+   "title": "Gloria in excelsis!",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "name": "Riccardo Cordiferro",
+   "as_printed": "di Riccardo Cordiferro",
+   "title": "L'Antiquario",
+   "position": "byline",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "name": "Rodolfo Pucelli",
+   "as_printed": "RODOLFO PUCELLI",
+   "title": "La 'Poetry of the Air': cio' che vi hanno pubblicato i nostri",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 4,
+   "issue": "1948-02-01",
+   "name": "Agostino de Biasi",
+   "as_printed": "di Agostino de Biasi",
+   "title": "Carita' di Patria",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "front page of 1 Feb 1948 issue; continues p.8"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Vito De Bartolo",
+   "as_printed": "VITO DE BARTOLO",
+   "title": "(piece cut off at top of clipping)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "title not visible; name partly cut at top edge"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Publio Rinelli",
+   "as_printed": "PUBLIO RINELLI",
+   "title": "(piece cut off at left of clipping)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "left edge of page cut off; title not visible"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "[?] Bottiglieri",
+   "as_printed": "...IO BOTTIGLIERI",
+   "title": "(piece cut off at left of clipping)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "low",
+   "note": "first name cut off by page edge (ends in -io)"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Annibale Centoni",
+   "as_printed": "...IBALE CENTONI",
+   "title": "Crescente? (title cut off: '...escente')",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "first name cut off; Annibale Centoni appears in the Poetry of the Air list on p.3"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Antonio Calitri",
+   "as_printed": "ANTONIO CALITRI",
+   "title": "Aprile",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Nino Caradonna",
+   "as_printed": "NINO CARADONNA",
+   "title": "A Maria Morello",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Silvio Serafini",
+   "as_printed": "SILVIO SERAFINI",
+   "title": "Primavera",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": null,
+   "name": "Antonino Crivello",
+   "as_printed": "ANTONINO CRIVELLO",
+   "title": "The Golden City",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Ai fiori",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 9,
+   "issue": null,
+   "name": "Antonio Calitri",
+   "as_printed": "ANTONIO CALITRI",
+   "title": "La Donna nella Poesia Italiana: Le donne di Giovanni Boccaccio (Isabetta, Lisabetta; continua)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "signature at end of installment on p.9; the series begins on p.8 and continues on p.11 (Madama Zinevra)"
+  },
+  {
+   "page": 10,
+   "issue": null,
+   "name": "E.",
+   "as_printed": "E.",
+   "title": "L'Esempio di Chinatown",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "signed only with the initial 'E.'"
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "name": "Antonio Calitri",
+   "as_printed": "ANTONIO CALITRI",
+   "title": "La Donna nella Poesia Italiana: 'Madama Zinevra' di G. Boccaccio (continua)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1948-08",
+   "name": "Germoglino Saggio",
+   "as_printed": "GERMOGLINO SAGGIO",
+   "title": "A Riccardo Cordiferro (acrostico)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1948-08",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "La Colomba della Pace",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940)"
+  }
+ ]
+}

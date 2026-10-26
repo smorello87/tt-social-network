@@ -1,0 +1,103 @@
+{
+ "file": "1956.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": null,
+   "footer": "Page '6'; no date; Papini obituary (Papini d. 8 July 1956) so Jul/Aug 1956 likely; cannot be fixed"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "footer": "No date; ad for posthumous Franco Lalli book (Lalli d. Dec 1955); cannot be fixed"
+  },
+  {
+   "page": 3,
+   "issue": "1956-07",
+   "footer": "Header: 'Luglio 1956' (page 5)"
+  },
+  {
+   "page": 4,
+   "issue": "1956-07",
+   "footer": "Page '6'; continuation of p.3 (Luglio 1956) plus 'I discorsi del giorno'; inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "footer": "No date; 'A Cordiferro' poem of 1923; cannot be fixed"
+  },
+  {
+   "page": 6,
+   "issue": null,
+   "footer": "Page '6'; no date; 'Calabria di Oltre Oceano'; cannot be fixed"
+  },
+  {
+   "page": 7,
+   "issue": "1956-04",
+   "footer": "Cover: 'APRILE 1956' (handwritten library stamp 'May 4 56')"
+  },
+  {
+   "page": 8,
+   "issue": null,
+   "footer": "Page '10'; no date; 'I folli in Europa' refers to 'numero di Gennaio' and a trip leaving 29 Giugno; issue between Feb and Jun 1956 but cannot be fixed"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": null,
+   "name": "Raimondo Manzini",
+   "as_printed": "di RAIMONDO MANZINI",
+   "title": "La scomparsa di un Grande: Giovanni Papini",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "undated page; issue likely Jul/Aug 1956"
+  },
+  {
+   "page": 3,
+   "issue": "1956-07",
+   "name": "A. Quintieri",
+   "as_printed": "'Il Progresso' - Foto A. Quintieri",
+   "title": "Il Cav. Marziale Sisca decorato dal Presidente Giovanni Gronchi (banquet photo)",
+   "position": "signature",
+   "kind": "photo",
+   "confidence": "high",
+   "note": "photo credit also names 'Il Progresso'"
+  },
+  {
+   "page": 4,
+   "issue": "1956-07",
+   "name": "GA.",
+   "as_printed": "GA.",
+   "title": "(unnamed piece ending at top of right column, continued from earlier page)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "low",
+   "note": "initials as printed; piece continued from another page, title not visible"
+  },
+  {
+   "page": 4,
+   "issue": "1956-07",
+   "name": "Gabriele Villa",
+   "as_printed": "GABRIELE VILLA",
+   "title": "La Sardegna ed i suoi paesaggi",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "continued from p.4 of issue; Villa is also named on p.8 as director of Blue Cars"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Pietro Greco",
+   "as_printed": "PIETRO GRECO",
+   "title": "A Cordiferro (Festeggiando il suo 48.o genetliaco)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint; poem dated New York, 28 ottobre 1923, written for banquet at the Vulcano Restaurant"
+  }
+ ]
+}

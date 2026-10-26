@@ -1,0 +1,36 @@
+{
+  "file": "ScanPro0578.pdf",
+  "pages": [
+    {"page": 1, "issue": "1963-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1963"},
+    {"page": 2, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 3, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 4, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 5, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 6, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963 (footer partly cropped; page is a crop of the lower part of p. 8)"},
+    {"page": 7, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 8, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 9, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 10, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"},
+    {"page": 11, "issue": "1963-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1963"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1963-07", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Controllate il caldo nell'estate", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 2, "issue": "1963-08", "name": "Giulio de Moro", "as_printed": "di GIULIO DE MORO", "title": "L'ambizione del primato", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1963-08", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Logica stringente, ma...", "position": "signature", "kind": "article", "confidence": "high", "note": "dated Luglio 1963"},
+    {"page": 4, "issue": "1963-08", "name": "Giulio de Moro", "as_printed": "di GIULIO DE MORO", "title": "La gloria dell'umiltà", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 5, "issue": "1963-08", "name": "Gennaro Capalbo", "as_printed": "Avv. GENNARO CAPALBO, Acri (Calabria)", "title": "Vecchie cronache di vita di Calabria", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1963-08", "name": "Gennaro Capalbo", "as_printed": "Avv. GENNARO CAPALBO, Acri (Calabria)", "title": "Vecchie cronache di vita di Calabria", "position": "signature", "kind": "article", "confidence": "high", "note": "same piece as p. 5; this page is a partial re-scan"},
+    {"page": 7, "issue": "1963-08", "name": "Trilussa", "as_printed": "TRILUSSA", "title": "La paternità", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint; dialetto romanesco"},
+    {"page": 7, "issue": "1963-08", "name": "Giuseppe Mirabella", "as_printed": "PROF. GIUSEPPE MIRABELLA, Brooklyn, N. Y.", "title": "La grande idea", "position": "signature", "kind": "poem", "confidence": "high", "note": "dedicated to Maestro Alfredo Salmaggi"},
+    {"page": 8, "issue": "1963-08", "name": "Luigi Sola", "as_printed": "LUIGI SOLA", "title": "Brigata Sassari (military history piece, continued)", "position": "signature", "kind": "article", "confidence": "medium", "note": "title of the piece not on this page; text on 151st/152nd Infantry, Brigata Sassari"},
+    {"page": 8, "issue": "1963-08", "name": "Giulio Andreotti", "as_printed": "GIULIO ANDREOTTI", "title": "Nota della Direzione (letters to Luigi Sola)", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter from the Italian Minister of Defence, published in a Nota della Direzione; notable person, not reader mail"},
+    {"page": 8, "issue": "1963-08", "name": "Antonio Mondaini", "as_printed": "ANTONIO MONDAINI, Capitano di Vascello", "title": "Nota della Direzione (letters to Luigi Sola)", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter on behalf of the Capo di Stato Maggiore della Marina; notable, not reader mail"},
+    {"page": 8, "issue": "1963-08", "name": "Aldo Cocchia", "as_printed": "Ammiraglio di Sq. ALDO COCCHIA", "title": "Nota della Direzione (letters to Luigi Sola)", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter from Admiral, director of the Ufficio Storico della Marina; notable, not reader mail"},
+    {"page": 8, "issue": "1963-08", "name": "Annunciata Spinelli Dommarco", "as_printed": "Annunciata Spinelli Dommarco", "title": "Malinconia", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 9, "issue": "1963-08", "name": "Lee Posner", "as_printed": "LEE POSNER", "title": "Cinedo (film column)", "position": "byline", "kind": "column", "confidence": "medium", "note": "name appears in the column logo ('Cinedo — Lee Posner'); recurring film column"},
+    {"page": 9, "issue": "1963-08", "name": "Maria Iacovella", "as_printed": "MARIA IACOVELLA", "title": "Marvels in the Sun", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 10, "issue": "1963-08", "name": "Vincenzo Manente", "as_printed": "VINCENZO MANENTE, Brooklyn", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "dated 12 agosto 1963"},
+    {"page": 11, "issue": "1963-08", "name": "Riccardo Cordiferro", "as_printed": "RICCARDO CORDIFERRO", "title": "Dopo una festa di beneficenza", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Cordiferro d. 1940)"},
+    {"page": 11, "issue": "1963-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Un'abitudine preziosa", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

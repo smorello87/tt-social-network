@@ -1,0 +1,30 @@
+{
+  "file": "1951-52.pdf",
+  "pages": [
+    {"page": 1, "issue": "1951-06-15", "footer": "Masthead cut off at left ('...1951'); letter dated June 13, 1951 and anniversary on June 22; inferred as the 15 Giugno 1951 issue (page 3 is dated 15 Giugno 1951)", "issue_inferred": true},
+    {"page": 2, "issue": "1951-06-15", "footer": "'(Continuazione dalla 1.a pagina)' of the 1951-06 Sisca anniversary article; no running date; inferred 15 Giugno 1951 from page 1", "issue_inferred": true},
+    {"page": 3, "issue": "1951-06-15", "footer": "'LA FOLLIA DI NEW YORK  15 Giugno 1951' page header"},
+    {"page": 4, "issue": "1951-11-01", "footer": "Masthead: 'NEW YORK, 1 NOVEMBRE 1951'"},
+    {"page": 5, "issue": "1951-11-01", "footer": "continuation of 1 Novembre 1951 front page (right half, no header); inferred from page 4", "issue_inferred": true},
+    {"page": 6, "issue": "1951-11-01", "footer": "'Pagina 2' without date; says Quo Vadis opens '8 Novembre' at Astor and 'Re-entered 1950' imprint; inferred as 1 Novembre 1951 issue (Nov 1951)", "issue_inferred": true},
+    {"page": 7, "issue": "1951-11-01", "footer": "'LA FOLLIA DI NEW YORK  1 Novembre 1951' page header"},
+    {"page": 8, "issue": "1952-01-15", "footer": "Masthead: 'Vol. 61 - No. 2  NEW YORK, 15 GENNAIO 1952'"},
+    {"page": 9, "issue": "1952-05-15", "footer": "'Pagina 8  LA FOLLIA DI NEW YORK  15 Maggio 1952' page header"},
+    {"page": 10, "issue": "1952-07-01", "footer": "Masthead: 'Vol. 61 - No. 12  NEW YORK, 1 LUGLIO 1952'"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1951-06-15", "name": "Thomas E. Dewey", "as_printed": "THOMAS E. DEWEY, Governor (letter, Executive Chamber, Albany, June 13, 1951)", "title": "Messaggio del Governatore Dewey per le Nozze d'oro dei coniugi Sisca", "position": "signature", "kind": "letter", "confidence": "high", "note": "published letter from the Governor of New York to Marziale and Carmela Sisca; not reader mail"},
+    {"page": 3, "issue": "1951-06-15", "name": "Riccardo Cordiferro", "as_printed": "di RICCARDO CORDIFERRO", "title": "Ode alla sigaretta", "position": "byline", "kind": "poem", "confidence": "high", "note": "reprint (Cordiferro d. 1940)"},
+    {"page": 4, "issue": "1951-11-01", "name": "Riccardo Cordiferro", "as_printed": "RICCARDO CORDIFERRO", "title": "Senza canzoni", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Cordiferro d. 1940)"},
+    {"page": 4, "issue": "1951-11-01", "name": "Italo", "as_printed": "di ITALO", "title": "Istantanee della Settimana", "position": "byline", "kind": "column", "confidence": "high", "note": "recurring column"},
+    {"page": 5, "issue": "1951-11-01", "name": "Giuseppe Luongo", "as_printed": "GIUSEPPE LUONGO", "title": "Di ritorno dall'Italia / Abbonamento Ordinario e Abbonamento Sostenitore", "position": "signature", "kind": "article", "confidence": "medium", "note": "signature at foot of the right-hand column; layout makes it ambiguous whether it closes 'Di ritorno dall'Italia' (travel piece) or the subscription appeal"},
+    {"page": 7, "issue": "1951-11-01", "name": "Fausto Belfiori", "as_printed": "FAUSTO BELFIORI", "title": "Il jazz: musica dell'uomo massa", "position": "signature", "kind": "article", "confidence": "high", "note": "continuation of piece begun above; signed at end"},
+    {"page": 8, "issue": "1952-01-15", "name": "i. s.", "as_printed": "i. s.", "title": "\"America First!\"", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials; probably Italo Stanco"},
+    {"page": 8, "issue": "1952-01-15", "name": "Dorothy Caruso", "as_printed": "DOROTHY CARUSO", "title": "Letter on the new Caricature di Caruso book (Il Governatore Dewey e altre Personalità elogiano il nuovo Libro di Caruso)", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter from Enrico Caruso's widow; not reader mail"},
+    {"page": 8, "issue": "1952-01-15", "name": "Geraldine Farrar", "as_printed": "GERALDINE FARRAR", "title": "Letter on the new Caricature di Caruso book", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter from the soprano; not reader mail"},
+    {"page": 9, "issue": "1952-05-15", "name": "Riccardo Cordiferro", "as_printed": "RICCARDO CORDIFERRO", "title": "Vurria truvà (canzone napoletana, musica di Alfredo Della Valle)", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Cordiferro d. 1940); music by Maestro Alfredo Della Valle"},
+    {"page": 9, "issue": "1952-05-15", "name": "Alfredo Della Valle", "as_printed": "Musicata dal Maestro Alfredo Della Valle", "title": "Vurria truvà", "position": "signature", "kind": "other", "confidence": "medium", "note": "composer credit"},
+    {"page": 9, "issue": "1952-05-15", "name": "Francis Norelli", "as_printed": "Francis Norelli", "title": "La nobile opera del Dott. Giovanni Buitoni a favore dell'Italia e dell'America", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 10, "issue": "1952-07-01", "name": "Italo", "as_printed": "di ITALO", "title": "Istantanee della Settimana", "position": "byline", "kind": "column", "confidence": "high", "note": "recurring column"}
+  ]
+}

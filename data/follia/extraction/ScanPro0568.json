@@ -1,0 +1,31 @@
+{
+  "file": "ScanPro0568.pdf",
+  "pages": [
+    {"page": 1, "issue": "1960-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1960"},
+    {"page": 2, "issue": "1960-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1960; NB masthead box on this page reads 'Vol. 68 - No. 6, June, 1960' (apparently not updated), footer used"},
+    {"page": 3, "issue": "1960-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1960"},
+    {"page": 4, "issue": "1960-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1960; masthead 'Vol. 69 - No. 7, Agosto 1960'"},
+    {"page": 5, "issue": "1960-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1960"},
+    {"page": 6, "issue": "1960-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1960"},
+    {"page": 7, "issue": "1960-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1960"},
+    {"page": 8, "issue": "1960-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1960"},
+    {"page": 9, "issue": "1960-08", "footer": "no footer (full-page American Export Lines ad, apparently back cover); issue inferred from preceding page (Agosto 1960)", "issue_inferred": true},
+    {"page": 10, "issue": "1960-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1960"},
+    {"page": 11, "issue": "1960-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1960"},
+    {"page": 12, "issue": "1960-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1960"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1960-05", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La nostra alimentazione", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 1, "issue": "1960-05", "name": "Ario Flamma", "as_printed": "Ario Flamma", "title": "Italiani in America: Frances Roussos", "position": "signature", "kind": "article", "confidence": "medium", "note": "pseudonym; printed in italics at end of piece"},
+    {"page": 1, "issue": "1960-05", "name": "R. P.", "as_printed": "R. P.", "title": "E' morto a Miami il noto proprietario tipografo Alessandro Aliani", "position": "signature", "kind": "article", "confidence": "medium", "note": "initials as printed"},
+    {"page": 3, "issue": "1960-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Contro l'invecchiarsi delle mani", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 3, "issue": "1960-06", "name": "Pietro Greco", "as_printed": "PIETRO GRECO, Brooklyn, 22 maggio 1960", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 3, "issue": "1960-06", "name": "G. Baldassarre", "as_printed": "G. BALDASSARRE, Bridgeport, 3-6-1960", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 4, "issue": "1960-08", "name": "Agostino De Biasi", "as_printed": "di Agostino de Biasi", "title": "Lo spirito della democrazia americana", "position": "byline", "kind": "article", "confidence": "high", "note": "reprint from L'Uomo Qualunque of Rome (editor's note says so); De Biasi d. 1958"},
+    {"page": 5, "issue": "1960-08", "name": "Agostino De Biasi", "as_printed": "AGOSTINO DE BIASI", "title": "Lo spirito della democrazia americana", "position": "signature", "kind": "article", "confidence": "high", "note": "reprint"},
+    {"page": 6, "issue": "1960-08", "name": "Bruno Zirato", "as_printed": "di BRUNO ZIRATO", "title": "Gabriele D'Annunzio", "position": "byline", "kind": "article", "confidence": "high", "note": "lecture text; continued next issue"},
+    {"page": 8, "issue": "1960-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il bagno", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1960-09", "name": "Bruno Zirato", "as_printed": "di BRUNO ZIRATO", "title": "Gabriele D'Annunzio (continuazione)", "position": "byline", "kind": "article", "confidence": "high", "note": "continued from August issue"},
+    {"page": 12, "issue": "1960-09", "name": "Gennaro Capalbo", "as_printed": "GENNARO CAPALBO, Acri (Calabria)", "title": "Mentre l'Italia celebra il centenario del 1860: Come il Padula celebrò l'ingresso dei Garibaldini a Cosenza nell'Agosto 1860", "position": "signature", "kind": "article", "confidence": "high"}
+  ]
+}

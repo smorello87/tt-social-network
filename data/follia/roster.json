@@ -1,0 +1,2814 @@
+{
+  "periodical": "La Follia di New York",
+  "source": "Scans in Dropbox: Lung Block/Follia Non Ciamb/FOLLIA Reti (58 PDFs, 1940-1975)",
+  "method": "Signed pieces (bylines, end signatures, photo credits, letters) read page by page from 90 dpi renders by Claude (Opus pilot, Sonnet batches); issue date per page from footer/header/masthead. Not the TOC.",
+  "people": [
+    {
+      "name": "A. Quintieri",
+      "roles": [
+        "photo"
+      ],
+      "issues": [
+        "1956-07"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "A. Russo",
+      "roles": [
+        "photo"
+      ],
+      "issues": [
+        "1963-06"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Agostino Allori",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1959-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Agostino Trovaioli",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-11",
+        "1961-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Agostino de Biasi",
+      "roles": [
+        "article",
+        "letter"
+      ],
+      "issues": [
+        "1947-10-01",
+        "1948-02-01",
+        "1949-07-15",
+        "1950-05-01",
+        "1957-09",
+        "1960-05",
+        "1960-08",
+        "1960-10",
+        "1960-11",
+        "1960-12",
+        "1964-02",
+        "1967-09"
+      ],
+      "status": "existing",
+      "node_id": 1297
+    },
+    {
+      "name": "Alberto Piraccini",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-08"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Alberto Tarchiani",
+      "roles": [
+        "letter"
+      ],
+      "issues": [],
+      "status": "existing",
+      "node_id": 371
+    },
+    {
+      "name": "Alberto Viviani",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1950-12-30"
+      ],
+      "status": "existing",
+      "node_id": 452
+    },
+    {
+      "name": "Alessandro Dommarco",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Alfredo Della Valle",
+      "roles": [
+        "other"
+      ],
+      "issues": [
+        "1952-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Alfredo Massa",
+      "roles": [
+        "article",
+        "letter"
+      ],
+      "issues": [
+        "1955-06"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Alfredo Sisca",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1959-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Alpinolo Danielli",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-02-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Amedeo Fusaro",
+      "roles": [
+        "article",
+        "other"
+      ],
+      "issues": [
+        "1966-02",
+        "1966-11",
+        "1968-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Angelo Cascià",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-04",
+        "1947-06-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Angelo M. Virga",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29",
+        "1960-03"
+      ],
+      "status": "existing",
+      "node_id": 3133
+    },
+    {
+      "name": "Angelo Marsala",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-06-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Anna Lannutti",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-03-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Annibale Centoni",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1947-01-15",
+        "1947-02-15",
+        "1949-08-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Annunciata Spinelli Dommarco",
+      "roles": [
+        "article",
+        "other",
+        "poem"
+      ],
+      "issues": [
+        "1947-07-01",
+        "1947-08-15",
+        "1958-04",
+        "1958-05",
+        "1959-02",
+        "1962-06",
+        "1963-02",
+        "1963-08",
+        "1963-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Anthony Marino",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1960-02"
+      ],
+      "status": "existing",
+      "node_id": 3002
+    },
+    {
+      "name": "Antonino Crivello",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01",
+        "1947-01-15",
+        "1947-02-01",
+        "1947-02-15",
+        "1947-04-15",
+        "1947-05-01",
+        "1947-06-01",
+        "1947-08-01",
+        "1947-08-15",
+        "1949-06-01",
+        "1949-08-01",
+        "1950-05-01",
+        "1951-05-15"
+      ],
+      "status": "existing",
+      "node_id": 1599
+    },
+    {
+      "name": "Antonio Calitri",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1950-01-01"
+      ],
+      "status": "existing",
+      "node_id": 1471
+    },
+    {
+      "name": "Antonio Fiorentino",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1963-02",
+        "1963-09",
+        "1965-06",
+        "1965-10",
+        "1967-01",
+        "1967-06",
+        "1968-10"
+      ],
+      "status": "existing",
+      "node_id": 3137
+    },
+    {
+      "name": "Antonio Lezza",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1968-08"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Antonio Mordente",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-10-01",
+        "1958-08"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Antonio Negri",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Antonio Pederzoli",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-12"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Ario Flamma",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1960-05",
+        "1961-04"
+      ],
+      "status": "existing",
+      "node_id": 1600
+    },
+    {
+      "name": "Armando Cenerazzo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Armando Mazza",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1950-04-01"
+      ],
+      "status": "existing",
+      "node_id": 1492
+    },
+    {
+      "name": "Arrigo Sorini",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1948-12"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Arturo Cardaropoli",
+      "roles": [
+        "poem"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Arturo Giovannitti",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1940-09-15",
+        "1950-09-01",
+        "1958-09"
+      ],
+      "status": "existing",
+      "node_id": 1383
+    },
+    {
+      "name": "Arturo Tesi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-02-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Attilio Altavilla",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1967-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Attilio D'Ambrogi",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1960-11",
+        "1961-03",
+        "1963-05"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Attilio Dell'Orso",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1968-12"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Bayard Taylor",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Benedetto Ciaceri",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-06"
+      ],
+      "status": "existing",
+      "node_id": 1285
+    },
+    {
+      "name": "Beniamino Aquaro-Deodati",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-12-01",
+        "1953-01"
+      ],
+      "status": "existing",
+      "node_id": 1252
+    },
+    {
+      "name": "Biagio Occhipinti",
+      "roles": [
+        "column"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Bruna J. Bernardara",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-08-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Bruno Scala",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Bruno Zirato",
+      "roles": [
+        "article",
+        "column",
+        "letter"
+      ],
+      "issues": [
+        "1960-08",
+        "1960-09",
+        "1960-10",
+        "1961-11",
+        "1962-02",
+        "1962-06",
+        "1962-09",
+        "1963-03",
+        "1964-04",
+        "1964-09",
+        "1964-11",
+        "1965-01",
+        "1966-06",
+        "1967-05",
+        "1967-06",
+        "1968-03",
+        "1968-05",
+        "1968-06",
+        "1968-08"
+      ],
+      "status": "existing",
+      "node_id": 1863,
+      "note": "Merged here: 'Br. Zir.', 'B. Z.' / '(bz)' (review)."
+    },
+    {
+      "name": "Carla Fiordise",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1960-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Carlo Salvo",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01",
+        "1947-05-15"
+      ],
+      "status": "existing",
+      "node_id": 3258
+    },
+    {
+      "name": "Carmine Manzi",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1959-02",
+        "1960-11",
+        "1963-06"
+      ],
+      "status": "existing",
+      "node_id": 3287
+    },
+    {
+      "name": "Cesare Luscambro",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1966-10"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Cesare Tomasulo",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Charles L. Fasullo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-07-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Ciro Pellechia",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Diletta Lanza",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1966-03",
+        "1966-11"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Domenico Adamo",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1949-08-01",
+        "1951-02-15",
+        "1955-06"
+      ],
+      "status": "existing",
+      "node_id": 3144
+    },
+    {
+      "name": "Domenico Treccase",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1964-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Dora Chiaramonte Tranchino",
+      "roles": [
+        "other",
+        "poem"
+      ],
+      "issues": [
+        "1966-04"
+      ],
+      "status": "existing",
+      "node_id": 3124
+    },
+    {
+      "name": "Duilio Marazzi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "E. De Stefano",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Edoardo Vergara-Caffarelli",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1960-03"
+      ],
+      "status": "existing",
+      "node_id": 1551
+    },
+    {
+      "name": "Edward Corsi",
+      "roles": [
+        "article",
+        "letter"
+      ],
+      "issues": [
+        "1957-05",
+        "1964-12"
+      ],
+      "status": "existing",
+      "node_id": 1400
+    },
+    {
+      "name": "Elia Dominianni",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1968-11"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Emilia Caputo",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1964-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Enrico Caruso",
+      "roles": [
+        "other"
+      ],
+      "issues": [
+        "1947-04-15",
+        "1957-08",
+        "1962-04"
+      ],
+      "status": "existing",
+      "node_id": 457
+    },
+    {
+      "name": "Enzo Feola",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1965-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Eugenio Santonocito",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-04",
+        "1960-02",
+        "1961-02",
+        "1965-02",
+        "1966-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "F. Oliveri",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-06-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Fabio Schettini",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-07-01"
+      ],
+      "status": "existing",
+      "node_id": 3714
+    },
+    {
+      "name": "Fausto Belfiori",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1951-11-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Federico Fabozzi",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-02-01",
+        "1947-04-15",
+        "1963-04",
+        "1964-03",
+        "1965-07",
+        "1967-07"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Ferdinando Papa",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1964-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Filippo Fichera",
+      "roles": [
+        "letter"
+      ],
+      "issues": [],
+      "status": "existing",
+      "node_id": 1596
+    },
+    {
+      "name": "Filomeno Argenio",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-10",
+        "1965-03",
+        "1966-11",
+        "1967-05"
+      ],
+      "status": "new",
+      "note": "Also printed 'F. Argento' (ScanPro0522 p2, Nov 1966): same West Pittston, Pa. subscriber."
+    },
+    {
+      "name": "Francesco Boneschi",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1959-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Francesco Greco",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-03-01",
+        "1947-05-01",
+        "1947-06-01",
+        "1947-07-01",
+        "1947-08-01",
+        "1947-08-15",
+        "1965-02"
+      ],
+      "status": "existing",
+      "node_id": 3157
+    },
+    {
+      "name": "Francesco Restivo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Francesco Saverio Riccio",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-02-15"
+      ],
+      "status": "existing",
+      "node_id": 3022
+    },
+    {
+      "name": "Francesco Sisca",
+      "roles": [
+        "column"
+      ],
+      "issues": [
+        "1959-01",
+        "1959-02",
+        "1959-03",
+        "1959-04",
+        "1959-05",
+        "1959-06",
+        "1959-07",
+        "1959-08",
+        "1959-09",
+        "1959-10",
+        "1959-11",
+        "1959-12",
+        "1960-01",
+        "1960-02",
+        "1960-03",
+        "1960-04",
+        "1960-05",
+        "1960-06",
+        "1960-08",
+        "1960-09",
+        "1960-10",
+        "1960-11",
+        "1960-12",
+        "1961-01",
+        "1961-02",
+        "1961-03",
+        "1961-04",
+        "1961-05",
+        "1961-07",
+        "1961-08",
+        "1961-09",
+        "1961-10",
+        "1961-11",
+        "1961-12",
+        "1962-01",
+        "1962-02",
+        "1962-03",
+        "1962-04",
+        "1962-05",
+        "1962-06",
+        "1962-07",
+        "1962-09",
+        "1962-10",
+        "1962-11",
+        "1962-12",
+        "1963-01",
+        "1963-02",
+        "1963-03",
+        "1963-04",
+        "1963-05",
+        "1963-06",
+        "1963-07",
+        "1963-08",
+        "1963-09",
+        "1963-10",
+        "1963-11",
+        "1964-01",
+        "1964-02",
+        "1964-04",
+        "1964-05",
+        "1964-06",
+        "1964-07",
+        "1964-08",
+        "1964-09",
+        "1964-10",
+        "1964-11",
+        "1965-02",
+        "1965-03",
+        "1965-04",
+        "1965-05",
+        "1965-06",
+        "1965-07",
+        "1965-08",
+        "1965-09",
+        "1965-10",
+        "1965-11",
+        "1965-12",
+        "1966-01",
+        "1966-02",
+        "1966-04",
+        "1966-05",
+        "1966-06",
+        "1966-08",
+        "1966-09",
+        "1966-10",
+        "1966-11",
+        "1967-01",
+        "1967-04",
+        "1967-05",
+        "1967-06",
+        "1967-07",
+        "1967-08",
+        "1967-09",
+        "1967-10",
+        "1967-11",
+        "1967-12",
+        "1968-01"
+      ],
+      "status": "existing",
+      "node_id": 1501,
+      "note": "Signs 'Il consiglio del medico' as 'Dr. Francis Sisca'; DB node already linked to La Follia."
+    },
+    {
+      "name": "Francis Norelli",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1949-08-01",
+        "1952-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Franco Maletta",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1968-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Franco Monaco",
+      "roles": [
+        "column"
+      ],
+      "issues": [
+        "1968-09"
+      ],
+      "status": "existing",
+      "node_id": 3335
+    },
+    {
+      "name": "Frank Capalbo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-08-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank La Raia",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1965-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank M. Giunta",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank M. Zottoli",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-10-20"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank S. Reale",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1965-02",
+        "1967-05"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank Spadola",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1955-01",
+        "1957-10",
+        "1960-05"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank Taccino",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1963-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Frank Tortorelli",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "G Baldassare",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-04-15",
+        "1960-06"
+      ],
+      "status": "existing",
+      "node_id": 3761
+    },
+    {
+      "name": "G. Mordente",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "G. Paolino De' Sardi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Gabriele Villa",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1956-07"
+      ],
+      "status": "existing",
+      "node_id": 1263
+    },
+    {
+      "name": "Gaetano Lacalamita",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1964-11",
+        "1965-10",
+        "1966-10"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Gaetano Ricciardi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1967-10"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Gennaro Capalbo",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1957-03",
+        "1959-02",
+        "1959-03",
+        "1959-09",
+        "1960-09",
+        "1963-06",
+        "1963-08",
+        "1964-02"
+      ],
+      "status": "existing",
+      "node_id": 3782
+    },
+    {
+      "name": "Germoglino Saggio",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-03-01",
+        "1947-04-15",
+        "1947-07-01",
+        "1948-08",
+        "1949-08-01",
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giacomo Grillo",
+      "roles": [
+        "article",
+        "letter"
+      ],
+      "issues": [
+        "1961-07",
+        "1965-06",
+        "1965-07",
+        "1965-08",
+        "1965-10",
+        "1965-12",
+        "1966-03",
+        "1966-09",
+        "1967-01",
+        "1967-02",
+        "1967-10",
+        "1968-02",
+        "1968-09",
+        "1968-11"
+      ],
+      "status": "existing",
+      "node_id": 3491
+    },
+    {
+      "name": "Giorgio Pillon",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Giovanni Artieri",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Giovanni Bozzacco",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giovanni Favoino di Giura",
+      "roles": [
+        "column"
+      ],
+      "issues": [
+        "1961-12",
+        "1962-03"
+      ],
+      "status": "existing",
+      "node_id": 2141,
+      "note": "Printed 'Favoino di Giura' in La Follia; DB node 2141 (review; it.wikipedia.org/wiki/Giovanni_Favoino_di_Giura)."
+    },
+    {
+      "name": "Giovanni Girgenti",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-04-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giovanni Solone",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1955-06",
+        "1961-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giulio de Moro",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1963-08",
+        "1963-09",
+        "1964-02",
+        "1964-04",
+        "1964-05",
+        "1965-02",
+        "1965-04",
+        "1965-12",
+        "1966-03",
+        "1966-06",
+        "1967-06",
+        "1967-09",
+        "1968-02",
+        "1968-10",
+        "1968-12"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giuseppe Chiarella",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01",
+        "1947-06-01",
+        "1947-08-15"
+      ],
+      "status": "existing",
+      "node_id": 3506
+    },
+    {
+      "name": "Giuseppe Civitarese",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1967-05",
+        "1968-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giuseppe D. Procopio",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "existing",
+      "node_id": 3425
+    },
+    {
+      "name": "Giuseppe De Rizzo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1968-08"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giuseppe Incalicchio",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1940-10-20",
+        "1947-01-15",
+        "1947-02-15",
+        "1947-07-01",
+        "1964-09",
+        "1965-06"
+      ],
+      "status": "existing",
+      "node_id": 3080
+    },
+    {
+      "name": "Giuseppe Langone",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-05-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giuseppe Luongo",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1947-02-01",
+        "1947-03-01",
+        "1947-04-15",
+        "1949-08-01",
+        "1951-02-15",
+        "1951-11-01",
+        "1963-09",
+        "1965-02"
+      ],
+      "status": "existing",
+      "node_id": 3246
+    },
+    {
+      "name": "Giuseppe Mirabella",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1963-08"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giuseppe Prezzolini",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1956-11"
+      ],
+      "status": "existing",
+      "node_id": 1
+    },
+    {
+      "name": "Giuseppe Rosa",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01",
+        "1947-04-15",
+        "1949-08-01"
+      ],
+      "status": "existing",
+      "node_id": 2177
+    },
+    {
+      "name": "Giuseppe Rovito",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1965-03"
+      ],
+      "status": "existing",
+      "node_id": 3846
+    },
+    {
+      "name": "Giuseppe Tirinnanzi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1959-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giuseppe Zuzolo",
+      "roles": [
+        "article",
+        "column",
+        "letter",
+        "other",
+        "poem"
+      ],
+      "issues": [
+        "1966-08",
+        "1966-09",
+        "1966-10",
+        "1966-11",
+        "1967-02",
+        "1967-06",
+        "1967-08",
+        "1967-11",
+        "1967-12",
+        "1968-05"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Giustino Ausanio",
+      "roles": [
+        "poem"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Guerino D'Alessandro",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1964-04"
+      ],
+      "status": "existing",
+      "node_id": 3084
+    },
+    {
+      "name": "Guglielmo Ricciardi",
+      "roles": [
+        "article",
+        "column"
+      ],
+      "issues": [
+        "1947-05-15",
+        "1949-06-01"
+      ],
+      "status": "existing",
+      "node_id": 1592
+    },
+    {
+      "name": "Guido Albanese",
+      "roles": [
+        "other"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Isidoro Filocco",
+      "roles": [
+        "poem"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Isolina Gemignani",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1965-03",
+        "1966-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Italo Limbara",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-02-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Italo Stanco",
+      "roles": [
+        "article",
+        "column",
+        "other"
+      ],
+      "issues": [
+        "1940-09-15",
+        "1949-06-01",
+        "1949-07-15",
+        "1950-04-01",
+        "1950-04-15",
+        "1950-05-01",
+        "1950-09-01",
+        "1951-02-15",
+        "1951-11-01",
+        "1952-01-15",
+        "1952-07-01",
+        "1953-01-01"
+      ],
+      "status": "existing",
+      "node_id": 1238
+    },
+    {
+      "name": "James Visceglia",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-09"
+      ],
+      "status": "existing",
+      "node_id": 3877
+    },
+    {
+      "name": "Jerome La Scala",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1950-01-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "John Dalbonia",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1968-11"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "John J. Alifano",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-04",
+        "1949-10-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "John Mocerino",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1965-02",
+        "1966-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Joseph A. Tigani",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Joseph E. Conte",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-04",
+        "1961-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Joseph Gioe",
+      "roles": [
+        "other"
+      ],
+      "issues": [
+        "1940-09-29",
+        "1954-02-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Joseph Lippe",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1968-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Lea Ferranti",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1958-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Lee Lemeni",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1961-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Lee Posner",
+      "roles": [
+        "column",
+        "photo"
+      ],
+      "issues": [
+        "1963-08",
+        "1963-09",
+        "1967-09",
+        "1968-06"
+      ],
+      "status": "existing",
+      "node_id": 1151
+    },
+    {
+      "name": "Leo Rugens",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1966-03"
+      ],
+      "status": "existing",
+      "node_id": 4278
+    },
+    {
+      "name": "Leonardo Dia",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-02-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Lilia Lodolini",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1960-05"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Lucio Seminara",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-06-01",
+        "1959-10",
+        "1959-11",
+        "1966-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Luigi Antonini",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1947-05-15"
+      ],
+      "status": "existing",
+      "node_id": 1264
+    },
+    {
+      "name": "Luigi Dommarco",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-01",
+        "1947-04-15",
+        "1949-08-01",
+        "1951-05-15",
+        "1963-01",
+        "1963-02",
+        "1963-11",
+        "1965-02"
+      ],
+      "status": "existing",
+      "node_id": 1590
+    },
+    {
+      "name": "Luigi Maida",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1960-05"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Luigi Sola",
+      "roles": [
+        "article",
+        "other"
+      ],
+      "issues": [
+        "1961-11",
+        "1961-12",
+        "1962-02",
+        "1962-12",
+        "1963-08",
+        "1963-09",
+        "1968-07",
+        "1968-09",
+        "1968-11"
+      ],
+      "status": "existing",
+      "node_id": 3446
+    },
+    {
+      "name": "Manfredi Fasulo",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1949-04-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Manfredi Greco",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-05-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Marco Marchesan",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1965-07"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Maria Iannella",
+      "roles": [
+        "article",
+        "column"
+      ],
+      "issues": [
+        "1967-03",
+        "1967-04",
+        "1967-05",
+        "1967-06",
+        "1967-07",
+        "1967-12",
+        "1968-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Marino Mancini",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1967-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Marsio Prato",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Mary Ferraiuolo",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1963-02",
+        "1965-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Mary Iacovella",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1957-08",
+        "1957-11",
+        "1959-06",
+        "1961-03",
+        "1963-08"
+      ],
+      "status": "existing",
+      "node_id": 2641
+    },
+    {
+      "name": "Mary Liquori Vecchione",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1960-03",
+        "1964-04",
+        "1964-07",
+        "1965-02",
+        "1965-06",
+        "1967-01"
+      ],
+      "status": "existing",
+      "node_id": 3191
+    },
+    {
+      "name": "Marziale Sisca",
+      "roles": [
+        "article",
+        "other"
+      ],
+      "issues": [
+        "1958-09",
+        "1961-10",
+        "1961-12",
+        "1966-01",
+        "1967-05"
+      ],
+      "status": "existing",
+      "node_id": 1589
+    },
+    {
+      "name": "Matteo Teresi",
+      "roles": [
+        "article",
+        "letter",
+        "other",
+        "poem"
+      ],
+      "issues": [
+        "1962-09",
+        "1963-05",
+        "1963-08",
+        "1963-10",
+        "1964-01",
+        "1964-02",
+        "1964-04",
+        "1964-05",
+        "1964-06",
+        "1965-08",
+        "1966-07",
+        "1967-05",
+        "1967-06",
+        "1967-10",
+        "1967-11",
+        "1968-02",
+        "1968-07",
+        "1968-08",
+        "1968-10"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Michael Sisca",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1967-05",
+        "1968-08"
+      ],
+      "status": "new",
+      "note": "Yes just make all Michael Sisca"
+    },
+    {
+      "name": "Michele Pane",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "existing",
+      "node_id": 3044
+    },
+    {
+      "name": "Modestino Sessa",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-04-15",
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Nando Rossi",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "existing",
+      "node_id": 1026,
+      "note": "Printed 'F. Nando Rossi' (1949 p1, Neapolitan sketch); 'Nando' = Ferdinando. DB node 1026 (review)."
+    },
+    {
+      "name": "Nanni Andriolli",
+      "roles": [
+        "column"
+      ],
+      "issues": [
+        "1966-08"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Nelly Chiaramonte",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "existing",
+      "node_id": 1161
+    },
+    {
+      "name": "Nichola Testi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-08-01"
+      ],
+      "status": "existing",
+      "node_id": 3195
+    },
+    {
+      "name": "Nicholas Intrieri",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-10-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Nicola Lanza",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Nino Bellassai",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1963-06",
+        "1965-06",
+        "1965-10"
+      ],
+      "status": "existing",
+      "node_id": 3100
+    },
+    {
+      "name": "Nino Caradonna",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01",
+        "1947-04"
+      ],
+      "status": "existing",
+      "node_id": 3000
+    },
+    {
+      "name": "Olga Malchiodi Cavaliere",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Onorio Ruotolo",
+      "roles": [
+        "article",
+        "other",
+        "poem"
+      ],
+      "issues": [
+        "1949-12-15",
+        "1950-09-01",
+        "1958-09",
+        "1964-12"
+      ],
+      "status": "existing",
+      "node_id": 1351
+    },
+    {
+      "name": "Oscar Mazzitelli",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "P. Conti Tarantino",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-02-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Paola Adele Morsellino",
+      "roles": [
+        "column"
+      ],
+      "issues": [
+        "1968-07",
+        "1968-08",
+        "1968-09"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Pasquale Forte",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-04",
+        "1960-02",
+        "1961-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Pasquale Ruocco",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1962-04",
+        "1967-02"
+      ],
+      "status": "existing",
+      "node_id": 1312
+    },
+    {
+      "name": "Pasquale Spataro",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-02-15"
+      ],
+      "status": "existing",
+      "node_id": 3107
+    },
+    {
+      "name": "Pasquale de Biasi",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1953-11-01"
+      ],
+      "status": "existing",
+      "node_id": 1476
+    },
+    {
+      "name": "Philip Bertolotta",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1965-10",
+        "1966-11"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Pier Petrucelli della Gattina",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1961-08",
+        "1961-10"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Pietro Fera",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1959-07"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Pietro Greco",
+      "roles": [
+        "article",
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-05-01",
+        "1955-06",
+        "1959-03",
+        "1960-06",
+        "1961-09"
+      ],
+      "status": "existing",
+      "node_id": 4045
+    },
+    {
+      "name": "Pietro Pasquali",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1959-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Plinio Bulleri",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29",
+        "1947-03-15"
+      ],
+      "status": "existing",
+      "node_id": 4050
+    },
+    {
+      "name": "Publio Rinelli",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-08-01"
+      ],
+      "status": "existing",
+      "node_id": 4052
+    },
+    {
+      "name": "Raimondo Manzini",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Riccardo Cordiferro",
+      "roles": [
+        "article",
+        "column",
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29",
+        "1947-08",
+        "1948-08",
+        "1949-08-01",
+        "1950-01-15",
+        "1950-04-01",
+        "1951-02-15",
+        "1951-05",
+        "1951-06-15",
+        "1951-11-01",
+        "1952-05-15",
+        "1953-04-01",
+        "1953-12-15",
+        "1954-02-15",
+        "1954-10-01",
+        "1955-01",
+        "1960-03",
+        "1961-12",
+        "1962-06",
+        "1963-08",
+        "1965-01",
+        "1965-04",
+        "1965-08",
+        "1967-02"
+      ],
+      "status": "existing",
+      "node_id": 1588,
+      "note": "Pen name of Alessandro Sisca (d. 1940). Review comment: 'Alessandro Sisca and Riccardo Cordiferro should be a single entry' -> DB node 1594 (Alessandro Sisca) merged into 1588 on 2026-10-25. Most appearances are reprints."
+    },
+    {
+      "name": "Richard Cassar",
+      "roles": [
+        "photo"
+      ],
+      "issues": [
+        "1965-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Rodolfo Pucelli",
+      "roles": [
+        "article",
+        "other",
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01",
+        "1947-01-15",
+        "1947-02-15",
+        "1947-05-01",
+        "1947-07-01",
+        "1947-08-01",
+        "1947-08-15",
+        "1957-08",
+        "1957-10",
+        "1959-01",
+        "1960-11",
+        "1961-03",
+        "1961-10",
+        "1961-11",
+        "1962-10",
+        "1965-08",
+        "1966-11",
+        "1967-07",
+        "1967-10",
+        "1967-12"
+      ],
+      "status": "existing",
+      "node_id": 1595
+    },
+    {
+      "name": "Rosario Torregrossa",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-10-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Rudolph Vecoli",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1968-09"
+      ],
+      "status": "existing",
+      "node_id": 4097,
+      "note": "1968 letter (ScanPro0530 p1)."
+    },
+    {
+      "name": "S. D'Agostini",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1965-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "S. Politi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Salvatore Benanti",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-15"
+      ],
+      "status": "existing",
+      "node_id": 2996
+    },
+    {
+      "name": "Salvatore Di Leo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1963-01",
+        "1963-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Salvatore Moncada",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Salvatore di Giacomo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1949-08-01",
+        "1961-12",
+        "1963-02",
+        "1964-02"
+      ],
+      "status": "existing",
+      "node_id": 1479
+    },
+    {
+      "name": "Samuel J. Renda",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-05-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Scipio di Dario",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-03-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Sebastiano Trucco",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-05",
+        "1961-01",
+        "1962-07",
+        "1965-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Severina Magni",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-04",
+        "1947-04-15",
+        "1947-08-01",
+        "1947-08-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Silvio Coscia",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1963-05",
+        "1964-11"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Silvio Serafini",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Sinibaldo Rovito",
+      "roles": [
+        "article",
+        "poem"
+      ],
+      "issues": [
+        "1947-01-01",
+        "1947-01-15",
+        "1947-02-01",
+        "1947-03-15",
+        "1954-10-01",
+        "1965-06",
+        "1966-10"
+      ],
+      "status": "existing",
+      "node_id": 3217
+    },
+    {
+      "name": "Soave Marotta",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1962-09"
+      ],
+      "status": "existing",
+      "node_id": 4127
+    },
+    {
+      "name": "Stephen Lo Iacono",
+      "roles": [
+        "article",
+        "letter"
+      ],
+      "issues": [
+        "1963-01",
+        "1968-11",
+        "1975-01"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Tebi Biondi",
+      "roles": [
+        "article",
+        "letter"
+      ],
+      "issues": [
+        "1966-01",
+        "1967-06",
+        "1968-03"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Thomas Bailey Aldrich",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new",
+      "note": "Printed 'I. B. Aldrich' / 'Adrich' over Crivello translations; original author."
+    },
+    {
+      "name": "Tilde Longo",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1964-01",
+        "1964-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Tommaso Dell'Erba",
+      "roles": [
+        "article"
+      ],
+      "issues": [],
+      "status": "new"
+    },
+    {
+      "name": "Trilussa",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01",
+        "1947-04-15",
+        "1949-08-01",
+        "1951-02-15",
+        "1951-05-15",
+        "1963-08",
+        "1963-09",
+        "1964-04",
+        "1964-08",
+        "1965-02",
+        "1965-06",
+        "1965-09",
+        "1967-06"
+      ],
+      "status": "existing",
+      "node_id": 1219
+    },
+    {
+      "name": "Ugo Piazza",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1964-07"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Umberto Liberatore",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "existing",
+      "node_id": 3114
+    },
+    {
+      "name": "V. A. Castellucci",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-08-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "V. E. Cinquegrana",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Vanni Buscemi Montana",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1954-10-01",
+        "1966-01",
+        "1966-04",
+        "1968-06",
+        "1968-09"
+      ],
+      "status": "existing",
+      "node_id": 1265
+    },
+    {
+      "name": "Vincent De Lalla",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1965-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Vincenzo Bellezza",
+      "roles": [
+        "other"
+      ],
+      "issues": [
+        "1964-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Vincenzo Corbacio",
+      "roles": [
+        "letter"
+      ],
+      "issues": [
+        "1959-04",
+        "1961-04"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Vincenzo D'Ambrosio",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1961-11",
+        "1963-10"
+      ],
+      "status": "existing",
+      "node_id": 3117
+    },
+    {
+      "name": "Vincenzo Foti",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1947-07-01",
+        "1955-06",
+        "1961-01",
+        "1965-02",
+        "1966-03",
+        "1967-06"
+      ],
+      "status": "existing",
+      "node_id": 3247
+    },
+    {
+      "name": "Vincenzo Manente",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1940-10-20",
+        "1959-04",
+        "1960-02",
+        "1963-02",
+        "1963-08"
+      ],
+      "status": "existing",
+      "node_id": 3505
+    },
+    {
+      "name": "Vincenzo Vacirca",
+      "roles": [
+        "article"
+      ],
+      "issues": [
+        "1940-09-29"
+      ],
+      "status": "existing",
+      "node_id": 1676
+    },
+    {
+      "name": "Vito De Bartolo",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-04-15",
+        "1949-08-01",
+        "1951-05-15"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Vittoria Di Giulio",
+      "roles": [
+        "letter",
+        "poem"
+      ],
+      "issues": [
+        "1960-02",
+        "1965-02"
+      ],
+      "status": "new"
+    },
+    {
+      "name": "Vittorio Nardi",
+      "roles": [
+        "poem"
+      ],
+      "issues": [
+        "1947-01-15",
+        "1947-04",
+        "1947-06-01",
+        "1947-08-01",
+        "1949-08-01"
+      ],
+      "status": "existing",
+      "node_id": 4177
+    }
+  ]
+}

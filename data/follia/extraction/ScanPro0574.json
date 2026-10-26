@@ -1,0 +1,30 @@
+{
+  "file": "ScanPro0574.pdf",
+  "pages": [
+    {"page": 1, "issue": "1962-04", "issue_inferred": true, "footer": "no footer (full-page Buitoni ad, back cover with NY Public Library mailing label); inferred from adjacent pages (precedes April 1962 cover and pages) — could be back cover of a neighbouring issue"},
+    {"page": 2, "issue": "1962-04", "issue_inferred": true, "footer": "no footer (front cover: Caruso sketch of Geraldine Farrar, 'vedi articolo a pagina 5'); library date stamp 'APR 26 19..'; inferred from stamp and following April 1962 pages"},
+    {"page": 3, "issue": "1962-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1962"},
+    {"page": 4, "issue": "1962-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1962"},
+    {"page": 5, "issue": "1962-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1962"},
+    {"page": 6, "issue": "1962-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1962"},
+    {"page": 7, "issue": "1962-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1962"},
+    {"page": 8, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"},
+    {"page": 9, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"},
+    {"page": 10, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"},
+    {"page": 11, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"},
+    {"page": 12, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"},
+    {"page": 13, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"},
+    {"page": 14, "issue": "1962-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1962"}
+  ],
+  "signatures": [
+    {"page": 2, "issue": "1962-04", "name": "Enrico Caruso", "as_printed": "Schizzo di Enrico Caruso (drawing signed 'Enrico Caruso N.Y. 1920')", "title": "Cover: Geraldine Farrar nell'opera di Leoncavallo \"Zazà\"", "position": "signature", "kind": "other", "confidence": "high", "note": "cover caricature/sketch, reprint (Caruso d. 1921); signature on drawing hard to read, credit line printed beside it"},
+    {"page": 3, "issue": "1962-04", "name": "Pasquale Ruocco", "as_printed": "PASQUALE RUOCCO", "title": "Aprile", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 3, "issue": "1962-04", "name": "Vincent A. Vitolo", "as_printed": "VINCENT A. VITOLO, 1274 - 55th Street, Brooklyn, 19, N. Y.", "title": "Messaggio a tutti i Napoletani sparsi negli Stati Uniti d'America", "position": "signature", "kind": "letter", "confidence": "high", "note": "open letter addressed 'Cara Follia', defending Achille Lauro"},
+    {"page": 4, "issue": "1962-04", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Igiene per il bagno", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1962-05", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Le vitamine debbono essere prescritte dal medico", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1962-06", "name": "Annunciata Spinelli Dommarco", "as_printed": "ANNUNCIATA SPINELLI DOMMARCO", "title": "La fontanella del mistero", "position": "signature", "kind": "article", "confidence": "high", "note": "lyrical prose piece"},
+    {"page": 10, "issue": "1962-06", "name": "Bruno Zirato", "as_printed": "di Bruno Zirato", "title": "Le bellezze naturali dell'America", "position": "byline", "kind": "article", "confidence": "high", "note": "article continues on pp. 11-13 of PDF (magazine pp. 12-14)"},
+    {"page": 13, "issue": "1962-06", "name": "Riccardo Cordiferro", "as_printed": "RICCARDO CORDIFERRO", "title": "La bambola", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint (Cordiferro d. 1940)"},
+    {"page": 14, "issue": "1962-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'igiene delle estremità", "position": "byline", "kind": "column", "confidence": "high"}
+  ]
+}

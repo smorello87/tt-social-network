@@ -79,6 +79,23 @@ python3 import_contributors.py iam
 - `build_roster.py` flags fuzzy candidates (same surname + first initial, or Levenshtein ≥ 0.85, e.g. "John Ciardi" ~ "John Anthony Ciardi"). Resolve each with `match` (existing node id) or `new`; don't merge uncertain ones.
 - `roster.json` keeps each person's roles and issues; the DB schema does not store them (deliberately — no roles in the DB for now).
 
+### Import signed pieces read page by page (no TOC) — e.g. La Follia
+For scans where contributors are found from bylines/end signatures on the pages themselves.
+```bash
+cd data/editor
+# 1. Extraction: Claude subagents read each page image -> data/<slug>/extraction/<pdf stem>.json
+#    (pages: issue per page from footer/header/masthead; signatures: name, as_printed, title, kind, confidence)
+# 2. Merge + apply review.json -> data/<slug>/contributors.json and roster.json
+python3 build_signatures.py follia
+# 3. Review in the browser (saves to review.json, rebuilds on every click)
+python3 signature_reviewer.py follia        # http://localhost:5003
+# 4. Import with the shared importer
+python3 import_contributors.py follia --dry-run && python3 import_contributors.py follia
+```
+- Extraction: Sonnet subagents match Opus on this task; Haiku credits article subjects as authors. Run few image-reading agents at once (too many trigger "[media removed: request limit]"), and never let an agent write a file from OCR or guesses. Cross-check names against the PDF text layer (`pdftotext`). Spellings in an example file get copied, so verify the example against the scan first.
+- Inclusion: photo credits and composers count; letter writers only if in 2+ issues or already in the DB; initials-only names with no DB match and unidentifiable pen names are excluded (kept in the data via `exclude` / `excluded_reason`).
+- `review.json` keys are documented in the `build_signatures.py` docstring (`aliases`, `skip`, `drop`, `new`, `exclude`, `notes`, `open_questions`).
+
 ### Scripted data fixes (merge / rename / split nodes)
 - Use `database.py` helpers from `data/editor/`: `backup_db()` first, then `merge_nodes(primary, secondary)`, `update_node(id, name=...)`, `create_node`, `create_edge`, `update_edge` — they keep `name_normalized`, canonical edge direction, and `needs_review` in sync. Avoid raw SQL writes.
 - After a fix that touches an imported periodical, record it in that periodical's `data/<slug>/review.json` (`match`/`aliases`) so re-running `build_roster.py` doesn't undo it.
@@ -93,6 +110,7 @@ Legacy one-off importers (`import_carroccio_contributors.py`, `import_atlantica_
 | Visualization (standalone) | 8080 | `cd visualization && python3 serve.py` |
 | Data Editor | 5001 | `cd data/editor && python3 app.py` |
 | Omeka Staging | 5002 | `cd data/editor && python3 omeka_editor.py` |
+| Signature Reviewer | 5003 | `cd data/editor && python3 signature_reviewer.py follia` (stdlib only) |
 
 ## Architecture
 
@@ -221,6 +239,7 @@ Institution subtypes: `periodical`, `publisher`, `university`, `organization`, `
 │   ├── contributors-and-board/        # Divagando TOC data (1945-1957)
 │   ├── csv-to-json.py                 # CSV→JSON converter (legacy)
 │   ├── iam/                           # I-AM (1976-77): extraction/, review.json, roster.json
+│   ├── follia/                        # La Follia di New York (1940-75): extraction/, review.json, contributors.json, roster.json
 │   ├── editor/                        # Flask editor + SQLite DB
 │   └── cytoscape/                     # Archived (outdated)
 ├── visualization/
@@ -296,14 +315,12 @@ Production site: `reti.stefanomorello.com`
 - Only deploy `visualization/index.html` and `visualization/graph.json`
 - Always regenerate `graph.json` from the database before deploying
 - `.env` is free-form notes, not `KEY=value`; the key passphrase is on the `passcode: ` line. Never `cat`/`sed`-print `.env` — read the passphrase straight into a variable.
-- Deploy command (requires `expect`):
+- Deploy command (passphrase fed via `SSH_ASKPASS` from a throwaway helper; the old `expect` version hung at the passphrase prompt and exited 0 without uploading):
   ```bash
-  export PASS="$(sed -n 's/^passcode: //p' .env)" && expect -c '
-  set timeout 120
-  spawn scp -o IdentitiesOnly=yes -i id_rsa visualization/index.html visualization/graph.json stefanom@stefanomorello.com:/home/stefanom/reti.stefanomorello.com/
-  expect { "passphrase" { send "$env(PASS)\r"; exp_continue } eof }
-  '
+  export DEPLOY_PASS="$(sed -n 's/^passcode: //p' .env)" && A="$(mktemp)" && printf '#!/bin/sh\nprintf "%%s\\n" "$DEPLOY_PASS"\n' > "$A" && chmod 700 "$A" && \
+  SSH_ASKPASS="$A" SSH_ASKPASS_REQUIRE=force DISPLAY=:0 scp -o IdentitiesOnly=yes -i id_rsa visualization/index.html visualization/graph.json stefanom@stefanomorello.com:/home/stefanom/reti.stefanomorello.com/ </dev/null; echo "scp exit: $?"; rm -f "$A"
   ```
+- Always run the verify step below after deploying (check the counts changed); don't trust the upload output alone. If the server closes the connection right away, wait a minute and retry (BitNinja rate-limits repeated attempts).
 - Verify live: `curl -s https://reti.stefanomorello.com/graph.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d['nodes']), len(d['links']))"`
 
 ## Citation

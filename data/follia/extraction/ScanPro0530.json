@@ -1,0 +1,224 @@
+{
+  "file": "ScanPro0530.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1968-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1968"
+    },
+    {
+      "page": 2,
+      "issue": "1968-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1968"
+    },
+    {
+      "page": 3,
+      "issue": "1968-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1968"
+    },
+    {
+      "page": 4,
+      "issue": "1968-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1968"
+    },
+    {
+      "page": 5,
+      "issue": "1968-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1968"
+    },
+    {
+      "page": 6,
+      "issue": "1968-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1968"
+    },
+    {
+      "page": 7,
+      "issue": "1968-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1968"
+    },
+    {
+      "page": 8,
+      "issue": "1968-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1968"
+    },
+    {
+      "page": 9,
+      "issue": "1968-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1968"
+    },
+    {
+      "page": 10,
+      "issue": "1968-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1968"
+    },
+    {
+      "page": 11,
+      "issue": "1968-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1968"
+    },
+    {
+      "page": 12,
+      "issue": "1968-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1968"
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1968-09",
+      "name": "Luigi Sola",
+      "as_printed": "Breve cenno critico di LUIGI SOLA",
+      "title": "Libri ricevuti: \"I giorni del fuoco\" di Mario Guaraldi",
+      "position": "byline",
+      "kind": "other",
+      "confidence": "high",
+      "note": "book note; Sola is redattore capo"
+    },
+    {
+      "page": 1,
+      "issue": "1968-09",
+      "name": "Amedeo Fusaro",
+      "as_printed": "Amedeo Fusaro",
+      "title": "\"Aneliti e sospiri\" di Sinibaldo Rovito",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "high",
+      "note": "book review"
+    },
+    {
+      "page": 1,
+      "issue": "1968-09",
+      "name": "Giuseppe Civitarese",
+      "as_printed": "Giuseppe Civitarese, Sault St. Marie, Ontario (Canadà)",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 1,
+      "issue": "1968-09",
+      "name": "Rudolph J. Vecoli",
+      "as_printed": "Rudolph J. Vecoli, Professor of History, Director, Center for Immigration Studies",
+      "title": "Un appello ai lettori de \"La Follia di New York\"",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high",
+      "note": "published appeal/letter from University of Minnesota historian (public figure), not reader mail"
+    },
+    {
+      "page": 2,
+      "issue": "1968-09",
+      "name": "Giacomo Grillo",
+      "as_printed": "di GIACOMO GRILLO",
+      "title": "E' la nostra una generazione tradita? \"Yippies\", \"Beatniks\", \"Teddy-Boys\" Gioventù bruciata!",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 3,
+      "issue": "1968-09",
+      "name": "Giacomo Grillo",
+      "as_printed": "GIACOMO GRILLO, Boston, settembre 1968",
+      "title": "E' la nostra una generazione tradita? (continuation)",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "continuation; byline on previous page"
+    },
+    {
+      "page": 3,
+      "issue": "1968-09",
+      "name": "Franco Monaco",
+      "as_printed": "di FRANCO MONACO",
+      "title": "Mangiare all'italiana: In provincia di Catanzaro: Morseddu, Quadaro e Cirò",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 5,
+      "issue": "1968-09",
+      "name": "Vanni B. Montana",
+      "as_printed": "di VANNI B. MONTANA",
+      "title": "Conoscere l'Italia",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 6,
+      "issue": "1968-09",
+      "name": "Paola Adele Morsellino",
+      "as_printed": "Paola Adele Morsellino",
+      "title": "La Rubrica della Moda: Parigi",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 6,
+      "issue": "1968-09",
+      "name": "Franco Maletta",
+      "as_printed": "Franco Maletta",
+      "title": "I capelutti (dialetto calabrese)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 6,
+      "issue": "1968-09",
+      "name": "Samarat",
+      "as_printed": "Samarat",
+      "title": "Naso lungo",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 9,
+      "issue": "1968-10",
+      "name": "G. B.",
+      "as_printed": "g.b.",
+      "title": "A proposito di un problema che sembra non voglia risolversi",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "medium",
+      "note": "initials as printed (lowercase); Rome dateline; identity unknown"
+    },
+    {
+      "page": 9,
+      "issue": "1968-10",
+      "name": "Giulio de Moro",
+      "as_printed": "di GIULIO de MORO",
+      "title": "Il ritorno",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "personal note on his return to the magazine after an absence"
+    },
+    {
+      "page": 12,
+      "issue": "1968-10",
+      "name": "Matteo Teresi",
+      "as_printed": "Matteo Teresi",
+      "title": "Il canto dei figli d'Italia",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high",
+      "note": "signs both the introductory note and the poem; verse text of a Canto originally set to music by Maestro Basilio Graziano"
+    },
+    {
+      "page": 12,
+      "issue": "1968-10",
+      "name": "Antonio Fiorentino",
+      "as_printed": "Antonio Fiorentino",
+      "title": "Un accordo in fa (dialetto calabrese)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    }
+  ]
+}

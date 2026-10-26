@@ -1,0 +1,14 @@
+{
+  "file": "Moda.pdf",
+  "pages": [
+    {"page": 1, "issue": "1947-07-01", "footer": "masthead box: \"Vol 55 — No. 13 — July 1, 1947\" (semi-monthly; page 2 of the issue, 'Per le nostre Signore' column)"},
+    {"page": 2, "issue": "1950-02-01", "footer": "page header: \"1 Febbraio 1950\""},
+    {"page": 3, "issue": null, "footer": "'Pagina 2' header cut off at right, no date; masthead box is the 1947-style one (re-entered Sept 5, 1942, Box 47 Church St. Annex) so probably 1947-1949, issue not determinable"},
+    {"page": 4, "issue": null, "footer": "no date; masthead says 'Re-entered ... July 13th, 1950' (so issue is after mid-1950) and text is about summer heat ('Note di stagione'); month/day not determinable"},
+    {"page": 5, "issue": null, "footer": "no date; masthead 'Re-entered ... July 13th, 1950' (so 1950 or later); Edgewood Farm ad says book 'prima del 30 Maggio', suggesting spring; year/day not determinable"},
+    {"page": 6, "issue": null, "footer": "no date; masthead 'Re-entered ... July 13th, 1950' (so 1950 or later); summer-fashion content ('La moda estiva'); not determinable"},
+    {"page": 7, "issue": null, "footer": "no date; masthead 'Re-entered ... July 13th, 1950'; article says Quo Vadis screenings at the Astor Theatre begin 'l'8 Novembre' (likely the 1951 premiere), so probably the late Oct./early Nov. 1951 issue, but not certain"}
+  ],
+  "signatures": [],
+  "notes": "All seven pages are fragments of the unsigned women's column 'Per le nostre Signore' (Moda, Per la bellezza delle labbra, Note di estetica, Il Portamento, Seguendo la moda, etc.); no byline or signature appears on any page. The partial neighbouring columns at the right edge are cut off and illegible; one on p. 5 ('Come e perché sorse la Società di M. S. C...') is visible only as a heading and its signature, if any, is not on the page."
+}

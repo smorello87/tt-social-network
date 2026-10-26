@@ -1,0 +1,433 @@
+{
+ "file": "1949.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": null,
+   "footer": "clipping without page header; letter dated '3 Gennaio 1949' so issue is later than that but undatable"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "footer": "'L'Angolo dei Poeti' clipping without date; undatable"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "footer": "clipping without date; undatable"
+  },
+  {
+   "page": 4,
+   "issue": "1949-04-01",
+   "footer": "Masthead: 'Vol. 58 - No. 7  NEW YORK, 1 APRILE 1949'"
+  },
+  {
+   "page": 5,
+   "issue": "1949-04-01",
+   "footer": "'2 LA FOLLIA DI NEW YORK' header without date; inferred as p.2 of the issue whose p.1 (previous page) is dated 1 Aprile 1949",
+   "issue_inferred": true
+  },
+  {
+   "page": 6,
+   "issue": "1949-06-01",
+   "footer": "'1 Giugno 1949  LA FOLLIA DI NEW YORK' page header (p.3)"
+  },
+  {
+   "page": 7,
+   "issue": "1949-06-01",
+   "footer": "'4 LA FOLLIA DI NEW YORK' header without date; inferred as p.4 of the 1 Giugno 1949 issue (follows p.3 of that issue)",
+   "issue_inferred": true
+  },
+  {
+   "page": 8,
+   "issue": "1949-06-01",
+   "footer": "'LA FOLLIA DI NEW YORK  1 Giugno 1949' page header"
+  },
+  {
+   "page": 9,
+   "issue": "1949-07-15",
+   "footer": "Masthead strip: 'NEW YORK, 15 LUGLIO 1949'"
+  },
+  {
+   "page": 10,
+   "issue": "1949-07-15",
+   "footer": "'8 LA FOLLIA DI NEW YORK' header without date; continuation of 'Chi fu e chi è Antonio Stella' begun on p.1 of 15 Luglio 1949 issue",
+   "issue_inferred": true
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "footer": "'4 LA FOLLIA DI NEW YORK' header without date; falls between 15 Luglio and 1 Agosto 1949 pages; undatable"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "footer": "'1 Agosto 1949  LA FOLLIA DI NEW YORK' page header (p.5)"
+  },
+  {
+   "page": 13,
+   "issue": "1949-08-01",
+   "footer": "'LA FOLLIA DI NEW YORK  1 Agosto 1949' page header (p.6)"
+  },
+  {
+   "page": 14,
+   "issue": null,
+   "footer": "clipping without date; undatable"
+  },
+  {
+   "page": 15,
+   "issue": "1949-10-01",
+   "footer": "Header: '1 OTTOBRE 1949'"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": null,
+   "name": "F. Nando Rossi",
+   "as_printed": "di F. NANDO ROSSI",
+   "title": "[title cut off: '...RRIA SAPE'...' (scenetta napoletana)]",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "title partly cut by clipping edge; 'scenetta napoletana'"
+  },
+  {
+   "page": 1,
+   "issue": null,
+   "name": "Alberto Tarchiani",
+   "as_printed": "ALBERTO TARCHIANI, Ambasciatore d'Italia",
+   "title": "L'Ambasciatore Italiano pel \"Caro Cugino\"",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "published letter to the editor from the Italian ambassador (public figure), dated 3 Gennaio 1949"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Al mio Cuore",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "likely reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 2,
+   "issue": null,
+   "name": "Arturo Cardaropoli",
+   "as_printed": "ARTURO CARDAROPOLI",
+   "title": "Mattutino",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "name": "Tommaso Dell'Erba",
+   "as_printed": "TOMMASO DELL'ERBA",
+   "title": "[end of piece above 'Trilussa e le donne'; title not visible]",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "only closing signature visible at top of clipping"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "name": "Nelly Chiaramonte",
+   "as_printed": "NELLY CHIARAMONTE",
+   "title": "Trilussa e le donne",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": "1949-04-01",
+   "name": "Manfredi Fasulo",
+   "as_printed": "MANFREDI FASULO, Sorrento",
+   "title": "I Sorrentini negli S. U.",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1949-06-01",
+   "name": "Guglielmo Ricciardi",
+   "as_printed": "di Guglielmo Ricciardi",
+   "title": "Stazione Radio CNEF: La Voce Napoletana d'America",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1949-06-01",
+   "name": "Antonino Crivello",
+   "as_printed": "ANTONINO CRIVELLO, New York, N. Y., 1.o Novembre 1945",
+   "title": "A Mirto Lauri, ringraziando",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1949-06-01",
+   "name": "Italo Stanco",
+   "as_printed": "di Italo Stanco",
+   "title": "\"Ruotolo, Man and Artist\"",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "review of the book on Onorio Ruotolo"
+  },
+  {
+   "page": 9,
+   "issue": "1949-07-15",
+   "name": "Agostino de Biasi",
+   "as_printed": "di Agostino de Biasi",
+   "title": "Chi fu e chi è Antonio Stella",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "continued on page 8"
+  },
+  {
+   "page": 9,
+   "issue": "1949-07-15",
+   "name": "Italo",
+   "as_printed": "ITALO (di ITALO)",
+   "title": "Istantanee della Settimana",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "medium",
+   "note": "recurring column; byline partly cut at left edge of clipping"
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "name": "Biagio Occhipinti",
+   "as_printed": "Di BIAGIO OCCHIPINTI",
+   "title": "Suono il Campanile",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 11,
+   "issue": null,
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "A Caruso",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto napoletano; reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Domenico Adamo",
+   "as_printed": "DOMENICO ADAMO",
+   "title": "In Memoria di Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Vittorio Nardi",
+   "as_printed": "VITTORIO NARDI",
+   "title": "Rombo rivelatore",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Giuseppe Luongo",
+   "as_printed": "GIUSEPPE LUONGO",
+   "title": "La Poesia",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Germoglino Saggio",
+   "as_printed": "GERMOGLINO SAGGIO",
+   "title": "Alla Luna",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "first name read as 'Germoglino'; unusual spelling"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Nicola Testi",
+   "as_printed": "NICOLA TESTI",
+   "title": "In memoria di Enrico Caruso",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Annibale Centoni",
+   "as_printed": "ANNIBALE CENTONI",
+   "title": "L'Aquila affamata",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "surname could be Centoni/Centeni at 90 dpi"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Giuseppe Luongo",
+   "as_printed": "GIUSEPPE LUONGO",
+   "title": "Vorrei tornare...",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Trilussa",
+   "as_printed": "TRILUSSA",
+   "title": "La Margherita",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint; dialetto romanesco"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Salvatore Di Giacomo",
+   "as_printed": "SALVATORE DI GIACOMO",
+   "title": "Maria, Maria",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint; dialetto napoletano"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Luigi Dommarco",
+   "as_printed": "LUIGI DOMMARCO, Ortona a Mare",
+   "title": "Nu sbajje",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto abruzzese"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "R. Cordiferro",
+   "as_printed": "R. CORDIFERRO",
+   "title": "Il Prominente",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto italo-americano; presumably Riccardo Cordiferro (reprint)"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Vito De Bartolo",
+   "as_printed": "VITO DE BARTOLO",
+   "title": "A Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "dialetto siciliano"
+  },
+  {
+   "page": 12,
+   "issue": "1949-08-01",
+   "name": "Giuseppe Rosa",
+   "as_printed": "GIUSEPPE ROSA",
+   "title": "La \"Ricotta\" di Don Nicola",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto avigliànese"
+  },
+  {
+   "page": 13,
+   "issue": "1949-08-01",
+   "name": "Francis Norelli",
+   "as_printed": "FRANCIS NORELLI, Capo del Dipartimento Italiano, World Wide Broadcasting Foundation",
+   "title": "Il Capitano Aldo Campatelli (intervista alla WRUL)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 13,
+   "issue": "1949-08-01",
+   "name": "Bruna J. Bernardara",
+   "as_printed": "BRUNA J. BERNARDARA",
+   "title": "Italia, 1949",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 13,
+   "issue": "1949-08-01",
+   "name": "Sandro",
+   "as_printed": "SANDRO (Macchietta napoletana di Sandro)",
+   "title": "Viva la civiltà!",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "dialect sketch (macchietta napoletana); pseudonym as printed"
+  },
+  {
+   "page": 13,
+   "issue": "1949-08-01",
+   "name": "Antonino Crivello",
+   "as_printed": "ANTONINO CRIVELLO",
+   "title": "Ad Arturo Giovannitti",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 15,
+   "issue": "1949-10-01",
+   "name": "John J. Alifano",
+   "as_printed": "DR. JOHN J. ALIFANO, Springfield, Mass.",
+   "title": "What Is Love?",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 15,
+   "issue": "1949-10-01",
+   "name": "Nicholas Intrieri",
+   "as_printed": "NICHOLAS INTRIERI",
+   "title": "Yesterday",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dedicated 'To Luisa Schettino'"
+  }
+ ]
+}

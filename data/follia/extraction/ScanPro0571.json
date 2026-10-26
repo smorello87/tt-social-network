@@ -1,0 +1,193 @@
+{
+ "file": "ScanPro0571.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1961-04",
+   "footer": "LA FOLLIA DI NEW YORK — APRILE 1961"
+  },
+  {
+   "page": 2,
+   "issue": "1961-04",
+   "footer": "LA FOLLIA DI NEW YORK — APRILE 1961"
+  },
+  {
+   "page": 3,
+   "issue": "1961-05",
+   "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1961"
+  },
+  {
+   "page": 4,
+   "issue": "1961-05",
+   "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1961"
+  },
+  {
+   "page": 5,
+   "issue": "1961-05",
+   "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1961"
+  },
+  {
+   "page": 6,
+   "issue": "1961-07",
+   "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1961"
+  },
+  {
+   "page": 7,
+   "issue": "1961-07",
+   "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1961"
+  },
+  {
+   "page": 8,
+   "issue": "1961-08",
+   "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1961"
+  },
+  {
+   "page": 9,
+   "issue": "1961-08",
+   "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1961"
+  },
+  {
+   "page": 10,
+   "issue": "1961-08",
+   "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1961"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1961-04",
+   "name": "Giovanni Solone",
+   "as_printed": "GIOVANNI SOLONE, Chicago, Ill.",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 1,
+   "issue": "1961-04",
+   "name": "V. Corbacio",
+   "as_printed": "V. CORBACIO",
+   "title": "Plausi e Consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "medium",
+   "note": "brief note by Vincenzo (?) Corbacio of Syracuse, N. Y. quoted by the editor ('Mio caro Cavaliere...'); signed only 'V. CORBACIO'"
+  },
+  {
+   "page": 1,
+   "issue": "1961-04",
+   "name": "Ario Flamma",
+   "as_printed": "ARIO FLAMMA",
+   "title": "Italiani in America: Gino Gullace",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "Gino Gullace is the subject (subtitle); 'Ario Flamma' is likely a pseudonym"
+  },
+  {
+   "page": 2,
+   "issue": "1961-04",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Granellini di saggezza",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 2,
+   "issue": "1961-04",
+   "name": "Vincenzo Gambardella",
+   "as_printed": "VINCENZO GAMBARDELLA, Amsterdam, N. Y.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "letter dated 16 marzo 1961"
+  },
+  {
+   "page": 2,
+   "issue": "1961-04",
+   "name": "Joseph Conte",
+   "as_printed": "JOSEPH CONTE, Van Nuys, Cal.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 2,
+   "issue": "1961-04",
+   "name": "Pasquale Maiorana",
+   "as_printed": "PASQUALE MAIORANA, Morristown, N. J.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": "1961-05",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: La nostra alimentazione",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1961-07",
+   "name": "Giacomo Grillo",
+   "as_printed": "suo GIACOMO GRILLO",
+   "title": "Interpretazione della caricatura carusiana: L'umanesimo di Giacomo Grillo",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "letter from Grillo (Boston, 17 giugno 1961) to Marziale Sisca, published with an unsigned editorial introduction; not reader mail"
+  },
+  {
+   "page": 7,
+   "issue": "1961-07",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Fate ginnastica",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1961-08",
+   "name": "Pier Petrucelli della Gattina",
+   "as_printed": "PIER PETRUCELLI DELLA GATTINA",
+   "title": "Uno sconfortante raffronto Ispano-americani ed Italo-americani",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "spelling 'Petrucelli' as printed; same name appears in Oct 1961 on a piece about a 1961 Prezzolini review, so apparently a contemporary contributor/pen-name (cf. 19th-c. writer Ferdinando Petruccelli della Gattina, d. 1890); not verified"
+  },
+  {
+   "page": 9,
+   "issue": "1961-08",
+   "name": "Il Folle",
+   "as_printed": "IL FOLLE",
+   "title": "Al Metropolitan: Delusioni e rimpianti",
+   "position": "signature",
+   "kind": "column",
+   "confidence": "high",
+   "note": "pseudonym/column persona of the magazine"
+  },
+  {
+   "page": 10,
+   "issue": "1961-08",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il Consiglio del Medico: Per dimagrire",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  }
+ ]
+}

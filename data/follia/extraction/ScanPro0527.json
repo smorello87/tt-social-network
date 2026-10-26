@@ -1,0 +1,34 @@
+{
+  "file": "ScanPro0527.pdf",
+  "pages": [
+    {"page": 1, "issue": "1968-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1968"},
+    {"page": 2, "issue": "1968-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1968"},
+    {"page": 3, "issue": "1968-01", "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1968"},
+    {"page": 4, "issue": "1968-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1968"},
+    {"page": 5, "issue": "1968-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1968"},
+    {"page": 6, "issue": "1968-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1968"},
+    {"page": 7, "issue": "1968-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1968"},
+    {"page": 8, "issue": "1968-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1968"},
+    {"page": 9, "issue": "1968-02", "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1968"},
+    {"page": 10, "issue": "1968-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1968"},
+    {"page": 11, "issue": "1968-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1968"},
+    {"page": 12, "issue": "1968-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1968"},
+    {"page": 13, "issue": "1968-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1968"},
+    {"page": 14, "issue": "1968-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1968"},
+    {"page": 15, "issue": "1968-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1968"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1968-01", "name": "Maria Iannella", "as_printed": "di Maria Iannella", "title": "Diario di Roma", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1968-01", "name": "Maria Iannella", "as_printed": "by Maria Iannella", "title": "From Rome with Love", "position": "byline", "kind": "article", "confidence": "high", "note": "in English"},
+    {"page": 3, "issue": "1968-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La stanchezza ai piedi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 3, "issue": "1968-01", "name": "Joseph Lippe", "as_printed": "JOSEPH LIPPE", "title": "Sonnet", "position": "signature", "kind": "poem", "confidence": "high", "note": "in English"},
+    {"page": 3, "issue": "1968-01", "name": "Ralpha Della Badia", "as_printed": "Ralpha Della Badia, Brooklyn, N.Y.", "title": "Pro Domo Nostra", "position": "signature", "kind": "letter", "confidence": "medium", "note": "first name printed 'Ralpha' (possibly misprint for Ralph)"},
+    {"page": 3, "issue": "1968-01", "name": "Pietro A. Iorio", "as_printed": "Pietro A. Iorio, Bronx, N.Y.", "title": "Pro Domo Nostra", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 6, "issue": "1968-02", "name": "Giulio de Moro", "as_printed": "di Giulio DeMoro", "title": "Mezzo secolo di ricordi", "position": "byline", "kind": "article", "confidence": "high", "note": "memorial for Marziale Sisca"},
+    {"page": 7, "issue": "1968-02", "name": "Giacomo Grillo", "as_printed": "di Giacomo Grillo", "title": "In Memoriam del Comm. Marziale Sisca della 'Follia'", "position": "byline", "kind": "article", "confidence": "high", "note": "dated Boston, 12 febbraio 1968"},
+    {"page": 9, "issue": "1968-02", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "L'ultima risorsa", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 9, "issue": "1968-02", "name": "Siculo", "as_printed": "—SICULO.", "title": "I proverbi", "position": "signature", "kind": "article", "confidence": "high", "note": "pseudonym"},
+    {"page": 10, "issue": "1968-03", "name": "Tebi Biondi", "as_printed": "TEBI BIONDI, Direttrice Politica di \"AGR\"", "title": "Piu' vivo dei vivi: Marziale Sisca che rimane tra noi", "position": "signature", "kind": "article", "confidence": "high", "note": "reprinted from Agenzia Giornalistica Romana"},
+    {"page": 11, "issue": "1968-03", "name": "Bruno Zirato", "as_printed": "di BRUNO ZIRATO", "title": "\"L'Italia\" nel mondo", "position": "byline", "kind": "article", "confidence": "high", "note": "continues scan p.12"}
+  ]
+}

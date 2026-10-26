@@ -1,0 +1,33 @@
+{
+  "file": "ScanPro0579.pdf",
+  "pages": [
+    {"page": 1, "issue": "1963-09", "footer": "no footer (cover); issue inferred: cover refers to Miss Tee article on p. 15, which is in the Settembre 1963 issue (p. 15 of this scan); library stamp 'REC'D OCT 15 1963'", "issue_inferred": true},
+    {"page": 2, "issue": "1963-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1963"},
+    {"page": 3, "issue": "1963-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1963"},
+    {"page": 4, "issue": "1963-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1963"},
+    {"page": 5, "issue": "1963-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1963"},
+    {"page": 6, "issue": "1963-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1963"},
+    {"page": 7, "issue": "1963-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1963"},
+    {"page": 8, "issue": "1963-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1963"},
+    {"page": 9, "issue": "1963-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1963"},
+    {"page": 10, "issue": "1963-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1963"}
+  ],
+  "signatures": [
+    {"page": 2, "issue": "1963-09", "name": "Il Folle", "as_printed": "IL FOLLE", "title": "Nota (N. d. D.) on postal delivery delays", "position": "signature", "kind": "other", "confidence": "medium", "note": "pseudonym/persona of the editorial column; signs editor's note on late delivery"},
+    {"page": 2, "issue": "1963-09", "name": "Giulio de Moro", "as_printed": "GIULIO de MORO", "title": "Le fettuccine alla Casa Bianca", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1963-09", "name": "Annunciata Spinelli Dommarco", "as_printed": "ANNUNCIATA SPINELLI DOMMARCO", "title": "Il vento", "position": "signature", "kind": "poem", "confidence": "high", "note": "prose-poem"},
+    {"page": 3, "issue": "1963-09", "name": "Giulio de Moro", "as_printed": "GIULIO de MORO", "title": "Shoe-Shine", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 4, "issue": "1963-09", "name": "Luigi Sola", "as_printed": "LUIGI SOLA", "title": "Genova Cavalleria (continued military history piece)", "position": "signature", "kind": "article", "confidence": "high", "note": "title not on this page"},
+    {"page": 4, "issue": "1963-09", "name": "Lee Posner", "as_printed": "Photo courtesy: Lee Posner, Director, All American Press Associates", "title": "Photo of Enzo Stuarti with Alphonse W. Salomone Jr. and Connie Francis", "position": "signature", "kind": "photo", "confidence": "high"},
+    {"page": 5, "issue": "1963-09", "name": "Giuseppe Luongo", "as_printed": "GIUSEPPE LUONGO da S. Angelo a Fasanella", "title": "Per ben trent'anni...", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 5, "issue": "1963-09", "name": "Antonio Fiorentino", "as_printed": "ANTONIO FIORENTINO", "title": "Massaru Chiccu", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto calabrese"},
+    {"page": 5, "issue": "1963-09", "name": "Trilussa", "as_printed": "TRILUSSA", "title": "Sciampagne", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint; dialetto romanesco"},
+    {"page": 6, "issue": "1963-09", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il bagno ai piedi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1963-10", "name": "Matteo Teresi", "as_printed": "di MATTEO TERESI", "title": "Non esageriamo!", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 8, "issue": "1963-10", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Non esageriamo! (continued)", "position": "signature", "kind": "article", "confidence": "high", "note": "dated Settembre 1963"},
+    {"page": 9, "issue": "1963-10", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Può venire l'emicrania...", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1963-10", "name": "Vincenzo D'Ambrosio", "as_printed": "Vincenzo D'Ambrosio", "title": "\"Susurri d'oltremare\" di Giuseppe Incalicchio", "position": "signature", "kind": "article", "confidence": "high", "note": "book review"},
+    {"page": 10, "issue": "1963-11", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il valore delle vitamine", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1963-11", "name": "Luigi Dommarco", "as_printed": "LUIGI DOMMARCO", "title": "L'acqua a lu core", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto abruzzese"}
+  ]
+}

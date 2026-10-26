@@ -1,0 +1,39 @@
+{
+  "file": "ScanPro0515.pdf",
+  "pages": [
+    {"page": 1, "issue": "1965-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1965 (cropped duplicate of p2)"},
+    {"page": 2, "issue": "1965-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1965"},
+    {"page": 3, "issue": "1965-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1965"},
+    {"page": 4, "issue": "1965-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1965"},
+    {"page": 5, "issue": "1965-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1965"},
+    {"page": 6, "issue": "1965-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1965"},
+    {"page": 7, "issue": "1965-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1965"},
+    {"page": 8, "issue": "1965-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1965"},
+    {"page": 9, "issue": "1965-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1965"},
+    {"page": 10, "issue": "1965-08", "footer": "cover: AGOSTO 1965 (masthead box)"},
+    {"page": 11, "issue": "1965-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965"},
+    {"page": 12, "issue": "1965-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1965-06", "name": "Giacomo Grillo", "as_printed": "di GIACOMO GRILLO", "title": "Il Primo Genitore Italiano a New York, 330 anni fa!", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1965-06", "name": "Giacomo Grillo", "as_printed": "di GIACOMO GRILLO", "title": "Il Primo Genitore Italiano a New York, 330 anni fa!", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1965-06", "name": "Nino Bellassai", "as_printed": "Articolo di NINO BELLASSAI", "title": "Nel mondo dei films: \"Matrimonio all'italiana\"", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1965-06", "name": "Sinibaldo Rovito", "as_printed": "SINIBALDO ROVITO", "title": "Il primo bacio", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 3, "issue": "1965-06", "name": "Antonio Fiorentino", "as_printed": "ANTONIO FIORENTINO", "title": "'U ponte 'a funtanella", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialect poem"},
+    {"page": 3, "issue": "1965-06", "name": "A. M. Lacovara", "as_printed": "Dev.mo, Dr. A. M. Lacovara, Brooklyn, N. Y.", "title": "Pro Domo Nostra", "position": "signature", "kind": "letter", "confidence": "medium", "note": "surname could read Lacovara or Iacovara"},
+    {"page": 4, "issue": "1965-06", "name": "Maria Vecchione", "as_printed": "MARIA VECCHIONE, 20 maggio 1965", "title": "Welcome \"Michelangelo\"", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 5, "issue": "1965-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il latte e i latticini", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1965-06", "name": "Trilussa", "as_printed": "TRILUSSA", "title": "Pretenzioni", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint; dialetto romanesco"},
+    {"page": 5, "issue": "1965-06", "name": "Giuseppe Incalicchio", "as_printed": "GIUSEPPE INCALICCHIO", "title": "Poeti all'opera", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 5, "issue": "1965-06", "name": "Giuseppe Incalicchio", "as_printed": "—Giuseppe Incalicchio", "title": "E' morto a Roma il poeta D'Ambrosio", "position": "signature", "kind": "article", "confidence": "high", "note": "obituary of Vincenzo D'Ambrosio"},
+    {"page": 8, "issue": "1965-07", "name": "Giacomo Grillo", "as_printed": "di GIACOMO GRILLO", "title": "Eventi della Guerra dell'Indipendenza", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 9, "issue": "1965-07", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Per mantenere la linea", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1965-07", "name": "Marco Marchesan", "as_printed": "PROF. MARCO MARCHESAN", "title": "Libri: Tapparello S., Il segreto di Barbana", "position": "signature", "kind": "article", "confidence": "high", "note": "book review"},
+    {"page": 9, "issue": "1965-07", "name": "John A. Coluzza", "as_printed": "JOHN A. COLUZZA, Utica, N. Y.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 9, "issue": "1965-07", "name": "Joseph Treffiletti", "as_printed": "JOSEPH TREFFILETTI, Albany, N. Y.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "medium", "note": "surname spelling slightly uncertain"},
+    {"page": 9, "issue": "1965-07", "name": "Vincent Iannucci", "as_printed": "VINCENT IANNUCCI, West Babylon, N. Y.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 9, "issue": "1965-07", "name": "Federico Fabozzi", "as_printed": "FEDERICO FABOZZI, South Beach, S. I.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 11, "issue": "1965-08", "name": "Rodolfo Pucelli", "as_printed": "RODOLFO PUCELLI", "title": "Il 25.mo anniversario della morte di Riccardo Cordiferro", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 12, "issue": "1965-08", "name": "Giacomo Grillo", "as_printed": "Articolo di GIACOMO GRILLO", "title": "Un viaggio di Jefferson in Italia", "position": "byline", "kind": "article", "confidence": "high"}
+  ]
+}

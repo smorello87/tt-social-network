@@ -1,0 +1,39 @@
+{
+  "file": "1950.pdf",
+  "pages": [
+    {"page": 1, "issue": "1950-02-15", "footer": "'LA FOLLIA DI NEW YORK  15 Febbraio 1950' page header"},
+    {"page": 2, "issue": null, "footer": "clipping without date; sits between 15 Feb and 1 Apr 1950 pages in sequence; undatable"},
+    {"page": 3, "issue": null, "footer": "clipping (MGM 'Black Hand' ad) without date; undatable"},
+    {"page": 4, "issue": null, "footer": "clipping without date; undatable"},
+    {"page": 5, "issue": null, "footer": "clipping without date; undatable"},
+    {"page": 6, "issue": "1950-04-01", "footer": "Masthead: 'Vol. 59 - No. 7  NEW YORK, 1 APRILE 1950'"},
+    {"page": 7, "issue": "1950-04-01", "footer": "'1 Aprile 1950  LA FOLLIA DI NEW YORK  Pagina 3' page header"},
+    {"page": 8, "issue": "1950-04-15", "footer": "Masthead: 'NEW YORK, 15 APRILE 1950'"},
+    {"page": 9, "issue": "1950-05-01", "footer": "Masthead: 'NEW YORK, 1 MAGGIO 1950'"},
+    {"page": 10, "issue": "1950-05-01", "footer": "'Pagina 2' header without date; inferred as p.2 of the issue whose p.1 (previous page) is dated 1 Maggio 1950", "issue_inferred": true},
+    {"page": 11, "issue": "1950-05-01", "footer": "'LA FOLLIA DI NEW YORK  1 Maggio 1950' page header"},
+    {"page": 12, "issue": "1950-05-01", "footer": "'Pagina 8' header without date; continuation of 'Generoso Pope' begun on p.1 of 1 Maggio 1950 issue", "issue_inferred": true},
+    {"page": 13, "issue": null, "footer": "clipping without date; undatable (Bellassai on WLIZ 'dal 22 corrente', month not shown)"},
+    {"page": 14, "issue": "1950-09-01", "footer": "Masthead: 'NEW YORK, 1 SETTEMBRE 1950'"}
+  ],
+  "signatures": [
+    {"page": 2, "issue": null, "name": "Cesare Tomasulo", "as_printed": "CESARE TOMASULO", "title": "[end of obituary/tribute for Michele Caturani; title not visible]", "position": "signature", "kind": "article", "confidence": "medium", "note": "only the closing signature is visible at top of clipping"},
+    {"page": 3, "issue": null, "name": "Giovanni Artieri", "as_printed": "GIOVANNI ARTIERI", "title": "[end of piece, title not visible]", "position": "signature", "kind": "article", "confidence": "medium", "note": "only the closing signature is visible at top right; possibly a reprint from the Italian press"},
+    {"page": 4, "issue": null, "name": "Antonino Crivello", "as_printed": "ANTONINO CRIVELLO", "title": "Lago di sogno", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 5, "issue": null, "name": "Luigi Dommarco", "as_printed": "NONNO GIGINO (LUIGI DOMMARCO), Ortona a Mare", "title": "Per la nascita di Fausta Dommarco (19-XII-1947)", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto abruzzese; signed 'Nonno Gigino' with real name in brackets"},
+    {"page": 5, "issue": null, "name": "Luigi Dommarco", "as_printed": "...UIGI DOMMARCO (left edge cut)", "title": "[title cut off; dialetto abruzzese poem ending 'a lu cuscine!']", "position": "signature", "kind": "poem", "confidence": "medium", "note": "poem is cut by the clipping edge; signature partially visible"},
+    {"page": 5, "issue": null, "name": "Modestino Sessa", "as_printed": "...DESTINO SESSA (left edge cut)", "title": "[title cut off; dialetto napoletano poem]", "position": "signature", "kind": "poem", "confidence": "medium", "note": "first letters cut off; identified as Modestino Sessa (signs a Neapolitan-dialect poem in 1951-05-15 issue)"},
+    {"page": 6, "issue": "1950-04-01", "name": "Italo", "as_printed": "di ITALO", "title": "Istantanee della Settimana", "position": "byline", "kind": "column", "confidence": "high", "note": "recurring column; pseudonym/first name as printed"},
+    {"page": 7, "issue": "1950-04-01", "name": "Ironheart", "as_printed": "IRONHEART", "title": "Due Pesci d'Aprile", "position": "signature", "kind": "article", "confidence": "high", "note": "humorous short story; pseudonym"},
+    {"page": 7, "issue": "1950-04-01", "name": "Armando Mazza", "as_printed": "Armando Mazza (credited in introduction)", "title": "Omaggio a Onorio Ruotolo", "position": "byline", "kind": "poem", "confidence": "medium", "note": "poem by Armando Mazza reprinted from Giornale Letterario (Milan); attribution given in editorial intro, not printed under poem"},
+    {"page": 7, "issue": "1950-04-01", "name": "a. m.", "as_printed": "a. m.", "title": "Omaggio a Onorio Ruotolo (editorial note)", "position": "signature", "kind": "other", "confidence": "low", "note": "initials after N.d.R. note; possibly Armando Mazza"},
+    {"page": 7, "issue": "1950-04-01", "name": "i. s.", "as_printed": "i. s.", "title": "Omaggio a Onorio Ruotolo (closing note)", "position": "signature", "kind": "other", "confidence": "low", "note": "likely Italo Stanco"},
+    {"page": 8, "issue": "1950-04-15", "name": "Italo", "as_printed": "di ITALO", "title": "Istantanee della Settimana", "position": "byline", "kind": "column", "confidence": "high", "note": "recurring column"},
+    {"page": 9, "issue": "1950-05-01", "name": "Agostino de Biasi", "as_printed": "di AGOSTINO DE BIASI", "title": "Generoso Pope", "position": "byline", "kind": "article", "confidence": "high", "note": "continued on page 8"},
+    {"page": 9, "issue": "1950-05-01", "name": "Italo", "as_printed": "di ITALO", "title": "Istantanee della Settimana", "position": "byline", "kind": "column", "confidence": "high", "note": "recurring column"},
+    {"page": 11, "issue": "1950-05-01", "name": "Antonino Crivello", "as_printed": "ANTONINO CRIVELLO, Brooklyn, N. Y., 2 Gennaio 1950", "title": "A Nino", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 14, "issue": "1950-09-01", "name": "Arturo Giovannitti", "as_printed": "di ARTURO GIOVANNITTI", "title": "\"Il Camminante\" (The Walker)", "position": "byline", "kind": "poem", "confidence": "high", "note": "Italian version of Giovannitti's poem 'The Walker'"},
+    {"page": 14, "issue": "1950-09-01", "name": "Onorio Ruotolo", "as_printed": "(VERSIONE ITALIANA DI ONORIO RUOTOLO)", "title": "\"Il Camminante\" (The Walker)", "position": "byline", "kind": "other", "confidence": "high", "note": "translator credit"},
+    {"page": 14, "issue": "1950-09-01", "name": "Italo Stanco", "as_printed": "ITALO STANCO", "title": "\"Il Camminante\" (commentary on Giovannitti/Ruotolo)", "position": "signature", "kind": "article", "confidence": "high"}
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "file": "ScanPro0564.pdf",
+  "pages": [
+    {"page": 1, "issue": "1959-01", "footer": "La Follia di New York - Gennaio 1959"},
+    {"page": 2, "issue": "1959-02", "footer": "La Follia di New York - Febbraio 1959"},
+    {"page": 3, "issue": "1959-02", "footer": "La Follia di New York - Febbraio 1959"},
+    {"page": 4, "issue": "1959-02", "footer": "La Follia di New York - Febbraio 1959"},
+    {"page": 5, "issue": "1959-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1959"},
+    {"page": 6, "issue": "1959-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1959"},
+    {"page": 7, "issue": "1959-03", "footer": "LA FOLLIA DI NEW YORK — MARZO 1959"},
+    {"page": 8, "issue": "1959-04", "footer": "LA FOLLIA DI NEW YORK — APRILE 1959"},
+    {"page": 9, "issue": "1959-05", "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1959"},
+    {"page": 10, "issue": "1959-05", "footer": "no footer (full-page Buitoni ad, likely back cover); issue inferred from preceding page (Maggio 1959)", "issue_inferred": true}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1959-01", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La colazione nelle mattine fredde", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 1, "issue": "1959-01", "name": "Giuseppe Tirinnanzi", "as_printed": "GIUSEPPE TIRINNANZI", "title": "The Gold Cage", "position": "signature", "kind": "poem", "confidence": "high", "note": "English translation of an Italian poem"},
+    {"page": 1, "issue": "1959-01", "name": "Rodolfo Pucelli", "as_printed": "Translated from the Italian by RODOLFO PUCELLI", "title": "The Gold Cage", "position": "signature", "kind": "poem", "confidence": "medium", "note": "translator credit"},
+    {"page": 2, "issue": "1959-02", "name": "Francesco Boneschi", "as_printed": "FRANCESCO BONESCHI", "title": "(book review: Machiavelli/Mosca and Il Principe; title not visible)", "position": "signature", "kind": "article", "confidence": "high", "note": "title not visible on this page (piece continues from earlier page)"},
+    {"page": 2, "issue": "1959-02", "name": "Capalbo", "as_printed": "(Avv. Capalbo)", "title": "Attività migratoria verso il Brasile", "position": "byline", "kind": "article", "confidence": "medium", "note": "dateline-style credit 'Acri (Calabria), Ottobre / (Avv. Capalbo)'; probably Avv. Gennaro Capalbo of Acri, who signs fully elsewhere in this volume"},
+    {"page": 3, "issue": "1959-02", "name": "Gennaro Capalbo", "as_printed": "Avv. GENNARO CAPALBO", "title": "La moda... dei nasi", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1959-02", "name": "Carmine Manzi", "as_printed": "CARMINE MANZI", "title": "Itinerari italici", "position": "signature", "kind": "article", "confidence": "high", "note": "continued from page 7"},
+    {"page": 3, "issue": "1959-02", "name": "Annunciata Spinelli Dommarco", "as_printed": "ANNUNCIATA SPINELLI DOMMARCO", "title": "Miniatura", "position": "signature", "kind": "other", "confidence": "high", "note": "short narrative piece"},
+    {"page": 4, "issue": "1959-02", "name": "Agostino Allori", "as_printed": "AGOSTINO ALLORI", "title": "Vecchia Follia", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 4, "issue": "1959-02", "name": "Pietro Pasquali", "as_printed": "PIETRO PASQUALI", "title": "Verrà un giorno?", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 4, "issue": "1959-02", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Le preziose vitamine", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1959-03", "name": "Alfredo Sisca", "as_printed": "ALFREDO SISCA, Napoli, Marzo 1959", "title": "Visioni Siciliane: Taormina", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1959-03", "name": "Luca", "as_printed": "LUCA", "title": "La cittadina che protesta", "position": "signature", "kind": "article", "confidence": "medium", "note": "pseudonym or first name only"},
+    {"page": 6, "issue": "1959-03", "name": "Gennaro Capalbo", "as_printed": "Avv. GENNARO CAPALBO, Acri (Calabria) gennaio 1959", "title": "Temi carnevaleschi", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 7, "issue": "1959-03", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Igiene e salute", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1959-03", "name": "Pietro Greco", "as_printed": "PIETRO GRECO", "title": "Un poemetto di Armando Mazza", "position": "signature", "kind": "article", "confidence": "high", "note": "review of Armando Mazza's poem 'Il Padre'"},
+    {"page": 8, "issue": "1959-04", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il gozzo: grosso e antipatico difetto", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 8, "issue": "1959-04", "name": "Vincenzo Manente", "as_printed": "VINCENZO MANENTE, Manhasset, 9 aprile 1959", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 8, "issue": "1959-04", "name": "Vincenzo Corbacio", "as_printed": "VINCENZO CORBACIO, Syracuse, N. Y., 25 marzo 1959", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 8, "issue": "1959-04", "name": "Joseph E. Conte", "as_printed": "JOSEPH E. CONTE, Van Nuys, Calif.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 8, "issue": "1959-04", "name": "Pasquale Forte", "as_printed": "PASQUALE FORTE, Bridgeport, Conn., Feb. 2, 1959", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 8, "issue": "1959-04", "name": "Eugenio Santonocito", "as_printed": "EUGENIO SANTONOCITO, Astoria, L. I., febbraio 4, 1959", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "printed SANTONOCITO (cf. 'Santonocito' in another issue; spelling varies)"},
+    {"page": 9, "issue": "1959-05", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: La nostra alimentazione", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 9, "issue": "1959-05", "name": "Sebastiano Trucco", "as_printed": "SEBASTIANO TRUCCO, Erie, Pa.", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"}
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "file": "ScanPro0523.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1967-03",
+      "footer": "LA FOLLIA DI NEW YORK — MARZO 1967"
+    },
+    {
+      "page": 2,
+      "issue": "1967-04",
+      "footer": "LA FOLLIA DI NEW YORK — APRILE 1967"
+    },
+    {
+      "page": 3,
+      "issue": "1967-04",
+      "footer": "LA FOLLIA DI NEW YORK — APRILE 1967"
+    },
+    {
+      "page": 4,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 5,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 6,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 7,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 8,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 9,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 10,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    },
+    {
+      "page": 11,
+      "issue": "1967-05",
+      "footer": "LA FOLLIA DI NEW YORK — MAGGIO 1967"
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1967-03",
+      "name": "Maria Iannella",
+      "as_printed": "di Maria Iannella",
+      "title": "Italia Nostra",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1967-04",
+      "name": "Maria Iannella",
+      "as_printed": "di Maria Iannella / MARIA IANNELLA",
+      "title": "Italia Nostra",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high",
+      "note": "byline at head and signature at end"
+    },
+    {
+      "page": 3,
+      "issue": "1967-04",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: Un grande alimento",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 4,
+      "issue": "1967-05",
+      "name": "Filomeno Argenio",
+      "as_printed": "Filomeno Argenio, Pittston, Pa.",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 4,
+      "issue": "1967-05",
+      "name": "Giuseppe Civitarese",
+      "as_printed": "Giuseppe Civitarese, Sault Ste. Marie, Canada",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 6,
+      "issue": "1967-05",
+      "name": "Marziale Sisca",
+      "as_printed": "MARZIALE e MICHELE SISCA",
+      "title": "Maria Iannella nominata Direttrice Artistica de \"La Follia di New York\"",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "editorial announcement signed jointly by the publisher and general manager"
+    },
+    {
+      "page": 6,
+      "issue": "1967-05",
+      "name": "Michele Sisca",
+      "as_printed": "MARZIALE e MICHELE SISCA",
+      "title": "Maria Iannella nominata Direttrice Artistica de \"La Follia di New York\"",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "editorial announcement signed jointly by the publisher and general manager"
+    },
+    {
+      "page": 7,
+      "issue": "1967-05",
+      "name": "Matteo Teresi",
+      "as_printed": "MATTEO TERESI, 4 maggio 1967",
+      "title": "Buona preparazione",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high",
+      "note": "reader letter"
+    },
+    {
+      "page": 7,
+      "issue": "1967-05",
+      "name": "Marziale Sisca",
+      "as_printed": "— MARZIALE SISCA",
+      "title": "Editor's reply to Teresi (Caro Teresi...)",
+      "position": "signature",
+      "kind": "other",
+      "confidence": "high",
+      "note": "editor's reply note"
+    },
+    {
+      "page": 7,
+      "issue": "1967-05",
+      "name": "B. Z.",
+      "as_printed": "B. Z.",
+      "title": "Un tributo assai triste: Mina Horne",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "medium",
+      "note": "initials as printed; possibly Bruno Zirato (Follia contributor; cf. Russell Baker letter in Feb 1967)"
+    },
+    {
+      "page": 8,
+      "issue": "1967-05",
+      "name": "Maria Iannella",
+      "as_printed": "di Maria Iannella",
+      "title": "Parole alla mia Gente",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 9,
+      "issue": "1967-05",
+      "name": "Gigi",
+      "as_printed": "di GIGI",
+      "title": "Il mondo attraverso alla mia lente",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 10,
+      "issue": "1967-05",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: Per l'estetica",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 10,
+      "issue": "1967-05",
+      "name": "Frank S. Reale",
+      "as_printed": "FRANK S. REALE",
+      "title": "Traditore (dialetto napoletano)",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 11,
+      "issue": "1967-05",
+      "name": "Maria Iannella",
+      "as_printed": "From the desk of Maria Iannella, Director, Arts and Culture",
+      "title": "From the desk of Maria Iannella",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "English-language column"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "file": "ScanPro0583.pdf",
+  "pages": [
+    {"page": 1, "issue": "1964-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1964"},
+    {"page": 2, "issue": "1964-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1964"},
+    {"page": 3, "issue": "1964-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1964"},
+    {"page": 4, "issue": "1964-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1964"},
+    {"page": 5, "issue": "1964-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1964"},
+    {"page": 6, "issue": "1964-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1964"},
+    {"page": 7, "issue": "1964-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1964"},
+    {"page": 8, "issue": "1964-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1964"},
+    {"page": 9, "issue": "1964-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1964"}
+  ],
+  "signatures": [
+    {"page": 3, "issue": "1964-10", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Perdere peso con giudizio", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 4, "issue": "1964-11", "name": "Il Folle", "as_printed": "Tuo: IL FOLLE.", "title": "Verrazano, Sì - Verrazzano, No: Lettera aperta del \"Folle\" a Bruno Zirato", "position": "signature", "kind": "article", "confidence": "high", "note": "pseudonym; open letter (staff piece)"},
+    {"page": 4, "issue": "1964-11", "name": "Bruno Zirato", "as_printed": "Bruno.", "title": "Verrazano, Sì - Verrazzano, No (reply)", "position": "signature", "kind": "letter", "confidence": "high", "note": "short reply signed 'Bruno' to the open letter addressed to Bruno Zirato"},
+    {"page": 5, "issue": "1964-11", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Iniziate bene la giornata con una buona colazione", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1964-11", "name": "Silvio Coscia", "as_printed": "Maestro Silvio Coscia", "title": "Pro Domo Nostra", "position": "signature", "kind": "letter", "confidence": "high", "note": "writer moving back to Italy"},
+    {"page": 5, "issue": "1964-11", "name": "Gaetano Lacalamita", "as_printed": "Gaetano Lacalamita", "title": "Pro Domo Nostra", "position": "signature", "kind": "letter", "confidence": "medium", "note": "small italic; pdftotext reads 'Lacalamtta'"},
+    {"page": 6, "issue": "1964-12", "name": "Onorio Ruotolo", "as_printed": "By ONORIO RUOTOLO", "title": "A Clarification", "position": "byline", "kind": "article", "confidence": "high", "note": "in English; also signed at end on p7"},
+    {"page": 7, "issue": "1964-12", "name": "Onorio Ruotolo", "as_printed": "ONORIO RUOTOLO", "title": "Natale nel Villaggio", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 8, "issue": "1964-12", "name": "Edward Corsi", "as_printed": "EDWARD CORSI", "title": "Un gradito messaggio dell'On. Edward Corsi", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter to Marziale Sisca for the paper's anniversary; recalls working at La Follia with Luigi Roversi and Riccardo Cordiferro"}
+  ]
+}

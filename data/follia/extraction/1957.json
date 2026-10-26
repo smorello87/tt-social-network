@@ -1,0 +1,35 @@
+{
+  "file": "1957.pdf",
+  "pages": [
+    {"page": 1, "issue": "1956-02", "footer": "cover masthead box: FEBBRAIO 1956"},
+    {"page": 2, "issue": null, "footer": "no footer/date visible (clipping, page no. 5); different page size from p.1, so not assumed to be Feb 1956"},
+    {"page": 3, "issue": "1956-11", "issue_inferred": true, "footer": "running head 'La Follia di New York' p.6 only; dated from facing p.7 (this PDF p.4) 'Novembre 1956', same Prezzolini article continues"},
+    {"page": 4, "issue": "1956-11", "footer": "running head: Novembre 1956 (p.7)"},
+    {"page": 5, "issue": "1957-03", "footer": "8 — La Follia di New York - Marzo 1957"},
+    {"page": 6, "issue": null, "footer": "small clipping, no footer/date visible; sits between Marzo and Aprile 1957 pages"},
+    {"page": 7, "issue": "1957-04", "footer": "2 — La Follia di New York - Aprile 1957"},
+    {"page": 8, "issue": "1957-04", "footer": "16 — La Follia di New York - Aprile 1957"},
+    {"page": 9, "issue": "1957-05", "footer": "La Follia di New York - Maggio 1957 — 5"},
+    {"page": 10, "issue": "1957-08", "footer": "cover masthead box: AGOSTO 1957"},
+    {"page": 11, "issue": "1957-08", "footer": "La Follia di New York - Agosto 1957"},
+    {"page": 12, "issue": "1957-08", "issue_inferred": true, "footer": "no footer visible; same page size as p.11 (Agosto 1957), text refers to 1 agosto departure and 'all'uscita del numero di settembre'"},
+    {"page": 13, "issue": "1957-08", "footer": "6 — La Follia di New York - Agosto 1957"},
+    {"page": 14, "issue": null, "footer": "narrow clipping, no footer; text announces a wedding on 21 settembre 1957 (so Sept/Oct 1957 issue)"},
+    {"page": 15, "issue": "1957-09", "footer": "La Follia di New York - Settembre 1957"},
+    {"page": 16, "issue": null, "footer": "no footer/date visible; sits between Settembre and Ottobre 1957 pages"},
+    {"page": 17, "issue": "1957-10", "footer": "La Follia di New York - Ottobre 1957"},
+    {"page": 18, "issue": "1957-11", "footer": "La Follia di New York - Novembre 1957 — 7"}
+  ],
+  "signatures": [
+    {"page": 3, "issue": "1956-11", "name": "Giuseppe Prezzolini", "as_printed": "di GIUSEPPE PREZZOLINI", "title": "Occorrono nuove leggi in America per aprire le porte all'immigrazione", "position": "byline", "kind": "article", "confidence": "high", "note": "also signed GIUSEPPE PREZZOLINI at end of the piece on p.4"},
+    {"page": 5, "issue": "1957-03", "name": "Gennaro Capalbo", "as_printed": "AVV. GENNARO CAPALBO, Acri (Calabria), luglio.", "title": "I \"Magazzini Generali\" in una novella del Boccaccio", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 9, "issue": "1957-05", "name": "Edward Corsi", "as_printed": "di EDWARD CORSI, Ex-Commissario per l'Immigrazione degli Stati Uniti", "title": "Il \"grazie\" di un emigrato italiano", "position": "byline", "kind": "article", "confidence": "high", "note": "reprint: 'Copyright by Selezione dal Reader's Digest. Reprinted by permission.'"},
+    {"page": 10, "issue": "1957-08", "name": "Enrico Caruso", "as_printed": "Caricatura di Enrico Caruso (signed in drawing)", "title": "Riccardo Cordiferro (cover caricature)", "position": "signature", "kind": "other", "confidence": "high", "note": "cover illustration, caricature of Cordiferro drawn by Caruso (d. 1921); reprint"},
+    {"page": 11, "issue": "1957-08", "name": "Rodolfo Pucelli", "as_printed": "RODOLFO PUCELLI", "title": "Nel 17.o anniversario della morte di R. Cordiferro", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 13, "issue": "1957-08", "name": "Maria Iacovella", "as_printed": "MARIA IACOVELLA", "title": "Ricordando Cordiferro: \"Il Poeta del Sogno Segreto\"", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 15, "issue": "1957-09", "name": "Agostino de Biasi", "as_printed": "Aff:mo AGOSTINO", "title": "Il Comm. Agostino de Biasi scrive:", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter to Marziale Sisca, Northport 30 agosto 1957; signed only 'AGOSTINO', surname from heading"},
+    {"page": 17, "issue": "1957-10", "name": "Rodolfo Pucelli", "as_printed": "RODOLFO PUCELLI", "title": "Nino Caradonna e le sue poesie", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 17, "issue": "1957-10", "name": "Frank Spadola", "as_printed": "FRANK SPADOLA", "title": "Born I was not . . .", "position": "signature", "kind": "poem", "confidence": "high", "note": "poem in English"},
+    {"page": 18, "issue": "1957-11", "name": "Maria Iacovella", "as_printed": "MARIA JACOVELLA", "title": "Ricordando Cordiferro ed il suo Canto Elegiaco", "position": "signature", "kind": "article", "confidence": "high", "note": "printed JACOVELLA here, IACOVELLA on p.13; same author"}
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "file": "ScanPro0516.pdf",
+  "pages": [
+    {"page": 1, "issue": "1965-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965"},
+    {"page": 2, "issue": "1965-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965"},
+    {"page": 3, "issue": "1965-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965"},
+    {"page": 4, "issue": "1965-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965"},
+    {"page": 5, "issue": "1965-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1965"},
+    {"page": 6, "issue": "1965-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1965"},
+    {"page": 7, "issue": "1965-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1965"},
+    {"page": 8, "issue": "1965-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1965"},
+    {"page": 9, "issue": "1965-10", "footer": "cover: OTTOBRE 1965 (masthead box)"},
+    {"page": 10, "issue": "1965-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1965"},
+    {"page": 11, "issue": "1965-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1965"},
+    {"page": 12, "issue": "1965-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1965"},
+    {"page": 13, "issue": "1965-10", "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1965"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1965-08", "name": "Giacomo Grillo", "as_printed": "GIACOMO GRILLO", "title": "Un viaggio di Jefferson in Italia (conclusion)", "position": "signature", "kind": "article", "confidence": "high", "note": "end of article begun on p12 of the Luglio-Agosto run (ScanPro0515 p12)"},
+    {"page": 1, "issue": "1965-08", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Perchè? ... Perchè?", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1965-08", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 3, "issue": "1965-08", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Speranza ben fondata", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 4, "issue": "1965-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'alimentazione dei ragazzi", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1965-09", "name": "Gigi", "as_printed": "di GIGI", "title": "Il mondo attraverso alla mia lente", "position": "byline", "kind": "column", "confidence": "high", "note": "pseudonym"},
+    {"page": 8, "issue": "1965-09", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il segreto", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 8, "issue": "1965-09", "name": "Trilussa", "as_printed": "TRILUSSA", "title": "La carriera del porco", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint; dialetto romanesco"},
+    {"page": 8, "issue": "1965-09", "name": "Enzo Feola", "as_printed": "ENZO FEOLA", "title": "(Hope) — Spes", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 10, "issue": "1965-10", "name": "Giacomo Grillo", "as_printed": "Articolo di GIACOMO GRILLO", "title": "Non esiste un verdetto d'indennizzo o di rivendicazione per Antonio Meucci", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 11, "issue": "1965-10", "name": "Giacomo Grillo", "as_printed": "GIACOMO GRILLO, Boston, ottobre 1965", "title": "Non esiste un verdetto d'indennizzo (conclusion)", "position": "signature", "kind": "article", "confidence": "high", "note": "continuation of p10 article"},
+    {"page": 12, "issue": "1965-10", "name": "Nino Bellassai", "as_printed": "Articolo di NINO BELLASSAI", "title": "Italiani brava gente", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 13, "issue": "1965-10", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Malattia della pelle", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 13, "issue": "1965-10", "name": "Teresah", "as_printed": "TERESAH", "title": "Rinunzia", "position": "signature", "kind": "poem", "confidence": "medium", "note": "pseudonym or single name; reading 'TERESAH'"},
+    {"page": 13, "issue": "1965-10", "name": "Antonio Fiorentino", "as_printed": "ANTONIO FIORENTINO", "title": "Pifferi di montagna", "position": "signature", "kind": "poem", "confidence": "high", "note": "dialetto calabrese"},
+    {"page": 13, "issue": "1965-10", "name": "G. Lacalamita", "as_printed": "G. LACALAMITA", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"},
+    {"page": 13, "issue": "1965-10", "name": "P. Bertolotta", "as_printed": "P. BERTOLOTTA", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high"}
+  ]
+}

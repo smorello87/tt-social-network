@@ -1,0 +1,176 @@
+{
+  "file": "ScanPro0529.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 2,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 3,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 4,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 5,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 6,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 7,
+      "issue": "1968-07",
+      "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1968"
+    },
+    {
+      "page": 8,
+      "issue": "1968-08",
+      "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1968"
+    },
+    {
+      "page": 9,
+      "issue": "1968-08",
+      "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1968"
+    },
+    {
+      "page": 10,
+      "issue": "1968-08",
+      "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1968"
+    },
+    {
+      "page": 11,
+      "issue": "1968-08",
+      "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1968"
+    },
+    {
+      "page": 12,
+      "issue": "1968-08",
+      "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1968"
+    },
+    {
+      "page": 13,
+      "issue": "1968-08",
+      "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1968"
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1968-07",
+      "name": "Luigi Sola",
+      "as_printed": "Luigi Sola",
+      "title": "La Kleinert's — una grande industria che apprezza il lavoro degli Italo-Americani",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "Sola is redattore capo (masthead) but signs this piece"
+    },
+    {
+      "page": 1,
+      "issue": "1968-07",
+      "name": "Paola Adele",
+      "as_printed": "PAOLA ADELE",
+      "title": "La Rubrica della Moda",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 7,
+      "issue": "1968-07",
+      "name": "Matteo Teresi",
+      "as_printed": "MATTEO TERESI",
+      "title": "Confessione",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1968-08",
+      "name": "Michele Sisca",
+      "as_printed": "MICHELE SISCA",
+      "title": "Attilio Dell'Orso inizierà una nuova rubrica su \"La Follia\" di New York",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "editor's announcement"
+    },
+    {
+      "page": 8,
+      "issue": "1968-08",
+      "name": "Ted Altavilla",
+      "as_printed": "L/Cpl. USMC Ted Altavilla",
+      "title": "La voce della vera America (letter from Vietnam, July 21, 1968)",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high",
+      "note": "published letter from a Marine, son of subscriber Attilio Altavilla; not general reader mail"
+    },
+    {
+      "page": 9,
+      "issue": "1968-08",
+      "name": "Matteo Teresi",
+      "as_printed": "MATTEO TERESI",
+      "title": "Un sogno",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 9,
+      "issue": "1968-08",
+      "name": "Antonio Lezza",
+      "as_printed": "ANTONIO LEZZA, Direttore Agenzia Giornalistica \"AGIT\"",
+      "title": "Garantire il voto politico agli Italiani all'Estero ma assicurare anche la sopravvivenza dei loro giornali",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high"
+    },
+    {
+      "page": 10,
+      "issue": "1968-08",
+      "name": "Bruno Zirato",
+      "as_printed": "di BRUNO ZIRATO",
+      "title": "Echi e commenti",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 12,
+      "issue": "1968-08",
+      "name": "Giuseppe De Rizzo",
+      "as_printed": "Giuseppe De Rizzo, 1968",
+      "title": "Ricordando Sinibaldo Rovito",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 13,
+      "issue": "1968-08",
+      "name": "Paola Adele Morsellino",
+      "as_printed": "Paola Adele Morsellino",
+      "title": "La Rubrica della Moda: Roma — Le Collezioni Italiane",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "high",
+      "note": "same columnist as 'Paola Adele' in July 1968"
+    }
+  ]
+}

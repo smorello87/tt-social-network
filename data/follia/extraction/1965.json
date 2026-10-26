@@ -1,0 +1,405 @@
+{
+ "file": "1965.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1965-01",
+   "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1965 (p. 13)"
+  },
+  {
+   "page": 2,
+   "issue": "1965-01",
+   "footer": "LA FOLLIA DI NEW YORK — GENNAIO 1965 (p. 15)"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "footer": "footer cut off at page edge: only \"O 1965\" visible (Gennaio/Febbraio/Marzo all end in -o); page is an ad column fragment, not datable from adjacent pages"
+  },
+  {
+   "page": 4,
+   "issue": "1965-02",
+   "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1965 (p. 12)"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1965 (p. 16)"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "footer": "LA FOLLIA DI NEW YORK — FEBBRAIO 1965 (p. 18)"
+  },
+  {
+   "page": 7,
+   "issue": "1965-03",
+   "footer": "cover; masthead \"MARZO 1965\", 73.mo Anno",
+   "issue_inferred": true
+  },
+  {
+   "page": 8,
+   "issue": "1965-03",
+   "footer": "LA FOLLIA DI NEW YORK — MARZO 1965 (p. 2)"
+  },
+  {
+   "page": 9,
+   "issue": "1965-03",
+   "footer": "LA FOLLIA DI NEW YORK — MARZO 1965 (p. 17)"
+  },
+  {
+   "page": 10,
+   "issue": "1965-05",
+   "footer": "cover; masthead \"MAGGIO 1965\", 73.mo Anno",
+   "issue_inferred": true
+  },
+  {
+   "page": 11,
+   "issue": "1965-08",
+   "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965 (p. 2)"
+  },
+  {
+   "page": 12,
+   "issue": "1965-08",
+   "footer": "no footer visible (page cropped to a poem box); same Cordiferro/Pucelli material as the Agosto 1965 issue (pp. 2, 9, 10)",
+   "issue_inferred": true
+  },
+  {
+   "page": 13,
+   "issue": "1965-08",
+   "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965 (p. 9)"
+  },
+  {
+   "page": 14,
+   "issue": "1965-08",
+   "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1965 (p. 10)"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1965-01",
+   "name": "B. Z.",
+   "as_printed": "B. Z.",
+   "title": "(unreadable; article cut off at left edge of page)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "low",
+   "note": "initials at end of a column fragment at the left page edge; only the end of the piece is visible; likely a regular initials-signer"
+  },
+  {
+   "page": 2,
+   "issue": "1965-01",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "Riccardo Cordiferro",
+   "title": "A Marzialuccio",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto napoletano; reprint (Cordiferro d. 1940); handwriting-style signature"
+  },
+  {
+   "page": 4,
+   "issue": "1965-02",
+   "name": "S. I. M.",
+   "as_printed": "S. I. M.",
+   "title": "Spunti ed appunti",
+   "position": "signature",
+   "kind": "column",
+   "confidence": "high",
+   "note": "initials as printed"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "Maria Vecchione",
+   "as_printed": "MARIA VECCHIONE",
+   "title": "Giovanni da Verrazzano",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "English-language poem; Vecchione's own book is advertised on the same page"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "Luigi Dommarco",
+   "as_printed": "LUIGI DOMMARCO, Roma, 23 dicembre 1964",
+   "title": "Natèle 1964",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "dialetto abruzzese; surname spelling (Dommarco) read at 90 dpi"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "Giuseppe Luongo",
+   "as_printed": "GIUSEPPE LUONGO, S. Angelo a Fasanella",
+   "title": "Ascolta del cuore",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "Frank La Raia",
+   "as_printed": "FRANK LA RAIA (Mom and Daddy)",
+   "title": "Beauty Box",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "English poem 'To daughter', signed 'Mom and Daddy / Frank La Raia'"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "S. D'Agostini",
+   "as_printed": "S. D'AGOSTINI",
+   "title": "Roma (Voto d'un emigrato)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "Vincent De Lalla",
+   "as_printed": "VINCENT DE LALLA",
+   "title": "Sulla spiaggia di Pompano Beach",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": "1965-02",
+   "name": "Frank Reale",
+   "as_printed": "FRANK REALE",
+   "title": "Alla più grande stella Sophia Loren",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto napoletano"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Francis Sisca",
+   "as_printed": "del DR. FRANCIS SISCA",
+   "title": "Il consiglio del medico: Il Latte",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Trilussa",
+   "as_printed": "TRILUSSA",
+   "title": "Er core der popolo",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint; dialetto romanesco"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Vittoria Di Giulio",
+   "as_printed": "VITTORIA DI GIULIO",
+   "title": "La fine di stagione",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Vincenzo Foti",
+   "as_printed": "VINCENZO FOTI, Elizabeth, N. J.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Sebastiano Trucco",
+   "as_printed": "SEBASTIANO TRUCCO, Erie, Pa.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Eugene Santonocito",
+   "as_printed": "EUGENE SANTONOCITO, Long Island City, N. Y.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "John Mocerino",
+   "as_printed": "JOHN MOCERINO, Brooklyn, N. Y.",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Frank Gentile",
+   "as_printed": "FRANK GENTILE",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 6,
+   "issue": "1965-02",
+   "name": "Francesco Greco",
+   "as_printed": "FRANCESCO GRECO",
+   "title": "Pro Domo Nostra",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 7,
+   "issue": "1965-03",
+   "name": "Richard Cassar",
+   "as_printed": "(Photo by Richard Cassar)",
+   "title": "Cover photo: Romeo Salta",
+   "position": "signature",
+   "kind": "photo",
+   "confidence": "medium",
+   "note": "small caption under cover portrait; surname read at 90 dpi"
+  },
+  {
+   "page": 8,
+   "issue": "1965-03",
+   "name": "Mary D. Ferraiuolo",
+   "as_printed": "Mrs. Mary D. Ferraiuolo, Hanover, N. J.",
+   "title": "Plausi e consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1965-03",
+   "name": "Isolina Gemignani",
+   "as_printed": "Mrs. Isolina Gemignani, Union City, N. J.",
+   "title": "Plausi e consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1965-03",
+   "name": "Will Cushing",
+   "as_printed": "Will Cushing, New York City",
+   "title": "Plausi e consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1965-03",
+   "name": "Giuseppe Rovito",
+   "as_printed": "Giuseppe Rovito, Shamokin, Pa.",
+   "title": "Plausi e consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1965-03",
+   "name": "Rosario Di Bartolo",
+   "as_printed": "Rosario Di Bartolo, Yonkers, 25 gennaio 1965",
+   "title": "Plausi e consensi",
+   "position": "signature",
+   "kind": "letter",
+   "confidence": "high",
+   "note": "editor's reply (N.d.E.) follows"
+  },
+  {
+   "page": 11,
+   "issue": "1965-08",
+   "name": "Rodolfo Pucelli",
+   "as_printed": "RODOLFO PUCELLI",
+   "title": "Il 25.mo anniversario della morte di Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1965-08",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Heart to Heart",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940); English translation"
+  },
+  {
+   "page": 12,
+   "issue": "1965-08",
+   "name": "Rodolfo Pucelli",
+   "as_printed": "Translated by Rodolfo Pucelli",
+   "title": "Heart to Heart",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "translator credit"
+  },
+  {
+   "page": 13,
+   "issue": "1965-08",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Malinconie estive",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 13,
+   "issue": "1965-08",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Leggenda e realtà (A una bella Maria sicula)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint (Cordiferro d. 1940)"
+  },
+  {
+   "page": 14,
+   "issue": "1965-08",
+   "name": "Gigi",
+   "as_printed": "di GIGI",
+   "title": "Il mondo attraverso alla mia lente",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high",
+   "note": "pseudonym/first name as printed"
+  }
+ ]
+}

@@ -1,0 +1,144 @@
+{
+ "file": "1953.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1953-01-01",
+   "footer": "Masthead dateline: NEW YORK, 1 GENNAIO 1953 (No. 1)"
+  },
+  {
+   "page": 2,
+   "issue": "1953-01",
+   "footer": "No date on clipping (Pagina 2, subscription $3.00); placed with the January 1953 issue by position in the PDF",
+   "issue_inferred": true
+  },
+  {
+   "page": 3,
+   "issue": "1953-01-15",
+   "footer": "Clipping header: 15 Gennaio 1953"
+  },
+  {
+   "page": 4,
+   "issue": "1953-01",
+   "footer": "No date on clipping; adjacent to 15 Gennaio 1953 clipping (same column strip), inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "footer": "No date printed (poem '1953 - La Follia'); between Jan and 1 Apr 1953 clippings, cannot be fixed"
+  },
+  {
+   "page": 6,
+   "issue": "1953-04-01",
+   "footer": "Clipping header: 1 Aprile 1953"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "footer": "No date printed (poem 'Torino'); between 1 Apr and 1 Jun 1953 clippings, cannot be fixed"
+  },
+  {
+   "page": 8,
+   "issue": "1953-06-01",
+   "footer": "Clipping header: 1 Giugno 1953"
+  },
+  {
+   "page": 9,
+   "issue": "1953-10",
+   "footer": "No date on page 'Pagina 2'; Statement of Ownership 'as of October 1, 1953' and $5.00 subscription -> October 1953 issue, inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 10,
+   "issue": null,
+   "footer": "Pagina 7, no date printed (article on Ario Flamma, 1953 era); cannot be fixed"
+  },
+  {
+   "page": 11,
+   "issue": "1953-11-01",
+   "footer": "Clipping header: 1 Novembre 1953"
+  },
+  {
+   "page": 12,
+   "issue": "1953-11-15",
+   "footer": "Masthead: Vol. 62 - No. 18, 15 NOVEMBRE 1953"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1953-01-01",
+   "name": "Italo",
+   "as_printed": "di ITALO",
+   "title": "Istantanee della settimana",
+   "position": "byline",
+   "kind": "column",
+   "confidence": "high",
+   "note": "recurring gossip column; signed with first name/pseudonym only"
+  },
+  {
+   "page": 4,
+   "issue": "1953-01",
+   "name": "B. Aquaro-Deodati",
+   "as_printed": "B. AQUARO-DEODATI (Dal Volume 'Le Corde')",
+   "title": "A mia figlia Maria",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "from the volume 'Le Corde'"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Dora Tranchino",
+   "as_printed": "Sig.ra DORA TRANCHINO",
+   "title": "1953 - 'La Follia'",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": null,
+   "name": "Francesco Saverio Riccio",
+   "as_printed": "da Francesco Saverio Riccio ('Traduzione letteraria dal testo siciliano')",
+   "title": "(poem above, title cut off)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "low",
+   "note": "translator credit for a poem whose own title/author is cut off at the top of the clipping"
+  },
+  {
+   "page": 6,
+   "issue": "1953-04-01",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Vorrei saper perche'",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "Cordiferro d. 1940, so reprint (founder of the paper)"
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "name": "Giuseppe Luongo",
+   "as_printed": "GIUSEPPE LUONGO da S. Angelo Fasanella",
+   "title": "Torino",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 11,
+   "issue": "1953-11-01",
+   "name": "Pasquale De Biasi",
+   "as_printed": "Un articolo di PASQUALE DE BIASI",
+   "title": "Il Sessantaduesimo Anniversario dalla Prima Recita Italiana in America",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high"
+  }
+ ]
+}

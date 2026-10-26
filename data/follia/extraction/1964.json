@@ -1,0 +1,81 @@
+{
+ "file": "1964.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1964-03",
+   "footer": "Cover masthead band: MARZO 1964"
+  },
+  {
+   "page": 2,
+   "issue": "1964-09",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - SETTEMBRE 1964 (p.8)"
+  },
+  {
+   "page": 3,
+   "issue": "1964-12",
+   "footer": "No date; Laviosa received title 'il 14 novembre scorso' -> Dec 1964, inferred (same strip as Dicembre 1964 pages)",
+   "issue_inferred": true
+  },
+  {
+   "page": 4,
+   "issue": "1964-12",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - DICEMBRE 1964 (p.5)"
+  },
+  {
+   "page": 5,
+   "issue": "1964-12",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - DICEMBRE 1964 (p.6)"
+  },
+  {
+   "page": 6,
+   "issue": "1964-12",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - DICEMBRE 1964 (p.24)"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 2,
+   "issue": "1964-09",
+   "name": "Alessandro Sisca",
+   "as_printed": "(ALESSANDRO SISCA)",
+   "title": "Riccardo Cordiferro",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "name in parentheses under title; Alessandro Sisca was Cordiferro's friend/associate, text is first-person recollection of meeting Cordiferro; possibly a reprint"
+  },
+  {
+   "page": 2,
+   "issue": "1964-09",
+   "name": "Giuseppe Incalicchio",
+   "as_printed": "GIUSEPPE INCALICCHIO",
+   "title": "Riccardo Cordiferro (closing tribute, right column)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "signs the closing paragraph of the Cordiferro tribute; may be a separate short piece"
+  },
+  {
+   "page": 4,
+   "issue": "1964-12",
+   "name": "Onorio Ruotolo",
+   "as_printed": "By ONORIO RUOTOLO",
+   "title": "A Clarification",
+   "position": "byline",
+   "kind": "article",
+   "confidence": "high",
+   "note": "English-language rebuttal of a magazine article on 'New York's Little Italy'; also signed at end on p.5 of the file (continues)"
+  },
+  {
+   "page": 5,
+   "issue": "1964-12",
+   "name": "Onorio Ruotolo",
+   "as_printed": "ONORIO RUOTOLO",
+   "title": "Natale nel Villaggio",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "file": "1958.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1958-05",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - MAGGIO 1958 (p.6)"
+  },
+  {
+   "page": 2,
+   "issue": "1958-05",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - MAGGIO 1958 (p.15)"
+  },
+  {
+   "page": 3,
+   "issue": "1958-05",
+   "footer": "Footer cut off ('...1958'); continuation of Karl Marx article from p.2 (Maggio 1958), inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 4,
+   "issue": null,
+   "footer": "No footer; poem dated 'Sul treno da New York a Miami, 9 Feb. 1958' so issue is Feb 1958 or later; cannot be fixed"
+  },
+  {
+   "page": 5,
+   "issue": "1958-09",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - SETTEMBRE 1958 (p.5)"
+  },
+  {
+   "page": 6,
+   "issue": "1958-09",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - SETTEMBRE 1958 (p.6)"
+  },
+  {
+   "page": 7,
+   "issue": "1958-09",
+   "footer": "No footer; continuation of 'Il Camminante' from p.6 (Settembre 1958), inferred",
+   "issue_inferred": true
+  },
+  {
+   "page": 8,
+   "issue": "1958-08",
+   "footer": "No footer; poem for the 18th anniversary of Cordiferro's death (he died Aug 1940) -> Aug 1958 or adjacent issue; inferred, low confidence",
+   "issue_inferred": true
+  },
+  {
+   "page": 9,
+   "issue": "1958-12",
+   "footer": "Footer: La Follia di New York - Dicembre 1958"
+  },
+  {
+   "page": 10,
+   "issue": null,
+   "footer": "No footer (review of Vincenzo Fede 'Liriche'; Pope John XXIII mention on p.9 is Dec 1958); cannot be fixed"
+  },
+  {
+   "page": 11,
+   "issue": "1958-04",
+   "footer": "Footer: LA FOLLIA DI NEW YORK - APRILE 1958 (p.10)"
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1958-05",
+   "name": "P. P.",
+   "as_printed": "P. P.",
+   "title": "Accordi e dissonanze di Onorio Ruotolo",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "initials as printed; unidentified. Review of Ruotolo's poetry book"
+  },
+  {
+   "page": 1,
+   "issue": "1958-05",
+   "name": "Annunciata Spinelli Dommarco",
+   "as_printed": "ANNUNCIATA SPINELLI DOMMARCO",
+   "title": "Che cosa canta il maggio?",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "short piece on Abruzzese 'Maggiolata' and Maestro Guido Albanese"
+  },
+  {
+   "page": 3,
+   "issue": "1958-05",
+   "name": "Vice-Simili",
+   "as_printed": "VICE - SIMILI",
+   "title": "Karl Marx: Veridica storia di un autentico straccione",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "pseudonym as printed; signature at end of piece that begins on p.2 (unsigned there)"
+  },
+  {
+   "page": 4,
+   "issue": null,
+   "name": "Giustino Ausanio",
+   "as_printed": "GIUSTINO AUSANIO, Sul treno da New York a Miami, 9 Feb. 1958",
+   "title": "Ricordando Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "dialetto napoletano"
+  },
+  {
+   "page": 5,
+   "issue": "1958-09",
+   "name": "Marziale Sisca",
+   "as_printed": "(Nota del Direttore Marziale Sisca)",
+   "title": "Il poeta Arturo Giovannitti (editor's note introducing The Walker)",
+   "position": "signature",
+   "kind": "other",
+   "confidence": "high",
+   "note": "signed editorial note; Sisca is otherwise masthead only"
+  },
+  {
+   "page": 5,
+   "issue": "1958-09",
+   "name": "Arturo Giovannitti",
+   "as_printed": "di Giovannitti",
+   "title": "Il Camminante",
+   "position": "byline",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "prose-poem 'The Walker', from his prison; reprint of 1950 pamphlet; also signed ARTURO GIOVANNITTI at the end on p.7"
+  },
+  {
+   "page": 7,
+   "issue": "1958-09",
+   "name": "Onorio Ruotolo",
+   "as_printed": "Traduzione italiana di ONORIO RUOTOLO",
+   "title": "Il Camminante",
+   "position": "signature",
+   "kind": "other",
+   "confidence": "high",
+   "note": "translator credit"
+  },
+  {
+   "page": 8,
+   "issue": "1958-08",
+   "name": "A. Mordente",
+   "as_printed": "A. MORDENTE",
+   "title": "Su la tomba di Cordiferro (Nel 18mo anniversario della sua morte)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 11,
+   "issue": "1958-04",
+   "name": "Lea Ferranti",
+   "as_printed": "LEA FERRANTI",
+   "title": "Gualtiero Whitman, Poeta della Guerra Americana",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 11,
+   "issue": "1958-04",
+   "name": "Annunciata Spinelli Dommarco",
+   "as_printed": "ANNUNCIATA SPINELLI DOMMARCO",
+   "title": "Malinconia",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  }
+ ]
+}

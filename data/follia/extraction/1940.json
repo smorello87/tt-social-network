@@ -1,0 +1,344 @@
+{
+ "file": "1940.pdf",
+ "pages": [
+  {
+   "page": 1,
+   "issue": "1940-09-29",
+   "footer": "top of page crop, no date header; same page as p.2 (dated 'Domenica 29 Settembre 1940'); poems signed 'Settembre 1940'",
+   "issue_inferred": true
+  },
+  {
+   "page": 2,
+   "issue": "1940-09-29",
+   "footer": "running head '29 Settembre, 1940' (La Follia di New York, weekly, Sunday)"
+  },
+  {
+   "page": 3,
+   "issue": null,
+   "footer": "clipping of 'Radiosorrisi Arsenicali' column; no date/header visible"
+  },
+  {
+   "page": 4,
+   "issue": null,
+   "footer": "lower part of same page as p.3 (Radiosorrisi Arsenicali); no date/header visible"
+  },
+  {
+   "page": 5,
+   "issue": "1940-09-15",
+   "footer": "header 'Domenica, 15 Settembre, 1940 — La Follia di New York — Pagina 5'"
+  },
+  {
+   "page": 6,
+   "issue": "1940-09-15",
+   "footer": "lower half of p.5 page ('continua a pagina 6'); no header visible",
+   "issue_inferred": true
+  },
+  {
+   "page": 7,
+   "issue": null,
+   "footer": "clipping of unsigned editorial 'Riccardo Cordiferro' (says Sisca died 'tre settimane fa', so ca. mid/late Sept 1940, but no printed date; may not be a La Follia page)"
+  },
+  {
+   "page": 8,
+   "issue": "1940-09-29",
+   "footer": "lower part of page 4 of 29 Settembre 1940 issue (same page as p.9; header cut off)",
+   "issue_inferred": true
+  },
+  {
+   "page": 9,
+   "issue": "1940-09-29",
+   "footer": "header 'Pagina 4 — La Follia di New York — Domenica, 29 Settembre, 19..' (year cut off)"
+  },
+  {
+   "page": 10,
+   "issue": "1940-09-29",
+   "footer": "lower part of page 4 of 29 Settembre 1940 issue (overlaps p.8; header cut off)",
+   "issue_inferred": true
+  },
+  {
+   "page": 11,
+   "issue": "1940-09-29",
+   "footer": "running head cut off by scan edge ('ina 4'); it is the lower part of the same page 4 of 29 Settembre 1940 (banner 'Il Rimpianto per la Morte di Riccardo Cordiferro' under 'Il Compianto dei Lettori')",
+   "issue_inferred": true
+  },
+  {
+   "page": 12,
+   "issue": "1940-09-29",
+   "footer": "continuation of p.11 (same page 4 of 29 Settembre 1940); no header visible",
+   "issue_inferred": true
+  },
+  {
+   "page": 13,
+   "issue": "1940-09-29",
+   "footer": "lower part of p.11/12 (same page 4 of 29 Settembre 1940, overlaps p.12); no header visible",
+   "issue_inferred": true
+  },
+  {
+   "page": 14,
+   "issue": "1940-10-20",
+   "footer": "header 'Domenica, 20 Ottobre, 1940'"
+  },
+  {
+   "page": 15,
+   "issue": "1940-10-20",
+   "footer": "lower part of the 20 Ottobre 1940 page (overlaps p.14 bottom); no header visible",
+   "issue_inferred": true
+  },
+  {
+   "page": 16,
+   "issue": "1940-10-20",
+   "footer": "full-page Marcantonio election ad; text above refers to Willkie as on p.14-15; no header visible",
+   "issue_inferred": true
+  }
+ ],
+ "signatures": [
+  {
+   "page": 1,
+   "issue": "1940-09-29",
+   "name": "G. Mordente",
+   "as_printed": "G. MORDENTE",
+   "title": "Umile fiore",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "tribute poem to Riccardo Cordiferro"
+  },
+  {
+   "page": 1,
+   "issue": "1940-09-29",
+   "name": "Plinio Bulleri",
+   "as_printed": "PLINIO BULLERI, Cicero, Ill., Settembre 1940.",
+   "title": "In memoria di Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "end of the same poem as on p.2 (page 1 shows its foot, above 'Umile fiore')"
+  },
+  {
+   "page": 2,
+   "issue": "1940-09-29",
+   "name": "Plinio Bulleri",
+   "as_printed": "PLINIO BULLERI, Cicero, Ill., Settembre 1940.",
+   "title": "In memoria di Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "tribute poem; signature also visible at top of p.1 (same page)"
+  },
+  {
+   "page": 5,
+   "issue": "1940-09-15",
+   "name": "Salvatore Benanti",
+   "as_printed": "Salvatore Benanti, M. D. (Elogio del Dr. S. Benanti di Brooklyn)",
+   "title": "Sulla tomba di Riccardo Cordiferro - 28 Agosto 1940",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 5,
+   "issue": "1940-09-15",
+   "name": "Arturo Giovannitti",
+   "as_printed": "Arturo Giovannitti",
+   "title": "Cordiferro poeta maggiore della nostra emigrazione",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "presumably the poet/labor activist Arturo Giovannitti"
+  },
+  {
+   "page": 6,
+   "issue": "1940-09-15",
+   "name": "Italo Stanco",
+   "as_printed": "Italo Stanco",
+   "title": "Maestro del popolo",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "page torn at left edge"
+  },
+  {
+   "page": 6,
+   "issue": "1940-09-15",
+   "name": "Oscar Mazzitelli",
+   "as_printed": "Oscar Mazzitelli, Sec'y Italian Labor Educ. B., New York City",
+   "title": "Cordiferro poeta e conferenziere proletario",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1940-09-29",
+   "name": "Giovanni Bozzacco",
+   "as_printed": "Giovanni Bozzacco, Dal 'Corriere Italo-Americano' di Akron, Ohio",
+   "title": "Riccardo Cordiferro non e' piu'",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "reprinted from an Akron paper; opening cites La Follia of 15 September"
+  },
+  {
+   "page": 8,
+   "issue": "1940-09-29",
+   "name": "Armando Cenerazzo",
+   "as_printed": "ARMANDO CENERAZZO",
+   "title": "Alla memoria del poeta Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "Neapolitan dialect"
+  },
+  {
+   "page": 8,
+   "issue": "1940-09-29",
+   "name": "Umberto Liberatore",
+   "as_printed": "Umberto Liberatore",
+   "title": "Ricordando il Poeta",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 8,
+   "issue": "1940-09-29",
+   "name": "E. De Stefano",
+   "as_printed": "Da 'La Gazzetta Legale' Cav. E. De Stefano, Editor.",
+   "title": "Riccardo Cordiferro (Il 25 agosto ... mori Riccardo Cordiferro)",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "reprint credit: piece taken from La Gazzetta Legale, signed by its editor Cav. E. De Stefano; piece sits bottom right of p.8/p.10"
+  },
+  {
+   "page": 8,
+   "issue": "1940-09-29",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "RICCARDO CORDIFERRO",
+   "title": "Ave Maria",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint; poem by the recently deceased Cordiferro (Alessandro Sisca)"
+  },
+  {
+   "page": 9,
+   "issue": "1940-09-29",
+   "name": "Salvatore Moncada",
+   "as_printed": "Dr. Salvatore Moncada",
+   "title": "In memoria di Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high",
+   "note": "Capo Esecutivo of the Rome Democratic Club"
+  },
+  {
+   "page": 9,
+   "issue": "1940-09-29",
+   "name": "Riccardo Cordiferro",
+   "as_printed": "VERSI DI R. CORDIFERRO",
+   "title": "Inno alla Pace del 'Rome Democratic Club'",
+   "position": "byline",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "reprint; words of the hymn (dedicated to Dott. Salvatore Moncada)"
+  },
+  {
+   "page": 9,
+   "issue": "1940-09-29",
+   "name": "Joseph Gioe",
+   "as_printed": "MUSICA DI JOSEPH GIOE",
+   "title": "Inno alla Pace del 'Rome Democratic Club'",
+   "position": "byline",
+   "kind": "other",
+   "confidence": "medium",
+   "note": "music credit on score; accent on Gioe uncertain"
+  },
+  {
+   "page": 11,
+   "issue": "1940-09-29",
+   "name": "Vincenzo Vacirca",
+   "as_printed": "VINCENZO VACIRCA",
+   "title": "L'ultimo Don Chisciotte",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "high"
+  },
+  {
+   "page": 12,
+   "issue": "1940-09-29",
+   "name": "Michele Pane",
+   "as_printed": "MICHELE PANE, Chicago, Ill., 28 Agosto 1940.",
+   "title": "In morte di Riccardo Cordiferro (acrostico)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "acrostic spelling RICCARDO CORDIFERRO; signature also on p.13"
+  },
+  {
+   "page": 13,
+   "issue": "1940-09-29",
+   "name": "Silvio Serafini",
+   "as_printed": "SILVIO SERAFINI",
+   "title": "Per la morte del poeta Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high"
+  },
+  {
+   "page": 13,
+   "issue": "1940-09-29",
+   "name": "Angelo M. Virga",
+   "as_printed": "ANGELO M. VIRGA, St. Louis, Mo.",
+   "title": "Pi la morti di Riccardu Cordiferru",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "Sicilian dialect; poem begins on p.11"
+  },
+  {
+   "page": 14,
+   "issue": "1940-10-20",
+   "name": "G. Incalicchio",
+   "as_printed": "G. Incalicchio",
+   "title": "Ricordando Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "article",
+   "confidence": "medium",
+   "note": "spelling as printed here; p.15 prints IMCALICCHIO (probably same person)"
+  },
+  {
+   "page": 15,
+   "issue": "1940-10-20",
+   "name": "V. Manente",
+   "as_printed": "V. MANENTE, New York, N. Y.",
+   "title": "In morte del poeta Riccardo Cordiferro",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "title partly torn"
+  },
+  {
+   "page": 15,
+   "issue": "1940-10-20",
+   "name": "G. Imcalicchio",
+   "as_printed": "G. IMCALICCHIO",
+   "title": "In morte di Alessandro Sisca (R. Cordiferro)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "medium",
+   "note": "spelling as printed; probably same as 'G. Incalicchio' on p.14"
+  },
+  {
+   "page": 15,
+   "issue": "1940-10-20",
+   "name": "Frank M. Zottoli",
+   "as_printed": "Avv. FRANK M. ZOTTOLI, Boston, Settembre 18, 1940",
+   "title": "Alessandro Sisca, arduo cavalier della saggezza (acrostico)",
+   "position": "signature",
+   "kind": "poem",
+   "confidence": "high",
+   "note": "Avv. = lawyer"
+  }
+ ]
+}

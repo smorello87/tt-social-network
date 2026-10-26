@@ -1,0 +1,29 @@
+{
+  "file": "ScanPro0582.pdf",
+  "pages": [
+    {"page": 1, "issue": "1964-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1964"},
+    {"page": 2, "issue": "1964-06", "footer": "LA FOLLIA DI NEW YORK — GIUGNO 1964"},
+    {"page": 3, "issue": "1964-07", "footer": "LA FOLLIA DI NEW YORK — LUGLIO 1964"},
+    {"page": 4, "issue": "1964-08", "footer": "no footer (front cover); masthead band reads 'AGOSTO 1964' (also 'REC'D AUG 7 1964' stamp)", "issue_inferred": true},
+    {"page": 5, "issue": "1964-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1964"},
+    {"page": 6, "issue": "1964-08", "footer": "LA FOLLIA DI NEW YORK — AGOSTO 1964"},
+    {"page": 7, "issue": "1964-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1964"},
+    {"page": 8, "issue": "1964-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1964"},
+    {"page": 9, "issue": "1964-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1964"},
+    {"page": 10, "issue": "1964-09", "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1964"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1964-06", "name": "Matteo Teresi", "as_printed": "MATTEO TERESI", "title": "Doveroso omaggio", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1964-06", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Il problema dell'alimentazione", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 3, "issue": "1964-07", "name": "Ugo Piazza", "as_printed": "DR. UGO PIAZZA Roma", "title": "Consigli da amico", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 3, "issue": "1964-07", "name": "Maria Vecchione", "as_printed": "MARIA VECCHIONE", "title": "Douglas MacArthur", "position": "signature", "kind": "poem", "confidence": "high"},
+    {"page": 3, "issue": "1964-07", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: L'alimentazione infantile e la carne", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 5, "issue": "1964-08", "name": "L.", "as_printed": "ROMA, giugno 1964 (L.)", "title": "Le delizie della cucina italiana", "position": "byline", "kind": "article", "confidence": "low", "note": "initial in dateline; may be a correspondent or an agency mark"},
+    {"page": 5, "issue": "1964-08", "name": "Trilussa", "as_printed": "TRILUSSA", "title": "Bella filosofia!", "position": "signature", "kind": "poem", "confidence": "high", "note": "reprint; dialetto romanesco"},
+    {"page": 6, "issue": "1964-08", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Nuoce alla linea", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 7, "issue": "1964-09", "name": "B. Z.", "as_printed": "B. Z.", "title": "Onoriamo la nostra Città visitando la \"Fiera del 1964\"", "position": "signature", "kind": "article", "confidence": "high", "note": "likely Bruno Zirato"},
+    {"page": 8, "issue": "1964-09", "name": "Giuseppe Incalicchio", "as_printed": "GIUSEPPE INCALICCHIO", "title": "Riccardo Cordiferro (Alessandro Sisca)", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 9, "issue": "1964-09", "name": "Francis Sisca", "as_printed": "del DR. FRANCIS SISCA", "title": "Il consiglio del medico: Se non fate ginnastica per lo meno passeggiate", "position": "byline", "kind": "column", "confidence": "high"},
+    {"page": 10, "issue": "1964-09", "name": "Alberto Mosciano", "as_printed": "ALBERTO MOSCIANO", "title": "Plausi e consensi", "position": "signature", "kind": "letter", "confidence": "high", "note": "letter to Sisca, Trenton, N. J., 18 agosto 1964; praises Giulio de Moro"}
+  ]
+}

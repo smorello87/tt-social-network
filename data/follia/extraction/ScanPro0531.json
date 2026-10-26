@@ -1,0 +1,30 @@
+{
+  "file": "ScanPro0531.pdf",
+  "pages": [
+    {"page": 1, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 2, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 3, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 4, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 5, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 6, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 7, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 8, "issue": "1968-11", "footer": "LA FOLLIA DI NEW YORK — NOVEMBRE 1968"},
+    {"page": 9, "issue": "1968-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1968"},
+    {"page": 10, "issue": "1968-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1968"},
+    {"page": 11, "issue": "1968-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1968"},
+    {"page": 12, "issue": "1968-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1968"},
+    {"page": 13, "issue": "1968-12", "footer": "LA FOLLIA DI NEW YORK — DICEMBRE 1968"}
+  ],
+  "signatures": [
+    {"page": 1, "issue": "1968-11", "name": "Luigi Sola", "as_printed": "Luigi Sola", "title": "Un nuovo libro di liriche: \"Aneliti e sospiri\"", "position": "signature", "kind": "article", "confidence": "high", "note": "signature closes the review column beside the Milnes piece"},
+    {"page": 1, "issue": "1968-11", "name": "Elia Dominianni", "as_printed": "Don Elia Dominianni, Soverato-Superiore, Catanzaro", "title": "Il poeta Sinibaldo Rovito (Dopo letto il suo volume \"Aneliti e sospiri\")", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 2, "issue": "1968-11", "name": "Luigi Sola", "as_printed": "di Luigi Sola", "title": "Cinquantesimo della Vittoria: Agli italo-americani nella luce della Vittoria", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 3, "issue": "1968-11", "name": "Generale Diaz", "as_printed": "GENERALE DIAZ", "title": "Bollettino di guerra N. 1262 (Comando Supremo, 4 Novembre 1918)", "position": "signature", "kind": "other", "confidence": "medium", "note": "historical war bulletin reprinted within Luigi Sola's article; Armando Diaz"},
+    {"page": 4, "issue": "1968-11", "name": "Giacomo Grillo", "as_printed": "di Giacomo Grillo", "title": "Colombo e Verrazzano", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 6, "issue": "1968-11", "name": "Stephen LoIacono", "as_printed": "By Stephen LoIacono", "title": "Corsi — A Great American", "position": "byline", "kind": "article", "confidence": "high", "note": "English-language"},
+    {"page": 8, "issue": "1968-11", "name": "Siculo", "as_printed": "Siculo", "title": "Alluginogeni: Hanno nomi strani come Psilocina, Psilocibina, Mescalina, LSD-25", "position": "signature", "kind": "article", "confidence": "medium", "note": "pseudonym"},
+    {"page": 8, "issue": "1968-11", "name": "John Dalbonia", "as_printed": "John Dalbonia", "title": "Morti con nome italiano nella dura guerra del Vietnam", "position": "signature", "kind": "article", "confidence": "high"},
+    {"page": 11, "issue": "1968-12", "name": "Giulio de Moro", "as_printed": "di Giulio de Moro", "title": "Meglio tardi che mai", "position": "byline", "kind": "article", "confidence": "high"},
+    {"page": 13, "issue": "1968-12", "name": "Attilio Dell'Orso", "as_printed": "Attilio Dell'Orso", "title": "(piece on J. S. Bach and Mozart, continued from previous page)", "position": "signature", "kind": "article", "confidence": "high", "note": "title not visible on this page"}
+  ]
+}

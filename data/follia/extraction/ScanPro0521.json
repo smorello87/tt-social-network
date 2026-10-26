@@ -1,0 +1,232 @@
+{
+  "file": "ScanPro0521.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "issue": "1966-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1966"
+    },
+    {
+      "page": 2,
+      "issue": "1966-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1966"
+    },
+    {
+      "page": 3,
+      "issue": "1966-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1966"
+    },
+    {
+      "page": 4,
+      "issue": "1966-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1966"
+    },
+    {
+      "page": 5,
+      "issue": "1966-09",
+      "footer": "LA FOLLIA DI NEW YORK — SETTEMBRE 1966"
+    },
+    {
+      "page": 6,
+      "issue": "1966-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1966"
+    },
+    {
+      "page": 7,
+      "issue": "1966-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1966"
+    },
+    {
+      "page": 8,
+      "issue": "1966-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1966"
+    },
+    {
+      "page": 9,
+      "issue": "1966-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1966"
+    },
+    {
+      "page": 10,
+      "issue": "1966-10",
+      "footer": "LA FOLLIA DI NEW YORK — OTTOBRE 1966"
+    }
+  ],
+  "signatures": [
+    {
+      "page": 1,
+      "issue": "1966-09",
+      "name": "Gigi",
+      "as_printed": "di GIGI",
+      "title": "Il mondo attraverso alla mia lente",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 2,
+      "issue": "1966-09",
+      "name": "Giacomo Grillo",
+      "as_printed": "Articolo di GIACOMO GRILLO",
+      "title": "Ultima battuta su \"Gli Italiani\" di Barzini",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "Boston dateline on p. 3 (2 agosto 1966)"
+    },
+    {
+      "page": 4,
+      "issue": "1966-09",
+      "name": "Siculo",
+      "as_printed": "SICULO",
+      "title": "Concilio ecumenico ebreo / assoluzione giuridica (piece title not visible; page cut at spread edge)",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "medium",
+      "note": "pseudonym; title partly cropped"
+    },
+    {
+      "page": 5,
+      "issue": "1966-09",
+      "name": "Giuseppe Zuzolo",
+      "as_printed": "GIUSEPPE ZUZOLO",
+      "title": "Per le nostre signore: Per arredare con gusto la casa",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 5,
+      "issue": "1966-09",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: Fate più moto",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 5,
+      "issue": "1966-09",
+      "name": "Samarat",
+      "as_printed": "SAMARAT",
+      "title": "Autunno",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 5,
+      "issue": "1966-09",
+      "name": "Lucio Seminara",
+      "as_printed": "LUCIO SEMINARA",
+      "title": "I Signori a City Hall si aumentano il salario",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    },
+    {
+      "page": 5,
+      "issue": "1966-09",
+      "name": "Giuseppe Zuzolo",
+      "as_printed": "GIUSEPPE ZUZOLO",
+      "title": "Rilievi storici",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 6,
+      "issue": "1966-10",
+      "name": "Gaetano Lacalamita",
+      "as_printed": "Gaetano Lacalamita",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 6,
+      "issue": "1966-10",
+      "name": "Frank Mazzotta",
+      "as_printed": "Frank Mazzotta",
+      "title": "Plausi e consensi",
+      "position": "signature",
+      "kind": "letter",
+      "confidence": "high"
+    },
+    {
+      "page": 7,
+      "issue": "1966-10",
+      "name": "Gigi",
+      "as_printed": "di GIGI",
+      "title": "Il mondo attraverso alla mia lente",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 8,
+      "issue": "1966-10",
+      "name": "Siculo",
+      "as_printed": "SICULO",
+      "title": "(continuation of article on Kafka / religious dialogue)",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "high",
+      "note": "pseudonym; article begins on previous page"
+    },
+    {
+      "page": 8,
+      "issue": "1966-10",
+      "name": "Cesare Luscambro",
+      "as_printed": "Novella di CESARE LUSCAMBRO",
+      "title": "Le scarpe strette",
+      "position": "byline",
+      "kind": "article",
+      "confidence": "high",
+      "note": "novella"
+    },
+    {
+      "page": 10,
+      "issue": "1966-10",
+      "name": "Giuseppe Zuzolo",
+      "as_printed": "GIUSEPPE ZUZOLO",
+      "title": "Per le nostre signore: L'arte di essere sposa e madre",
+      "position": "signature",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 10,
+      "issue": "1966-10",
+      "name": "R. P.",
+      "as_printed": "—R.P.",
+      "title": "Giuseppe Incalicchio accademico tiberino",
+      "position": "signature",
+      "kind": "article",
+      "confidence": "medium",
+      "note": "initials as printed"
+    },
+    {
+      "page": 10,
+      "issue": "1966-10",
+      "name": "Francis Sisca",
+      "as_printed": "del DR. FRANCIS SISCA",
+      "title": "Il consiglio del medico: La frutta",
+      "position": "byline",
+      "kind": "column",
+      "confidence": "high"
+    },
+    {
+      "page": 10,
+      "issue": "1966-10",
+      "name": "Sinibaldo Rovito",
+      "as_printed": "SINIBALDO ROVITO",
+      "title": "Primavera d'amore",
+      "position": "signature",
+      "kind": "poem",
+      "confidence": "high"
+    }
+  ]
+}

@@ -51,11 +51,6 @@
       "subtype": null
     },
     {
-      "id": "A R Orsatti",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "A Restelli",
       "type": "person",
       "subtype": null
@@ -757,6 +752,11 @@
     },
     {
       "id": "Alessandro Chiappelli",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Alessandro Ciocia",
       "type": "person",
       "subtype": null
     },
@@ -2402,6 +2402,11 @@
     },
     {
       "id": "Arnold Armand Del Greco",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Arnold R. Orsatti",
       "type": "person",
       "subtype": null
     },
@@ -4531,6 +4536,11 @@
       "subtype": "periodical"
     },
     {
+      "id": "Corriere degli Italiani (Yonkers)",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
       "id": "Corriere dell'Hudson",
       "type": "institution",
       "subtype": "periodical"
@@ -5067,6 +5077,11 @@
     },
     {
       "id": "Domenico Lazzarini",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Domenico Lo Russo",
       "type": "person",
       "subtype": null
     },
@@ -7304,6 +7319,11 @@
       "id": "Flavo Pasella",
       "type": "person",
       "subtype": null
+    },
+    {
+      "id": "Florence Publishing Co.",
+      "type": "institution",
+      "subtype": "publisher"
     },
     {
       "id": "Floriana Bossi",
@@ -11196,6 +11216,11 @@
       "subtype": "periodical"
     },
     {
+      "id": "Il Corriere del Missouri (St. Louis)",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
       "id": "Il Corriere della Sera",
       "type": "institution",
       "subtype": "periodical"
@@ -11212,6 +11237,11 @@
     },
     {
       "id": "Il Fuoco",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Il Giornale della Sera (Pittsburgh)",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -11247,6 +11277,11 @@
     },
     {
       "id": "Il Messaggero (Rome)",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Il Messaggiere (Chicago)",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -11287,6 +11322,11 @@
     },
     {
       "id": "Il Popolo (Caserta)",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Il Popolo Italiano (Philadelphia)",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -11352,6 +11392,11 @@
     },
     {
       "id": "Il Tevere",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Il Vindice (Pueblo)",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -11614,6 +11659,16 @@
       "id": "Italian Sons of America",
       "type": "institution",
       "subtype": "organization"
+    },
+    {
+      "id": "Italian Times",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "Italian Times Publishing Company",
+      "type": "institution",
+      "subtype": "publisher"
     },
     {
       "id": "Italian-American Labor Council",
@@ -12696,7 +12751,17 @@
       "subtype": "periodical"
     },
     {
+      "id": "L'Unione (Pueblo)",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
       "id": "L'Unita",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "La Colonia (Chicago)",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -12791,7 +12856,17 @@
       "subtype": "periodical"
     },
     {
+      "id": "La Voce del Popolo",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
       "id": "La Voce dell'Emigrato",
+      "type": "institution",
+      "subtype": "periodical"
+    },
+    {
+      "id": "La Voce delle Colonie",
       "type": "institution",
       "subtype": "periodical"
     },
@@ -17566,6 +17641,11 @@
       "subtype": null
     },
     {
+      "id": "Remo Zuecca",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Renato Cannavale",
       "type": "person",
       "subtype": null
@@ -18149,6 +18229,11 @@
       "id": "Rolando Ricci",
       "type": "person",
       "subtype": null
+    },
+    {
+      "id": "Roma (Denver)",
+      "type": "institution",
+      "subtype": "periodical"
     },
     {
       "id": "Romano Giachetti",
@@ -22023,6 +22108,11 @@
       "type": "affiliation"
     },
     {
+      "source": "Arnold R. Orsatti",
+      "target": "Il Popolo Italiano (Philadelphia)",
+      "type": "affiliation"
+    },
+    {
       "source": "Arnoldo Mondadori",
       "target": "Epoca",
       "type": "affiliation"
@@ -24464,12 +24554,47 @@
     },
     {
       "source": "Bernardino Ciambelli",
+      "target": "Florence Publishing Co.",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
       "target": "Frugone & Balletto",
       "type": "affiliation"
     },
     {
       "source": "Bernardino Ciambelli",
+      "target": "Il Bollettino della Sera",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "Il Corriere del Missouri (St. Louis)",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "Il Cristoforo Colombo",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "Il Giornale della Sera (Pittsburgh)",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "Il Messaggiere (Chicago)",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
       "target": "Il Telegrafo",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "Il Vindice (Pueblo)",
       "type": "affiliation"
     },
     {
@@ -24480,6 +24605,36 @@
     {
       "source": "Bernardino Ciambelli",
       "target": "L'Italia (Chicago)",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "L'Italiano in America",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "L'Unione (Pueblo)",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "La Colonia (Chicago)",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "La Voce del Popolo",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "La Voce delle Colonie",
+      "type": "affiliation"
+    },
+    {
+      "source": "Bernardino Ciambelli",
+      "target": "Roma (Denver)",
       "type": "affiliation"
     },
     {
@@ -25795,6 +25950,11 @@
     {
       "source": "Corriere d'America",
       "target": "Augusto Mauro",
+      "type": "affiliation"
+    },
+    {
+      "source": "Corriere d'America",
+      "target": "Bernardino Ciambelli",
       "type": "affiliation"
     },
     {
@@ -30540,6 +30700,11 @@
     {
       "source": "Giovanni De Rosalia",
       "target": "Nicoletti Bros Press",
+      "type": "affiliation"
+    },
+    {
+      "source": "Giovanni Favoino di Giura",
+      "target": "Corriere degli Italiani (Yonkers)",
       "type": "affiliation"
     },
     {
@@ -37129,6 +37294,11 @@
     },
     {
       "source": "Il Crociato",
+      "target": "Alessandro Ciocia",
+      "type": "affiliation"
+    },
+    {
+      "source": "Il Crociato",
       "target": "Carlo de Biasi",
       "type": "affiliation"
     },
@@ -37200,6 +37370,11 @@
     {
       "source": "Il Mondo",
       "target": "Giuseppe Lupis",
+      "type": "affiliation"
+    },
+    {
+      "source": "Il Popolo Italiano (Philadelphia)",
+      "target": "Remo Zuecca",
       "type": "affiliation"
     },
     {
@@ -38585,6 +38760,21 @@
     {
       "source": "Italian Quarterly",
       "target": "Yale University",
+      "type": "affiliation"
+    },
+    {
+      "source": "Italian Times",
+      "target": "Domenico Lo Russo",
+      "type": "affiliation"
+    },
+    {
+      "source": "Italian Times",
+      "target": "Italian Times Publishing Company",
+      "type": "affiliation"
+    },
+    {
+      "source": "Italian Times Publishing Company",
+      "target": "Domenico Lo Russo",
       "type": "affiliation"
     },
     {
@@ -40554,11 +40744,6 @@
     },
     {
       "source": "La Parola del Popolo",
-      "target": "A R Orsatti",
-      "type": "affiliation"
-    },
-    {
-      "source": "La Parola del Popolo",
       "target": "A Soares",
       "type": "affiliation"
     },
@@ -40940,6 +41125,11 @@
     {
       "source": "La Parola del Popolo",
       "target": "Arnaldo Plateroti",
+      "type": "affiliation"
+    },
+    {
+      "source": "La Parola del Popolo",
+      "target": "Arnold R. Orsatti",
       "type": "affiliation"
     },
     {

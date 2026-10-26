@@ -1,0 +1,530 @@
+{
+  "person": {
+    "id": 1593,
+    "name": "Bernardino Ciambelli"
+  },
+  "purpose": "Dates for Ciambelli's affiliation edges, kept here until the DB stores edge years.",
+  "format": {
+    "years": "novels: [year] or [start, end] for serials; journalism: list of [start, end] ranges",
+    "node_id": "network.db node the work is linked through (null if no publisher listed)",
+    "starred": "marked with * in the source list; meaning of the asterisk not recorded",
+    "serialized": "published in installments in that periodical rather than as a book"
+  },
+  "added": "2026-10-25",
+  "novels": [
+    {
+      "title": "Fiori d'Arancio, ovvero La Moglie del Barbiere",
+      "translation": "Orange Blossoms, or The Barber's Wife",
+      "years": [
+        1893
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "I Misteri di Mulberry Street",
+      "translation": "The Mysteries of Mulberry Street",
+      "years": [
+        1893
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto"
+    },
+    {
+      "title": "Suicidio Elettrico, ovvero l'Esposizione di Chicago",
+      "translation": "Electric Suicide, or the Chicago Exposition",
+      "years": [
+        1893
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "La Città Nera, ovvero I Misteri di Chicago",
+      "translation": "The Black City, or The Mysteries of Chicago",
+      "years": [
+        1893,
+        1894
+      ],
+      "node_id": 4214,
+      "node": "L'Italia (Chicago)",
+      "serialized": true
+    },
+    {
+      "title": "Amore, Lussuria, Morte, ovvero il Processo di Antonio Bianco",
+      "translation": "Love, Lust, Death, or the Trial of Antonio Bianco",
+      "years": [
+        1894
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "La Bella Biellese, ovvero il Mistero di Columbus Avenue",
+      "translation": "The Beautiful Woman of Biella, or the Mystery of Columbus Avenue",
+      "years": [
+        1894
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "I Drammi dell'Emigrazione",
+      "translation": "The Dramas of Emigration",
+      "years": [
+        1894
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto"
+    },
+    {
+      "title": "La Spia",
+      "translation": "The Spy",
+      "years": [
+        1894
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "I Delitti dei Bosses (Cosiddetti Padroni)",
+      "translation": "The Crimes of the Bosses [So-Called Masters]",
+      "years": [
+        1895
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "I Misteri della Polizia: I Falsi Monetari",
+      "translation": "The Mysteries of the Police: The Counterfeiters",
+      "years": [
+        1895
+      ],
+      "node_id": 1665,
+      "node": "L'Italiano in America",
+      "starred": true
+    },
+    {
+      "title": "I Misteri della Polizia: Il Delitto di Water Street",
+      "translation": "The Mysteries of the Police: The Water Street Murder",
+      "years": [
+        1895
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto"
+    },
+    {
+      "title": "I Misteri della Polizia: Le Tane di New York",
+      "translation": "The Mysteries of the Police: The Dens of New York",
+      "years": [
+        1895
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto",
+      "starred": true
+    },
+    {
+      "title": "I Misteri della Polizia: I Briganti Americani",
+      "translation": "The Mysteries of the Police: The American Brigands",
+      "years": [
+        1896
+      ],
+      "node_id": 1665,
+      "node": "L'Italiano in America",
+      "starred": true
+    },
+    {
+      "title": "I Misteri di Bleecker Street",
+      "translation": "The Mysteries of Bleecker Street",
+      "years": [
+        1899
+      ],
+      "node_id": 1609,
+      "node": "Frugone & Balletto"
+    },
+    {
+      "title": "Il Brigante Musolino",
+      "translation": "The Brigand Musolino",
+      "years": [
+        1901
+      ],
+      "node_id": null,
+      "node": null,
+      "starred": true
+    },
+    {
+      "title": "Il Delitto di Coney Island, ovvero La Vendetta della Zingara",
+      "translation": "The Crime of Coney Island, or the Gypsy Woman's Revenge",
+      "years": [
+        1907,
+        1908
+      ],
+      "node_id": 1432,
+      "node": "La Follia di New York",
+      "serialized": true
+    },
+    {
+      "title": "L'Uomo Maledetto",
+      "translation": "The Accursed Man",
+      "years": [
+        1908
+      ],
+      "node_id": 4559,
+      "node": "Florence Publishing Co.",
+      "starred": true
+    },
+    {
+      "title": "La Strage degli Innocenti, ossia I Delitti di un Medico",
+      "translation": "The Massacre of the Innocents, or the Crimes of a Doctor",
+      "years": [
+        1908,
+        1909
+      ],
+      "node_id": 1432,
+      "node": "La Follia di New York",
+      "serialized": true
+    },
+    {
+      "title": "Il Terremoto di Calabria e Sicilia",
+      "translation": "The Earthquake of Calabria and Sicily",
+      "years": [
+        1909
+      ],
+      "node_id": 4559,
+      "node": "Florence Publishing Co."
+    },
+    {
+      "title": "I Misteri di Harlem, ovvero La Bella di Elizabeth Street",
+      "translation": "The Mysteries of Harlem, or the Beauty of Elizabeth Street",
+      "years": [
+        1910
+      ],
+      "node_id": 1432,
+      "node": "La Follia di New York",
+      "serialized": true
+    },
+    {
+      "title": "L'Aeroplano Fantasma",
+      "translation": "The Phantom Airplane",
+      "years": [
+        1911
+      ],
+      "node_id": 1432,
+      "node": "La Follia di New York",
+      "serialized": true
+    },
+    {
+      "title": "I Sotterranei di New York",
+      "translation": "The Underground of New York",
+      "years": [
+        1915
+      ],
+      "node_id": 1614,
+      "node": "Italian Book Company"
+    },
+    {
+      "title": "I Viaggi",
+      "translation": "The Journeys",
+      "years": [
+        1915
+      ],
+      "node_id": 1614,
+      "node": "Italian Book Company",
+      "starred": true
+    },
+    {
+      "title": "La Vergine di Trieste: Episodio della Guerra Italo-Austriaca",
+      "translation": "The Virgin of Trieste: An Episode of the Italo-Austrian War",
+      "years": [
+        1916
+      ],
+      "node_id": 1614,
+      "node": "Italian Book Company",
+      "starred": true
+    },
+    {
+      "title": "La Prostituta di Vienna",
+      "translation": "The Prostitute of Vienna",
+      "years": [
+        1917
+      ],
+      "node_id": 1614,
+      "node": "Italian Book Company"
+    },
+    {
+      "title": "La Trovatella di Mulberry Street, ovvero La Stella dei Cinque Punti",
+      "translation": "The Foundling of Mulberry Street, or The Star of Five Points",
+      "years": [
+        1919
+      ],
+      "node_id": 1614,
+      "node": "Italian Book Company"
+    }
+  ],
+  "journalism": [
+    {
+      "as_listed": "Il Messaggiere / La Colonia (Chicago)",
+      "nodes": [
+        {
+          "id": 4560,
+          "name": "Il Messaggiere (Chicago)"
+        },
+        {
+          "id": 4561,
+          "name": "La Colonia (Chicago)"
+        }
+      ],
+      "years_text": "1888–1889",
+      "years": [
+        [
+          1888,
+          1889
+        ]
+      ],
+      "note": "Source lists the two titles together; years not split between them."
+    },
+    {
+      "as_listed": "Il Progresso Italo-Americano",
+      "nodes": [
+        {
+          "id": 200,
+          "name": "Il Progresso Italo-Americano"
+        }
+      ],
+      "years_text": "1888–1891; 1892–1897; 1920–1927",
+      "years": [
+        [
+          1888,
+          1891
+        ],
+        [
+          1892,
+          1897
+        ],
+        [
+          1920,
+          1927
+        ]
+      ]
+    },
+    {
+      "as_listed": "Cristoforo Colombo",
+      "nodes": [
+        {
+          "id": 3438,
+          "name": "Il Cristoforo Colombo"
+        }
+      ],
+      "years_text": "1891",
+      "years": [
+        [
+          1891,
+          1891
+        ]
+      ]
+    },
+    {
+      "as_listed": "Il Bollettino della Guerra / Il Bollettino della Sera",
+      "nodes": [
+        {
+          "id": 3474,
+          "name": "Il Bollettino della Sera"
+        }
+      ],
+      "years_text": "1898–1899; 1918",
+      "years": [
+        [
+          1898,
+          1899
+        ],
+        [
+          1918,
+          1918
+        ]
+      ],
+      "note": "No separate node for Il Bollettino della Guerra."
+    },
+    {
+      "as_listed": "Il Corriere del Missouri (St. Louis)",
+      "nodes": [
+        {
+          "id": 4562,
+          "name": "Il Corriere del Missouri (St. Louis)"
+        }
+      ],
+      "years_text": "1899",
+      "years": [
+        [
+          1899,
+          1899
+        ]
+      ]
+    },
+    {
+      "as_listed": "Il Vindice (Pueblo)",
+      "nodes": [
+        {
+          "id": 4563,
+          "name": "Il Vindice (Pueblo)"
+        }
+      ],
+      "years_text": "1901",
+      "years": [
+        [
+          1901,
+          1901
+        ]
+      ]
+    },
+    {
+      "as_listed": "L'Unione (Pueblo)",
+      "nodes": [
+        {
+          "id": 4564,
+          "name": "L'Unione (Pueblo)"
+        }
+      ],
+      "years_text": "1903; possibly 1905; 1917–1918",
+      "years": [
+        [
+          1903,
+          1903
+        ],
+        [
+          1917,
+          1918
+        ]
+      ],
+      "uncertain": [
+        [
+          1905,
+          1905
+        ]
+      ]
+    },
+    {
+      "as_listed": "Roma (Denver)",
+      "nodes": [
+        {
+          "id": 4565,
+          "name": "Roma (Denver)"
+        }
+      ],
+      "years_text": "1904",
+      "years": [
+        [
+          1904,
+          1904
+        ]
+      ]
+    },
+    {
+      "as_listed": "La Follia di New York",
+      "nodes": [
+        {
+          "id": 1432,
+          "name": "La Follia di New York"
+        }
+      ],
+      "years_text": "ca. 1905–1928",
+      "years": [
+        [
+          1905,
+          1928
+        ]
+      ],
+      "approximate": true
+    },
+    {
+      "as_listed": "Il Telegrafo",
+      "nodes": [
+        {
+          "id": 1694,
+          "name": "Il Telegrafo"
+        }
+      ],
+      "years_text": "1907–1910; 1926",
+      "years": [
+        [
+          1907,
+          1910
+        ],
+        [
+          1926,
+          1926
+        ]
+      ]
+    },
+    {
+      "as_listed": "La Voce del Popolo",
+      "nodes": [
+        {
+          "id": 4566,
+          "name": "La Voce del Popolo"
+        }
+      ],
+      "years_text": "1915",
+      "years": [
+        [
+          1915,
+          1915
+        ]
+      ]
+    },
+    {
+      "as_listed": "La Voce delle Colonie",
+      "nodes": [
+        {
+          "id": 4567,
+          "name": "La Voce delle Colonie"
+        }
+      ],
+      "years_text": "1916–1917",
+      "years": [
+        [
+          1916,
+          1917
+        ]
+      ]
+    },
+    {
+      "as_listed": "Il Giornale della Sera (Pittsburgh)",
+      "nodes": [
+        {
+          "id": 4568,
+          "name": "Il Giornale della Sera (Pittsburgh)"
+        }
+      ],
+      "years_text": "1917–1918",
+      "years": [
+        [
+          1917,
+          1918
+        ]
+      ]
+    },
+    {
+      "as_listed": "Il Corriere d'America",
+      "nodes": [
+        {
+          "id": 1587,
+          "name": "Corriere d'America"
+        }
+      ],
+      "years_text": "1927–1931",
+      "years": [
+        [
+          1927,
+          1931
+        ]
+      ]
+    }
+  ]
+}

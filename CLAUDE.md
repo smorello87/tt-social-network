@@ -87,7 +87,7 @@ cd data/editor
 #    (pages: issue per page from footer/header/masthead; signatures: name, as_printed, title, kind, confidence)
 # 2. Merge + apply review.json -> data/<slug>/contributors.json and roster.json
 python3 build_signatures.py follia
-# 3. Review in the browser (saves to review.json, rebuilds on every click)
+# 3. Review in the browser (saves to review.json, rebuilds on startup and on every click)
 python3 signature_reviewer.py follia        # http://localhost:5003
 # 4. Import with the shared importer
 python3 import_contributors.py follia --dry-run && python3 import_contributors.py follia
@@ -95,6 +95,8 @@ python3 import_contributors.py follia --dry-run && python3 import_contributors.p
 - Extraction: Sonnet subagents match Opus on this task; Haiku credits article subjects as authors. Run few image-reading agents at once (too many trigger "[media removed: request limit]"), and never let an agent write a file from OCR or guesses. Cross-check names against the PDF text layer (`pdftotext`). Spellings in an example file get copied, so verify the example against the scan first.
 - Inclusion: photo credits and composers count; letter writers only if in 2+ issues or already in the DB; initials-only names with no DB match and unidentifiable pen names are excluded (kept in the data via `exclude` / `excluded_reason`).
 - `review.json` keys are documented in the `build_signatures.py` docstring (`aliases`, `skip`, `drop`, `new`, `exclude`, `notes`, `open_questions`).
+- Starting the reviewer rewrites `contributors.json`/`roster.json` from the current DB, so after an import they show a diff (newly created nodes now matched). That's expected; commit it or `git checkout` it.
+- The reviewer only answers requests addressed to `localhost:5003`/`127.0.0.1:5003` (403 for a LAN IP or other hostname) and only accepts JSON POSTs. This guards against CSRF and DNS rebinding; keep both checks if you change the server.
 
 ### Scripted data fixes (merge / rename / split nodes)
 - Use `database.py` helpers from `data/editor/`: `backup_db()` first, then `merge_nodes(primary, secondary)`, `update_node(id, name=...)`, `create_node`, `create_edge`, `update_edge` — they keep `name_normalized`, canonical edge direction, and `needs_review` in sync. Avoid raw SQL writes.

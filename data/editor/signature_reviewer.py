@@ -4,8 +4,14 @@ Review UI for build_signatures.py output (e.g. La Follia).
 
 Shows each contributor with the scan pages they signed, and writes decisions
 (merge/alias, match to a DB node, mark distinct, skip, drop one credit, resolve an
-open question) to data/<slug>/review.json, then rebuilds contributors.json.
+open question) to data/<slug>/review.json, then rebuilds contributors.json and
+roster.json. It also rebuilds both at startup, so they pick up DB changes made
+since the last build (e.g. nodes created by the import).
 Read-only with respect to network.db. Standard library only (no Flask needed).
+
+Only answers requests addressed to localhost:5003 or 127.0.0.1:5003 (not a LAN
+IP or other hostname), and POSTs must be application/json, so other sites open
+in the browser can't write decisions (CSRF / DNS rebinding).
 
 Usage: python3 signature_reviewer.py follia   ->  http://localhost:5003
 """
@@ -95,6 +101,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = unquote(urlparse(self.path).path)
+        if not self.local_host():
+            return self.send(403, {"error": "forbidden"})
         if path == "/":
             self.send(200, TEMPLATE.read_text().replace("{{ slug }}", SLUG), "text/html; charset=utf-8")
         elif path == "/api/data":
@@ -116,9 +124,18 @@ class Handler(BaseHTTPRequestHandler):
         else:
             self.send(404, {"error": "not found"})
 
+    def local_host(self):
+        # Rejects DNS-rebinding requests, whose Host is the attacker's domain
+        return self.headers.get("Host") in (f"localhost:{PORT}", f"127.0.0.1:{PORT}")
+
     def do_POST(self):
         if urlparse(self.path).path != "/api/decision":
             return self.send(404, {"error": "not found"})
+        # JSON content type forces a CORS preflight, which this server never answers,
+        # so other sites open in the browser can't post decisions
+        ctype = self.headers.get("Content-Type", "").split(";")[0].strip()
+        if not self.local_host() or ctype != "application/json":
+            return self.send(403, {"error": "forbidden"})
         body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
         error = apply_decision(body)
         if error:

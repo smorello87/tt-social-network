@@ -2830,7 +2830,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4511,
+        "name": "Matteo Teresi"
+      },
       "network_candidates": [],
       "issue_count": 19,
       "issues": [
@@ -3124,7 +3127,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4478,
+        "name": "Giulio de Moro"
+      },
       "network_candidates": [],
       "issue_count": 15,
       "issues": [
@@ -4645,7 +4651,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4484,
+        "name": "Giuseppe Zuzolo"
+      },
       "network_candidates": [],
       "issue_count": 10,
       "issues": [
@@ -4798,7 +4807,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4422,
+        "name": "Annunciata Spinelli Dommarco"
+      },
       "network_candidates": [],
       "issue_count": 9,
       "issues": [
@@ -5748,7 +5760,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4507,
+        "name": "Maria Iannella"
+      },
       "network_candidates": [],
       "issue_count": 7,
       "issues": [
@@ -6013,7 +6028,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4453,
+        "name": "Federico Fabozzi"
+      },
       "network_candidates": [],
       "issue_count": 6,
       "issues": [
@@ -6101,7 +6119,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4472,
+        "name": "Germoglino Saggio"
+      },
       "network_candidates": [],
       "issue_count": 6,
       "issues": [
@@ -6759,7 +6780,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4450,
+        "name": "Eugenio Santonocito"
+      },
       "network_candidates": [],
       "issue_count": 5,
       "issues": [
@@ -7469,7 +7493,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4455,
+        "name": "Filomeno Argenio"
+      },
       "network_candidates": [],
       "issue_count": 4,
       "issues": [
@@ -7612,7 +7639,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4502,
+        "name": "Lucio Seminara"
+      },
       "network_candidates": [],
       "issue_count": 4,
       "issues": [
@@ -7858,7 +7888,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4535,
+        "name": "Sebastiano Trucco"
+      },
       "network_candidates": [],
       "issue_count": 4,
       "issues": [
@@ -7934,7 +7967,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4536,
+        "name": "Severina Magni"
+      },
       "network_candidates": [],
       "issue_count": 4,
       "issues": [
@@ -8002,7 +8038,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4417,
+        "name": "Amedeo Fusaro"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8064,7 +8103,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4421,
+        "name": "Annibale Centoni"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8206,7 +8248,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4432,
+        "name": "Attilio D'Ambrogi"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8463,7 +8508,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4465,
+        "name": "Frank Spadola"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8520,7 +8568,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4470,
+        "name": "Gaetano Lacalamita"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8826,7 +8877,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4520,
+        "name": "Paola Adele Morsellino"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8883,7 +8937,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4521,
+        "name": "Pasquale Forte"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -8941,7 +8998,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4539,
+        "name": "Stephen Lo Iacono"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -9000,7 +9060,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4540,
+        "name": "Tebi Biondi"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -9058,7 +9121,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4550,
+        "name": "Vito De Bartolo"
+      },
       "network_candidates": [],
       "issue_count": 3,
       "issues": [
@@ -9174,7 +9240,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4410,
+        "name": "Agostino Trovaioli"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9217,7 +9286,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4418,
+        "name": "Angelo Cascià"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9323,7 +9395,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4424,
+        "name": "Antonio Mordente"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9513,7 +9588,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4443,
+        "name": "Diletta Lanza"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9618,7 +9696,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4458,
+        "name": "Francis Norelli"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9672,7 +9753,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4464,
+        "name": "Frank S. Reale"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9814,7 +9898,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4477,
+        "name": "Giovanni Solone"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9858,7 +9945,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4479,
+        "name": "Giuseppe Civitarese"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -9963,7 +10053,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4488,
+        "name": "Isolina Gemignani"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10007,7 +10100,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4492,
+        "name": "John J. Alifano"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10051,7 +10147,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4493,
+        "name": "John Mocerino"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10106,7 +10205,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4495,
+        "name": "Joseph E. Conte"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10150,7 +10252,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4496,
+        "name": "Joseph Gioe"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10197,7 +10302,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4510,
+        "name": "Mary Ferraiuolo"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10241,7 +10349,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4512,
+        "name": "Michael Sisca"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10288,7 +10399,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4513,
+        "name": "Modestino Sessa"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10458,7 +10572,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4522,
+        "name": "Philip Bertolotta"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10502,7 +10619,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4523,
+        "name": "Pier Petrucelli della Gattina"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10653,7 +10773,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4531,
+        "name": "Salvatore Di Leo"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10699,7 +10822,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4537,
+        "name": "Silvio Coscia"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10744,7 +10870,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4542,
+        "name": "Tilde Longo"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10791,7 +10920,10 @@
       ],
       "letters_only": true,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4549,
+        "name": "Vincenzo Corbacio"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -10885,7 +11017,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4551,
+        "name": "Vittoria Di Giulio"
+      },
       "network_candidates": [],
       "issue_count": 2,
       "issues": [
@@ -11038,7 +11173,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4407,
+        "name": "A. Quintieri"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11071,7 +11209,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4408,
+        "name": "A. Russo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11104,7 +11245,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4409,
+        "name": "Agostino Allori"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11170,7 +11314,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4411,
+        "name": "Alberto Piraccini"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11307,7 +11454,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4412,
+        "name": "Alessandro Dommarco"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11340,7 +11490,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4413,
+        "name": "Alfredo Della Valle"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11375,7 +11528,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4414,
+        "name": "Alfredo Massa"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11417,7 +11573,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4415,
+        "name": "Alfredo Sisca"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11449,7 +11608,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4416,
+        "name": "Alpinolo Danielli"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11515,7 +11677,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4419,
+        "name": "Angelo Marsala"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11547,7 +11712,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4420,
+        "name": "Anna Lannutti"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11779,7 +11947,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4423,
+        "name": "Antonio Lezza"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11845,7 +12016,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4425,
+        "name": "Antonio Negri"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11877,7 +12051,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4426,
+        "name": "Antonio Pederzoli"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11909,7 +12086,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4427,
+        "name": "Armando Cenerazzo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -11978,7 +12158,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4428,
+        "name": "Arrigo Sorini"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12011,7 +12194,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4430,
+        "name": "Arturo Tesi"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12043,7 +12229,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4431,
+        "name": "Attilio Altavilla"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12075,7 +12264,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4433,
+        "name": "Attilio Dell'Orso"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12108,7 +12300,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4434,
+        "name": "Bayard Taylor"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12177,7 +12372,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4436,
+        "name": "Bruna J. Bernardara"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12209,7 +12407,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4438,
+        "name": "Carla Fiordise"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12275,7 +12476,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4439,
+        "name": "Cesare Luscambro"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12308,7 +12512,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4441,
+        "name": "Charles L. Fasullo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12341,7 +12548,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4442,
+        "name": "Ciro Pellechia"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12485,7 +12695,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4444,
+        "name": "Domenico Treccase"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12633,7 +12846,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4446,
+        "name": "E. De Stefano"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12702,7 +12918,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4447,
+        "name": "Elia Dominianni"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12734,7 +12953,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4448,
+        "name": "Emilia Caputo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12767,7 +12989,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4449,
+        "name": "Enzo Feola"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12833,7 +13058,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4451,
+        "name": "F. Oliveri"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12901,7 +13129,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4452,
+        "name": "Fausto Belfiori"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -12934,7 +13165,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4454,
+        "name": "Ferdinando Papa"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13042,7 +13276,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4456,
+        "name": "Francesco Boneschi"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13109,7 +13346,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4457,
+        "name": "Francesco Restivo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13189,7 +13429,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4459,
+        "name": "Franco Maletta"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13256,7 +13499,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4460,
+        "name": "Frank Capalbo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13398,7 +13644,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4461,
+        "name": "Frank La Raia"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13431,7 +13680,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4462,
+        "name": "Frank M. Giunta"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13463,7 +13715,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4463,
+        "name": "Frank M. Zottoli"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13529,7 +13784,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4466,
+        "name": "Frank Taccino"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13562,7 +13820,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4467,
+        "name": "Frank Tortorelli"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13662,7 +13923,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4468,
+        "name": "G. Mordente"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13695,7 +13959,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4469,
+        "name": "G. Paolino De' Sardi"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13831,7 +14098,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4471,
+        "name": "Gaetano Ricciardi"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13897,7 +14167,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4475,
+        "name": "Giovanni Bozzacco"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -13931,7 +14204,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4476,
+        "name": "Giovanni Girgenti"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14073,7 +14349,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4480,
+        "name": "Giuseppe De Rizzo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14105,7 +14384,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4481,
+        "name": "Giuseppe Langone"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14137,7 +14419,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4482,
+        "name": "Giuseppe Mirabella"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14241,7 +14526,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4483,
+        "name": "Giuseppe Tirinnanzi"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14309,7 +14597,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4486,
+        "name": "Guido Albanese"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14342,7 +14633,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4489,
+        "name": "Italo Limbara"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14409,7 +14703,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4490,
+        "name": "Jerome La Scala"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14474,7 +14771,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4491,
+        "name": "John Dalbonia"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14506,7 +14806,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4494,
+        "name": "Joseph A. Tigani"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14573,7 +14876,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4497,
+        "name": "Joseph Lippe"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14714,7 +15020,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4498,
+        "name": "Lea Ferranti"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14746,7 +15055,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4499,
+        "name": "Lee Lemeni"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14815,7 +15127,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4500,
+        "name": "Leonardo Dia"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -14882,7 +15197,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4501,
+        "name": "Lilia Lodolini"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15017,7 +15335,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4503,
+        "name": "Luigi Maida"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15083,7 +15404,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4504,
+        "name": "Manfredi Fasulo"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15115,7 +15439,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4505,
+        "name": "Manfredi Greco"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15181,7 +15508,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4506,
+        "name": "Marco Marchesan"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15248,7 +15578,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4508,
+        "name": "Marino Mancini"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15280,7 +15613,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4509,
+        "name": "Marsio Prato"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15381,7 +15717,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4514,
+        "name": "Nanni Andriolli"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15482,7 +15821,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4515,
+        "name": "Nicholas Intrieri"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15515,7 +15857,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4516,
+        "name": "Nicola Lanza"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15581,7 +15926,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4518,
+        "name": "Oscar Mazzitelli"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15613,7 +15961,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4519,
+        "name": "P. Conti Tarantino"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15882,7 +16233,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4524,
+        "name": "Pietro Fera"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -15948,7 +16302,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4525,
+        "name": "Pietro Pasquali"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16092,7 +16449,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4527,
+        "name": "Richard Cassar"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16192,7 +16552,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4528,
+        "name": "Rosario Torregrossa"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16295,7 +16658,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4529,
+        "name": "S. D'Agostini"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16361,7 +16727,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4530,
+        "name": "S. Politi"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16463,7 +16832,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4532,
+        "name": "Salvatore Moncada"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16496,7 +16868,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4533,
+        "name": "Samuel J. Renda"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16528,7 +16903,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4534,
+        "name": "Scipio di Dario"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16593,7 +16971,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4538,
+        "name": "Silvio Serafini"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16774,7 +17155,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4541,
+        "name": "Thomas Bailey Aldrich"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16852,7 +17236,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4544,
+        "name": "Ugo Piazza"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16919,7 +17306,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4545,
+        "name": "V. A. Castellucci"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -16951,7 +17341,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4546,
+        "name": "V. E. Cinquegrana"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -17086,7 +17479,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4547,
+        "name": "Vincent De Lalla"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -17185,7 +17581,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4548,
+        "name": "Vincenzo Bellezza"
+      },
       "network_candidates": [],
       "issue_count": 1,
       "issues": [
@@ -17522,7 +17921,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4429,
+        "name": "Arturo Cardaropoli"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17561,7 +17963,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4435,
+        "name": "Biagio Occhipinti"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17590,7 +17995,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4437,
+        "name": "Bruno Scala"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17620,7 +18028,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4440,
+        "name": "Cesare Tomasulo"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17650,7 +18061,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4445,
+        "name": "Duilio Marazzi"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17744,7 +18158,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4473,
+        "name": "Giorgio Pillon"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17774,7 +18191,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4474,
+        "name": "Giovanni Artieri"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17837,7 +18257,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4485,
+        "name": "Giustino Ausanio"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17867,7 +18290,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4487,
+        "name": "Isidoro Filocco"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17962,7 +18388,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4517,
+        "name": "Olga Malchiodi Cavaliere"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -17991,7 +18420,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4526,
+        "name": "Raimondo Manzini"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],
@@ -18021,7 +18453,10 @@
       ],
       "letters_only": false,
       "include": true,
-      "network_node": null,
+      "network_node": {
+        "id": 4543,
+        "name": "Tommaso Dell'Erba"
+      },
       "network_candidates": [],
       "issue_count": 0,
       "issues": [],

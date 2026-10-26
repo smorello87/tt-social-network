@@ -11,7 +11,8 @@
       "issues": [
         "1956-07"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4407
     },
     {
       "name": "A. Russo",
@@ -21,7 +22,8 @@
       "issues": [
         "1963-06"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4408
     },
     {
       "name": "Agostino Allori",
@@ -31,7 +33,8 @@
       "issues": [
         "1959-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4409
     },
     {
       "name": "Agostino Trovaioli",
@@ -42,7 +45,8 @@
         "1959-11",
         "1961-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4410
     },
     {
       "name": "Agostino de Biasi",
@@ -75,7 +79,8 @@
       "issues": [
         "1967-08"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4411
     },
     {
       "name": "Alberto Tarchiani",
@@ -105,7 +110,8 @@
       "issues": [
         "1947-01-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4412
     },
     {
       "name": "Alfredo Della Valle",
@@ -115,7 +121,8 @@
       "issues": [
         "1952-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4413
     },
     {
       "name": "Alfredo Massa",
@@ -126,7 +133,8 @@
       "issues": [
         "1955-06"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4414
     },
     {
       "name": "Alfredo Sisca",
@@ -136,7 +144,8 @@
       "issues": [
         "1959-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4415
     },
     {
       "name": "Alpinolo Danielli",
@@ -146,7 +155,8 @@
       "issues": [
         "1947-02-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4416
     },
     {
       "name": "Amedeo Fusaro",
@@ -159,7 +169,8 @@
         "1966-11",
         "1968-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4417
     },
     {
       "name": "Angelo Cascià",
@@ -170,7 +181,8 @@
         "1947-04",
         "1947-06-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4418
     },
     {
       "name": "Angelo M. Virga",
@@ -192,7 +204,8 @@
       "issues": [
         "1947-06-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4419
     },
     {
       "name": "Anna Lannutti",
@@ -202,7 +215,8 @@
       "issues": [
         "1947-03-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4420
     },
     {
       "name": "Annibale Centoni",
@@ -215,7 +229,8 @@
         "1947-02-15",
         "1949-08-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4421
     },
     {
       "name": "Annunciata Spinelli Dommarco",
@@ -235,7 +250,8 @@
         "1963-08",
         "1963-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4422
     },
     {
       "name": "Anthony Marino",
@@ -309,7 +325,8 @@
       "issues": [
         "1968-08"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4423
     },
     {
       "name": "Antonio Mordente",
@@ -320,7 +337,8 @@
         "1949-10-01",
         "1958-08"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4424
     },
     {
       "name": "Antonio Negri",
@@ -330,7 +348,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4425
     },
     {
       "name": "Antonio Pederzoli",
@@ -340,7 +359,8 @@
       "issues": [
         "1967-12"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4426
     },
     {
       "name": "Ario Flamma",
@@ -362,7 +382,8 @@
       "issues": [
         "1940-09-29"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4427
     },
     {
       "name": "Armando Mazza",
@@ -383,7 +404,8 @@
       "issues": [
         "1948-12"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4428
     },
     {
       "name": "Arturo Cardaropoli",
@@ -391,7 +413,8 @@
         "poem"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4429
     },
     {
       "name": "Arturo Giovannitti",
@@ -415,7 +438,8 @@
       "issues": [
         "1951-02-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4430
     },
     {
       "name": "Attilio Altavilla",
@@ -425,7 +449,8 @@
       "issues": [
         "1967-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4431
     },
     {
       "name": "Attilio D'Ambrogi",
@@ -437,7 +462,8 @@
         "1961-03",
         "1963-05"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4432
     },
     {
       "name": "Attilio Dell'Orso",
@@ -447,7 +473,8 @@
       "issues": [
         "1968-12"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4433
     },
     {
       "name": "Bayard Taylor",
@@ -457,7 +484,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4434
     },
     {
       "name": "Benedetto Ciaceri",
@@ -488,7 +516,8 @@
         "column"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4435
     },
     {
       "name": "Bruna J. Bernardara",
@@ -498,7 +527,8 @@
       "issues": [
         "1949-08-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4436
     },
     {
       "name": "Bruno Scala",
@@ -506,7 +536,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4437
     },
     {
       "name": "Bruno Zirato",
@@ -548,7 +579,8 @@
       "issues": [
         "1960-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4438
     },
     {
       "name": "Carlo Salvo",
@@ -584,7 +616,8 @@
       "issues": [
         "1966-10"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4439
     },
     {
       "name": "Cesare Tomasulo",
@@ -592,7 +625,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4440
     },
     {
       "name": "Charles L. Fasullo",
@@ -602,7 +636,8 @@
       "issues": [
         "1947-07-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4441
     },
     {
       "name": "Ciro Pellechia",
@@ -612,7 +647,8 @@
       "issues": [
         "1967-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4442
     },
     {
       "name": "Diletta Lanza",
@@ -623,7 +659,8 @@
         "1966-03",
         "1966-11"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4443
     },
     {
       "name": "Domenico Adamo",
@@ -647,7 +684,8 @@
       "issues": [
         "1964-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4444
     },
     {
       "name": "Dora Chiaramonte Tranchino",
@@ -667,7 +705,8 @@
         "poem"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4445
     },
     {
       "name": "E. De Stefano",
@@ -677,7 +716,8 @@
       "issues": [
         "1940-09-29"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4446
     },
     {
       "name": "Edoardo Vergara-Caffarelli",
@@ -711,7 +751,8 @@
       "issues": [
         "1968-11"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4447
     },
     {
       "name": "Emilia Caputo",
@@ -721,7 +762,8 @@
       "issues": [
         "1964-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4448
     },
     {
       "name": "Enrico Caruso",
@@ -744,7 +786,8 @@
       "issues": [
         "1965-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4449
     },
     {
       "name": "Eugenio Santonocito",
@@ -758,7 +801,8 @@
         "1965-02",
         "1966-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4450
     },
     {
       "name": "F. Oliveri",
@@ -768,7 +812,8 @@
       "issues": [
         "1947-06-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4451
     },
     {
       "name": "Fabio Schettini",
@@ -789,7 +834,8 @@
       "issues": [
         "1951-11-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4452
     },
     {
       "name": "Federico Fabozzi",
@@ -805,7 +851,8 @@
         "1965-07",
         "1967-07"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4453
     },
     {
       "name": "Ferdinando Papa",
@@ -815,7 +862,8 @@
       "issues": [
         "1964-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4454
     },
     {
       "name": "Filippo Fichera",
@@ -837,7 +885,8 @@
         "1966-11",
         "1967-05"
       ],
-      "status": "new",
+      "status": "existing",
+      "node_id": 4455,
       "note": "Also printed 'F. Argento' (ScanPro0522 p2, Nov 1966): same West Pittston, Pa. subscriber."
     },
     {
@@ -848,7 +897,8 @@
       "issues": [
         "1959-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4456
     },
     {
       "name": "Francesco Greco",
@@ -876,7 +926,8 @@
       "issues": [
         "1947-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4457
     },
     {
       "name": "Francesco Saverio Riccio",
@@ -1006,7 +1057,8 @@
         "1949-08-01",
         "1952-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4458
     },
     {
       "name": "Franco Maletta",
@@ -1016,7 +1068,8 @@
       "issues": [
         "1968-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4459
     },
     {
       "name": "Franco Monaco",
@@ -1037,7 +1090,8 @@
       "issues": [
         "1947-08-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4460
     },
     {
       "name": "Frank La Raia",
@@ -1047,7 +1101,8 @@
       "issues": [
         "1965-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4461
     },
     {
       "name": "Frank M. Giunta",
@@ -1057,7 +1112,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4462
     },
     {
       "name": "Frank M. Zottoli",
@@ -1067,7 +1123,8 @@
       "issues": [
         "1940-10-20"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4463
     },
     {
       "name": "Frank S. Reale",
@@ -1078,7 +1135,8 @@
         "1965-02",
         "1967-05"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4464
     },
     {
       "name": "Frank Spadola",
@@ -1090,7 +1148,8 @@
         "1957-10",
         "1960-05"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4465
     },
     {
       "name": "Frank Taccino",
@@ -1100,7 +1159,8 @@
       "issues": [
         "1963-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4466
     },
     {
       "name": "Frank Tortorelli",
@@ -1110,7 +1170,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4467
     },
     {
       "name": "G Baldassare",
@@ -1133,7 +1194,8 @@
       "issues": [
         "1940-09-29"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4468
     },
     {
       "name": "G. Paolino De' Sardi",
@@ -1143,7 +1205,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4469
     },
     {
       "name": "Gabriele Villa",
@@ -1166,7 +1229,8 @@
         "1965-10",
         "1966-10"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4470
     },
     {
       "name": "Gaetano Ricciardi",
@@ -1176,7 +1240,8 @@
       "issues": [
         "1967-10"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4471
     },
     {
       "name": "Gennaro Capalbo",
@@ -1209,7 +1274,8 @@
         "1949-08-01",
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4472
     },
     {
       "name": "Giacomo Grillo",
@@ -1242,7 +1308,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4473
     },
     {
       "name": "Giovanni Artieri",
@@ -1250,7 +1317,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4474
     },
     {
       "name": "Giovanni Bozzacco",
@@ -1260,7 +1328,8 @@
       "issues": [
         "1940-09-29"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4475
     },
     {
       "name": "Giovanni Favoino di Giura",
@@ -1283,7 +1352,8 @@
       "issues": [
         "1947-04-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4476
     },
     {
       "name": "Giovanni Solone",
@@ -1294,7 +1364,8 @@
         "1955-06",
         "1961-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4477
     },
     {
       "name": "Giulio de Moro",
@@ -1318,7 +1389,8 @@
         "1968-10",
         "1968-12"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4478
     },
     {
       "name": "Giuseppe Chiarella",
@@ -1342,7 +1414,8 @@
         "1967-05",
         "1968-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4479
     },
     {
       "name": "Giuseppe D. Procopio",
@@ -1361,7 +1434,8 @@
       "issues": [
         "1968-08"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4480
     },
     {
       "name": "Giuseppe Incalicchio",
@@ -1388,7 +1462,8 @@
       "issues": [
         "1947-05-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4481
     },
     {
       "name": "Giuseppe Luongo",
@@ -1417,7 +1492,8 @@
       "issues": [
         "1963-08"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4482
     },
     {
       "name": "Giuseppe Prezzolini",
@@ -1462,7 +1538,8 @@
       "issues": [
         "1959-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4483
     },
     {
       "name": "Giuseppe Zuzolo",
@@ -1485,7 +1562,8 @@
         "1967-12",
         "1968-05"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4484
     },
     {
       "name": "Giustino Ausanio",
@@ -1493,7 +1571,8 @@
         "poem"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4485
     },
     {
       "name": "Guerino D'Alessandro",
@@ -1527,7 +1606,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4486
     },
     {
       "name": "Isidoro Filocco",
@@ -1535,7 +1615,8 @@
         "poem"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4487
     },
     {
       "name": "Isolina Gemignani",
@@ -1546,7 +1627,8 @@
         "1965-03",
         "1966-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4488
     },
     {
       "name": "Italo Limbara",
@@ -1556,7 +1638,8 @@
       "issues": [
         "1947-02-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4489
     },
     {
       "name": "Italo Stanco",
@@ -1601,7 +1684,8 @@
       "issues": [
         "1950-01-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4490
     },
     {
       "name": "John Dalbonia",
@@ -1611,7 +1695,8 @@
       "issues": [
         "1968-11"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4491
     },
     {
       "name": "John J. Alifano",
@@ -1622,7 +1707,8 @@
         "1947-04",
         "1949-10-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4492
     },
     {
       "name": "John Mocerino",
@@ -1633,7 +1719,8 @@
         "1965-02",
         "1966-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4493
     },
     {
       "name": "Joseph A. Tigani",
@@ -1643,7 +1730,8 @@
       "issues": [
         "1967-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4494
     },
     {
       "name": "Joseph E. Conte",
@@ -1654,7 +1742,8 @@
         "1959-04",
         "1961-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4495
     },
     {
       "name": "Joseph Gioe",
@@ -1665,7 +1754,8 @@
         "1940-09-29",
         "1954-02-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4496
     },
     {
       "name": "Joseph Lippe",
@@ -1675,7 +1765,8 @@
       "issues": [
         "1968-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4497
     },
     {
       "name": "Lea Ferranti",
@@ -1685,7 +1776,8 @@
       "issues": [
         "1958-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4498
     },
     {
       "name": "Lee Lemeni",
@@ -1695,7 +1787,8 @@
       "issues": [
         "1961-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4499
     },
     {
       "name": "Lee Posner",
@@ -1731,7 +1824,8 @@
       "issues": [
         "1947-02-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4500
     },
     {
       "name": "Lilia Lodolini",
@@ -1741,7 +1835,8 @@
       "issues": [
         "1960-05"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4501
     },
     {
       "name": "Lucio Seminara",
@@ -1755,7 +1850,8 @@
         "1959-11",
         "1966-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4502
     },
     {
       "name": "Luigi Antonini",
@@ -1795,7 +1891,8 @@
       "issues": [
         "1960-05"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4503
     },
     {
       "name": "Luigi Sola",
@@ -1825,7 +1922,8 @@
       "issues": [
         "1949-04-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4504
     },
     {
       "name": "Manfredi Greco",
@@ -1835,7 +1933,8 @@
       "issues": [
         "1947-05-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4505
     },
     {
       "name": "Marco Marchesan",
@@ -1845,7 +1944,8 @@
       "issues": [
         "1965-07"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4506
     },
     {
       "name": "Maria Iannella",
@@ -1862,7 +1962,8 @@
         "1967-12",
         "1968-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4507
     },
     {
       "name": "Marino Mancini",
@@ -1872,7 +1973,8 @@
       "issues": [
         "1967-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4508
     },
     {
       "name": "Marsio Prato",
@@ -1882,7 +1984,8 @@
       "issues": [
         "1947-01-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4509
     },
     {
       "name": "Mary Ferraiuolo",
@@ -1893,7 +1996,8 @@
         "1963-02",
         "1965-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4510
     },
     {
       "name": "Mary Iacovella",
@@ -1973,7 +2077,8 @@
         "1968-08",
         "1968-10"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4511
     },
     {
       "name": "Michael Sisca",
@@ -1984,7 +2089,8 @@
         "1967-05",
         "1968-08"
       ],
-      "status": "new",
+      "status": "existing",
+      "node_id": 4512,
       "note": "Yes just make all Michael Sisca"
     },
     {
@@ -2007,7 +2113,8 @@
         "1947-04-15",
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4513
     },
     {
       "name": "Nando Rossi",
@@ -2027,7 +2134,8 @@
       "issues": [
         "1966-08"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4514
     },
     {
       "name": "Nelly Chiaramonte",
@@ -2057,7 +2165,8 @@
       "issues": [
         "1949-10-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4515
     },
     {
       "name": "Nicola Lanza",
@@ -2067,7 +2176,8 @@
       "issues": [
         "1947-01-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4516
     },
     {
       "name": "Nino Bellassai",
@@ -2100,7 +2210,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4517
     },
     {
       "name": "Onorio Ruotolo",
@@ -2126,7 +2237,8 @@
       "issues": [
         "1940-09-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4518
     },
     {
       "name": "P. Conti Tarantino",
@@ -2136,7 +2248,8 @@
       "issues": [
         "1947-02-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4519
     },
     {
       "name": "Paola Adele Morsellino",
@@ -2148,7 +2261,8 @@
         "1968-08",
         "1968-09"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4520
     },
     {
       "name": "Pasquale Forte",
@@ -2160,7 +2274,8 @@
         "1960-02",
         "1961-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4521
     },
     {
       "name": "Pasquale Ruocco",
@@ -2205,7 +2320,8 @@
         "1965-10",
         "1966-11"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4522
     },
     {
       "name": "Pier Petrucelli della Gattina",
@@ -2216,7 +2332,8 @@
         "1961-08",
         "1961-10"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4523
     },
     {
       "name": "Pietro Fera",
@@ -2226,7 +2343,8 @@
       "issues": [
         "1959-07"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4524
     },
     {
       "name": "Pietro Greco",
@@ -2253,7 +2371,8 @@
       "issues": [
         "1959-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4525
     },
     {
       "name": "Plinio Bulleri",
@@ -2284,7 +2403,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4526
     },
     {
       "name": "Riccardo Cordiferro",
@@ -2331,7 +2451,8 @@
       "issues": [
         "1965-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4527
     },
     {
       "name": "Rodolfo Pucelli",
@@ -2373,7 +2494,8 @@
       "issues": [
         "1949-10-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4528
     },
     {
       "name": "Rudolph Vecoli",
@@ -2395,7 +2517,8 @@
       "issues": [
         "1965-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4529
     },
     {
       "name": "S. Politi",
@@ -2405,7 +2528,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4530
     },
     {
       "name": "Salvatore Benanti",
@@ -2427,7 +2551,8 @@
         "1963-01",
         "1963-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4531
     },
     {
       "name": "Salvatore Moncada",
@@ -2437,7 +2562,8 @@
       "issues": [
         "1940-09-29"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4532
     },
     {
       "name": "Salvatore di Giacomo",
@@ -2461,7 +2587,8 @@
       "issues": [
         "1947-05-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4533
     },
     {
       "name": "Scipio di Dario",
@@ -2471,7 +2598,8 @@
       "issues": [
         "1947-03-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4534
     },
     {
       "name": "Sebastiano Trucco",
@@ -2484,7 +2612,8 @@
         "1962-07",
         "1965-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4535
     },
     {
       "name": "Severina Magni",
@@ -2497,7 +2626,8 @@
         "1947-08-01",
         "1947-08-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4536
     },
     {
       "name": "Silvio Coscia",
@@ -2508,7 +2638,8 @@
         "1963-05",
         "1964-11"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4537
     },
     {
       "name": "Silvio Serafini",
@@ -2518,7 +2649,8 @@
       "issues": [
         "1940-09-29"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4538
     },
     {
       "name": "Sinibaldo Rovito",
@@ -2560,7 +2692,8 @@
         "1968-11",
         "1975-01"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4539
     },
     {
       "name": "Tebi Biondi",
@@ -2573,7 +2706,8 @@
         "1967-06",
         "1968-03"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4540
     },
     {
       "name": "Thomas Bailey Aldrich",
@@ -2583,7 +2717,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new",
+      "status": "existing",
+      "node_id": 4541,
       "note": "Printed 'I. B. Aldrich' / 'Adrich' over Crivello translations; original author."
     },
     {
@@ -2595,7 +2730,8 @@
         "1964-01",
         "1964-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4542
     },
     {
       "name": "Tommaso Dell'Erba",
@@ -2603,7 +2739,8 @@
         "article"
       ],
       "issues": [],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4543
     },
     {
       "name": "Trilussa",
@@ -2636,7 +2773,8 @@
       "issues": [
         "1964-07"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4544
     },
     {
       "name": "Umberto Liberatore",
@@ -2657,7 +2795,8 @@
       "issues": [
         "1947-08-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4545
     },
     {
       "name": "V. E. Cinquegrana",
@@ -2667,7 +2806,8 @@
       "issues": [
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4546
     },
     {
       "name": "Vanni Buscemi Montana",
@@ -2692,7 +2832,8 @@
       "issues": [
         "1965-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4547
     },
     {
       "name": "Vincenzo Bellezza",
@@ -2702,7 +2843,8 @@
       "issues": [
         "1964-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4548
     },
     {
       "name": "Vincenzo Corbacio",
@@ -2713,7 +2855,8 @@
         "1959-04",
         "1961-04"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4549
     },
     {
       "name": "Vincenzo D'Ambrosio",
@@ -2781,7 +2924,8 @@
         "1949-08-01",
         "1951-05-15"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4550
     },
     {
       "name": "Vittoria Di Giulio",
@@ -2793,7 +2937,8 @@
         "1960-02",
         "1965-02"
       ],
-      "status": "new"
+      "status": "existing",
+      "node_id": 4551
     },
     {
       "name": "Vittorio Nardi",

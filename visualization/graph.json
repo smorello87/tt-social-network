@@ -311,6 +311,11 @@
       "subtype": null
     },
     {
+      "id": "Agostino Balletto",
+      "type": "person",
+      "subtype": null
+    },
+    {
       "id": "Agostino Gemelli",
       "type": "person",
       "subtype": null
@@ -7482,6 +7487,11 @@
     },
     {
       "id": "Francesco Fortunati",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Francesco Frugone",
       "type": "person",
       "subtype": null
     },
@@ -30144,7 +30154,22 @@
     },
     {
       "source": "Frugone & Balletto",
+      "target": "Agostino Balletto",
+      "type": "affiliation"
+    },
+    {
+      "source": "Frugone & Balletto",
       "target": "American Chamber of Commerce for Trade with Italy",
+      "type": "affiliation"
+    },
+    {
+      "source": "Frugone & Balletto",
+      "target": "Francesco Frugone",
+      "type": "affiliation"
+    },
+    {
+      "source": "Frugone & Balletto",
+      "target": "L'Italiano in America",
       "type": "affiliation"
     },
     {

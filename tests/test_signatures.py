@@ -41,3 +41,24 @@ def test_undated_appearances_are_kept_and_count_zero_issues():
     r = rec(("a.pdf", None, "Poem"), ("b.pdf", None, "Poem"))
     dedupe_appearances(r)
     assert len(r["appearances"]) == 2 and r["issues"] == set()
+
+
+def test_recurring_title_needs_reviewer_confirmation_to_merge_month_into_day():
+    """'Plausi e consensi' runs in every issue: a month label and a day label are not evidence of one issue."""
+    from build_signatures import recurring_titles
+    letters = rec(("a.pdf", "1947-01", "Plausi e consensi"), ("b.pdf", "1947-01-15", "Plausi e consensi"))
+    other = rec(("c.pdf", "1947-03-01", "Plausi e consensi"))
+    recurring = recurring_titles([letters, other])
+    assert recurring == {"Plausi e consensi"}
+    dedupe_appearances(letters, recurring)
+    assert len(letters["appearances"]) == 2 and letters["issues"] == {"1947-01", "1947-01-15"}
+    confirmed = rec(("a.pdf", "1947-01", "Plausi e consensi"), ("b.pdf", "1947-01-15", "Plausi e consensi"))
+    dedupe_appearances(confirmed, recurring, {("1947-01", "1947-01-15")})
+    assert len(confirmed["appearances"]) == 1 and confirmed["issues"] == {"1947-01-15"}
+
+
+def test_one_off_title_still_merges_month_into_day():
+    from build_signatures import recurring_titles
+    r = rec(("a.pdf", "1947-01", "Ode a Garibaldi"), ("b.pdf", "1947-01-15", "Ode a Garibaldi"))
+    dedupe_appearances(r, recurring_titles([r]))
+    assert r["issues"] == {"1947-01-15"}

@@ -86,10 +86,22 @@ def collect(base, review):
         if issue:
             entry["issues"].add(issue)
 
+    manifest = base / "extraction" / "_manifest.json"
+    if manifest.exists():
+        gone = [p for p in json.loads(manifest.read_text()).get("pages", [])
+                if not (base / "extraction" / f"p-{p:02d}.json").exists()]
+        if gone:
+            sys.exit(f"extraction/_manifest.json lists pages {gone} with no p-NN.json; re-run extract_toc.py")
+    else:
+        print("warning: no extraction/_manifest.json, so missing pages can't be detected "
+              "(extract_toc.py writes it)")
+
+    uncertain = []
     page_issue = {}
     for f in sorted((base / "extraction").glob("p-*.json")):
         d = json.loads(f.read_text())
         p = d["_page"]
+        uncertain += [(p, str(u)) for u in d.get("uncertain") or []]
         issue = review["issues"].get(str(p)) or parse_issue(d.get("issue"))
         page_issue[p] = issue
         for m in d.get("masthead", []):
@@ -107,6 +119,11 @@ def collect(base, review):
                 add(p, issue, n, "photographer/illustrator")
     for p, n, role in review["add"]:
         add(p, review["issues"].get(str(p)) or page_issue.get(p), n, role, reviewed=True)
+
+    for p, u in uncertain:
+        hit = [n for n in roster if n.lower() in u.lower()]
+        if hit:
+            print(f"warning: model was unsure about {hit} on page {p}: {u}")
 
     missing = sorted(p for p, i in page_issue.items() if not i)
     if missing:

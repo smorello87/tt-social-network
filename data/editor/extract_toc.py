@@ -8,6 +8,10 @@ names from a scanned periodical PDF with Qwen3-VL on AWS Bedrock.
   TOC column read much better at half-page resolution)
 - Writes one JSON per page to data/<slug>/extraction/p-NN.json
 - Pages already extracted are skipped unless --force
+- Writes extraction/_manifest.json listing every requested page, so build_roster.py can
+  tell a missing page from a page that was never requested
+- Exits non-zero if any page failed (API error, stopReason other than end_turn, or a
+  reply that is not a JSON object with list-typed "masthead" and "articles")
 
 Usage:
   python3 extract_toc.py SCAN.pdf --slug iam --periodical "I-AM" --pages 2,4,6-10
@@ -18,6 +22,7 @@ import argparse
 import io
 import json
 import re
+import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -98,9 +103,21 @@ def extract(client, img, periodical):
         messages=[{"role": "user", "content": content}],
         inferenceConfig={"maxTokens": 8000, "temperature": 0},
     )
+    if resp.get("stopReason") != "end_turn":
+        raise RuntimeError(f"stopReason={resp.get('stopReason')!r} (output may be truncated)")
     text = resp["output"]["message"]["content"][0]["text"].strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
     return text, resp["usage"]
+
+
+def check_result(data):
+    """Return an error message if the parsed reply is not a usable page object, else None."""
+    if not isinstance(data, dict):
+        return f"reply is a JSON {type(data).__name__}, not an object"
+    for key in ("masthead", "articles"):
+        if not isinstance(data.get(key), list):
+            return f"'{key}' missing or not a list"
+    return None
 
 
 def main():
@@ -119,6 +136,13 @@ def main():
     doc = fitz.open(args.pdf)
     pages = parse_pages(args.pages, doc.page_count)
     client = boto3.client("bedrock-runtime", region_name=REGION)
+
+    manifest_path = base / "extraction" / "_manifest.json"
+    requested = set(pages)
+    if manifest_path.exists():
+        requested |= set(json.loads(manifest_path.read_text()).get("pages", []))
+    manifest_path.write_text(json.dumps(
+        {"pdf": args.pdf.name, "periodical": args.periodical, "pages": sorted(requested)}, indent=2) + "\n")
 
     todo = []
     for p in pages:
@@ -139,13 +163,22 @@ def main():
         except json.JSONDecodeError:
             (base / "extraction" / f"p-{p:02d}.raw.txt").write_text(text)
             return p, "ERROR: invalid JSON (raw output saved)"
+        problem = check_result(data)
+        if problem:
+            (base / "extraction" / f"p-{p:02d}.raw.txt").write_text(text)
+            return p, f"ERROR: {problem} (raw output saved)"
         data["_page"] = p
         (base / "extraction" / f"p-{p:02d}.json").write_text(json.dumps(data, indent=2, ensure_ascii=False))
         return p, usage
 
+    failed = []
     with ThreadPoolExecutor(max_workers=4) as ex:
         for p, result in ex.map(run, todo):
             print(f"p{p:02d}: {result}")
+            if isinstance(result, str) and result.startswith("ERROR"):
+                failed.append(p)
+    if failed:
+        sys.exit(f"{len(failed)} page(s) failed: {failed}")
 
 
 if __name__ == "__main__":

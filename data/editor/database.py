@@ -580,6 +580,8 @@ def update_edge(edge_id, source_id=None, target_id=None, edge_type=None, needs_r
                 return
             final_source = source_id if source_id is not None else current["source_id"]
             final_target = target_id if target_id is not None else current["target_id"]
+            if final_source == final_target:
+                raise ValueError("An edge cannot connect a node to itself")
             if final_source > final_target:
                 final_source, final_target = final_target, final_source
             updates.append("source_id = ?")
@@ -656,10 +658,12 @@ def batch_mark_reviewed(edge_ids, reviewed=True):
         return cursor.rowcount
 
 def batch_create_edges(source_ids, target_id, edge_type):
-    """Create edges from multiple sources to one target."""
+    """Create edges from multiple sources to one target. A source equal to the target is skipped."""
     created = []
     with get_db() as conn:
         for source_id in source_ids:
+            if source_id == target_id:
+                continue  # never a self-loop
             s, t = (source_id, target_id) if source_id <= target_id else (target_id, source_id)
             try:
                 cursor = conn.execute(

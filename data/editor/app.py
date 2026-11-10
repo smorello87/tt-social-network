@@ -288,6 +288,8 @@ def update_edge(edge_id):
         db.update_edge(edge_id, source_id=source_id, target_id=target_id,
                        edge_type=edge_type, needs_review=needs_review)
         return jsonify({'success': True})
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
     except sqlite3.IntegrityError:
         return jsonify({'error': 'Edge with that source/target already exists'}), 409
     except Exception as e:

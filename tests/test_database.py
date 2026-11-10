@@ -131,3 +131,27 @@ def test_bulk_recalculation_still_clears_flags(db):
     database.recalculate_all_shared_institutions()
     assert query(db, "SELECT needs_review FROM edges WHERE id = ?", (ab,)) == [(0,)]
 
+
+def test_update_edge_rejects_self_loop(db):
+    a, b = add_node(db, "Person A"), add_node(db, "Person B")
+    e = add_edge(db, a, b, "personal")
+    with pytest.raises(ValueError):
+        database.update_edge(e, target_id=a)
+    assert query(db, "SELECT source_id, target_id FROM edges WHERE id = ?", (e,)) == [(a, b)]
+
+
+def test_put_api_edge_self_loop_is_400_not_409(db):
+    pytest.importorskip("flask_cors")
+    import app
+    a, b = add_node(db, "Person A"), add_node(db, "Person B")
+    e = add_edge(db, a, b, "personal")
+    r = app.app.test_client().put(f"/api/edges/{e}", json={"source_id": b, "target_id": b})
+    assert r.status_code == 400
+    assert "itself" in r.get_json()["error"]
+
+
+def test_batch_create_skips_self_loop(db):
+    a, b = add_node(db, "Person A"), add_node(db, "Inst", "institution", "other")
+    created = database.batch_create_edges([a, b], b, "affiliation")
+    assert len(created) == 1
+    assert query(db, "SELECT source_id, target_id FROM edges") == [(a, b)]

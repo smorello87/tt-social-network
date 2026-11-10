@@ -261,9 +261,14 @@ def create_edge():
     if edge_type not in ('personal', 'affiliation', 'unknown'):
         return jsonify({'error': 'Invalid type'}), 400
 
+    if source_id == target_id:
+        return jsonify({'error': 'An edge cannot connect a node to itself'}), 400
+
     try:
         edge_id = db.create_edge(source_id, target_id, edge_type)
         return jsonify({'id': edge_id}), 201
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

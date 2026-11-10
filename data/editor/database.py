@@ -86,6 +86,20 @@ def init_db():
               SELECT RAISE(ABORT, 'source_id must be <= target_id')
               WHERE NEW.source_id > NEW.target_id;
             END;
+
+            CREATE TRIGGER IF NOT EXISTS forbid_self_loop_insert
+            BEFORE INSERT ON edges
+            BEGIN
+              SELECT RAISE(ABORT, 'source_id and target_id must differ')
+              WHERE NEW.source_id = NEW.target_id;
+            END;
+
+            CREATE TRIGGER IF NOT EXISTS forbid_self_loop_update
+            BEFORE UPDATE OF source_id, target_id ON edges
+            BEGIN
+              SELECT RAISE(ABORT, 'source_id and target_id must differ')
+              WHERE NEW.source_id = NEW.target_id;
+            END;
         """)
 
 def backup_db():
@@ -507,7 +521,9 @@ def get_edge(edge_id):
         return result
 
 def create_edge(source_id, target_id, edge_type):
-    """Create a new edge. Normalizes direction so source_id <= target_id."""
+    """Create a new edge. Normalizes direction so source_id <= target_id. Self-loops raise ValueError."""
+    if source_id == target_id:
+        raise ValueError("An edge cannot connect a node to itself")
     if source_id > target_id:
         source_id, target_id = target_id, source_id
     with get_db() as conn:

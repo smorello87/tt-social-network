@@ -23,7 +23,7 @@ This starts a local server and opens the visualization at `http://localhost:8080
 - **Search with Autocomplete**: Find individuals or institutions (triggers after 1 character)
 - **Connection Explorer**: Discover all paths between any two nodes (BFS with configurable depth)
 - **Node Details Panel**: Click any node for a slide-in panel showing all connections grouped by type
-- **Community Detection**: Label propagation algorithm with spatial clustering for major communities
+- **Community Detection**: Label propagation (one seeded run, so the same `graph.json` always gives the same clusters) with spatial clustering for communities of 20+ nodes. The partition is not stable: other seeds give 64-124 communities on the current graph, and any data edit reshuffles it, so the clusters are an exploratory aid rather than a result
 - **Network Density Filter**: Filter by connection count (1+, 5+, 10+, 30+, 40+, 50+)
 - **2-Hop Neighborhood**: Explore the local neighborhood around any selected node
 - **Export to PNG**: Composites canvas links + SVG nodes into a downloadable image
@@ -143,7 +143,7 @@ python check_single_connections.py singlerows.csv
 - **Move Nodes**: Click and drag individual nodes
 - **Node Details**: Click any node for connection info
 - **Connection Explorer**: Enter two names in the sidebar, click "Find"
-- **Community Detection**: Click "Color by Community" to identify clusters
+- **Community Detection**: Click "Cluster by Community" to color and group exploratory clusters (see the caveat above)
 - **Auto-Fit**: Reset the viewport to show all nodes
 
 ## Technical Notes

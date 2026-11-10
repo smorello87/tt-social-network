@@ -1714,7 +1714,7 @@
     <div class="sidebar-section">
       <div class="section-title">
         Communities
-        <span class="help-tip" data-tip="Detect clusters using label propagation and color nodes by community">?</span>
+        <span class="help-tip" data-tip="Color nodes by clusters from one seeded run of label propagation. The clusters are a visual aid, not a finding: another seed, or any edit to the data, gives a different partition.">?</span>
       </div>
       <button class="btn" id="community-toggle" onclick="NetworkViz.toggleCommunities()">Cluster by Community</button>
       <div id="community-info" style="display:none"></div>
@@ -4060,7 +4060,10 @@
         const majorCount = [...communitySizes.values()].filter(s => s >= 20).length;
         const infoEl = document.getElementById('community-info');
         if (infoEl) {
-          infoEl.textContent = communityCount + ' communities detected (' + majorCount + ' major, spatially clustered)';
+          // One seeded run: reproducible for this graph.json, but not stable. Across 100 seeds the same
+          // graph gave 64-124 communities, and adding one isolated node moved this count from 102 to 118.
+          infoEl.textContent = communityCount + ' clusters from one run of label propagation (' + majorCount +
+            ' with 20+ nodes, spatially grouped). Other seeds or small data edits give different clusters; treat them as exploratory.';
         }
       }
 

@@ -180,7 +180,7 @@ Data loading: port 5001 → `/api/graph.json` (live DB); otherwise → static `g
 - Search input escapes regex metacharacters before `new RegExp()`
 
 ### Community Detection
-- Label propagation algorithm (max 20 iterations, shuffle per iteration with a seeded mulberry32 PRNG, nodes in sorted id order, ties to the lowest label, so the result is reproducible; `node tests/community.test.js` checks it)
+- Label propagation algorithm (max 20 iterations, shuffle per iteration with a seeded mulberry32 PRNG, nodes in sorted id order, ties to the lowest label, so the result is reproducible for a given graph.json; `node tests/community.test.js` checks it). Reproducible is not stable: the partition depends on the seed (64-124 communities over 100 seeds on the 4,221-node graph) and on node names (sorted order sets initial labels and tie-breaks), and adding one isolated node changed 102 to 118 communities. The sidebar text says so; don't present community counts or membership as findings. A consensus over many seeds, or a modularity method computed offline, would be needed for that
 - Selective spatial clustering: only communities ≥ 20 nodes get centroid force (0.12 strength)
 - Cross-community link strength reduced to 0.005 when active
 - Cross-community edges drawn at 8% opacity on canvas

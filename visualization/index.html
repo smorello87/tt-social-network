@@ -4110,7 +4110,7 @@
           const opacity = parseFloat(el.style("opacity"));
           const display = el.style("display");
           if (display !== "none" && opacity > 0.05) {
-            visibleNodes.push({ id: d.id, type: d.type || 'unknown' });
+            visibleNodes.push({ id: d.id, type: d.type || 'unknown', subtype: d.subtype ?? null });
           }
         });
 
@@ -4121,7 +4121,7 @@
           const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
           const targetId = typeof l.target === 'object' ? l.target.id : l.target;
           if (visibleIds.has(sourceId) && visibleIds.has(targetId)) {
-            visibleLinks.push({ source: sourceId, target: targetId });
+            visibleLinks.push({ source: sourceId, target: targetId, type: l.type });
           }
         });
 

@@ -61,9 +61,10 @@ TITLES = {"dott", "dr", "avv", "prof", "mons", "cav", "sig", "sigra", "comm", "o
 
 
 def is_initials(name):
-    """'B. Z.', 'Dott. D. S.', 'GA.' -> True; ignores honorifics."""
+    """'B. Z.', 'Dott. D. S.', 'GA.', 'BZ' -> True; ignores honorifics.
+    Short real names ("Ugo Foa") don't count: needs a period in the name, or every token <= 2 letters."""
     toks = [t for t in fold(name) if t not in TITLES]
-    return bool(toks) and all(len(t) <= 3 for t in toks)
+    return bool(toks) and (all(len(t) <= 2 for t in toks) or ("." in name and all(len(t) <= 3 for t in toks)))
 
 
 def build(slug):

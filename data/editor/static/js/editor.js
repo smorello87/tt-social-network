@@ -263,10 +263,10 @@ const Editor = {
                     ${node.subtype ? `<span class="badge badge-subtype">${node.subtype}</span>` : ''}
                 </td>
                 <td>
-                    <span class="connection-count" onclick="Editor.showConnections(${node.id}, '${this.escapeHtml(node.name).replace(/'/g, "\\'")}')">${node.connection_count || 0}</span>
+                    <span class="connection-count" onclick="Editor.showConnections(${node.id}, '${this.jsArg(node.name)}')">${node.connection_count || 0}</span>
                 </td>
                 <td>
-                    <button class="btn btn-small btn-add-edge" onclick="Editor.addEdgeFromNode(${node.id}, '${this.escapeHtml(node.name).replace(/'/g, "\\'")}')" title="Add edge from this node">+</button>
+                    <button class="btn btn-small btn-add-edge" onclick="Editor.addEdgeFromNode(${node.id}, '${this.jsArg(node.name)}')" title="Add edge from this node">+</button>
                     <button class="btn btn-small" onclick="Editor.editNode(${node.id})">Edit</button>
                 </td>
             </tr>
@@ -318,7 +318,7 @@ const Editor = {
                 </td>
                 <td><span class="badge badge-${edge.type}">${edge.type}</span></td>
                 <td>${edge.shared_count > 0
-                    ? `<span class="connection-count" onclick="Editor.showSharedInstitutions(${edge.id}, '${this.escapeHtml(edge.source_name).replace(/'/g, "\\'")}', '${this.escapeHtml(edge.target_name).replace(/'/g, "\\'")}')">${edge.shared_count}</span>`
+                    ? `<span class="connection-count" onclick="Editor.showSharedInstitutions(${edge.id}, '${this.jsArg(edge.source_name)}', '${this.jsArg(edge.target_name)}')">${edge.shared_count}</span>`
                     : '0'}</td>
                 <td>${edge.needs_review ? '<span class="review-flag">!</span>' : '-'}</td>
                 <td>
@@ -437,7 +437,7 @@ const Editor = {
             dropdown.innerHTML = '<div class="autocomplete-empty">No matches found</div>';
         } else {
             dropdown.innerHTML = matches.map(node => `
-                <div class="autocomplete-item" onclick="Editor.selectAutocompleteNode('${this.escapeHtml(node.name).replace(/'/g, "\\'")}', '${inputId}', '${dropdownId}')">
+                <div class="autocomplete-item" onclick="Editor.selectAutocompleteNode('${this.jsArg(node.name)}', '${inputId}', '${dropdownId}')">
                     <span class="node-name">${this.escapeHtml(node.name)}</span>
                     <span class="node-type ${node.type}">${node.type}</span>
                 </div>
@@ -665,7 +665,7 @@ const Editor = {
                 connections.sort((a, b) => (b.connection_count || 0) - (a.connection_count || 0));
                 list.innerHTML = connections.map(conn => `
                     <div class="connection-item">
-                        <div class="connection-info" onclick="Editor.searchForNode('${this.escapeHtml(conn.name).replace(/'/g, "\\'")}')">
+                        <div class="connection-info" onclick="Editor.searchForNode('${this.jsArg(conn.name)}')">
                             <span class="connection-name">${this.escapeHtml(conn.name)}</span>
                             <div class="connection-badges">
                                 <span class="badge badge-${conn.type}">${conn.type}</span>
@@ -676,7 +676,7 @@ const Editor = {
                         </div>
                         <div class="connection-actions">
                             <button class="btn btn-tiny btn-danger" onclick="event.stopPropagation(); Editor.deleteConnection(${conn.edge_id})" title="Remove this edge only">×</button>
-                            <button class="btn btn-tiny btn-danger" onclick="event.stopPropagation(); Editor.deleteConnectionAndNode(${conn.edge_id}, ${conn.id}, '${this.escapeHtml(conn.name).replace(/'/g, "\\'")}', ${conn.connection_count || 0})" title="Delete node entirely">🗑</button>
+                            <button class="btn btn-tiny btn-danger" onclick="event.stopPropagation(); Editor.deleteConnectionAndNode(${conn.edge_id}, ${conn.id}, '${this.jsArg(conn.name)}', ${conn.connection_count || 0})" title="Delete node entirely">🗑</button>
                         </div>
                     </div>
                 `).join('');
@@ -749,7 +749,7 @@ const Editor = {
                 list.innerHTML = '<div class="connections-empty">No shared institutions found</div>';
             } else {
                 list.innerHTML = institutions.map(inst => `
-                    <div class="connection-item" onclick="Editor.searchForNode('${this.escapeHtml(inst.name).replace(/'/g, "\\'")}')">
+                    <div class="connection-item" onclick="Editor.searchForNode('${this.jsArg(inst.name)}')">
                         <span class="connection-name">${this.escapeHtml(inst.name)}</span>
                     </div>
                 `).join('');
@@ -1253,7 +1253,7 @@ const Editor = {
                 html += `
                     <div class="target-result-item create-new">
                         <span class="result-name">Create "<strong>${this.escapeHtml(searchRaw)}</strong>" as new node</span>
-                        <button class="add-btn create-btn" onclick="Editor.createAndAddTarget('${this.escapeHtml(searchRaw).replace(/'/g, "\\'")}')" title="Create and add">+ New</button>
+                        <button class="add-btn create-btn" onclick="Editor.createAndAddTarget('${this.jsArg(searchRaw)}')" title="Create and add">+ New</button>
                     </div>
                 `;
             }
@@ -1270,7 +1270,7 @@ const Editor = {
                     <div class="target-result-item ${isLinked ? 'already-linked' : ''}">
                         <span class="result-name">${this.escapeHtml(node.name)}${isLinked ? ' <span class="linked-badge">linked</span>' : ''}</span>
                         <span class="result-type ${node.type}">${node.type}</span>
-                        ${isLinked ? '<span class="add-btn disabled">✓</span>' : `<button class="add-btn" onclick="Editor.addTarget(${node.id}, '${this.escapeHtml(node.name).replace(/'/g, "\\'")}', '${node.type}')" title="Add target">+</button>`}
+                        ${isLinked ? '<span class="add-btn disabled">✓</span>' : `<button class="add-btn" onclick="Editor.addTarget(${node.id}, '${this.jsArg(node.name)}', '${node.type}')" title="Add target">+</button>`}
                     </div>
                 `;
             }).join('');
@@ -1746,7 +1746,7 @@ const Editor = {
                                 <td><span class="badge badge-${this.escapeHtml(n.type)}">${this.escapeHtml(n.type)}</span></td>
                                 <td>
                                     <button class="btn btn-small" onclick="Editor.editNode(${parseInt(n.id)})">Edit</button>
-                                    <button class="btn btn-small btn-danger" onclick="Editor.deleteOrphanNode(${parseInt(n.id)}, '${this.escapeHtml(n.name).replace(/'/g, "\\'")}')">Delete</button>
+                                    <button class="btn btn-small btn-danger" onclick="Editor.deleteOrphanNode(${parseInt(n.id)}, '${this.jsArg(n.name)}')">Delete</button>
                                 </td>
                             </tr>
                         `).join('')}</tbody>
@@ -1790,7 +1790,7 @@ const Editor = {
                                 <td>${this.escapeHtml(d.node_a.name)} <span class="badge badge-${this.escapeHtml(d.node_a.type)}" style="font-size:0.65rem;padding:2px 6px;">${this.escapeHtml(d.node_a.type).charAt(0).toUpperCase()}</span></td>
                                 <td>${this.escapeHtml(d.node_b.name)} <span class="badge badge-${this.escapeHtml(d.node_b.type)}" style="font-size:0.65rem;padding:2px 6px;">${this.escapeHtml(d.node_b.type).charAt(0).toUpperCase()}</span></td>
                                 <td>${Math.round(d.similarity * 100)}%</td>
-                                <td><button class="btn btn-small" onclick="Editor.quickMerge(${parseInt(d.node_a.id)}, ${parseInt(d.node_b.id)}, '${this.escapeHtml(d.node_a.name).replace(/'/g, "\\'")}', '${this.escapeHtml(d.node_b.name).replace(/'/g, "\\'")}')">Merge</button></td>
+                                <td><button class="btn btn-small" onclick="Editor.quickMerge(${parseInt(d.node_a.id)}, ${parseInt(d.node_b.id)}, '${this.jsArg(d.node_a.name)}', '${this.jsArg(d.node_b.name)}')">Merge</button></td>
                             </tr>
                         `).join('')}</tbody>
                     </table>
@@ -1997,6 +1997,11 @@ const Editor = {
     /**
      * Escape HTML to prevent XSS
      */
+    // Escape a value for a single-quoted JS string inside a double-quoted onclick="..." attribute
+    jsArg(text) {
+        return this.escapeHtml(String(text).replace(/\\/g, '\\\\').replace(/'/g, "\\'")).replace(/"/g, '&quot;');
+    },
+
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;

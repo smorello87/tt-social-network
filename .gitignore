@@ -8,6 +8,7 @@ __pycache__/
 
 # Backups
 *.backup.*
+*.bak.*
 data/editor/backups/
 
 # SQLite staging (can be regenerated from Omeka API)
@@ -29,3 +30,6 @@ id_rsa*
 .playwright-mcp/
 # Rendered scan pages from extract_toc.py (large; regenerate from the PDF)
 data/*/pages/
+
+# Local virtualenv
+.venv/

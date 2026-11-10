@@ -1342,7 +1342,7 @@
 
       const handleNodeMouseEnter = throttle((e, d) => {
         const degree = nodeDegrees.get(d.id);
-        tooltip.html(`<strong>${d.id}</strong><br>Connections: ${degree}`)
+        tooltip.html(`<strong>${String(d.id).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))}</strong><br>Connections: ${degree}`)
           .style("left", (e.pageX + 10) + "px")
           .style("top", (e.pageY - 10) + "px")
           .style("display", "block");

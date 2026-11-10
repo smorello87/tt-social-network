@@ -724,7 +724,7 @@
             document.getElementById('edit-creator').value = item.creator || '';
             document.getElementById('edit-publisher').value = item.publisher || '';
             document.getElementById('edit-date').value = item.date || '';
-            document.getElementById('edit-description').innerHTML = item.description || '(No description)';
+            document.getElementById('edit-description').textContent = item.description || '(No description)';
             document.getElementById('edit-notes').value = item.notes || '';
             document.getElementById('edit-skip').checked = item.skip;
 

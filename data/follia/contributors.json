@@ -4,7 +4,7 @@
   "method": "Signed pieces (bylines, end signatures, photo credits, letters) read page by page from 90 dpi renders by Claude (Opus pilot, Sonnet batches); issue date per page from footer/header/masthead. Not the TOC.",
   "files": 58,
   "pages": 710,
-  "signature_count": 898,
+  "signature_count": 896,
   "contributor_count": 309,
   "included_count": 224,
   "issues": [
@@ -6255,16 +6255,6 @@
           "note": "signs the closing paragraph of the Cordiferro tribute; may be a separate short piece"
         },
         {
-          "file": "ScanPro0582.pdf",
-          "page": 8,
-          "source_name": "Giuseppe Incalicchio",
-          "issue": "1964-09",
-          "title": "Riccardo Cordiferro (Alessandro Sisca)",
-          "kind": "article",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
           "file": "ScanPro0515.pdf",
           "page": 5,
           "source_name": "Giuseppe Incalicchio",
@@ -8237,16 +8227,6 @@
           "position": "signature",
           "confidence": "high",
           "note": "rubrica 'Bellezze d'Italia'"
-        },
-        {
-          "file": "ScanPro0584.pdf",
-          "page": 1,
-          "source_name": "Carmine Manzi",
-          "issue": "1960-11",
-          "title": "Bellezze d'Italia: Storia, costumi e tradizioni dell'antica Volcei",
-          "kind": "article",
-          "position": "signature",
-          "confidence": "high"
         },
         {
           "file": "ScanPro0577.pdf",

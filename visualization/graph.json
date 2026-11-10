@@ -14821,11 +14821,6 @@
       "subtype": null
     },
     {
-      "id": "Mario Mazzardo",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Mario Miozzi",
       "type": "person",
       "subtype": null
@@ -43050,11 +43045,6 @@
     {
       "source": "La Parola del Popolo",
       "target": "Mario Manzardo",
-      "type": "affiliation"
-    },
-    {
-      "source": "La Parola del Popolo",
-      "target": "Mario Mazzardo",
       "type": "affiliation"
     },
     {

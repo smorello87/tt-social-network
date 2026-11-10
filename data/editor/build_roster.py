@@ -113,20 +113,60 @@ def collect(base, review):
     return roster
 
 
+SUFFIXES = {"jr", "sr", "ii", "iii"}
+
+# Italian <-> English given names that denote the same first name.
+_GIVEN_GROUPS = [
+    {"giuseppe", "joseph"}, {"giovanni", "john"}, {"luigi", "louis"}, {"antonio", "anthony"},
+    {"francesco", "frank", "francis"}, {"vincenzo", "vincent"}, {"salvatore", "sam"},
+    {"pietro", "peter"}, {"paolo", "paul"}, {"michele", "michael"}, {"domenico", "dominic"},
+    {"giacomo", "james"}, {"guglielmo", "william"}, {"carlo", "charles"}, {"enrico", "henry"},
+    {"edoardo", "edward"}, {"roberto", "robert"}, {"riccardo", "richard"}, {"tommaso", "thomas"},
+    {"stefano", "stephen"}, {"maria", "mary"}, {"giuseppina", "josephine"},
+]
+_GIVEN_GROUP = {n: i for i, g in enumerate(_GIVEN_GROUPS) for n in g}
+
+
+def flip_comma(name):
+    """'Barzini, Luigi' -> 'Luigi Barzini' (only the single-comma 'Surname, First' form)."""
+    parts = [p.strip() for p in name.split(",")]
+    if len(parts) == 2 and parts[0] and parts[1]:
+        return parts[1] + " " + parts[0]
+    return name
+
+
+def _strip_suffix(toks):
+    return [t for t in toks if t not in SUFFIXES]
+
+
 def candidates_for(name, nodes):
-    toks = fold(name)
+    toks = fold(flip_comma(name))
+    if not toks:
+        return []
     key = " ".join(toks)
+    base = _strip_suffix(toks)
     found = []
     for nid, nm, ntype, toks2, key2 in nodes:
         if not toks2:
             continue
         # "John Ciardi" ~ "John Anthony Ciardi", "Domenico Bartoli" ~ "D Bartoli"
         same_person_shape = toks2[-1] == toks[-1] and toks2[0][0] == toks[0][0] and len(toks[-1]) > 3
+        base2 = _strip_suffix(toks2)
+        flagged = same_person_shape
+        if not flagged and len(toks) > 1 and sorted(toks) == sorted(toks2):
+            flagged = True  # same tokens in any order: "Loria Achille" ~ "Achille Loria"
+        if not flagged and len(toks) == 1 and len(toks[0]) > 1 and len(toks2) > 1 and toks[0] == toks2[-1]:
+            flagged = True  # bare surname: "Prezzolini" ~ "Giuseppe Prezzolini"
+        if not flagged and base and base2 and len(base) > 1 and base == base2 and (toks != toks2):
+            flagged = True  # generational suffix: "Luigi Barzini" ~ "Luigi Barzini Jr"
+        if not flagged and len(base) > 1 and len(base2) > 1 and base[-1] == base2[-1]:
+            g1, g2 = _GIVEN_GROUP.get(base[0]), _GIVEN_GROUP.get(base2[0])
+            flagged = g1 is not None and g1 == g2  # "Joseph Tusiani" ~ "Giuseppe Tusiani"
         # Edit distance >= length difference, so a >15% length gap can't reach 0.85; skip the costly DP.
-        if not same_person_shape and abs(len(key) - len(key2)) > 0.15 * max(len(key), len(key2)):
+        if not flagged and abs(len(key) - len(key2)) > 0.15 * max(len(key), len(key2)):
             continue
         score = _similarity(key, key2)
-        if score >= 0.85 or same_person_shape:
+        if score >= 0.85 or flagged:
             found.append({"id": nid, "name": nm, "type": ntype, "score": round(score, 2)})
     return sorted(found, key=lambda c: -c["score"])[:5]
 
@@ -158,7 +198,7 @@ def main():
     for name in sorted(roster, key=lambda n: (fold(n)[-1:], fold(n))):
         e = roster[name]
         entry = {"name": name, "roles": sorted(e["roles"]), "issues": sorted(e["issues"])}
-        exact = by_key.get(" ".join(fold(name)), [])
+        exact = by_key.get(" ".join(fold(name)), []) if fold(name) else []
         if name in review["match"]:
             entry.update(status="existing", node_id=review["match"][name])
         elif len(exact) == 1:
@@ -167,7 +207,7 @@ def main():
             entry["status"] = "new"
         else:
             cands = [{"id": n[0], "name": n[1], "type": n[2], "score": 1.0} for n in exact] or candidates_for(name, nodes)
-            if cands:
+            if cands or not fold(name):  # a name that folds to nothing ("***") needs a human
                 for c in cands:
                     c["degree"] = degree.get(c["id"], 0)
                 entry.update(status="unresolved", candidates=cands)

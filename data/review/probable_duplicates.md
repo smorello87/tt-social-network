@@ -2,6 +2,8 @@
 
 Generated read-only from `data/editor/network.db` for the owner to decide. Each pair is a candidate; nothing here has been merged.
 
+**Decided 2026-11:** see `identity_decisions_2026-11.md`. Manzardo/Mazzardo and Castagna were merged; the other five pairs stay separate, with the evidence and what would settle each.
+
 ## Landi
 
 - id 1257: Erberto Landi (person), 19 edge(s): Cantagiro [affiliation]; Divagando [affiliation]; Epoca [affiliation]; Erberto Landi Enterprises [affiliation]; Italclub Inc [affiliation]; Landi Advertisement Co [affiliation]; NBC [affiliation]; Neapolitan Song Festival [affiliation]; Office of War Information [affiliation]; Pettinella Advertising Company [affiliation]; Sanremo Festival [affiliation]; Voice of America [affiliation]; WABC [affiliation]; WATV [affiliation]; WBNX [affiliation]; WHOM [affiliation]; WNCW [affiliation]; WOR [affiliation]; WOV [affiliation]

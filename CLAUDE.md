@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (4,221 nodes — 3,787 persons, 434 institutions — and 5,675 edges at the time of writing; the database is the authority, so check `python3 data/editor/validate.py` rather than trusting these numbers).
+**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (4,219 nodes — 3,784 persons, 435 institutions — and 5,673 edges, 5,249 affiliation and 424 personal, at the time of writing; the database is the authority, so check `python3 data/editor/validate.py` rather than trusting these numbers).
 
 ## Data Flow (Source of Truth)
 

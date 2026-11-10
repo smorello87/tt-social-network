@@ -150,7 +150,7 @@ python check_single_connections.py singlerows.csv
 
 ### Performance
 - Hybrid SVG (nodes/labels) + Canvas (edges) rendering
-- Several thousand nodes and edges (4,221 nodes, 5,675 edges at the time of writing) with 60fps interaction
+- Several thousand nodes and edges (4,219 nodes, 5,673 edges at the time of writing) with 60fps interaction
 - Zoom-dependent label visibility (hub labels only at low zoom)
 - Map-based O(1) lookups, pre-computed adjacency lists
 - Debounced search, throttled zoom, RequestAnimationFrame

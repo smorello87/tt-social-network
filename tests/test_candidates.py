@@ -73,3 +73,34 @@ def test_rule_based_candidates_are_not_capped_at_five():
     rossi = [f"{g} Rossi" for g in ("Adolfo", "Alice", "Ernesto", "Filippo", "Luigi", "Nando", "Ugo", "Carla")]
     found = {c["name"] for c in candidates_for("Rossi", make_nodes(*rossi))}
     assert found == set(rossi)
+
+
+@pytest.mark.parametrize("query, node", [
+    ("Guareschi, Nino", "Giovanni Guareschi"), ("Gino Calza", "Luigi Calza"), ("Beppe Rossi", "Giuseppe Rossi"),
+    ("Totò Russo", "Salvatore Russo"), ("Mimmo Greco", "Domenico Greco"), ("Sandro Penna", "Alessandro Penna"),
+    ("Lello Conti", "Raffaele Conti"), ("Ciccio Leo", "Francesco Leo"), ("Gigi Negri", "Luigi Negri"),
+    ("Vanni Scheiwiller", "Giovanni Scheiwiller"), ("Gianni Rodari", "Nino Rodari"),  # both from Giovanni
+])
+def test_diminutives_flag(query, node):
+    assert [c["name"] for c in candidates_for(query, make_nodes(node))] == [node]
+
+
+def test_diminutives_never_link(db, tmp_path, monkeypatch):
+    """A diminutive match is a candidate (unresolved), never an 'existing' link."""
+    import json, sys
+    import build_roster
+    from conftest import add_node
+    add_node(db, "I-AM", "institution", "periodical")
+    add_node(db, "Giovanni Guareschi")
+    base = tmp_path / "data" / "x"
+    (base / "extraction").mkdir(parents=True)
+    (base / "extraction" / "p-02.json").write_text(json.dumps(
+        {"_page": 2, "issue": "March 1976", "masthead": [], "articles": [{"byline": ["Guareschi, Nino"]}]}))
+    (base / "extraction" / "_manifest.json").write_text(json.dumps({"pages": [2]}))
+    (base / "review.json").write_text(json.dumps({"periodical": "I-AM"}))
+    monkeypatch.setattr(build_roster, "DATA_DIR", tmp_path / "data")
+    monkeypatch.setattr(sys, "argv", ["build_roster.py", "x"])
+    build_roster.main()
+    people = {p["name"]: p for p in json.loads((base / "roster.json").read_text())["people"]}
+    assert people["Nino Guareschi"]["status"] == "unresolved"
+    assert [c["name"] for c in people["Nino Guareschi"]["candidates"]] == ["Giovanni Guareschi"]

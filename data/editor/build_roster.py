@@ -153,6 +153,35 @@ _GIVEN_GROUPS = [
 ]
 _GIVEN_GROUP = {n: i for i, g in enumerate(_GIVEN_GROUPS) for n in g}
 
+# Italian diminutives / hypocoristics -> the full names they can stand for (keys and values are
+# folded: no accents, so "Totò" is "toto"). Used only to flag a
+# candidate for review ("Nino Guareschi" ~ "Giovanni Guareschi"), never to link: one diminutive can
+# stand for several names (Nino: Giovanni or Antonino), so it can't identify anyone on its own.
+_HYPOCORISTICS = {
+    "nino": {"giovanni", "giovannino", "antonino", "antonio"},
+    "gianni": {"giovanni"}, "vanni": {"giovanni"}, "nanni": {"giovanni"},
+    "gino": {"luigi", "luigino", "giorgio"}, "gigi": {"luigi"},
+    "beppe": {"giuseppe"}, "peppe": {"giuseppe"}, "peppino": {"giuseppe"}, "pino": {"giuseppe", "giuseppino"},
+    "pippo": {"giuseppe", "filippo"},
+    "toto": {"salvatore", "antonio"}, "turi": {"salvatore"}, "tore": {"salvatore"},
+    "tonino": {"antonio"}, "tonio": {"antonio"}, "totonno": {"antonio"},
+    "mimmo": {"domenico"}, "mimi": {"domenico"}, "memmo": {"domenico", "guglielmo"},
+    "sandro": {"alessandro"}, "renzo": {"lorenzo"}, "enzo": {"vincenzo", "lorenzo"},
+    "lello": {"raffaele", "raffaello"}, "ciccio": {"francesco"}, "cecco": {"francesco"},
+    "checco": {"francesco"}, "franco": {"francesco"}, "nando": {"ferdinando", "fernando"},
+    "dino": {"bernardino", "corradino", "leopoldo"}, "pina": {"giuseppina"}, "peppina": {"giuseppina"},
+    "nella": {"antonella", "giovanna"}, "bice": {"beatrice"}, "titta": {"battista", "giambattista", "giovanbattista"},
+    "gege": {"gennaro"}, "rino": {"salvatore", "gennaro"},
+}
+
+
+def _hypocoristic_pair(a, b):
+    """True if a and b can be the same given name via a diminutive (both ways, or a shared full name)."""
+    if a == b:
+        return False
+    ea, eb = {a} | _HYPOCORISTICS.get(a, set()), {b} | _HYPOCORISTICS.get(b, set())
+    return bool(ea & eb)
+
 
 def flip_comma(name):
     """'Barzini, Luigi' -> 'Luigi Barzini' (only the single-comma 'Surname, First' form).
@@ -209,6 +238,9 @@ def candidates_for(name, nodes):
         if not flagged and len(base) > 1 and len(base2) > 1 and base[-1] == base2[-1] and len(base[-1]) > 3 \
                 and _near_given(base[0], base2[0]):
             flagged = True  # same surname, near-identical given name: "Giberto Altichieri" ~ "Gilberto Altichieri"
+        if not flagged and len(base) > 1 and len(base2) > 1 and base[-1] == base2[-1] \
+                and _hypocoristic_pair(base[0], base2[0]):
+            flagged = True  # diminutive: "Nino Guareschi" ~ "Giovanni Guareschi" (flag only, never a link)
         # Edit distance >= length difference, so a >15% length gap can't reach 0.85; skip the costly DP.
         if not flagged and abs(len(key) - len(key2)) > 0.15 * max(len(key), len(key2)):
             continue

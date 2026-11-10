@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (4,223 nodes — 3,790 persons, 433 institutions — and 5,677 edges at the time of writing; the database is the authority, so check `python3 data/editor/validate.py` rather than trusting these numbers).
+**Reti di Carta: Italian-American Print Networks (1890-1980)** — interactive network visualization mapping transnational connections in Italian-American print culture between writers, translators, scholars, and cultural institutions (4,221 nodes — 3,787 persons, 434 institutions — and 5,675 edges at the time of writing; the database is the authority, so check `python3 data/editor/validate.py` rather than trusting these numbers).
 
 ## Data Flow (Source of Truth)
 
@@ -106,7 +106,8 @@ python3 import_contributors.py follia --dry-run && python3 import_contributors.p
 - The reviewer only answers requests addressed to `localhost:5003`/`127.0.0.1:5003` (403 for a LAN IP or other hostname) and only accepts JSON POSTs. This guards against CSRF and DNS rebinding; keep both checks if you change the server.
 
 ### Scripted data fixes (merge / rename / split nodes)
-- Use `database.py` helpers from `data/editor/`: `backup_db()` first, then `merge_nodes(primary, secondary)`, `update_node(id, name=...)`, `create_node`, `create_edge`, `update_edge` — they keep `name_normalized` and canonical edge direction in sync, and `create_edge`, `update_edge`, `update_node` and `merge_nodes` refresh `needs_review`/shared institutions. `delete_edge`, `delete_node` and the batch deletes do not, so after scripted deletions (or any raw SQL) run `recalculate_all_shared_institutions()`. Avoid raw SQL writes.
+- Use `database.py` helpers from `data/editor/`: `backup_db()` first, then `merge_nodes(primary, secondary)`, `update_node(id, name=...)`, `create_node`, `create_edge`, `update_edge` — they keep `name_normalized` and canonical edge direction in sync, and `create_edge`, `update_edge`, `update_node` and `merge_nodes` refresh shared institutions. `delete_edge`, `delete_node` and the batch deletes do not, so after scripted deletions (or any raw SQL) run `recalculate_all_shared_institutions()`. Avoid raw SQL writes.
+- `needs_review = 0` on an existing edge may be the owner's review ("mark reviewed" or classifying the edge), so recalculations of existing edges (`recalculate_all_shared_institutions`, `update_node`, `merge_nodes`, the importer) only ever clear the flag; only new or re-pointed edges get flagged.
 - After a fix that touches an imported periodical, record it in that periodical's `data/<slug>/review.json` (`match`/`aliases`) so re-running `build_roster.py` doesn't undo it.
 - Name conventions: generational suffixes without a period (`Luigi Barzini Jr`, `Luigi Barzini Sr`). Split homonymous father/son nodes by date (e.g. anything after Barzini Sr's death in 1947 is Jr).
 - New data source → add it to both the About modal "Data Sources" list in `visualization/index.html` and the README sources list.

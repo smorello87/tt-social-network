@@ -374,7 +374,7 @@ def merge_nodes(primary_id, secondary_id):
                 f"SELECT id FROM edges WHERE source_id IN ({marks}) AND target_id IN ({marks})",
                 tuple(neighbours) * 2)}
         for edge_id in affected:
-            compute_shared_for_edge(conn, edge_id)
+            compute_shared_for_edge(conn, edge_id, may_flag=False)
 
         return {
             "primary_name": primary["name"],
@@ -689,8 +689,13 @@ def batch_delete_edges(edge_ids):
 # Shared Institutions Computation
 # =============================================================================
 
-def compute_shared_for_edge(conn, edge_id):
-    """Compute shared institutions for a single edge and update needs_review."""
+def compute_shared_for_edge(conn, edge_id, may_flag=True):
+    """Compute shared institutions for a single edge and update needs_review.
+
+    needs_review = 0 on an existing edge can be a reviewer's decision (the Needs Review tab's
+    "mark reviewed", or classifying the edge), which the schema can't tell apart from a computed 0.
+    So recomputations of existing edges pass may_flag=False: they may clear the flag but never set it.
+    Only new or re-pointed edges (may_flag=True) get flagged."""
     # Clear existing shared institutions for this edge
     conn.execute("DELETE FROM shared_institutions WHERE edge_id = ?", (edge_id,))
 
@@ -743,23 +748,26 @@ def compute_shared_for_edge(conn, edge_id):
 
     # Update needs_review: personal edge with 0 shared institutions
     needs_review = edge["type"] == "personal" and len(shared) == 0
+    if needs_review and not may_flag:
+        return  # keep whatever the edge has (possibly a reviewer's "reviewed")
     conn.execute(
         "UPDATE edges SET needs_review = ? WHERE id = ?",
         (1 if needs_review else 0, edge_id)
     )
 
 def recalculate_needs_review_for_node(conn, node_id):
-    """Recalculate needs_review for all edges involving a node."""
+    """Recalculate shared institutions for all edges involving a node; may clear needs_review, never sets it."""
     edges = conn.execute(
         "SELECT id FROM edges WHERE source_id = ? OR target_id = ?",
         (node_id, node_id)
     ).fetchall()
 
     for edge in edges:
-        compute_shared_for_edge(conn, edge["id"])
+        compute_shared_for_edge(conn, edge["id"], may_flag=False)
 
 def recalculate_all_shared_institutions():
-    """Recalculate all shared institutions and needs_review flags."""
+    """Recalculate all shared institutions. needs_review may be cleared (an edge gained a shared
+    institution) but is never set, so edges a reviewer marked reviewed stay reviewed."""
     with get_db() as conn:
         # Clear all shared institutions
         conn.execute("DELETE FROM shared_institutions")
@@ -768,7 +776,7 @@ def recalculate_all_shared_institutions():
         edges = conn.execute("SELECT id FROM edges").fetchall()
 
         for edge in edges:
-            compute_shared_for_edge(conn, edge["id"])
+            compute_shared_for_edge(conn, edge["id"], may_flag=False)
 
         return len(edges)
 

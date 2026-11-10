@@ -104,3 +104,30 @@ def test_names_are_stored_in_nfc(db):
     database.update_node(nid, name="Cantù Cesare")
     assert query(db, "SELECT name, name_normalized FROM nodes WHERE id = ?", (nid,)) == [
         ("Cantù Cesare", "cantù cesare")]
+
+
+def test_bulk_recalculation_never_reflags_reviewed_edges(db):
+    """needs_review = 0 on a personal edge can be the owner's "reviewed"; recalculations must keep it."""
+    a, b = add_node(db, "Person A"), add_node(db, "Person B")
+    ab = add_edge(db, a, b, "personal")
+    with database.get_db() as conn:
+        database.compute_shared_for_edge(conn, ab)  # a new edge: flagged
+    assert query(db, "SELECT needs_review FROM edges WHERE id = ?", (ab,)) == [(1,)]
+    database.batch_mark_reviewed([ab])
+    database.recalculate_all_shared_institutions()
+    database.update_node(a, name="Person A Renamed")
+    c = add_node(db, "Person C")
+    add_edge(db, a, c, "personal")
+    database.merge_nodes(a, c)
+    assert query(db, "SELECT needs_review FROM edges WHERE id = ?", (ab,)) == [(0,)]
+
+
+def test_bulk_recalculation_still_clears_flags(db):
+    a, b, i = add_node(db, "Person A"), add_node(db, "Person B"), add_node(db, "Inst", "institution", "other")
+    ab = database.create_edge(a, b, "personal")
+    assert query(db, "SELECT needs_review FROM edges WHERE id = ?", (ab,)) == [(1,)]
+    add_edge(db, a, i)
+    add_edge(db, b, i)
+    database.recalculate_all_shared_institutions()
+    assert query(db, "SELECT needs_review FROM edges WHERE id = ?", (ab,)) == [(0,)]
+

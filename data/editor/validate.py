@@ -9,6 +9,8 @@ Fails (exit 1) if any of these invariants is broken:
   - two edges join the same pair of nodes (either direction)
   - two nodes fold to the same key (case/accent/punctuation-insensitive name)
   - a node name is not in Unicode NFC
+  - name_normalized doesn't equal database.normalize_name(name) (exact-name lookups rely on it)
+  - the edge-direction or self-loop triggers are missing (init_db() adds them on an old DB)
   - visualization/graph.json differs from the export of the database
 
 Only reports (never fails on): 'unknown' edges,
@@ -28,8 +30,10 @@ from pathlib import Path
 from urllib.parse import quote
 
 from build_roster import fold
-from database import DB_PATH
+from database import DB_PATH, normalize_name
 
+REQUIRED_TRIGGERS = {"enforce_edge_direction_insert", "enforce_edge_direction_update",
+                     "forbid_self_loop_insert", "forbid_self_loop_update"}
 DEFAULT_GRAPH = Path(__file__).resolve().parent.parent.parent / "visualization" / "graph.json"
 
 
@@ -80,6 +84,10 @@ def validate(db_path, graph_path):
             pairs[(min(s, t), max(s, t))].append(eid)
         check("duplicate edge pairs", [ids for ids in pairs.values() if len(ids) > 1])
         check("names not in NFC", [n[1] for n in nodes if unicodedata.normalize("NFC", n[1]) != n[1]])
+        check("name_normalized out of sync with name",
+              [r[0] for r in conn.execute("SELECT name, name_normalized FROM nodes") if normalize_name(r[0]) != r[1]])
+        triggers = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type = 'trigger'")}
+        check("missing edge triggers (start app.py or run database.init_db())", sorted(REQUIRED_TRIGGERS - triggers))
         keys = defaultdict(list)
         for nid, name, _ in nodes:
             keys[" ".join(fold(name))].append(name)

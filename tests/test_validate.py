@@ -78,3 +78,20 @@ def test_non_nfc_name_fails(good, capsys):
     write_graph(db, graph)
     assert validate.main(["--db", str(db), "--graph", str(graph)]) == 1
     assert "names not in NFC" in capsys.readouterr().out
+
+
+def test_missing_self_loop_triggers_fail(good, capsys):
+    """A DB created before the self-loop triggers existed must be flagged, not silently trusted."""
+    db, graph = good
+    with sqlite3.connect(db) as c:
+        c.execute("DROP TRIGGER forbid_self_loop_update")
+    assert validate.main(["--db", str(db), "--graph", str(graph)]) == 1
+    assert "forbid_self_loop_update" in capsys.readouterr().out
+
+
+def test_stale_name_normalized_fails(good, capsys):
+    db, graph = good
+    with sqlite3.connect(db) as c:
+        c.execute("UPDATE nodes SET name_normalized = 'something else' WHERE name = 'Mario Rossi'")
+    assert validate.main(["--db", str(db), "--graph", str(graph)]) == 1
+    assert "name_normalized" in capsys.readouterr().out

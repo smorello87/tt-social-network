@@ -100,12 +100,20 @@ def build(slug):
                 {"file": data["file"], "page": s["page"], "source_name": s["name"]}
                 | {k: s[k] for k in ("issue", "title", "kind", "position", "confidence", "note") if s.get(k)})
 
-    by_key = {key: (nid, nm) for nid, nm, _, _, key in db_nodes()}
+    # Person nodes only; a key shared by several nodes is ambiguous and never auto-linked.
+    by_key = defaultdict(list)
+    for nid, nm, nt, _, key in db_nodes():
+        if nt == "person":
+            by_key[key].append((nid, nm))
 
     contributors = []
     for key, rec in people.items():
-        exact = by_key.get(key)
-        candidates = [] if exact or rec["name"] in distinct else cached_candidates(rec["name"])
+        matches = by_key.get(key, [])
+        exact = matches[0] if len(matches) == 1 else None
+        if len(matches) > 1:
+            candidates = [{"id": nid, "name": nm, "type": "person", "score": 1.0} for nid, nm in matches]
+        else:
+            candidates = [] if exact or rec["name"] in distinct else cached_candidates(rec["name"])
         letters_only = rec["kinds"] == {"letter"}
         if rec["name"] in exclude:
             excluded = exclude[rec["name"]] or "excluded in review"

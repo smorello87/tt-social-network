@@ -20,8 +20,8 @@ Inputs (in data/<slug>/):
     notes          {"name": "free-text note"} kept in the roster
 
 Output: data/<slug>/roster.json, one entry per person with status
-  existing    linked to a node (exact match or review "match")
-  new         no plausible match in the database (or confirmed via "new")
+  existing    linked to a node (exact match to a single person node, or review "match")
+  new         no plausible match in the database (or confirmed via "new", which wins over an exact match)
   unresolved  fuzzy candidates found; add the name to "match" or "new"
 import_contributors.py refuses to run while any entry is unresolved.
 
@@ -36,7 +36,7 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 
-from database import _similarity, connect_readonly
+from database import _similarity, connect_readonly, normalize_name
 
 DATA_DIR = Path(__file__).resolve().parent.parent
 
@@ -47,10 +47,11 @@ REVIEW_TEMPLATE = {
 
 
 def fold(name):
-    """Accent/punctuation-insensitive token list: 'Jean-Paul D’Amico' -> ['jean', 'paul', 'damico']."""
+    """Accent/punctuation-insensitive token list: 'Jean-Paul D’Amico' -> ['jean', 'paul', 'damico'].
+    Digits are kept, so 'Novella' and 'Novella 2000' stay distinct."""
     s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
     s = re.sub(r"[-.]", " ", s)
-    return re.sub(r"[^a-z ]", "", s).split()
+    return re.sub(r"[^a-z0-9 ]", "", s).split()
 
 
 def parse_issue(text):
@@ -194,6 +195,15 @@ def main():
     for n in nodes:
         by_key.setdefault(n[4], []).append(n)
 
+    # Nodes already linked to this periodical (i.e. imported by an earlier run).
+    pid = conn.execute("SELECT id FROM nodes WHERE name_normalized = ? AND type = 'institution'",
+                       (normalize_name(review["periodical"]),)).fetchone()
+    imported = set()
+    if pid:
+        imported = {r[0] for r in conn.execute(
+            "SELECT target_id FROM edges WHERE source_id = ? UNION SELECT source_id FROM edges WHERE target_id = ?",
+            (pid[0], pid[0]))}
+
     people = []
     for name in sorted(roster, key=lambda n: (fold(n)[-1:], fold(n))):
         e = roster[name]
@@ -201,11 +211,13 @@ def main():
         exact = by_key.get(" ".join(fold(name)), []) if fold(name) else []
         if name in review["match"]:
             entry.update(status="existing", node_id=review["match"][name])
-        elif len(exact) == 1:
-            entry.update(status="existing", node_id=exact[0][0])
-        elif name in review["new"]:
+        elif name in review["new"] and not (len(exact) == 1 and exact[0][0] in imported):
+            # Checked before exact matches so a reviewer can declare a homonym distinct. Once the
+            # name has been imported (its node is linked to the periodical), re-runs keep it "existing".
             entry["status"] = "new"
-        else:
+        elif len(exact) == 1 and exact[0][2] == "person":
+            entry.update(status="existing", node_id=exact[0][0])
+        else:  # no match, several nodes with the same key, or the only match isn't a person
             cands = [{"id": n[0], "name": n[1], "type": n[2], "score": 1.0} for n in exact] or candidates_for(name, nodes)
             if cands or not fold(name):  # a name that folds to nothing ("***") needs a human
                 for c in cands:

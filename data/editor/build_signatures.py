@@ -34,7 +34,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from build_roster import DATA_DIR, candidates_for, fold
-from database import DB_PATH
+from database import connect_readonly
 
 # Per-process caches: the reviewer rebuilds after every click, and fuzzy matching against
 # every node is the slow part. network.db doesn't change during review (restart if it does).
@@ -45,7 +45,7 @@ _candidates = {}
 def db_nodes():
     global _nodes
     if _nodes is None:
-        with sqlite3.connect(DB_PATH) as conn:
+        with connect_readonly() as conn:
             _nodes = [(nid, nm, nt, fold(nm), " ".join(fold(nm)))
                       for nid, nm, nt in conn.execute("SELECT id, name, type FROM nodes")]
     return _nodes

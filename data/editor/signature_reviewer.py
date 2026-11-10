@@ -26,7 +26,7 @@ from urllib.parse import unquote, urlparse
 
 from build_roster import DATA_DIR
 from build_signatures import build
-from database import DB_PATH
+from database import connect_readonly
 
 SLUG = sys.argv[1] if len(sys.argv) > 1 else "follia"
 BASE = DATA_DIR / SLUG
@@ -106,7 +106,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/":
             self.send(200, TEMPLATE.read_text().replace("{{ slug }}", SLUG), "text/html; charset=utf-8")
         elif path == "/api/data":
-            with sqlite3.connect(DB_PATH) as conn:
+            with connect_readonly() as conn:
                 people = [r[0] for r in conn.execute("SELECT name FROM nodes WHERE type = 'person' ORDER BY name")]
             self.send(200, {"contributors": json.loads((BASE / "contributors.json").read_text()),
                             "review": load_review(), "db_people": people})

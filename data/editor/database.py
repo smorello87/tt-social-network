@@ -34,6 +34,11 @@ def get_db():
     finally:
         conn.close()
 
+def connect_readonly():
+    """Open DB_PATH read-only (SQLite URI mode=ro); never creates or modifies the file."""
+    from urllib.parse import quote
+    return sqlite3.connect(f"file:{quote(str(DB_PATH))}?mode=ro", uri=True)
+
 def init_db():
     """Initialize database schema."""
     with get_db() as conn:
@@ -931,7 +936,3 @@ def get_subtypes():
                 'count': row['count']
             })
         return result
-
-# Initialize database and run migrations on import
-init_db()
-migrate_deduplicate_edges()

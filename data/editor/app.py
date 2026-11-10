@@ -10,6 +10,10 @@ from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_cors import CORS
 import database as db
 
+# Schema setup and migrations run at editor startup, not when database.py is imported.
+db.init_db()
+db.migrate_deduplicate_edges()
+
 app = Flask(__name__)
 CORS(app, origins=[r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$"])
 

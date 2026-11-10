@@ -36,7 +36,7 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 
-from database import DB_PATH, _similarity
+from database import _similarity, connect_readonly
 
 DATA_DIR = Path(__file__).resolve().parent.parent
 
@@ -145,7 +145,7 @@ def main():
 
     roster = collect(base, review)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = connect_readonly()
     degree = dict(conn.execute(
         "SELECT id, COUNT(*) FROM (SELECT source_id AS id FROM edges UNION ALL SELECT target_id FROM edges) GROUP BY id"))
     nodes = [(nid, nm, t, fold(nm), " ".join(fold(nm)))

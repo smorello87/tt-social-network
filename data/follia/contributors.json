@@ -4,7 +4,7 @@
   "method": "Signed pieces (bylines, end signatures, photo credits, letters) read page by page from 90 dpi renders by Claude (Opus pilot, Sonnet batches); issue date per page from footer/header/masthead. Not the TOC.",
   "files": 58,
   "pages": 710,
-  "signature_count": 911,
+  "signature_count": 898,
   "contributor_count": 309,
   "included_count": 224,
   "issues": [
@@ -1416,16 +1416,6 @@
         },
         {
           "file": "ScanPro0514.pdf",
-          "page": 4,
-          "source_name": "Francis Sisca",
-          "issue": "1965-02",
-          "title": "Il consiglio del medico: Il Latte",
-          "kind": "column",
-          "position": "byline",
-          "confidence": "high"
-        },
-        {
-          "file": "ScanPro0514.pdf",
           "page": 7,
           "source_name": "Francis Sisca",
           "issue": "1965-03",
@@ -2426,16 +2416,6 @@
           "position": "signature",
           "confidence": "high",
           "note": "translator credit"
-        },
-        {
-          "file": "ScanPro0515.pdf",
-          "page": 11,
-          "source_name": "Rodolfo Pucelli",
-          "issue": "1965-08",
-          "title": "Il 25.mo anniversario della morte di Riccardo Cordiferro",
-          "kind": "article",
-          "position": "signature",
-          "confidence": "high"
         },
         {
           "file": "ScanPro0522.pdf",
@@ -3994,17 +3974,6 @@
           "note": "reprint; dialetto romanesco"
         },
         {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
-          "source_name": "Trilussa",
-          "issue": "1965-02",
-          "title": "Er core der popolo",
-          "kind": "poem",
-          "position": "signature",
-          "confidence": "high",
-          "note": "reprint; dialetto romanesco"
-        },
-        {
           "file": "ScanPro0515.pdf",
           "page": 5,
           "source_name": "Trilussa",
@@ -4302,17 +4271,6 @@
           "position": "byline",
           "confidence": "high",
           "note": "pseudonym/first name as printed"
-        },
-        {
-          "file": "ScanPro0516.pdf",
-          "page": 2,
-          "source_name": "Gigi",
-          "issue": "1965-08",
-          "title": "Il mondo attraverso alla mia lente",
-          "kind": "column",
-          "position": "byline",
-          "confidence": "high",
-          "note": "pseudonym"
         },
         {
           "file": "ScanPro0516.pdf",
@@ -5728,16 +5686,6 @@
           "kind": "letter",
           "position": "signature",
           "confidence": "high"
-        },
-        {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
-          "source_name": "Francesco Greco",
-          "issue": "1965-02",
-          "title": "Pro Domo Nostra",
-          "kind": "letter",
-          "position": "signature",
-          "confidence": "high"
         }
       ]
     },
@@ -6731,16 +6679,6 @@
           "confidence": "high"
         },
         {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
-          "source_name": "Vincenzo Foti",
-          "issue": "1965-02",
-          "title": "Pro Domo Nostra",
-          "kind": "letter",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
           "file": "ScanPro0518.pdf",
           "page": 5,
           "source_name": "Vincenzo Foti",
@@ -6829,16 +6767,6 @@
         {
           "file": "1965.pdf",
           "page": 6,
-          "source_name": "Eugene Santonocito",
-          "issue": "1965-02",
-          "title": "Pro Domo Nostra",
-          "kind": "letter",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
           "source_name": "Eugene Santonocito",
           "issue": "1965-02",
           "title": "Pro Domo Nostra",
@@ -7778,27 +7706,6 @@
           "kind": "poem",
           "position": "signature",
           "confidence": "high"
-        },
-        {
-          "file": "ScanPro0583.pdf",
-          "page": 6,
-          "source_name": "Onorio Ruotolo",
-          "issue": "1964-12",
-          "title": "A Clarification",
-          "kind": "article",
-          "position": "byline",
-          "confidence": "high",
-          "note": "in English; also signed at end on p7"
-        },
-        {
-          "file": "ScanPro0583.pdf",
-          "page": 7,
-          "source_name": "Onorio Ruotolo",
-          "issue": "1964-12",
-          "title": "Natale nel Villaggio",
-          "kind": "poem",
-          "position": "signature",
-          "confidence": "high"
         }
       ]
     },
@@ -7935,16 +7842,6 @@
         {
           "file": "1965.pdf",
           "page": 6,
-          "source_name": "Sebastiano Trucco",
-          "issue": "1965-02",
-          "title": "Pro Domo Nostra",
-          "kind": "letter",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
           "source_name": "Sebastiano Trucco",
           "issue": "1965-02",
           "title": "Pro Domo Nostra",
@@ -8748,7 +8645,26 @@
       "include": false,
       "excluded_reason": "pen name, not identifiable (review)",
       "network_node": null,
-      "network_candidates": [],
+      "network_candidates": [
+        {
+          "id": 1271,
+          "name": "Enzo De Luca",
+          "type": "person",
+          "score": 0.33
+        },
+        {
+          "id": 3728,
+          "name": "Filippo De Luca",
+          "type": "person",
+          "score": 0.27
+        },
+        {
+          "id": 2465,
+          "name": "Raffaele de Luca",
+          "type": "person",
+          "score": 0.25
+        }
+      ],
       "issue_count": 3,
       "issues": [
         "1959-03",
@@ -10169,16 +10085,6 @@
           "confidence": "high"
         },
         {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
-          "source_name": "John Mocerino",
-          "issue": "1965-02",
-          "title": "Pro Domo Nostra",
-          "kind": "letter",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
           "file": "ScanPro0518.pdf",
           "page": 5,
           "source_name": "John Mocerino",
@@ -11041,16 +10947,6 @@
         {
           "file": "1965.pdf",
           "page": 6,
-          "source_name": "Vittoria Di Giulio",
-          "issue": "1965-02",
-          "title": "La fine di stagione",
-          "kind": "poem",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
           "source_name": "Vittoria Di Giulio",
           "issue": "1965-02",
           "title": "La fine di stagione",
@@ -13244,7 +13140,14 @@
       "include": false,
       "excluded_reason": "pen name, not identifiable (review)",
       "network_node": null,
-      "network_candidates": [],
+      "network_candidates": [
+        {
+          "id": 2309,
+          "name": "Luciano Folgore",
+          "type": "person",
+          "score": 0.47
+        }
+      ],
       "issue_count": 1,
       "issues": [
         "1947-08-01"
@@ -13578,16 +13481,6 @@
         {
           "file": "1965.pdf",
           "page": 6,
-          "source_name": "Frank Gentile",
-          "issue": "1965-02",
-          "title": "Pro Domo Nostra",
-          "kind": "letter",
-          "position": "signature",
-          "confidence": "high"
-        },
-        {
-          "file": "ScanPro0514.pdf",
-          "page": 4,
           "source_name": "Frank Gentile",
           "issue": "1965-02",
           "title": "Pro Domo Nostra",

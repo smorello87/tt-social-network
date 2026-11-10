@@ -17,6 +17,8 @@ Inputs (in data/<slug>/):
     exclude        {"Vice-Simili": "reason"} kept in the data but left out of the network
     notes          {"name": "free-text note"} copied into the output
     letter_rule    letter writers are kept only if in 2+ issues or already in network.db
+  Signatures seen twice because an issue was scanned in two PDFs are counted once (see
+  dedupe_appearances).
   Excluded automatically (see `excluded_reason`): one-off letter writers, and names that are
   only initials ("B. Z.") with no network match — merge one into a full name to bring it back.
 
@@ -67,6 +69,38 @@ def is_initials(name):
     return bool(toks) and (all(len(t) <= 2 for t in toks) or ("." in name and all(len(t) <= 3 for t in toks)))
 
 
+def dedupe_appearances(rec):
+    """Drop signatures counted twice because an issue was scanned in two PDFs.
+
+    Two appearances are the same when (issue, title) match for this person; only the copy from the
+    first file (in name order) is kept. A month-only label ("1947-01") and a day-level label
+    ("1947-01-01") in the same month are the same issue only when this person has the same title under
+    both; otherwise they stay distinct. Untitled signatures never merge month with day labels, and
+    undated appearances are never merged (they count as zero issues). Recomputes rec["issues"].
+    """
+    apps = rec["appearances"]
+    labels = defaultdict(set)  # title -> issue labels
+    for a in apps:
+        if a.get("issue") and a.get("title"):
+            labels[a["title"]].add(a["issue"])
+    to_day = {}  # (title, "YYYY-MM") -> lowest "YYYY-MM-DD" seen with that title
+    for title, ls in labels.items():
+        for m in (l for l in ls if len(l) == 7):
+            days = sorted(l for l in ls if len(l) == 10 and l[:7] == m)
+            if days:
+                to_day[(title, m)] = days[0]
+    for a in apps:
+        if a.get("issue") and a.get("title"):
+            a["issue"] = to_day.get((a["title"], a["issue"]), a["issue"])
+
+    first_file = {}
+    for a in sorted(apps, key=lambda a: a["file"]):
+        if a.get("issue"):
+            first_file.setdefault((a["issue"], a.get("title")), a["file"])
+    rec["appearances"] = [a for a in apps if not a.get("issue") or first_file[(a["issue"], a.get("title"))] == a["file"]]
+    rec["issues"] = {a["issue"] for a in rec["appearances"] if a.get("issue")}
+
+
 def build(slug):
     base = DATA_DIR / slug
     review = json.loads((base / "review.json").read_text())
@@ -100,6 +134,9 @@ def build(slug):
             rec["appearances"].append(
                 {"file": data["file"], "page": s["page"], "source_name": s["name"]}
                 | {k: s[k] for k in ("issue", "title", "kind", "position", "confidence", "note") if s.get(k)})
+
+    for rec in people.values():
+        dedupe_appearances(rec)
 
     # Person nodes only; a key shared by several nodes is ambiguous and never auto-linked.
     by_key = defaultdict(list)

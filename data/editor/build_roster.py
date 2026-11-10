@@ -22,7 +22,9 @@ Inputs (in data/<slug>/):
 Output: data/<slug>/roster.json, one entry per person with status
   existing    linked to a node (exact match to a single person node, or review "match")
   new         no plausible match in the database (or confirmed via "new", which wins over an exact match)
-  unresolved  fuzzy candidates found; add the name to "match" or "new"
+  unresolved  fuzzy candidates found (in the database, or another name in this roster with
+              type "roster"); add the name to "match" or "new", or alias one spelling to the other.
+              Spellings that differ only in case/whitespace collapse into one entry.
 import_contributors.py refuses to run while any entry is unresolved.
 
 Usage: python3 build_roster.py iam
@@ -73,6 +75,7 @@ def collect(base, review):
     skip = {clean(n) for n in review["skip"]}
 
     roster = {}
+    variants = {}
 
     def add(page, issue, raw, role, reviewed=False):
         name = clean(raw)
@@ -81,6 +84,8 @@ def collect(base, review):
         name = aliases.get(name, name)
         if not name or name in skip:
             return
+        # "Del vita" / "Del Vita" (case, NFC and whitespace variants) are one person: keep the first spelling
+        name = variants.setdefault(unicodedata.normalize("NFC", name).casefold(), name)
         entry = roster.setdefault(name, {"roles": set(), "issues": set()})
         entry["roles"].add(role)
         if issue:
@@ -157,6 +162,10 @@ def _strip_suffix(toks):
     return [t for t in toks if t not in SUFFIXES]
 
 
+def _edit_distance(a, b):
+    return round((1 - _similarity(a, b)) * max(len(a), len(b)))
+
+
 def candidates_for(name, nodes):
     toks = fold(flip_comma(name))
     if not toks:
@@ -180,6 +189,9 @@ def candidates_for(name, nodes):
         if not flagged and len(base) > 1 and len(base2) > 1 and base[-1] == base2[-1]:
             g1, g2 = _GIVEN_GROUP.get(base[0]), _GIVEN_GROUP.get(base2[0])
             flagged = g1 is not None and g1 == g2  # "Joseph Tusiani" ~ "Giuseppe Tusiani"
+        if not flagged and len(base) > 1 and len(base2) > 1 and base[-1] == base2[-1] and len(base[-1]) > 3 \
+                and len(base[0]) >= 4 and len(base2[0]) >= 4 and _edit_distance(base[0], base2[0]) <= 2:
+            flagged = True  # same surname, near-identical given name: "Giberto Altichieri" ~ "Gilberto Altichieri"
         # Edit distance >= length difference, so a >15% length gap can't reach 0.85; skip the costly DP.
         if not flagged and abs(len(key) - len(key2)) > 0.15 * max(len(key), len(key2)):
             continue
@@ -245,6 +257,19 @@ def main():
         if name in review["notes"]:
             entry["note"] = review["notes"][name]
         people.append(entry)
+
+    # Compare the roster's own unmatched names with each other so one person can't become two nodes.
+    # Names in review "new" are confirmed distinct; alias one spelling to the other to merge them.
+    pending = [p for p in people if p["status"] in ("new", "unresolved") and p["name"] not in review["new"]
+               and fold(p["name"])]
+    peers = [(i, p["name"], "roster", fold(flip_comma(p["name"])), " ".join(fold(flip_comma(p["name"]))))
+             for i, p in enumerate(pending)]
+    for i, p in enumerate(pending):
+        found = candidates_for(p["name"], [n for n in peers if n[0] != i])
+        if found:
+            p["status"] = "unresolved"
+            p["candidates"] = p.get("candidates", []) + [
+                {"id": None, "name": c["name"], "type": "roster", "score": c["score"], "degree": 0} for c in found]
 
     for name in list(review["match"]) + review["new"]:
         if name not in roster:

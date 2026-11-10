@@ -25,7 +25,7 @@ def test_flip_comma():
 
 
 NODES = make_nodes("Luigi Barzini Jr", "Luigi Barzini Sr", "Giuseppe Prezzolini", "Giuseppe Tusiani",
-                   "Achille Loria", "Mario Donati", "John S. White")
+                   "Achille Loria", "Gilberto Altichieri", "Mario Donati", "John S. White")
 
 
 @pytest.mark.parametrize("query, expected", [
@@ -36,6 +36,7 @@ NODES = make_nodes("Luigi Barzini Jr", "Luigi Barzini Sr", "Giuseppe Prezzolini"
     ("Loria Achille", {"Achille Loria"}),
     ("Maria Donati", {"Mario Donati"}),
     ("John A. White", {"John S. White"}),
+    ("Giberto Altichieri", {"Gilberto Altichieri"}),
     ("Nobody Atall", set()),
     ("***", set()),
     ("E.", set()),

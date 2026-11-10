@@ -129,3 +129,45 @@ def test_roster_does_not_write_the_database(world, monkeypatch):
     before = h()
     run(world[1], monkeypatch)
     assert h() == before
+
+
+def add_bylines(base, *names):
+    page = json.loads((base / "extraction" / "p-02.json").read_text())
+    page["articles"].append({"byline": list(names)})
+    write(base / "extraction" / "p-02.json", page)
+
+
+def test_case_and_whitespace_variants_collapse(world, monkeypatch):
+    _, base = world
+    add_bylines(base, "Del Vita, Alessandro", "Del  Vita, Alessandro", "Flaiano, ennio", "Flaiano, Ennio")
+    people = run(base, monkeypatch)
+    assert sum(n.startswith("Flaiano") for n in people) == 1
+    assert sum(n.startswith("Del") for n in people) == 1
+    assert people["Flaiano, ennio"]["status"] == "new"
+
+
+def test_near_duplicate_names_in_the_roster_are_flagged(world, monkeypatch):
+    _, base = world
+    add_bylines(base, "Altichieri, Giberto", "Altichieri, Gilberto", "Zanardi, Joseph", "Zanardi, Giuseppe")
+    people = run(base, monkeypatch)
+    for a, b in [("Altichieri, Giberto", "Altichieri, Gilberto"), ("Zanardi, Joseph", "Zanardi, Giuseppe")]:
+        assert people[a]["status"] == people[b]["status"] == "unresolved"
+        assert [c["name"] for c in people[a]["candidates"]] == [b]
+        assert people[a]["candidates"][0]["type"] == "roster"
+
+
+def test_confirming_distinct_in_review_new_clears_the_flag(world, monkeypatch):
+    _, base = world
+    add_bylines(base, "Altichieri, Giberto", "Altichieri, Gilberto")
+    review = json.loads((base / "review.json").read_text())
+    review["new"] += ["Altichieri, Giberto", "Altichieri, Gilberto"]
+    write(base / "review.json", review)
+    people = run(base, monkeypatch)
+    assert people["Altichieri, Giberto"]["status"] == people["Altichieri, Gilberto"]["status"] == "new"
+
+
+def test_unrelated_roster_names_stay_new(world, monkeypatch):
+    _, base = world
+    add_bylines(base, "Pratolini, Vasco", "Moravia, Alberto")
+    people = run(base, monkeypatch)
+    assert people["Pratolini, Vasco"]["status"] == people["Moravia, Alberto"]["status"] == "new"

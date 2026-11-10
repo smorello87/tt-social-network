@@ -18526,11 +18526,6 @@
       "subtype": null
     },
     {
-      "id": "Salvatore Castagna",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Salvatore Cicala",
       "type": "person",
       "subtype": null
@@ -27815,11 +27810,6 @@
     {
       "source": "Divagando",
       "target": "Salvator Gotta",
-      "type": "affiliation"
-    },
-    {
-      "source": "Divagando",
-      "target": "Salvatore Castagna",
       "type": "affiliation"
     },
     {
@@ -48334,7 +48324,7 @@
     },
     {
       "source": "The Bishop Lito Co.",
-      "target": "Salvatore Castagna",
+      "target": "Salvatore Mario Castagna",
       "type": "affiliation"
     },
     {

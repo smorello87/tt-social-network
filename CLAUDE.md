@@ -53,7 +53,7 @@ Uses the same `get_graph_json()` as the editor's Export button (includes edge `t
 ```bash
 cd data/editor && python3 validate.py
 ```
-Exits 1 if there are self-loops, orphan/reversed/duplicate edges, duplicate folded names, or `visualization/graph.json` differs from the database export.
+Exits 1 if there are self-loops, orphan/reversed/duplicate edges, duplicate folded names, non-NFC names, or `visualization/graph.json` differs from the database export.
 
 ### Generate from CSV (legacy — do not use on `visualization/graph.json`)
 `data/csv-to-json.py` builds a graph from the old CSVs only (~1,600 nodes), so writing it to `visualization/graph.json` would clobber the published graph. If you must run it, write to a scratch file:
@@ -180,7 +180,7 @@ Data loading: port 5001 → `/api/graph.json` (live DB); otherwise → static `g
 - Search input escapes regex metacharacters before `new RegExp()`
 
 ### Community Detection
-- Label propagation algorithm (max 20 iterations, shuffle per iteration)
+- Label propagation algorithm (max 20 iterations, shuffle per iteration with a seeded mulberry32 PRNG, nodes in sorted id order, ties to the lowest label, so the result is reproducible; `node tests/community.test.js` checks it)
 - Selective spatial clustering: only communities ≥ 20 nodes get centroid force (0.12 strength)
 - Cross-community link strength reduced to 0.005 when active
 - Cross-community edges drawn at 8% opacity on canvas

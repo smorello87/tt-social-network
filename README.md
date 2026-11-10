@@ -57,7 +57,7 @@ tt-social-network/
 │   ├── singlerows.csv                 # Edge definitions (relationships)
 │   ├── contributors_list.md           # Il Carroccio contributors list
 │   ├── contributors-and-board/        # Divagando TOC and board data (1945-1957)
-│   ├── csv-to-json.py                 # CSV → JSON converter for D3.js
+│   ├── csv-to-json.py                 # CSV → JSON converter (legacy; do not use for graph.json)
 │   ├── check_single_connections.py    # Peripheral node analysis
 │   ├── add_type_column.py             # Utility: add type column to CSV
 │   ├── import_csv.py                  # Utility: CSV import to SQLite
@@ -110,12 +110,16 @@ tt-social-network/
 
 ### Generating Graph Data
 
+`data/editor/network.db` is the source of truth; `visualization/graph.json` is exported from it. Regenerate the published graph with:
+
 ```bash
-cd data
-python csv-to-json.py --types type1.csv --edges singlerows.csv --out ../visualization/graph.json
+cd data/editor
+python3 -c "import json, database as db; json.dump(db.get_graph_json(), open('../../visualization/graph.json','w'), indent=2)"
 ```
 
-Options: `--encoding auto|utf-8|utf-8-sig|cp1252|latin-1|mac_roman`
+(or click "Export" in the editor). Then run `python3 validate.py` to check that the database and `graph.json` agree.
+
+`data/csv-to-json.py` is a **legacy** converter for the early CSV inputs (`type1.csv`, `singlerows.csv`). Do not point it at `visualization/graph.json`: it would replace the published graph with a much smaller, outdated one. If you need it, write to a scratch file, e.g. `python csv-to-json.py --types type1.csv --edges singlerows.csv --out /tmp/legacy-graph.json` (option: `--encoding auto|utf-8|utf-8-sig|cp1252|latin-1|mac_roman`).
 
 ### Running the Data Editor
 
@@ -146,7 +150,7 @@ python check_single_connections.py singlerows.csv
 
 ### Performance
 - Hybrid SVG (nodes/labels) + Canvas (edges) rendering
-- ~2,885 nodes and ~3,895 edges with 60fps interaction
+- Several thousand nodes and edges (4,223 nodes, 5,677 edges at the time of writing) with 60fps interaction
 - Zoom-dependent label visibility (hub labels only at low zoom)
 - Map-based O(1) lookups, pre-computed adjacency lists
 - Debounced search, throttled zoom, RequestAnimationFrame

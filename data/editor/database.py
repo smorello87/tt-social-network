@@ -6,6 +6,7 @@ Handles nodes, edges, and shared institution caching.
 import sqlite3
 import re
 import shutil
+import unicodedata
 from pathlib import Path
 from contextlib import contextmanager
 from datetime import datetime
@@ -14,8 +15,8 @@ DB_PATH = Path(__file__).parent / "network.db"
 BACKUP_DIR = Path(__file__).parent / "backups"
 
 def normalize_name(name: str) -> str:
-    """Normalize name for matching: strip whitespace, collapse spaces, lowercase."""
-    name = name.strip()
+    """Normalize name for matching: NFC, strip whitespace, collapse spaces, lowercase."""
+    name = unicodedata.normalize("NFC", name).strip()
     name = re.sub(r"\s+", " ", name)
     return name.lower()
 
@@ -232,7 +233,8 @@ def get_node_by_name(name):
         return dict(row) if row else None
 
 def create_node(name, node_type, subtype=None):
-    """Create a new node."""
+    """Create a new node. The name is stored in Unicode NFC."""
+    name = unicodedata.normalize("NFC", name)
     with get_db() as conn:
         cursor = conn.execute(
             "INSERT INTO nodes (name, name_normalized, type, subtype) VALUES (?, ?, ?, ?)",
@@ -247,6 +249,7 @@ def update_node(node_id, name=None, node_type=None, subtype=None):
         updates = []
         params = []
         if name is not None:
+            name = unicodedata.normalize("NFC", name)
             updates.append("name = ?")
             params.append(name.strip())
             updates.append("name_normalized = ?")

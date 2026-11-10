@@ -2297,7 +2297,7 @@
       function processData(data) {
         data.nodes.forEach(node => {
           nodesById.set(node.id, node);
-          nodesByIdLower.set(node.id.toLowerCase(), node);
+          nodesByIdLower.set(node.id.normalize('NFC').toLowerCase(), node);
           adjacencyList.set(node.id, new Set());
           nodeDegrees.set(node.id, 0);
         });
@@ -2649,7 +2649,7 @@
       }
 
       function handleSearch(e) {
-        const term = e.target.value.trim().toLowerCase();
+        const term = e.target.value.trim().normalize('NFC').toLowerCase();
         if (!term) {
           resetView();
           return;
@@ -3199,12 +3199,12 @@
           const startInput = explorerNodes[0];
           const endInput = explorerNodes[1];
 
-          const cacheKey = `${startInput.toLowerCase()}_${endInput.toLowerCase()}`;
+          const cacheKey = `${startInput.normalize('NFC').toLowerCase()}_${endInput.normalize('NFC').toLowerCase()}`;
           let result;
           if (pathCache.has(cacheKey)) {
             result = pathCache.get(cacheKey);
           } else {
-            result = findAllConnections(startInput.toLowerCase(), endInput.toLowerCase());
+            result = findAllConnections(startInput.normalize('NFC').toLowerCase(), endInput.normalize('NFC').toLowerCase());
             pathCache.set(cacheKey, result);
             if (pathCache.size > 100) pathCache.delete(pathCache.keys().next().value);
           }
@@ -3481,7 +3481,7 @@
         const selectedIds = new Set();
 
         for (const name of savedNames) {
-          const node = nodesById.get(name) || nodesByIdLower.get(name.toLowerCase());
+          const node = nodesById.get(name) || nodesByIdLower.get(name.normalize('NFC').toLowerCase());
           if (!node) {
             alert('Node "' + name + '" not found in the network.');
             return;
@@ -3674,11 +3674,11 @@
           this.allLinks = allLinks;
           this.adjacencyList = adjacencyList;
           this.nodesByIdLower = new Map();
-          allNodes.forEach(node => this.nodesByIdLower.set(node.id.toLowerCase(), node));
+          allNodes.forEach(node => this.nodesByIdLower.set(node.id.normalize('NFC').toLowerCase(), node));
         }
 
         findMultiNodeConnections(selectedNodeIds) {
-          const normalizedIds = selectedNodeIds.map(id => id.toLowerCase());
+          const normalizedIds = selectedNodeIds.map(id => id.normalize('NFC').toLowerCase());
           const validNodes = normalizedIds.filter(id => this.nodesByIdLower.has(id));
 
           if (validNodes.length === 0) return { nodes: new Set(), edges: new Set() };
@@ -3917,9 +3917,9 @@
           adjacencyList
         );
 
-        const result = finder.findTwoNodePaths(startId.toLowerCase(), endId.toLowerCase());
-        const startNode = nodesByIdLower.get(startId.toLowerCase());
-        const endNode = nodesByIdLower.get(endId.toLowerCase());
+        const result = finder.findTwoNodePaths(startId.normalize('NFC').toLowerCase(), endId.normalize('NFC').toLowerCase());
+        const startNode = nodesByIdLower.get(startId.normalize('NFC').toLowerCase());
+        const endNode = nodesByIdLower.get(endId.normalize('NFC').toLowerCase());
 
         if (!startNode || !endNode) {
           return { nodes: new Set(), edges: new Set(), startNode: null, endNode: null, shortestPathLength: -1, pathCount: 0, pathsByLength: new Map(), overflow: false };
@@ -4505,10 +4505,10 @@
         if (!input || !items || items.length === 0) return;
 
         let currentFocus = -1;
-        const searchIndex = items.map(item => ({ original: item, lower: item.toLowerCase() }));
+        const searchIndex = items.map(item => ({ original: item, lower: item.normalize('NFC').toLowerCase() }));
 
         const handleAutocomplete = function() {
-          const val = this.value.trim().toLowerCase();
+          const val = this.value.trim().normalize('NFC').toLowerCase();
           closeAllLists();
           if (!val || val.length < 1) return;
 
@@ -4596,7 +4596,7 @@
             } else if (addAsChip && input.value.trim()) {
               // If no autocomplete item selected, try to add the typed value
               const typed = input.value.trim();
-              const match = searchIndex.find(s => s.lower === typed.toLowerCase());
+              const match = searchIndex.find(s => s.lower === typed.normalize('NFC').toLowerCase());
               if (match) {
                 addExplorerNode(match.original);
                 input.value = '';

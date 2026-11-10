@@ -18,6 +18,7 @@ Usage: python3 import_contributors.py iam [--dry-run]
 import json
 import sqlite3
 import sys
+import unicodedata
 from pathlib import Path
 
 import database
@@ -33,7 +34,7 @@ def get_or_create_node(conn, name, node_type='person', subtype=None):
         return row[0], False
     cursor = conn.execute(
         "INSERT INTO nodes (name, name_normalized, type, subtype) VALUES (?, ?, ?, ?)",
-        (name.strip(), normalized, node_type, subtype)
+        (unicodedata.normalize("NFC", name).strip(), normalized, node_type, subtype)
     )
     return cursor.lastrowid, True
 

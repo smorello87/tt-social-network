@@ -8,9 +8,10 @@ Fails (exit 1) if any of these invariants is broken:
   - an edge is stored reversed (source_id > target_id)
   - two edges join the same pair of nodes (either direction)
   - two nodes fold to the same key (case/accent/punctuation-insensitive name)
+  - a node name is not in Unicode NFC
   - visualization/graph.json differs from the export of the database
 
-Only reports (never fails on): names not in Unicode NFC, 'unknown' edges,
+Only reports (never fails on): 'unknown' edges,
 person-person 'affiliation' edges, isolated nodes, connected components.
 
 Usage: python3 validate.py [--db network.db] [--graph ../../visualization/graph.json]
@@ -78,6 +79,7 @@ def validate(db_path, graph_path):
         for eid, s, t, _ in edges:
             pairs[(min(s, t), max(s, t))].append(eid)
         check("duplicate edge pairs", [ids for ids in pairs.values() if len(ids) > 1])
+        check("names not in NFC", [n[1] for n in nodes if unicodedata.normalize("NFC", n[1]) != n[1]])
         keys = defaultdict(list)
         for nid, name, _ in nodes:
             keys[" ".join(fold(name))].append(name)
@@ -98,7 +100,6 @@ def validate(db_path, graph_path):
             degree[s] += 1
             degree[t] += 1
         report.append(f"nodes: {len(nodes)}, edges: {len(edges)}")
-        report.append(f"names not in NFC: {sum(unicodedata.normalize('NFC', n[1]) != n[1] for n in nodes)}")
         report.append(f"'unknown' edges: {sum(e[3] == 'unknown' for e in edges)}")
         report.append("person-person 'affiliation' edges: "
                       f"{sum(e[3] == 'affiliation' and types.get(e[1]) == 'person' and types.get(e[2]) == 'person' for e in edges)}")

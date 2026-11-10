@@ -94,3 +94,13 @@ def test_merge_recomputes_needs_review(db):
     database.merge_nodes(i1, i2)  # now A and B share Inst One
     assert query(db, "SELECT needs_review FROM edges WHERE id = ?", (ab,)) == [(0,)]
     assert query(db, "SELECT COUNT(*) FROM shared_institutions WHERE edge_id = ?", (ab,)) == [(1,)]
+
+
+def test_names_are_stored_in_nfc(db):
+    decomposed = "André Martinet"
+    nid = database.create_node(decomposed, "person")
+    assert query(db, "SELECT name FROM nodes WHERE id = ?", (nid,)) == [("André Martinet",)]
+    assert database.normalize_name(decomposed) == database.normalize_name("André Martinet")
+    database.update_node(nid, name="Cantù Cesare")
+    assert query(db, "SELECT name, name_normalized FROM nodes WHERE id = ?", (nid,)) == [
+        ("Cantù Cesare", "cantù cesare")]

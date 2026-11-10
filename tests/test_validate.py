@@ -70,3 +70,11 @@ def test_validate_does_not_modify_db(good):
     before = hashlib.sha256(db.read_bytes()).hexdigest()
     validate.main(["--db", str(db), "--graph", str(graph)])
     assert hashlib.sha256(db.read_bytes()).hexdigest() == before
+
+
+def test_non_nfc_name_fails(good, capsys):
+    db, graph = good
+    add_node(db, "André Martinet")  # inserted raw, bypassing create_node
+    write_graph(db, graph)
+    assert validate.main(["--db", str(db), "--graph", str(graph)]) == 1
+    assert "names not in NFC" in capsys.readouterr().out

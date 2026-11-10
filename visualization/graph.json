@@ -1396,17 +1396,17 @@
       "subtype": null
     },
     {
-      "id": "Andre\u0301 De Salza",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Andre\u0301 Martinet",
+      "id": "Andr\u00e9 De Salza",
       "type": "person",
       "subtype": null
     },
     {
       "id": "Andr\u00e9 Derain",
+      "type": "person",
+      "subtype": null
+    },
+    {
+      "id": "Andr\u00e9 Martinet",
       "type": "person",
       "subtype": null
     },
@@ -3936,7 +3936,7 @@
       "subtype": null
     },
     {
-      "id": "Cesare Cantu\u0300",
+      "id": "Cesare Cant\u00f9",
       "type": "person",
       "subtype": null
     },
@@ -6716,7 +6716,7 @@
       "subtype": null
     },
     {
-      "id": "Euge\u0300ne Brieux",
+      "id": "Eug\u00e8ne Brieux",
       "type": "person",
       "subtype": null
     },
@@ -9256,7 +9256,7 @@
       "subtype": null
     },
     {
-      "id": "Giosue\u0300 Carducci",
+      "id": "Giosu\u00e8 Carducci",
       "type": "person",
       "subtype": null
     },
@@ -15841,7 +15841,7 @@
       "subtype": null
     },
     {
-      "id": "Niccolo\u0300 Machiavelli",
+      "id": "Niccol\u00f2 Machiavelli",
       "type": "person",
       "subtype": null
     },
@@ -17341,7 +17341,7 @@
       "subtype": null
     },
     {
-      "id": "Premio di poesia Citta\u0300 di Campobasso",
+      "id": "Premio di poesia Citt\u00e0 di Campobasso",
       "type": "person",
       "subtype": null
     },
@@ -20041,7 +20041,7 @@
       "subtype": null
     },
     {
-      "id": "Vasile Pa\u0302rvan",
+      "id": "Vasile P\u00e2rvan",
       "type": "person",
       "subtype": null
     },
@@ -21509,7 +21509,7 @@
     },
     {
       "source": "Alfredo Panzini",
-      "target": "Giosue\u0300 Carducci",
+      "target": "Giosu\u00e8 Carducci",
       "type": "unknown"
     },
     {
@@ -25589,7 +25589,7 @@
     },
     {
       "source": "Cocc\u00e8 Press",
-      "target": "Andre\u0301 De Salza",
+      "target": "Andr\u00e9 De Salza",
       "type": "affiliation"
     },
     {
@@ -34629,7 +34629,7 @@
     },
     {
       "source": "Il Carroccio",
-      "target": "Giosue\u0300 Carducci",
+      "target": "Giosu\u00e8 Carducci",
       "type": "affiliation"
     },
     {
@@ -37854,7 +37854,7 @@
     },
     {
       "source": "Il Pungolo Verde",
-      "target": "Premio di poesia Citta\u0300 di Campobasso",
+      "target": "Premio di poesia Citt\u00e0 di Campobasso",
       "type": "affiliation"
     },
     {
@@ -45029,7 +45029,7 @@
     },
     {
       "source": "Luigi Orsini",
-      "target": "Giosue\u0300 Carducci",
+      "target": "Giosu\u00e8 Carducci",
       "type": "unknown"
     },
     {
@@ -47649,7 +47649,7 @@
     },
     {
       "source": "SF Vanni Publishers and Booksellers",
-      "target": "Andre\u0301 Martinet",
+      "target": "Andr\u00e9 Martinet",
       "type": "affiliation"
     },
     {
@@ -47744,7 +47744,7 @@
     },
     {
       "source": "SF Vanni Publishers and Booksellers",
-      "target": "Cesare Cantu\u0300",
+      "target": "Cesare Cant\u00f9",
       "type": "affiliation"
     },
     {
@@ -47864,7 +47864,7 @@
     },
     {
       "source": "SF Vanni Publishers and Booksellers",
-      "target": "Giosue\u0300 Carducci",
+      "target": "Giosu\u00e8 Carducci",
       "type": "affiliation"
     },
     {
@@ -47994,7 +47994,7 @@
     },
     {
       "source": "SF Vanni Publishers and Booksellers",
-      "target": "Niccolo\u0300 Machiavelli",
+      "target": "Niccol\u00f2 Machiavelli",
       "type": "affiliation"
     },
     {
@@ -48349,7 +48349,7 @@
     },
     {
       "source": "The Emporium Press",
-      "target": "Euge\u0300ne Brieux",
+      "target": "Eug\u00e8ne Brieux",
       "type": "affiliation"
     },
     {
@@ -48584,7 +48584,7 @@
     },
     {
       "source": "The Literary Review",
-      "target": "Niccolo\u0300 Machiavelli",
+      "target": "Niccol\u00f2 Machiavelli",
       "type": "affiliation"
     },
     {
@@ -49089,7 +49089,7 @@
     },
     {
       "source": "V. Grassi",
-      "target": "Vasile Pa\u0302rvan",
+      "target": "Vasile P\u00e2rvan",
       "type": "affiliation"
     },
     {

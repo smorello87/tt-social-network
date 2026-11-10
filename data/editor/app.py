@@ -14,6 +14,10 @@ import database as db
 db.init_db()
 db.migrate_deduplicate_edges()
 
+# '' clears the subtype
+VALID_SUBTYPES = ('periodical', 'publisher', 'university', 'organization', 'media', 'business', 'event',
+                  'government', 'other', '')
+
 app = Flask(__name__)
 CORS(app, origins=[r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$"])
 
@@ -132,6 +136,9 @@ def create_node():
     if node_type not in ('person', 'institution', 'unknown'):
         return jsonify({'error': 'Invalid type'}), 400
 
+    if subtype not in VALID_SUBTYPES + (None,):
+        return jsonify({'error': 'Invalid subtype'}), 400
+
     # Check if node already exists
     existing = db.get_node_by_name(name)
     if existing:
@@ -153,6 +160,9 @@ def update_node(node_id):
 
     if node_type and node_type not in ('person', 'institution', 'unknown'):
         return jsonify({'error': 'Invalid type'}), 400
+
+    if subtype not in VALID_SUBTYPES + (None,):
+        return jsonify({'error': 'Invalid subtype'}), 400
 
     try:
         db.update_node(node_id, name=name, node_type=node_type, subtype=subtype)
@@ -318,8 +328,7 @@ def batch_update_subtype():
     if not node_ids:
         return jsonify({'error': 'node_ids is required'}), 400
 
-    valid_subtypes = ('periodical', 'publisher', 'university', 'organization', 'media', 'business', 'event', 'government', 'other', '')
-    if subtype not in valid_subtypes:
+    if subtype not in VALID_SUBTYPES:
         return jsonify({'error': 'Invalid subtype'}), 400
 
     try:

@@ -260,7 +260,7 @@ const Editor = {
                 <td>${this.escapeHtml(node.name)}</td>
                 <td>
                     <span class="badge badge-${node.type}">${node.type}</span>
-                    ${node.subtype ? `<span class="badge badge-subtype">${node.subtype}</span>` : ''}
+                    ${node.subtype ? `<span class="badge badge-subtype">${this.escapeHtml(node.subtype)}</span>` : ''}
                 </td>
                 <td>
                     <span class="connection-count" onclick="Editor.showConnections(${node.id}, '${this.jsArg(node.name)}')">${node.connection_count || 0}</span>
@@ -669,7 +669,7 @@ const Editor = {
                             <span class="connection-name">${this.escapeHtml(conn.name)}</span>
                             <div class="connection-badges">
                                 <span class="badge badge-${conn.type}">${conn.type}</span>
-                                ${conn.subtype ? `<span class="badge badge-subtype">${conn.subtype}</span>` : ''}
+                                ${conn.subtype ? `<span class="badge badge-subtype">${this.escapeHtml(conn.subtype)}</span>` : ''}
                                 <span class="badge badge-${conn.edge_type}">${conn.edge_type}</span>
                                 <span class="badge badge-count" title="Total connections">${conn.connection_count || 0}</span>
                             </div>

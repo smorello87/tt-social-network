@@ -155,3 +155,18 @@ def test_batch_create_skips_self_loop(db):
     created = database.batch_create_edges([a, b], b, "affiliation")
     assert len(created) == 1
     assert query(db, "SELECT source_id, target_id FROM edges") == [(a, b)]
+
+
+def test_node_routes_reject_unknown_subtype(db):
+    """subtype is rendered into the editor's HTML; only the known values may be stored."""
+    pytest.importorskip("flask_cors")
+    import app
+    client = app.app.test_client()
+    bad = '<img src=x onerror=alert(1)>'
+    assert client.post("/api/nodes", json={"name": "Some Press", "type": "institution", "subtype": bad}).status_code == 400
+    r = client.post("/api/nodes", json={"name": "Some Press", "type": "institution", "subtype": "publisher"})
+    assert r.status_code == 201
+    nid = r.get_json()["id"]
+    assert client.put(f"/api/nodes/{nid}", json={"subtype": bad}).status_code == 400
+    assert client.put(f"/api/nodes/{nid}", json={"subtype": ""}).status_code == 200
+    assert query(db, "SELECT subtype FROM nodes WHERE id = ?", (nid,)) == [(None,)]

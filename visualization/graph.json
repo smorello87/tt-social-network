@@ -13536,11 +13536,6 @@
       "subtype": null
     },
     {
-      "id": "Loria Achille",
-      "type": "person",
-      "subtype": null
-    },
-    {
       "id": "Lorin Maazel",
       "type": "person",
       "subtype": null
@@ -15222,11 +15217,6 @@
     },
     {
       "id": "Maurizio Sciotti",
-      "type": "person",
-      "subtype": null
-    },
-    {
-      "id": "Mauro Augusto",
       "type": "person",
       "subtype": null
     },
@@ -25990,11 +25980,6 @@
     {
       "source": "Corriere d'America",
       "target": "Luigi Giovanola",
-      "type": "affiliation"
-    },
-    {
-      "source": "Corriere d'America",
-      "target": "Mauro Augusto",
       "type": "affiliation"
     },
     {
@@ -38439,11 +38424,6 @@
     },
     {
       "source": "Italian Book Company",
-      "target": "Loria Achille",
-      "type": "affiliation"
-    },
-    {
-      "source": "Italian Book Company",
       "target": "Luigi Donadio",
       "type": "affiliation"
     },
@@ -44488,6 +44468,11 @@
       "type": "affiliation"
     },
     {
+      "source": "Le Lettere (Rome)",
+      "target": "Augusto Mauro",
+      "type": "affiliation"
+    },
+    {
       "source": "Le Maschere",
       "target": "Giuseppe Zappulla",
       "type": "affiliation"
@@ -45290,16 +45275,6 @@
     {
       "source": "Matilde Serao",
       "target": "Le Grandi Firme/Il Milione",
-      "type": "affiliation"
-    },
-    {
-      "source": "Mauro Augusto",
-      "target": "Le Lettere (Rome)",
-      "type": "affiliation"
-    },
-    {
-      "source": "Mauro Augusto",
-      "target": "Secolo XIX",
       "type": "affiliation"
     },
     {
@@ -48190,6 +48165,11 @@
     {
       "source": "Salvatore Viola",
       "target": "La Settimana",
+      "type": "affiliation"
+    },
+    {
+      "source": "Secolo XIX",
+      "target": "Augusto Mauro",
       "type": "affiliation"
     },
     {

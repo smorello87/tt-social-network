@@ -17342,8 +17342,8 @@
     },
     {
       "id": "Premio di poesia Citt\u00e0 di Campobasso",
-      "type": "person",
-      "subtype": null
+      "type": "institution",
+      "subtype": "event"
     },
     {
       "id": "Primo Bruno Volpi",

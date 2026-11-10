@@ -288,6 +288,9 @@ def merge_nodes(primary_id, secondary_id):
         if primary_id == secondary_id:
             raise ValueError("Cannot merge a node with itself")
 
+        if primary["type"] != secondary["type"]:
+            raise ValueError(f"Cannot merge nodes of different types ({primary['type']} and {secondary['type']})")
+
         edges_transferred = 0
 
         # Transfer edges where secondary is the source
@@ -306,10 +309,13 @@ def merge_nodes(primary_id, secondary_id):
             s, t = (primary_id, target_id) if primary_id <= target_id else (target_id, primary_id)
             # Check if edge already exists (both directions)
             existing = conn.execute(
-                "SELECT id FROM edges WHERE (source_id = ? AND target_id = ?) OR (source_id = ? AND target_id = ?)",
+                "SELECT id, type FROM edges WHERE (source_id = ? AND target_id = ?) OR (source_id = ? AND target_id = ?)",
                 (s, t, t, s)
             ).fetchone()
             if existing:
+                # Keep a classified type over 'unknown' when both nodes had an edge to this neighbour
+                if existing["type"] == "unknown" and edge["type"] != "unknown":
+                    conn.execute("UPDATE edges SET type = ? WHERE id = ?", (edge["type"], existing["id"]))
                 conn.execute("DELETE FROM edges WHERE id = ?", (edge["id"],))
             else:
                 conn.execute(
@@ -334,10 +340,13 @@ def merge_nodes(primary_id, secondary_id):
             s, t = (source_id, primary_id) if source_id <= primary_id else (primary_id, source_id)
             # Check if edge already exists (both directions)
             existing = conn.execute(
-                "SELECT id FROM edges WHERE (source_id = ? AND target_id = ?) OR (source_id = ? AND target_id = ?)",
+                "SELECT id, type FROM edges WHERE (source_id = ? AND target_id = ?) OR (source_id = ? AND target_id = ?)",
                 (s, t, t, s)
             ).fetchone()
             if existing:
+                # Keep a classified type over 'unknown' when both nodes had an edge to this neighbour
+                if existing["type"] == "unknown" and edge["type"] != "unknown":
+                    conn.execute("UPDATE edges SET type = ? WHERE id = ?", (edge["type"], existing["id"]))
                 conn.execute("DELETE FROM edges WHERE id = ?", (edge["id"],))
             else:
                 conn.execute(
@@ -348,6 +357,21 @@ def merge_nodes(primary_id, secondary_id):
 
         # Delete the secondary node (any remaining edges will cascade delete)
         conn.execute("DELETE FROM nodes WHERE id = ?", (secondary_id,))
+
+        # Shared institutions / needs_review depend on the merged node's neighbours: refresh its own
+        # edges and, for an institution, the edges between its neighbours (their shared set changed).
+        affected = {r["id"] for r in conn.execute(
+            "SELECT id FROM edges WHERE source_id = ? OR target_id = ?", (primary_id, primary_id))}
+        neighbours = {r[0] for r in conn.execute(
+            "SELECT target_id FROM edges WHERE source_id = ? UNION SELECT source_id FROM edges WHERE target_id = ?",
+            (primary_id, primary_id))}
+        if primary["type"] == "institution" and neighbours:
+            marks = ",".join("?" * len(neighbours))
+            affected |= {r["id"] for r in conn.execute(
+                f"SELECT id FROM edges WHERE source_id IN ({marks}) AND target_id IN ({marks})",
+                tuple(neighbours) * 2)}
+        for edge_id in affected:
+            compute_shared_for_edge(conn, edge_id)
 
         return {
             "primary_name": primary["name"],

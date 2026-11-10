@@ -141,16 +141,17 @@ def test_case_and_whitespace_variants_collapse(world, monkeypatch):
     _, base = world
     add_bylines(base, "Del Vita, Alessandro", "Del  Vita, Alessandro", "Flaiano, ennio", "Flaiano, Ennio")
     people = run(base, monkeypatch)
-    assert sum(n.startswith("Flaiano") for n in people) == 1
-    assert sum(n.startswith("Del") for n in people) == 1
-    assert people["Flaiano, ennio"]["status"] == "new"
+    assert sum(n.endswith(("Flaiano", "flaiano")) for n in people) == 1
+    assert sum("Vita" in n for n in people) == 1
+    assert people["ennio Flaiano"]["status"] == "new"
+    assert not any("," in n for n in people)  # "Surname, First" is stored as "First Surname"
 
 
 def test_near_duplicate_names_in_the_roster_are_flagged(world, monkeypatch):
     _, base = world
     add_bylines(base, "Altichieri, Giberto", "Altichieri, Gilberto", "Zanardi, Joseph", "Zanardi, Giuseppe")
     people = run(base, monkeypatch)
-    for a, b in [("Altichieri, Giberto", "Altichieri, Gilberto"), ("Zanardi, Joseph", "Zanardi, Giuseppe")]:
+    for a, b in [("Giberto Altichieri", "Gilberto Altichieri"), ("Joseph Zanardi", "Giuseppe Zanardi")]:
         assert people[a]["status"] == people[b]["status"] == "unresolved"
         assert [c["name"] for c in people[a]["candidates"]] == [b]
         assert people[a]["candidates"][0]["type"] == "roster"
@@ -160,14 +161,37 @@ def test_confirming_distinct_in_review_new_clears_the_flag(world, monkeypatch):
     _, base = world
     add_bylines(base, "Altichieri, Giberto", "Altichieri, Gilberto")
     review = json.loads((base / "review.json").read_text())
-    review["new"] += ["Altichieri, Giberto", "Altichieri, Gilberto"]
+    review["new"] += ["Giberto Altichieri", "Gilberto Altichieri"]
     write(base / "review.json", review)
     people = run(base, monkeypatch)
-    assert people["Altichieri, Giberto"]["status"] == people["Altichieri, Gilberto"]["status"] == "new"
+    assert people["Giberto Altichieri"]["status"] == people["Gilberto Altichieri"]["status"] == "new"
 
 
 def test_unrelated_roster_names_stay_new(world, monkeypatch):
     _, base = world
     add_bylines(base, "Pratolini, Vasco", "Moravia, Alberto")
     people = run(base, monkeypatch)
-    assert people["Pratolini, Vasco"]["status"] == people["Moravia, Alberto"]["status"] == "new"
+    assert people["Vasco Pratolini"]["status"] == people["Alberto Moravia"]["status"] == "new"
+
+
+def test_comma_name_exact_match_links_and_is_not_imported_inverted(world, monkeypatch):
+    nodes, base = world
+    add_bylines(base, "Ciardi, John Anthony", "Nelson, Lowry")
+    people = run(base, monkeypatch)
+    assert "Ciardi, John Anthony" not in people
+    assert people["John Anthony Ciardi"]["status"] == "existing"
+    assert people["John Anthony Ciardi"]["node_id"] == nodes["ciardi"]
+    assert people["Lowry Nelson"]["status"] == "new"
+
+
+def test_confirming_one_spelling_new_keeps_the_other_flagged(world, monkeypatch):
+    """Putting one of two near-identical roster names in "new" must not silently pass the other."""
+    _, base = world
+    add_bylines(base, "Giberto Altichieri", "Gilberto Altichieri")
+    review = json.loads((base / "review.json").read_text())
+    review["new"].append("Giberto Altichieri")
+    write(base / "review.json", review)
+    people = run(base, monkeypatch)
+    assert people["Giberto Altichieri"]["status"] == "new"
+    assert people["Gilberto Altichieri"]["status"] == "unresolved"
+    assert [c["name"] for c in people["Gilberto Altichieri"]["candidates"]] == ["Giberto Altichieri"]

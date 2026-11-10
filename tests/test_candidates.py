@@ -50,3 +50,26 @@ def test_given_name_equivalents():
              ("Giuseppina", "Josephine"), ("Salvatore", "Sam")]
     for it, en in pairs:
         assert candidates_for(f"{en} Zanardi", make_nodes(f"{it} Zanardi")), (it, en)
+
+
+def test_flip_comma_leaves_generational_suffix_alone():
+    assert flip_comma("Lowry Nelson, Jr") == "Lowry Nelson, Jr"
+    assert flip_comma("Barzini, Luigi") == "Luigi Barzini"
+
+
+@pytest.mark.parametrize("query, node, flagged", [
+    ("Giberto Altichieri", "Gilberto Altichieri", True),   # distance 1
+    ("Erberto Landi", "Roberto Landi", True),             # distance 2, both 6+ letters
+    ("Renzo Giusso", "Lorenzo Giusso", True),             # hypocoristic ending
+    ("Marco Sforza", "Carlo Sforza", False),              # distance 2, short: different names
+    ("Aldo Romano", "Elmo Romano", False),
+    ("Karl Stephenson", "Mary L. Stephenson", False),
+])
+def test_near_given_name_rule(query, node, flagged):
+    assert bool(candidates_for(query, make_nodes(node))) is flagged
+
+
+def test_rule_based_candidates_are_not_capped_at_five():
+    rossi = [f"{g} Rossi" for g in ("Adolfo", "Alice", "Ernesto", "Filippo", "Luigi", "Nando", "Ugo", "Carla")]
+    found = {c["name"] for c in candidates_for("Rossi", make_nodes(*rossi))}
+    assert found == set(rossi)

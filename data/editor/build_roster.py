@@ -23,8 +23,11 @@ Output: data/<slug>/roster.json, one entry per person with status
   existing    linked to a node (exact match to a single person node, or review "match")
   new         no plausible match in the database (or confirmed via "new", which wins over an exact match)
   unresolved  fuzzy candidates found (in the database, or another name in this roster with
-              type "roster"); add the name to "match" or "new", or alias one spelling to the other.
+              type "roster", including names already confirmed "new"); add the name to "match"
+              or "new", or alias one spelling to the other.
               Spellings that differ only in case/whitespace collapse into one entry.
+Names printed "Surname, First" become "First Surname" after aliases/skip are applied, so
+"match", "new" and "notes" use the "First Surname" form ("Lowry Nelson, Jr" is not flipped).
 import_contributors.py refuses to run while any entry is unresolved.
 
 Usage: python3 build_roster.py iam
@@ -84,6 +87,7 @@ def collect(base, review):
         name = aliases.get(name, name)
         if not name or name in skip:
             return
+        name = flip_comma(name)  # "Banti, Anna" -> "Anna Banti", the DB's order (match/new/notes use this form)
         # "Del vita" / "Del Vita" (case, NFC and whitespace variants) are one person: keep the first spelling
         name = variants.setdefault(unicodedata.normalize("NFC", name).casefold(), name)
         entry = roster.setdefault(name, {"roles": set(), "issues": set()})
@@ -151,9 +155,10 @@ _GIVEN_GROUP = {n: i for i, g in enumerate(_GIVEN_GROUPS) for n in g}
 
 
 def flip_comma(name):
-    """'Barzini, Luigi' -> 'Luigi Barzini' (only the single-comma 'Surname, First' form)."""
+    """'Barzini, Luigi' -> 'Luigi Barzini' (only the single-comma 'Surname, First' form).
+    'Lowry Nelson, Jr' is left alone: a generational suffix after the comma is not a given name."""
     parts = [p.strip() for p in name.split(",")]
-    if len(parts) == 2 and parts[0] and parts[1]:
+    if len(parts) == 2 and parts[0] and parts[1] and not (fold(parts[1]) and set(fold(parts[1])) <= SUFFIXES):
         return parts[1] + " " + parts[0]
     return name
 
@@ -164,6 +169,18 @@ def _strip_suffix(toks):
 
 def _edit_distance(a, b):
     return round((1 - _similarity(a, b)) * max(len(a), len(b)))
+
+
+def _near_given(a, b):
+    """Given names close enough to be one name misread or shortened: edit distance 1
+    ("Giberto" ~ "Gilberto"), distance 2 only when both have 6+ letters ("Erberto" ~ "Roberto";
+    short pairs at distance 2 are mostly different names: Mario/Carlo, Aldo/Elmo, Karl/Mary),
+    or a 4+ letter hypocoristic ending of the other ("Renzo" ~ "Lorenzo", "Nino" ~ "Antonino")."""
+    if len(a) < 4 or len(b) < 4:
+        return False
+    d = _edit_distance(a, b)
+    short, long_ = sorted((a, b), key=len)
+    return d <= 1 or (d == 2 and len(short) >= 6) or (short != long_ and long_.endswith(short))
 
 
 def candidates_for(name, nodes):
@@ -190,15 +207,19 @@ def candidates_for(name, nodes):
             g1, g2 = _GIVEN_GROUP.get(base[0]), _GIVEN_GROUP.get(base2[0])
             flagged = g1 is not None and g1 == g2  # "Joseph Tusiani" ~ "Giuseppe Tusiani"
         if not flagged and len(base) > 1 and len(base2) > 1 and base[-1] == base2[-1] and len(base[-1]) > 3 \
-                and len(base[0]) >= 4 and len(base2[0]) >= 4 and _edit_distance(base[0], base2[0]) <= 2:
+                and _near_given(base[0], base2[0]):
             flagged = True  # same surname, near-identical given name: "Giberto Altichieri" ~ "Gilberto Altichieri"
         # Edit distance >= length difference, so a >15% length gap can't reach 0.85; skip the costly DP.
         if not flagged and abs(len(key) - len(key2)) > 0.15 * max(len(key), len(key2)):
             continue
         score = _similarity(key, key2)
         if score >= 0.85 or flagged:
-            found.append({"id": nid, "name": nm, "type": ntype, "score": round(score, 2)})
-    return sorted(found, key=lambda c: -c["score"])[:5]
+            found.append(({"id": nid, "name": nm, "type": ntype, "score": round(score, 2)}, flagged))
+    # Every rule-based candidate is kept (a bare "Rossi" must show all eight Rossis, not the first
+    # five); only candidates found by string similarity alone are capped at five.
+    found.sort(key=lambda c: -c[0]["score"])
+    similar_only = [c for c, flagged in found if not flagged][:5]
+    return [c for c, flagged in found if flagged or c in similar_only]
 
 
 def main():
@@ -260,12 +281,13 @@ def main():
 
     # Compare the roster's own unmatched names with each other so one person can't become two nodes.
     # Names in review "new" are confirmed distinct; alias one spelling to the other to merge them.
-    pending = [p for p in people if p["status"] in ("new", "unresolved") and p["name"] not in review["new"]
-               and fold(p["name"])]
-    peers = [(i, p["name"], "roster", fold(flip_comma(p["name"])), " ".join(fold(flip_comma(p["name"]))))
-             for i, p in enumerate(pending)]
-    for i, p in enumerate(pending):
-        found = candidates_for(p["name"], [n for n in peers if n[0] != i])
+    # A name confirmed "new" is still a comparison target: confirming one spelling must not silently
+    # wave through a second, unreviewed spelling of the same person.
+    unmatched = [p for p in people if p["status"] in ("new", "unresolved") and fold(p["name"])]
+    pending = [p for p in unmatched if p["name"] not in review["new"]]
+    peers = [(p["name"], p["name"], "roster", fold(p["name"]), " ".join(fold(p["name"]))) for p in unmatched]
+    for p in pending:
+        found = candidates_for(p["name"], [n for n in peers if n[0] != p["name"]])
         if found:
             p["status"] = "unresolved"
             p["candidates"] = p.get("candidates", []) + [

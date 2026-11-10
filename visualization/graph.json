@@ -11602,8 +11602,8 @@
     },
     {
       "id": "Italian Chamber of Commerce in New York",
-      "type": "person",
-      "subtype": null
+      "type": "institution",
+      "subtype": "organization"
     },
     {
       "id": "Italian Committee for the Defense of Immigrants",
